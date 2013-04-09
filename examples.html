@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--[if lt IE 7]>
+<script type="text/javascript">location.replace('ie6/ie6.html');</script><noscript><meta http-equiv="refresh" content="0; url=ie6/ie6.html"></noscript>
+<![endif]-->
+<meta charset="utf-8">
+<title>phpDAEMON</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/examples/simplechat/files/style.css">
+<!--[if lte IE 9]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="/css/ie.css">
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<link type="text/css" rel="stylesheet" href="/css/ie8.css">
+<![endif]-->
+<script type="text/javascript" src="/examples/simplechat/files/websocket.js"></script>
+<script type="text/javascript" src="/examples/simplechat/files/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="/examples/simplechat/files/jquery.address-1.0.min.js"></script>
+<script type="text/javascript" src="/examples/simplechat/files/jquery-ui-1.7.custom.min.js"></script>
+<script type="text/javascript" src="/examples/simplechat/files/jquery.form.js"></script>
+<script type="text/javascript" src="/examples/simplechat/files/jquery.cookie.js"></script>
+<script type="text/javascript" src="/examples/simplechat/files/jquery.json.js"></script>
+<script type="text/javascript" src="/examples/simplechat/files/jquery.scrollTo-min.js"></script>
+<script type="text/javascript" src="/examples/simplechat/files/jquery.tooltip.pack.js"></script>
+<script type="text/javascript" src="/examples/simplechat/files/jquery.keyboard.js"></script>
+<script type="text/javascript" src="/examples/simplechat/files/chat.js"></script>
+<!-- <script type="text/javascript" src="http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js"></script> -->
+</head>
+
+<body>
+	<div id="template">
+		<header>
+			<div class="center">
+				<a href="./" id="logo" title="phpDaemon">phpDaemon</a>
+				<a href="#" id="download" title="DOWNLOAD">DOWNLOAD</a>
+				<menu>
+					<li><a href="#" title="Examples">Examples</a></li>
+					<li><a href="#" title="Documentation">Documentation</a></li>
+					<li><a href="#" title="Publications">Publications</a></li>
+					<li><a href="#" title="Sources">Sources</a></li>
+				</menu>
+			</div>
+		</header>
+		<aside class="example_top">
+			<div class="saw"></div>
+			<div class="glow"></div>
+			<div class="center">
+				<div class="caption">
+					<h1>Multi-user chat conference</h1>
+					<p>
+						Simple multi-user chat using phpDaemon, WebSocket (abstract connector WebSocketConnection), MongoDB, and jQuery.
+					</p>
+				</div>
+			</div>
+		</aside>
+		<div id="main" class="clearfix">
+			<section>
+				<div class="section">
+					<div class="center example">
+						<div class="clearfix example_info">
+							<p>
+								Example application of a chat that using phpDaemon, WebSocket, MongoDB and jQuery.<br>
+								Idea and programming — <b>TravisBickle</b> (kak.serpom.po.yaitsam@gmail.com). Open Source.
+							</p>
+							<a href="http://github.com/kakserpom/phpdaemon-muchat" target="_blank" title="Sources" class="blue_btn">Sources</a>
+						</div>
+						<div class="clearfix">
+							<div class="traffic">
+										<b>Sent/Received data:</b>
+										<span class="sentDataCounter">~</span>/<span class="recvDataCounter">~</span>
+								</div>
+							<div class="left_column">
+								<div>
+									<div class="textarea round_box" id="messages"></div>
+									<form action="#" id="inputForm" style="display: none">
+<input type="text" size="70" name="text" autocomplete="off" id="inputMessage" />
+<select name="color">
+<option value="black">Black</option>
+<option value="red">Red</option>
+<option value="green">Green</option>
+<option value="blue">Blue</option>
+</select>
+<input type="submit" value="Send" /> (<span class="yourusername"></span>)<br />Listed on tags: <span class="yourtags"></span><br />
+<br />/nick Nickname&nbsp;&nbsp;&nbsp;/me slaps you...&nbsp;&nbsp;&nbsp;/thetime&nbsp;&nbsp;&nbsp;/tags
+</form>
+								</div>
+							</div>
+							<div class="right_column">
+								<div id="userlist" class="users_tagget round_box"></div>
+								<div class="login_box">
+								<form action="#" style="display: none" method="post" id="loginForm">
+									<label for="inputUsername">Enter your nick</label>
+									<div class="login round_box">
+										<input name="username" id="inputUsername" type="text"><button type="submit">Login</button>
+									</div>
+								</form>
+								</div>
+							</div>
+						</div>
+						<div class="commercial_support">
+							Commercial support is possible (English/Russian)<br>
+							Contact the group/E-Mail
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+<script type="text/javascript">
+if ($.chat.username != null) {$('#inputMessage').show();}
+else {$('#loginForm').show();}
+if ($.chat.loaded == true)
+{
+ $.chat.initInputForm();
+ $.chat.initLoginForm();
+ $.chat.lastTS = 0;
+ $.chat.getHistory();
+ $.chat.getUserlist();
+ $.chat.setForms();
+}
+else
+{
+ $(document).ready(function()
+ {
+  if (!$.chat.loaded)
+  {
+   $.chat.loaded = true;
+   $.chat.initInputForm();
+   $.chat.initLoginForm();
+   $.chat.initConnect();
+  }
+ });
+}
+</script>
+	<footer>
+		<div class="center">
+			The project is alive and grows fast, report bugs and they will be fixed very quickly.<br>
+		</div>
+	</footer>
+</body>
+</html>
