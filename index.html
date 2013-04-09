@@ -21,13 +21,13 @@
 	<div id="template">
 		<header>
 			<div class="center">
-				<a href="./" id="logo" title="phpDaemon">phpDaemon</a>
-				<a href="#" id="download" title="DOWNLOAD">DOWNLOAD</a>
+				<a href="/" id="logo" title="phpDaemon">phpDaemon</a>
+				<a href="https://github.com/kakserpom/phpdaemon" id="download" title="Download" target="_blank">DOWNLOAD (GitHub)</a>
 				<menu>
-					<li><a href="#" title="Examples">Examples</a></li>
-					<li><a href="#" title="Documentation">Documentation</a></li>
-					<li><a href="#" title="Publications">Publications</a></li>
-					<li><a href="#" title="Sources">Sources</a></li>
+					<li><a href="/examples.html" title="Examples">Examples</a></li>
+					<li><a href="https://github.com/kakserpom/phpdaemon/wiki" title="Documentation">Documentation</a></li>
+					<!--<li><a href="#" title="Publications">Publications</a></li>-->
+					<li><a href="https://github.com/kakserpom/phpdaemon" title="Sources">Sources</a></li>
 				</menu>
 			</div>
 		</header>
@@ -40,7 +40,7 @@
 				<div class="caption">
 					<h1>Unleash the Daemon</h1><span></span>
 					<p>
-						Asynchronous server-side framework of network applications implemented in PHP using famous libevent which makes possible to handle hundreds and thousands of simultaneous connections.
+						Asynchronous server-side framework of network applications implemented in PHP using libevent. phpDaemon can handle thousands of simultaneous connections.
 					</p>
 				</div>
 			</div>
@@ -78,13 +78,16 @@
 									<h4>Flexibility</h4>
 									<ul>
 										<li>
-											Extensible nature.
+											Built-in SSL/TLS support (client/server).
 										</li>
 										<li>
-											Well configurable.
+											Extensible nature
 										</li>
 										<li>
-											Feature-rich.
+											Well configurable
+										</li>
+										<li>
+											Feature-rich
 										</li>
 									</ul>
 								</div>
@@ -127,26 +130,33 @@
 									<h4>Network servers</h4>
 									<ul>
 										<li>
-											HTTP server<br>
+											HTTP<br>
 											<small>(supports multipart, uploads, etc)</small>
 										</li>
 										<li>
-											WebSocket server<br>
+											WebSocket<br>
 											<small>(supports latest protocol specification)</small>
 										</li>
 										<li>
-											FastCGI server<br>
+											FastCGI<br>
 											<small>(supports X-Sendfile and Request-body-file)</small>
 										</li>
 										<li>
-											FlashPolicy server — cross-domain<br>policy at port 843
+											FlashPolicy<br>
+											<small>policy at port 843</small>
+										</li>
+										<li>
+											IRCBouncer<br>
+											<small>simple extensible IRC bouncer</small>
 										</li>
 										<li>
 											Socks server
 										</li>
 										<li>
-											LockServer
+											Lock<br>
+											<small>simple lock server</small>
 										</li>
+
 									</ul>
 								</div>
 							</li>
@@ -156,34 +166,40 @@
 									<h4>Network clients</h4>
 									<ul>
 										<li>
-											MySQL client
+											MySQL<br>
+											<small>Robust, zero-copy client. Supports only latest protocol</small>
 										</li>
 										<li>
-											PostgreSQL client
+											PostgreSQL<br>
+											<small>Robust, zero-copy client</small>
 										</li>
 										<li>
-											MongoDB client
+											MongoDB<br>
+											<small>Feature-rich, with support of async. tailable cursors</small>
 										</li>
 										<li>
-											Memcache client
+											Memcache<br>
+											<small>Supports only text protocol yet</small>
 										</li>
 										<li>
-											Gearman client
+											Gearman
 										</li>
 										<li>
-											HTTP Client
+											HTTP
 										</li>
 										<li>
-											Jabber client
+											XMPP (jabber)
+											<small>Useful for building Jabber bots</small>
 										</li>
 										<li>
 											IRC client
+											<small>Useful for building IRC bots</small>
 										</li>
 										<li>
-											Asterisk client
+											Asterisk (PBX)
 										</li>
 										<li>
-											Redis client
+											Redis
 										</li>
 									</ul>
 								</div>
@@ -228,9 +244,9 @@
 							<li>
 								Mailing list: <a href="#" target="_blank" title="View on Google Groups">groups.google.com/group/phpdaemon</a>
 							</li>
-							<li>
+							<!--<li>
 								IRC: irc.freenode.org #phpdaemon
-							</li>
+							</li>-->
 							<li>
 								Maintainer — <a href="mailto:kak.serpom.po.yaitsam@gmail.com" title="Mail to admin">kak.serpom.po.yaitsam@gmail.com</a>
 							</li>
