@@ -363,6 +363,11 @@ aside {
 	font-size:.79em;
 }
 
+
+.w3chtml5 {
+	float:right; margin-top: 10px;
+}
+
 .columns,
 .columns ul,
 .support ul {
