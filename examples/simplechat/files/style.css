@@ -1,13 +1,13 @@
 .example_info {
-  font-family:Georgia, "Times New Roman", Times, serif;
-  color:#333;
-  text-shadow: 0 0 1px rbga(51,51,51,.3);
-  line-height:1.6;
-  margin-bottom:24px;
-  }
+	font-family:Georgia, "Times New Roman", Times, serif;
+	color:#333;
+	text-shadow: 0 0 1px rbga(51,51,51,.3);
+	line-height:1.6;
+	margin-bottom:24px;
+ 	}
 .example_info a {
-  float:right;
-  margin-top:-2.5em;
+	float:right;
+ 	margin-top:-2.5em;
 }
 .left_column, .right_column {
   float:left;
@@ -157,15 +157,18 @@
   }
 .login {
   overflow:hidden;
-  }
-  .login input {
-    background:none;
-    border:none;
+ }
+.login input {
+	background:none;
+	border:none;
     padding:0 10px;
     width:164px;
     vertical-align:top;
-  }
-  .login button {
+}
+input[type="submit"],
+input[type="button"],
+button,
+.login button {
     font-family: "helvetica_neueregular", Helvetica, "Trebuchet MS", Arial, sans-serif;
     font-size:.93em;
     color:#000;
