@@ -365,7 +365,8 @@ aside {
 
 
 .w3chtml5 {
-	float:right; margin-top: 10px;
+	float:right;
+	display:none;
 }
 
 .columns,
