@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--[if lt IE 7]>
+<script type="text/javascript">location.replace('ie6/ie6.html');</script><noscript><meta http-equiv="refresh" content="0; url=ie6/ie6.html"></noscript>
+<![endif]-->
+<meta charset="utf-8">
+<title>phpDaemon</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<!--[if lte IE 9]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link type="text/css" rel="stylesheet" href="/css/ie.css">
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<link type="text/css" rel="stylesheet" href="/css/ie8.css">
+<![endif]-->
+</head>
+
+<body>
+	<div id="template">
+		<header>
+			<div class="center">
+				<a href="/" id="logo" title="phpDaemon">phpDaemon</a>
+				<a href="https://github.com/kakserpom/phpdaemon" id="download" title="Download" target="_blank">DOWNLOAD (GitHub)</a>
+				<menu>
+					<li><a href="/examples.html" title="Examples">Examples</a></li>
+					<li><a href="https://github.com/kakserpom/phpdaemon/wiki" title="Wiki">Wiki</a></li>
+					<!--<li><a href="/publications.html" title="Publications">Publications</a></li>-->
+					<li><a href="https://github.com/kakserpom/phpdaemon" title="Sources">Sources</a></li>
+					<li><a href="https://github.com/kakserpom/phpdaemon/issues" title="Bug tracker">Bug tracker</a></li>
+				</menu>
+			</div>
+		</header>
+		<aside>
+			<div class="saw"></div>
+			<div class="elephant">
+				<a href="/" title="phpDAEMON">phpDAEMON</a>
+			</div>
+			<div class="center">
+				<div class="caption">
+					<h1>Unleash the Daemon</h1><span></span>
+					<p>
+						Asynchronous server-side framework of network applications implemented in PHP using libevent. phpDaemon can handle thousands of simultaneous connections.
+					</p>
+				</div>
+			</div>
+		</aside>
+
+		<div id="main" class="clearfix">
+			<section>
+				<div class="section">
+					<div class="center">
+						<h2>Main features</h2>
+						<ul class="columns clearfix">
+							<li>
+								<img src="/img/services/perform.png" width="38" height="40" alt="">
+								<div class="list">
+									<h4>High performance</h4>
+									<ul>
+										<li>
+											Cheap context switches,<br>
+											high concurrency.
+										</li>
+										<li>
+											Low memory consumption<br>
+											for each connection/request.
+										</li>
+										<li>
+											EIO support (asynchronous file<br>
+											system I/O).
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<img src="/img/services/flex.png" width="38" height="40" alt="">
+								<div class="list">
+									<h4>Flexibility</h4>
+									<ul>
+										<li>
+											Built-in SSL/TLS support (client/server).
+										</li>
+										<li>
+											Extensible nature
+										</li>
+										<li>
+											Well configurable
+										</li>
+										<li>
+											Feature-rich
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<img src="/img/services/feature.png" width="38" height="40" alt="">
+								<div class="list">
+									<h4>Core features</h4>
+									<ul>
+										<li>
+											Dynamic Multi-Process Manager
+										</li>
+										<li>
+											Chroot, nice, jail for worker processes.
+										</li>
+										<li>
+											Automatic graceful reloading user's<br>
+											scripts when it's updated.
+										</li>
+										<li>
+											Graceful worker shutdown (and re-<br>
+											spawn if necessary) by the following<br>
+											limits: memory, query counter, idle time.
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section class="odd">
+				<div class="section">
+					<div class="center">
+						<h2>Out of the Box</h2>
+						<ul class="columns clearfix">
+							<li>
+								<img src="/img/services/map.png" width="38" height="40" alt="">
+								<div class="list">
+									<h4>Network servers</h4>
+									<ul>
+										<li>
+											HTTP<br>
+											<small>supports multipart, uploads, etc</small>
+										</li>
+										<li>
+											WebSocket<br>
+											<small>supports latest protocol specification</small>
+										</li>
+										<li>
+											FastCGI<br>
+											<small>supports X-Sendfile and Request-body-file</small>
+										</li>
+										<li>
+											FlashPolicy<br>
+											<small>policy at port 843</small>
+										</li>
+										<li>
+											IRCBouncer<br>
+											<small>simple extensible IRC bouncer</small>
+										</li>
+										<li>
+											Socks server
+										</li>
+										<li>
+											Lock<br>
+											<small>simple lock server</small>
+										</li>
+
+									</ul>
+								</div>
+							</li>
+							<li>
+								<img src="/img/services/net.png" width="38" height="40" alt="">
+								<div class="list">
+									<h4>Network clients</h4>
+									<ul>
+										<li>
+											MySQL<br>
+											<small>robust, zero-copy client. Supports only latest protocol</small>
+										</li>
+										<li>
+											PostgreSQL<br>
+											<small>robust, zero-copy client</small>
+										</li>
+										<li>
+											MongoDB<br>
+											<small>reature-rich, with support of async. tailable cursors</small>
+										</li>
+										<li>
+											Memcache<br>
+											<small>supports only text protocol yet</small>
+										</li>
+										<li>
+											HTTP<br>
+											<small>supports GET and POST queries</small>
+										</li>
+										<li>
+											XMPP (jabber)<br>
+											<small>useful for building Jabber bots</small>
+										</li>
+										<li>
+											IRC client<br>
+											<small>useful for building IRC bots</small>
+										</li>
+										<li>
+											Asterisk (PBX)<br>
+											<small>extensible PBX client</small>
+										</li>
+										<li>
+											Redis<br>
+											<small>supports all commands (incl. Pub/Sub)</small>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<img src="/img/services/app.png" width="38" height="40" alt="">
+								<div class="list">
+									<h4>Web applications</h4>
+									<ul>
+										<li>
+											ServerStatus<br>
+											<small>shows uptime and some other information</small>
+										</li>
+										<li>
+											WebSocketOverCOMET<br>
+											<small>allows to use WebSocketConnection in Javascript (COMET, long-polling)</small>
+										</li>
+										<li>
+											FileReader<br>
+											<small>allows to share static files</small>
+										</li>
+										<li>
+											CGI server
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="section">
+					<div class="center support">
+						<h2 class="gray">Support and Community</h2>
+						<ul>
+							<li>
+								Github repository: <a href="https://github.com/kakserpom/phpdaemon" target="_blank" title="Go to GitHub">github.com/kakserpom/phpdaemon</a>
+							</li>
+							<li>
+								Mailing list: <a href="http://groups.google.com/group/phpdaemon" target="_blank" title="View on Google Groups">groups.google.com/group/phpdaemon</a>
+							</li>
+							<!--<li>
+								IRC: irc.freenode.org #phpdaemon
+							</li>-->
+							<li>
+								Maintainer — <a href="mailto:kak.serpom.po.yaitsam@gmail.com" title="Mail to admin">kak.serpom.po.yaitsam@gmail.com</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<footer>
+		<div class="center">
+			The project is alive and grows fast, report bugs/suggestions and they shall be concerned quickly.
+			<span class="w3chtml5"><img src="/img/w3chtml5.png" alt="W3C HTML 5" width="122" height="43"/></span>
+		</div>
+	</footer>
+</body>
+</html>
