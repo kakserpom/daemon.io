@@ -178,10 +178,10 @@ header {
 		header menu li {
 			display:inline-block;
 			padding:0 20px;
-			line-height:15px;
+			line-height:30px;
 		}
 		header menu li + li {
-			border-left:1px solid #b2b2b2;
+			border-left:1px solid #000;
 		}
 		header menu a {
 			color:#b2b2b2;
