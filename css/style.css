@@ -73,10 +73,10 @@ aside {display:block;}
 /*Links*/
 a {
 	color:#0079b6;
-	text-decoration:underline;
+	text-decoration:none;
 	text-shadow:0 0 1px rgba(0,121,182,.5);
 }
-a:hover {text-decoration:none;}
+a:hover {text-decoration:underline;}
 a img {border:none; vertical-align:top;}
 
 /**/
