@@ -3,41 +3,41 @@
 /*Fonts*/
 @font-face {
 	font-family: 'ralewayregular';
-	src:	url('../fonts/ralewayRegular/ralewayRegular.eot');
-	src:	url('../fonts/ralewayRegular/ralewayRegular.eot?#iefix') format('embedded-opentype'),
-			url('../fonts/ralewayRegular/ralewayRegular.woff') format('woff'),
-			url('../fonts/ralewayRegular/ralewayRegular.ttf') format('truetype'),
-			url('../fonts/ralewayRegular/ralewayRegular.svg#ralewayregular') format('svg');
+	src:	url('/fonts/ralewayRegular/ralewayRegular.eot');
+	src:	url('/fonts/ralewayRegular/ralewayRegular.eot?#iefix') format('embedded-opentype'),
+			url('/fonts/ralewayRegular/ralewayRegular.woff') format('woff'),
+			url('/fonts/ralewayRegular/ralewayRegular.ttf') format('truetype'),
+			url('/fonts/ralewayRegular/ralewayRegular.svg#ralewayregular') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'ralewaylight';
-	src:	url('../fonts/ralewayLight/ralewayLight.eot');
-	src:	url('../fonts/ralewayLight/ralewayLight.eot?#iefix') format('embedded-opentype'),
-			url('../fonts/ralewayLight/ralewayLight.woff') format('woff'),
-			url('../fonts/ralewayLight/ralewayLight.ttf') format('truetype'),
-			url('../fonts/ralewayLight/ralewayLight.svg#ralewaylight') format('svg');
+	src:	url('/fonts/ralewayLight/ralewayLight.eot');
+	src:	url('/fonts/ralewayLight/ralewayLight.eot?#iefix') format('embedded-opentype'),
+			url('/fonts/ralewayLight/ralewayLight.woff') format('woff'),
+			url('/fonts/ralewayLight/ralewayLight.ttf') format('truetype'),
+			url('/fonts/ralewayLight/ralewayLight.svg#ralewaylight') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'federantmedium';
-	src:	url('../fonts/federantRegular/federantRegular.eot');
-	src:	url('../fonts/federantRegular/federantRegular.eot?#iefix') format('embedded-opentype'),
-			url('../fonts/federantRegular/federantRegular.woff') format('woff'),
-			url('../fonts/federantRegular/federantRegular.ttf') format('truetype'),
-			url('../fonts/federantRegular/federantRegular.svg#federantmedium') format('svg');
+	src:	url('/fonts/federantRegular/federantRegular.eot');
+	src:	url('/fonts/federantRegular/federantRegular.eot?#iefix') format('embedded-opentype'),
+			url('/fonts/federantRegular/federantRegular.woff') format('woff'),
+			url('/fonts/federantRegular/federantRegular.ttf') format('truetype'),
+			url('/fonts/federantRegular/federantRegular.svg#federantmedium') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'helvetica_neueregular';
-	src:	url('../fonts/helveticaneueRegular/helveticaneueRegular.eot');
-	src:	url('../fonts/helveticaneueRegular/helveticaneueRegular.eot?#iefix') format('embedded-opentype'),
-			url('../fonts/helveticaneueRegular/helveticaneueRegular.woff') format('woff'),
-			url('../fonts/helveticaneueRegular/helveticaneueRegular.ttf') format('truetype'),
-			url('../fonts/helveticaneueRegular/helveticaneueRegular.svg#helvetica_neueregular') format('svg');
+	src:	url('/fonts/helveticaneueRegular/helveticaneueRegular.eot');
+	src:	url('/fonts/helveticaneueRegular/helveticaneueRegular.eot?#iefix') format('embedded-opentype'),
+			url('/fonts/helveticaneueRegular/helveticaneueRegular.woff') format('woff'),
+			url('/fonts/helveticaneueRegular/helveticaneueRegular.ttf') format('truetype'),
+			url('/fonts/helveticaneueRegular/helveticaneueRegular.svg#helvetica_neueregular') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -197,7 +197,7 @@ header {
 		margin:10px 40px 0 -10px;
 		width:89px;
 		height:18px;
-		background:url(../img/logo.png) no-repeat 50% 50%;
+		background:url(/img/logo.png) no-repeat 50% 50%;
 		line-height:17px;
 		text-indent:-30000px;
 		}
@@ -254,7 +254,7 @@ aside {
 		height:306px;
 		margin-top:-306px;
 		margin-left:-515px;
-		background:url(../img/elephant.jpg) no-repeat 0 0;
+		background:url(/img/elephant.jpg) no-repeat 0 0;
 		}
 		aside .elephant a {
 			position:absolute;
@@ -269,7 +269,7 @@ aside {
 		width:447px;
 		height:196px;
 		margin-top:-196px;
-		background-image:url(../img/glow.jpg);
+		background-image:url(/img/glow.jpg);
 	}
 	aside .caption {
 		margin:0 450px 0 45px;
@@ -307,38 +307,44 @@ aside {
 		position:absolute;
 		width:109px;
 		height:112px;
-		background:url(../img/point.png) no-repeat 0 0;
+		background:url(/img/point.png) no-repeat 0 0;
 		margin:-79px 0 0 -6px;
 	}
 .main_caption {
 	width:379px;
 	height:40px;
 	text-indent:-30000px;
-	background:url(../img/captions/main.png) no-repeat 0 0;
+	background:url(/img/captions/main.png) no-repeat 0 0;
 }
 .example_caption {
 	width:497px;
 	height:43px;
 	text-indent:-30000px;
-	background:url(../img/captions/example.png) no-repeat 0 0;
+	background:url(/img/captions/example.png) no-repeat 0 0;
 }
 .team_caption {
 	width:232px;
 	height:40px;
 	text-indent:-30000px;
-	background:url(../img/captions/team.png) no-repeat 0 0;
+	background:url(/img/captions/team.png) no-repeat 0 0;
 }
 .faq_caption {
-	width:76px;
+	width:506px;
 	height:43px;
 	text-indent:-30000px;
-	background:url(../img/captions/faq.png) no-repeat 0 0;
+	background:url(/img/captions/faq.png) no-repeat 0 0;
 }
 .publications_caption {
 	width:225px;
 	height:40px;
 	text-indent:-30000px;
-	background:url(../img/captions/publications.png) no-repeat 0 0;
+	background:url(/img/captions/publications.png) no-repeat 0 0;
+}
+.contribute_caption {
+	width:455px;
+	height:40px;
+	text-indent:-30000px;
+	background:url(/img/captions/contribute.png) no-repeat 0 0;
 }
 	
 #main {
@@ -433,7 +439,7 @@ aside {
 			background:no-repeat 0 .9em;
 		}
 .support {
-	background:url(../img/bulb.png) no-repeat 720px 15px;
+	background:url(/img/bulb.png) no-repeat 720px 15px;
 	min-height:213px;
 	}
 	.support ul {
@@ -501,7 +507,7 @@ only screen and (                min-resolution: 2dppx) {
 	#logo {
 		height:96px;
 		height:18px;
-		background:url(../img/logox4.png) no-repeat 50% 50%;
+		background:url(/img/logox4.png) no-repeat 50% 50%;
 		background-size:96px 18px;
 	}
 }
