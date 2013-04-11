@@ -178,7 +178,7 @@ header {
 		header menu li {
 			display:inline-block;
 			padding:0 20px;
-			line-height:30px;
+			line-height:34px;
 		}
 		header menu li + li {
 			border-left:2px solid #000;
