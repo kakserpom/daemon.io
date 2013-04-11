@@ -5,16 +5,18 @@
 .blue_btn,
 .round_box,
 .login button,
-.receive {
-	behavior: url(css/pie/pie.htc);
+.message_field button,
+.traffic,
+select {
+	behavior: url(/css/pie/pie.php);
 }
 
 #main {
-	-pie-background: linear-gradient(#b7b7b7 0, #f7f7f7 254px, #f7f7f7 100%);
+	-pie-background:	linear-gradient(#dbdbdb 0, #f7f7f7 324px, #f7f7f7 100%);
 }
 
-.example_top ~ #main {
-	-pie-background:	linear-gradient(#dbdbdb 0, #f7f7f7 324px, #f7f7f7 100%);
+.main_top ~ #main {
+	-pie-background: linear-gradient(#b7b7b7 0, #f7f7f7 254px, #f7f7f7 100%);
 }
 
 .blue_btn {

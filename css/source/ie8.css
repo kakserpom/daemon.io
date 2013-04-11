@@ -6,7 +6,8 @@
 
 .blue_btn,
 .round_box,
-.receive {
+.traffic,
+select {
 	position:relative;
 }
 
@@ -24,7 +25,11 @@ button {
 input[type="text"],
 input[type="password"],
 select {
-	height:24px;
+	//height:24px;
+}
+
+select {
+	//height:28px;
 }
 
 .columns > li + li + li {
@@ -32,12 +37,17 @@ select {
 }
 
 header menu li,
-aside h1 {
+aside h1,
+.message_field {
 	//display:inline;
 }
 
+header menu {
+	//margin-top:8px;
+}
+
 .login input {
-	/margin-right:-2px;
+	//margin-right:-2px;
 }
 
 /*Images*/
@@ -48,16 +58,16 @@ header {
 	//background-image:url(../img/ie/header.png);
 }
 aside {
-	//background-image:url(../img/ie/head.png);
-}
-.example_top {
 	//background-image:url(../img/ie/head_example.png);
 }
-aside .saw {
-	//background-image:url(../img/ie/saw.png);
+.main_top {
+	//background-image:url(../img/ie/head.png);
 }
-.example_top .saw {
+aside .saw {
 	//background-image:url(../img/ie/saw_example.png);
+}
+.main_top .saw {
+	//background-image:url(../img/ie/saw.png);
 }
 #main section.odd {
 	//background-image:url(../img/ie/odd.png);
