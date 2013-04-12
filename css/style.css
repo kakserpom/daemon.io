@@ -497,6 +497,16 @@ aside {
 	margin-top:15px;
 	line-height:1;
 }
+.accordion h2 a {
+    color: #000;
+}
+.accordion h2 a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #000;
+}
+.accordion .accordion-content {
+    display: none;
+}
 
 /*Retina*/
 @media
