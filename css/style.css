@@ -462,6 +462,22 @@ aside {
 .support ul {
 	margin:30px 0 0 3.6em
 }
+.support .support_title {
+	display:inline-block;
+	width:9em;
+}
+.team_item,
+.team_desc {
+	display:inline-block;
+	vertical-align:top;
+}
+.team_item {
+	width:13em;
+}
+.team_desc {
+	text-indent:-1.14em;
+	padding-left:1.14em;
+}
 
 
 .commercial_support {
@@ -525,6 +541,7 @@ aside {
 .twit_box {
 	float:right;
 	width:400px;
+	margin-top:-10px;
 }
 
 /*Retina*/
