@@ -441,12 +441,14 @@ aside {
 			background:no-repeat 0 .9em;
 		}
 .support {
-	background:url(/img/bulb.png) no-repeat 720px 15px;
 	min-height:213px;
-	}
-	.support ul {
-		margin:30px 0 0 3.6em
-	}
+}
+.bulb {
+	background:url(/img/bulb.png) no-repeat 720px 15px;
+}
+.support ul {
+	margin:30px 0 0 3.6em
+}
 
 
 .commercial_support {
