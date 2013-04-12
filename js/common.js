@@ -11,12 +11,18 @@ $(function(){
         return false;
     });
 	var header = $('header').addClass('pseudofixed'),
-	win = $(window);
+	win = $(window),
+    doc = $(document);
 	win.scroll(function(){
         var pos = win.scrollTop();
         if (pos < 0) {
             pos = 0;
         }
-		header.css('top',pos);
+        var by = doc.height();
+        var wy = win.height();
+        if (pos > by - wy) {
+            pos = by - wy;
+        }
+        header.css('top', pos);
 	}).trigger('scroll');
 });
