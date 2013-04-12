@@ -17,6 +17,13 @@ $(function(){
         if (pos < 0) {
             pos = 0;
         }
-		header.css('top',pos);
+        var by = $(document).height();
+        var wy = win.height();
+        console.log('by = ' + by);
+        console.log('wy = ' + wy);
+        if (pos + wy > by) {
+            pos = by - wy;
+        }
+        header.css({'top': pos});
 	}).trigger('scroll');
 });
