@@ -177,12 +177,18 @@ header {
 		}
 		header menu li {
 			display:inline-block;
-			padding:0 20px;
-			line-height:34px;
 		}
 		header menu li + li {
-			border-left:2px solid #000;
-		}
+			border-left:1px solid #000;
+			}
+			header menu li span {
+				display:inline-block;
+				padding:0 20px;
+				line-height:34px;
+			}
+			header menu li + li span {
+				border-left:1px solid #242424;
+			}
 		header menu a {
 			color:#b2b2b2;
 			text-decoration:none;
@@ -319,7 +325,7 @@ aside {
 	background:url(/img/captions/main.png) no-repeat 0 0;
 }
 .example_caption {
-	width:497px;
+	width:176px;
 	height:43px;
 	text-indent:-30000px;
 	background:url(/img/captions/example.png) no-repeat 0 0;
