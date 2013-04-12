@@ -15,7 +15,9 @@
 <script type="text/javascript" src="/js/shi_jquery.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	$('#main').accordion();
+	$('#main').accordion({
+		'header': 'h2',
+	});
 });</script>
 
 <!--[if lte IE 9]>
@@ -106,7 +108,7 @@ Pool:HTTPServer {
 			<section class="odd">
 				<div class="section">
 					<div class="center">
-						<h2>How about your licensing?</h2>
+						<h2>How about licensing?</h2>
 						<h3>LGPL might cause some target developers trouble using it with their project... or in enterprise environments in general, doesn’t it?</h3><br />
 						<p>
 							Not really. It does not. <a href="http://www.gnu.org/copyleft/lesser.html" target="_blank">GNU LGPL</a> (GNU Lesser General Public License) permits any usage in enterprise environment, unlike <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">GNU GPL</a>. We guaratee that you will always have permission to use it in private environment.
