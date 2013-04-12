@@ -11,15 +11,16 @@ $(function(){
         return false;
     });
 	var header = $('header').addClass('pseudofixed'),
-	win = $(window);
+	win = $(window),
+    doc = $(document);
 	win.scroll(function(){
         var pos = win.scrollTop();
         if (pos < 0) {
             pos = 0;
         }
-        var by = $(document).height();
+        var by = doc.height();
         var wy = win.height();
-        if (pos + wy > by) {
+        if (pos > by - wy) {
             pos = by - wy;
         }
         header.css('top', pos);
