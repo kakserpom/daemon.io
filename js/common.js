@@ -11,9 +11,11 @@ $(function(){
         return false;
     });
 	
-	var header = $('header').addClass('pseudofixed'),
-	win = $(window);
-	win.scroll(function(){
-		header.css('top',win.scrollTop())
-	}).trigger('scroll');
+	if (!/Mac/.test(navigator.platform)) {
+		var header = $('header').addClass('pseudofixed'),
+		win = $(window);
+		win.scroll(function(){
+			header.css('top',win.scrollTop())
+		}).trigger('scroll');
+	}
 });
