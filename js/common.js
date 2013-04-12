@@ -10,7 +10,6 @@ $(function(){
         }
         return false;
     });
-	
 	var header = $('header').addClass('pseudofixed'),
 	win = $(window);
 	win.scroll(function(){
