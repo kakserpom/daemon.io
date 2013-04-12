@@ -14,6 +14,10 @@ $(function(){
 	var header = $('header').addClass('pseudofixed'),
 	win = $(window);
 	win.scroll(function(){
-		header.css('top',win.scrollTop())
+        var pos = win.scrollTop();
+        if (pos < 0) {
+            pos = 0;
+        }
+		header.css('top',pos);
 	}).trigger('scroll');
 });
