@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function(){
     $('.accordion h2 > a').click(function(){
         var ablock = $(this).closest('div').find('.accordion-content');
         var opened = $('.accordion .opened');
@@ -10,4 +10,10 @@ $(document).ready(function(){
         }
         return false;
     });
+	
+	var header = $('header').addClass('pseudofixed'),
+	win = $(window);
+	win.scroll(function(){
+		header.css('top',win.scrollTop())
+	}).trigger('scroll');
 });

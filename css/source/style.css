@@ -144,6 +144,7 @@ ol {
 #template {
 	min-height:100%;
 	min-width:1020px;
+	position:relative;
 }
 
 footer {
@@ -158,7 +159,10 @@ footer {
 	}
 	
 header {
-	position:relative;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
 	z-index:10;
 	font-family: "Myriad Pro", Arial, sans-serif;
 	height:33px;
@@ -171,6 +175,9 @@ header {
 	-moz-box-shadow: 0 1px 3px rgba(0,0,0,.6);
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.6);
 	box-shadow: 0 1px 3px rgba(0,0,0,.6);
+}
+header.pseudofixed {
+	position:absolute;
 	}
 	header menu {
 		list-style:none;
@@ -234,7 +241,7 @@ aside {
 	background:#002a3e repeat 50% 100%;
 	overflow:hidden;
 	margin-left:-56px;
-	padding-left:56px;
+	padding:33px 0 0 56px;
 }
 .main_top {
 	height:305px;
@@ -514,6 +521,10 @@ aside {
 }
 .accordion .accordion-content {
     display: none;
+}
+.twit_box {
+	float:right;
+	width:400px;
 }
 
 /*Retina*/

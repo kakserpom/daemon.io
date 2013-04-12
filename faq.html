@@ -55,11 +55,11 @@
     					<div class="center">
     						<h2><a href="#">Introduction</a></h2>
                             <div class="accordion-content opened" style="display: block;">
-                                <br />
+                                <br>
         						<p>First of all, let me tell you what it is. In accordance with its name, it is the network daemon built using libevent2 and eio. phpDaemon has completely asynchronous nature.
-        What does it mean? It means that in strong contradiction to standard Apache plus PHP, phpDaemon’s workers never block (never call <a href="http://php.net/sleep" target="_blank">sleep()</a> function). If you use PHP, in the standard way, and call any I/O function (e.g. mysql_query, fread/fwrite), these functions block the process until the operation is complete.<br />
-        <br />Therefore, if your script sends query to database and it takes 1 second, memory taken by PHP process is locked for 1 second. <br />Therefore, if you have 1 GB of available memory and each Apache worker takes 10 MB (it takes much more in real world), your system can handle ~100 concurrent requests at most. Response delay becomes very valuable thing. If your network or database (or any other I/O source) is lagging under the load, each request will take more time, and requests per second (RPS) goes down.<br />
-        In the same circumstances, phpDaemon is able to handle all of these requests using ~10 mb per CPU core, and delay of each HTTP reply does not matter at all.<br />When phpDaemon gets incoming HTTP request, it creates object of YourAppRequest class, and just destroys the object after all.</p>
+        What does it mean? It means that in strong contradiction to standard Apache plus PHP, phpDaemon’s workers never block (never call <a href="http://php.net/sleep" target="_blank">sleep()</a> function). If you use PHP, in the standard way, and call any I/O function (e.g. mysql_query, fread/fwrite), these functions block the process until the operation is complete.<br>
+        <br>Therefore, if your script sends query to database and it takes 1 second, memory taken by PHP process is locked for 1 second. <br>Therefore, if you have 1 GB of available memory and each Apache worker takes 10 MB (it takes much more in real world), your system can handle ~100 concurrent requests at most. Response delay becomes very valuable thing. If your network or database (or any other I/O source) is lagging under the load, each request will take more time, and requests per second (RPS) goes down.<br>
+        In the same circumstances, phpDaemon is able to handle all of these requests using ~10 mb per CPU core, and delay of each HTTP reply does not matter at all.<br>When phpDaemon gets incoming HTTP request, it creates object of YourAppRequest class, and just destroys the object after all.</p>
                             </div>
                         </div>
     				</div>
@@ -69,9 +69,9 @@
     					<div class="center">
     						<h2><a href="#">What about memory leaks in long-running phpd workers?</a></h2>
                             <div class="accordion-content">
-                                <br />
+                                <br>
         						<p>People often say: «you are dumb-ass if you have long-running php processes». But how bad in fact is it?
-                                <br />
+                                <br>
                                     <ol>
                                         <li>Yes, there are some internal memory leaks in PHP. But they are not significant (not more than 1-2% at worst case). You can handle 10 000 requests and it will grow just a bit. You can catch it and post a bug on <a href="http://bugs.php.net/" target="_blank">bugs.php.net</a>.</li>
                                         <li><strong>Blocking one PHP process per one running request is the biggest memory leak ever.</strong></li>
@@ -87,35 +87,53 @@
     					<div class="center">
     						<h2><a href="#">Why am I unable to listen on port 80 with non-root user?</a></h2>
     						<div class="accordion-content">
-                                <br />
-                                <p>UNIX-like systems require root privilege to bind port &lt; 1024.<br />If you put in your config something like this:<br /><br />
-        <div class="snippet-container"><div class="sh_default snippet-wrap"><div class="snippet-menu sh_sourceCode"><a class="snippet-window sh_url" href="#">pop-up</a><a class="snippet-text sh_url" href="#">text</a></div><pre class="shi_pre sh_css snippet-formatted sh_sourceCode"><ol class="snippet-num"><li># Not working example</li><li>user johndoe<span class="sh_symbol">;</span></li><li>group homosapiens<span class="sh_symbol">;</span></li><li>Pool<span class="sh_symbol">:</span>HTTPServer <span class="sh_cbracket">{</span></li><li>   #<span class="sh_value">...</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;" tabindex="0" contenteditable=""># Not working example
+								<br>
+								UNIX-like systems require root privilege to bind port &lt; 1024.<br>If you put in your config something like this:<br><br>
+								<div class="snippet-container">
+									<div class="sh_default snippet-wrap">
+										<div class="snippet-menu sh_sourceCode">
+											<a class="snippet-window sh_url" href="#">pop-up</a>
+											<a class="snippet-text sh_url" href="#">text</a>
+										</div>
+										<pre class="shi_pre sh_css snippet-formatted sh_sourceCode"><ol class="snippet-num"><li># Not working example</li><li>user johndoe<span class="sh_symbol">;</span></li><li>group homosapiens<span class="sh_symbol">;</span></li><li>Pool<span class="sh_symbol">:</span>HTTPServer <span class="sh_cbracket">{</span></li><li>   #<span class="sh_value">...</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;" tabindex="0" contenteditable=""># Not working example
         user johndoe;
         group homosapiens;
         Pool:HTTPServer {
            #...
-        }</pre></div></div>
-        <br />HTTPServer will be loaded after <a href="http://en.wikipedia.org/wiki/Fork_(operating_system)" target="_blank">fork</a> (in worker process) and changing user and group (<a href="http://en.wikipedia.org/wiki/Setuid" target="_blank">setuid</a>/<a href="http://en.wikipedia.org/wiki/Setgid" target="_blank">setgid</a>).<br />You shall see error message. You are not encouraged to have your workers running under <i>root</i> user.<br />
-        <br />So if you add "privileged" statement to the config like here:<br /><br />
-        <div class="snippet-container"><div class="sh_default snippet-wrap"><div class="snippet-menu sh_sourceCode"><a class="snippet-window sh_url" href="#">pop-up</a><a class="snippet-text sh_url" href="#">text</a></div><pre class="shi_pre sh_css snippet-formatted sh_sourceCode"><ol class="snippet-num"><li># Not working example</li><li>user johndoe<span class="sh_symbol">;</span></li><li>group homosapiens<span class="sh_symbol">;</span></li><li>Pool<span class="sh_symbol">:</span>HTTPServer <span class="sh_cbracket">{</span></li><li>   <span class="sh_value">privileged</span>;</li><li>   #<span class="sh_value">...</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;" tabindex="0" contenteditable=""># Not working example
+        }</pre>
+									</div>
+								</div>
+        						<br>
+								HTTPServer will be loaded after <a href="http://en.wikipedia.org/wiki/Fork_(operating_system)" target="_blank">fork</a> (in worker process) and changing user and group (<a href="http://en.wikipedia.org/wiki/Setuid" target="_blank">setuid</a>/<a href="http://en.wikipedia.org/wiki/Setgid" target="_blank">setgid</a>).<br>You shall see error message. You are not encouraged to have your workers running under <i>root</i> user.<br><br>
+								So if you add "privileged" statement to the config like here:<br><br>
+								<div class="snippet-container">
+									<div class="sh_default snippet-wrap">
+										<div class="snippet-menu sh_sourceCode">
+											<a class="snippet-window sh_url" href="#">pop-up</a>
+											<a class="snippet-text sh_url" href="#">text</a>
+										</div>
+										<pre class="shi_pre sh_css snippet-formatted sh_sourceCode"><ol class="snippet-num"><li># Not working example</li><li>user johndoe<span class="sh_symbol">;</span></li><li>group homosapiens<span class="sh_symbol">;</span></li><li>Pool<span class="sh_symbol">:</span>HTTPServer <span class="sh_cbracket">{</span></li><li>   <span class="sh_value">privileged</span>;</li><li>   #<span class="sh_value">...</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;" tabindex="0" contenteditable=""># Not working example
         user johndoe;
         group homosapiens;
         Pool:HTTPServer {
            privileged;
            #...
-        }</pre></div></div>
-        <br />and if you execute `phpd start` under <i>root</i> user then HTTPServer will be pre-loaded in master process before <a href="http://en.wikipedia.org/wiki/Fork_(operating_system)" target="_blank">fork</a>. It shall be working fine.
-        						</p>
-    				        </div>
-                    </div>
+        }</pre>
+									</div>
+								</div>
+								<br>
+								and if you execute `phpd start` under <i>root</i> user then HTTPServer will be pre-loaded in master process before <a href="http://en.wikipedia.org/wiki/Fork_(operating_system)" target="_blank">fork</a>. It shall be working fine.
+							</div>
+						</div>
+					</div>
     			</section>
     			<section class="odd">
     				<div class="section">
     					<div class="center">
     						<h2><a href="#">How about licensing?</a></h2>
                             <div class="accordion-content">
-                                <br />
-        						<h3>LGPL might cause some target developers trouble using it with their project... or in enterprise environments in general, doesn’t it?</h3><br />
+                                <br>
+        						<h3>LGPL might cause some target developers trouble using it with their project... or in enterprise environments in general, doesn’t it?</h3><br>
         						<p>
         							Not really. It does not. <a href="http://www.gnu.org/copyleft/lesser.html" target="_blank">GNU LGPL</a> (GNU Lesser General Public License) permits any usage in enterprise environment, unlike <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">GNU GPL</a>. We guaratee that you will always have permission to use it in private environment.
         						</p>
@@ -139,9 +157,9 @@
 			Send us your questions and they have a chance to be here
 		</div>
 	</footer>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/common.js"></script>
 	<script type="text/javascript" src="/js/shi_jquery.min.js"></script>
-	<script type="text/javascript" src="/js/accordion.js"></script>
 </body>
 </html>
