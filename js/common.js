@@ -19,8 +19,6 @@ $(function(){
         }
         var by = $(document).height();
         var wy = win.height();
-        console.log('by = ' + by);
-        console.log('wy = ' + wy);
         if (pos + wy > by) {
             pos = by - wy;
         }
