@@ -22,6 +22,6 @@ $(function(){
         if (pos + wy > by) {
             pos = by - wy;
         }
-        header.css({'top': pos});
+        header.css('top', pos);
 	}).trigger('scroll');
 });
