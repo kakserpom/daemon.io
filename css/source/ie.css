@@ -12,11 +12,11 @@ select {
 }
 
 #main {
-	-pie-background:	linear-gradient(#dbdbdb 0, #f7f7f7 324px, #f7f7f7 100%);
+	-pie-background:	linear-gradient(#dbdbdb 0, #eaeaea 324px, #eaeaea 100%);
 }
 
 .main_top ~ #main {
-	-pie-background: linear-gradient(#b7b7b7 0, #f7f7f7 254px, #f7f7f7 100%);
+	-pie-background: linear-gradient(#b7b7b7 0, #eaeaea 254px, #eaeaea 100%);
 }
 
 .blue_btn {
