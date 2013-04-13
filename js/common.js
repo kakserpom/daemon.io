@@ -10,15 +10,15 @@ $(function(){
         }
         return false;
     });
+    return;
 	var header = $('header').addClass('pseudofixed'),
-	win = $(window),
-    doc = $(document);
+	win = $(window);
 	win.scroll(function(){
         var pos = win.scrollTop();
         if (pos < 0) {
             pos = 0;
         }
-        var by = doc.height();
+        var by = $(document).height();
         var wy = win.height();
         if (pos > by - wy) {
             pos = by - wy;
