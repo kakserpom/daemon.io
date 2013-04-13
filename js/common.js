@@ -5,10 +5,18 @@ $(function(){
         
 		if (ablock.get(0) !== opened.get(0)) {
 			opened.removeClass('opened').slideUp();
-			ablock.addClass('opened').slideDown();
+			ablock.addClass('opened').slideDown({'complete': function() {
+			 	$('html, body').animate({scrollTop:ablock.offset().top - 100}, 500, 'easeInSine');
+			}});
 		}
-		return false;
 	});
+	var updateHash = function() {
+		$('.accordion h2 > a[href="'+document.location.hash+'"]').click();
+	};
+	$(window).hashchange(updateHash);
+	updateHash();
+
+
 	var header = $('header'),
 	win = $(window),
 	activated = false;
