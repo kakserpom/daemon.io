@@ -106,21 +106,13 @@
         						<br>
 								HTTPServer will be loaded after <a href="http://en.wikipedia.org/wiki/Fork_(operating_system)" target="_blank">fork</a> (in worker process) and changing user and group (<a href="http://en.wikipedia.org/wiki/Setuid" target="_blank">setuid</a>/<a href="http://en.wikipedia.org/wiki/Setgid" target="_blank">setgid</a>).<br>You shall see error message. You are not encouraged to have your workers running under <i>root</i> user.<br><br>
 								So if you add "privileged" statement to the config like here:<br><br>
-								<div class="snippet-container">
-									<div class="sh_default snippet-wrap">
-										<div class="snippet-menu sh_sourceCode">
-											<a class="snippet-window sh_url" href="#">pop-up</a>
-											<a class="snippet-text sh_url" href="#">text</a>
-										</div>
-										<pre class="shi_pre sh_css snippet-formatted sh_sourceCode"><ol class="snippet-num"><li># Not working example</li><li>user johndoe<span class="sh_symbol">;</span></li><li>group homosapiens<span class="sh_symbol">;</span></li><li>Pool<span class="sh_symbol">:</span>HTTPServer <span class="sh_cbracket">{</span></li><li>   <span class="sh_value">privileged</span>;</li><li>   #<span class="sh_value">...</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;" tabindex="0" contenteditable=""># Not working example
-        user johndoe;
-        group homosapiens;
-        Pool:HTTPServer {
-           privileged;
-           #...
-        }</pre>
-									</div>
-								</div>
+								<div class="snippet-container"><div class="sh_default snippet-wrap"><div class="snippet-menu sh_sourceCode"><a class="snippet-window sh_url" href="#">pop-up</a><a class="snippet-text sh_url" href="#">text</a></div><pre class="shi_pre sh_css snippet-formatted sh_sourceCode"><ol class="snippet-num"><li># Working example</li><li>user johndoe<span class="sh_symbol">;</span></li><li>group homosapiens<span class="sh_symbol">;</span></li><li>Pool<span class="sh_symbol">:</span>HTTPServer <span class="sh_cbracket">{</span></li><li>   <span class="sh_value">privileged</span>;</li><li>   #<span class="sh_value">...</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;" tabindex="0" contenteditable=""># Working example
+user johndoe;
+group homosapiens;
+Pool:HTTPServer {
+   privileged;
+   #...
+}</pre></div></div>
 								<br>
 								and if you execute `phpd start` under <i>root</i> user then HTTPServer will be pre-loaded in master process before <a href="http://en.wikipedia.org/wiki/Fork_(operating_system)" target="_blank">fork</a>. It shall be working fine.
 							</div>
@@ -159,7 +151,6 @@
 	</footer>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.observeHashChange.pack.js"></script>
 	<script type="text/javascript" src="/js/jquery.observeHashChange.pack.js"></script>
 	<script type="text/javascript" src="/js/common.js"></script>
 	<script type="text/javascript" src="/js/shi_jquery.min.js"></script>
