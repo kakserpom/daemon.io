@@ -19,7 +19,9 @@ $(function(){
 	var updateHash = function() {
 		$('.accordion h2 > a[href="'+document.location.hash+'"]').click();
 	};
-	$(window).hashchange(updateHash);
+	if (typeof ($(window).hashchange) !== 'undefined') {
+		$(window).hashchange(updateHash);
+	}
 	updateHash();
 
 
