@@ -1,12 +1,18 @@
 $(function(){
 	$('.accordion h2 > a').click(function(){
 		var ablock = $(this).closest('div').find('.accordion-content');
+		var section = $(this).closest('section');
+		var pos = $('section').index(section);
 		var opened = $('.accordion .opened');
-        
 		if (ablock.get(0) !== opened.get(0)) {
 			opened.removeClass('opened').slideUp();
 			ablock.addClass('opened').slideDown({'complete': function() {
-			 	$('html, body').animate({scrollTop:ablock.offset().top - 100}, 500, 'easeInSine');
+				if (pos > 0) {
+					var scrollTo = ablock.offset().top - 220;
+				} else {
+					var scrollTo = 0;
+				}
+			 	$('html, body').animate({scrollTop:scrollTo}, 500, 'easeInSine');
 			}});
 		}
 	});
