@@ -24,6 +24,28 @@ $(function(){
 	}
 	updateHash();
 
+	var OSName="Unknown OS";
+	if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
+	if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
+	if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
+	if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
+
+	$.browser = {};
+	$.browser.mozilla = /mozilla/.test(navigator.userAgent.toLowerCase()) && !/webkit/.test(navigator.userAgent.toLowerCase());
+	$.browser.webkit = /webkit/.test(navigator.userAgent.toLowerCase());
+	$.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
+	$.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
+	var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+	var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
+	var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
+	var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+	var is_Opera = navigator.userAgent.indexOf("Presto") > -1;
+	if ((is_chrome)&&(is_safari)) {is_safari=false;}
+
+	if (OSName === 'MacOS' && $.browser.webkit && is_chrome) {
+		$('html > head').append($('<style>.caption p {font-weight: bold;}</style>'));
+	}
+
 
 	var header = $('header'),
 	win = $(window),
