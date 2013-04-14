@@ -162,6 +162,11 @@ ol > li {
 	padding: .25em 0;
 }
 
+.no-marker {
+    padding-left: 0;
+    list-style-type: none;
+}
+
 /*Layout*/
 #template {
 	min-height: 100%;
