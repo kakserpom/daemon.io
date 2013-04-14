@@ -19,12 +19,9 @@ $(function(){
 		if (ablock.get(0) !== opened.get(0)) {
 			opened.removeClass('opened').slideUp();
 			ablock.addClass('opened').slideDown({'complete': function() {
-				if (pos > 0) {
-					var scrollTo = ablock.offset().top - 220;
-				} else {
-					var scrollTo = 0;
-				}
-			 	$('html, body').animate({scrollTop:scrollTo}, 500, 'easeInSine');
+			 	$('html, body').animate({
+			 		scrollTop: pos === 0 ? 0: -35 + section.prev().offset().top
+			 	}, 500, 'easeInSine');
 			}});
 		}
 	});
