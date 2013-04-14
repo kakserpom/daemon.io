@@ -172,8 +172,10 @@ Pool:HTTPServer {
 							<h2><a href="#configuration">How to find and edit configuration?</a></h2>
 							<div class="accordion-content">
 								<br>
-								<p>Default config-path: <i>/etc/phpdaemon/phpd.conf;/etc/phpd/phpd.conf;./conf/phpd.conf</i></p>
-								<br /><p>You should add necessary sections to your config file, like Pool:FastCGI, MyOwnApp and other.</p>
+								<ol><li>Default config-path: <i>/etc/phpdaemon/phpd.conf;/etc/phpd/phpd.conf;./conf/phpd.conf</i></li>
+								<li>If you want to output your current configuration, use the following command: <i>phpd configtest</i></li>
+								<li>You should add necessary sections to your config file, like Pool:FastCGI, MyOwnApp and other.</li>
+							</ol>
 							</div>
 						</div>
 					</div>
