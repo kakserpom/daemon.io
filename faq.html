@@ -136,13 +136,13 @@ Pool:HTTPServer {
 				<section>
 					<div class="section">
 						<div class="center">
-							<h2><a href="#drivers">I want to interconnect phpDaemon with SuperpuperfancyDB, but there is no driver for it.</a></h2>
+							<h2><a href="#drivers">I want to interconnect phpDaemon with SuperduperfancyDB, but unable to find driver for it. What to do?</a></h2>
 							<div class="accordion-content">
 								<br>
 								<p>
 									<ol>
-										<li>If you are proficient programmer you can build a client by analogy with others, it is not a big deal. Consider <a href="/contribute.html">sharing</a> it.</li>
-										<li>If you are not enough skilled or just do not want to develop it yourself, you should send us a Feature Request to <a href="https://github.com/kakserpom/phpdaemon/issues" target="_blank">Tracker</a>.
+										<li>If you are proficient programmer you can build a client by analogy with others. This is not difficult. Consider <a href="/contribute.html">sharing</a> it.</li>
+										<li>If you are not enough skilled or just do not want to develop it yourself, you should <a href="https://github.com/kakserpom/phpdaemon/issues/new" target="_blank">open a Feature Request</a> on <a href="https://github.com/kakserpom/phpdaemon/issues" target="_blank">Tracker</a>, and perhaps it will appear <strong>in a day or two</strong>. Do not sit and wait, just <a href="https://github.com/kakserpom/phpdaemon/issues/new" target="_blank">open an FR</a>.
 										</li>
 									</ol>
 
@@ -154,7 +154,7 @@ Pool:HTTPServer {
 				<section class="odd">
 					<div class="section">
 						<div class="center">
-							<h2><a href="#logs">I just installed it, ran `phpd start` and nothing happens. Why?</a></h2>
+							<h2><a href="#logs">I just installed it, ran `phpd start` and nothing seems to happen. Why?</a></h2>
 							<div class="accordion-content">
 								<br>
 								<p>Logging to TTY is disabled by default. By default, log messages are going only to file.</p>
@@ -169,17 +169,29 @@ Pool:HTTPServer {
 				<section>
 					<div class="section">
 						<div class="center">
+							<h2><a href="#configuration">How to find and edit configuration?</a></h2>
+							<div class="accordion-content">
+								<br>
+								<p>Default config-path: <i>/etc/phpdaemon/phpd.conf;/etc/phpd/phpd.conf;./conf/phpd.conf</i></p>
+								<br /><p>You should add necessary sections to your config file, like Pool:FastCGI, MyOwnApp and other.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="odd">
+					<div class="section">
+						<div class="center">
 							<h2><a href="#contribute">How can I help?</a></h2>
 							<div class="accordion-content"><br >
 								<p>
-									Please look at <a href="/contribute.html">Contribute</a> page
+									Please look at <a href="/contribute.html">Contribute</a> page.
 								</p>
 							</div>
 						</div>
 					</div>
 				</section>
 			</div>
-			<section class="odd">
+			<section>
 				<div class="section">
 					<div class="center">
 						<center><h2>To be continued.....</h2></center>
