@@ -468,8 +468,17 @@ aside {
 	display:inline-block;
 	vertical-align:top;
 }
-.team_item {
+.team_item_dev {
 	width:13em;
+}
+.team_item_wiki {
+	width:13em;
+}
+.team_item_building {
+	width:16em;
+}
+.team_item_website {
+	width:8em;
 }
 .team_desc {
 	text-indent:-1.14em;
