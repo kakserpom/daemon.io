@@ -128,7 +128,7 @@ $(function(){
 			return;
 		}
 		activated = true;
-		header.addClass('pseudofixed');
+		header.css('position', 'absolute');
 		win.scroll(function(){
 			var pos = win.scrollTop();
 			if (pos < 0) {
@@ -147,8 +147,7 @@ $(function(){
 			return;
 		}
 		activated = false;
-		header.removeClass('pseudofixed');
-		header.css('top', 0);
+		header.css({'position': 'fixed', 'top': 0});
 		win.unbind('scroll');
 	},
 	onresize = function() {
