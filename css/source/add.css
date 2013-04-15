@@ -75,6 +75,13 @@ aside .glow {
 	background: url(/img/captions/contribute.png) no-repeat 0 0;
 }
 
+.download_caption {
+	width: 455px;
+	height: 40px;
+	text-indent: -30000px;
+	background: url(/img/captions/contribute.png) no-repeat 0 0;
+}
+
 
 
 .team_item,
