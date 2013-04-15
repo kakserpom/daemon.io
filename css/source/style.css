@@ -519,3 +519,19 @@ aside .saw {
 	height: 0;
 	font-size: 0;
 }
+
+.scrollup,
+.scrolldown {
+	width:40px;
+	height:40px;   
+	text-indent:-9999px;
+	opacity:0.3;
+	position:fixed;
+	bottom:50px;
+	right:100px;
+	display:none;   
+	background: url(/img/scroll.png) no-repeat 0 0;
+}
+.scrolldown {
+	background-position:0 -40px;
+}
