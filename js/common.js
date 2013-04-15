@@ -76,6 +76,31 @@
 $(function(){function a(b){top.consoleRef=window.open("","myconsole","width=600,height=300,left=50,top=50,menubar=0,toolbar=0,location=0,status=0,scrollbars=1,resizable=1");top.consoleRef.document.writeln("<html><head><title>Snippet :: Code View :: "+location.href+'</title></head><body bgcolor=white onLoad="self.focus()"><pre>'+b+"</pre></body></html>");top.consoleRef.document.close()}$(".snippet-container").each(function(b){$(this).find("a.snippet-text").click(function(){var d=$(this).parents(".snippet-wrap").find(".snippet-formatted");var c=$(this).parents(".snippet-wrap").find(".snippet-textonly");d.toggle();c.toggle();if(c.is(":visible")){$(this).html("html")}else{$(this).html("text")}return false});$(this).find("a.snippet-window").click(function(){var c=$(this).parents(".snippet-wrap").find(".snippet-textonly").html();a(c);$(this).blur();return false})});$(".snippet-toggle").each(function(b){$(this).click(function(){$(this).parents(".snippet-container").find(".snippet-wrap").toggle()})})});
 $(function(){
 	$('.twit_box').css('display','block');
+	var doc = $(document);
+	var win = $(window);
+	$(window).scroll(function(){
+		var top = $(this).scrollTop();
+		if (top > 100) {
+			$('.scrollup').fadeIn();
+		} else {
+			$('.scrollup').fadeOut();
+		}
+		if (top < doc.height() - win.height()) {
+			$('.scrolldown').fadeIn();	
+		} else {
+			$('.scrolldown').fadeOut();
+		}
+	}); 
+			
+	$('.scrollup').click(function(){
+		$("html, body").animate({ scrollTop: 0 }, 600);
+		return false;
+	});
+
+	$('.scrolldown').click(function(){
+		$("html, body").animate({ scrollTop: '+600'}, 600);
+		return false;
+	});
 
 	$('.accordion h2 > a').click(function(){
 		var ablock = $(this).closest('div').find('.accordion-content');
@@ -91,6 +116,8 @@ $(function(){
 			}});
 		}
 	});
+
+
 	var updateHash = function() {
 		$('.accordion h2 > a[href="'+document.location.hash+'"]').click();
 	};
