@@ -527,12 +527,14 @@ aside .saw {
 	text-indent:-9999px;
 	opacity:0.3;
 	position:fixed;
-	bottom:90px;
 	right:100px;
 	display:none;   
 	background: url(/img/scroll.png) no-repeat 0 0;
 }
+.scrollup {
+	bottom:350px;
+}
 .scrolldown {
-	bottom:50px;
+	bottom:100px;
 	background-position:0 -40px;
 }

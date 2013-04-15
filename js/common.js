@@ -78,27 +78,32 @@ $(function(){
 	$('.twit_box').css('display','block');
 	var doc = $(document);
 	var win = $(window);
-	$(window).scroll(function(){
+	var handler = function(){
 		var top = $(this).scrollTop();
 		if (top > 100) {
 			$('.scrollup').fadeIn();
 		} else {
 			$('.scrollup').fadeOut();
 		}
-		if (top < doc.height() - win.height()) {
+		if (top + 30 < doc.height() - win.height()) {
 			$('.scrolldown').fadeIn();	
 		} else {
 			$('.scrolldown').fadeOut();
 		}
-	}); 
+	};
+	$(window).scroll(handler);
+	handler();
 			
 	$('.scrollup').click(function(){
-		$("html, body").animate({ scrollTop: 0 }, 600);
+		var to = win.scrollTop() - win.height()*0.6 ;
+		$("html, body").animate({ scrollTop: to > 0 ? to : 0}, 500);
 		return false;
 	});
 
 	$('.scrolldown').click(function(){
-		$("html, body").animate({ scrollTop: '+600'}, 600);
+		var to = win.scrollTop() + win.height()*0.6;
+		var dh = doc.height();
+		$("html, body").animate({ scrollTop: to > dh ? dh : to}, 500);
 		return false;
 	});
 
