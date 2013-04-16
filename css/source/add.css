@@ -91,15 +91,15 @@ aside .glow {
 }
 
 .team_item_dev {
-	width: 13em;
+	width: 8.5em;
 }
 
 .team_item_wiki {
-	width: 13em;
+	width: 6.1em;
 }
 
 .team_item_building {
-	width: 16em;
+	width: 12em;
 }
 
 .team_item_website {
@@ -183,3 +183,12 @@ ol > li {
 .accordion .accordion-content {
 	display: none;
 }
+
+
+.githubicolink {
+	margin-right: 10px;
+}
+.person {
+	text-align: center;
+}
+.team_item {}
