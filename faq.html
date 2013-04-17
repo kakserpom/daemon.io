@@ -75,7 +75,7 @@
 									<ol>
 										<li>Yes, there are some internal memory leaks in PHP. But they are not significant (not more than 1-2% at worst case). You can handle 10 000 requests and it will grow just a bit. You can catch it and post a bug on <a href="http://bugs.php.net/" target="_blank">bugs.php.net</a>.</li>
 										<li><strong>Blocking one PHP process per one running request is the biggest memory leak ever.</strong></li>
-										<li>Once phpDaemon worker goes over the memory limit (configurable thing), worker starts reloading process: it sends a signal to master process and master spawns new worker-replacer. At the same time, old worker stops accepting new connections, and waits while existing operations are not finished.</li>
+										<li>Once phpDaemon worker goes over the memory limit (configurable thing), worker starts reloading process: it sends a signal to master process and master spawns new worker-replacer. At the same time, old worker stops accepting new connections, and waits until existing operations are being finished.</li>
 									</ol>
 								</p>
 							</div>
