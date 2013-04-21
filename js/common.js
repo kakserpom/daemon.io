@@ -130,7 +130,7 @@ $(function(){
 			$(this).attr('name', '');
 		});
 		var link = $('a.headinglink[href="'+document.location.hash+'"]');
-		if (link.is(':empty')) {
+		if (!link.length) {
 			return;
 		}
 		if (loaded) {
