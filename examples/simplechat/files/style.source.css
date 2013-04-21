@@ -82,7 +82,7 @@
 		vertical-align:top;
 	}
 	.message_field input {
-		width:280px;
+		width:530px;
 	}
 	.login button,
 	.message_field button {
@@ -116,9 +116,6 @@
 		vertical-align:top;
 		line-height:27px;
 	}
-.message_form {
-	padding-right:8em;
-}
 .tags {
 	padding:.5em 0;
 	}

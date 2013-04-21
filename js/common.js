@@ -131,14 +131,15 @@ $(function(){
 		});
 		var link = $('a.headinglink[href="'+document.location.hash+'"]');
 		if (!link.length) {
+			loaded = true;
 			return;
 		}
-		if (loaded) {
-			$("html, body").animate({ scrollTop: link.offset().top - 80}, 500);
-		} else {
-			loaded = true;
+		if (!loaded) {
 			$("html, body").scrollTop(link.offset().top - 80);
+			loaded = true;
+			return;
 		}
+		$("html, body").animate({ scrollTop: link.offset().top - 80}, 500);
 	};
 	if (typeof ($(window).hashchange) !== 'undefined') {
 		$(window).hashchange(updateHash);
