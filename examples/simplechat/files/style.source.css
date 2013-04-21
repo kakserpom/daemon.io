@@ -37,7 +37,9 @@
 	text-align:center;
 	line-height:208px;
 }
-
+#messages {
+	word-wrap: break-word;
+}
 .textarea {
 	padding:15px 25px;
 	font-family:Georgia, "Times New Roman", Times, serif;
