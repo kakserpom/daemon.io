@@ -122,9 +122,23 @@ $(function(){
 		}
 	});
 
-
+	var loaded = false;
 	var updateHash = function() {
 		$('.accordion h2 > a[href="'+document.location.hash+'"]').click();
+
+		$('a.headinglink').each(function() {
+			$(this).attr('name', '');
+		});
+		var link = $('a.headinglink[href="'+document.location.hash+'"]');
+		if (link.is(':empty')) {
+			return;
+		}
+		if (loaded) {
+			$("html, body").animate({ scrollTop: link.offset().top - 80}, 500);
+		} else {
+			loaded = true;
+			$("html, body").scrollTop(link.offset().top - 80);
+		}
 	};
 	if (typeof ($(window).hashchange) !== 'undefined') {
 		$(window).hashchange(updateHash);
