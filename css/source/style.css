@@ -533,7 +533,7 @@ aside .saw {
 	text-indent:-9999px;
 	opacity:0.3;
 	position:fixed;
-	right:100px;
+	right:50px;
 	display:none;   
 	background: url(/img/scroll.png) no-repeat 0 0;
 }
@@ -547,4 +547,7 @@ aside .saw {
 .lightbulb {
 	margin-left: 200px;
 	margin-top: 15px;
+}
+.copysnippet {
+	text-align: center;
 }

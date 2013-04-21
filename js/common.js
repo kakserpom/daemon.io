@@ -208,4 +208,8 @@ $(function(){
 	};
 	onresize();
 	$(window).resize(onresize);
+
+	$('.copysnippet').on('click', function() {
+		$(this).select();
+	});
 });

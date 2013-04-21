@@ -73,8 +73,14 @@
 						<ol>
 							<li>PHP >= 5.4 non-zts</li>
 							<li>libevent 2.last and pecl-event 1.6.0</li>
-							<li>pecl-eio to increase filesystem I/O performance</li>
 						</ol>
+						And optional:
+						<ol>
+							<li>pecl-eio to increase filesystem I/O performance</li>
+							<li>pecl-proctitle for neat proc. titles like «phpd: worker process» (not required for PHP >= 5.5)</li>
+							<li>pecl-inotify for productive filesystem monitoring</li>
+						</ol><br />
+						# <input type="text" class="copysnippet" readonly="readonly" value="pecl install event eio proctitle inotify" size="40" /> 
 						</p>
 					</div>
 				</div>
