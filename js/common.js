@@ -212,4 +212,10 @@ $(function(){
 	$('.copysnippet').on('click', function() {
 		$(this).select();
 	});
+	setInterval(function() {
+		$('a.addthis_button_twitter').attr('href', 'javascript:void(0)');
+	}, 1000);
+	setInterval(function() {
+		$('div.at-quickshare').css({'position':'fixed', 'left':'30px', 'top':'50px'});
+	}, 50);
 });
