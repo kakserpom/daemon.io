@@ -212,10 +212,10 @@ $(function(){
 	$('.copysnippet').on('click', function() {
 		$(this).select();
 	});
-	setInterval(function() {
-		$('a.addthis_button_twitter').attr('href', 'javascript:void(0)');
+	var interval = setInterval(function() {
+		var cb = function() {$('div.at-quickshare').css({'position':'fixed', 'left':'30px', 'top':'50px'});};
+		if ($('a.addthis_button_twitter').attr('href', 'javascript:void(0)').on('click', cb).on('mouseover', cb).length > 0) {
+			clearInterval(interval);
+		}
 	}, 1000);
-	setInterval(function() {
-		$('div.at-quickshare').css({'position':'fixed', 'left':'30px', 'top':'50px'});
-	}, 50);
 });
