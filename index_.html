@@ -5,8 +5,10 @@
 <script type="text/javascript">location.replace('/ie6/ie6.html');</script><noscript><meta http-equiv="refresh" content="0; url=/ie6/ie6.html"></noscript>
 <![endif]-->
 <meta charset="utf-8">
+<meta name="keywords" content="phpDaemon, daemon.io, async, I/O, daemon, php" />
+<meta name="description" content="Asynchronous server-side framework for Web and network applications implemented in PHP using libevent, phpDaemon can handle thousands of simultaneous connections" />
 <title>phpDaemon</title>
-<link rel="stylesheet" type="text/css" href="/css/source/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="shortcut icon" href="/favicon.png" type="image/png" />
 <link rel="icon" href="/favicon.png" type="image/png" />
 <!--[if lte IE 9]>
@@ -24,9 +26,9 @@
   _gaq.push(['_trackPageview']);
 
   (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
 </script>
@@ -302,7 +304,21 @@
 <div class="scrollup"></div><div class="scrolldown"></div>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/js/jquery.pjax.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('#template').pjax('a');
+	$(document).on('pjax:send', function() {
+		alert('send');
+		$('#loading').show();
+	});
+	$(document).on('pjax:complete', function() {
+		alert('completed');
+  		$('#loading').hide();
+	})
+});
+</script>
 <!-- AddThis Button BEGIN -->
 <div class="addthis_toolbox addthis_floating_style addthis_16x16_style" style="top:50px;background:none;opacity:0.70">
 <a class="addthis_button_twitter" addthis:title="#Asynchronous server-side framework for Web and network applications implemented in #PHP using libevent, check out" addthis:url="http://daemon.io/"></a>
