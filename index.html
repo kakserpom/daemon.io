@@ -103,7 +103,7 @@
 											TCP/UDP transparent support (client/server)
 										</li>
 										<li>
-											Extensible nature
+											Extensible nature (PSR-0 compliance)
 										</li>
 										<li>
 											Well configurable
@@ -182,31 +182,31 @@
 									<h4>Network servers</h4>
 									<ul>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/HTTPServer.php" target="_blank">HTTP</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/HTTP/" target="_blank">HTTP</a><br>
 											<small>supports multipart, uploads, etc</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/WebSocketServer.php" target="_blank">WebSocket</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket" target="_blank">WebSocket</a><br>
 											<small>supports latest protocol specification</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/FastCGIServer.php" target="_blank">FastCGI</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/" target="_blank">FastCGI</a><br>
 											<small>supports X-Sendfile and Request-body-file</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/FlashPolicyServer.php" target="_blank">FlashPolicy</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FlashPolicy/" target="_blank">FlashPolicy</a><br>
 											<small>policy at port 843</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/IRCBouncer.php" target="_blank">IRCBouncer</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/IRCBouncer/" target="_blank">IRCBouncer</a><br>
 											<small>simple extensible IRC bouncer</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/SocksServer.php" target="_blank">Socks server</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/Socks/" target="_blank">Socks server</a><br>
 											<small>high-performance Socks server</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/LockServer.php" target="_blank">Lock</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/Lock/" target="_blank">Lock</a><br>
 											<small>simple lock server</small>
 										</li>
 
@@ -219,47 +219,47 @@
 									<h4>Network clients</h4>
 									<ul>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/MySQLClient.php" target="_blank">MySQL</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/" target="_blank">MySQL</a><br>
 											<small>robust, zero-copy client. Supports only latest protocol</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/PostgreSQLCLient.php" target="_blank">PostgreSQL</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/PostgreSQL/" target="_blank">PostgreSQL</a><br>
 											<small>robust, zero-copy client</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/MongoClientAsync.php" target="_blank">MongoDB</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/" target="_blank">MongoDB</a><br>
 											<small>reature-rich, with support of async. tailable cursors</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/MemcacheClient.php" target="_blank">Memcache</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/" target="_blank">Memcache</a><br>
 											<small>supports only text protocol yet</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/HTTPClient.php" target="_blank">HTTP</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/" target="_blank">HTTP</a><br>
 											<small>supports GET and POST queries</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/DNSClient.php" target="_blank">DNS</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/" target="_blank">DNS</a><br>
 											<small>tiny DNS client</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/ICMPClient.php" target="_blank">ICMP</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/ICMP/" target="_blank">ICMP</a><br>
 											<small>you can send ICMP echo-requests from your app</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/XMPPClient.php" target="_blank">XMPP</a> (jabber)<br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/" target="_blank">XMPP</a> (jabber)<br>
 											<small>useful for building Jabber bots</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/IRCClient.php" target="_blank">IRC client</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/" target="_blank">IRC client</a><br>
 											<small>useful for building IRC bots</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/AsteriskCLient.php" target="_blank">Asterisk (PBX)</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/" target="_blank">Asterisk (PBX)</a><br>
 											<small>extensible PBX client</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/lib/RedisClient.php" target="_blank">Redis</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/" target="_blank">Redis</a><br>
 											<small>supports all commands (incl. Pub/Sub)</small>
 										</li>
 									</ul>
@@ -271,19 +271,19 @@
 									<h4>Web applications</h4>
 									<ul>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/app-web/ServerStatus.php" target="_blank">ServerStatus</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Applications/ServerStatus.php" target="_blank">ServerStatus</a><br>
 											<small>shows uptime and some other information</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/app-web/WebSocketOverCOMET.php" target="_blank">WebSocketOverCOMET</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Applications/WebSocketOverCOMET.php" target="_blank">WebSocketOverCOMET</a><br>
 											<small>allows to use WebSocketConnection in Javascript (COMET, long-polling)</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/app-web/FileReader.php" target="_blank">FileReader</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Applications/FileReader.php" target="_blank">FileReader</a><br>
 											<small>allows to share static files</small>
 										</li>
 										<li>
-											<a href="https://github.com/kakserpom/phpdaemon/blob/master/app-web/CGI.php" target="_blank">CGI</a><br>
+											<a href="https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Applications/CGI.php" target="_blank">CGI</a><br>
 											<small>allows to serve CGI scripts</small>
 										</li>
 									</ul>
