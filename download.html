@@ -67,8 +67,11 @@
 					<div class="center">
 						<h2>Sources</h2><br />
 						<p>GitHub: <a href="https://github.com/kakserpom/phpdaemon" target="_blank">github.com/kakserpom/phpdaemon</a><br />
-						<br />At this moment, the best practice to obtain phpDaemon is cloning the repository:<br />
-						$ git clone https://github.com/kakserpom/phpdaemon.git<br />
+						<br />You may obtain phpDaemon by cloning the repository:<br />
+						$ <input type="text" class="copysnippet" readonly="readonly" value="git clone https://github.com/kakserpom/phpdaemon.git" size="60" /><br />
+						<br />
+						Or by downloading recent package:<br />
+						$ <input type="text" class="copysnippet" readonly="readonly" value="wget https://github.com/kakserpom/phpdaemon/archive/v1.0-beta2.tar.gz" size="80" /><br />
 						<br />Do not forget to install:
 						<ol>
 							<li>PHP >= 5.4 non-zts</li>
@@ -80,7 +83,7 @@
 							<li>pecl-proctitle for neat proc. titles like «phpd: worker process» (not required for PHP >= 5.5)</li>
 							<li>pecl-inotify for productive filesystem monitoring</li>
 						</ol><br />
-						# <input type="text" class="copysnippet" readonly="readonly" value="pecl install event eio proctitle inotify" size="40" /> 
+						$<input type="text" class="copysnippet" readonly="readonly" value="pecl install event eio proctitle inotify" size="40" /> 
 						</p>
 					</div>
 				</div>

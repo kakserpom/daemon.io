@@ -1,7 +1,7 @@
 $.chat =
 {
  "serverUrl": {
-                ws: 'wss://'+document.domain+':8048/Chat',
+                ws: 'ws://'+document.domain+':8048/Chat',
                 comet  : 'http://'+document.domain+'/WebSocketOverCOMET/?_route=Chat',
                 polling : 'http://'+document.domain+'/WebSocketOverCOMET/?_route=Chat'
               },

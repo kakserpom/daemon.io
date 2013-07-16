@@ -171,11 +171,11 @@ ol > li {
     list-style-type: none;
 }
 
-.accordion h2 a {
+h2 > a {
 	color: #000;
 }
 
-.accordion h2 a:hover {
+h2 > a:hover {
 	text-decoration: none;
 	border-bottom: 1px solid #000;
 }
