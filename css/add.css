@@ -194,3 +194,13 @@ h2 > a:hover {
 	text-align: center;
 }
 .team_item {}
+
+.tblManual {
+	border-collapse:collapse;
+}
+
+.tblManual > th, td {
+	text-align: center;
+	border: 1px;
+
+}

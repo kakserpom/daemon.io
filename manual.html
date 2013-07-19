@@ -102,17 +102,19 @@
 							<div>
 									<br /><p>
 Configuration is defined by the main config-file (and included config files).
-Syntax of config files is <b>pretty intuitive</b>:
+Syntax of config files is <b>pretty intuitive</b>. Here is a list of rules:<br><br />
 <ol>
-	<li>Lines beginning with # are being treated as comments and ignored. Example: # Some text</li>
+	<li>Lines beginning with # are treated as comments and ignored. Example: # Some text</li>
 	<li>White-spaces outside of quoted strings are ignored.</li>
 	<li>Lines beginning with alphanumeric and ending with <b>semicolon</b> are setting definitions. Example: <b>user john;</b></li>
 	<li>Multi-line definitions must have backslash and the end of each line.</li>
+	<li>Lines (and group of lines) beginning with alphanumeric and ending with '{' is a start of nested block. Character '}' closes the block.</li>
 	<li>Numeric unquoted sequences are treated as numbers.</li>
-	<li>Single-quoted (') strings are similar with PHP. Therefore \' means '.</li>
-	<li>Double-quoted (") strings are similar with PHP, except dollar syntax. Therefore \" means ". Hexadecimal and decimal escaped sequences are supported (for instance \x20 means chr(32) and \32 means chr(32)).</li>
+	<li>Single-quoted (') strings are similar to PHP. Therefore \' means '.</li>
+	<li>Double-quoted (") strings are similar to PHP, except dollar syntax. Therefore \" means ". Hexadecimal and decimal escaped sequences are supported (for instance \x20 means chr(hexdec('20')) byte and \32 means chr(32) byte).</li>
 </ol>
-								</p><br /><p>Let's take look at the packaged example of main config file:
+<br />Syntax rules do not depend on concrete definition or block name, they are general.
+</p><br /><p>Let's take look at the packaged example of main config file:
 									<blockquote><xmp>
 ## Config file
 
@@ -132,6 +134,23 @@ max-idle	0;
 
 include conf.d/*.conf;
 </xmp></blockquote>
+<br />
+At the top level, the following directives are available:<br /><br />
+<table class="tblManual">
+	<tr>
+		<th style="width: 200px">Name</th>
+		<th style="width: 200px">Default</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>max-memory-usage</td>
+		<td>0b</td>
+		<td>Maximum memory usage for graceful restart of worker</td>
+	</tr>
+</table>
+<br /><p>
+
+</p>
 							</div>
 						</div>
 					</div>
