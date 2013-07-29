@@ -84,6 +84,103 @@
 						<div class="center">
 							<h2><a href="#gettingstarted">Getting Started</a></h2>
 							<div>
+                                <p>This part of manual describes install, config and running simple application by phpDaemon. To install this will be used clear Ubuntu 13.04. Follow me.</p>
+
+                                <p> First of all, you have to install the required tools. Run command -
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git" size="60" /><br />
+                                </p>
+                                <p> Next, install pecl modules  -
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install php5-cli php5-dev php-pear" size="60" /><br />
+                                    Answer all of the questions answered in default
+                                    Add this modules to config files
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo -i" /><br />
+                                    <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=event.so" > /etc/php5/mods-available/event.ini' /><br />
+                                    <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=eio.so" > /etc/php5/mods-available/eio.ini' /><br />
+                                    Make symlink
+                                    <br /># <input type="text" class="copysnippet" readonly="readonly" value="ln -s /etc/php5/mods-available/event.ini /etc/php5/cli/conf.d/event.ini" /><br />
+                                    <br /># <input type="text" class="copysnippet" readonly="readonly" value="ln -s /etc/php5/mods-available/eio.ini /etc/php5/cli/conf.d/eio.ini" /><br />
+                                    Ctrl + D - (exit from su mod). </p>
+                                <p> Next, prepare a directory to install phpDaemon.
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo mkdir /opt/phpdaemon" /><br />
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo chown [your user]:[your group] /opt/phpdaemon" /><br />
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cd /opt/phpdaemon" /><br /></p>
+                                <p> Install phpDaemon.
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cd /opt/phpdaemon" /><br />
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="git clone https://github.com/kakserpom/phpdaemon.git ./" /><br />
+                                    Copy example configuration file.
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf" /><br />
+                                    Aliases for phpd:
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="alias phpd='/opt/phpdaemon/bin/phpd'" /><br />
+                                    This alias allow local aliases with sudo
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="alias sudo='sudo '" /><br />
+                                    Trying to start
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo phpd start --verbose-tty=1" /><br />
+                                    <i>--verbose-tty-1</i> - tell to daemon log messages to STDOUT.
+                                    If you get as a result of something like this:
+                                        <blockquote><xmp>
+                                        [PHPD] Loaded config file: '/opt/phpdaemon/conf/phpd.conf'
+                                        [PHPD] Loaded config file: 'conf/conf.d/ExampleJabberBot.conf'
+                                        [PHPD] Loaded config file: 'conf/conf.d/FastCGI.conf'
+                                        [PHPD] Loaded config file: 'conf/conf.d/FlashpolicyServer.conf'
+                                        [PHPD] Loaded config file: 'conf/conf.d/HTTPServer.conf'
+                                        [PHPD] Loaded config file: 'conf/conf.d/IdentServer.conf'
+                                        [PHPD] Loaded config file: 'conf/conf.d/SSL-sample.conf'
+                                        [PHPD] Loaded config file: 'conf/conf.d/WebSocketServer.conf'
+                                        [PHPD] [START] phpDaemon with pid-file '/var/run/phpd.pid' is running already (PID 28308)
+                                        </xmp></blockquote>
+                                    my congratulations! The daemon is running.
+
+                                </p>
+                                <p> Next, add an alias to a file so that they are available after reload
+                                    <br />$ <input type="text" class="copysnippet" readonly="readonly" value="nano ~/.bashrc" />
+                                    And add two lines to the end:
+                                        <blockquote><xmp>
+                                        alias phpd='/opt/phpdaemon/bin/phpd'
+                                        alias sudo='sudo '
+                                        </xmp></blockquote>
+                                </p>
+                                <p> Next, run the most simple application - "Ping Pong telnet service." Edit config file to. File must be something like this
+                                    <blockquote><xmp>
+                                        ## Config file
+
+                                        user [your user];
+                                        group [your group];
+
+                                        max-workers     8;
+                                        min-workers     8;
+                                        start-workers   8;
+                                        max-idle        0;
+                                        #add-include-path '/path/to/your/folder';
+
+                                        Pool:\PHPDaemon\Examples\ {
+                                           listen 'tcp://0.0.0.0:23';
+                                        }
+                                    </xmp></blockquote>
+                                And try -
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo phpd restart --verbose-tty=1" /><br />
+                                Must be result -
+                                    <blockquote><xmp>
+                                        [PHPD] Loaded config file: '/opt/phpdaemon/conf/phpd.conf'
+                                        [PHPD] M#387 \PHPDaemon\Core\Pool:\PHPDaemon\Examples\TelnetHoneypot up.
+                                    </xmp></blockquote>
+
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="telnet localhost 23" /><br />
+
+                                <blockquote><xmp>
+                                    Trying 127.0.0.1...
+                                    Connected to localhost.
+                                    Escape character is '^]'.
+                                    ping
+                                    pong
+                                    do-something
+                                    Unknown command "do-something"
+                                    quit
+                                    Quit
+                                </xmp></blockquote>
+                                This only supports 2 teams - ping and quit. We run first application on phpDaemon. You can experiment with this example, edit the file <i>/opt/phpdaemon/PHPDaemon/Examples/TelnetHoneypot.php</i>  write your own application. Good luck.
+
+                                <p>
+
 								<br>
 								<p>First of all, go to <a href="/download.html">Download</a> page and follow the instructions.</p><br />
 								<p>Once you finished that instructions, you should create <b>conf/phpd.conf file</b>. You can copy it from <b>phpd.conf.example</b></p>
