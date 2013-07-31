@@ -104,15 +104,15 @@
                             <p>This part of manual describes install, config and running example applications by phpDaemon. To install this will be used clear Ubuntu 13.04. Follow me.</p>
 
                             <p> First of all, you have to install the required tools. Run command -
-                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git" size="70" /><br />
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git" size="70" /><br /><br />
                             </p>
-                            <p> Next, install pecl modules  -
-                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install php5-cli php5-dev php-pear" size="50" /><br />
+                            <p> Next, install pecl modules -
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install php5-cli php5-dev php-pear" size="50" /><br /><br />
                                 Answer all of the questions answered in default
                                 Add this modules to config files
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo -i" size="8"/>
-                                <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=event.so" > /etc/php5/mods-available/event.ini' size="70"/>
-                                <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=eio.so" > /etc/php5/mods-available/eio.ini' size="66"/><br />
+                                <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=event.so" > /etc/php5/mods-available/event.ini' size="69"/>
+                                <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=eio.so" > /etc/php5/mods-available/eio.ini' size="64"/><br /><br />
                                 Make symlink
                                 <br /># <input type="text" class="copysnippet" readonly="readonly" value="ln -s /etc/php5/mods-available/event.ini /etc/php5/cli/conf.d/event.ini" size="78" />
                                 <br /># <input type="text" class="copysnippet" readonly="readonly" value="ln -s /etc/php5/mods-available/eio.ini /etc/php5/cli/conf.d/eio.ini" size="73" /><br />
@@ -123,12 +123,13 @@
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cd /opt/phpdaemon" size="24" /><br /></p><br />
                             <p> Install phpDaemon.
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cd /opt/phpdaemon" size="24" />
-                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="git clone https://github.com/kakserpom/phpdaemon.git ./" size="64" /><br />                                    Copy example configuration file.
-                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf" size="86" /><br />
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="git clone https://github.com/kakserpom/phpdaemon.git ./" size="64" /><br /><br />
+                                Copy example configuration file.
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf" size="86" /><br /><br />
                                 Aliases for phpd:
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="alias phpd='/opt/phpdaemon/bin/phpd'" size="44"/><br />
                                 This alias allow local aliases with sudo
-                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="alias sudo='sudo '" size="20"/><br />
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="alias sudo='sudo '" size="20"/><br /><br />
                                 Trying to start
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo phpd start --verbose-tty=1" size="34"/><br />
                                 <i>--verbose-tty=1</i> - tell to daemon log messages to STDOUT.
