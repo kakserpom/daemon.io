@@ -99,8 +99,59 @@
 			<section>
 				<div class="section">
 					<div class="center">
-						<h2>Ubuntu official packages</h2><br />
-						Coming very soon	
+						<h2>Ubuntu installation</h2><br />
+                        <div>
+                            <p>This part of manual describes install, config and running example applications by phpDaemon. To install this will be used clear Ubuntu 13.04. Follow me.</p>
+
+                            <p> First of all, you have to install the required tools. Run command -
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git" size="70" /><br />
+                            </p>
+                            <p> Next, install pecl modules  -
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install php5-cli php5-dev php-pear" size="50" /><br />
+                                Answer all of the questions answered in default
+                                Add this modules to config files
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo -i" size="8"/>
+                                <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=event.so" > /etc/php5/mods-available/event.ini' size="70"/>
+                                <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=eio.so" > /etc/php5/mods-available/eio.ini' size="66"/><br />
+                                Make symlink
+                                <br /># <input type="text" class="copysnippet" readonly="readonly" value="ln -s /etc/php5/mods-available/event.ini /etc/php5/cli/conf.d/event.ini" size="78" />
+                                <br /># <input type="text" class="copysnippet" readonly="readonly" value="ln -s /etc/php5/mods-available/eio.ini /etc/php5/cli/conf.d/eio.ini" size="73" /><br />
+                                Ctrl + D - (exit from su mod). </p> <br />
+                            <p> Next, prepare a directory to install phpDaemon.
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo mkdir /opt/phpdaemon" size="33"/>
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo chown [your user]:[your group] /opt/phpdaemon" size="59" />
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cd /opt/phpdaemon" size="24" /><br /></p><br />
+                            <p> Install phpDaemon.
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cd /opt/phpdaemon" size="24" />
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="git clone https://github.com/kakserpom/phpdaemon.git ./" size="64" /><br />                                    Copy example configuration file.
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf" size="86" /><br />
+                                Aliases for phpd:
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="alias phpd='/opt/phpdaemon/bin/phpd'" size="44"/><br />
+                                This alias allow local aliases with sudo
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="alias sudo='sudo '" size="20"/><br />
+                                Trying to start
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo phpd start --verbose-tty=1" size="34"/><br />
+                                <i>--verbose-tty=1</i> - tell to daemon log messages to STDOUT.
+                                If you get as a result of something like this:
+                            <blockquote><xmp>
+[PHPD] Loaded config file: '/opt/phpdaemon/conf/phpd.conf'
+[PHPD] Loaded config file: 'conf/conf.d/ExampleJabberBot.conf'
+[PHPD] Loaded config file: 'conf/conf.d/FastCGI.conf'
+[PHPD] Loaded config file: 'conf/conf.d/FlashpolicyServer.conf'
+[PHPD] Loaded config file: 'conf/conf.d/HTTPServer.conf'
+[PHPD] Loaded config file: 'conf/conf.d/IdentServer.conf'
+[PHPD] Loaded config file: 'conf/conf.d/SSL-sample.conf'
+[PHPD] Loaded config file: 'conf/conf.d/WebSocketServer.conf'
+[PHPD] [START] phpDaemon with pid-file '/var/run/phpd.pid' is running already (PID 28308)
+                            </xmp></blockquote>
+                            my congratulations! The daemon is running.
+
+                            </p>
+                            <p> Next, add an alias to a file so that they are available after reload
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value='echo &quot;alias phpd=&apos;/opt/phpdaemon/bin/phpd&apos;&quot; >> ~/.bashrc' size="64"/>
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value='echo &quot;alias sudo=&apos;sudo /opt/phpdaemon/bin/phpd&apos;&quot; >> ~/.bashrc' size="70"/>
+                            </p>
+                        </div>
 					</div>
 				</div>
 			</section>
