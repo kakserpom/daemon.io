@@ -91,9 +91,38 @@
 			<section class="odd">
 				<div class="section">
 					<div class="center">
-						<h2>CentOS/Fedora official packages</h2><br />
-						Coming very soon
-					</div>
+						<h2>CentOS/RedHat 6.4 installation</h2><br />
+                        <p> First of all, you have to install the required tools. Run command -
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo yum install -y git gcc openssl-devel" size="70" /><br /><br />
+                        </p>
+
+                        <p> Install php 5.5. You need to install Remi & Epel Repository because standard repository contains the old version of php. Let's do it <br />
+
+                        Install Remi & Epel Repository on RHEL/CentOS 6.4-6.0 - 32 Bit <br />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm" size="70" /><br />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm" size="70" /><br />
+                        Install Remi & Epel Repository on RHEL/CentOS 6.4-6.0 - 64 Bit <br />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm" size="70" /><br />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm" size="70" /><br /><br />
+                        Install php -
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo yum --enablerepo=remi,remi-test install -y php-cli php-devel php-pear php-process" size="70" />
+                            cd /tmp/
+                            wget https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.
+                            tar xfzv libevent-2.0.21-stable.tar.gz
+                            cd libevent-2.0.21-stable
+                            sudo ./configure && make
+                            sudo make install
+                            sudo pecl install event eio
+                            The following points need to tell more.
+                            sudo -i
+                            echo "extension=event.so" > /etc/php.d/z-event.ini
+                            echo "extension=eio.so" > /etc/php.d/z-eio.ini
+
+
+
+
+
+                    </div>
 				</div>
 			</section>
 			<section>
@@ -106,11 +135,17 @@
                             <p> First of all, you have to install the required tools. Run command -
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git" size="70" /><br /><br />
                             </p>
-                            <p> Next, install pecl modules -
+                            <p>
+                                Install php 5.5
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install php5-cli php5-dev php-pear" size="50" /><br /><br />
+                            </p>
+
+                            <p> Next, install pecl modules -
+
                                 Answer all of the questions answered in default
                                 Add this modules to config files
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo -i" size="8"/>
+                                <br /># <input type="text" class="copysnippet" readonly="readonly" value="pecl install event eio" size="26"/>
                                 <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=event.so" > /etc/php5/mods-available/event.ini' size="69"/>
                                 <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=eio.so" > /etc/php5/mods-available/eio.ini' size="64"/><br /><br />
                                 Make symlink
