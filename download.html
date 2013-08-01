@@ -91,9 +91,71 @@
 			<section class="odd">
 				<div class="section">
 					<div class="center">
-						<h2>CentOS/Fedora official packages</h2><br />
-						Coming very soon
-					</div>
+						<h2>CentOS/RedHat 6.4 installation</h2><br />
+                        <p> First of all, you have to install the required tools. Run command -
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo yum install -y git gcc openssl-devel" size="44" /><br /><br />
+                        </p>
+
+                        <p> Install php 5.5. You need to install Remi & Epel Repository because standard repository contains the old version of php. Let's do it <br />
+
+                        Install Remi & Epel Repository on RHEL/CentOS 6.4-6.0 - 32 Bit
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm" size="105" />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm" size="83" /><br /><br />
+                        Install Remi & Epel Repository on RHEL/CentOS 6.4-6.0 - 64 Bit
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm" size="108" />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm" size="83" /><br /><br />
+                        Install php -
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo yum --enablerepo=remi,remi-test install -y php-cli php-devel php-pear php-process" size="94" /><br /><br />
+                        </p>
+                        <p> Now have not working RPM packages for libevent 2. We need to install this from source. Download last version from <a href="http://libevent.org/">http://libevent.org/</a>, config and install libevent 2.
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cd /tmp/" size="12" />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="wget https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar" size="86" />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="tar xfzv libevent-2.0.21-stable.tar.gz" size="40" />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cd libevent-2.0.21-stable" size="28" />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo ./configure && make" size="30" />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo make install" size="21" /><br /><br />
+                        <p> Next, install pecl modules. Answer all of the questions answered in default and add this modules to config files
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo -i" size="10"/>
+                            <br /># <input type="text" class="copysnippet" readonly="readonly" value="pecl install event eio" size="24"/><br /><br />
+                        The following points need to tell more. Now PHP does not yet support control the boot order of libraries. For work correctly event and eio pecl-extensions need sockets extension. In RedHat-like extensions are loaded in alphabetical order. That's why we call them z-event.ini and z-eio.ini.
+                            <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=event.so" > /etc/php.d/z-event.ini' size="56"/>
+                            <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=eio.so" > /etc/php.d/z-eio.ini' size="51"/><br />
+                        Ctrl + D - (exit from su mod).
+                        </p>
+                        <br /><p> Set date.timezone in php.ini. Edit file /etc/php.ini. Uncomment and edit string <i>;date.timezone = </i> to your timezone (e.g.<i> date.timezone = UTC </i>)
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo vi /etc/php.ini" size="23"/><br /><br />
+                        </p>
+                        <p> Next, prepare a directory to install phpDaemon.
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo mkdir /opt/phpdaemon" size="33"/>
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo chown [your user]:[your group] /opt/phpdaemon" size="59" />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cd /opt/phpdaemon" size="24" /><br /></p><br />
+                        <p> Install phpDaemon.
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cd /opt/phpdaemon" size="24" />
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="git clone https://github.com/kakserpom/phpdaemon.git ./" size="64" /><br /><br />
+                            Copy example configuration file.
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf" size="86" /><br /><br />
+                            Create symlink in /usr/bin/ for enable easy run daemon command(e.g. <i>sudo phpd start</i>)
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="ln -s /opt/phpdaemon/bin/phpd /usr/bin/phpd" size="52"/><br />
+                            Trying to start
+                            <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo phpd start --verbose-tty=1" size="34"/><br />
+                            <i>--verbose-tty=1</i> - tell to daemon log messages to STDOUT.
+                            If you get as a result of something like this:
+                        <blockquote><xmp>
+[PHPD] Loaded config file: '/opt/phpdaemon/conf/phpd.conf'
+[PHPD] Loaded config file: 'conf/conf.d/ExampleJabberBot.conf'
+[PHPD] Loaded config file: 'conf/conf.d/FastCGI.conf'
+[PHPD] Loaded config file: 'conf/conf.d/FlashpolicyServer.conf'
+[PHPD] Loaded config file: 'conf/conf.d/HTTPServer.conf'
+[PHPD] Loaded config file: 'conf/conf.d/IdentServer.conf'
+[PHPD] Loaded config file: 'conf/conf.d/SSL-sample.conf'
+[PHPD] Loaded config file: 'conf/conf.d/WebSocketServer.conf'
+[PHPD] [START] phpDaemon with pid-file '/var/run/phpd.pid' is running already (PID 28308)
+                        </xmp></blockquote>
+                        my congratulations! The daemon is running.
+
+                        </p>
+
+                    </div>
 				</div>
 			</section>
 			<section>
@@ -104,15 +166,18 @@
                             <p>This part of manual describes install, config and running example applications by phpDaemon. To install this will be used clear Ubuntu 13.04. Follow me.</p>
 
                             <p> First of all, you have to install the required tools. Run command -
-                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git" size="70" /><br />
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git" size="70" /><br /><br />
                             </p>
-                            <p> Next, install pecl modules  -
-                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install php5-cli php5-dev php-pear" size="50" /><br />
-                                Answer all of the questions answered in default
-                                Add this modules to config files
+                            <p>
+                                Install php 5.5
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo apt-get install php5-cli php5-dev php-pear" size="50" /><br /><br />
+                            </p>
+
+                            <p> Next, install pecl modules. Answer all of the questions answered in default and add this modules to config files
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo -i" size="8"/>
-                                <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=event.so" > /etc/php5/mods-available/event.ini' size="70"/>
-                                <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=eio.so" > /etc/php5/mods-available/eio.ini' size="66"/><br />
+                                <br /># <input type="text" class="copysnippet" readonly="readonly" value="pecl install event eio" size="26"/>
+                                <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=event.so" > /etc/php5/mods-available/event.ini' size="69"/>
+                                <br /># <input type="text" class="copysnippet" readonly="readonly" value='echo "extension=eio.so" > /etc/php5/mods-available/eio.ini' size="64"/><br /><br />
                                 Make symlink
                                 <br /># <input type="text" class="copysnippet" readonly="readonly" value="ln -s /etc/php5/mods-available/event.ini /etc/php5/cli/conf.d/event.ini" size="78" />
                                 <br /># <input type="text" class="copysnippet" readonly="readonly" value="ln -s /etc/php5/mods-available/eio.ini /etc/php5/cli/conf.d/eio.ini" size="73" /><br />
@@ -123,12 +188,13 @@
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cd /opt/phpdaemon" size="24" /><br /></p><br />
                             <p> Install phpDaemon.
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cd /opt/phpdaemon" size="24" />
-                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="git clone https://github.com/kakserpom/phpdaemon.git ./" size="64" /><br />                                    Copy example configuration file.
-                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf" size="86" /><br />
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="git clone https://github.com/kakserpom/phpdaemon.git ./" size="64" /><br /><br />
+                                Copy example configuration file.
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf" size="86" /><br /><br />
                                 Aliases for phpd:
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="alias phpd='/opt/phpdaemon/bin/phpd'" size="44"/><br />
                                 This alias allow local aliases with sudo
-                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="alias sudo='sudo '" size="20"/><br />
+                                <br />$ <input type="text" class="copysnippet" readonly="readonly" value="alias sudo='sudo '" size="20"/><br /><br />
                                 Trying to start
                                 <br />$ <input type="text" class="copysnippet" readonly="readonly" value="sudo phpd start --verbose-tty=1" size="34"/><br />
                                 <i>--verbose-tty=1</i> - tell to daemon log messages to STDOUT.
