@@ -221,6 +221,51 @@
 					</div>
 				</div>
 			</section>
+            <section class="odd">
+                <div class="section">
+                    <div class="center">
+                        <h2>Gentoo linux installation</h2>
+                            <p>You can install PHPDaemon easy with special <a href="https://github.com/lexa-uw/layman-phpdaemon">layman overlay</a>.</p>
+                            <p>To add this overlay you need to add this url to your overlays section of layman.cfg:</p>
+    						$ <input type="text" class="copysnippet" readonly="readonly" value="https://github.com/lexa-uw/layman-phpdaemon/blob/master/layman.xml" size="79" /><br /><br />
+                            <p>It will look something like this:</p>
+                        <blockquote><xmp>
+overlays  : http://www.gentoo.org/proj/en/overlays/repositories.xml
+            https://github.com/lexa-uw/layman-phpdaemon/blob/master/layman.xml
+                        </xmp></blockquote>
+                            <p>Then you need to fetch layman overlays list with:</p>
+    						$ <input type="text" class="copysnippet" readonly="readonly" value="sudo layman -L" size="17" /><br /><br />
+
+                            <p>And then you can add overlay:</p>
+    						$ <input type="text" class="copysnippet" readonly="readonly" value="sudo layman -a phpdaemon" size="29" /><br /><br />
+
+                            <p>Final step is simply run:</p>
+    						$ <input type="text" class="copysnippet" readonly="readonly" value="sudo emerge www-servers/phpdaemon" size="41" /><br /><br />
+
+                            <p>Add phpdaemon to autoload:<br></p>
+    						$ <input type="text" class="copysnippet" readonly="readonly" value="rc-update add phpd default" size="30" /><br /><br />
+
+                            <p>More information about installation for different
+                            versions of the  www-servers/phpdaemon you can find
+                            on official <a
+                                href="https://github.com/kakserpom/phpdaemon/wiki/Installation-%28gentoo-linux%29">wiki</a> page.</p>
+                    </div>                
+                </div>
+            </section>
+            <section>
+                <div class="section"><div class="center">
+                    <h2>Composer installation</h2>
+                    <p>Add section to requirement in your composer.json</p><div class="highlight">
+                        <blockquote><xmp>
+    "require" : {
+        "kakserpom/phpdaemon" : "dev-master"
+    }
+                        </xmp></blockquote>
+
+                    <p>More information on <a
+                        href="https://packagist.org/packages/kakserpom/phpdaemon">packagist</a>.</p>
+                </div></div>
+            </section>
 		</div>
 	</div>
 	<footer>
