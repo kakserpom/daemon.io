@@ -30,6 +30,7 @@ aside .glow {
 	border-radius: 4px;
 	background: #006ccc;
 	padding: 0 1em;
+    text-shadow: 1px 1px 0 #000;
 	background: -webkit-linear-gradient(#0086cc 0, #0057cc 100%);
 	background: -moz-linear-gradient(#0086cc 0, #0057cc 100%);
 	background: -ms-linear-gradient(#0086cc 0, #0057cc 100%);
