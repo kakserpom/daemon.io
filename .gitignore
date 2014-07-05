@@ -1,0 +1,2 @@
+# игнорим index.html в доках
+docs/**/index.html
