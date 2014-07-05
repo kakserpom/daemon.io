@@ -39,7 +39,16 @@ PHPDaemon представляет из&#160;себя один мастер-пр
  - `pecl-proctitle` для именования процессов в&#160;понятные названия: &#171;phpd: worker process&#187; (для PHP версии ниже 5.5);
  - `pecl-inotify` для мониторинга файловой системы.
 
-### Исходники
+### Исходный код
+
+Вы можете клонировать PHPDaemon репозиторий
+$&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git`
+
+Или скачать текущую версию в виде архива
+$&nbsp;`wget https://github.com/kakserpom/phpdaemon/archive/master.zip'
+
+Установите необходимые модули
+$&nbsp;`pecl install event eio proctitle inotify`
 
 ### Composer
 
@@ -53,9 +62,181 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 
 ### CentOS/RedHat
 
+Для начала необходимо установить все сопутстсующие утилиты.  
+$&nbsp;`sudo yum install -y git gcc openssl-devel libevent`
+
+Чтобы установить PHP 5.5 необходимо добавить Remi и Epel репозитории, потому что стандартный содержит старую версию.
+
+Для RHEL/CentOS 6.4-6.0 32 Bit.  
+$&nbsp;`sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm`  
+$&nbsp;`sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm`
+
+Для RHEL/CentOS 6.4-6.0 64 Bit.  
+$&nbsp;`sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm`  
+$&nbsp;`sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm`
+
+Устанавливаем PHP.  
+$&nbsp;`sudo yum --enablerepo=remi,remi-test install -y php-cli php-devel php-pear php-process`
+
+Далее устанавливаем pecl модули.  
+$&nbsp;`pecl install event eio`
+
+В PHP отсутсвует контроль подгрузки модулей. Для корректной работы модуля event и eio необходим модуль sockets.
+В системах RedHat/CentOS модули подгружаются в порядке названия, поэтому назовем конфиги этих модулей как z-event.ini и z-eio.ini соответсвенно.  
+$&nbsp;`echo "extension=event.so" > /etc/php.d/z-event.ini`
+$&nbsp;`echo "extension=eio.so" > /etc/php.d/z-eio.ini`
+
+Установите `date.timezone` в /etc/php.ini в соответствие с временной зоной сервера.
+Раскомментируйте и отредактируйте строку `;date.timezone = ` (например, `date.timezone = Europe/Moscow`)  
+$&nbsp;`sudo vi /etc/php.ini`
+
+Подготовим директорию для установки PHPDaemon.  
+$&nbsp;`sudo mkdir /opt/phpdaemon`  
+$&nbsp;`sudo chown [your user]:[your group] /opt/phpdaemon`  
+$&nbsp;`cd /opt/phpdaemon`
+
+Устанавливаем PHPDaemon.  
+$&nbsp;`cd /opt/phpdaemon`  
+$&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git ./`
+
+Создаем конфигурационный файл из примера.  
+$&nbsp;`cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf`
+
+Сделаем ссылку на phpd для удобного управления демоном  
+$&nbsp;`ln -s /opt/phpdaemon/bin/phpd /usr/bin/phpd`
+
+Пробуем запустить демон.  
+$&nbsp;`sudo phpd start --verbose-tty=1`
+
+Опция `--verbose-tty=1` указывет демону выводить лог в терминал.
+
+Если вы видите что-то похожее на это:
+
+    [PHPD] Loaded config file: '/opt/phpdaemon/conf/phpd.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/ExampleJabberBot.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/FastCGI.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/FlashpolicyServer.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/HTTPServer.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/IdentServer.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/SSL-sample.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/WebSocketServer.conf'
+    [PHPD] [START] phpDaemon with pid-file '/var/run/phpd.pid' is running already (PID 28308)
+
+Поздравляем! PHPDaemon запущен!
+
 ### Ubuntu
 
+Для начала необходимо установить все сопутстсующие утилиты.  
+$&nbsp;`sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git libevent`
+
+Устанавливаем PHP 5.5.  
+$&nbsp;`sudo apt-get install php5-cli php5-dev php-pear`
+
+Далее устанавливаем pecl модули.  
+$&nbsp;`pecl install event eio`  
+$&nbsp;`echo "extension=event.so" > /etc/php5/mods-available/event.ini`  
+$&nbsp;`echo "extension=eio.so" > /etc/php5/mods-available/eio.ini`
+
+Создаем ссылки
+$&nbsp;`ln -s /etc/php5/mods-available/event.ini /etc/php5/cli/conf.d/event.ini`  
+$&nbsp;`ln -s /etc/php5/mods-available/eio.ini /etc/php5/cli/conf.d/eio.ini`
+
+Подготовим директорию для установки PHPDaemon.  
+$&nbsp;`sudo mkdir /opt/phpdaemon`
+$&nbsp;`sudo chown [your user]:[your group] /opt/phpdaemon`  
+$&nbsp;`cd /opt/phpdaemon`
+
+Устанавливаем PHPDaemon.  
+$&nbsp;`cd /opt/phpdaemon`  
+$&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git ./`
+
+Создаем конфигурационный файл из примера.  
+$&nbsp;`cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf`
+
+Сделаем ссылку на phpd для удобного управления демоном  
+$&nbsp;`alias phpd='/opt/phpdaemon/bin/phpd'`
+
+Локальный алиас для sudo  
+$&nbsp;`alias sudo='sudo '`
+
+Пробуем запустить демон.  
+$&nbsp;`sudo phpd start --verbose-tty=1`
+
+Опция `--verbose-tty=1` указывет демону выводить лог в терминал.
+
+Если вы видите что-то похожее на это:
+
+    [PHPD] Loaded config file: '/opt/phpdaemon/conf/phpd.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/ExampleJabberBot.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/FastCGI.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/FlashpolicyServer.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/HTTPServer.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/IdentServer.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/SSL-sample.conf'
+    [PHPD] Loaded config file: 'conf/conf.d/WebSocketServer.conf'
+    [PHPD] [START] phpDaemon with pid-file '/var/run/phpd.pid' is running already (PID 28308)
+
+Поздравляем! PHPDaemon запущен!
+
+Добавим алиасы чтобы они были доступны после перезагрузки
+$&nbsp;`echo "alias phpd='/opt/phpdaemon/bin/phpd'" >> ~/.bashrc'`
+$&nbsp;`echo "alias sudo='sudo /opt/phpdaemon/bin/phpd'" >> ~/.bashrc'`
+
 ### Gentoo
+
+Вы можете установить PHPDaemon с помощью [layman overlay](https://github.com/lexa-uw/layman-phpdaemon).
+
+Добавьте ссылку в секцию overlays в файле layman.cfg:  
+`https://github.com/lexa-uw/layman-phpdaemon/blob/master/layman.xml`
+
+В итоге будет выглядеть примерно так:
+
+    overlays  : http://www.gentoo.org/proj/en/overlays/repositories.xml
+                https://github.com/lexa-uw/layman-phpdaemon/blob/master/layman.xml
+
+Выполняем команды  
+$&nbsp;`sudo layman -L`  
+$&nbsp;`sudo layman -a phpdaemon`  
+$&nbsp;`sudo emerge www-servers/phpdaemon`
+
+For example, below command install phpdaemon by version 0.4.1, 1.0_beta2 and weekly release.
+
+    $ sudo emerge "=www-servers/phpdaemon-0.4.1" "=www-servers/phpdaemon-1.0_beta2" "www-servers/phpdaemon"
+    These are the packages that would be merged, in order:
+    
+    Calculating dependencies... done!
+    [ebuild   R   ~] www-servers/phpdaemon-0.4.1:0.4::phpdaemon  USE="libevent -examples -runkit" 0 kB
+    [ebuild   R   ~] www-servers/phpdaemon-1.0_beta2:1.0::phpdaemon  USE="eio event -runkit" 0 kB
+    [ebuild   R   ~] www-servers/phpdaemon-20130907:weekly::phpdaemon  USE="eio event -runkit" 0 kB
+    ...
+
+After installation you can use "eselect phpdaemon set" tool for set up symlink for /usr/bin/phpd
+
+    $ sudo eselect phpdaemon list
+    Available phpdaemon targets:
+      [1]   phpd0.4
+      [2]   phpd1.0
+      [3]   phpdweekly
+    $ sudo eselect phpdaemon set 3
+    $ sudo eselect phpdaemon show
+    Current phpdaemon:
+      weekly
+
+Add phpdaemon to autoload:
+
+    $ rc-update add phpd default
+     * service phpd added to runlevel default
+
+Add sepatare init.d scripts for different versions:
+
+    $ ln -s /etc/init.d/phpd /etc/init.d/phpd-0.4
+    $ ln -s /etc/init.d/phpd /etc/init.d/phpd-1.0
+    $ ln -s /etc/init.d/phpd /etc/init.d/phpd-weekly
+
+And add phpd-1.0 to autoload:
+
+    $ rc-update add phpd-1.0 default
+     * service phpd added to runlevel default
 
 ## Управление
 
