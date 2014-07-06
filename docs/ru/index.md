@@ -111,7 +111,7 @@ $&nbsp;`ln -s /opt/phpdaemon/bin/phpd /usr/bin/phpd`
 Пробуем запустить демон.  
 $&nbsp;`sudo phpd start --verbose-tty=1`
 
-Опция `--verbose-tty=1` указывет демону выводить лог в терминал.
+Опция `--verbose-tty=1` указывет демону выводить журнал в терминал.
 
 Если вы видите что-то похожее на это:
 
@@ -168,7 +168,7 @@ $&nbsp;`alias sudo='sudo '`
 Пробуем запустить демон.  
 $&nbsp;`sudo phpd start --verbose-tty=1`
 
-Опция `--verbose-tty=1` указывет демону выводить лог в терминал.
+Опция `--verbose-tty=1` указывет демону выводить журнал в терминал.
 
 Если вы видите что-то похожее на это:
 
@@ -269,7 +269,7 @@ And add phpd-1.0 to autoload:
   </tr>
   <tr>
     <td class="nowrap">$ <code>phpd reopenlog</code></td>
-    <td>Переоткрытие лог-файлов<br><code>SYSCTL: SIGUSR1</code></td>
+    <td>Переоткрытие журналов<br><code>SYSCTL: SIGUSR1</code></td>
   </tr>
   <tr>
     <td class="nowrap">$ <code>phpd restart</code></td>
@@ -293,7 +293,7 @@ And add phpd-1.0 to autoload:
   </tr>
   <tr>
     <td class="nowrap">$ <code>phpd log [-n K]</code></td>
-    <td>Вывод лог-файла в реальном времени с помощью команды <code>tail -f</code>. C параметром <code>-n K</code> выводится K последних строк. Или используйте <code>-n +K</code> для вывода строк, начиная с K.</td>
+    <td>Вывод журнала в реальном времени с помощью команды <code>tail -f</code>. C параметром <code>-n K</code> выводится K последних строк. Или используйте <code>-n +K</code> для вывода строк, начиная с K.</td>
   </tr>
   <tr>
     <td class="nowrap">$ <code>phpd runworker</code></td>
@@ -411,182 +411,143 @@ And add phpd-1.0 to autoload:
 #### Плавный перезапуск рабочих процессов
  
  - `max-requests (Number = '10k')`
- 
+  
  Максимальное количество запросов перед перезапуском рабочего процесса.
  `0` – неограничено.
  
- - `max-memory-usage (Size = '0b')`
-
+ - `max-memory-usage (Size = '0b')`  
  Максимальный допустимый порог потребления памяти рабочим процессом.
  `0` – неограничено.
  
- - `max-idle (Time = '0s')`
-
+ - `max-idle (Time = '0s')`  
  Максимальное время простоя рабочего процесса перед перезапуском.
  `0` – неограничено.
 
- - `auto-reload (Time = '0s')`
-
+ - `auto-reload (Time = '0s')`  
  Задает интервал проверки всех подключенных файлов. При изменении файлов плавно перезагружает рабочие процессы.
 
- - `auto-reimport (boolean = false)`
-
+ - `auto-reimport (boolean = false)`  
  На лету импортирует методы и функции из измененных файлов с помощью runkit, без перезагрузки рабочего процесса.
  
 #### Основные пути
 
- - `pid-file (string = '/var/run/phpd.pid')`
-
+ - `pid-file (string = '/var/run/phpd.pid')`  
  Путь к pid-файлу. Убедитесь что имеется доступ на запись.
 
- - `config-file (string = '/etc/phpdaemon/phpd.conf;/etc/phpd/phpd.conf;./conf/phpd.conf')`
-
+ - `config-file (string = '/etc/phpdaemon/phpd.conf;/etc/phpd/phpd.conf;./conf/phpd.conf')`  
  Путь к файлу конфигурации. Можно указать несколько через разделитель `";"`.  
  Будет загружен только первый найденный конфигурационный файл.
 
- - `path (string = '/etc/phpdaemon/AppResolver.php;./conf/AppResolver.php')`
-
+ - `path (string = '/etc/phpdaemon/AppResolver.php;./conf/AppResolver.php')`  
  Путь к Application Resolver. Можно указать несколько через разделитель `";"`.  
  Будет загружен только первый найденный файл.
 
- - `add-include-path (string = null)`
-
+ - `add-include-path (string = null)`  
  Дополнительные пути для директивы [include_path](http://www.php.net/manual/ru/ini.core.php#ini.include-path).  
  Можно указать несколько через разделитель `":"`.
 
 #### Связанные с мастер-процессом
 
- - `mpm-delay (Time = '0.1s')`
-
+ - `mpm-delay (Time = '0.1s')`  
  Интервал между срабатываниями Мульти-Процессного Менеджера.  
  МПМ отвечает за запуск/выключение рабочих процессов, согласно настройкам.
 
- - `start-workers (Number = 4)`
-
+ - `start-workers (Number = 4)`  
  Кол-во рабочих процессов при запуске демона.
 
- - `min-workers (Number = 4)`
-
+ - `min-workers (Number = 4)`  
  Минимальное допустимое кол-во рабочих процессов.
 
- - `max-workers (Number = 8)`
-
+ - `max-workers (Number = 8)`  
  Максимальное допустимое кол-во рабочих процессов.
 
- - `min-spare-workers (Number = 2)`
-
+ - `min-spare-workers (Number = 2)`  
  Минимальное количество простаивающих рабочих процессов: phpDaemon запустит дополнительный рабочие процессы когда нагрузка увеличится, чтобы простаивающих рабочих процессов было достаточно. Сверху ограничивается параметром max-workers.
 
- - `max-spare-workers (Number = 0)`
-
+ - `max-spare-workers (Number = 0)`  
  Максимальное кол-во простаивающих рабочих процессов. phpDaemon выключит дополнительные рабочие процессы когда нагрузка спадёт.
 
- - `master-priorty (Number = 100)`
-
+ - `master-priorty (Number = 100)`  
  Приоритет мастер-процесса. Чем меньше значение, тем выше приоритет.
 
- - `ipc-thread-priority (Number = 100)`
-
+ - `ipc-thread-priority (Number = 100)`  
  Приоритет IPC процесса. Чем меньше значение, тем выше приоритет.
 
- - `worker-priority (Number = 4)`
-
+ - `worker-priority (Number = 4)`  
  Приоритет рабочего процесса. Чем меньше значение, тем выше приоритет.
 
- - `throw-exception-on-shutdown (boolean = false)`
-
+ - `throw-exception-on-shutdown (boolean = false)`  
  Выбрасывать исключение `Exception('event shutdown')` по завершению процесса.
 
 #### Запросы
 
- - `locale (string = '')`
-
+ - `locale (string = '')`  
  Устанавливает настройки локали. Можно указать несколько через разделитель `","`.
 
- - `ob-filter-auto (boolean = true)`
-
+ - `ob-filter-auto (boolean = true)`  
  Включить стандартный `ob_` фильтр.
 
 #### Рабочие процессы
 
- - `chroot (string = '/')`
-
+ - `chroot (string = '/')`  
  Смена системного корня для рабочих процессов.
 
- - `cwd (string = '.')`
-
+ - `cwd (string = '.')`  
  Задание рабочей директории для рабочих процессов.
 
- - `user (string = null)`
-
+ - `user (string = null)`  
  Пользователь для рабочих процессов. Используйте безопасного пользователя, не используйте root, если не знаете что делаете.
 
- - `group (string = null)`
-
+ - `group (string = null)`  
  Группа для рабочих процессов. Используйте безопасную группу, не используйте root, если не знаете что делаете.
 
- - `auto-gc (Number = '1k')`
-
+ - `auto-gc (Number = '1k')`  
  Включает сборщик мусора вызываемый каждые n запросов. `0` – выключает совсем.
 
-#### Логирование и отладка
+#### Журналирование и отладка
 
- - `logging (boolean = true)`
+ - `logging (boolean = true)`  
+ Включает журналирование.
 
- Включает логирование.
+ - `log-storage (string = '/var/log/phpdaemon.log')`  
+ Путь к файлу журнала.
 
- - `log-storage (string = '/var/log/phpdaemon.log')`
+ - `log-errors (boolean = true)`  
+ Включает журналирование локальных ошибок таких как Undefined route in WebSocketServer, и т.д.
 
- Путь к лог-файлу.
+ - `log-worker-set-state (boolean = false)`  
+ Включает журналирование смены состояния рабочего процесса
 
- - `log-errors (boolean = true)`
+ - `log-events (boolean = false)`  
+ Включает журналирование событий
 
- Включает логирование локальных ошибок таких как Undefined route in WebSocketServer, и т.д.
+ - `log-signals (boolean = false)`  
+ Включает журналирование SYSCTL сигналов.
 
- - `log-worker-set-state (boolean = false)`
-
- Включает логирование смены состояния рабочего процесса
-
- - `log-events (boolean = false)`
-
- Включает логирование событий
-
- - `log-signals (boolean = false)`
-
- Включает логирование SYSCTL сигналов.
-
- - `verbose-tty (boolean = false)`
-
+ - `verbose-tty (boolean = false)`  
  Если true, STDIN, STDOUT и STDERR не будут закрыты.
 
- - `restrict-error-control (boolean = false)`
-
+ - `restrict-error-control (boolean = false)`  
  Выключает оператор управления ошибками `"@"`.
 
 #### Подсистема ввода-вывода POSIX
 
- - `eio-enabled (boolean = true)`
-
+ - `eio-enabled (boolean = true)`  
  Включает поддержку EIO.
 
- - `eio-set-max-idle (Time = null)`
-
+ - `eio-set-max-idle (Time = null)`  
  Устанавливает максимальное количество ожидающих потоков.
 
- - `eio-set-min-parallel (Number = null)`
-
+ - `eio-set-min-parallel (Number = null)`  
  Устанавливает минимальное количество параллельных потоков.
 
- - `eio-set-max-parallel (Number = null)`
-
+ - `eio-set-max-parallel (Number = null)`  
  Устанавливает максимальное количество параллельных потоков.
 
- - `eio-set-max-poll-reqs (Number = null)`
-
+ - `eio-set-max-poll-reqs (Number = null)`  
  Устанавливает максимальное количество обрабатываемых запросов.
 
- - `eio-set-max-poll-time (Time = null)`
-
+ - `eio-set-max-poll-time (Time = null)`  
  Устанавливает максимальное время выполнения.
 
 ### Приложения
