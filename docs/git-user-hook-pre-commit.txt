@@ -1,0 +1,11 @@
+#!/bin/sh
+
+cd docs
+python ./backdoc.py -t "Документация &laquo; phpDaemon" --source ./ru/index.md > ./ru/index.html
+RETVAL=$?
+
+if [ $RETVAL -ne 0 ]
+then
+	echo "Ошибка компиляции index.html"
+	exit 1
+fi

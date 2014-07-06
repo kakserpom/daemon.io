@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd docs
+python ./backdoc.py -t "Документация &laquo; phpDaemon" --source ./ru/index.md > ./ru/index.html
