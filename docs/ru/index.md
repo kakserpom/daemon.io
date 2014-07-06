@@ -609,12 +609,12 @@ And add phpd-1.0 to autoload:
         expose 0;
     }
 
-### HTTP
+### servers/http # HTTP
 
 #### Опции
 
  - `listen (string = 'tcp://0.0.0.0')`  
- Прослушиваемые сервером адреса. Можно указать несколько через разделитель `","`.
+ Прослушиваемые сервером адреса. Можно указать несколько через разделитель&nbsp;`","`.
 
  - `port (int = 80)`  
 
@@ -622,7 +622,7 @@ And add phpd-1.0 to autoload:
 
  - `send-file (boolean = false)`  
  Включает предварительную записью запроса в файл.
- Опция будет игнорироваться если передан параметр server['DONT_USE_SENDFILE'].
+ Опция будет игнорироваться если передан параметр `server['DONT_USE_SENDFILE']`.
  @TODO описать зачем эта опция
 
  - `send-file-dir (string = '/dev/shm')`  
@@ -632,7 +632,7 @@ And add phpd-1.0 to autoload:
  Префикс для sendfile файлов.
 
  - `send-file-onlybycommand (boolean = false)`  
- Включать sendfile если передан server['USE_SENDFILE'].
+ Включать sendfile если передан `server['USE_SENDFILE']`.
 
  - `expose (boolean = true)`  
  Включать версию PHPDaemon в заголовке `X-Powered-By`.
