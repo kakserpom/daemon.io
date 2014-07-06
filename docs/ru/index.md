@@ -598,7 +598,66 @@ And add phpd-1.0 to autoload:
 ### Обработка запросов
 ### Клиенты и серверы
 ## Серверы
+
+Серверы предназначены для приема запросов и передачи их приложениям.
+
+Серверы должны быть записаны в конфиг с помощью приложения Pool, например:
+
+    Pool:Servers\HTTP {
+        listen "tcp://0.0.0.0";
+        port 80;
+        expose 0;
+    }
+
 ### HTTP
+
+#### Опции
+
+ - `listen (string = 'tcp://0.0.0.0')`  
+ Прослушиваемые сервером адреса. Можно указать несколько через разделитель `","`.
+
+ - `port (int = 80)`  
+
+ Прослушиваемый порт.
+
+ - `send-file (boolean = false)`  
+ Включает предварительную записью запроса в файл.
+ Опция будет игнорироваться если передан параметр server['DONT_USE_SENDFILE'].
+ @TODO описать зачем эта опция
+
+ - `send-file-dir (string = '/dev/shm')`  
+ Директория для sendfile. 
+
+ - `send-file-prefix (string = 'http-')`  
+ Префикс для sendfile файлов.
+
+ - `send-file-onlybycommand (boolean = false)`  
+ Включать sendfile если передан server['USE_SENDFILE'].
+
+ - `expose (boolean = true)`  
+ Включать версию PHPDaemon в заголовке `X-Powered-By`.
+
+ - `keepalive (Time = '0s')`  
+ Время keepalive.
+
+ - `chunksize (Size = '8k')`  
+ Размер чанка.
+
+ - `defaultcharset (string = 'utf-8')`  
+ Кодировка по-умолчанию.
+
+ - `wss-name (string = '')`  
+@TODO wss-nam
+
+ - `fps-name (string = '')`  
+ @TODO fps-name
+
+ - `upload-max-size (Size = ini_get('upload_max_filesize'))`  
+ Максимальный размер загружаемого файла.
+
+ - `responder (string = null)`  
+ Имя приложения по-умолчанию для обработки запросов с данного сервера.
+
 ### FastCGI
 ### DebugConsole
 ### FlashPolicy
