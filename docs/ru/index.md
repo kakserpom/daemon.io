@@ -603,27 +603,55 @@ And add phpd-1.0 to autoload:
 
 Серверы должны быть записаны в конфиг с помощью приложения Pool, например:
 
-    Pool:Servers\HTTP {
-        listen "tcp://0.0.0.0";
-        port 80;
-        expose 0;
+    # контекст для ssl соединения (опционально)
+    TransportContext:myContext {
+        ssl;
+        certFile "/path/to/cert.pem";
+        pkFile "/path/to/privkey.pem";
+        passphrase "";
+        verifyPeer true;
+        allowSelfSigned true;
     }
+    
+    # слушаем 80 и 443 порт
+    Pool:HTTPServer {
+        listen "tcp://0.0.0.0:80", "tcp://0.0.0.0:443##myContext";
+        port 80;
+        privileged;
+        maxconcurrency 1;
+    }
+
+### Опции
+
+Ниже перечислены опции для всех серверов
+
+ - `listen (string = 'tcp://0.0.0.0')`  
+ Прослушиваемые сервером адреса. Можно указать несколько через разделитель&nbsp;`","`.
+
+ - privileged  
+ @TODO
+ - max-concurrency  
+ @TODO
+ - max-allowed-packet  
+ @TODO
+ - connection-class  
+ @TODO
+ - name  
+ @TODO
+ - allowed-clients  
+ @TODO
 
 ### servers/http # HTTP
 
 #### Опции
-
- - `listen (string = 'tcp://0.0.0.0')`  
- Прослушиваемые сервером адреса. Можно указать несколько через разделитель&nbsp;`","`.
 
  - `port (int = 80)`  
 
  Прослушиваемый порт.
 
  - `send-file (boolean = false)`  
- Включает предварительную записью запроса в файл.
+ Оптимизирует обработку запросов, предварительно записывая их в файл.
  Опция будет игнорироваться если передан параметр `server['DONT_USE_SENDFILE']`.
- @TODO описать зачем эта опция
 
  - `send-file-dir (string = '/dev/shm')`  
  Директория для sendfile. 
@@ -647,10 +675,10 @@ And add phpd-1.0 to autoload:
  Кодировка по-умолчанию.
 
  - `wss-name (string = '')`  
-@TODO wss-nam
+ Имя пула WebSocket-сервера, куда направлять WebSocket-соединения.
 
  - `fps-name (string = '')`  
- @TODO fps-name
+ Имя пула FlashPolicy-сервера, куда адресовать FlashPolicy-соединения.
 
  - `upload-max-size (Size = ini_get('upload_max_filesize'))`  
  Максимальный размер загружаемого файла.
