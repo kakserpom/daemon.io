@@ -1,4 +1,4 @@
-## PHPDaemon
+## phpdaemon # PHPDaemon
 
 Это асинхронный модульный демон-фреймворк, который берёт на&#160;себя обработку I/O (libevent) и&#160;другие низкоуровневые задачи, присущие сетевым демонам.
 С&#160;его помощью легко писать правильные и&#160;очень быстрые сетевые приложения.
@@ -10,7 +10,7 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 Обсудить проект можно&#160;в [Google Groups](http://groups.google.com/group/phpdaemon).  
 [Багтрекер](https://github.com/kakserpom/phpdaemon/issues).
 
-## Основы
+## basics # Основы
 
 PHPDaemon представляет из&#160;себя один мастер-процесс с&#160;несколькими рабочими процессами.
 
@@ -24,9 +24,9 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 Вы можете создать свой исполняющий файл, как показано в примере `./bin/sampleapp`.
 Перед запуском демон проверяет переменную `$configFile`, используя её для загрузки конфигурации.
 
-## Установка
+## install # Установка
 
-### Требования
+### install/requirements # Требования
 
  - `PHP` версии не ниже 5.4;
  - Модули `posix`, `pcntl`, `socket`, `shmop`;
@@ -39,7 +39,7 @@ PHPDaemon представляет из&#160;себя один мастер-пр
  - `pecl-proctitle` для именования процессов в&#160;понятные названия: &#171;phpd: worker process&#187; (для PHP версии ниже 5.5);
  - `pecl-inotify` для мониторинга файловой системы.
 
-### Исходный код
+### install/sources # Исходный код
 
 Вы можете клонировать PHPDaemon репозиторий  
 $&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git`
@@ -50,7 +50,7 @@ $&nbsp;`wget https://github.com/kakserpom/phpdaemon/archive/master.zip`
 Установите необходимые модули  
 $&nbsp;`pecl install event eio proctitle inotify`
 
-### Composer
+### install/composer # Composer
 
 Добавьте раздел в ваш composer.json
 
@@ -60,7 +60,7 @@ $&nbsp;`pecl install event eio proctitle inotify`
 
 Подробная информации о пакете на [packagist.org](https://packagist.org/packages/kakserpom/phpdaemon).
 
-### CentOS/RedHat
+### install/redhat # CentOS/RedHat
 
 Для начала необходимо установить все сопутстсующие утилиты.  
 $&nbsp;`sudo yum install -y git gcc openssl-devel libevent`
@@ -127,7 +127,7 @@ $&nbsp;`sudo phpd start --verbose-tty=1`
 
 Поздравляем! PHPDaemon запущен!
 
-### Ubuntu
+### install/ubuntu # Ubuntu
 
 Для начала необходимо установить все сопутстсующие утилиты.  
 $&nbsp;`sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git libevent`
@@ -188,7 +188,7 @@ $&nbsp;`sudo phpd start --verbose-tty=1`
 $&nbsp;`echo "alias phpd='/opt/phpdaemon/bin/phpd'" >> ~/.bashrc'`
 $&nbsp;`echo "alias sudo='sudo /opt/phpdaemon/bin/phpd'" >> ~/.bashrc'`
 
-### Gentoo
+### install/gentoo # Gentoo
 
 Вы можете установить PHPDaemon с помощью [layman overlay](https://github.com/lexa-uw/layman-phpdaemon).
 
@@ -244,7 +244,7 @@ And add phpd-1.0 to autoload:
     $ rc-update add phpd-1.0 default
      * service phpd added to runlevel default
 
-## Управление
+## control # Управление
 
 <table class="invis">
   <tr>
@@ -301,11 +301,11 @@ And add phpd-1.0 to autoload:
   </tr>
 </table>
 
-## Примеры
+## examples # Примеры
 
 Примеры
 
-## Маршрутизация
+## app_resolver # Маршрутизация
 
 Получая запросы демон первым делом должен определить какому приложению он&#160;должен передать обработку.
 Для этого служит метод `getRequestRoute` в&#160;классе `AppResolver` [[GitHub](https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/AppResolver.php#L159)].
@@ -327,13 +327,13 @@ And add phpd-1.0 to autoload:
 
 В&#160;настройках [сервера](#serveryi), принимающего запросы, с&#160;помощью опции `responder` можно указать имя приложения по-умолчанию, которому будет передан запрос, если `getRequestRoute` вернул `null`.
 
-## Конфигурация
+## config # Конфигурация
 
-### Типы данных
+### config/types # Типы данных
 
 Большинство опций phpdaemon описывается своими типами данных, позволяющие указывать значения расширенным форматом.
 
-#### Size
+#### config/types/size # Size
 Предназначен для записи объема информации. Можно записать в виде целого числа или целого числа с постфиксом.
 
 Формат записи: `int [bBkKmMgG]?`
@@ -357,7 +357,7 @@ And add phpd-1.0 to autoload:
 || 1M || 1048576 ||
 -->
 
-#### Time
+#### config/types/time # Time
 Предназначен для записи количества секунд. Число может быть с плавающей точкой с использованием только символа `"."`.
 
 Формат записи: `float [smhd]?` или `(float [smhd])+`
@@ -378,7 +378,7 @@ And add phpd-1.0 to autoload:
 || 1d 15m 32s || 87332 ||
 -->
 
-#### Number
+#### config/types/number # Number
 Предназначен для записи чисел.
 
 Формат записи: `int [kKmMgG]?`
@@ -397,7 +397,7 @@ And add phpd-1.0 to autoload:
 -->
 
 
-### Глобальные опции
+### config/variables # Глобальные опции
 
 Два способа установки опций:
 
@@ -408,7 +408,7 @@ And add phpd-1.0 to autoload:
 
 ***
  
-#### Плавный перезапуск рабочих процессов
+#### config/variables/graceful_restart # Плавный перезапуск рабочих процессов
  
  - `max-requests (Number = '10k')`
   
@@ -429,7 +429,7 @@ And add phpd-1.0 to autoload:
  - `auto-reimport (boolean = false)`  
  На лету импортирует методы и функции из измененных файлов с помощью runkit, без перезагрузки рабочего процесса.
  
-#### Основные пути
+#### config/variables/pathes # Основные пути
 
  - `pid-file (string = '/var/run/phpd.pid')`  
  Путь к pid-файлу. Убедитесь что имеется доступ на запись.
@@ -446,7 +446,7 @@ And add phpd-1.0 to autoload:
  Дополнительные пути для директивы [include_path](http://www.php.net/manual/ru/ini.core.php#ini.include-path).  
  Можно указать несколько через разделитель `":"`.
 
-#### Связанные с мастер-процессом
+#### config/variables/master # Связанные с мастер-процессом
 
  - `mpm-delay (Time = '0.1s')`  
  Интервал между срабатываниями Мульти-Процессного Менеджера.  
@@ -479,7 +479,7 @@ And add phpd-1.0 to autoload:
  - `throw-exception-on-shutdown (boolean = false)`  
  Выбрасывать исключение `Exception('event shutdown')` по завершению процесса.
 
-#### Запросы
+#### config/variables/requests # Запросы
 
  - `locale (string = '')`  
  Устанавливает настройки локали. Можно указать несколько через разделитель `","`.
@@ -487,7 +487,7 @@ And add phpd-1.0 to autoload:
  - `ob-filter-auto (boolean = true)`  
  Включить стандартный `ob_` фильтр.
 
-#### Рабочие процессы
+#### config/variables/workers # Рабочие процессы
 
  - `chroot (string = '/')`  
  Смена системного корня для рабочих процессов.
@@ -504,7 +504,7 @@ And add phpd-1.0 to autoload:
  - `auto-gc (Number = '1k')`  
  Включает сборщик мусора вызываемый каждые n запросов. `0` – выключает совсем.
 
-#### Журналирование и отладка
+#### config/variables/logging # Журналирование и отладка
 
  - `logging (boolean = true)`  
  Включает журналирование.
@@ -532,7 +532,7 @@ And add phpd-1.0 to autoload:
  - `restrict-error-control (boolean = false)`  
  Выключает оператор управления ошибками `"@"`.
 
-#### Подсистема ввода-вывода POSIX
+#### config/variables/eio # Подсистема ввода-вывода POSIX
 
  - `eio-enabled (boolean = true)`  
  Включает поддержку EIO.
@@ -552,15 +552,15 @@ And add phpd-1.0 to autoload:
  - `eio-set-max-poll-time (Time = null)`  
  Устанавливает максимальное время выполнения.
 
-### Приложения
+### config/application # Приложения
 
 
 
-## Разработка
-### Приложение
-### Обработка запросов
-### Клиенты и серверы
-## Серверы
+## development # Разработка
+### development/app_instance # Приложение
+### development/request # Обработка запросов
+### development/servers_clients # Серверы и клиенты
+## servers # Серверы
 
 Серверы предназначены для приема запросов и передачи их приложениям.
 
@@ -584,7 +584,7 @@ And add phpd-1.0 to autoload:
         maxconcurrency 1;
     }
 
-### Опции серверов
+### servers/variables #  Опции серверов
 
 Ниже перечислены опции для всех серверов
 
@@ -611,10 +611,9 @@ And add phpd-1.0 to autoload:
 
 ### servers/http # HTTP
 
-#### Опции
+#### servers/http/variables # Опции
 
  - `port (int = 80)`  
-
  Прослушиваемый порт.
 
  - `send-file (boolean = false)`  
@@ -654,67 +653,67 @@ And add phpd-1.0 to autoload:
  - `responder (string = null)`  
  Имя приложения по-умолчанию для обработки запросов с данного сервера.
 
-### FastCGI
-### DebugConsole
-### FlashPolicy
-### Ident
-### IRCBouncer
-### Lock
-### Socks
-### WebSocket
-## Клиенты
-### Asterisk
-### DNS
-### Gibson
-### HTTP
-### ICMP
-### IRC
-### Lock
-### Memcache
-### Mongo
-### MySQL
-### PostgreSQL
-### Redis
-### Valve
-### WebSocket
-### XMPP
-## Библиотеки
-### Cache
-### ComplexJob
-### ShellCommand
-### Timer
-### TransportContext
-### DNode
-### FS
-### PubSub
-## Утилиты
-### Binary
-### Crypt
-### DateTime
-### Encoding
-### IRC
-### MIME
-### ShmEntity
-### Terminal
-## Структуры
-### ObjectStorage
-### PriorityQueueCallbacks
-### StackCallbacks
-## Traits
-### ClassWatchdog
-### DeferredEventHandlers
-### EventHandlers
-### Sessions
-### StaticObjectWatchdog
-### StrictStaticObjectWatchdog
-## Network
-### Client
-### ClientConnection
-### Connection
-### IOStream
-### Pool
-### Server
-## FAQ
-## Публикации
-## Фьючерсы
-## Разработчики
+### servers/fastcgi # FastCGI
+### servers/debugconsole # DebugConsole
+### servers/flashpolicy # FlashPolicy
+### servers/ident # Ident
+### servers/ircbouncer # IRCBouncer
+### servers/lock # Lock
+### servers/socks # Socks
+### servers/websocket # WebSocket
+## clients # Клиенты
+### clients/asterisk # Asterisk
+### clients/dns # DNS
+### clients/gibson # Gibson
+### clients/http # HTTP
+### clients/icmp # ICMP
+### clients/irc # IRC
+### clients/lock # Lock
+### clients/memcache # Memcache
+### clients/mongo # Mongo
+### clients/mysql # MySQL
+### clients/postgresql # PostgreSQL
+### clients/redis # Redis
+### clients/valve # Valve
+### clients/websocket # WebSocket
+### clients/xmpp # XMPP
+## libraries # Библиотеки
+### libraries/cache # Cache
+### libraries/complexjob # ComplexJob
+### libraries/shellcommand # ShellCommand
+### libraries/timer # Timer
+### libraries/transportcontext # TransportContext
+### libraries/dnode # DNode
+### libraries/fs # FS
+### libraries/pubsub # PubSub
+## utils # Утилиты
+### utils/binary # Binary
+### utils/crypt # Crypt
+### utils/datetime # DateTime
+### utils/encoding # Encoding
+### utils/irc # IRC
+### utils/mime # MIME
+### utils/shmentity # ShmEntity
+### utils/terminal # Terminal
+## structures # Структуры
+### structures/objectstorage # ObjectStorage
+### structures/priorityqueuecallbacks # PriorityQueueCallbacks
+### structures/stackcallbacks # StackCallbacks
+## traits # Traits
+### traits/classwatchdog # ClassWatchdog
+### traits/deferredeventhandlers # DeferredEventHandlers
+### traits/eventhandlers # EventHandlers
+### traits/sessions # Sessions
+### traits/staticobjectwatchdog # StaticObjectWatchdog
+### traits/strictstaticobjectwatchdog # StrictStaticObjectWatchdog
+## network # Network
+### network/client # Client
+### network/clientconnection # ClientConnection
+### network/connection # Connection
+### network/iostream # IOStream
+### network/pool # Pool
+### network/server # Server
+## faq # FAQ
+## publications # Публикации
+## futures # Фьючерсы
+## developers # Разработчики
