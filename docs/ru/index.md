@@ -79,12 +79,15 @@ $&nbsp;`sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rp
 $&nbsp;`sudo yum --enablerepo=remi,remi-test install -y php-cli php-devel php-pear php-process`
 
 Далее устанавливаем pecl модули.  
+$&nbsp;`sudo -i`  
 $&nbsp;`pecl install event eio`
 
 В PHP отсутсвует контроль подгрузки модулей. Для корректной работы модуля event и eio необходим модуль sockets.
 В системах RedHat/CentOS модули подгружаются в порядке названия, поэтому назовем конфиги этих модулей как z-event.ini и z-eio.ini соответсвенно.  
 $&nbsp;`echo "extension=event.so" > /etc/php.d/z-event.ini`
 $&nbsp;`echo "extension=eio.so" > /etc/php.d/z-eio.ini`
+
+`Ctrl + D` - выходим из sudo
 
 Установите `date.timezone` в /etc/php.ini в соответствие с временной зоной сервера.
 Раскомментируйте и отредактируйте строку `;date.timezone = ` (например, `date.timezone = Europe/Moscow`)  
@@ -133,6 +136,7 @@ $&nbsp;`sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git libe
 $&nbsp;`sudo apt-get install php5-cli php5-dev php-pear`
 
 Далее устанавливаем pecl модули.  
+$&nbsp;`sudo -i`  
 $&nbsp;`pecl install event eio`  
 $&nbsp;`echo "extension=event.so" > /etc/php5/mods-available/event.ini`  
 $&nbsp;`echo "extension=eio.so" > /etc/php5/mods-available/eio.ini`
@@ -140,6 +144,8 @@ $&nbsp;`echo "extension=eio.so" > /etc/php5/mods-available/eio.ini`
 Создаем ссылки
 $&nbsp;`ln -s /etc/php5/mods-available/event.ini /etc/php5/cli/conf.d/event.ini`  
 $&nbsp;`ln -s /etc/php5/mods-available/eio.ini /etc/php5/cli/conf.d/eio.ini`
+
+`Ctrl + D` - выходим из sudo
 
 Подготовим директорию для установки PHPDaemon.  
 $&nbsp;`sudo mkdir /opt/phpdaemon`
