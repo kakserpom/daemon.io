@@ -410,8 +410,7 @@ And add phpd-1.0 to autoload:
  
 #### config/variables/graceful_restart # Плавный перезапуск рабочих процессов
  
- - `max-requests (Number = '10k')`
-  
+ - `max-requests (Number = '10k')`  
  Максимальное количество запросов перед перезапуском рабочего процесса.
  `0` – неограничено.
  
@@ -608,6 +607,31 @@ And add phpd-1.0 to autoload:
 
  - allowed-clients  
  @TODO
+
+ - ssl
+ @TODO
+
+ - cert-file
+ @TODO
+
+ - pk-file
+ @TODO
+
+ - passphrase
+ @TODO
+
+ - verify-peer
+ @TODO
+
+ - allow-self-signed
+ @TODO
+
+ - verify-depth
+ @TODO
+
+ - ca-file
+ @TODO
+
 
 ### servers/http # HTTP
 
