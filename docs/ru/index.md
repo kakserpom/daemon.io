@@ -109,6 +109,7 @@ $&nbsp;`cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf`
 $&nbsp;`ln -s /opt/phpdaemon/bin/phpd /usr/bin/phpd`
 
 Пробуем запустить демон.  
+
 $&nbsp;`sudo phpd start --verbose-tty=1`
 
 Опция `--verbose-tty=1` указывет демону выводить лог в терминал.
