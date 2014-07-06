@@ -608,8 +608,8 @@ And add phpd-1.0 to autoload:
  - allowed-clients  
  @TODO
 
- - ssl
- @TODO
+ - ssl  
+ Включает ssl.
 
  - cert-file
  @TODO
