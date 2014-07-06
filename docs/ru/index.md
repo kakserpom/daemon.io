@@ -621,7 +621,7 @@ And add phpd-1.0 to autoload:
         maxconcurrency 1;
     }
 
-### Опции
+### Опции серверов
 
 Ниже перечислены опции для всех серверов
 
@@ -630,14 +630,19 @@ And add phpd-1.0 to autoload:
 
  - privileged  
  @TODO
+
  - max-concurrency  
  @TODO
+
  - max-allowed-packet  
  @TODO
+
  - connection-class  
  @TODO
+
  - name  
  @TODO
+
  - allowed-clients  
  @TODO
 
