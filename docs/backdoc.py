@@ -2463,7 +2463,7 @@ class BackDoc(object):
 
 if __name__ == '__main__':
     BackDoc(
-        markdown_converter=Markdown(extras=['toc','wiki-tables']), 
+        markdown_converter=Markdown(extras=['toc','wiki-tables','code-friendly']), 
         template_html=template_html,
         stdin=sys.stdin,
         stdout=sys.stdout
