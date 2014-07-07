@@ -15,7 +15,7 @@ li ul, li ol{
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin-top: 1em;
+    margin-top: 1.5em;
 }
 
 .nowrap,
@@ -171,7 +171,8 @@ pre {
     width: 100%;
 }
 
-code {
+code,
+.code_emul {
     padding: 0px 3px;
     color: #333;
     background: #fff;
