@@ -741,7 +741,7 @@ And add phpd-1.0 to autoload:
 ##### Опции по-умолчанию
 
  - `port (int = 80)`
- - `sslport (int = 443)`
+ - `ssl-port (int = 443)`
  - `expose (boolean = true)`
 
 ##### Методы
@@ -751,6 +751,7 @@ And add phpd-1.0 to autoload:
 
    -! param `$url` – строка c полным url или массив параметров.
    -! param `$params` - callback функция или массив @TODO.
+   -! callback function(Connection $conn, boolean $success).
    -! return `void`;
 
  - `public function post(string|array $url, array $data = [], callable|array $params)`  
@@ -759,7 +760,20 @@ And add phpd-1.0 to autoload:
    -! param `$url` – строка c полным url или массив параметров.
    -! param `$data` - массив данных.
    -! param `$params` - callback функция или массив @TODO.
+   -! callback function(Connection $conn, boolean $success).
    -! return `void`;
+
+ - `public static function buildUrl(string|array $mixed)`  
+ Преобразует массив `$mixed` в ссылку. @TODO lol
+
+   -! param `$mixed` - массив параметров url.
+   -! return `string`;
+
+ - `public static function prepareUrl(string|array $mixed)`  
+ Преобразует массив `$mixed` в нормализованный массив. @TODO дабл lol
+
+   -! param `$mixed` - массив параметров url.
+   -! return `string`;
 
 ### clients/icmp # ICMP
 ### clients/irc # IRC
