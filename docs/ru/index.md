@@ -406,34 +406,42 @@ And add phpd-1.0 to autoload:
 
 > Параметры командной строки имеют больший приоритет.
 
+#### config/variables/file # Конфигурационный файл
+
 Формат записи опций следующий:  
 `название-опции;` или `название-опции значение;`
 
-Значение может отсутствовать, что приравнивется к `bool(true)`, или `значение` может быть записано следующими способами:
+`название-опции` не чувствительно к регистру и использованию знака дефиса&nbsp;`"-"`.
+Следующие варианты написания равнозначны:
+
+ - `add-include-path`;
+ - `addincludepath`;
+ - `addIncludePath`;
+ - `ADDInclude-path`.
+
+Значение может отсутствовать, что приравнивется к `bool(true)`, либо может быть записано следующими способами:
 
  - null; приравнивется к true;
  - булевым выражением false или true;
  - целым числом;
- - числом с плаающей точкой;
- - строкой; если в строке присутствует символ пробела `" "` или запятая `","`, то строку необходимо обернуть одинарными или двойными кавычками;
+ - числом с плавающей точкой;
+ - строкой; если в строке присутствует символ пробела&nbsp;`" "` или запятая&nbsp;`","`, то строку необходимо обернуть одинарными или двойными кавычками;
  - массивом.
 
-Для записи массива используется разделитель пробел `" "` или запятая `","`. В одном выражении можно использовать оба разделителя одновременно.
+Для записи массива используется разделитель пробел&nbsp;`" "` или запятая&nbsp;`","`. В одном выражении можно использовать оба разделителя одновременно.
 
-Примеры:
-
-|| **Опция** || **вывод var_dump** ||
-|| var null; || bool(true) ||
-|| var true; || bool(true) ||
-|| var false; || bool(false) ||
-|| var 0; || int(0) ||
-|| var 1; || int(1) ||
-|| var 3.14; || float(3.14) ||
-|| var "3.14"; || string(4) "3.14" ||
-|| var "пример. длинной строки,второй пример"; || string(67) "пример. длинной строки,второй пример" ||
-|| var пример. длинной строки,второй пример; || array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(13) "пример."<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(14) "длинной"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "строки"<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "второй"<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "пример"<br>} ||
-
-***
+|| **Пример опции** || **Вывод var_dump** ||
+|| var-name; || bool(true) ||
+|| var-name null; || NULL ||
+|| var-name true; || bool(true) ||
+|| var-name false; || bool(false) ||
+|| var-name 0; || int(0) ||
+|| var-name 1; || int(1) ||
+|| var-name 3.14; || float(3.14) ||
+|| var-name "3.14"; || string(4) "3.14" ||
+|| var-name "пример. длинной строки,второй пример"; || string(67) "пример. длинной строки,второй пример" ||
+|| var-name пример. длинной строки,второй пример; || array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(13) "пример."<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(14) "длинной"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "строки"<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "второй"<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "пример"<br>} ||
+|| var-name 1, 'a' null 3.14 'пару слов'; || array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;int(1)<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(1) "a"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;NULL<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;float(3.14)<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(17) "пару слов"<br>} ||
  
 #### config/variables/graceful_restart # Плавный перезапуск рабочих процессов
  
@@ -614,7 +622,7 @@ And add phpd-1.0 to autoload:
 
 В данном разделе перечислены опции, используемые всеми серверами.
 
- - `listen (string/array)`  
+ - `listen (string|array)`  
  Прослушиваемые сервером адреса. Можно указать несколько через разделитель&nbsp;`","`.
 
  - privileged  
