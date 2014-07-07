@@ -26,576 +26,35 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 
 ## install # Установка
 
-### install/requirements # Требования
+<!-- import install/requirements.md -->
 
- - `PHP` версии не ниже 5.4;
- - Модули `posix`, `pcntl`, `socket`, `shmop`;
- - `libevent 2`;
- - `pecl-event` версии не ниже 1.6.1;
+<!-- import install/sources.md -->
 
-Рекомендуется также установить:
+<!-- import install/composer.md -->
 
- - `pecl-eio` для увеличения проиводительности файловой системы;
- - `pecl-proctitle` для именования процессов в&#160;понятные названия: &#171;phpd: worker process&#187; (для PHP версии ниже 5.5);
- - `pecl-inotify` для мониторинга файловой системы.
+<!-- import install/redhat.md -->
 
-### install/sources # Исходный код
+<!-- import install/ubuntu.md -->
 
-Вы можете клонировать PHPDaemon репозиторий  
-$&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git`
+<!-- import install/gentoo.md -->
 
-Или скачать текущую версию в виде архива  
-$&nbsp;`wget https://github.com/kakserpom/phpdaemon/archive/master.zip`
 
-Установите необходимые модули  
-$&nbsp;`pecl install event eio proctitle inotify`
+<!-- import control.md -->
 
-### install/composer # Composer
 
-Добавьте раздел в ваш composer.json
+<!-- import examples.md -->
 
-    "require" : {
-        "kakserpom/phpdaemon" : "dev-master"
-    }
 
-Подробная информации о пакете на [packagist.org](https://packagist.org/packages/kakserpom/phpdaemon).
+<!-- import app_resolver.md -->
 
-### install/redhat # CentOS/RedHat
-
-Для начала необходимо установить все сопутстсующие утилиты.  
-$&nbsp;`sudo yum install -y git gcc openssl-devel libevent`
-
-Чтобы установить PHP 5.5 необходимо добавить Remi и Epel репозитории, потому что стандартный содержит старую версию.
-
-Для RHEL/CentOS 6.4-6.0 32 Bit.  
-$&nbsp;`sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm`  
-$&nbsp;`sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm`
-
-Для RHEL/CentOS 6.4-6.0 64 Bit.  
-$&nbsp;`sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm`  
-$&nbsp;`sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm`
-
-Устанавливаем PHP.  
-$&nbsp;`sudo yum --enablerepo=remi,remi-test install -y php-cli php-devel php-pear php-process`
-
-Далее устанавливаем pecl модули.  
-$&nbsp;`sudo -i`  
-$&nbsp;`pecl install event eio`
-
-В PHP отсутсвует контроль подгрузки модулей. Для корректной работы модуля event и eio необходим модуль sockets.
-В системах RedHat/CentOS модули подгружаются в порядке названия, поэтому назовем конфиги этих модулей как z-event.ini и z-eio.ini соответсвенно.  
-$&nbsp;`echo "extension=event.so" > /etc/php.d/z-event.ini`
-$&nbsp;`echo "extension=eio.so" > /etc/php.d/z-eio.ini`
-
-`Ctrl + D` - выходим из sudo
-
-Установите `date.timezone` в /etc/php.ini в соответствие с временной зоной сервера.
-Раскомментируйте и отредактируйте строку `;date.timezone = ` (например, `date.timezone = Europe/Moscow`)  
-$&nbsp;`sudo vi /etc/php.ini`
-
-Подготовим директорию для установки PHPDaemon.  
-$&nbsp;`sudo mkdir /opt/phpdaemon`  
-$&nbsp;`sudo chown [your user]:[your group] /opt/phpdaemon`  
-$&nbsp;`cd /opt/phpdaemon`
-
-Устанавливаем PHPDaemon.  
-$&nbsp;`cd /opt/phpdaemon`  
-$&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git ./`
-
-Создаем конфигурационный файл из примера.  
-$&nbsp;`cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf`
-
-Сделаем ссылку на phpd для удобного управления демоном  
-$&nbsp;`ln -s /opt/phpdaemon/bin/phpd /usr/bin/phpd`
-
-Пробуем запустить демон.  
-$&nbsp;`sudo phpd start --verbose-tty=1`
-
-Опция `--verbose-tty=1` указывет демону выводить журнал в терминал.
-
-Если вы видите что-то похожее на это:
-
-    [PHPD] Loaded config file: '/opt/phpdaemon/conf/phpd.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/ExampleJabberBot.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/FastCGI.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/FlashpolicyServer.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/HTTPServer.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/IdentServer.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/SSL-sample.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/WebSocketServer.conf'
-    [PHPD] [START] phpDaemon with pid-file '/var/run/phpd.pid' is running already (PID 28308)
-
-Поздравляем! PHPDaemon запущен!
-
-### install/ubuntu # Ubuntu
-
-Для начала необходимо установить все сопутстсующие утилиты.  
-$&nbsp;`sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git libevent`
-
-Устанавливаем PHP 5.5.  
-$&nbsp;`sudo apt-get install php5-cli php5-dev php-pear`
-
-Далее устанавливаем pecl модули.  
-$&nbsp;`sudo -i`  
-$&nbsp;`pecl install event eio`  
-$&nbsp;`echo "extension=event.so" > /etc/php5/mods-available/event.ini`  
-$&nbsp;`echo "extension=eio.so" > /etc/php5/mods-available/eio.ini`
-
-Создаем ссылки
-$&nbsp;`ln -s /etc/php5/mods-available/event.ini /etc/php5/cli/conf.d/event.ini`  
-$&nbsp;`ln -s /etc/php5/mods-available/eio.ini /etc/php5/cli/conf.d/eio.ini`
-
-`Ctrl + D` - выходим из sudo
-
-Подготовим директорию для установки PHPDaemon.  
-$&nbsp;`sudo mkdir /opt/phpdaemon`
-$&nbsp;`sudo chown [your user]:[your group] /opt/phpdaemon`  
-$&nbsp;`cd /opt/phpdaemon`
-
-Устанавливаем PHPDaemon.  
-$&nbsp;`cd /opt/phpdaemon`  
-$&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git ./`
-
-Создаем конфигурационный файл из примера.  
-$&nbsp;`cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf`
-
-Сделаем ссылку на phpd для удобного управления демоном  
-$&nbsp;`alias phpd='/opt/phpdaemon/bin/phpd'`
-
-Локальный алиас для sudo  
-$&nbsp;`alias sudo='sudo '`
-
-Пробуем запустить демон.  
-$&nbsp;`sudo phpd start --verbose-tty=1`
-
-Опция `--verbose-tty=1` указывет демону выводить журнал в терминал.
-
-Если вы видите что-то похожее на это:
-
-    [PHPD] Loaded config file: '/opt/phpdaemon/conf/phpd.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/ExampleJabberBot.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/FastCGI.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/FlashpolicyServer.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/HTTPServer.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/IdentServer.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/SSL-sample.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/WebSocketServer.conf'
-    [PHPD] [START] phpDaemon with pid-file '/var/run/phpd.pid' is running already (PID 28308)
-
-Поздравляем! PHPDaemon запущен!
-
-Добавим алиасы чтобы они были доступны после перезагрузки
-$&nbsp;`echo "alias phpd='/opt/phpdaemon/bin/phpd'" >> ~/.bashrc'`
-$&nbsp;`echo "alias sudo='sudo /opt/phpdaemon/bin/phpd'" >> ~/.bashrc'`
-
-### install/gentoo # Gentoo
-
-Вы можете установить PHPDaemon с помощью [layman overlay](https://github.com/lexa-uw/layman-phpdaemon).
-
-Добавьте ссылку в секцию overlays в файле layman.cfg:  
-`https://github.com/lexa-uw/layman-phpdaemon/blob/master/layman.xml`
-
-В итоге будет выглядеть примерно так:
-
-    overlays  : http://www.gentoo.org/proj/en/overlays/repositories.xml
-                https://github.com/lexa-uw/layman-phpdaemon/blob/master/layman.xml
-
-Выполняем команды  
-$&nbsp;`sudo layman -L`  
-$&nbsp;`sudo layman -a phpdaemon`  
-$&nbsp;`sudo emerge www-servers/phpdaemon`
-
-For example, below command install phpdaemon by version 0.4.1, 1.0_beta2 and weekly release.
-
-    $ sudo emerge "=www-servers/phpdaemon-0.4.1" "=www-servers/phpdaemon-1.0_beta2" "www-servers/phpdaemon"
-    These are the packages that would be merged, in order:
-    
-    Calculating dependencies... done!
-    [ebuild   R   ~] www-servers/phpdaemon-0.4.1:0.4::phpdaemon  USE="libevent -examples -runkit" 0 kB
-    [ebuild   R   ~] www-servers/phpdaemon-1.0_beta2:1.0::phpdaemon  USE="eio event -runkit" 0 kB
-    [ebuild   R   ~] www-servers/phpdaemon-20130907:weekly::phpdaemon  USE="eio event -runkit" 0 kB
-    ...
-
-After installation you can use "eselect phpdaemon set" tool for set up symlink for /usr/bin/phpd
-
-    $ sudo eselect phpdaemon list
-    Available phpdaemon targets:
-      [1]   phpd0.4
-      [2]   phpd1.0
-      [3]   phpdweekly
-    $ sudo eselect phpdaemon set 3
-    $ sudo eselect phpdaemon show
-    Current phpdaemon:
-      weekly
-
-Add phpdaemon to autoload:
-
-    $ rc-update add phpd default
-     * service phpd added to runlevel default
-
-Add sepatare init.d scripts for different versions:
-
-    $ ln -s /etc/init.d/phpd /etc/init.d/phpd-0.4
-    $ ln -s /etc/init.d/phpd /etc/init.d/phpd-1.0
-    $ ln -s /etc/init.d/phpd /etc/init.d/phpd-weekly
-
-And add phpd-1.0 to autoload:
-
-    $ rc-update add phpd-1.0 default
-     * service phpd added to runlevel default
-
-## control # Управление
-
-<table class="invis">
-  <tr>
-    <td class="nowrap">$ <code>phpd start</code></td>
-    <td>Запуск демона</td>
-  </tr>
-  <tr>
-    <td class="nowrap">$ <code>phpd stop</code></td>
-    <td>Остановка демона<br><code>SYSCTL: SIGTERM, SIGQUIT</code></td>
-  </tr>
-  <tr>
-    <td class="nowrap">$ <code>phpd hardstop</code></td>
-    <td>Принудительная остановка демона<br><code>SYSCTL: SIGINT, SIGKILL</code></td>
-  </tr>
-  <tr>
-    <td class="nowrap">$ <code>phpd update</code></td>
-    <td>Обновление конфигурации<br><code>SYSCTL: SIGHUP</code></td>
-  </tr>
-  <tr>
-    <td class="nowrap">$ <code>phpd reload</code></td>
-    <td>Плавный перезапуск всех рабочих процессов<br><code>SYSCTL: SIGUSR2</code></td>
-  </tr>
-  <tr>
-    <td class="nowrap">$ <code>phpd reopenlog</code></td>
-    <td>Переоткрытие журналов<br><code>SYSCTL: SIGUSR1</code></td>
-  </tr>
-  <tr>
-    <td class="nowrap">$ <code>phpd restart</code></td>
-    <td>Плавный перезапуск демона</td>
-  </tr>
-  <tr>
-    <td class="nowrap">$ <code>phpd hardrestart</code></td>
-    <td>Принудительный перезапуск демона</td>
-  </tr>
-  <tr>
-    <td class="nowrap">$ <code>phpd status</code></td>
-    <td>Вывод статуса демона</td>
-  </tr>
-  <tr>
-    <td class="nowrap">$ <code>phpd fullstatus</code></td>
-    <td>Вывод подробной информации работы демона</td>
-  </tr>
-  <tr>
-    <td class="nowrap">$ <code>phpd configtest</code></td>
-    <td>Вывод глобальных опций. В скобках будет указано значение по-умочанию.</td>
-  </tr>
-  <tr>
-    <td class="nowrap">$ <code>phpd log [-n K]</code></td>
-    <td>Вывод журнала в реальном времени с помощью команды <code>tail -f</code>. C параметром <code>-n K</code> выводится K последних строк. Или используйте <code>-n +K</code> для вывода строк, начиная с K.</td>
-  </tr>
-  <tr>
-    <td class="nowrap">$ <code>phpd runworker</code></td>
-    <td>Запуск рабочего процесса без мастер-процесса. Используется для отладки.</td>
-  </tr>
-</table>
-
-## examples # Примеры
-
-Примеры
-
-## app_resolver # Маршрутизация
-
-Получая запросы демон первым делом должен определить какому приложению он&#160;должен передать обработку.
-Для этого служит метод `getRequestRoute` в&#160;классе `AppResolver` [[GitHub](https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/AppResolver.php#L159)].
-
-Вы&#160;можете определить свой обработчик, пример которого лежит в `./conf/AppResolver.php` [[GitHub](https://github.com/kakserpom/phpdaemon/blob/master/conf/AppResolver.php)].
-
-Метод `getRequestRoute` принимает два параметра:
-
- - `$req` &#8212; объект `stdClass`, с&#160;параметрами запроса;
- - `$upstream` &#8212; объект сервера, принимающий входящие запросы, например `PHPDaemon\Servers\HTTP\Connection`.
-
-Результатом работы может быть:
-
- - Имя приложения;
- - `null` для попытки передать запрос приложению по-умолчанию;
- - `false` для завершения обработки запроса.
-
-Не&#160;забудьте указать&#160;в [конфиге](#osnovnyie-puti) путь до&#160;вашего AppResolver, например `path './conf/AppResolver.php';`.
-
-В&#160;настройках [сервера](#serveryi), принимающего запросы, с&#160;помощью опции `responder` можно указать имя приложения по-умолчанию, которому будет передан запрос, если `getRequestRoute` вернул `null`.
 
 ## config # Конфигурация
 
-### config/types # Типы данных
+<!-- import config/types.md -->
 
-Большинство опций phpdaemon описывается своими типами данных, позволяющие указывать значения расширенным форматом.
+<!-- import config/variables.md -->
 
-#### config/types/size # Size
-Предназначен для записи объема информации. Можно записать в виде целого числа или целого числа с постфиксом.
-
-Формат записи: `int [bBkKmMgG]?`
-
-|| **Постфикс** || **Множитель** || **Пример** || **Значение** ||
-|| b, B || 1 || 1b || 1 ||
-|| k || 1000 || 1k || 1000 ||
-|| K || 1024 || 1K || 1024 ||
-|| m || 1000 * 1000 || 1m || 1000000 ||
-|| M || 1024 * 1024 || 1M || 1048576 ||
-|| g || 1000 * 1000 * 1000 || 1g || 1000000000 ||
-|| G || 1024 * 1024 * 1024 || 1G || 1073741824 ||
-
-<!--
-Примеры:
-
-|| **Пример** || **Значение** ||
-|| 1 || 1 ||
-|| 1b || 1 ||
-|| 1m || 1000000 ||
-|| 1M || 1048576 ||
--->
-
-#### config/types/time # Time
-Предназначен для записи количества секунд. Число может быть с плавающей точкой с использованием только символа `"."`.
-
-Формат записи: `float [smhd]?` или `(float [smhd])+`
-
-|| **Постфикс** || **Множитель** || **Пример** || **Значение** ||
-|| s || 1 || 1s || 1 ||
-|| m || 60 || 1m || 60 ||
-|| h || 60 * 60 || 2h 12s || 7212 ||
-|| d || 60 * 60 * 24 || 1d 15m 32s || 87332 ||
-
-<!--
-Примеры:
-
-|| **Пример** || **Значение** ||
-|| 1 || 1 ||
-|| 1s || 1 ||
-|| 1d || 86400 ||
-|| 1d 15m 32s || 87332 ||
--->
-
-#### config/types/number # Number
-Предназначен для записи чисел.
-
-Формат записи: `int [kKmMgG]?`
-
-|| **Постфикс** || **Множитель** || **Пример** || **Значение** ||
-|| k, K || 1000 || 1k || 1000 ||
-|| m, M || 1000 * 1000 || 1M || 1000000 ||
-|| g, G || 1000 * 1000 * 1000 || 1g || 1000000000 ||
-
-<!--
-Примеры:
-
-|| **Пример** || **Значение** ||
-|| 1 || 1 ||
-|| 1K || 1000 ||
--->
-
-
-### config/variables # Глобальные опции
-
-Два способа установки опций:
-
- 1. Конфигурационный файл `./conf/phpd.conf`;
- 2. Параметры командной строки, например `--max-workers=1`.
-
-> Параметры командной строки имеют больший приоритет.
-
-#### config/variables/file # Конфигурационный файл
-
-Формат записи опций следующий:  
-`название-опции;` или `название-опции значение;`
-
-`название-опции` не чувствительно к регистру и использованию знака дефиса&nbsp;`"-"`.
-Следующие варианты написания равнозначны:
-
- - `add-include-path`;
- - `addincludepath`;
- - `addIncludePath`;
- - `ADDInclude-path`.
-
-Значение может отсутствовать, что приравнивется к `bool(true)`, либо может быть записано следующими способами:
-
- - `null`; приравнивется к `true`;
- - булевым выражением `false` или `true`;
- - целым числом;
- - числом с плавающей точкой;
- - строкой; если в строке присутствует символ пробела&nbsp;`" "` или запятая&nbsp;`","`, то строку необходимо обернуть одинарными или двойными кавычками;
- - массивом.
-
-Для записи массива используется разделитель пробел&nbsp;`" "` или запятая&nbsp;`","`. В одном значении можно использовать оба разделителя одновременно.
-
-|| **Пример опции** || **Вывод var_dump** ||
-|| var-name; || bool(true) ||
-|| var-name null; || NULL ||
-|| var-name true; || bool(true) ||
-|| var-name false; || bool(false) ||
-|| var-name 0; || int(0) ||
-|| var-name 1; || int(1) ||
-|| var-name 3.14; || float(3.14) ||
-|| var-name "3.14"; || string(4) "3.14" ||
-|| var-name "пример. длинной строки,второй пример"; || string(67) "пример. длинной строки,второй пример" ||
-|| var-name пример. длинной строки,второй пример; || array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(13) "пример."<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(14) "длинной"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "строки"<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "второй"<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "пример"<br>} ||
-|| var-name 1, 'a' null 3.14 'пару слов'; || array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;int(1)<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(1) "a"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;NULL<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;float(3.14)<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(17) "пару слов"<br>} ||
-
-Ниже будут перечислены глобальные опции демона в формате:  
-`название-опции (тип-данных = значение-по-умолчанию);`
- 
-#### config/variables/graceful_restart # Плавный перезапуск рабочих процессов
- 
- - `:e`max-requests ([Number](#config/types/number) = '10k')`  
- Максимальное количество запросов перед перезапуском рабочего процесса.
- `0` – неограничено.
- 
- - `:e`max-memory-usage ([Size](#config/types/size) = '0b')`  
- Максимальный допустимый порог потребления памяти рабочим процессом.
- `0` – неограничено.
- 
- - `:e`max-idle ([Time](#config/types/time) = '0s')`  
- Максимальное время простоя рабочего процесса перед перезапуском.
- `0` – неограничено.
-
- - `:e`auto-reload ([Time](#config/types/time) = '0s')`  
- Задает интервал проверки всех подключенных файлов. При изменении файлов плавно перезагружает рабочие процессы.
-
- - `auto-reimport (boolean = false)`  
- На лету импортирует методы и функции из измененных файлов с помощью runkit, без перезагрузки рабочего процесса.
- 
-#### config/variables/pathes # Основные пути
-
- - `pid-file (string = '/var/run/phpd.pid')`  
- Путь к pid-файлу. Убедитесь что имеется доступ на запись.
-
- - `config-file (string = '/etc/phpdaemon/phpd.conf;/etc/phpd/phpd.conf;./conf/phpd.conf')`  
- Путь к файлу конфигурации. Можно указать несколько через разделитель `";"`.  
- Будет загружен только первый найденный конфигурационный файл.
-
- - `path (string = '/etc/phpdaemon/AppResolver.php;./conf/AppResolver.php')`  
- Путь к Application Resolver. Можно указать несколько через разделитель `";"`.  
- Будет загружен только первый найденный файл.
-
- - `add-include-path (string = null)`  
- Дополнительные пути для директивы [include_path](http://www.php.net/manual/ru/ini.core.php#ini.include-path).  
- Можно указать несколько через разделитель `":"`.
-
-#### config/variables/master # Связанные с мастер-процессом
-
- - `:e`mpm-delay ([Time](#config/types/time) = '0.1s')`  
- Интервал между срабатываниями Мульти-Процессного Менеджера.  
- МПМ отвечает за запуск/выключение рабочих процессов, согласно настройкам.
-
- - `:e`start-workers ([Number](#config/types/number) = 4)`  
- Кол-во рабочих процессов при запуске демона.
-
- - `:e`min-workers ([Number](#config/types/number) = 4)`  
- Минимальное допустимое кол-во рабочих процессов.
-
- - `:e`max-workers ([Number](#config/types/number) = 8)`  
- Максимальное допустимое кол-во рабочих процессов.
-
- - `:e`min-spare-workers ([Number](#config/types/number) = 2)`  
- Минимальное количество простаивающих рабочих процессов: phpDaemon запустит дополнительный рабочие процессы когда нагрузка увеличится, чтобы простаивающих рабочих процессов было достаточно. Сверху ограничивается параметром max-workers.
-
- - `:e`max-spare-workers ([Number](#config/types/number) = 0)`  
- Максимальное кол-во простаивающих рабочих процессов. phpDaemon выключит дополнительные рабочие процессы когда нагрузка спадёт.
-
- - `:e`master-priorty ([Number](#config/types/number) = 100)`  
- Приоритет мастер-процесса. Чем меньше значение, тем выше приоритет.
-
- - `:e`ipc-thread-priority ([Number](#config/types/number) = 100)`  
- Приоритет IPC процесса. Чем меньше значение, тем выше приоритет.
-
- - `:e`worker-priority ([Number](#config/types/number) = 4)`  
- Приоритет рабочего процесса. Чем меньше значение, тем выше приоритет.
-
- - `throw-exception-on-shutdown (boolean = false)`  
- Выбрасывать исключение `Exception('event shutdown')` по завершению процесса.
-
-#### config/variables/requests # Запросы
-
- - `locale (string = '')`  
- Устанавливает настройки локали. Можно указать несколько через разделитель `","`.
-
- - `ob-filter-auto (boolean = true)`  
- Включить стандартный `ob_` фильтр.
-
-#### config/variables/workers # Рабочие процессы
-
- - `chroot (string = '/')`  
- Смена системного корня для рабочих процессов.
-
- - `cwd (string = '.')`  
- Задание рабочей директории для рабочих процессов.
-
- - `user (string = null)`  
- Пользователь для рабочих процессов. Используйте безопасного пользователя, не используйте root, если не знаете что делаете.
-
- - `group (string = null)`  
- Группа для рабочих процессов. Используйте безопасную группу, не используйте root, если не знаете что делаете.
-
- - `:e`auto-gc ([Number](#config/types/number) = '1k')`  
- Включает сборщик мусора вызываемый каждые n запросов. `0` – выключает совсем.
-
-#### config/variables/logging # Журналирование и отладка
-
- - `logging (boolean = true)`  
- Включает журналирование.
-
- - `log-storage (string = '/var/log/phpdaemon.log')`  
- Путь к файлу журнала.
-
- - `log-errors (boolean = true)`  
- Включает журналирование локальных ошибок таких как Undefined route in WebSocketServer, и т.д.
-
- - `log-worker-set-state (boolean = false)`  
- Включает журналирование смены состояния рабочего процесса.
-
- - `log-events (boolean = false)`  
- Включает журналирование сетевых событий.
-
- - `log-signals (boolean = false)`  
- Включает журналирование системных сигналов.
-
- - `verbose-tty (boolean = false)`  
- Если параметр включен, журнал будет выводиться в терминал (STDOUT).
-
- > Учтите, что в обычном варианте запуска (не runworker) ввод из терминала игнорируется, хотя после запуска с этим параметром может показаться, что программа привязана к терминалу.
-
- - `restrict-error-control (boolean = false)`  
- Выключает оператор управления ошибками `"@"`.
-
-#### config/variables/eio # Подсистема ввода-вывода POSIX
-
- - `eio-enabled (boolean = true)`  
- Включает поддержку EIO.
-
- - `:e`eio-set-max-idle ([Time](#config/types/time) = null)`  
- Устанавливает максимальное количество ожидающих потоков.
-
- - `:e`eio-set-min-parallel ([Number](#config/types/number) = null)`  
- Устанавливает минимальное количество параллельных потоков.
-
- - `:e`eio-set-max-parallel ([Number](#config/types/number) = null)`  
- Устанавливает максимальное количество параллельных потоков.
-
- - `:e`eio-set-max-poll-reqs ([Number](#config/types/number) = null)`  
- Устанавливает максимальное количество обрабатываемых запросов.
-
- - `:e`eio-set-max-poll-time ([Time](#config/types/time) = null)`  
- Устанавливает максимальное время выполнения.
-
-### config/application # Приложения
-
- - `enable (boolean = true)`
- Разрешает демону инициализацию приложения. По-умочанию, описанное в конфигурационном файле приложение, всегда включено.
-
- - `limit-instances (int = null)`
- Ограничивает кол-во инициализированных приложений во всех рабочих процессах. По-умолчанию ограничения нет.
+<!-- import config/application.md -->
 
 ## development # Разработка
 ### development/app_instance # Приложение
@@ -678,7 +137,7 @@ And add phpd-1.0 to autoload:
  @TODO
 
 
-### servers/http # HTTP
+### servers/http # Servers\HTTP
 
 #### servers/http/variables # Опции
 
@@ -722,19 +181,19 @@ And add phpd-1.0 to autoload:
  - `responder (string = null)`  
  Имя приложения по-умолчанию для обработки запросов с данного сервера.
 
-### servers/fastcgi # FastCGI
-### servers/debugconsole # DebugConsole
-### servers/flashpolicy # FlashPolicy
-### servers/ident # Ident
-### servers/ircbouncer # IRCBouncer
-### servers/lock # Lock
-### servers/socks # Socks
-### servers/websocket # WebSocket
+### servers/fastcgi # Servers\FastCGI
+### servers/debugconsole # Servers\DebugConsole
+### servers/flashpolicy # Servers\FlashPolicy
+### servers/ident # Servers\Ident
+### servers/ircbouncer # Servers\IRCBouncer
+### servers/lock # Servers\Lock
+### servers/socks # Servers\Socks
+### servers/websocket # Servers\WebSocket
 ## clients # Клиенты
-### clients/asterisk # Asterisk
-### clients/dns # DNS
-### clients/gibson # Gibson
-### clients/http # HTTP
+### clients/asterisk # Clients\Asterisk
+### clients/dns # Clients\DNS
+### clients/gibson # Clients\Gibson
+### clients/http # Clients\HTTP
 
 #### class Pool
 
@@ -773,55 +232,90 @@ And add phpd-1.0 to autoload:
  Преобразует массив `$mixed` в нормализованный массив. @TODO дабл lol
 
    -! param `$mixed` - массив параметров url.
-   -! return `string`;
+   -! return `array`;
 
-### clients/icmp # ICMP
-### clients/irc # IRC
-### clients/lock # Lock
-### clients/memcache # Memcache
-### clients/mongo # Mongo
-### clients/mysql # MySQL
-### clients/postgresql # PostgreSQL
-### clients/redis # Redis
-### clients/valve # Valve
-### clients/websocket # WebSocket
-### clients/xmpp # XMPP
+#### class Connection
+
+##### Свойства
+
+ - `public $headers;`  
+ Заголовки ответа.
+
+ - `public $contentLength;`  
+ Длина ответа.
+
+ - `public $body;`  
+ Тело ответа.
+
+ - `public $cookie;`  
+ Coockies ответа.
+
+ - `public $chunked;`  
+ Механизм передачи данных chunked если `true`.
+
+ - `public $protocolError;`  
+ Номер строки на которой проихошла ошибка.
+
+ - `public $responseCode;`  
+ Код ответа.
+
+ - `public $lastURL;`  
+ Последний запрошенный url.
+
+ - `public $rawHeaders;`  
+ Заголовки ответа в сыром виде.
+
+
+
+##### Методы
+
+### clients/icmp # Clients\ICMP
+### clients/irc # Clients\IRC
+### clients/lock # Clients\Lock
+### clients/memcache # Clients\Memcache
+### clients/mongo # Clients\Mongo
+### clients/mysql # Clients\MySQL
+### clients/postgresql # Clients\PostgreSQL
+### clients/redis # Clients\Redis
+### clients/valve # Clients\Valve
+### clients/websocket # Clients\WebSocket
+### clients/xmpp # Clients\XMPP
 ## libraries # Библиотеки
-### libraries/cache # Cache
-### libraries/complexjob # ComplexJob
-### libraries/shellcommand # ShellCommand
-### libraries/timer # Timer
-### libraries/transportcontext # TransportContext
-### libraries/dnode # DNode
-### libraries/fs # FS
-### libraries/pubsub # PubSub
+### libraries/cache # \Cache
+### libraries/complexjob # Core\ComplexJob
+### libraries/shellcommand # Core\ShellCommand
+### libraries/timer # Core\Timer
+### libraries/transportcontext # Core\TransportContext
+### libraries/dnode # \DNode
+### libraries/fs # \FS
+### libraries/pubsub # \PubSub
 ## utils # Утилиты
-### utils/binary # Binary
-### utils/crypt # Crypt
-### utils/datetime # DateTime
-### utils/encoding # Encoding
-### utils/irc # IRC
-### utils/mime # MIME
-### utils/shmentity # ShmEntity
-### utils/terminal # Terminal
+### utils/binary # Utils\Binary
+### utils/crypt # Utils\Crypt
+### utils/datetime # Utils\DateTime
+### utils/encoding # Utils\Encoding
+### utils/irc # Utils\IRC
+### utils/mime # Utils\MIME
+### utils/shmentity # Utils\ShmEntity
+### utils/terminal # Utils\Terminal
 ## structures # Структуры
-### structures/objectstorage # ObjectStorage
-### structures/priorityqueuecallbacks # PriorityQueueCallbacks
-### structures/stackcallbacks # StackCallbacks
+### structures/objectstorage # Structures\ObjectStorage
+### structures/priorityqueuecallbacks # Structures\PriorityQueueCallbacks
+### structures/stackcallbacks # Structures\StackCallbacks
 ## traits # Traits
-### traits/classwatchdog # ClassWatchdog
-### traits/deferredeventhandlers # DeferredEventHandlers
-### traits/eventhandlers # EventHandlers
-### traits/sessions # Sessions
-### traits/staticobjectwatchdog # StaticObjectWatchdog
-### traits/strictstaticobjectwatchdog # StrictStaticObjectWatchdog
+### traits/classwatchdog # Traits\ClassWatchdog
+### traits/deferredeventhandlers # Traits\DeferredEventHandlers
+### traits/eventhandlers # Traits\EventHandlers
+### traits/sessions # Traits\Sessions
+### traits/staticobjectwatchdog # Traits\StaticObjectWatchdog
+### traits/strictstaticobjectwatchdog # Traits\StrictStaticObjectWatchdog
 ## network # Network
-### network/client # Client
-### network/clientconnection # ClientConnection
-### network/connection # Connection
-### network/iostream # IOStream
-### network/pool # Pool
-### network/server # Server
+### network/client # Network\Client
+### network/clientconnection # Network\ClientConnection
+### network/connection # Network\Connection
+### network/iostream # Network\IOStream
+### network/pool # Network\Pool
+### network/server # Network\Server
 ## faq # FAQ
 ## publications # Публикации
 ## futures # Фьючерсы
