@@ -1321,13 +1321,13 @@ class Markdown(object):
 
 
     _marker_ul_chars  = '*+-'
-    _marker_any = r'(?:[%s]|\d+\.)' % _marker_ul_chars
-    _marker_ul = '(?:[%s])' % _marker_ul_chars
-    _marker_ol = r'(?:\d+\.)'
+    _marker_any = r'(?:[%s]|\d+\.)(!)?' % _marker_ul_chars
+    _marker_ul = '(?:[%s])(!)?' % _marker_ul_chars
+    _marker_ol = r'(?:\d+\.)(!)?'
 
     def _list_sub(self, match):
         lst = match.group(1)
-        lst_type = match.group(3) in self._marker_ul_chars and "ul" or "ol"
+        lst_type = match.group(3)[0] in self._marker_ul_chars and "ul" or "ol"
         result = self._process_list_items(lst)
         if self.list_level:
             return "<%s>\n%s</%s>\n" % (lst_type, result, lst_type)
@@ -1388,16 +1388,16 @@ class Markdown(object):
     _list_item_re = re.compile(r'''
         (\n)?                   # leading line = \1
         (^[ \t]*)               # leading whitespace = \2
-        (?P<marker>%s) [ \t]+   # list marker = \3
-        ((?:.+?)                # list item text = \4
-         (\n{1,2}))             # eols = \5
+        (?P<marker>%s) [ \t]+   # list marker = \3 \4
+        ((?:.+?)                # list item text = \5
+         (\n{1,2}))             # eols = \6
         (?= \n* (\Z | \2 (?P<next_marker>%s) [ \t]+))
         ''' % (_marker_any, _marker_any),
         re.M | re.X | re.S)
 
     _last_li_endswith_two_eols = False
     def _list_item_sub(self, match):
-        item = match.group(4)
+        item = match.group(5)
         leading_line = match.group(1)
         leading_space = match.group(2)
         if leading_line or "\n\n" in item or self._last_li_endswith_two_eols:
@@ -1408,8 +1408,12 @@ class Markdown(object):
             if item.endswith('\n'):
                 item = item[:-1]
             item = self._run_span_gamut(item)
-        self._last_li_endswith_two_eols = (len(match.group(5)) == 2)
-        return "<li>%s</li>\n" % item
+        self._last_li_endswith_two_eols = (len(match.group(6)) == 2)
+
+        if match.group(4):
+            return "<li class=\"nomark\">%s</li>\n" % item
+        else:
+            return "<li>%s</li>\n" % item
 
     def _process_list_items(self, list_str):
         # Process the contents of a single ordered or unordered list,
