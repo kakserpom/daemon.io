@@ -591,7 +591,11 @@ And add phpd-1.0 to autoload:
 
 ### config/application # Приложения
 
+ - `enable (boolean = true)`
+ Разрешает демону инициализацию приложения. По-умочанию, описанное в конфигурационном файле приложение, всегда включено.
 
+ - `limit-instances (int = null)`
+ Ограничивает кол-во инициализированных приложений во всех рабочих процессах. По-умолчанию ограничения нет.
 
 ## development # Разработка
 ### development/app_instance # Приложение
@@ -648,6 +652,9 @@ And add phpd-1.0 to autoload:
 
  - ssl  
  Включает ssl.
+
+ - ssl-port
+ @TODO
 
  - cert-file
  @TODO
@@ -728,6 +735,32 @@ And add phpd-1.0 to autoload:
 ### clients/dns # DNS
 ### clients/gibson # Gibson
 ### clients/http # HTTP
+
+#### class Pool
+
+##### Опции по-умолчанию
+
+ - `port (int = 80)`
+ - `sslport (int = 443)`
+ - `expose (boolean = true)`
+
+##### Методы
+
+ - `public function get(string|array $url, callable|array $params)`  
+ Осуществляет GET запрос.
+
+   -! param `$url` – строка c полным url или массив параметров.
+   -! param `$params` - callback функция или массив @TODO.
+   -! return `void`;
+
+ - `public function post(string|array $url, array $data = [], callable|array $params)`  
+ Осуществляет POST запрос.
+
+   -! param `$url` – строка c полным url или массив параметров.
+   -! param `$data` - массив данных.
+   -! param `$params` - callback функция или массив @TODO.
+   -! return `void`;
+
 ### clients/icmp # ICMP
 ### clients/irc # IRC
 ### clients/lock # Lock
