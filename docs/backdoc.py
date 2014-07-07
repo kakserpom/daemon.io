@@ -2433,11 +2433,30 @@ class BackDoc(object):
         parsed = dict(self.parser.parse_args(argv)._get_kwargs())
         return self.prepare_kwargs_from_parsed_data(parsed)
 
+    def importParts(self, text, sourcePath):
+        text = force_text(text)
+        currpath = os.path.dirname(os.path.realpath(sourcePath))
+        pattern = re.compile('<!-- import (.+) -->')
+        iterator = pattern.finditer(text)
+
+        for match in iterator:
+            filename = match.group(1)
+
+            f = open(''.join([currpath, os.sep, filename]))
+            content = f.read()
+            f.close()
+
+            text = text.replace('<!-- import ' + filename + ' -->', force_text(content))
+
+        return text
+
     def prepare_kwargs_from_parsed_data(self, parsed):
         kwargs = {}
         kwargs['title'] = force_text(parsed.get('title') or 'Documentation')
         if parsed.get('source'):
-            kwargs['markdown_src'] = open(parsed['source'], 'r').read()
+            sourcePath = parsed['source']
+            text = open(sourcePath, 'r').read()
+            kwargs['markdown_src'] = self.importParts(text, sourcePath)
         else:
             kwargs['markdown_src'] = self.stdin.read()
         kwargs['markdown_src'] = force_text(kwargs['markdown_src'] or '')
