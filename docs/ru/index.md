@@ -421,14 +421,14 @@ And add phpd-1.0 to autoload:
 
 Значение может отсутствовать, что приравнивется к `bool(true)`, либо может быть записано следующими способами:
 
- - null; приравнивется к true;
- - булевым выражением false или true;
+ - `null`; приравнивется к `true`;
+ - булевым выражением `false` или `true`;
  - целым числом;
  - числом с плавающей точкой;
  - строкой; если в строке присутствует символ пробела&nbsp;`" "` или запятая&nbsp;`","`, то строку необходимо обернуть одинарными или двойными кавычками;
  - массивом.
 
-Для записи массива используется разделитель пробел&nbsp;`" "` или запятая&nbsp;`","`. В одном выражении можно использовать оба разделителя одновременно.
+Для записи массива используется разделитель пробел&nbsp;`" "` или запятая&nbsp;`","`. В одном значении можно использовать оба разделителя одновременно.
 
 || **Пример опции** || **Вывод var_dump** ||
 || var-name; || bool(true) ||
@@ -442,6 +442,9 @@ And add phpd-1.0 to autoload:
 || var-name "пример. длинной строки,второй пример"; || string(67) "пример. длинной строки,второй пример" ||
 || var-name пример. длинной строки,второй пример; || array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(13) "пример."<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(14) "длинной"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "строки"<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "второй"<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "пример"<br>} ||
 || var-name 1, 'a' null 3.14 'пару слов'; || array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;int(1)<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(1) "a"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;NULL<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;float(3.14)<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(17) "пару слов"<br>} ||
+
+Ниже будут перечислены глобальные опции демона в формате:  
+`название-опции (тип-данных = значение-по-умолчанию);`
  
 #### config/variables/graceful_restart # Плавный перезапуск рабочих процессов
  
