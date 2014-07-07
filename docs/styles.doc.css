@@ -186,6 +186,10 @@ code,
     font-style: normal;
 }
 
+.code_emul a {
+    color: #333;
+}
+
 em {
     font-size: 12px;
     line-height: 18px;

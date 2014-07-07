@@ -553,13 +553,13 @@ And add phpd-1.0 to autoload:
  Включает журналирование локальных ошибок таких как Undefined route in WebSocketServer, и т.д.
 
  - `log-worker-set-state (boolean = false)`  
- Включает журналирование смены состояния рабочего процесса
+ Включает журналирование смены состояния рабочего процесса.
 
  - `log-events (boolean = false)`  
- Включает журналирование событий
+ Включает журналирование сетевых событий.
 
  - `log-signals (boolean = false)`  
- Включает журналирование SYSCTL сигналов.
+ Включает журналирование системных сигналов.
 
  - `verbose-tty (boolean = false)`  
  Если параметр включен, журнал будет выводиться в терминал (STDOUT).
@@ -632,19 +632,19 @@ And add phpd-1.0 to autoload:
  @TODO
 
  - max-concurrency  
- @TODO
+ Максимальное количество открытых соединений.
 
  - max-allowed-packet  
- @TODO
+ Максимальный допустимый размер пакета.
 
  - connection-class  
- @TODO
+ Класс соединения по-умолчанию.
 
  - name  
  @TODO
 
  - allowed-clients  
- @TODO
+ Разрешенные IP-адреса или маски через запятую.
 
  - ssl  
  Включает ssl.
