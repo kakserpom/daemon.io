@@ -445,19 +445,19 @@ And add phpd-1.0 to autoload:
  
 #### config/variables/graceful_restart # Плавный перезапуск рабочих процессов
  
- - `max-requests (Number = '10k')`  
+ - `:e`max-requests ([Number](#config/types/number) = '10k')`  
  Максимальное количество запросов перед перезапуском рабочего процесса.
  `0` – неограничено.
  
- - `max-memory-usage (Size = '0b')`  
+ - `:e`max-memory-usage ([Size](#config/types/size) = '0b')`  
  Максимальный допустимый порог потребления памяти рабочим процессом.
  `0` – неограничено.
  
- - `max-idle (Time = '0s')`  
+ - `:e`max-idle ([Time](#config/types/time) = '0s')`  
  Максимальное время простоя рабочего процесса перед перезапуском.
  `0` – неограничено.
 
- - `auto-reload (Time = '0s')`  
+ - `:e`auto-reload ([Time](#config/types/time) = '0s')`  
  Задает интервал проверки всех подключенных файлов. При изменении файлов плавно перезагружает рабочие процессы.
 
  - `auto-reimport (boolean = false)`  
@@ -482,32 +482,32 @@ And add phpd-1.0 to autoload:
 
 #### config/variables/master # Связанные с мастер-процессом
 
- - `mpm-delay (Time = '0.1s')`  
+ - `:e`mpm-delay ([Time](#config/types/time) = '0.1s')`  
  Интервал между срабатываниями Мульти-Процессного Менеджера.  
  МПМ отвечает за запуск/выключение рабочих процессов, согласно настройкам.
 
- - `start-workers (Number = 4)`  
+ - `:e`start-workers ([Number](#config/types/number) = 4)`  
  Кол-во рабочих процессов при запуске демона.
 
- - `min-workers (Number = 4)`  
+ - `:e`min-workers ([Number](#config/types/number) = 4)`  
  Минимальное допустимое кол-во рабочих процессов.
 
- - `max-workers (Number = 8)`  
+ - `:e`max-workers ([Number](#config/types/number) = 8)`  
  Максимальное допустимое кол-во рабочих процессов.
 
- - `min-spare-workers (Number = 2)`  
+ - `:e`min-spare-workers ([Number](#config/types/number) = 2)`  
  Минимальное количество простаивающих рабочих процессов: phpDaemon запустит дополнительный рабочие процессы когда нагрузка увеличится, чтобы простаивающих рабочих процессов было достаточно. Сверху ограничивается параметром max-workers.
 
- - `max-spare-workers (Number = 0)`  
+ - `:e`max-spare-workers ([Number](#config/types/number) = 0)`  
  Максимальное кол-во простаивающих рабочих процессов. phpDaemon выключит дополнительные рабочие процессы когда нагрузка спадёт.
 
- - `master-priorty (Number = 100)`  
+ - `:e`master-priorty ([Number](#config/types/number) = 100)`  
  Приоритет мастер-процесса. Чем меньше значение, тем выше приоритет.
 
- - `ipc-thread-priority (Number = 100)`  
+ - `:e`ipc-thread-priority ([Number](#config/types/number) = 100)`  
  Приоритет IPC процесса. Чем меньше значение, тем выше приоритет.
 
- - `worker-priority (Number = 4)`  
+ - `:e`worker-priority ([Number](#config/types/number) = 4)`  
  Приоритет рабочего процесса. Чем меньше значение, тем выше приоритет.
 
  - `throw-exception-on-shutdown (boolean = false)`  
@@ -535,7 +535,7 @@ And add phpd-1.0 to autoload:
  - `group (string = null)`  
  Группа для рабочих процессов. Используйте безопасную группу, не используйте root, если не знаете что делаете.
 
- - `auto-gc (Number = '1k')`  
+ - `:e`auto-gc ([Number](#config/types/number) = '1k')`  
  Включает сборщик мусора вызываемый каждые n запросов. `0` – выключает совсем.
 
 #### config/variables/logging # Журналирование и отладка
@@ -571,19 +571,19 @@ And add phpd-1.0 to autoload:
  - `eio-enabled (boolean = true)`  
  Включает поддержку EIO.
 
- - `eio-set-max-idle (Time = null)`  
+ - `:e`eio-set-max-idle ([Time](#config/types/time) = null)`  
  Устанавливает максимальное количество ожидающих потоков.
 
- - `eio-set-min-parallel (Number = null)`  
+ - `:e`eio-set-min-parallel ([Number](#config/types/number) = null)`  
  Устанавливает минимальное количество параллельных потоков.
 
- - `eio-set-max-parallel (Number = null)`  
+ - `:e`eio-set-max-parallel ([Number](#config/types/number) = null)`  
  Устанавливает максимальное количество параллельных потоков.
 
- - `eio-set-max-poll-reqs (Number = null)`  
+ - `:e`eio-set-max-poll-reqs ([Number](#config/types/number) = null)`  
  Устанавливает максимальное количество обрабатываемых запросов.
 
- - `eio-set-max-poll-time (Time = null)`  
+ - `:e`eio-set-max-poll-time ([Time](#config/types/time) = null)`  
  Устанавливает максимальное время выполнения.
 
 ### config/application # Приложения
@@ -691,10 +691,10 @@ And add phpd-1.0 to autoload:
  - `expose (boolean = true)`  
  Включать версию PHPDaemon в заголовке `X-Powered-By`.
 
- - `keepalive (Time = '0s')`  
+ - `:e`keepalive ([Time](#config/types/time) = '0s')`  
  Время keepalive.
 
- - `chunksize (Size = '8k')`  
+ - `:e`chunksize ([Size](#config/types/size) = '8k')`  
  Размер чанка.
 
  - `defaultcharset (string = 'utf-8')`  
@@ -706,7 +706,7 @@ And add phpd-1.0 to autoload:
  - `fps-name (string = '')`  
  Имя пула FlashPolicy-сервера, куда адресовать FlashPolicy-соединения.
 
- - `upload-max-size (Size = ini_get('upload_max_filesize'))`  
+ - `:e`upload-max-size ([Size](#config/types/size) = ini_get('upload_max_filesize'))`  
  Максимальный размер загружаемого файла.
 
  - `responder (string = null)`  
