@@ -1564,6 +1564,7 @@ class Markdown(object):
     _code_span_re = re.compile(r'''
             (?<!\\)
             (`+)        # \1 = Opening run of `
+            (:e`)?      # modificator :e for emulate code
             (?!`)       # See Note A test/tm-cases/escapes.text
             (.+?)       # \2 = The code block
             (?<!`)
@@ -1572,9 +1573,14 @@ class Markdown(object):
         ''', re.X | re.S)
 
     def _code_span_sub(self, match):
-        c = match.group(2).strip(" \t")
-        c = self._encode_code(c)
-        return "<code>%s</code>" % c
+        c = match.group(3).strip(" \t")
+
+        if match.group(2):
+            c = self._do_links(c)
+            return "<span class=\"code_emul\">%s</span>" % c
+        else:
+            c = self._encode_code(c)
+            return "<code>%s</code>" % c
 
     def _do_code_spans(self, text):
         #   *   Backtick quotes are used for <code></code> spans.
