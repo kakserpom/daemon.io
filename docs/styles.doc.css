@@ -43,10 +43,10 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 230px;
+    width: 240px;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 15px 0 30px 30px;
+    padding: 15px 0 30px 15px;
     border-right: 1px solid #bbb;
     font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif !important;
 }
@@ -55,6 +55,9 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
     list-style: none;
     padding: 0;
+}
+.sidebar li {
+    white-space: nowrap;
 }
 
 .sidebar ul a:hover {
@@ -261,7 +264,7 @@ table.invis td {
     .force_show_sidebar .sidebar {
         width: 100%;
     }
-    .force_show_sidebar .sidebar a{
+    .force_show_sidebar .sidebar li {
         font-size: 1.5em;
         line-height: 1.5em;
     }
