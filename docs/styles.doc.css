@@ -51,6 +51,14 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif !important;
 }
 
+.sidebar a {
+    padding: 2px 4px;
+}
+
+.sidebar .active {
+    background-color: #ccc;
+}
+
 .sidebar ul{
     margin: 0;
     list-style: none;
@@ -144,8 +152,11 @@ h1, h2, h3, h4, h5, h6 {
 .main_container li {
     margin: 3px 0;
 }
-.main_container li.nomark {
+.main_container li.n {
     list-style: none;
+}
+.main_container li.ti {
+    margin-top: 15px;
 }
 
 
@@ -188,7 +199,7 @@ code,
     border-radius: 0;
     font-family: Monaco, Consolas, "Lucida Console", monospace;
     font-size: 12px;
-    line-height: 18px;
+    line-height: 22px;
     font-style: normal;
 }
 

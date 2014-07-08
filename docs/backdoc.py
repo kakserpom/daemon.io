@@ -1321,9 +1321,9 @@ class Markdown(object):
 
 
     _marker_ul_chars  = '*+-'
-    _marker_any = r'(?:[%s]|\d+\.)(!)?' % _marker_ul_chars
-    _marker_ul = '(?:[%s])(!)?' % _marker_ul_chars
-    _marker_ol = r'(?:\d+\.)(!)?'
+    _marker_any = r'(?:[%s]|\d+\.)((?:\.[_a-zA-Z0-9-]+)*)' % _marker_ul_chars
+    _marker_ul = '(?:[%s])((?:\.[_a-zA-Z0-9-]+)*)' % _marker_ul_chars
+    _marker_ol = r'(?:\d+\.)((?:\.[_a-zA-Z0-9-]+)*)'
 
     def _list_sub(self, match):
         lst = match.group(1)
@@ -1388,7 +1388,7 @@ class Markdown(object):
     _list_item_re = re.compile(r'''
         (\n)?                   # leading line = \1
         (^[ \t]*)               # leading whitespace = \2
-        (?P<marker>%s) [ \t]+   # list marker = \3 \4
+        (?P<marker>%s) [ \t]+   # list marker = \3 classnames = \4
         ((?:.+?)                # list item text = \5
          (\n{1,2}))             # eols = \6
         (?= \n* (\Z | \2 (?P<next_marker>%s) [ \t]+))
@@ -1411,9 +1411,11 @@ class Markdown(object):
         self._last_li_endswith_two_eols = (len(match.group(6)) == 2)
 
         if match.group(4):
-            return "<li class=\"nomark\">%s</li>\n" % item
+            classnames = ' class="' + ' '.join(match.group(4)[1:].split('.')) + '"'
         else:
-            return "<li>%s</li>\n" % item
+            classnames = ''
+
+        return "<li%s>%s</li>\n" % (classnames, item)
 
     def _process_list_items(self, list_str):
         # Process the contents of a single ordered or unordered list,
@@ -2364,35 +2366,7 @@ https://github.com/chibisov/backdoc
     <link rel="stylesheet" href="../normalize.min.css" />
     <link rel="stylesheet" href="../styles.doc.css" />
     <script src="../zepto.js"></script>
-
-    <script type="text/javascript">
-        $(function(){
-            $('.toggle_sidebar_button').on('click', function(){
-                $('body').toggleClass('force_show_sidebar');
-            });
-
-            // hide sidebar on every click in menu (if small screen)
-            $('.sidebar').find('a').on('click', function(){
-                $('body').removeClass('force_show_sidebar');
-            });
-
-            // add anchors
-            $.each($('.main_container').find('h1,h2,h3,h4,h5,h6'), function(key, item){
-                if ($(item).attr('id')) {
-                    $(item).addClass('anchor');
-                    $(item).append($('<span class="anchor_char">¶</span>'))
-                    $(item).on('click', function(){
-                        window.location = '#' + $(item).attr('id');
-                    })
-                }
-            });
-
-            // remove <code> tag inside of <pre>
-            $.each($('pre > code'), function(key, item){
-                $(item).parent().html($(item).html())
-            })
-        })
-    </script>
+    <script src="../main.js"></script>
 </head>
 <body>
     <a class="toggle_sidebar_button">
