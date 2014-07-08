@@ -193,9 +193,9 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 ### clients/asterisk # Clients\Asterisk
 ### clients/dns # Clients\DNS
 ### clients/gibson # Clients\Gibson
-### clients/http # Clients\HTTP
+### clients/http # HTTP #> [Clients](#clients) \ HTTP
 
-#### clients/http/pool # class Pool
+#### clients/http/pool # Pool
 
 ##### clients/http/pool/options # Опции по-умолчанию
 
@@ -234,7 +234,7 @@ PHPDaemon представляет из&#160;себя один мастер-пр
    -.n param `$mixed` - массив параметров url.
    -.n.ti return `array`;
 
-#### clients/http/connection # class Connection
+#### clients/http/connection # Connection
 
 ##### clients/http/connection/vars # Свойства
 
