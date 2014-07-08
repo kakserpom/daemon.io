@@ -1276,6 +1276,7 @@ class Markdown(object):
         ([ \t]+([a-zA-Z0-9_/]+)[ \t]+\#)? # \3 = id
         [ \t]+
         (.+?)       # \4 = Header text
+        ([ \t]+\#>[ \t]+(.+?))?  # \6 Real Header text
         [ \t]*
         (?<!\\)     # ensure not an escaped trailing '#'
         \#*         # optional closing #'s (not counted)
@@ -1295,10 +1296,15 @@ class Markdown(object):
                     self.extras["header-ids"], n)
             if header_id:
                 header_id_attr = ' id="%s"' % header_id
-        html = self._run_span_gamut(match.group(4))
+        # html = self._run_span_gamut(match.group(4))
+        html = match.group(4)
         if "toc" in self.extras and header_id:
             self._toc_add_entry(n, header_id, html)
-        return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, html, n)
+
+        if match.group(6):
+            return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, self._run_span_gamut(match.group(6)), n)
+        else:
+            return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, self._run_span_gamut(html), n)
 
     def _do_headers(self, text):
         # Setext-style headers:
