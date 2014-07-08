@@ -84,7 +84,7 @@ PHPDaemon представляет из&#160;себя один мастер-пр
         maxconcurrency 1;
     }
 
-### servers/variables # Опции серверов
+### servers/options # Опции серверов
 
 В данном разделе перечислены опции, используемые всеми серверами.
 
@@ -139,7 +139,7 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 
 ### servers/http # Servers\HTTP
 
-#### servers/http/variables # Опции
+#### servers/http/options # Опции
 
  - `port (int = 80)`  
  Прослушиваемый порт.
@@ -195,48 +195,48 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 ### clients/gibson # Clients\Gibson
 ### clients/http # Clients\HTTP
 
-#### class Pool
+#### clients/http/pool # class Pool
 
-##### Опции по-умолчанию
+##### clients/http/pool/options # Опции по-умолчанию
 
  - `port (int = 80)`
  - `ssl-port (int = 443)`
  - `expose (boolean = true)`
 
-##### Методы
+##### clients/http/pool/methods # Методы
 
  - `public function get(string|array $url, callable|array $params)`  
  Осуществляет GET запрос.
 
-   -! param `$url` – строка c полным url или массив параметров.
-   -! param `$params` - callback функция или массив @TODO.
-   -! callback function(Connection $conn, boolean $success).
-   -! return `void`;
+   -.n param `$url` – строка c полным url или массив параметров.
+   -.n param `$params` - callback функция или массив @TODO.
+   -.n.ti callback function(`:e`[Connection](#clients/http/connection)` $conn, boolean $success).
+   -.n.ti return `void`;
 
  - `public function post(string|array $url, array $data = [], callable|array $params)`  
  Осуществляет POST запрос.
 
-   -! param `$url` – строка c полным url или массив параметров.
-   -! param `$data` - массив данных.
-   -! param `$params` - callback функция или массив @TODO.
-   -! callback function(Connection $conn, boolean $success).
-   -! return `void`;
+   -.n param `$url` – строка c полным url или массив параметров.
+   -.n param `$data` - массив данных.
+   -.n param `$params` - callback функция или массив @TODO.
+   -.n.ti callback function(`:e`[Connection](#clients/http/connection)` $conn, boolean $success).
+   -.n.ti return `void`;
 
  - `public static function buildUrl(string|array $mixed)`  
  Преобразует массив `$mixed` в ссылку. @TODO lol
 
-   -! param `$mixed` - массив параметров url.
-   -! return `string`;
+   -.n param `$mixed` - массив параметров url.
+   -.n.ti return `string`;
 
  - `public static function prepareUrl(string|array $mixed)`  
  Преобразует массив `$mixed` в нормализованный массив. @TODO дабл lol
 
-   -! param `$mixed` - массив параметров url.
-   -! return `array`;
+   -.n param `$mixed` - массив параметров url.
+   -.n.ti return `array`;
 
-#### class Connection
+#### clients/http/connection # class Connection
 
-##### Свойства
+##### clients/http/connection/vars # Свойства
 
  - `public $headers;`  
  Заголовки ответа.
@@ -254,7 +254,7 @@ PHPDaemon представляет из&#160;себя один мастер-пр
  Механизм передачи данных chunked если `true`.
 
  - `public $protocolError;`  
- Номер строки на которой проихошла ошибка.
+ Номер строки на которой произошла ошибка.
 
  - `public $responseCode;`  
  Код ответа.
@@ -265,9 +265,9 @@ PHPDaemon представляет из&#160;себя один мастер-пр
  - `public $rawHeaders;`  
  Заголовки ответа в сыром виде.
 
+##### clients/http/connection/methods # Методы
 
 
-##### Методы
 
 ### clients/icmp # Clients\ICMP
 ### clients/irc # Clients\IRC
