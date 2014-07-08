@@ -193,7 +193,7 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 ### clients/asterisk # Clients\Asterisk
 ### clients/dns # Clients\DNS
 ### clients/gibson # Clients\Gibson
-### clients/http # HTTP #> [Clients](#clients) \ HTTP
+### clients/http # HTTP #> [Клиенты](#clients) \ HTTP `namespace PHPDaemon\Clients\HTTP`
 
 #### clients/http/pool # Pool
 
