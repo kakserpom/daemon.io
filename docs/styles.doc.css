@@ -144,7 +144,8 @@ h1, h2, h3, h4, h5, h6 {
 }*/
 
 .main_container ul {
-    list-style: circle;
+    /*list-style: circle;*/
+    list-style: disc;
     /*font-size: 13px;*/
     line-height: 18px;
     padding-left: 15px;
