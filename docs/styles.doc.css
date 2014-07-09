@@ -136,12 +136,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .main_container p, ul{
-    margin: 25px 0;
+    margin: 20px 0;
 }
 
-.main_container p + ul {
+/*.main_container p + ul {
     margin-top: -15px;
-}
+}*/
 
 .main_container ul {
     list-style: circle;
@@ -157,6 +157,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 .main_container li.ti {
     margin-top: 15px;
+}
+
+.main_container li p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.main_container li > p > code.code_highlight {
+    line-height: 40px;
 }
 
 
@@ -214,9 +222,9 @@ code,
 
 code.code_highlight {
     display: inline;
-    padding: 5px;
+    padding: 3px 5px;
     overflow: visible;
-    line-height: 40px;
+    /*line-height: 40px;*/
 }
 
 em {

@@ -1597,7 +1597,7 @@ class Markdown(object):
             return "<span class=\"code_emul\">%s</span>" % c
         elif match.group(2) == 'h':
             c = self._encode_code(c)
-            return "<code class=\"code_highlight\">%s</code>" % c
+            return "<code class=\"code_highlight php\">%s</code>" % c
         else:
             c = self._encode_code(c)
             return "<code>%s</code>" % c

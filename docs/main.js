@@ -138,6 +138,8 @@ $(function(){
 		hljs.highlightBlock(block);
 	});
 
+	$('.hljs-class .hljs-title a').addClass('hljs-title');
+
 
 	(function() {
 		var obj;
@@ -172,8 +174,6 @@ $(function(){
 			prevLink = obj.attr('id');
 			topStart = topEnd;
 		});
-
-		console.log(headers);
 
 		var scrolledTop = 0, scrollTo = 0,
 			line = '', link = '',
