@@ -21,7 +21,7 @@ $httpclient->get(['http://www.google.com/robots.txt'],
 );
 ```
 
-#### clients/http/pool # Pool
+#### clients/http/pool # Класс Pool
 
 ##### clients/http/pool/options # Опции по-умолчанию
 
@@ -34,33 +34,33 @@ $httpclient->get(['http://www.google.com/robots.txt'],
  - `:h`public void Pool::get ( string|array $url, callable|array $params )`  
  Осуществляет GET запрос.
 
-   -.n **param** `$url` – строка c полным url или массив параметров.
-   -.n **param** `$params` - callback функция или массив @TODO.
-   -.n.ti **callback function** ( <span class="hljs-class"><span class="hljs-title">[Connection](#clients/http/connection)</span></span> <span class="hljs-variable">$conn</span>, <span class="hljs-keyword">boolean</span> <span class="hljs-variable">$success</span> ).
-   -.n.ti **return** `void`;
+   -.n `$url` – строка c полным url или массив параметров.
+   -.n `$params` - callback функция или массив @TODO.
+   -.n.ti callback function ( <span class="hljs-class"><span class="hljs-title">[Connection](#clients/http/connection)</span></span> <span class="hljs-variable">$conn</span>, <span class="hljs-keyword">boolean</span> <span class="hljs-variable">$success</span> ).
+   -.n.ti return `void`;
 
  - `:h`public void Pool::post ( string|array $url, array $data = [], callable|array $params )`  
  Осуществляет POST запрос.
 
-   -.n **param** `$url` – строка c полным url или массив параметров.
-   -.n **param** `$data` - массив данных.
-   -.n **param** `$params` - callback функция или массив @TODO.
-   -.n.ti **callback function** ( <span class="hljs-class"><span class="hljs-title">[Connection](#clients/http/connection)</span></span> <span class="hljs-variable">$conn</span>, <span class="hljs-keyword">boolean</span> <span class="hljs-variable">$success</span> ).
-   -.n.ti **return** `void`;
+   -.n `$url` – строка c полным url или массив параметров.
+   -.n `$data` - массив данных.
+   -.n `$params` - callback функция или массив @TODO.
+   -.n.ti callback function ( <span class="hljs-class"><span class="hljs-title">[Connection](#clients/http/connection)</span></span> <span class="hljs-variable">$conn</span>, <span class="hljs-keyword">boolean</span> <span class="hljs-variable">$success</span> ).
+   -.n.ti return `void`;
 
  - `:h`public static string Pool::buildUrl ( string|array $mixed )`  
  Преобразует массив `$mixed` в ссылку. @TODO lol
 
-   -.n **param** `$mixed` - массив параметров url.
-   -.n.ti **return** `string`;
+   -.n `$mixed` - массив параметров url.
+   -.n.ti return `string`;
 
  - `:h`public static string Pool::prepareUrl ( string|array $mixed )`  
  Преобразует массив `$mixed` в нормализованный массив. @TODO дабл lol
 
-   -.n **param** `$mixed` - массив параметров url.
-   -.n.ti **return** `array`;
+   -.n `$mixed` - массив параметров url.
+   -.n.ti return `array`;
 
-#### clients/http/connection # Connection
+#### clients/http/connection # Класс Connection
 
 ##### clients/http/connection/vars # Свойства
 
@@ -96,15 +96,15 @@ $httpclient->get(['http://www.google.com/robots.txt'],
  - `:h`public string Connection::getBody ( void )`  
  Возвращает тело ответа.
 
-   -.n.ti **return** `string`;
+   -.n.ti return `string`;
 
  - `:h`public array Connection::getHeaders ( void )`  
  Возвращает массив заголовков ответа.
 
-   -.n.ti **return** `array`;
+   -.n.ti return `array`;
 
  - `:h`public string Connection::getHeader ( string $name )`  
  Возвращает заголовок ответа по имени.
 
-   -.n **param** `$name` - имя заголовка.
-   -.n.ti **return** `string` или `null` если нет заголовка с таким именем.
+   -.n `$name` - имя заголовка.
+   -.n.ti return `string` или `null` если нет заголовка с таким именем.
