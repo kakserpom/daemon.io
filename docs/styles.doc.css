@@ -145,7 +145,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .main_container ul {
     /*list-style: circle;*/
-    list-style: disc;
+    list-style: circle;
     /*font-size: 13px;*/
     line-height: 18px;
     padding-left: 15px;
@@ -155,7 +155,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .main_container li.n {
     /*list-style: none;*/
-    list-style: circle;
+    list-style: disc;
 }
 .main_container li.ti {
     margin-top: 15px;
