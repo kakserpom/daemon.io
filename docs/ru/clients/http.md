@@ -31,7 +31,7 @@ $httpclient->get(['http://www.google.com/robots.txt'],
 
 ##### clients/http/pool/methods # Методы
 
- - `public void Pool::get ( string|array $url, callable|array $params )`  
+ - `:h`public void Pool::get ( string|array $url, callable|array $params )`  
  Осуществляет GET запрос.
 
    -.n param `$url` – строка c полным url или массив параметров.
@@ -39,7 +39,7 @@ $httpclient->get(['http://www.google.com/robots.txt'],
    -.n.ti callback function(`:e`[Connection](#clients/http/connection)` $conn, boolean $success).
    -.n.ti return `void`;
 
- - `public void Pool::post ( string|array $url, array $data = [], callable|array $params )`  
+ - `:h`public void Pool::post ( string|array $url, array $data = [], callable|array $params )`  
  Осуществляет POST запрос.
 
    -.n param `$url` – строка c полным url или массив параметров.
@@ -48,13 +48,13 @@ $httpclient->get(['http://www.google.com/robots.txt'],
    -.n.ti callback function(`:e`[Connection](#clients/http/connection)` $conn, boolean $success).
    -.n.ti return `void`;
 
- - `public static string Pool::buildUrl ( string|array $mixed )`  
+ - `:h`public static string Pool::buildUrl ( string|array $mixed )`  
  Преобразует массив `$mixed` в ссылку. @TODO lol
 
    -.n param `$mixed` - массив параметров url.
    -.n.ti return `string`;
 
- - `public static string Pool::prepareUrl ( string|array $mixed )`  
+ - `:h`public static string Pool::prepareUrl ( string|array $mixed )`  
  Преобразует массив `$mixed` в нормализованный массив. @TODO дабл lol
 
    -.n param `$mixed` - массив параметров url.

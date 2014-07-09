@@ -134,7 +134,7 @@ $(function(){
 	// 	$(item).parent().html($(item).html());
 	// });
 
-	$('pre code').each(function(i, block) {
+	$('pre code, .code_highlight').each(function(i, block) {
 		hljs.highlightBlock(block);
 	});
 

@@ -212,6 +212,13 @@ code,
     color: #333;
 }
 
+code.code_highlight {
+    display: inline;
+    padding: 5px;
+    overflow: visible;
+    line-height: 40px;
+}
+
 em {
     font-size: 12px;
     line-height: 18px;

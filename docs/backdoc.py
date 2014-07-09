@@ -1581,7 +1581,7 @@ class Markdown(object):
     _code_span_re = re.compile(r'''
             (?<!\\)
             (`+)        # \1 = Opening run of `
-            (:e`)?      # modificator :e for emulate code
+            (?::(e|h)`)?      # modificator :e|:h for emulate code
             (?!`)       # See Note A test/tm-cases/escapes.text
             (.+?)       # \2 = The code block
             (?<!`)
@@ -1592,9 +1592,12 @@ class Markdown(object):
     def _code_span_sub(self, match):
         c = match.group(3).strip(" \t")
 
-        if match.group(2):
+        if match.group(2) == 'e':
             c = self._do_links(c)
             return "<span class=\"code_emul\">%s</span>" % c
+        elif match.group(2) == 'h':
+            c = self._encode_code(c)
+            return "<code class=\"code_highlight\">%s</code>" % c
         else:
             c = self._encode_code(c)
             return "<code>%s</code>" % c
