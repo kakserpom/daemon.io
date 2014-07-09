@@ -10,19 +10,7 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 Обсудить проект можно&#160;в [Google Groups](http://groups.google.com/group/phpdaemon).  
 [Багтрекер](https://github.com/kakserpom/phpdaemon/issues).
 
-## basics # Основы
-
-PHPDaemon представляет из&#160;себя один мастер-процесс с&#160;несколькими рабочими процессами.
-
-Приложение, в&#160;зависимости от&#160;нагрузки, инициализируется в&#160;одном или нескольких рабочих процессах.
-Во&#160;втором случае запрос будет передан одному свободному рабочему процессу.
-
-Механизма взаимодействия между ребочими процессами не&#160;предусмотрено, поэтому для синхронизации приложений в&#160;разных процессах вы&#160;можете использовать стороннее&#160;ПО, например Redis.
-Также есть возможность задать опцию приложения `limit-instances N;`, чтобы ограничить кол-во копий приложения во&#160;всех рабочих процессах.
-
-Исполняющий файл находится в дирктории `./bin/phpd`.
-Вы можете создать свой исполняющий файл, как показано в примере `./bin/sampleapp`.
-Перед запуском демон проверяет переменную `$configFile`, используя её для загрузки конфигурации.
+<!-- import root/basics.md -->
 
 ## install # Установка
 
@@ -39,13 +27,13 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 <!-- import install/gentoo.md -->
 
 
-<!-- import control.md -->
+<!-- import root/control.md -->
 
 
-<!-- import examples.md -->
+<!-- import root/examples.md -->
 
 
-<!-- import app_resolver.md -->
+<!-- import root/app_resolver.md -->
 
 
 ## config # Конфигурация
@@ -60,126 +48,12 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 ### development/app_instance # Приложение
 ### development/request # Обработка запросов
 ### development/servers_clients # Серверы и клиенты
-## servers # Серверы
 
-Серверы предназначены для приема запросов и передачи их приложениям.
+<!-- import servers/index.md -->
 
-Серверы должны быть записаны в конфиг с помощью приложения Pool, например:
+<!-- import servers/options.md -->
 
-    # контекст для ssl соединения (опционально)
-    TransportContext:myContext {
-        ssl;
-        certFile "/path/to/cert.pem";
-        pkFile "/path/to/privkey.pem";
-        passphrase "";
-        verifyPeer true;
-        allowSelfSigned true;
-    }
-    
-    # слушаем 80 и 443 порт
-    Pool:HTTPServer {
-        listen "tcp://0.0.0.0:80", "tcp://0.0.0.0:443##myContext";
-        port 80;
-        privileged;
-        maxconcurrency 1;
-    }
-
-### servers/options # Опции серверов
-
-В данном разделе перечислены опции, используемые всеми серверами.
-
- - `listen (string|array)`  
- Прослушиваемые сервером адреса. Можно указать несколько через разделитель&nbsp;`","`.
-
- - privileged  
- @TODO
-
- - max-concurrency  
- Максимальное количество открытых соединений.
-
- - max-allowed-packet  
- Максимальный допустимый размер пакета.
-
- - connection-class  
- Класс соединения по-умолчанию.
-
- - name  
- @TODO
-
- - allowed-clients  
- Разрешенные IP-адреса или маски через запятую.
-
- - ssl  
- Включает ssl.
-
- - ssl-port
- @TODO
-
- - cert-file
- @TODO
-
- - pk-file
- @TODO
-
- - passphrase
- @TODO
-
- - verify-peer
- @TODO
-
- - allow-self-signed
- @TODO
-
- - verify-depth
- @TODO
-
- - ca-file
- @TODO
-
-
-### servers/http # Servers\HTTP
-
-#### servers/http/options # Опции
-
- - `port (int = 80)`  
- Прослушиваемый порт.
-
- - `send-file (boolean = false)`  
- Оптимизирует обработку запросов, предварительно записывая их в файл.
- Опция будет игнорироваться если передан параметр `server['DONT_USE_SENDFILE']`.
-
- - `send-file-dir (string = '/dev/shm')`  
- Директория для sendfile. 
-
- - `send-file-prefix (string = 'http-')`  
- Префикс для sendfile файлов.
-
- - `send-file-onlybycommand (boolean = false)`  
- Включать sendfile если передан `server['USE_SENDFILE']`.
-
- - `expose (boolean = true)`  
- Включать версию PHPDaemon в заголовке `X-Powered-By`.
-
- - `:e`keepalive ([Time](#config/types/time) = '0s')`  
- Время keepalive.
-
- - `:e`chunksize ([Size](#config/types/size) = '8k')`  
- Размер чанка.
-
- - `defaultcharset (string = 'utf-8')`  
- Кодировка по-умолчанию.
-
- - `wss-name (string = '')`  
- Имя пула WebSocket-сервера, куда направлять WebSocket-соединения.
-
- - `fps-name (string = '')`  
- Имя пула FlashPolicy-сервера, куда адресовать FlashPolicy-соединения.
-
- - `:e`upload-max-size ([Size](#config/types/size) = ini_get('upload_max_filesize'))`  
- Максимальный размер загружаемого файла.
-
- - `responder (string = null)`  
- Имя приложения по-умолчанию для обработки запросов с данного сервера.
+<!-- import servers/http.md -->
 
 ### servers/fastcgi # Servers\FastCGI
 ### servers/debugconsole # Servers\DebugConsole
@@ -189,103 +63,14 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 ### servers/lock # Servers\Lock
 ### servers/socks # Servers\Socks
 ### servers/websocket # Servers\WebSocket
-## clients # Клиенты
+
+<!-- import clients/index.md -->
+
 ### clients/asterisk # Clients\Asterisk
 ### clients/dns # Clients\DNS
 ### clients/gibson # Clients\Gibson
-### clients/http # HTTP #> [Клиенты](#clients) \ HTTP
 
-`namespace PHPDaemon\Clients\HTTP`
-
-Клиент HTTP предназначен для выполнения GET и POST запросов на удаленные хосты.
-
-#### clients/http/pool # Pool
-
-##### clients/http/pool/options # Опции по-умолчанию
-
- - `port (int = 80)`
- - `ssl-port (int = 443)`
- - `expose (boolean = true)`
-
-##### clients/http/pool/methods # Методы
-
- - `public void Pool::get ( string|array $url, callable|array $params )`  
- Осуществляет GET запрос.
-
-   -.n param `$url` – строка c полным url или массив параметров.
-   -.n param `$params` - callback функция или массив @TODO.
-   -.n.ti callback function(`:e`[Connection](#clients/http/connection)` $conn, boolean $success).
-   -.n.ti return `void`;
-
- - `public void Pool::post ( string|array $url, array $data = [], callable|array $params )`  
- Осуществляет POST запрос.
-
-   -.n param `$url` – строка c полным url или массив параметров.
-   -.n param `$data` - массив данных.
-   -.n param `$params` - callback функция или массив @TODO.
-   -.n.ti callback function(`:e`[Connection](#clients/http/connection)` $conn, boolean $success).
-   -.n.ti return `void`;
-
- - `public static string Pool::buildUrl ( string|array $mixed )`  
- Преобразует массив `$mixed` в ссылку. @TODO lol
-
-   -.n param `$mixed` - массив параметров url.
-   -.n.ti return `string`;
-
- - `public static string Pool::prepareUrl ( string|array $mixed )`  
- Преобразует массив `$mixed` в нормализованный массив. @TODO дабл lol
-
-   -.n param `$mixed` - массив параметров url.
-   -.n.ti return `array`;
-
-#### clients/http/connection # Connection
-
-##### clients/http/connection/vars # Свойства
-
- - `public $headers;`  
- Заголовки ответа.
-
- - `public $contentLength;`  
- Длина ответа.
-
- - `public $body;`  
- Тело ответа.
-
- - `public $cookie;`  
- Coockies ответа.
-
- - `public $chunked;`  
- Если true, то в заголовках был получен `Transfer-Encoding: chunked`.
-
- - `public $protocolError;`  
- Номер строки на которой произошла ошибка.
-
- - `public $responseCode;`  
- Код ответа.
-
- - `public $lastURL;`  
- Последний запрошенный url.
-
- - `public $rawHeaders;`  
- Заголовки ответа в сыром виде.
-
-##### clients/http/connection/methods # Методы
-
- - `public string Connection::getBody ( void )`  
- Возвращает тело ответа.
-
-   -.n.ti return `string`;
-
- - `public array Connection::getHeaders ( void )`  
- Возвращает массив заголовков ответа.
-
-   -.n.ti return `array`;
-
- - `public string Connection::getHeader ( string $name )`  
- Возвращает заголовок ответа по имени.
-
-   -.n param `$name` - имя заголовка.
-   -.n.ti return `string` или `null` если нет заголовка с таким именем.
+<!-- import clients/http.md -->
 
 ### clients/icmp # Clients\ICMP
 ### clients/irc # Clients\IRC
