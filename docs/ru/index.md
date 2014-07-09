@@ -194,7 +194,10 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 ### clients/dns # Clients\DNS
 ### clients/gibson # Clients\Gibson
 ### clients/http # HTTP #> [Клиенты](#clients) \ HTTP
+
 `namespace PHPDaemon\Clients\HTTP`
+
+Клиент HTTP предназначен для выполнения GET и POST запросов на удаленные хосты.
 
 #### clients/http/pool # Pool
 
@@ -206,7 +209,7 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 
 ##### clients/http/pool/methods # Методы
 
- - `public function get(string|array $url, callable|array $params)`  
+ - `public void Pool::get ( string|array $url, callable|array $params )`  
  Осуществляет GET запрос.
 
    -.n param `$url` – строка c полным url или массив параметров.
@@ -214,7 +217,7 @@ PHPDaemon представляет из&#160;себя один мастер-пр
    -.n.ti callback function(`:e`[Connection](#clients/http/connection)` $conn, boolean $success).
    -.n.ti return `void`;
 
- - `public function post(string|array $url, array $data = [], callable|array $params)`  
+ - `public void Pool::post ( string|array $url, array $data = [], callable|array $params )`  
  Осуществляет POST запрос.
 
    -.n param `$url` – строка c полным url или массив параметров.
@@ -223,13 +226,13 @@ PHPDaemon представляет из&#160;себя один мастер-пр
    -.n.ti callback function(`:e`[Connection](#clients/http/connection)` $conn, boolean $success).
    -.n.ti return `void`;
 
- - `public static function buildUrl(string|array $mixed)`  
+ - `public static string Pool::buildUrl ( string|array $mixed )`  
  Преобразует массив `$mixed` в ссылку. @TODO lol
 
    -.n param `$mixed` - массив параметров url.
    -.n.ti return `string`;
 
- - `public static function prepareUrl(string|array $mixed)`  
+ - `public static string Pool::prepareUrl ( string|array $mixed )`  
  Преобразует массив `$mixed` в нормализованный массив. @TODO дабл lol
 
    -.n param `$mixed` - массив параметров url.
@@ -252,7 +255,7 @@ PHPDaemon представляет из&#160;себя один мастер-пр
  Coockies ответа.
 
  - `public $chunked;`  
- Механизм передачи данных chunked если `true`.
+ Если true, то в заголовках был получен `Transfer-Encoding: chunked`.
 
  - `public $protocolError;`  
  Номер строки на которой произошла ошибка.
@@ -268,7 +271,21 @@ PHPDaemon представляет из&#160;себя один мастер-пр
 
 ##### clients/http/connection/methods # Методы
 
+ - `public string Connection::getBody ( void )`  
+ Возвращает тело ответа.
 
+   -.n.ti return `string`;
+
+ - `public array Connection::getHeaders ( void )`  
+ Возвращает массив заголовков ответа.
+
+   -.n.ti return `array`;
+
+ - `public string Connection::getHeader ( string $name )`  
+ Возвращает заголовок ответа по имени.
+
+   -.n param `$name` - имя заголовка.
+   -.n.ti return `string` или `null` если нет заголовка с таким именем.
 
 ### clients/icmp # Clients\ICMP
 ### clients/irc # Clients\IRC
