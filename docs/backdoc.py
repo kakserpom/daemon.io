@@ -2376,7 +2376,7 @@ https://github.com/chibisov/backdoc
 
     <link rel="stylesheet" href="../normalize.min.css" />
     <link rel="stylesheet" href="../styles.doc.css" />
-    <link rel="stylesheet" href="../highlight/xcode.css" />
+    <link rel="stylesheet" href="../highlight/github.css" />
     <script src="../highlight.pack.js"></script>
     <script src="../zepto.js"></script>
     <script src="../main.js"></script>

@@ -19,8 +19,6 @@ $httpclient->get(['http://www.google.com/robots.txt'],
 		$this->finish();
 	}
 );
-
-$this->sleep(5, true);
 ```
 
 #### clients/http/pool # Pool
