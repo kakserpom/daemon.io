@@ -109,6 +109,8 @@ function setCookie(name, value, options) {
 
 
 $(function(){
+	var global_lang = $('html').attr('lang');
+
 	$('.toggle_sidebar_button').on('click', function(){
 		$('body').toggleClass('force_show_sidebar');
 	});
@@ -136,6 +138,27 @@ $(function(){
 
 	$('pre code, .code_highlight').each(function(i, block) {
 		hljs.highlightBlock(block);
+	});
+
+	var phpTypes = {
+		'array': 1,
+		'boolean': 1,
+		'object': 1,
+		'string': 1,
+		'integer': 1,
+		'float': 1,
+		'callable': 1
+	};
+
+	$('.code_highlight').each(function(){
+		$('.hljs-keyword', this).each(function(){
+			var obj = $(this);
+				text = obj.text();
+
+			if(phpTypes[text] === 1) {
+				obj.wrap('<a href="http://php.net/manual/'+ global_lang +'/language.types.'+ text +'.php" target="_blank" />');
+			}
+		});
 	});
 
 	$('.hljs-class .hljs-title a').addClass('hljs-title');
