@@ -1516,8 +1516,13 @@ class Markdown(object):
                 return "\n\n%s\n\n" % colored
 
         codeblock = self._encode_code(codeblock)
-        pre_class_str = self._html_class_str_from_tag("pre")
-        code_class_str = self._html_class_str_from_tag("code")
+        pre_class_str = '' # self._html_class_str_from_tag("pre")
+
+        if lexer_name:
+            code_class_str = ' class="'+ lexer_name +'"' # self._html_class_str_from_tag("code")
+        else:
+            code_class_str = ''
+
         return "\n\n<pre%s><code%s>%s\n</code></pre>\n\n" % (
             pre_class_str, code_class_str, codeblock)
 
@@ -2371,6 +2376,8 @@ https://github.com/chibisov/backdoc
 
     <link rel="stylesheet" href="../normalize.min.css" />
     <link rel="stylesheet" href="../styles.doc.css" />
+    <link rel="stylesheet" href="../highlight/xcode.css" />
+    <script src="../highlight.pack.js"></script>
     <script src="../zepto.js"></script>
     <script src="../main.js"></script>
 </head>

@@ -4,6 +4,25 @@
 
 Клиент HTTP предназначен для выполнения GET и POST запросов на удаленные хосты.
 
+#### Примеры
+
+@TODO
+
+```php
+$httpclient = \PHPDaemon\Clients\HTTP\Pool::getInstance();
+
+$httpclient->get(['http://www.google.com/robots.txt'],
+	function ($conn, $success) {
+		if ($success) {
+			echo $conn->body;
+		}
+		$this->finish();
+	}
+);
+
+$this->sleep(5, true);
+```
+
 #### clients/http/pool # Pool
 
 ##### clients/http/pool/options # Опции по-умолчанию

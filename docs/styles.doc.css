@@ -180,6 +180,10 @@ pre {
     white-space: pre;
 }
 
+pre code {
+    background: #f3f3f3 !important;
+}
+
 .main_container {
     width: 840px;
 }

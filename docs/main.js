@@ -130,8 +130,12 @@ $(function(){
 	});
 
 	// remove <code> tag inside of <pre>
-	$.each($('pre > code'), function(key, item) {
-		$(item).parent().html($(item).html());
+	// $.each($('pre > code'), function(key, item) {
+	// 	$(item).parent().html($(item).html());
+	// });
+
+	$('pre code').each(function(i, block) {
+		hljs.highlightBlock(block);
 	});
 
 
