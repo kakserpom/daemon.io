@@ -182,7 +182,7 @@ pre {
 
 pre code {
     background: #f3f3f3 !important;
-    white-space: pre-wrap;
+    white-space: pre;
 }
 
 .main_container {
