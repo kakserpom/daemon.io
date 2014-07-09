@@ -32,12 +32,12 @@ $httpclient->get(['http://www.google.com/robots.txt'],
 ##### clients/http/pool/methods # Методы
 
  -.n.nm `:h`public void Pool::get ( string|array $url, callable|array $params )`  
- Осуществляет GET запрос.
+ &nbsp;&nbsp;&nbsp;&nbsp;Осуществляет GET запрос.
 
-   -.n `$url` – строка c полным url или массив параметров.
-   -.n `$params` - callback функция или массив @TODO.
-   -.n.ti callback function ( <span class="hljs-class"><span class="hljs-title">[Connection](#clients/http/connection)</span></span> <span class="hljs-variable">$conn</span>, <span class="hljs-keyword">boolean</span> <span class="hljs-variable">$success</span> ).
-   -.n.ti return `void`;
+   -.n `$url` &mdash; строка c полным url или массив параметров;
+   -.n `$params` &mdash; callback функция или массив @TODO;
+   -.n.ti callback function ( [Connection](#clients/http/connection) <span class="hljs-variable">$conn</span>, boolean <span class="hljs-variable">$success</span> );
+   -.n.ti return `void`.
 
  -.n.nm `:h`public void Pool::post ( string|array $url, array $data = [], callable|array $params )`  
  Осуществляет POST запрос.
