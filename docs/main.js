@@ -186,7 +186,7 @@ $(function(){
 		items.each(function() {
 			obj = $(this);
 			iter = topStart;
-			topEnd = obj.offset().top;
+			topEnd = obj.offset().top - 30;
 
 			while(iter < topEnd) {
 				headers['l' + (iter / step ^ 0)] = prevLink;
@@ -201,10 +201,12 @@ $(function(){
 		var scrolledTop = 0, scrollTo = 0,
 			line = '', link = '',
 			prevActiveObj = $(), prevActiveLink = '',
+			mainWrap = $('.main_wrap'),
 			sidebar = $('.sidebar');
 
 		function setActiveSection() {
-			scrolledTop = getPageScroll().top;
+			// scrolledTop = getPageScroll().top;
+			scrolledTop = mainWrap.scrollTop();
 			line = 'l' + (scrolledTop / step ^ 0);
 			link = headers[line];
 
@@ -214,13 +216,13 @@ $(function(){
 
 				prevActiveObj.addClass('active');
 				prevActiveLink = link;
-
-				scrollTo = sidebar.scrollTop() + prevActiveObj.offset().top - scrolledTop - getWindowHeight() / 2;
+				scrollTo = sidebar.scrollTop() + prevActiveObj.offset().top - getWindowHeight() / 2; // - scrolledTop
 				sidebar.scrollTop(scrollTo);
 			}
 		}
 
-		$(window).on('scroll', setActiveSection);
+		// $(window).on('scroll', setActiveSection);
+		mainWrap.on('scroll', setActiveSection);
 		setActiveSection();
 
 	})();

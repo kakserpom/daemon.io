@@ -134,11 +134,15 @@ header menu a:hover {
     visibility: visible;
 }
 
+.sidebar,
+.main_wrap {
+    top: 35px;
+}
+
 .sidebar{
     background: #FFF;
     position: fixed;
     z-index: 10;
-    top: 35px;
     left: 0;
     bottom: 0;
     width: 240px;
@@ -225,11 +229,18 @@ header menu a:hover {
         margin-top: 15px;
     }
 
+.main_wrap {
+    position: fixed;
+    z-index: 5;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+}
 .main_container {
-    width: 100%;
+    width: 840px;
     margin: 30px;
     margin-left: 0px;
-    padding-top: 1px;
     padding-left: 260px;
     padding-right: 30px;
 }
@@ -312,10 +323,6 @@ pre.inline code {
     padding: 3px 5px;
     border: 1px solid #ddd;
     background: #f8f8f8 !important;
-}
-
-.main_container {
-    width: 840px;
 }
 
 .main_container p, ul, pre {
@@ -415,9 +422,13 @@ table.invis td {
         display: none;
     }
 
+    .sidebar,
+    .main_wrap {
+        top: 0;
+    }
+
     .sidebar {
         display: none;
-        top: 0;
     }
 
     .main_container {

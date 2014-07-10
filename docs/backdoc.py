@@ -2447,8 +2447,10 @@ https://github.com/chibisov/backdoc
     <div class="sidebar">
         <!-- toc -->
     </div>
-    <div class="main_container">
-        <!-- main_content -->
+    <div class="main_wrap">
+        <div class="main_container">
+            <!-- main_content -->
+        </div>
     </div>
     <a href="https://github.com/kakserpom/phpdaemon" class="forkButton" target="_blank"><img src="/img/forkme.png" height="149" width="149" alt="Fork me on GitHub"></a>
 </body>

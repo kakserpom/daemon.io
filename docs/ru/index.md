@@ -123,3 +123,4 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 ## publications # Публикации
 ## futures # Фьючерсы
 ## developers # Разработчики
+## authors_and_translators # Авторы и переводчики
