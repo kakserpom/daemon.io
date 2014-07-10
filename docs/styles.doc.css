@@ -410,6 +410,11 @@ table.invis td {
 }
 
 @media (max-width: 820px) {
+    header,
+    .forkButton {
+        display: none;
+    }
+    
     .sidebar {
         display: none;
     }
