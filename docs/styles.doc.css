@@ -158,8 +158,10 @@ h1, h2, h3, h4, h5, h6 {
 .main_container li.ti {
     margin-top: 15px;
 }
-.main_container li.nm {
+.main_container li.method {
     margin-left: -15px;
+    margin-bottom: 20px;
+    list-style: none;
 }
 
 .main_container li p {
@@ -196,6 +198,22 @@ pre code {
     white-space: pre;
 }
 
+pre.inline {
+    float: left;
+    width: 100%;
+    margin: 5px 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    overflow: visible;
+}
+pre.inline code {
+    float: left;
+    padding: 3px 5px;
+    border: 1px solid #ddd;
+    background: #f8f8f8 !important;
+}
+
 .main_container {
     width: 840px;
 }
@@ -219,6 +237,7 @@ code,
     font-style: normal;
 }
 
+code a,
 .code_emul a {
     color: #333;
 }
@@ -228,6 +247,18 @@ code.code_highlight {
     padding: 3px 5px;
     overflow: visible;
     /*line-height: 40px;*/
+}
+
+code.code_highlight a {
+    color: #458;
+    font-weight: bold;
+}
+
+code.clear {
+    background: none;
+    border: 0;
+    padding: 0;
+    line-height: normal;
 }
 
 em {
@@ -272,6 +303,10 @@ table.invis td {
     margin: 10px 0;
     font-size: 14px;
     line-height: 20px;
+}
+
+.method-desc {
+    margin-left: 20px;
 }
 
 @media (max-width: 820px) {

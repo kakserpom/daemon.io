@@ -150,7 +150,7 @@ $(function(){
 		'callable': 1
 	};
 
-	$('.code_highlight').each(function(){
+	$('.code_highlight, pre.inline code').each(function(){
 		$('.hljs-keyword', this).each(function(){
 			var obj = $(this);
 				text = obj.text();

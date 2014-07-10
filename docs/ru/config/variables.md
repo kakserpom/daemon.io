@@ -49,19 +49,19 @@
  
 #### config/variables/graceful_restart # Плавный перезапуск рабочих процессов
  
- - `:e`max-requests ([Number](#config/types/number) = '10k')`  
+ - `:p`max-requests ([Number](#config/types/number) = '10k')`  
  Максимальное количество запросов перед перезапуском рабочего процесса.
  `0` – неограничено.
  
- - `:e`max-memory-usage ([Size](#config/types/size) = '0b')`  
+ - `:p`max-memory-usage ([Size](#config/types/size) = '0b')`  
  Максимальный допустимый порог потребления памяти рабочим процессом.
  `0` – неограничено.
  
- - `:e`max-idle ([Time](#config/types/time) = '0s')`  
+ - `:p`max-idle ([Time](#config/types/time) = '0s')`  
  Максимальное время простоя рабочего процесса перед перезапуском.
  `0` – неограничено.
 
- - `:e`auto-reload ([Time](#config/types/time) = '0s')`  
+ - `:p`auto-reload ([Time](#config/types/time) = '0s')`  
  Задает интервал проверки всех подключенных файлов. При изменении файлов плавно перезагружает рабочие процессы.
 
  - `auto-reimport (boolean = false)`  
@@ -86,32 +86,32 @@
 
 #### config/variables/master # Связанные с мастер-процессом
 
- - `:e`mpm-delay ([Time](#config/types/time) = '0.1s')`  
+ - `:p`mpm-delay ([Time](#config/types/time) = '0.1s')`  
  Интервал между срабатываниями Мульти-Процессного Менеджера.  
  МПМ отвечает за запуск/выключение рабочих процессов, согласно настройкам.
 
- - `:e`start-workers ([Number](#config/types/number) = 4)`  
+ - `:p`start-workers ([Number](#config/types/number) = 4)`  
  Кол-во рабочих процессов при запуске демона.
 
- - `:e`min-workers ([Number](#config/types/number) = 4)`  
+ - `:p`min-workers ([Number](#config/types/number) = 4)`  
  Минимальное допустимое кол-во рабочих процессов.
 
- - `:e`max-workers ([Number](#config/types/number) = 8)`  
+ - `:p`max-workers ([Number](#config/types/number) = 8)`  
  Максимальное допустимое кол-во рабочих процессов.
 
- - `:e`min-spare-workers ([Number](#config/types/number) = 2)`  
+ - `:p`min-spare-workers ([Number](#config/types/number) = 2)`  
  Минимальное количество простаивающих рабочих процессов: phpDaemon запустит дополнительный рабочие процессы когда нагрузка увеличится, чтобы простаивающих рабочих процессов было достаточно. Сверху ограничивается параметром max-workers.
 
- - `:e`max-spare-workers ([Number](#config/types/number) = 0)`  
+ - `:p`max-spare-workers ([Number](#config/types/number) = 0)`  
  Максимальное кол-во простаивающих рабочих процессов. phpDaemon выключит дополнительные рабочие процессы когда нагрузка спадёт.
 
- - `:e`master-priorty ([Number](#config/types/number) = 100)`  
+ - `:p`master-priorty ([Number](#config/types/number) = 100)`  
  Приоритет мастер-процесса. Чем меньше значение, тем выше приоритет.
 
- - `:e`ipc-thread-priority ([Number](#config/types/number) = 100)`  
+ - `:p`ipc-thread-priority ([Number](#config/types/number) = 100)`  
  Приоритет IPC процесса. Чем меньше значение, тем выше приоритет.
 
- - `:e`worker-priority ([Number](#config/types/number) = 4)`  
+ - `:p`worker-priority ([Number](#config/types/number) = 4)`  
  Приоритет рабочего процесса. Чем меньше значение, тем выше приоритет.
 
  - `throw-exception-on-shutdown (boolean = false)`  
@@ -139,7 +139,7 @@
  - `group (string = null)`  
  Группа для рабочих процессов. Используйте безопасную группу, не используйте root, если не знаете что делаете.
 
- - `:e`auto-gc ([Number](#config/types/number) = '1k')`  
+ - `:p`auto-gc ([Number](#config/types/number) = '1k')`  
  Включает сборщик мусора вызываемый каждые n запросов. `0` – выключает совсем.
 
 #### config/variables/logging # Журналирование и отладка
@@ -175,17 +175,17 @@
  - `eio-enabled (boolean = true)`  
  Включает поддержку EIO.
 
- - `:e`eio-set-max-idle ([Time](#config/types/time) = null)`  
+ - `:p`eio-set-max-idle ([Time](#config/types/time) = null)`  
  Устанавливает максимальное количество ожидающих потоков.
 
- - `:e`eio-set-min-parallel ([Number](#config/types/number) = null)`  
+ - `:p`eio-set-min-parallel ([Number](#config/types/number) = null)`  
  Устанавливает минимальное количество параллельных потоков.
 
- - `:e`eio-set-max-parallel ([Number](#config/types/number) = null)`  
+ - `:p`eio-set-max-parallel ([Number](#config/types/number) = null)`  
  Устанавливает максимальное количество параллельных потоков.
 
- - `:e`eio-set-max-poll-reqs ([Number](#config/types/number) = null)`  
+ - `:p`eio-set-max-poll-reqs ([Number](#config/types/number) = null)`  
  Устанавливает максимальное количество обрабатываемых запросов.
 
- - `:e`eio-set-max-poll-time ([Time](#config/types/time) = null)`  
+ - `:p`eio-set-max-poll-time ([Time](#config/types/time) = null)`  
  Устанавливает максимальное время выполнения.

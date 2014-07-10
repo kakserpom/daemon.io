@@ -25,85 +25,91 @@ $httpclient->get(['http://www.google.com/robots.txt'],
 
 ##### clients/http/pool/options # Опции по-умолчанию
 
- - `port (int = 80)`
- - `ssl-port (int = 443)`
+ - `port (integer = 80)`
+ - `ssl-port (integer = 443)`
  - `expose (boolean = true)`
 
 ##### clients/http/pool/methods # Методы
 
- -.n.nm `:h`public void Pool::get ( string|array $url, callable|array $params )`  
- &nbsp;&nbsp;&nbsp;&nbsp;Осуществляет GET запрос.
+ -.method ```php.inline
+ void public Pool::get ( url $url, array $params )
+ void public Pool::get ( url $url, callable $resultcb )
+ ```
+   -.n Осуществляет GET запрос.
+   -.n.ti `:h.clear`$url` &mdash; строка c полным url или массив параметров
+   -.n `:h.clear`$params` &mdash; массив параметров
+   -.n `:h.clear`$resultcb` &mdash; callback функция
+   -.n.ti `:ph.clear`callback ( [Connection](#clients/http/connection) $conn, boolean $success )`
 
-   -.n <span class="hljs-variable">$url</span> &mdash; строка c полным url или массив параметров
-   -.n <span class="hljs-variable">$params</span> &mdash; callback функция или массив @TODO
-   -.n.ti callback ( [Connection](#clients/http/connection) <span class="hljs-variable">$conn</span>, boolean <span class="hljs-variable">$success</span> )
+ -.method ```php.inline
+ void public Pool::post ( url $url, array $data = [], array $params )
+ void public Pool::post ( url $url, array $data = [], callable $resultcb )
+ ```
+   -.n Осуществляет POST запрос
+   -.n.ti `:h.clear`$url` &mdash; строка c полным url или массив параметров
+   -.n `:h.clear`$data` &mdash; массив данных
+   -.n `:h.clear`$params` &mdash; callback функция или массив @TODO
+   -.n.ti `:ph.clear`callback ( [Connection](#clients/http/connection) $conn, boolean $success )`
 
- -.n.nm `:h`public void Pool::post ( string|array $url, array $data = [], callable|array $params )`  
- Осуществляет POST запрос.
+ -.method  ```php.inline
+ string public static Pool::buildUrl ( string $mixed )
+ string public static Pool::buildUrl ( array $mixed )
+ ```
+   -.n Преобразует массив `$mixed` в ссылку
+   -.n.ti `$mixed` &mdash; массив параметров url
 
-   -.n `$url` – строка c полным url или массив параметров.
-   -.n `$data` - массив данных.
-   -.n `$params` - callback функция или массив @TODO.
-   -.n.ti callback function ( <span class="hljs-class"><span class="hljs-title">[Connection](#clients/http/connection)</span></span> <span class="hljs-variable">$conn</span>, <span class="hljs-keyword">boolean</span> <span class="hljs-variable">$success</span> ).
-   -.n.ti return `void`;
-
- -.n.nm `:h`public static string Pool::buildUrl ( string|array $mixed )`  
- Преобразует массив `$mixed` в ссылку. @TODO lol
-
-   -.n `$mixed` - массив параметров url.
-   -.n.ti return `string`;
-
- -.n.nm `:h`public static string Pool::prepareUrl ( string|array $mixed )`  
- Преобразует массив `$mixed` в нормализованный массив. @TODO дабл lol
-
-   -.n `$mixed` - массив параметров url.
-   -.n.ti return `array`;
+ -.method ```php.inline
+ string public static Pool::prepareUrl ( string $mixed )
+ string public static Pool::prepareUrl ( array $mixed )
+ ```
+   -.n Преобразует массив `:h.clear`$mixed` в нормализованный массив @TODO дабл lol
+   -.n.ti `$mixed` &mdash; массив параметров url
 
 #### clients/http/connection # Класс Connection
 
 ##### clients/http/connection/vars # Свойства
 
- -.n.nm `:h`public $headers;`  
+ -.method `:h`array public $headers;`  
  Заголовки ответа.
 
- -.n.nm `:h`public $contentLength;`  
+ -.method `:h`integer public $contentLength;`  
  Длина ответа.
 
- -.n.nm `:h`public $body;`  
+ -.method `:h`string public $body;`  
  Тело ответа.
 
- -.n.nm `:h`public $cookie;`  
+ -.method `:h`string public $cookie;`  
  Coockies ответа.
 
- -.n.nm `:h`public $chunked;`  
+ -.method `:h`boolean public $chunked;`  
  Если true, то в заголовках был получен `Transfer-Encoding: chunked`.
 
- -.n.nm `:h`public $protocolError;`  
+ -.method `:h`integer public $protocolError;`  
  Если не `null`, то произошла серьезная ошибка при обработке ответа на запрос. Содержит номер строки в файле [Connection.php](https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php), по которому можно определить характер ошибки.
 
- -.n.nm `:h`public $responseCode;`  
+ -.method `:h`integer public $responseCode;`  
  Код ответа.
 
- -.n.nm `:h`public $lastURL;`  
+ -.method `:h`string public $lastURL;`  
  Последний запрошенный url.
 
- -.n.nm `:h`public $rawHeaders;`  
+ -.method `:h`string public $rawHeaders;`  
  Заголовки ответа в сыром виде.
 
 ##### clients/http/connection/methods # Методы
 
- -.n.nm `:h`public string Connection::getBody ( void )`  
- Возвращает тело ответа.
+ -.method ```php.inline
+ string public Connection::getBody ( void )
+ ```
+   -.n Возвращает тело ответа
 
-   -.n.ti return `string`;
+ -.method ```php.inline
+ string public Connection::getHeaders ( void )
+ ```
+   -.n Возвращает массив заголовков ответа
 
- -.n.nm `:h`public array Connection::getHeaders ( void )`  
- Возвращает массив заголовков ответа.
-
-   -.n.ti return `array`;
-
- -.n.nm `:h`public string Connection::getHeader ( string $name )`  
- Возвращает заголовок ответа по имени.
-
-   -.n `$name` - имя заголовка.
-   -.n.ti return `string` или `null` если нет заголовка с таким именем.
+ -.method ```php.inline
+ string public Connection::getHeader ( string $name )
+ ```
+   -.n Возвращает заголовок ответа по имени или `null`
+   -.n.ti `:h.clear`$name` &mdash; имя заголовка

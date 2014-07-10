@@ -21,10 +21,10 @@
  - `expose (boolean = true)`  
  Включать версию PHPDaemon в заголовке `X-Powered-By`.
 
- - `:e`keepalive ([Time](#config/types/time) = '0s')`  
+ - `:p`keepalive ([Time](#config/types/time) = '0s')`  
  Время keepalive.
 
- - `:e`chunksize ([Size](#config/types/size) = '8k')`  
+ - `:p`chunksize ([Size](#config/types/size) = '8k')`  
  Размер чанка.
 
  - `defaultcharset (string = 'utf-8')`  
@@ -36,7 +36,7 @@
  - `fps-name (string = '')`  
  Имя пула FlashPolicy-сервера, куда адресовать FlashPolicy-соединения.
 
- - `:e`upload-max-size ([Size](#config/types/size) = ini_get('upload_max_filesize'))`  
+ - `:p`upload-max-size ([Size](#config/types/size) = ini_get('upload_max_filesize'))`  
  Максимальный размер загружаемого файла.
 
  - `responder (string = null)`  
