@@ -1488,12 +1488,18 @@ class Markdown(object):
 
     def _code_block_sub(self, match, is_fenced_code_block=False):
         lexer_name = None
+
+        pre_classes  = []
+        code_classes = []
+
         if is_fenced_code_block:
             lexer_name = match.group(1)
             if lexer_name:
                 formatter_opts = self.extras['fenced-code-blocks'] or {}
-            codeblock = match.group(2)
+            codeblock = match.group(3)
             codeblock = codeblock[:-1]  # drop one trailing newline
+
+            pre_classes   = match.group(2)[1:].split('.')
         else:
             codeblock = match.group(1)
             codeblock = self._outdent(codeblock)
@@ -1508,20 +1514,20 @@ class Markdown(object):
                 codeblock = rest.lstrip("\n")   # Remove lexer declaration line.
                 formatter_opts = self.extras['code-color'] or {}
 
-        if lexer_name:
-            lexer = self._get_pygments_lexer(lexer_name)
-            if lexer:
-                colored = self._color_with_pygments(codeblock, lexer,
-                                                    **formatter_opts)
-                return "\n\n%s\n\n" % colored
+        # if lexer_name:
+        #     lexer = self._get_pygments_lexer(lexer_name)
+        #     if lexer:
+        #         colored = self._color_with_pygments(codeblock, lexer,
+        #                                             **formatter_opts)
+        #         return "\n\n%s\n\n" % colored
 
         codeblock = self._encode_code(codeblock)
-        pre_class_str = '' # self._html_class_str_from_tag("pre")
 
         if lexer_name:
-            code_class_str = ' class="'+ lexer_name +'"' # self._html_class_str_from_tag("code")
-        else:
-            code_class_str = ''
+            code_classes.append(lexer_name)
+
+        pre_class_str = ' class="' + ' '.join(pre_classes) + '"'
+        code_class_str = ' class="' + ' '.join(code_classes) + '"'
 
         return "\n\n<pre%s><code%s>%s\n</code></pre>\n\n" % (
             pre_class_str, code_class_str, codeblock)
@@ -1558,8 +1564,8 @@ class Markdown(object):
 
     _fenced_code_block_re = re.compile(r'''
         (?:\n\n|\A\n?)
-        ^```([\w+-]+)?[ \t]*\n      # opening fence, $1 = optional lang
-        (.*?)                       # $2 = code block content
+        ^```([\w+-]+)?((?:\.[_a-zA-Z0-9-]+)*)[ \t]*\n      # opening fence, \1 = optional lang, \2 = classnames
+        (.*?)                       # \3 = code block content
         ^```[ \t]*\n                # closing fence
         ''', re.M | re.X | re.S)
 
@@ -1581,26 +1587,59 @@ class Markdown(object):
     _code_span_re = re.compile(r'''
             (?<!\\)
             (`+)        # \1 = Opening run of `
-            (?::(e|h)`)?      # modificator :e|:h for emulate code
+            (?:
+                (:[a-z]+)?      # \2 modificators
+                ((?:\.[_a-zA-Z0-9-]+)*) # \3 classes
+            `)?
             (?!`)       # See Note A test/tm-cases/escapes.text
-            (.+?)       # \2 = The code block
+            (.+?)       # \4 = The code block
             (?<!`)
             \1          # Matching closer
             (?!`)
         ''', re.X | re.S)
 
     def _code_span_sub(self, match):
-        c = match.group(3).strip(" \t")
+        c = match.group(4).strip(" \t")
 
-        if match.group(2) == 'e':
-            c = self._do_links(c)
-            return "<span class=\"code_emul\">%s</span>" % c
-        elif match.group(2) == 'h':
-            c = self._encode_code(c)
-            return "<code class=\"code_highlight php\">%s</code>" % c
-        else:
+        # s - строгий режим
+        # e - кодировать символы
+        # p - парсинг ссылок
+        # h - php подсветка
+
+        mods = []
+        classes = []
+
+        if match.group(3):
+            classes = match.group(3)[1:].split('.')
+
+        if match.group(2):
+            mods = list(match.group(2))
+
+        if('s' in mods):
             c = self._encode_code(c)
             return "<code>%s</code>" % c
+
+        if('e' in mods):
+            c = self._encode_code(c)
+
+        if('p' in mods):
+            c = self._do_links(c)
+
+        if('h' in mods):
+            classes.append('code_highlight')
+            classes.append('php')
+
+        # if match.group(2) == 'e':
+        #     c = self._do_links(c)
+        #     return "<span class=\"code_emul\">%s</span>" % c
+        # elif match.group(2) == 'h':
+        #     # c = self._encode_code(c)
+        #     c = self._do_links(c)
+        #     return "<code class=\"code_highlight php\">%s</code>" % c
+        # else:
+        #     c = self._encode_code(c)
+        
+        return "<code class=\"%s\">%s</code>" % (' '.join(classes), c)
 
     def _do_code_spans(self, text):
         #   *   Backtick quotes are used for <code></code> spans.
