@@ -55,15 +55,15 @@ $httpclient->get(['http://www.google.com/robots.txt'],
  string public static Pool::buildUrl ( string $mixed )
  string public static Pool::buildUrl ( array $mixed )
  ```
-   -.n Преобразует массив `$mixed` в ссылку
-   -.n.ti `$mixed` &mdash; массив параметров url
+   -.n Преобразует массив `:h.clear`$mixed` в ссылку
+   -.n.ti `:h.clear`$mixed` &mdash; массив параметров url
 
  -.method ```php.inline
  string public static Pool::prepareUrl ( string $mixed )
  string public static Pool::prepareUrl ( array $mixed )
  ```
    -.n Преобразует массив `:h.clear`$mixed` в нормализованный массив @TODO дабл lol
-   -.n.ti `$mixed` &mdash; массив параметров url
+   -.n.ti `:h.clear`$mixed` &mdash; массив параметров url
 
 #### clients/http/connection # Класс Connection
 
