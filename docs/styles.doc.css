@@ -414,9 +414,10 @@ table.invis td {
     .forkButton {
         display: none;
     }
-    
+
     .sidebar {
         display: none;
+        top: 0;
     }
 
     .main_container {
