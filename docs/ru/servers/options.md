@@ -5,47 +5,47 @@
  - `listen (string|array)`  
  Прослушиваемые сервером адреса. Можно указать несколько через разделитель&nbsp;`","`.
 
- - privileged  
+ - `privileged`  
  @TODO
 
- - max-concurrency  
+ - `max-concurrency`  
  Максимальное количество открытых соединений.
 
- - max-allowed-packet  
+ - `max-allowed-packet`  
  Максимальный допустимый размер пакета.
 
- - connection-class  
+ - `connection-class`  
  Класс соединения по-умолчанию.
 
- - name  
+ - `name`  
  @TODO
 
- - allowed-clients  
+ - `allowed-clients`  
  Разрешенные IP-адреса или маски через запятую.
 
- - ssl  
+ - `ssl`  
  Включает ssl.
 
- - ssl-port
+ - `ssl-port`  
  @TODO
 
- - cert-file
+ - `cert-file`  
  @TODO
 
- - pk-file
+ - `pk-file`  
  @TODO
 
- - passphrase
+ - `passphrase`  
  @TODO
 
- - verify-peer
+ - `verify-peer`  
  @TODO
 
- - allow-self-signed
+ - `allow-self-signed`  
  @TODO
 
- - verify-depth
+ - `verify-depth`  
  @TODO
 
- - ca-file
+ - `ca-file`  
  @TODO

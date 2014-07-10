@@ -187,7 +187,8 @@ pre {
     font-style: normal;
     background: none;
     border-radius: 0px;
-    overflow-x: scroll;
+    /*overflow-x: scroll;*/
+    overflow: hidden;
 
     word-wrap: normal;
     white-space: pre;
