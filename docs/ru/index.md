@@ -121,19 +121,8 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 ### network/iostream # Network\IOStream
 ### network/pool # Network\Pool
 ### network/server # Network\Server
-## faq # FAQ
+## faq # ЧаВО
 ## publications # Публикации
-## futures # Фьючерсы
-## developers # Разработчики
-
- - Vasily Zorin <<mailto:maintainer@daemon.io>> &mdash; founder, maintainer, active core developer
- - Ruslan Osmanov <<mailto:osmanov@daemon.io>> &mdash; maintainer of related PHP extensions: <a href="http://pecl.php.net/package/event" target="_blank">pecl-event</a> and <a href="http://pecl.php.net/package/eio" target="_blank">pecl-eio</a>. His invaluable contribution enabled to get rid of old nasty libevent 1.x code
- - Alexey Sharov <<mailto:www.pismeco@gmail.com>> &mdash; a lot of core bugfixes, phpdoc comments
- - Denis "TyShkan" <<mailto:denis@tyshkan.ru>> &mdash; new maintainer of Asterisk PBX client
- - Mikhail Semakhin <<mailto:mike.semakhin@gmail.com>> &mdash; contributions to core HTTPRequest class
- - Eugene Tuboltsev <<mailto:normandiggs@gmail.com>> &mdash; various contributions incl. refactoring for namespaces
- - "nehxby" <<mailto:nehxby@gmail.com>> &mdash; contributions to Asterisk client
-
 ## authors # Авторы документации
 
  - Dmitry Efimenko <<mailto:edg89@mail.ru>>

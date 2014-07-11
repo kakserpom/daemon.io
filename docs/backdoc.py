@@ -2416,12 +2416,12 @@ https://github.com/chibisov/backdoc
     <meta name="HandheldFriendly" content="true" />
     <title><!-- title --></title>
 
-    <link rel="stylesheet" href="../normalize.min.css" />
-    <link rel="stylesheet" href="../styles.doc.css" />
-    <link rel="stylesheet" href="../highlight/github.css" />
-    <script src="../highlight.pack.js"></script>
-    <script src="../zepto.js"></script>
-    <script src="../main.js"></script>
+    <link rel="stylesheet" href="../css/normalize.min.css" />
+    <link rel="stylesheet" href="../css/styles.doc.css" />
+    <link rel="stylesheet" href="../css/highlight.github.css" />
+    <script src="../js/highlight.pack.js"></script>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/main.js"></script>
 </head>
 <body>
     <header>
