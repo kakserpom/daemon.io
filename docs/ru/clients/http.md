@@ -13,10 +13,7 @@ $httpclient = \PHPDaemon\Clients\HTTP\Pool::getInstance();
 
 $httpclient->get(['http://www.google.com/robots.txt'],
 	function ($conn, $success) {
-		if ($success) {
-			echo $conn->body;
-		}
-		$this->finish();
+		// обработка данных ответа
 	}
 );
 ```
@@ -35,21 +32,20 @@ $httpclient->get(['http://www.google.com/robots.txt'],
  void public Pool::get ( url $url, array $params )
  void public Pool::get ( url $url, callable $resultcb )
  ```
-   -.n Осуществляет GET запрос.
+   -.n Осуществляет GET запрос
    -.n.ti `:h.clear`$url` &mdash; строка c полным url или массив параметров
    -.n `:h.clear`$params` &mdash; массив параметров
-   -.n `:h.clear`$resultcb` &mdash; callback функция
-   -.n.ti `:ph.clear`callback ( [Connection](#clients/http/connection) $conn, boolean $success )`
+   -.n `:h.clear`$resultcb` &mdash; `:ph.clear`callback ( [Connection](#clients/http/connection) $conn, boolean $success )` &mdash; Вызывается когда на запрос пришел ответ, либо произошла ошибка
 
  -.method ```php.inline
- void public Pool::post ( url $url, array $data = [], array $params )
- void public Pool::post ( url $url, array $data = [], callable $resultcb )
+ void public Pool::post ( url $url, array $data, array $params )
+ void public Pool::post ( url $url, array $data, callable $resultcb )
  ```
    -.n Осуществляет POST запрос
    -.n.ti `:h.clear`$url` &mdash; строка c полным url или массив параметров
-   -.n `:h.clear`$data` &mdash; массив данных
+   -.n `:h.clear`$data` &mdash; ассоциативный массив POST-параметров
    -.n `:h.clear`$params` &mdash; callback функция или массив @TODO
-   -.n.ti `:ph.clear`callback ( [Connection](#clients/http/connection) $conn, boolean $success )`
+   -.n `:h.clear`$resultcb` &mdash; `:ph.clear`callback ( [Connection](#clients/http/connection) $conn, boolean $success )` &mdash; Вызывается когда на запрос пришел ответ, либо произошла ошибка
 
  -.method  ```php.inline
  string public static Pool::buildUrl ( string $mixed )
@@ -70,31 +66,31 @@ $httpclient->get(['http://www.google.com/robots.txt'],
 ##### clients/http/connection/vars # Свойства
 
  -.method `:h`array public $headers;`  
- Заголовки ответа.
-
- -.method `:h`integer public $contentLength;`  
- Длина ответа.
+ Заголовки ответа
 
  -.method `:h`string public $body;`  
- Тело ответа.
+ Тело ответа
+
+ -.method `:h`integer public $contentLength;`  
+ Длина тела ответа
 
  -.method `:h`string public $cookie;`  
- Coockies ответа.
+ Ассоциативный массив Cookies пришедших в ответе
 
  -.method `:h`boolean public $chunked;`  
- Если true, то в заголовках был получен `Transfer-Encoding: chunked`.
+ Если true, то в заголовках был получен `Transfer-Encoding: chunked`
 
  -.method `:h`integer public $protocolError;`  
- Если не `null`, то произошла серьезная ошибка при обработке ответа на запрос. Содержит номер строки в файле [Connection.php](https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php), по которому можно определить характер ошибки.
+ Если не `null`, то произошла серьезная ошибка при обработке ответа на запрос. Содержит номер строки в файле [Connection.php](https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php), по которому можно определить характер ошибки
 
  -.method `:h`integer public $responseCode;`  
- Код ответа.
+ Код ответа. См. [Список кодов состояния HTTP](http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP)
 
  -.method `:h`string public $lastURL;`  
- Последний запрошенный url.
+ Последний запрошенный url
 
  -.method `:h`string public $rawHeaders;`  
- Заголовки ответа в сыром виде.
+ Заголовки ответа в сыром виде
 
 ##### clients/http/connection/methods # Методы
 
