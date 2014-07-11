@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+foreach (explode("\n", trim(shell_exec('find ./docs/*/index.md'))) as $source) {
+	$html = preg_replace('~\.md$~', '.html', $source);
+	passthru('python ./docs/backdoc.py -t "Документация &laquo; phpDaemon"'
+		.' --source '.escapeshellarg($source)
+		.' > '.escapeshellarg($html.'.tmp').'; mv -f '.escapeshellarg($html.'.tmp').' '.escapeshellarg($html));
+}
+
