@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
 Backdoc is a tool for backbone-like documentation generation. 
 Backdoc main goal is to help to generate one page documentation from one markdown source file.
