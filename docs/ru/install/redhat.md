@@ -53,14 +53,13 @@ $&nbsp;`sudo phpd start --verbose-tty=1`
 
 Если вы видите что-то похожее на это:
 
-    [PHPD] Loaded config file: '/opt/phpdaemon/conf/phpd.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/ExampleJabberBot.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/FastCGI.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/FlashpolicyServer.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/HTTPServer.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/IdentServer.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/SSL-sample.conf'
-    [PHPD] Loaded config file: 'conf/conf.d/WebSocketServer.conf'
-    [PHPD] [START] phpDaemon with pid-file '/var/run/phpd.pid' is running already (PID 28308)
+	[PHPD] Loaded config file: '/opt/phpdaemon/conf/phpd.conf'
+	[PHPD] Loaded config file: 'conf/conf.d/ExampleJabberBot.conf'
+	[PHPD] Loaded config file: 'conf/conf.d/FastCGI.conf'
+	[PHPD] Loaded config file: 'conf/conf.d/FlashpolicyServer.conf'
+	[PHPD] Loaded config file: 'conf/conf.d/HTTPServer.conf'
+	[PHPD] Loaded config file: 'conf/conf.d/IdentServer.conf'
+	[PHPD] Loaded config file: 'conf/conf.d/SSL-sample.conf'
+	[PHPD] Loaded config file: 'conf/conf.d/WebSocketServer.conf'
 
 Поздравляем! PHPDaemon запущен!

@@ -122,11 +122,37 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 ### network/pool # Network\Pool
 ### network/server # Network\Server
 ## faq # ЧаВО
+
+ - #### Как сделать событие, которое вызывается через заданный временной интервал?
+
+ ```php
+ $i = 0;
+ setTimeout(function($timer) use (&$i) {
+    D("Пять секунд прошло!");
+ 
+    if (++$i < 3) {
+       // запуск таймера ещё на 5 секунд
+       $timer->timeout();
+    } else {
+       echo "Конец\n";
+       $timer->free();
+    }
+ }, 5e6);
+ ```
+
 ## publications # Публикации
+
+<!-- Без этого коммента список не парсится! Don't remove this comment! -->
+
+ - <a target="_blank" href="http://habrahabr.ru/blogs/php/104811">phpDaemon и runkit: новый уровень</a> (23 сентября 2010)
+ - <a target="_blank" href="http://javascript.ru/blog/Ilya-Kantor/True-FastCGI-dlya-PHP-migraciya-testy">True FastCGI для PHP: миграция и тесты</a> (7 сентября 2010)
+ - <a target="_blank" href="http://habrahabr.ru/blogs/webdev/94921">WebSocket: будущее уже здесь!</a> (8 июня 2010)
+ - <a target="_blank" href="http://habrahabr.ru/blogs/php/91014">phpDaemon: хорошие новости</a> (24 мая 2010)
+ - <a target="_blank" href="http://habrahabr.ru/blogs/php/79377">phpDaemon: фреймворк асинхронных приложений</a> (11 января 2010)
+
 ## authors # Авторы документации
 
  - Dmitry Efimenko <<mailto:edg89@mail.ru>>
  - Vasily Zorin <<mailto:maintainer@daemon.io>>
- - Твое имя может быть здесь!
 
 ## translators # Переводчики
