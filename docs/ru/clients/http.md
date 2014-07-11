@@ -6,7 +6,7 @@
 
 #### Примеры
 
-Рабочий пример представлен в [Examples\ExampleHTTPClient.php](https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Examples/ExampleHTTPClient.php).
+Получение файла {tpl-link http://www.google.com/robots.txt google.com/robots.txt} GET запросом:
 
 ```php
 $httpclient = \PHPDaemon\Clients\HTTP\Pool::getInstance();
@@ -17,6 +17,8 @@ $httpclient->get(['http://www.google.com/robots.txt'],
 	}
 );
 ```
+
+Рабочий пример клиента представлен в {tpl-git PHPDaemon/Examples/ExampleHTTPClient.php Examples\ExampleHTTPClient.php}
 
 #### clients/http/pool # Класс Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
 
