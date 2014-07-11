@@ -2417,8 +2417,9 @@ https://github.com/chibisov/backdoc
     <title><!-- title --></title>
 
     <link rel="stylesheet" href="../css/normalize.min.css" />
-    <link rel="stylesheet" href="../css/styles.doc.css" />
     <link rel="stylesheet" href="../css/highlight.github.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/styles.doc.css" />
     <script src="../js/highlight.pack.js"></script>
     <script src="../js/zepto.js"></script>
     <script src="../js/main.js"></script>
@@ -2481,7 +2482,7 @@ class BackDoc(object):
         return self.prepare_kwargs_from_parsed_data(parsed)
 
     def importParts(self, text, sourcePath):
-        text = force_text(text)
+        # text = force_text(text)
         currpath = os.path.dirname(os.path.realpath(sourcePath))
         pattern = re.compile('<!-- import (.+) -->')
         iterator = pattern.finditer(text)
@@ -2499,35 +2500,60 @@ class BackDoc(object):
 
 
     parser_vars = {}
-    _parse_vars_re = re.compile(r"(?:[ \t]*)<!--[ \t]+pvar[ \t]+([\w]+)[ \t]+(.+?)[ \t]+-->(?:\n*)", re.U)
+    _parse_vars_re = re.compile(r"(?:[ \t]*)<!--[ \t]+pvar[ \t]+([\w-]+)[ \t]+(.+?)[ \t]+-->(?:\n*)", re.U)
 
     def _parse_vars_sub(self, match):
         self.parser_vars[match.group(1)] =  match.group(2)
         return '';
 
     def parser_vars_do(self, text):
-        text = force_text(text)
+        # text = force_text(text)
 
         return self._parse_vars_re.sub(self._parse_vars_sub, text)
 
+    sourcePath = ''
 
     def prepare_kwargs_from_parsed_data(self, parsed):
         kwargs = {}
         kwargs['title'] = force_text(parsed.get('title') or 'Documentation')
         if parsed.get('source'):
-            sourcePath = parsed['source']
-            text = open(sourcePath, 'r').read()
+            self.sourcePath = parsed['source']
+            text = open(self.sourcePath, 'r').read()
         else:
             text = self.stdin.read()
 
-        text = self.parser_vars_do(text)
-        text = self.importParts(text, sourcePath)
-
-        kwargs['markdown_src'] = text
+        kwargs['markdown_src'] = force_text(text)
         kwargs['markdown_src'] = force_text(kwargs['markdown_src'] or '')
         return kwargs
 
+
+    # {pvar ...}
+    _parse_tpls_re = re.compile(r"(\{([\w-]+)\s([^}]+)\})", re.U)
+
+    def _parse_tpls_sub(self, match):
+        key = match.group(2)
+        values = match.group(3).split(' ')
+
+        try:
+            if self.parser_vars[key]:
+                return self.parser_vars[key] % tuple(values)
+        except KeyError:
+            return match.group(1)
+
+    def parser_tpls_do(self, text):
+        # text = force_text(text)
+
+        return self._parse_tpls_re.sub(self._parse_tpls_sub, text)
+
+
     def get_result_html(self, title, markdown_src):
+        markdown_src = self.parser_vars_do(markdown_src)
+
+        if self.sourcePath:
+            markdown_src = self.importParts(markdown_src, self.sourcePath)
+
+        markdown_src = self.parser_tpls_do(markdown_src)
+
         response = self.get_converted_to_html_response(markdown_src)
         return (
             self.template_html.replace('<!-- title -->', self.parser_vars['title'] or title)
