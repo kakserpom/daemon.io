@@ -1,4 +1,4 @@
-### clients/http # HTTP #> [Клиенты](#clients) \ HTTP
+### clients/http # HTTP #> [Клиенты](#clients) \ HTTP {tpl-git PHPDaemon/Clients/HTTP}
 
 `:h`namespace PHPDaemon\Clients\HTTP`
 
@@ -18,7 +18,7 @@ $httpclient->get(['http://www.google.com/robots.txt'],
 );
 ```
 
-#### clients/http/pool # Класс Pool
+#### clients/http/pool # Класс Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
 
 ##### clients/http/pool/options # Опции по-умолчанию
 
@@ -61,7 +61,7 @@ $httpclient->get(['http://www.google.com/robots.txt'],
    -.n Преобразует массив `:h.clear`$mixed` в нормализованный массив @TODO дабл lol
    -.n.ti `:h.clear`$mixed` &mdash; массив параметров url
 
-#### clients/http/connection # Класс Connection
+#### clients/http/connection # Класс Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
 
 ##### clients/http/connection/vars # Свойства
 

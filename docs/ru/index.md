@@ -1,4 +1,5 @@
 <!-- pvar title Документация &laquo; phpDaemon -->
+<!-- pvar tpl-git <a target="_blank" href="https://github.com/kakserpom/phpdaemon/tree/master/%s"><i class="fa fa-github"></i></a> -->
 
 ## phpdaemon # PHPDaemon
 
@@ -123,22 +124,22 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 ### network/server # Network\Server
 ## faq # ЧаВО
 
- - #### Как сделать событие, которое вызывается через заданный временной интервал?
+ - Как сделать событие, которое вызывается через заданный временной интервал?
 
- ```php
- $i = 0;
- setTimeout(function($timer) use (&$i) {
-    D("Пять секунд прошло!");
- 
-    if (++$i < 3) {
-       // запуск таймера ещё на 5 секунд
-       $timer->timeout();
-    } else {
-       echo "Конец\n";
-       $timer->free();
-    }
- }, 5e6);
- ```
+   ```php
+   $i = 0;
+   setTimeout(function($timer) use (&$i) {
+      D("Пять секунд прошло!");
+   
+      if (++$i < 3) {
+         // запуск таймера ещё на 5 секунд
+         $timer->timeout();
+      } else {
+         echo "Конец\n";
+         $timer->free();
+      }
+   }, 5e6);
+   ```
 
 ## publications # Публикации
 
