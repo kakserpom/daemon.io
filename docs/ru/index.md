@@ -1,5 +1,6 @@
 <!-- pvar title Документация &laquo; phpDaemon -->
-<!-- pvar tpl-git <a target="_blank" href="https://github.com/kakserpom/phpdaemon/tree/master/%s"><i class="fa fa-github"></i></a> -->
+<!-- pvar tpl-git <a target="_blank" href="https://github.com/kakserpom/phpdaemon/tree/master/%s">%s<i class="fa fa-github"></i></a> -->
+<!-- pvar tpl-link <a target="_blank" href="%s">%s<i class="fa fa-external-link"></i></a> -->
 
 ## phpdaemon # PHPDaemon
 

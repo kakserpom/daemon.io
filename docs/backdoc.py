@@ -2528,20 +2528,31 @@ class BackDoc(object):
 
 
     # {pvar ...}
-    _parse_tpls_re = re.compile(r"(\{([\w-]+)\s([^}]+)\})", re.U)
+    _parse_tpls_re = re.compile(r"(\{([\w-]+)(?:\s([^}]+))?\})", re.U)
+
+    def filterEmpty(el): return len(el) > 0
 
     def _parse_tpls_sub(self, match):
         key = match.group(2)
-        values = match.group(3).split(' ')
 
         try:
             if self.parser_vars[key]:
-                return self.parser_vars[key] % tuple(values)
+                if match.group(3):
+                    count = self.parser_vars[key].count('%s')
+                    values = match.group(3).split(' ', count - 1)
+
+                    if(len(values) < count):
+                        values = values + ['']*(count - len(values))
+
+                    return self.parser_vars[key] % tuple(values)
+                else:
+                    return self.parser_vars[key]
+
         except KeyError:
             return match.group(1)
 
     def parser_tpls_do(self, text):
-        # text = force_text(text)
+        text = force_text(text)
 
         return self._parse_tpls_re.sub(self._parse_tpls_sub, text)
 

@@ -81,10 +81,10 @@ $httpclient->get(['http://www.google.com/robots.txt'],
  Если true, то в заголовках был получен `Transfer-Encoding: chunked`
 
  -.method `:h`integer public $protocolError;`  
- Если не `null`, то произошла серьезная ошибка при обработке ответа на запрос. Содержит номер строки в файле [Connection.php](https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php), по которому можно определить характер ошибки
+ Если не `null`, то произошла серьезная ошибка при обработке ответа на запрос. Содержит номер строки в файле {tpl-git PHPDaemon/Clients/HTTP/Connection.php Connection.php}, по которому можно определить характер ошибки
 
  -.method `:h`integer public $responseCode;`  
- Код ответа. См. [Список кодов состояния HTTP](http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP)
+ Код ответа. См. {tpl-link http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP Список кодов состояния HTTP}</a>
 
  -.method `:h`string public $lastURL;`  
  Последний запрошенный url
