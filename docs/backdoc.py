@@ -2497,22 +2497,40 @@ class BackDoc(object):
 
         return text
 
+
+    parser_vars = {}
+    _parse_vars_re = re.compile(r"(?:[ \t]*)<!--[ \t]+pvar[ \t]+([\w]+)[ \t]+(.+?)[ \t]+-->(?:\n*)", re.U)
+
+    def _parse_vars_sub(self, match):
+        self.parser_vars[match.group(1)] =  match.group(2)
+        return '';
+
+    def parser_vars_do(self, text):
+        text = force_text(text)
+
+        return self._parse_vars_re.sub(self._parse_vars_sub, text)
+
+
     def prepare_kwargs_from_parsed_data(self, parsed):
         kwargs = {}
         kwargs['title'] = force_text(parsed.get('title') or 'Documentation')
         if parsed.get('source'):
             sourcePath = parsed['source']
             text = open(sourcePath, 'r').read()
-            kwargs['markdown_src'] = self.importParts(text, sourcePath)
         else:
-            kwargs['markdown_src'] = self.stdin.read()
+            text = self.stdin.read()
+
+        text = self.parser_vars_do(text)
+        text = self.importParts(text, sourcePath)
+
+        kwargs['markdown_src'] = text
         kwargs['markdown_src'] = force_text(kwargs['markdown_src'] or '')
         return kwargs
 
     def get_result_html(self, title, markdown_src):
         response = self.get_converted_to_html_response(markdown_src)
         return (
-            self.template_html.replace('<!-- title -->', title)
+            self.template_html.replace('<!-- title -->', self.parser_vars['title'] or title)
                               .replace('<!-- toc -->', response.toc_html and force_text(response.toc_html) or '')
                               .replace('<!-- main_content -->', force_text(response))
         )
