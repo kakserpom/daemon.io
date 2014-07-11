@@ -18,7 +18,7 @@ $httpclient->get(['http://www.google.com/robots.txt'],
 );
 ```
 
-Рабочий пример клиента представлен в {tpl-git PHPDaemon/Examples/ExampleHTTPClient.php Examples\ExampleHTTPClient.php}
+Рабочий пример клиента представлен в {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php Clients/HTTP/Examples/Simple.php}
 
 #### clients/http/pool # Класс Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
 
