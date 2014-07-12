@@ -2431,13 +2431,11 @@ https://github.com/chibisov/backdoc
             <a href="/download.html" id="download" title="Download">СКАЧАТЬ</a>
             <menu>
                 <li><span><a href="/examples.html" title="Examples">Примеры</a></span></li>
-                <!-- <li><span><a href="/faq.html" title="FAQ">FAQ</a></span></li> -->
-                <!-- <li><span><a href="https://github.com/kakserpom/phpdaemon/wiki" title="Wiki" target="_blank">Wiki</a></span></li> -->
+                <li><span><a href="/docs/ru/" title="Publications">Документация</a></span></li>
                 <li><span><a href="https://github.com/kakserpom/phpdaemon/issues" title="Tracker" target="_blank">Задачи/ошибки</a></span></li>
                 <li><span><a href="/team.html" title="Team">Команда</a></span></li>
                 <li><span><a href="/contribute.html" title="Contribute">Помощь проекту</a></span></li>
                 <li><span><a href="/publications.html" title="Publications">Публикации</a></span></li>
-                <li><span><a href="/docs/ru/" title="Publications">Документация</a></span></li>
             </menu>
         </div>
     </header>
