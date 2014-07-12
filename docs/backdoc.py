@@ -2431,12 +2431,12 @@ https://github.com/chibisov/backdoc
             <a href="/" id="logo" title="phpDaemon">phpDaemon</a>
             <a href="/docs/{lang}/#install" id="download" title="Download">{menu-install}</a>
             <menu>
-                <li><span><a href="/examples.html" title="Examples">{menu-examples}</a></span></li>
-                <li class="active"><span><a href="/docs/{lang}/" title="Publications">{menu-docs}</a></span></li>
+                <li><span><a href="http://daemon.io/examples.html" title="Examples">{menu-examples}</a></span></li>
+                <li class="active"><span><a href="http://daemon.io/docs/{lang}/" title="Publications">{menu-docs}</a></span></li>
                 <li><span><a href="https://github.com/kakserpom/phpdaemon/issues" title="Tracker" target="_blank">{menu-tracker}</a></span></li>
-                <li><span><a href="/team.html" title="Team">{menu-team}</a></span></li>
-                <li><span><a href="/contribute.html" title="Contribute">{menu-contribute}</a></span></li>
-                <li><span><a href="/publications.html" title="Publications">{menu-publications}</a></span></li>
+                <li><span><a href="http://daemon.io/team.html" title="Team">{menu-team}</a></span></li>
+                <li><span><a href="http://daemon.io/contribute.html" title="Contribute">{menu-contribute}</a></span></li>
+                <li><span><a href="http://daemon.io/publications.html" title="Publications">{menu-publications}</a></span></li>
             </menu>
         </div>
     </header>
