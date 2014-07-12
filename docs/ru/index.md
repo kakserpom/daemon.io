@@ -151,7 +151,7 @@ setTimeout(function($timer) use (&$i) {
  - <a target="_blank" href="http://habrahabr.ru/blogs/php/91014">phpDaemon: хорошие новости</a> (24 мая 2010)
  - <a target="_blank" href="http://habrahabr.ru/blogs/php/79377">phpDaemon: фреймворк асинхронных приложений</a> (11 января 2010)
 
-## authors # Авторы документации
+## docauthors # Авторы документации
 
  - Dmitry Efimenko <<mailto:edg89@mail.ru>>
  - Vasily Zorin <<mailto:maintainer@daemon.io>>
