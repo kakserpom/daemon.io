@@ -11,7 +11,7 @@
 ```php
 $httpclient = \PHPDaemon\Clients\HTTP\Pool::getInstance();
 
-$httpclient->get(['http://www.google.com/robots.txt'],
+$httpclient->get('http://www.google.com/robots.txt',
 	function ($conn, $success) {
 		// обработка данных ответа
 	}
