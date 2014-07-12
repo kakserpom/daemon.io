@@ -27,20 +27,7 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 
 <!-- import root/basics.md -->
 
-## install # Установка
-
-<!-- import install/requirements.md -->
-
-<!-- import install/sources.md -->
-
-<!-- import install/composer.md -->
-
-<!-- import install/redhat.md -->
-
-<!-- import install/ubuntu.md -->
-
-<!-- import install/gentoo.md -->
-
+<!-- import install/index.md -->
 
 <!-- import root/control.md -->
 
@@ -50,17 +37,7 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 
 <!-- import config/index.md -->
 
-## development # Разработка
-### development/pseudotypes # Псевдотипы
-
-#### development/pseudotypes/url # url
-
-Псевдотип url @TODO
-
-### development/app_instance # Приложение
-### development/request # Обработка запросов
-### development/servers_clients # Серверы и клиенты
-### development/debugging # Отладка
+<!-- import development/index.md -->
 
 <!-- import servers/index.md -->
 
