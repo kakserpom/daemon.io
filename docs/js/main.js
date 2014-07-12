@@ -159,6 +159,16 @@ $(function(){
 				obj.wrap('<a href="http://php.net/manual/'+ global_lang +'/language.types.'+ text +'.php" target="_blank" />');
 			}
 		});
+
+		// var that = $(this),
+		// 	html = that.html();
+
+		// if(html.test(/(\(|,)\s(url)\s/g)) {
+		// 	console.log(html);
+		// }
+		
+		// html.replace(/(\(|,)\s(url)\s/g, "$1 <a href=\"#development/pseudotypes/$2\">$2</a> ");
+		// that.html(html);
 	});
 
 	$('.hljs-class .hljs-title a').addClass('hljs-title');

@@ -1273,7 +1273,7 @@ class Markdown(object):
 
     _atx_h_re = re.compile(r'''
         ^(\#{1,6})  # \1 = string of #'s
-        ([ \t]+([a-zA-Z0-9_/]+)[ \t]+\#)? # \3 = id
+        ([ \t]+([\w-/]+)[ \t]+\#)? # \3 = id
         [ \t]+
         (.+?)       # \4 = Header text
         ([ \t]+\#>[ \t]+(.+?))?  # \6 Real Header text
@@ -2420,6 +2420,9 @@ https://github.com/chibisov/backdoc
     <meta name="HandheldFriendly" content="true" />
     <title><!-- title --></title>
     <!-- <base href="http://daemon.io/" /> -->
+    
+    <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
 
     <link rel="stylesheet" href="../css/normalize.min.css" />
     <link rel="stylesheet" href="../css/highlight.github.css" />
