@@ -11,7 +11,7 @@
 
 <!-- pvar tpl-git <a target="_blank" href="https://github.com/kakserpom/phpdaemon/tree/master/%s">%s<i class="fa fa-github"></i></a> -->
 <!-- pvar tpl-link <a target="_blank" href="%s">%s<i class="fa fa-external-link"></i></a> -->
-<!-- pvar tpl-inlink <a href="#%s">%s<i class="fa fa-arrow-circle-o-up"></i></a> -->
+<!-- pvar tpl-inlink <a href="#%s">%s<i class="fa fa-caret-square-o-up"></i></a> -->
 
 ## intro # Введение
 
@@ -173,11 +173,58 @@ setTimeout(function($timer) use (&$i) {
  - <a target="_blank" href="http://habrahabr.ru/blogs/php/91014">phpDaemon: хорошие новости</a> (24 мая 2010)
  - <a target="_blank" href="http://habrahabr.ru/blogs/php/79377">phpDaemon: фреймворк асинхронных приложений</a> (11 января 2010)
 
-## howtodocs # Как писать документацию
+## contribute # Внести вклад
+
+
+### contribute/this-doc # Эта документация
+
+Мы очень хотим свести количество недокументированного кода к минимуму, но нам не хватает рук.
+Если хотите помочь, то располагаете ограниченным временем, не стесняйтесь! Проекту пригодится любая помощь.
+
+Чтобы внести изменения в эту документацию, необходимо:
+
+ 1. Сделать Fork репозитория kakserpom/daemon.io.
+ 2. Внести изменения в Markdown (.md) файлы в папке docs/<язык>/
+ 3. Скомпилировать index.html — ./docs/git-hook-post-merge
+ 4. Посмотреть как выглядят внесенные изменения.
+ 5. Послать Pull Request.
+
+
+### contribute/php-doc # PHPDoc
+
+Аналогично, чтобы восполнить пробелы в phpdoc-комментариях в коде, сделайте Fork основного репозитория, внесите изменения и пошлите Pull Request.
+
+### contribute/code # Программный код
+
+Улучшения программного кода всегда приветствуется. Если у вас есть модуль для публикации, и вы считаете, что он заслуживает включения в основной репозиторий, пришлите Pull Request.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## docauthors # Авторы документации
 
- - <a target="_blank" href="https://github.com/EzheG"><i class="fa fa-github"></i></a> Dmitry Efimenko <<mailto:ezheg89@gmail.com>>
- - <a target="_blank" href="https://github.com/kakserpom"><i class="fa fa-github"></i></a> Vasily Zorin <<mailto:maintainer@daemon.io>>
+ - Dmitry Efimenko <<mailto:ezheg89@gmail.com>>
+ - Vasily Zorin <<mailto:maintainer@daemon.io>>
 
 ## translators # Переводчики
