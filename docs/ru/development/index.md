@@ -1,11 +1,11 @@
 ## development # Разработка
-### development/pseudotypes # Псевдотипы
 
-#### development/pseudotypes/url # url
+<!-- import pseudotypes.md -->
 
-Псевдотип url @TODO
+<!-- import app_instance.md -->
 
-### development/app_instance # Приложение
-### development/request # Обработка запросов
-### development/servers_clients # Серверы и клиенты
-### development/debugging # Отладка
+<!-- import request.md -->
+
+<!-- import servers_clients.md -->
+
+<!-- import debugging.md -->

@@ -1,0 +1,1 @@
+### traits/staticobjectwatchdog # Traits\StaticObjectWatchdog

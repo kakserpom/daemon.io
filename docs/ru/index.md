@@ -43,61 +43,17 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 
 <!-- import clients/index.md -->
 
-## libraries # Библиотеки
-### libraries/cache # \Cache
-### libraries/complexjob # Core\ComplexJob
-### libraries/shellcommand # Core\ShellCommand
-### libraries/timer # Core\Timer
-### libraries/transportcontext # Core\TransportContext
-### libraries/dnode # \DNode
-### libraries/fs # \FS
-### libraries/pubsub # \PubSub
-## utils # Утилиты
-### utils/binary # Utils\Binary
-### utils/crypt # Utils\Crypt
-### utils/datetime # Utils\DateTime
-### utils/encoding # Utils\Encoding
-### utils/irc # Utils\IRC
-### utils/mime # Utils\MIME
-### utils/shmentity # Utils\ShmEntity
-### utils/terminal # Utils\Terminal
-## structures # Структуры
-### structures/objectstorage # Structures\ObjectStorage
-### structures/priorityqueuecallbacks # Structures\PriorityQueueCallbacks
-### structures/stackcallbacks # Structures\StackCallbacks
-## traits # Traits
-### traits/classwatchdog # Traits\ClassWatchdog
-### traits/deferredeventhandlers # Traits\DeferredEventHandlers
-### traits/eventhandlers # Traits\EventHandlers
-### traits/sessions # Traits\Sessions
-### traits/staticobjectwatchdog # Traits\StaticObjectWatchdog
-### traits/strictstaticobjectwatchdog # Traits\StrictStaticObjectWatchdog
-## network # Network
-### network/client # Network\Client
-### network/clientconnection # Network\ClientConnection
-### network/connection # Network\Connection
-### network/iostream # Network\IOStream
-### network/pool # Network\Pool
-### network/server # Network\Server
-## faq # ЧаВО
+<!-- import libraries/index.md -->
 
-<i class="fa fa-question-circle"></i> Как сделать событие, которое вызывается через заданный временной интервал?
+<!-- import utils/index.md -->
 
-```php
-$i = 0;
-setTimeout(function($timer) use (&$i) {
- D("Пять секунд прошло!");
+<!-- import structures/index.md -->
 
- if (++$i < 3) {
-    // запуск таймера ещё на 5 секунд
-    $timer->timeout();
- } else {
-    echo "Конец\n";
-    $timer->free();
- }
-}, 5e6);
+<!-- import traits/index.md -->
 
-```
+<!-- import network/index.md -->
+
+<!-- import root/faq.md -->
 
 ## publications # Публикации
 

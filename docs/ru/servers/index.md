@@ -28,13 +28,18 @@ Pool:HTTPServer {
 
 <!-- import http.md -->
 
-### servers/fastcgi # Servers\FastCGI
-### servers/debugconsole # Servers\DebugConsole
-### servers/flashpolicy # Servers\FlashPolicy
-### servers/ident # Servers\Ident
-### servers/ircbouncer # Servers\IRCBouncer
+<!-- import fastcgi.md -->
+
+<!-- import debugconsole.md -->
+
+<!-- import flashpolicy.md -->
+
+<!-- import ident.md -->
+
+<!-- import ircbouncer.md -->
 
 <!-- import lock.md -->
 
-### servers/socks # Servers\Socks
-### servers/websocket # Servers\WebSocket
+<!-- import socks.md -->
+
+<!-- import websocket.md -->
