@@ -2434,7 +2434,7 @@ https://github.com/chibisov/backdoc
                 <li><span><a href="/docs/ru/" title="Publications">Документация</a></span></li>
                 <li><span><a href="https://github.com/kakserpom/phpdaemon/issues" title="Tracker" target="_blank">Задачи/ошибки</a></span></li>
                 <li><span><a href="/team.html" title="Team">Команда</a></span></li>
-                <li><span><a href="/contribute.html" title="Contribute">Помощь проекту</a></span></li>
+                <li><span><a href="/contribute.html" title="Contribute">Участие</a></span></li>
                 <li><span><a href="/publications.html" title="Publications">Публикации</a></span></li>
             </menu>
         </div>
