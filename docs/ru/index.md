@@ -153,7 +153,7 @@ setTimeout(function($timer) use (&$i) {
 
 ## docauthors # Авторы документации
 
- - Dmitry Efimenko <<mailto:edg89@mail.ru>>
+ - Dmitry Efimenko <<mailto:ezheg89@gmail.com>>
  - Vasily Zorin <<mailto:maintainer@daemon.io>>
 
 ## translators # Переводчики
