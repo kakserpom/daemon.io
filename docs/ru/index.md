@@ -1,4 +1,14 @@
+<!-- pvar lang ru -->
 <!-- pvar title Документация &laquo; phpDaemon -->
+
+<!-- pvar menu-install Установка -->
+<!-- pvar menu-examples Примеры -->
+<!-- pvar menu-docs Документация -->
+<!-- pvar menu-tracker Задачи/ошибки -->
+<!-- pvar menu-team Команда -->
+<!-- pvar menu-contribute Участие -->
+<!-- pvar menu-publications Публикации -->
+
 <!-- pvar tpl-git <a target="_blank" href="https://github.com/kakserpom/phpdaemon/tree/master/%s">%s<i class="fa fa-github"></i></a> -->
 <!-- pvar tpl-link <a target="_blank" href="%s">%s<i class="fa fa-external-link"></i></a> -->
 

@@ -2409,12 +2409,13 @@ Backdoc main goal is to help to generate one page documentation from one markdow
 
 https://github.com/chibisov/backdoc
 -->
-<html lang="ru">
+<html lang="{lang}">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="HandheldFriendly" content="true" />
     <title><!-- title --></title>
+    <!-- <base href="http://daemon.io/" /> -->
 
     <link rel="stylesheet" href="../css/normalize.min.css" />
     <link rel="stylesheet" href="../css/highlight.github.css" />
@@ -2428,14 +2429,14 @@ https://github.com/chibisov/backdoc
     <header>
         <div class="center">
             <a href="/" id="logo" title="phpDaemon">phpDaemon</a>
-            <a href="/download.html" id="download" title="Download">Установка</a>
+            <a href="/docs/{lang}/#install" id="download" title="Download">{menu-install}</a>
             <menu>
-                <li><span><a href="/examples.html" title="Examples">Примеры</a></span></li>
-                <li class="active"><span><a href="/docs/ru/" title="Publications">Документация</a></span></li>
-                <li><span><a href="https://github.com/kakserpom/phpdaemon/issues" title="Tracker" target="_blank">Задачи/ошибки</a></span></li>
-                <li><span><a href="/team.html" title="Team">Команда</a></span></li>
-                <li><span><a href="/contribute.html" title="Contribute">Участие</a></span></li>
-                <li><span><a href="/publications.html" title="Publications">Публикации</a></span></li>
+                <li><span><a href="/examples.html" title="Examples">{menu-examples}</a></span></li>
+                <li class="active"><span><a href="/docs/{lang}/" title="Publications">{menu-docs}</a></span></li>
+                <li><span><a href="https://github.com/kakserpom/phpdaemon/issues" title="Tracker" target="_blank">{menu-tracker}</a></span></li>
+                <li><span><a href="/team.html" title="Team">{menu-team}</a></span></li>
+                <li><span><a href="/contribute.html" title="Contribute">{menu-contribute}</a></span></li>
+                <li><span><a href="/publications.html" title="Publications">{menu-publications}</a></span></li>
             </menu>
         </div>
     </header>
@@ -2526,10 +2527,8 @@ class BackDoc(object):
         return kwargs
 
 
-    # {pvar ...}
+    # {pvar[ ...]}
     _parse_tpls_re = re.compile(r"(\{([\w-]+)(?:\s([^}]+))?\})", re.U)
-
-    def filterEmpty(el): return len(el) > 0
 
     def _parse_tpls_sub(self, match):
         key = match.group(2)
@@ -2538,6 +2537,10 @@ class BackDoc(object):
             if self.parser_vars[key]:
                 if match.group(3):
                     count = self.parser_vars[key].count('%s')
+
+                    if count == 0:
+                        return self.parser_vars[key]
+
                     values = match.group(3).split(' ', count - 1)
 
                     if(len(values) < count):
@@ -2563,6 +2566,7 @@ class BackDoc(object):
             markdown_src = self.importParts(markdown_src, self.sourcePath)
 
         markdown_src = self.parser_tpls_do(markdown_src)
+        self.template_html = self.parser_tpls_do(self.template_html)
 
         response = self.get_converted_to_html_response(markdown_src)
         return (
