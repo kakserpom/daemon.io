@@ -1,0 +1,1 @@
+python3 tools/build.py languages bash javascript markdown nginx php ruby sql
