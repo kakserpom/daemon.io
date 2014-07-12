@@ -2428,10 +2428,10 @@ https://github.com/chibisov/backdoc
     <header>
         <div class="center">
             <a href="/" id="logo" title="phpDaemon">phpDaemon</a>
-            <a href="/download.html" id="download" title="Download">СКАЧАТЬ</a>
+            <a href="/download.html" id="download" title="Download">Установка</a>
             <menu>
                 <li><span><a href="/examples.html" title="Examples">Примеры</a></span></li>
-                <li><span><a href="/docs/ru/" title="Publications">Документация</a></span></li>
+                <li class="active"><span><a href="/docs/ru/" title="Publications">Документация</a></span></li>
                 <li><span><a href="https://github.com/kakserpom/phpdaemon/issues" title="Tracker" target="_blank">Задачи/ошибки</a></span></li>
                 <li><span><a href="/team.html" title="Team">Команда</a></span></li>
                 <li><span><a href="/contribute.html" title="Contribute">Участие</a></span></li>
