@@ -202,33 +202,13 @@ setTimeout(function($timer) use (&$i) {
 
 Улучшения программного кода всегда приветствуется. Если у вас есть модуль для публикации, и вы считаете, что он заслуживает включения в основной репозиторий, пришлите Pull Request.
 
+## doc-authors # Авторы документации
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## docauthors # Авторы документации
+### doc-writers # Писатели
 
  - Dmitry Efimenko <<mailto:ezheg89@gmail.com>>
  - Vasily Zorin <<mailto:maintainer@daemon.io>>
 
-## translators # Переводчики
+### doc-translators # Переводчики
+
+...
