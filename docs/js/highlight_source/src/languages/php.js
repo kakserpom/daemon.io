@@ -66,8 +66,11 @@ function(hljs) {
       VARIABLE,
       {
         className: 'function',
-        beginKeywords: 'function', end: /[;{]/, excludeEnd: true,
         illegal: '\\$|\\[|%',
+        variants: [
+          {beginKeywords: 'function', end: /[;{]/, excludeEnd: true},
+          {begin: /::/, end: /\(?/, excludeBegin: true, excludeEnd: true}
+        ],
         contains: [
           hljs.UNDERSCORE_TITLE_MODE,
           {
