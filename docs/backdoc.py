@@ -1605,6 +1605,7 @@ class Markdown(object):
         # e - кодировать символы
         # p - парсинг ссылок
         # h - php подсветка
+        # c - без фона и обводки
 
         mods = []
         classes = []
@@ -1628,6 +1629,9 @@ class Markdown(object):
         if('h' in mods):
             classes.append('code_highlight')
             classes.append('php')
+
+        if('c' in mods):
+            classes.append('clear')
 
         # if match.group(2) == 'e':
         #     c = self._do_links(c)

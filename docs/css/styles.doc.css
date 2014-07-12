@@ -417,8 +417,7 @@ table.invis td {
     margin-left: 20px;
 }
 
-a .fa-github,
-a .fa-external-link {
+a .fa {
     padding-left: 0.4em;
 }
 

@@ -11,10 +11,11 @@
 
 <!-- pvar tpl-git <a target="_blank" href="https://github.com/kakserpom/phpdaemon/tree/master/%s">%s<i class="fa fa-github"></i></a> -->
 <!-- pvar tpl-link <a target="_blank" href="%s">%s<i class="fa fa-external-link"></i></a> -->
+<!-- pvar tpl-inlink <a href="#%s">%s<i class="fa fa-caret-square-o-up"></i></a> -->
 
-## phpdaemon # PHPDaemon
+## intro # Введение
 
-Это асинхронный модульный демон-фреймворк, который берёт на&#160;себя обработку I/O (libevent) и&#160;другие низкоуровневые задачи, присущие сетевым демонам.
+PHPDaemon &mdash; Это асинхронный модульный демон-фреймворк, который берёт на&#160;себя обработку I/O (libevent) и&#160;другие низкоуровневые задачи, присущие сетевым демонам.
 С&#160;его помощью легко писать правильные и&#160;очень быстрые сетевые приложения.
 Из&#160;коробки идут сервера FastCGI, HTTP, CGI, FlashPolicy, Telnet, WebSocket, клиенты mysql, memcached, mongodb и&#160;многое другое.
 Работать с&#160;сетью действительно просто. Программист средней руки может написать, к&#160;примеру, IRC-бота за&#160;считанные часы.
@@ -59,9 +60,16 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 <!-- import config/application.md -->
 
 ## development # Разработка
+### development/pseudotypes # Псевдотипы
+
+#### development/pseudotypes/url # url
+
+Псевдотип url @TODO
+
 ### development/app_instance # Приложение
 ### development/request # Обработка запросов
 ### development/servers_clients # Серверы и клиенты
+### development/debugging # Отладка
 
 <!-- import servers/index.md -->
 
@@ -74,7 +82,9 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 ### servers/flashpolicy # Servers\FlashPolicy
 ### servers/ident # Servers\Ident
 ### servers/ircbouncer # Servers\IRCBouncer
-### servers/lock # Servers\Lock
+
+<!-- import servers/lock.md -->
+
 ### servers/socks # Servers\Socks
 ### servers/websocket # Servers\WebSocket
 
@@ -88,7 +98,9 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 
 ### clients/icmp # Clients\ICMP
 ### clients/irc # Clients\IRC
-### clients/lock # Clients\Lock
+
+<!-- import clients/lock.md -->
+
 ### clients/memcache # Clients\Memcache
 ### clients/mongo # Clients\Mongo
 ### clients/mysql # Clients\MySQL
@@ -160,6 +172,8 @@ setTimeout(function($timer) use (&$i) {
  - <a target="_blank" href="http://habrahabr.ru/blogs/webdev/94921">WebSocket: будущее уже здесь!</a> (8 июня 2010)
  - <a target="_blank" href="http://habrahabr.ru/blogs/php/91014">phpDaemon: хорошие новости</a> (24 мая 2010)
  - <a target="_blank" href="http://habrahabr.ru/blogs/php/79377">phpDaemon: фреймворк асинхронных приложений</a> (11 января 2010)
+
+## howtodocs # Как писать документацию
 
 ## docauthors # Авторы документации
 

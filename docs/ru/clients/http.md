@@ -35,33 +35,33 @@ $httpclient->get('http://www.google.com/robots.txt',
  void public Pool::get ( url $url, callable $resultcb )
  ```
    -.n Осуществляет GET запрос
-   -.n.ti `:h.clear`$url` &mdash; строка c полным url или массив параметров
-   -.n `:h.clear`$params` &mdash; массив параметров
-   -.n `:h.clear`$resultcb` &mdash; `:ph.clear`callback ( [Connection](#clients/http/connection) $conn, boolean $success )` &mdash; Вызывается когда на запрос пришел ответ, либо произошла ошибка
+   -.n.ti `:hc`$url` &mdash; псевдотип {tpl-inlink development/pseudotypes/url url}
+   -.n `:hc`$params` &mdash; ассоциативный массив параметров запроса
+   -.n `:hc`$resultcb` &mdash; `:ph.clear`callback ( [Connection](#clients/http/connection) $conn, boolean $success )` &mdash; Вызывается когда на запрос пришел ответ, либо произошла ошибка
 
  -.method ```php.inline
  void public Pool::post ( url $url, array $data, array $params )
  void public Pool::post ( url $url, array $data, callable $resultcb )
  ```
    -.n Осуществляет POST запрос
-   -.n.ti `:h.clear`$url` &mdash; строка c полным url или массив параметров
-   -.n `:h.clear`$data` &mdash; ассоциативный массив POST-параметров
-   -.n `:h.clear`$params` &mdash; callback функция или массив @TODO
-   -.n `:h.clear`$resultcb` &mdash; `:ph.clear`callback ( [Connection](#clients/http/connection) $conn, boolean $success )` &mdash; Вызывается когда на запрос пришел ответ, либо произошла ошибка
+   -.n.ti `:hc`$url` &mdash; псевдотип {tpl-inlink development/pseudotypes/url url}
+   -.n `:hc`$data` &mdash; ассоциативный массив POST-параметров
+   -.n `:hc`$params` &mdash; ассоциативный массив параметров запроса
+   -.n `:hc`$resultcb` &mdash; `:ph.clear`callback ( [Connection](#clients/http/connection) $conn, boolean $success )` &mdash; Вызывается когда на запрос пришел ответ, либо произошла ошибка
 
  -.method  ```php.inline
- string public static Pool::buildUrl ( string $mixed )
+ string public static Pool::buildUrl ( string $str )
  string public static Pool::buildUrl ( array $mixed )
  ```
-   -.n Преобразует массив `:h.clear`$mixed` в ссылку
-   -.n.ti `:h.clear`$mixed` &mdash; массив параметров url
+   -.n Генерирует URL-кодированную строку запроса из предоставленного ассоциативного (или индексного) массива `:hc`$mixed` или возвращает строку `:hc`$str`. В случае ошибки возвращает `:hc`false`
+   -.n.ti `:hc`$mixed` &mdash; массив параметров URL
 
  -.method ```php.inline
- string public static Pool::prepareUrl ( string $mixed )
- string public static Pool::prepareUrl ( array $mixed )
+ string public static Pool::parseUrl ( string $str )
+ string public static Pool::parseUrl ( array $mixed )
  ```
-   -.n Преобразует массив `:h.clear`$mixed` в нормализованный массив @TODO дабл lol
-   -.n.ti `:h.clear`$mixed` &mdash; массив параметров url
+   -.n Разбирает массив `:hc`$mixed` или строку `:hc`$str` и возвращает ассоциативный массив, содержащий необходимые компоненты URL: `:hc`[$scheme, $host, $uri, $port]`. В случае ошибки возвращает `:hc`false`
+   -.n.ti `:hc`$mixed` &mdash; массив параметров URL
 
 #### clients/http/connection # Класс Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
 
@@ -83,7 +83,7 @@ $httpclient->get('http://www.google.com/robots.txt',
  Если true, то в заголовках был получен `Transfer-Encoding: chunked`
 
  -.method `:h`integer public $protocolError;`  
- Если не `null`, то произошла серьезная ошибка при обработке ответа на запрос. Содержит номер строки в файле {tpl-git PHPDaemon/Clients/HTTP/Connection.php Connection.php}, по которому можно определить характер ошибки
+ Если не `:hc`null`, то произошла серьезная ошибка при обработке ответа на запрос. Содержит номер строки в файле {tpl-git PHPDaemon/Clients/HTTP/Connection.php Connection.php}, по которому можно определить характер ошибки
 
  -.method `:h`integer public $responseCode;`  
  Код ответа. См. {tpl-link http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP Список кодов состояния HTTP}</a>
@@ -104,10 +104,10 @@ $httpclient->get('http://www.google.com/robots.txt',
  -.method ```php.inline
  string public Connection::getHeaders ( void )
  ```
-   -.n Возвращает массив заголовков ответа
+   -.n Возвращает ассоциативный массив заголовков ответа
 
  -.method ```php.inline
  string public Connection::getHeader ( string $name )
  ```
-   -.n Возвращает заголовок ответа по имени или `null`
-   -.n.ti `:h.clear`$name` &mdash; имя заголовка
+   -.n Возвращает заголовок ответа по имени или `:hc`null`
+   -.n.ti `:hc`$name` &mdash; имя заголовка
