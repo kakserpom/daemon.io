@@ -2489,19 +2489,23 @@ class BackDoc(object):
         return self.prepare_kwargs_from_parsed_data(parsed)
 
     def importParts(self, text, sourcePath):
-        # text = force_text(text)
+        text = force_text(text)
         currpath = os.path.dirname(os.path.realpath(sourcePath))
         pattern = re.compile('<!-- import (.+) -->')
-        iterator = pattern.finditer(text)
 
-        for match in iterator:
+        matches = pattern.finditer(text)
+
+        for match in matches:
             filename = match.group(1)
+            filepath = ''.join([currpath, os.sep, filename])
 
-            f = open(''.join([currpath, os.sep, filename]))
+            f = open(filepath)
             content = f.read()
             f.close()
 
-            text = text.replace('<!-- import ' + filename + ' -->', force_text(content))
+            content = self.importParts(content, filepath)
+
+            text = text.replace('<!-- import ' + filename + ' -->', content)
 
         return text
 

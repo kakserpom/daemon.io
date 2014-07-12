@@ -23,3 +23,18 @@ Pool:HTTPServer {
     maxconcurrency 1;
 }
 ```
+
+<!-- import options.md -->
+
+<!-- import http.md -->
+
+### servers/fastcgi # Servers\FastCGI
+### servers/debugconsole # Servers\DebugConsole
+### servers/flashpolicy # Servers\FlashPolicy
+### servers/ident # Servers\Ident
+### servers/ircbouncer # Servers\IRCBouncer
+
+<!-- import lock.md -->
+
+### servers/socks # Servers\Socks
+### servers/websocket # Servers\WebSocket

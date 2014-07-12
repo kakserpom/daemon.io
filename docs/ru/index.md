@@ -44,20 +44,11 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 
 <!-- import root/control.md -->
 
-
 <!-- import root/examples.md -->
-
 
 <!-- import root/app_resolver.md -->
 
-
-## config # Конфигурация
-
-<!-- import config/types.md -->
-
-<!-- import config/variables.md -->
-
-<!-- import config/application.md -->
+<!-- import config/index.md -->
 
 ## development # Разработка
 ### development/pseudotypes # Псевдотипы
@@ -73,42 +64,8 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 
 <!-- import servers/index.md -->
 
-<!-- import servers/options.md -->
-
-<!-- import servers/http.md -->
-
-### servers/fastcgi # Servers\FastCGI
-### servers/debugconsole # Servers\DebugConsole
-### servers/flashpolicy # Servers\FlashPolicy
-### servers/ident # Servers\Ident
-### servers/ircbouncer # Servers\IRCBouncer
-
-<!-- import servers/lock.md -->
-
-### servers/socks # Servers\Socks
-### servers/websocket # Servers\WebSocket
-
 <!-- import clients/index.md -->
 
-### clients/asterisk # Clients\Asterisk
-### clients/dns # Clients\DNS
-### clients/gibson # Clients\Gibson
-
-<!-- import clients/http.md -->
-
-### clients/icmp # Clients\ICMP
-### clients/irc # Clients\IRC
-
-<!-- import clients/lock.md -->
-
-### clients/memcache # Clients\Memcache
-### clients/mongo # Clients\Mongo
-### clients/mysql # Clients\MySQL
-### clients/postgresql # Clients\PostgreSQL
-### clients/redis # Clients\Redis
-### clients/valve # Clients\Valve
-### clients/websocket # Clients\WebSocket
-### clients/xmpp # Clients\XMPP
 ## libraries # Библиотеки
 ### libraries/cache # \Cache
 ### libraries/complexjob # Core\ComplexJob
