@@ -157,6 +157,9 @@ $(function(){
 
 			if(phpTypes[text] === 1) {
 				obj.wrap('<a href="http://php.net/manual/'+ global_lang +'/language.types.'+ text +'.php" target="_blank" />');
+			} else
+			if (text === 'mixed') {
+				obj.wrap('<a href="http://php.net/manual/ru/language.pseudo-types.php" target="_blank" />');
 			}
 		});
 
