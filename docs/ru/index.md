@@ -81,12 +81,22 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 
  1. Сделать Fork репозитория [kakserpom/daemon.io](https://github.com/kakserpom/daemon.io)
  2. Внести изменения в Markdown (.md) файлы в папке docs/<язык>/
- 3. Скомпилировать index.html — ./docs/build
- 4. Посмотреть как выглядят внесенные изменения.
+ 3. Скомпилировать index.html, выполнив команду `./docs/build`
+ 4. Посмотреть как выглядят внесенные изменения в браузере.
  5. Послать Pull Request.
 
 #### contribute/this-doc/markdown # Формат документации
 Мы используем [Markdown](http://ru.wikipedia.org/wiki/Markdown) ([о синтаксисе по-русски](http://rukeba.com/by-the-way/markdown-sintaksis-po-russki/)) с некоторыми дополнениями.
+
+##### contribute/this-doc/markdown/headers # Заголовки
+Заголовки описываются как: # <i>якорь</i> # Заголовок
+
+Примеры:
+
+ - Заголовок первого уровня: `## level-one # Заголовок`
+ - Заголовок второго уровня: `### level-one/level-two`
+
+> При добавлении нового заголовка учтите, что он должен быть строго на английском языке и быть информативным. При переводе якори не трогаются.
 
 ### contribute/php-doc # PHPDoc
 
