@@ -1,3 +1,2 @@
-# игнорим index.html в доках
-docs/ru/index.html
+docs/**/index.html
 docs/js/highlight_source/build
