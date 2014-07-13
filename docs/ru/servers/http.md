@@ -1,5 +1,7 @@
 ### servers/http # Servers\HTTP
 
+Сервер использует пространство имен {tpl-inlink httprequest HTTPRequest}.
+
 #### servers/http/options # Опции
 
  - `port (integer = 80)`  

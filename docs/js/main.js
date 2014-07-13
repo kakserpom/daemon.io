@@ -191,7 +191,7 @@ $(function(){
 			iter = 0, topStart = 0, topEnd = 0,
 			step = 100,
 			headers = {},
-			items = $('.main_container').find('h2, h3');
+			items = $('.main_container').find('h2, h3, h4');
 
 		prevLink = items.eq(0).attr('id');
 

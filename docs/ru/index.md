@@ -10,8 +10,8 @@
 <!-- pvar menu-publications Публикации -->
 
 <!-- pvar tpl-git <a target="_blank" href="https://github.com/kakserpom/phpdaemon/tree/master/%s">%s<i class="fa fa-github"></i></a> -->
-<!-- pvar tpl-repolink <a target="_blank" href="%s">%s<i class="fa fa-external-link"></i></a> -->
-<!-- pvar tpl-inlink <a href="#%s">%s<i class="fa fa-caret-square-o-up"></i></a> -->
+<!-- pvar tpl-outlink <a target="_blank" href="%s">%s<i class="fa fa-external-link"></i></a> -->
+<!-- pvar tpl-inlink <a target="_self" href="#%s">%s<i class="fa fa-caret-square-o-up"></i></a> -->
 
 ## intro # Введение
 
@@ -52,6 +52,8 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 <!-- import traits/index.md -->
 
 <!-- import network/index.md -->
+
+<!-- import httprequest/index.md -->
 
 <!-- import root/faq.md -->
 
