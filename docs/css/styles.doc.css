@@ -201,10 +201,11 @@ header menu a:hover {
 }
 
 .sidebar ul ul ul {
+    display: none;
     margin-left: 10px;
 }
 .sidebar ul ul ul ul {
-    display: none;
+    /*display: none;*/
 }
 
 .toggle_sidebar_button{

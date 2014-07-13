@@ -20,7 +20,7 @@
  - `port (integer = 3306)`
  - `max-conn-per-serv (integer = 32)`
 
-##### clients/http/pool/methods # Методы
+##### clients/mysql/pool/methods # Методы
 
  -.method ```php.inline
  string public static Pool::escape ( string $string )
