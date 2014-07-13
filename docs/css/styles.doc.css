@@ -324,6 +324,7 @@ pre.inline code {
     padding: 3px 5px;
     border: 1px solid #ddd;
     background: #f8f8f8 !important;
+    white-space: pre-wrap;
 }
 
 .main_container p, ul, pre {
