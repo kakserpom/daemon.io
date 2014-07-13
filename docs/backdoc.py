@@ -2566,8 +2566,26 @@ class BackDoc(object):
 
     def parser_tpls_do(self, text):
         text = force_text(text)
-
         return self._parse_tpls_re.sub(self._parse_tpls_sub, text)
+
+
+    _parser_links_target_re = re.compile(r"<a([^>]+)", re.U | re.I)
+    _parser_links_target_sub_re = re.compile(r" href=\"http[s]?:\/\/(?!daemon.io)", re.U | re.I)
+
+    def _parser_links_target_sub(self, match):
+        context = match.group(1)
+        
+        if ' target=' in context:
+            return '<a'+ context
+
+        if self._parser_links_target_sub_re.match(context):
+            return '<a'+ context +' target="_blank"'
+
+        return '<a'+ context
+
+    def parser_links_target_do(self, text):
+        text = force_text(text)
+        return self._parser_links_target_re.sub(self._parser_links_target_sub, text)
 
 
     def get_result_html(self, title, markdown_src):
@@ -2580,10 +2598,13 @@ class BackDoc(object):
         self.template_html = self.parser_tpls_do(self.template_html)
 
         response = self.get_converted_to_html_response(markdown_src)
+        content = force_text(response)
+        content = self.parser_links_target_do(content)
+
         return (
             self.template_html.replace('<!-- title -->', self.parser_vars['title'] or title)
                               .replace('<!-- toc -->', response.toc_html and force_text(response.toc_html) or '')
-                              .replace('<!-- main_content -->', force_text(response))
+                              .replace('<!-- main_content -->', content)
         )
 
     def get_converted_to_html_response(self, markdown_src):
