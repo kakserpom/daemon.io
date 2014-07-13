@@ -63,7 +63,7 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
  - [phpDaemon: хорошие новости](http://habrahabr.ru/blogs/php/91014) (24 мая 2010)
  - [phpDaemon: фреймворк асинхронных приложений](http://habrahabr.ru/blogs/php/79377) (11 января 2010)
 
-## contribute # Внести вклад
+## contribute # Внести свой вклад
 
 Если хотите помочь, то даже если располагаете ограниченным временем, не стесняйтесь! Проекту пригодится любая помощь. Даже написав абзац текста, потратив десять минут, вы уже сделаете большое дело.
 
@@ -83,6 +83,8 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
  4. Посмотреть как выглядят внесенные изменения.
  5. Послать Pull Request.
 
+#### contribute/this-doc/markdown # Формат документации
+Мы используем [Markdown](http://ru.wikipedia.org/wiki/Markdown) ([о синтаксисе по-русски](http://rukeba.com/by-the-way/markdown-sintaksis-po-russki/)) с некоторыми дополнениями.
 
 ### contribute/php-doc # PHPDoc
 
