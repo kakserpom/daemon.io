@@ -75,7 +75,7 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 
  1. Сделать Fork репозитория kakserpom/daemon.io.
  2. Внести изменения в Markdown (.md) файлы в папке docs/<язык>/
- 3. Скомпилировать index.html — ./docs/git-hook-post-merge
+ 3. Скомпилировать index.html — ./docs/build
  4. Посмотреть как выглядят внесенные изменения.
  5. Послать Pull Request.
 
