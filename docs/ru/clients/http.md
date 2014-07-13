@@ -2,11 +2,13 @@
 
 `:h`namespace PHPDaemon\Clients\HTTP`
 
-Клиент HTTP предназначен для выполнения GET и POST запросов на удаленные хосты.
+Предназначен для выполнения GET и POST запросов на удаленные хосты.
+
+Клиент использует пространство имен {tpl-inlink httprequest HTTPRequest}.
 
 #### Примеры
 
-Получение файла {tpl-repolink http://www.google.com/robots.txt google.com/robots.txt} GET запросом:
+Получение файла {tpl-outlink http://www.google.com/robots.txt google.com/robots.txt} GET запросом:
 
 ```php
 $httpclient = \PHPDaemon\Clients\HTTP\Pool::getInstance();
@@ -61,7 +63,7 @@ $httpclient->get('http://www.google.com/robots.txt',
  string public static Pool::parseUrl ( array $mixed )
  ```
    -.n Разбирает массив `:hc`$mixed` или строку `:hc`$str` и возвращает ассоциативный массив, содержащий необходимые компоненты URL: `:hc`[$scheme, $host, $uri, $port]`. В случае ошибки возвращает `:hc`false`.  
-   См. {tpl-repolink http://php.net/parse_url php.net/parse_url}
+   См. {tpl-outlink http://php.net/parse_url php.net/parse_url}
    -.n.ti `:hc`$mixed` &mdash; массив параметров URL
 
 #### clients/http/connection # Класс Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
@@ -87,7 +89,7 @@ $httpclient->get('http://www.google.com/robots.txt',
  Если не `:hc`null`, то произошла серьезная ошибка при обработке ответа на запрос. Содержит номер строки в файле {tpl-git PHPDaemon/Clients/HTTP/Connection.php Connection.php}, по которому можно определить характер ошибки
 
  -.method `:h`integer public $responseCode;`  
- Код ответа. См. {tpl-repolink http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP Список кодов состояния HTTP}</a>
+ Код ответа. См. {tpl-outlink http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP Список кодов состояния HTTP}</a>
 
  -.method `:h`string public $lastURL;`  
  Последний запрошенный url
