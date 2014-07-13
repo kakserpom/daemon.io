@@ -2430,6 +2430,7 @@ https://github.com/chibisov/backdoc
     <link rel="stylesheet" href="../css/styles.doc.css" />
     <script src="../js/highlight.pack.js"></script>
     <script src="../js/zepto.js"></script>
+    <script src="../js/jquery.ba-throttle-debounce.js"></script>
     <script src="../js/main.js"></script>
 </head>
 <body>
