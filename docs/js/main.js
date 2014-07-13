@@ -109,7 +109,8 @@ function setCookie(name, value, options) {
 
 
 $(function(){
-	var global_lang = $('html').attr('lang');
+	var $win = $(window),
+		global_lang = $('html').attr('lang');
 
 	$('.toggle_sidebar_button').on('click', function(){
 		$('body').toggleClass('force_show_sidebar');
@@ -214,7 +215,12 @@ $(function(){
 			line = '', link = '',
 			activeObj = $(), prevActiveLink = '',
 			mainWrap = $('.main_wrap'),
-			sidebar = $('.sidebar');
+			sidebar = $('.sidebar'),
+			sideParent, sideRoot;
+
+		var pushState = $.debounce(500, false, function(){
+			history.pushState(null, null, '#'+ link);
+		});
 
 		function setActiveSection() {
 			// scrolledTop = getPageScroll().top;
@@ -229,11 +235,17 @@ $(function(){
 				prevActiveLink = link;
 
 				activeObj.siblings('ul').add(activeObj.parents('ul')).show();
-				activeObj.parent().siblings('li').find('ul').hide();
+
+				sideParent = activeObj.parent();
+				sideRoot = sideParent.parent().parent();
+				sideParent.siblings('li').find('ul').hide();
+				sideRoot.siblings().children('ul').hide();
 
 				// scrollTo = sidebar.scrollTop() + activeObj.offset().top - getWindowHeight() / 2; // - scrolledTop
 				// sidebar.scrollTop(scrollTo);
 			}
+
+			pushState();
 		}
 
 		// $(window).on('scroll', setActiveSection);
