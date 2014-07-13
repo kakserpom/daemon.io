@@ -37,7 +37,7 @@ function(hljs) {
       'catch __METHOD__ case exception default die require __FUNCTION__ ' +
       'enddeclare final try switch continue endfor endif declare unset true false ' +
       'trait goto instanceof insteadof __DIR__ __NAMESPACE__ ' +
-      'yield finally boolean object string integer float callable',
+      'yield finally boolean object string integer float callable mixed',
     contains: [
       hljs.C_LINE_COMMENT_MODE,
       hljs.HASH_COMMENT_MODE,
