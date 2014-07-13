@@ -69,7 +69,7 @@ function(hljs) {
         illegal: '\\$|\\[|%',
         variants: [
           {beginKeywords: 'function', end: /[;{]/, excludeEnd: true},
-          {begin: /::/, end: /\(?/, excludeBegin: true, excludeEnd: true}
+          {begin: '::', end: '\\(?', excludeBegin: true, excludeEnd: true}
         ],
         contains: [
           hljs.UNDERSCORE_TITLE_MODE,
@@ -88,14 +88,21 @@ function(hljs) {
       },
       {
         className: 'class',
-        beginKeywords: 'class interface', end: '{', excludeEnd: true,
-        illegal: /[:\(\$"]/,
-        contains: [
+        variants: [
           {
-            beginKeywords: 'extends implements',
-            relevance: 10
+            beginKeywords: 'class interface', end: '{', excludeEnd: true,
+            illegal: /[:\(\$"]/,
+            contains: [
+              {
+                beginKeywords: 'extends implements',
+                relevance: 10
+              },
+              hljs.UNDERSCORE_TITLE_MODE
+            ]
           },
-          hljs.UNDERSCORE_TITLE_MODE
+          {
+            begin: '\\b[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*(?=::)'
+          }
         ]
       },
       {
