@@ -71,7 +71,7 @@
  -.method `:h`string public $serverStatus;`  
  @TODO
 
- -.method `:h`int public $warnCount;`  
+ -.method `:h`integer public $warnCount;`  
  @TODO
 
  -.method `:h`string public $message;`  
@@ -89,19 +89,19 @@
  -.method `:h`string public $context;`  
  Контекст для выполняемых SQL-запросов
 
- -.method `:h`int public $insertId;`  
+ -.method `:h`integer public $insertId;`  
  Идентификатор, сгенерированный при последнем INSERT-запросе
 
- -.method `:h`int public $affectedRows;`  
+ -.method `:h`integer public $affectedRows;`  
  Число затронутых SQL-запросом строк
 
- -.method `:h`int public $protover;`  
+ -.method `:h`integer public $protover;`  
  @TODO
 
- -.method `:h`int public $timeout;`  
+ -.method `:h`integer public $timeout;`  
  @TODO
 
- -.method `:h`int public $errno;`  
+ -.method `:h`integer public $errno;`  
  Численный код ошибки выполнения SQL-запроса
 
  -.method `:h`string public $errmsg;`  
