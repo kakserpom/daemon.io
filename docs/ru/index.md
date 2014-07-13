@@ -57,11 +57,11 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 
 ## publications # Публикации
 
- - <a target="_blank" href="http://habrahabr.ru/blogs/php/104811">phpDaemon и runkit: новый уровень</a> (23 сентября 2010)
- - <a target="_blank" href="http://javascript.ru/blog/Ilya-Kantor/True-FastCGI-dlya-PHP-migraciya-testy">True FastCGI для PHP: миграция и тесты</a> (7 сентября 2010)
- - <a target="_blank" href="http://habrahabr.ru/blogs/webdev/94921">WebSocket: будущее уже здесь!</a> (8 июня 2010)
- - <a target="_blank" href="http://habrahabr.ru/blogs/php/91014">phpDaemon: хорошие новости</a> (24 мая 2010)
- - <a target="_blank" href="http://habrahabr.ru/blogs/php/79377">phpDaemon: фреймворк асинхронных приложений</a> (11 января 2010)
+ - [phpDaemon и runkit: новый уровень](http://habrahabr.ru/blogs/php/104811) (23 сентября 2010)
+ - [True FastCGI для PHP: миграция и тесты](http://javascript.ru/blog/Ilya-Kantor/True-FastCGI-dlya-PHP-migraciya-testy) (7 сентября 2010)
+ - [WebSocket: будущее уже здесь!](http://habrahabr.ru/blogs/webdev/94921) (8 июня 2010)
+ - [phpDaemon: хорошие новости](http://habrahabr.ru/blogs/php/91014) (24 мая 2010)
+ - [phpDaemon: фреймворк асинхронных приложений](http://habrahabr.ru/blogs/php/79377) (11 января 2010)
 
 ## contribute # Внести вклад
 
@@ -79,9 +79,9 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 
  1. Сделать Fork репозитория [kakserpom/daemon.io](https://github.com/kakserpom/daemon.io)
  2. Внести изменения в Markdown (.md) файлы в папке docs/<язык>/
- 3. Скомпилировать index.html — ./docs/git-hook-post-merge
- 4. Посмотреть как выглядят внесенные изменения
- 5. Послать Pull Request
+ 3. Скомпилировать index.html — ./docs/build
+ 4. Посмотреть как выглядят внесенные изменения.
+ 5. Послать Pull Request.
 
 
 ### contribute/php-doc # PHPDoc
@@ -96,8 +96,8 @@ GitHub репозиторий [github.com/kakserpom/phpdaemon](https://github.co
 
 ### doc-writers # Писатели
 
- - Dmitry Efimenko <<mailto:ezheg89@gmail.com>>
- - Vasily Zorin <<mailto:maintainer@daemon.io>>
+ - Dmitry Efimenko <[ezheg89@gmail.com](mailto:ezheg89@gmail.com)>
+ - Vasily Zorin <[maintainer@daemon.io](mailto:maintainer@daemon.io)>
 
 ### doc-translators # Переводчики
 
