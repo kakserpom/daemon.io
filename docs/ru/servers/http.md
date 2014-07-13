@@ -2,7 +2,7 @@
 
 #### servers/http/options # Опции
 
- - `port (int = 80)`  
+ - `port (integer = 80)`  
  Прослушиваемый порт
 
  - `send-file (boolean = false)`  
