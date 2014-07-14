@@ -191,10 +191,6 @@ header menu a:hover {
     font-weight: bold;
 }
 
-.sidebar ul li a {
-    text-decoration: none;
-}
-
 .sidebar ul ul {
     margin-top: 5px;
     font-size: 11px;
@@ -206,6 +202,9 @@ header menu a:hover {
 }
 .sidebar ul ul li {
     margin-bottom: 3px;
+}
+.sidebar ul ul li a {
+    text-decoration: none;
 }
 
 .sidebar ul ul ul {
