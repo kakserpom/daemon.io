@@ -190,7 +190,7 @@ $(function(){
 
 		var prevLink = '',
 			iter = 0, topStart = 0, topEnd = 0,
-			step = 100,
+			step = 50,
 			headers = {},
 			items = $('.main_container').find('h2, h3, h4, h5');
 

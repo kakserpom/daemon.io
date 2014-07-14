@@ -1275,7 +1275,7 @@ class Markdown(object):
 
     _atx_h_re = re.compile(r'''
         ^(\#{1,6})  # \1 = string of #'s
-        ([ \t]+([a-zA-Z0-9/_-]+)[ \t]+\#)? # \3 = id
+        ([ \t]+([a-zA-Z0-9_-]+)[ \t]+\#)? # \3 = id
         [ \t]+
         (.+?)       # \4 = Header text
         ([ \t]+\#>[ \t]+(.+?))?  # \6 Real Header text
