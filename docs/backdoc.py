@@ -2507,9 +2507,13 @@ class BackDoc(object):
             filename = match.group(1)
             filepath = ''.join([currpath, os.sep, filename])
 
-            f = open(filepath)
-            content = f.read()
-            f.close()
+            try:
+                f = open(filepath)
+                content = f.read()
+                f.close()
+
+            except IOError:
+                return text
 
             content = self.importParts(content, filepath)
 
