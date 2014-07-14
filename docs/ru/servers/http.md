@@ -1,8 +1,8 @@
-### servers/http # Servers\HTTP
+### http # Servers\HTTP
 
 Сервер использует пространство имен {tpl-inlink httprequest HTTPRequest}.
 
-#### servers/http/options # Опции
+#### options # Опции
 
  - `port (integer = 80)`  
  Прослушиваемый порт

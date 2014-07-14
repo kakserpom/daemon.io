@@ -1,1 +1,1 @@
-### traits/eventhandlers # Traits\EventHandlers
+### eventhandlers # Traits\EventHandlers

@@ -1,4 +1,4 @@
-### install/gentoo # Gentoo
+### gentoo # Gentoo
 
 Вы можете установить PHPDaemon с помощью [layman overlay](https://github.com/lexa-uw/layman-phpdaemon).
 

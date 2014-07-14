@@ -1,4 +1,4 @@
-### install/redhat # CentOS/RedHat
+### redhat # CentOS/RedHat
 
 Для начала необходимо установить все сопутстсующие утилиты.  
 $&nbsp;`sudo yum install -y git gcc openssl-devel libevent`

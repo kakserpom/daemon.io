@@ -1,1 +1,1 @@
-### libraries/pubsub # \PubSub
+### pubsub # \PubSub

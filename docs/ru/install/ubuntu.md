@@ -1,4 +1,4 @@
-### install/ubuntu # Ubuntu
+### ubuntu # Ubuntu
 
 Для начала необходимо установить все сопутстсующие утилиты.  
 $&nbsp;`sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git libevent`

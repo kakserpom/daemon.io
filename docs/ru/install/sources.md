@@ -1,4 +1,4 @@
-### install/sources # Исходный код
+### sources # Исходный код
 
 Вы можете клонировать PHPDaemon репозиторий  
 $&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git`

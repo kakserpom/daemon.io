@@ -1,4 +1,4 @@
-### install/composer # Composer
+### composer # Composer
 
 Добавьте раздел в ваш composer.json
 

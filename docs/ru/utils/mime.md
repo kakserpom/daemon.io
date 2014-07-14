@@ -1,1 +1,1 @@
-### utils/mime # Utils\MIME
+### mime # Utils\MIME

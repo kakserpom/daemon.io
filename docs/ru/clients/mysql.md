@@ -1,26 +1,26 @@
-### clients/mysql # MySQL #> [Клиенты](#clients) \ MySQL {tpl-git PHPDaemon/Clients/MySQL}
+### mysql # MySQL #> [Клиенты](#clients) \ MySQL {tpl-git PHPDaemon/Clients/MySQL}
 
 `:h`namespace PHPDaemon\Clients\MySQL`
 
 Клиент для СУБД {tpl-outlink http://mysql.com/ MySQL}
 
-#### Использование
+#### use # Использование
 
 @TODO переписать из [вики](https://github.com/kakserpom/phpdaemon/wiki/MySQLClient-%28приложение%29)
 
-#### Примеры
+#### examples # Примеры
 
 @TODO
 
-#### clients/mysql/pool # Класс Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
+#### pool # Класс Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
 
-##### clients/mysql/pool/options # Опции по-умолчанию
+##### options # Опции по-умолчанию
 
  - `server (string = 'tcp://root@127.0.0.1/')`
  - `port (integer = 3306)`
  - `max-conn-per-serv (integer = 32)`
 
-##### clients/mysql/pool/methods # Методы
+##### methods # Методы
 
  -.method ```php.inline
  string public static Pool::escape ( string $string )
@@ -55,9 +55,9 @@
    -.n Преобразует массив `:hc`$arr` для использоания в SQL выражении и возвращает список значений, разделенные запятой `,`. Для всех остальных типов возвращает пустую строку `''`
    -.n.ti `:hc`$mixed` &mdash; конвертируемые данные
 
-#### clients/mysql/connection # Класс Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}
+#### connection # Класс Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}
 
-##### clients/mysql/connection/vars # Свойства
+##### vars # Свойства
 
  -.method `:h`string public $serverver;`  
  @TODO
@@ -107,7 +107,7 @@
  -.method `:h`string public $errmsg;`  
  Текст ошибки выполнения SQL-запроса
 
-##### clients/mysql/connection/methods # Методы
+##### methods # Методы
 
  -.method ```php.inline
  boolean public Connection::query ( string $query, callable $callback = NULL )

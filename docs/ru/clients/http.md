@@ -1,4 +1,4 @@
-### clients/http # HTTP #> [Клиенты](#clients) \ HTTP {tpl-git PHPDaemon/Clients/HTTP}
+### http # HTTP #> [Клиенты](#clients) \ HTTP {tpl-git PHPDaemon/Clients/HTTP}
 
 `:h`namespace PHPDaemon\Clients\HTTP`
 
@@ -6,7 +6,7 @@
 
 Клиент использует пространство имен {tpl-inlink httprequest HTTPRequest}.
 
-#### Примеры
+#### examples # Примеры
 
 Получение файла {tpl-outlink http://www.google.com/robots.txt google.com/robots.txt} GET запросом:
 
@@ -22,15 +22,15 @@ $httpclient->get('http://www.google.com/robots.txt',
 
 Рабочий пример клиента представлен в {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php Clients/HTTP/Examples/Simple.php}
 
-#### clients/http/pool # Класс Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
+#### pool # Класс Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
 
-##### clients/http/pool/options # Опции по-умолчанию
+##### options # Опции по-умолчанию
 
  - `port (integer = 80)`
  - `ssl-port (integer = 443)`
  - `expose (boolean = true)`
 
-##### clients/http/pool/methods # Методы
+##### methods # Методы
 
  -.method ```php.inline
  void public Pool::get ( url $url, array $params )
@@ -66,9 +66,9 @@ $httpclient->get('http://www.google.com/robots.txt',
    См. {tpl-outlink http://php.net/parse_url php.net/parse_url}
    -.n.ti `:hc`$mixed` &mdash; массив параметров URL
 
-#### clients/http/connection # Класс Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
+#### connection # Класс Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
 
-##### clients/http/connection/vars # Свойства
+##### vars # Свойства
 
  -.method `:h`array public $headers;`  
  Заголовки ответа
@@ -97,7 +97,7 @@ $httpclient->get('http://www.google.com/robots.txt',
  -.method `:h`string public $rawHeaders;`  
  Заголовки ответа в сыром виде
 
-##### clients/http/connection/methods # Методы
+##### methods # Методы
 
  -.method ```php.inline
  string public Connection::getBody ( void )

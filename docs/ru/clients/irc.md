@@ -1,1 +1,1 @@
-### clients/irc # Clients\IRC
+### irc # Clients\IRC

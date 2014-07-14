@@ -1,1 +1,1 @@
-### clients/xmpp # Clients\XMPP
+### xmpp # Clients\XMPP

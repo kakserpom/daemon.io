@@ -1,1 +1,1 @@
-### traits/classwatchdog # Traits\ClassWatchdog
+### classwatchdog # Traits\ClassWatchdog

@@ -1,1 +1,1 @@
-### traits/strictstaticobjectwatchdog # Traits\StrictStaticObjectWatchdog
+### strictstaticobjectwatchdog # Traits\StrictStaticObjectWatchdog

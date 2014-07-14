@@ -1,1 +1,1 @@
-### httprequest/generic # HTTPRequest\Generic
+### generic # HTTPRequest\Generic

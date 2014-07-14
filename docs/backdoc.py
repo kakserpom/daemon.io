@@ -1271,9 +1271,11 @@ class Markdown(object):
             self._toc_add_entry(n, header_id, html)
         return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, html, n)
 
+    _headers_stack = []
+
     _atx_h_re = re.compile(r'''
         ^(\#{1,6})  # \1 = string of #'s
-        ([ \t]+([/\w-]+)[ \t]+\#)? # \3 = id
+        ([ \t]+([a-zA-Z0-9/_-]+)[ \t]+\#)? # \3 = id
         [ \t]+
         (.+?)       # \4 = Header text
         ([ \t]+\#>[ \t]+(.+?))?  # \6 Real Header text
@@ -1292,14 +1294,19 @@ class Markdown(object):
             if match.group(3):
                 header_id = match.group(3)
             else:
-                header_id = self.header_id_from_text(match.group(4),
-                    self.extras["header-ids"], n)
+                header_id = self.header_id_from_text(match.group(4), self.extras["header-ids"], n)
+
             if header_id:
-                header_id_attr = ' id="%s"' % header_id
+                self._headers_stack = self._headers_stack[0:n-2]
+                self._headers_stack.append(header_id)
+                header_path = '/'.join(self._headers_stack)
+
+                header_id_attr = ' id="%s"' % header_path
+
         # html = self._run_span_gamut(match.group(4))
         html = match.group(4)
         if "toc" in self.extras and header_id:
-            self._toc_add_entry(n, header_id, html)
+            self._toc_add_entry(n, header_path, html)
 
         if match.group(6):
             return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, self._run_span_gamut(match.group(6)), n)

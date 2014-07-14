@@ -1,1 +1,1 @@
-### traits/sessions # Traits\Sessions
+### sessions # Traits\Sessions

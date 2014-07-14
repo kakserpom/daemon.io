@@ -231,18 +231,21 @@ $(function(){
 			if(typeof link !== "undefined" && link !== prevActiveLink) {
 				activeObj.removeClass('active');
 				activeObj = anchors[link];
-				activeObj.addClass('active');
-				prevActiveLink = link;
 
-				activeObj.siblings('ul').add(activeObj.parents('ul')).show();
+				if(activeObj) {
+					activeObj.addClass('active');
+					prevActiveLink = link;
 
-				sideParent = activeObj.parent();
-				sideRoot = sideParent.parent().parent();
-				sideParent.siblings('li').find('ul').hide();
-				sideRoot.siblings().children('ul').hide();
+					activeObj.siblings('ul').add(activeObj.parents('ul')).show();
 
-				// scrollTo = sidebar.scrollTop() + activeObj.offset().top - getWindowHeight() / 2; // - scrolledTop
-				// sidebar.scrollTop(scrollTo);
+					sideParent = activeObj.parent();
+					sideRoot = sideParent.parent().parent();
+					sideParent.siblings('li').find('ul').hide();
+					sideRoot.siblings().children('ul').hide();
+
+					// scrollTo = sidebar.scrollTop() + activeObj.offset().top - getWindowHeight() / 2; // - scrolledTop
+					// sidebar.scrollTop(scrollTo);
+				}
 			}
 
 			pushState();

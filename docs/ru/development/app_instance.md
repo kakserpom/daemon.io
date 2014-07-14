@@ -1,1 +1,1 @@
-### development/app_instance # Приложение
+### app_instance # Приложение

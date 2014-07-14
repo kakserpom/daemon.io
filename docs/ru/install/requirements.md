@@ -1,4 +1,4 @@
-### install/requirements # Требования
+### requirements # Требования
 
  - `PHP` версии не ниже 5.4;
  - Модули `posix`, `pcntl`, `socket`, `shmop`;

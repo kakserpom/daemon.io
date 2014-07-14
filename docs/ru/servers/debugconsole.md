@@ -1,1 +1,1 @@
-### servers/debugconsole # Servers\DebugConsole
+### debugconsole # Servers\DebugConsole

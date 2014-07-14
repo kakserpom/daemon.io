@@ -1,3 +1,3 @@
-### servers/websocket # Servers\WebSocket
+### websocket # Servers\WebSocket
 
 Сервер использует пространство имен {tpl-inlink httprequest HTTPRequest}.
