@@ -228,7 +228,6 @@ $(function(){
 		});
 
 		var scrollToDo = $.throttle(1000, false, function(){
-console.log(scrollTo);
 			sidebar.stop().animate({
 				scrollTop: scrollTo
 			}, 400);
@@ -267,8 +266,7 @@ console.log(scrollTo);
 
 					if(sidePrev.length) {
 						sidePrevRect = sidePrev[0].getBoundingClientRect();
-						// console.log(sidePrevRect.top, sidePrevRect.bottom);
-
+						
 						if(sidePrevRect.top < 0) {
 							scrollTo = sidebar.scrollTop() + sidePrevRect.top - topMarg;
 							scrollToDo();
@@ -277,23 +275,18 @@ console.log(scrollTo);
 
 					if(sideNext.length) {
 						sideNextRect = sideNext[0].getBoundingClientRect();
-						// console.log(sideNextRect.top, sideNextRect.bottom);
-
+						
 						if(sideNextRect.bottom > winHeight) {
 							scrollTo = sidebar.scrollTop() + sideNext.position().top - sidebar.height();
 							scrollToDo();
 						}
 					}
-
-					// scrollTo = sidebar.scrollTop() + activeObj.offset().top - getWindowHeight() / 2; // - scrolledTop
-					// sidebar.scrollTop(scrollTo);
 				}
 			}
 
 			pushState();
 		}
 
-		// $(window).on('scroll', setActiveSection);
 		mainWrap.on('scroll', setActiveSection);
 
 		setTimeout(setActiveSection, 1000);
