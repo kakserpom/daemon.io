@@ -167,6 +167,7 @@ header menu a:hover {
 
 .sidebar .active {
     background-color: #ccc;
+    text-decoration: none !important;
 }
 
 .sidebar ul{
