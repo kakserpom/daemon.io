@@ -156,7 +156,7 @@ header menu a:hover {
     width: 240px;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 15px 0 30px 15px;
+    padding: 15px 0 30px 25px;
     border-right: 1px solid #bbb;
     font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif !important;
 }
@@ -166,7 +166,28 @@ header menu a:hover {
 }
 
 .sidebar .active {
-    background-color: #ccc;
+    position: relative;
+    /*background-color: #ccc;*/
+}
+
+.sidebar .active:before {
+    position: absolute;
+    content: "";
+    width: 19px;
+    height: 12px;
+    top: 50%;
+    left: -22px;
+    margin-top: -6px;
+    background: url(mark.png);
+}
+.sidebar ul ul ul .active:before {
+    left: -32px;
+}
+.sidebar ul ul ul ul .active:before {
+    left: -42px;
+}
+.sidebar ul ul ul ul ul .active:before {
+    left: -52px;
 }
 
 .sidebar ul{
@@ -197,9 +218,9 @@ header menu a:hover {
     line-height: 14px;
 }
 
-.sidebar ul ul li:before {
+/*.sidebar ul ul li:before {
     content: "- "; 
-}
+}*/
 .sidebar ul ul li {
     margin-bottom: 3px;
 }

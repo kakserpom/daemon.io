@@ -1275,10 +1275,20 @@ class Markdown(object):
 
     _atx_h_re = re.compile(r'''
         ^(\#{1,6})  # \1 = string of #'s
-        ([ \t]+([a-zA-Z0-9_-]+)[ \t]+\#)? # \3 = id
+        (
+            [ \t]+
+            ([a-zA-Z0-9_-]+) # \3 = id
+            [ \t]+
+            \#
+        ){1}
         [ \t]+
         (.+?)       # \4 = Header text
-        ([ \t]+\#>[ \t]+(.+?))?  # \6 Real Header text
+        (
+            [ \t]+
+            \#>
+            [ \t]+
+            (.+?)   # \6 Real Header text
+        )?
         [ \t]*
         (?<!\\)     # ensure not an escaped trailing '#'
         \#*         # optional closing #'s (not counted)
