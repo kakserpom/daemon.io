@@ -135,6 +135,10 @@
 > }  
 > &#96;&#96;&#96;
 
+##### tables # Таблицы
+
+Включена возможность создавать таблицы по формату гугла {tpl-outlink http://code.google.com/p/support/wiki/WikiSyntax#Tables Google Code Wiki-style}.
+
 ### php-doc # PHPDoc
 
 Аналогично, чтобы восполнить пробелы в PHPDoc-комментариях в коде, сделайте Fork [основного репозитория](https://github.com/kakserpom/phpdaemon), внесите изменения и пошлите Pull Request.
