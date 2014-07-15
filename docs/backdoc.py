@@ -1618,7 +1618,6 @@ class Markdown(object):
     def _code_span_sub(self, match):
         c = match.group(4).strip(" \t")
 
-        # s - строгий режим
         # e - кодировать символы
         # p - парсинг ссылок
         # h - php подсветка
@@ -1633,9 +1632,10 @@ class Markdown(object):
         if match.group(2):
             mods = list(match.group(2))
 
-        if('s' in mods):
-            c = self._encode_code(c)
-            return "<code>%s</code>" % c
+        # s - строгий режим
+        # if('s' in mods):
+        #     c = self._encode_code(c)
+        #     return "<code>%s</code>" % c
 
         if('e' in mods):
             c = self._encode_code(c)

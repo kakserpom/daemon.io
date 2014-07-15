@@ -114,13 +114,13 @@
  ```
    -.n Осуществляет SQL-запрос к серверу
    -.n.ti `:hc`$query` &mdash; SQL-запрос
-   -.n `:hc`$callback` &mdash; `:ph.clear`callback ( [Connection](#clients/mysql/connection) $conn, boolean $success )` &mdash; вызывается когда получен результат SQL-запроса, либо произошла ошибка
+   -.n `:hc`$callback` &mdash; `:phc`callback ( [Connection](#clients/mysql/connection) $conn, boolean $success )` &mdash; вызывается когда получен результат SQL-запроса, либо произошла ошибка
 
  -.method ```php.inline
  boolean public Connection::ping ( callable $callback = NULL )
  ```
    -.n Проверяет работает ли соединение с сервером. Если оно утеряно, автоматически предпринимается попытка пересоединения
-   -.n.ti `:hc`$callback` &mdash; `:ph.clear`callback ( [Connection](#clients/mysql/connection) $conn, boolean $success )` &mdash; Вызывается когда получен результат, либо произошла ошибка
+   -.n.ti `:hc`$callback` &mdash; `:phc`callback ( [Connection](#clients/mysql/connection) $conn, boolean $success )` &mdash; Вызывается когда получен результат, либо произошла ошибка
 
  -.method ```php.inline
  boolean public Connection::selectDB ( string $name )
