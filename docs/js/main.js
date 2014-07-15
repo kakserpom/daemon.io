@@ -243,6 +243,11 @@ $(function(){
 					sideParent.siblings('li').find('ul').hide();
 					sideRoot.siblings().children('ul').hide();
 
+					activeObj.parents('li').last()
+						.addClass('gact')
+						.siblings()
+							.removeClass('gact');
+
 					// scrollTo = sidebar.scrollTop() + activeObj.offset().top - getWindowHeight() / 2; // - scrolledTop
 					// sidebar.scrollTop(scrollTo);
 				}
