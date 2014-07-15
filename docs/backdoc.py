@@ -2613,11 +2613,10 @@ class BackDoc(object):
 
 
     def get_result_html(self, title, markdown_src):
-        markdown_src = self.parser_vars_do(markdown_src)
-
         if self.sourcePath:
             markdown_src = self.importParts(markdown_src, self.sourcePath)
 
+        markdown_src = self.parser_vars_do(markdown_src)
         markdown_src = self.parser_tpls_do(markdown_src)
         self.template_html = self.parser_tpls_do(self.template_html)
 
