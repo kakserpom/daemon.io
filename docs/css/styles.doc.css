@@ -166,31 +166,11 @@ header menu a:hover {
 }
 
 .sidebar .active {
-    position: relative;
-    /*background-color: #ccc;*/
-}
-
-.sidebar .active:before {
-    position: absolute;
-    content: "";
-    width: 19px;
-    height: 12px;
-    top: 50%;
-    left: -22px;
-    margin-top: -6px;
-    background: url(mark.png);
-}
-.sidebar ul ul ul .active:before {
-    left: -32px;
-}
-.sidebar ul ul ul ul .active:before {
-    left: -42px;
-}
-.sidebar ul ul ul ul ul .active:before {
-    left: -52px;
+    background-color: #ccc;
 }
 
 .sidebar ul{
+    display: none;
     margin: 0;
     list-style: none;
     padding: 0;
@@ -202,6 +182,10 @@ header menu a:hover {
 .sidebar ul a:hover {
     text-decoration: underline;
     color: #333;
+}
+
+.sidebar .gact > a {
+    text-decoration: none;
 }
 
 .sidebar > ul > li {
