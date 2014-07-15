@@ -2435,10 +2435,6 @@ https://github.com/chibisov/backdoc
     <link rel="stylesheet" href="../css/highlight.github.css" />
     <link rel="stylesheet" href="../css/font-awesome.min.css" />
     <link rel="stylesheet" href="../css/styles.doc.css" />
-    <script src="../js/highlight.pack.js"></script>
-    <script src="../js/zepto.js"></script>
-    <script src="../js/jquery.ba-throttle-debounce.js"></script>
-    <script src="../js/main.js"></script>
 </head>
 <body>
     <header>
@@ -2469,6 +2465,12 @@ https://github.com/chibisov/backdoc
         </div>
     </div>
     <a href="https://github.com/kakserpom/phpdaemon" class="forkButton" target="_blank"><img src="/img/forkme.png" height="149" width="149" alt="Fork me on GitHub"></a>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../js/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="../js/jquery.ba-throttle-debounce.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>'''
 

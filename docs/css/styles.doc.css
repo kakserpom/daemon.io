@@ -170,6 +170,7 @@ header menu a:hover {
 }
 
 .sidebar ul{
+    display: none;
     margin: 0;
     list-style: none;
     padding: 0;

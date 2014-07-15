@@ -216,10 +216,22 @@ $(function(){
 			activeObj = $(), prevActiveLink = '',
 			mainWrap = $('.main_wrap'),
 			sidebar = $('.sidebar'),
-			sideParent, sideRoot;
+			sidebarUl = sidebar.children('ul').first(),
+			sideParent, sideParent2,
+			sideRoot,
+			sideNext, sidePrev,
+			winHeight,
+			topMarg = 35;
 
 		var pushState = $.debounce(500, false, function(){
 			history.pushState(null, null, '#'+ link);
+		});
+
+		var scrollToDo = $.throttle(1000, false, function(){
+console.log(scrollTo);
+			sidebar.stop().animate({
+				scrollTop: scrollTo
+			}, 400);
 		});
 
 		function setActiveSection() {
@@ -239,14 +251,39 @@ $(function(){
 					activeObj.siblings('ul').add(activeObj.parents('ul')).show();
 
 					sideParent = activeObj.parent();
-					sideRoot = sideParent.parent().parent();
+					sideParent2 = sideParent.parent().parent();
 					sideParent.siblings('li').find('ul').hide();
-					sideRoot.siblings().children('ul').hide();
+					sideParent2.siblings().children('ul').hide();
 
-					activeObj.parents('li').last()
-						.addClass('gact')
-						.siblings()
-							.removeClass('gact');
+					sideRoot = activeObj.parents('li').last();
+
+					sideRoot.addClass('gact')
+						.siblings().removeClass('gact');
+
+					sideNext = sideRoot.next();
+					sidePrev = sideRoot.prev();
+
+					winHeight = getWindowHeight();
+
+					if(sidePrev.length) {
+						sidePrevRect = sidePrev[0].getBoundingClientRect();
+						// console.log(sidePrevRect.top, sidePrevRect.bottom);
+
+						if(sidePrevRect.top < 0) {
+							scrollTo = sidebar.scrollTop() + sidePrevRect.top - topMarg;
+							scrollToDo();
+						}
+					}
+
+					if(sideNext.length) {
+						sideNextRect = sideNext[0].getBoundingClientRect();
+						// console.log(sideNextRect.top, sideNextRect.bottom);
+
+						if(sideNextRect.bottom > winHeight) {
+							scrollTo = sidebar.scrollTop() + sideNext.position().top - sidebar.height();
+							scrollToDo();
+						}
+					}
 
 					// scrollTo = sidebar.scrollTop() + activeObj.offset().top - getWindowHeight() / 2; // - scrolledTop
 					// sidebar.scrollTop(scrollTo);
@@ -258,7 +295,8 @@ $(function(){
 
 		// $(window).on('scroll', setActiveSection);
 		mainWrap.on('scroll', setActiveSection);
-		setActiveSection();
+
+		setTimeout(setActiveSection, 1000);
 
 	})();
 });
