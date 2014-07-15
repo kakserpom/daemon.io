@@ -221,13 +221,13 @@ $(function(){
 			sideRoot,
 			sideNext, sidePrev,
 			winHeight,
-			topMarg = 35;
+			topMarg = 45;
 
 		var pushState = $.debounce(500, false, function(){
 			history.pushState(null, null, '#'+ link);
 		});
 
-		var scrollToDo = $.throttle(1000, false, function(){
+		var scrollToDo = $.throttle(700, false, function(){
 			sidebar.stop().animate({
 				scrollTop: scrollTo
 			}, 400);
@@ -271,6 +271,9 @@ $(function(){
 							scrollTo = sidebar.scrollTop() + sidePrevRect.top - topMarg;
 							scrollToDo();
 						}
+					} else {
+						scrollTo = 0;
+						scrollToDo();
 					}
 
 					if(sideNext.length) {
@@ -280,6 +283,9 @@ $(function(){
 							scrollTo = sidebar.scrollTop() + sideNext.position().top - sidebar.height();
 							scrollToDo();
 						}
+					} else {
+						scrollTo = sidebarUl.height();
+						scrollToDo();
 					}
 				}
 			}
