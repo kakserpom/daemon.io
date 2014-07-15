@@ -240,6 +240,33 @@ header menu a:hover {
     /*display: none;*/
 }
 
+
+.sidebar:after {
+    content: "";
+    display: block;
+    position: fixed;
+    text-decoration: none;
+    width: 240px;
+    height: 20px;
+    bottom: -10px;
+    left: 0;
+    z-index: 10;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: 100% 1px, 100% 8px;
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.2) 25%, rgba(0, 0, 0, 0.3) 75%, transparent), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.6), transparent);
+    background-position: 0 100%, 0 100%;
+    transform: translate3d(0.001px, 0, 0);
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.sidebar.shadows:after {
+    bottom: 0;
+}
+
+
 .toggle_sidebar_button{
     display: none;
     position: fixed;

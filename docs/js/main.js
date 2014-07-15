@@ -297,5 +297,15 @@ $(function(){
 
 		setTimeout(setActiveSection, 1000);
 
+		// тень сайдбара
+		var sideScroll = $.throttle(200, false, function(){
+			if(sidebar.scrollTop() >= sidebarUl.height() - sidebar.height()) {
+				sidebar.removeClass('shadows');
+			} else {
+				sidebar.addClass('shadows');
+			}
+		});
+
+		sidebar.on('scroll', sideScroll);
 	})();
 });
