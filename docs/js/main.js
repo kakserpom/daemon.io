@@ -307,5 +307,6 @@ $(function(){
 		});
 
 		sidebar.on('scroll', sideScroll);
+		sideScroll();
 	})();
 });
