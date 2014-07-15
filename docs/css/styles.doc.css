@@ -175,18 +175,18 @@ header menu a:hover {
     width: 19px;
     height: 12px;
     top: 50%;
-    left: -20px;
+    left: -19px;
     margin-top: -6px;
     background: url(mark.png);
 }
 .sidebar ul ul ul .active:before {
-    left: -30px;
+    left: -29px;
 }
 .sidebar ul ul ul ul .active:before {
-    left: -40px;
+    left: -39px;
 }
 .sidebar ul ul ul ul ul .active:before {
-    left: -50px;
+    left: -49px;
 }
 
 .sidebar ul{
