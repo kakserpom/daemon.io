@@ -166,7 +166,27 @@ header menu a:hover {
 }
 
 .sidebar .active {
-    background-color: #ccc;
+    position: relative;
+}
+
+.sidebar .active:before {
+    position: absolute;
+    content: "";
+    width: 19px;
+    height: 12px;
+    top: 50%;
+    left: -22px;
+    margin-top: -6px;
+    background: url(mark.png);
+}
+.sidebar ul ul ul .active:before {
+    left: -32px;
+}
+.sidebar ul ul ul ul .active:before {
+    left: -42px;
+}
+.sidebar ul ul ul ul ul .active:before {
+    left: -52px;
 }
 
 .sidebar ul{
