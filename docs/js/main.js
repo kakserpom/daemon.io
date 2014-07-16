@@ -300,9 +300,9 @@ $(function(){
 		// тень сайдбара
 		var sideScroll = $.throttle(200, false, function(){
 			if(sidebar.scrollTop() >= sidebarUl.height() - sidebar.height()) {
-				sidebar.removeClass('shadows');
+				sidebar.removeClass('showbtn');
 			} else {
-				sidebar.addClass('shadows');
+				sidebar.addClass('showbtn');
 			}
 		});
 

@@ -241,28 +241,31 @@ header menu a:hover {
 }
 
 
-.sidebar:after {
-    content: "";
-    display: block;
+.sidebar .downbtn {
     position: fixed;
     text-decoration: none;
     width: 240px;
-    height: 20px;
-    bottom: -10px;
+    height: 16px;
+    line-height: normal;
+    padding: 2px 0;
+    bottom: -20px;
     left: 0;
     z-index: 10;
     pointer-events: none;
-    background-repeat: no-repeat;
-    background-size: 100% 10px;
-    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.6) 100%, transparent);
-    background-position: 0 100%;
+    color: #fff;
+    background: #000;
+    opacity: 0.5;
+    text-align: center;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
     transform: translate3d(0.001px, 0, 0);
     -webkit-transition: all .2s linear;
     -moz-transition: all .2s linear;
     -o-transition: all .2s linear;
     transition: all .2s linear;
 }
-.sidebar.shadows:after {
+.sidebar.showbtn .downbtn {
     bottom: 0;
 }
 

@@ -2468,6 +2468,9 @@ https://github.com/chibisov/backdoc
     </a>
     <div class="sidebar">
         <!-- toc -->
+        <div class="downbtn">
+            <i class="fa fa-arrow-down"></i>
+        </div>
     </div>
     <div class="main_wrap">
         <div class="main_container">
