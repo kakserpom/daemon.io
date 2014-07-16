@@ -298,7 +298,7 @@ $(function(){
 		setTimeout(setActiveSection, 1000);
 
 		// тень сайдбара
-		var sideScroll = $.throttle(200, false, function(){
+		var sideScrollBtn = $.throttle(200, false, function(){
 			if(sidebar.scrollTop() >= sidebarUl.height() - sidebar.height()) {
 				sidebar.removeClass('showbtn');
 			} else {
@@ -306,7 +306,13 @@ $(function(){
 			}
 		});
 
-		sidebar.on('scroll', sideScroll);
-		sideScroll();
+		sidebar.on('scroll', sideScrollBtn);
+		sideScrollBtn();
+
+
+		sidebar.find('.downbtn').on('click', function() {
+			scrollTo += 100;
+			scrollToDo();
+		});
 	})();
 });
