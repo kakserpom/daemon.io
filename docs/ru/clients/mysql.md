@@ -35,24 +35,24 @@
  string public static Pool::escape ( string $string )
  ```
    -.n Экранирует специальные символы: `\0`, `\n`, `\r`, `\`, `'`, `"`
-   -.n.ti `:hc`$string` &mdash; конвертируемая строка
+   -.n.ti `:hc`$string` &mdash; исходная строка
      
  -.method ```php.inline
  string public static Pool::likeEscape ( string $string )
  ```
    -.n Работает как метод `:hc`Pool::escape` с дополнительными символами: `%` и `_`
-   -.n.ti `:hc`$string` &mdash; конвертируемая строка
+   -.n.ti `:hc`$string` &mdash; исходная строка
 
  -.method ```php.inline
  string public static Pool::value ( mixed $mixed )
  ```
-   -.n Преобразует строку или число `:hc`$mixed` для использоания в SQL выражении и возвращает значение в одинарных кавычках `'`. Для всех остальных типов возвращает строку `'null'`
+   -.n Преобразует строку или число `:hc`$mixed` для использоания в SQL-выражении и возвращает значение в одинарных кавычках `'`. Для всех остальных типов возвращает `'null'`
    -.n.ti `:hc`$mixed` &mdash; конвертируемые данные
 
  -.method ```php.inline
  string public static Pool::values ( mixed $arr )
  ```
-   -.n Преобразует массив `:hc`$arr` для использоания в SQL выражении и возвращает список значений, разделенные запятой `,`. Для всех остальных типов возвращает пустую строку `''`
+   -.n Преобразует массив `:hc`$arr` для использоания в SQL-выражении и возвращает список значений, разделенные запятой `,`. Для всех остальных типов возвращает пустую строку
    -.n.ti `:hc`$mixed` &mdash; конвертируемые данные
 
 #### connection # Класс Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}
