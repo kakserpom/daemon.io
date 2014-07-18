@@ -34,22 +34,13 @@
  -.method ```php.inline
  string public static Pool::escape ( string $string )
  ```
-   -.n Преобразует специальные символы
+   -.n Преобразует специальные символы: NUL-байт, `\n`, `\r`, `\`, `'`, `"`
    -.n.ti `:hc`$string` &mdash; конвертируемая строка
-   -.n.ti Производятся следующие преобразования:
-     - \x00 &rarr; \0
-     - \n &rarr; \n
-     - \r &rarr; \r
-     - \\ &rarr; \\\\
-     - \' &rarr; \\\'
-     - " &rarr; \\"
-
+     
  -.method ```php.inline
  string public static Pool::likeEscape ( string $string )
  ```
-   -.n Преобразует специальные символы как метод `:hc`Pool::escape` с дополнительными правилами:
-     - % &rarr; \%
-     - _ &rarr; \_
+   -.n Работает как метод `:hc`Pool::escape` с дополнительными символами: `%` и `_`
    -.n.ti `:hc`$string` &mdash; конвертируемая строка
 
  -.method ```php.inline
