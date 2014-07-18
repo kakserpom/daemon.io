@@ -34,7 +34,7 @@
  -.method ```php.inline
  string public static Pool::escape ( string $string )
  ```
-   -.n Преобразует специальные символы: NUL-байт, `\n`, `\r`, `\`, `'`, `"`
+   -.n Экранирует специальные символы: `\0`, `\n`, `\r`, `\`, `'`, `"`
    -.n.ti `:hc`$string` &mdash; конвертируемая строка
      
  -.method ```php.inline
