@@ -311,7 +311,7 @@ $(function(){
 
 
 		sidebar.find('.downbtn').on('click', function() {
-			scrollTo += 100;
+			scrollTo = sidebar.scrollTop() + 100;
 			scrollToDo();
 		});
 	})();
