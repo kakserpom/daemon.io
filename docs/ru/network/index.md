@@ -1,4 +1,6 @@
-## network # Network
+## network # Сеть
+
+<!-- import pool.md -->
 
 <!-- import client.md -->
 
@@ -8,6 +10,5 @@
 
 <!-- import iostream.md -->
 
-<!-- import pool.md -->
 
 <!-- import server.md -->
