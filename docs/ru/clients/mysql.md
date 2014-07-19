@@ -29,7 +29,7 @@
    -.n Выполняет callback-функцию когда будет установлена связь с сервером. Возвращает `false` если соединение невозможно установить
    -.n.ti `:hc`$cb` &mdash; `:phc`callback ( [Connection](#clients/mysql/connection) $conn )` &mdash; вызывается когда будет установлена связь с сервером
    -.n `:hc`$url` &mdash; адрес сервера
-   -.n `:hc`$pri` &mdash; приоритет соединения
+   -.n `:hc`$pri` &mdash; приоритет данного вызова среди других. Чем больше значение, тем выше приоритет
 
  -.method ```php.inline
  string public static Pool::escape ( string $string )
