@@ -1,11 +1,21 @@
-### http # Servers\HTTP
+### http # HTTP #> [Серверы](#servers) \ HTTP {tpl-git PHPDaemon/Servers/HTTP}
 
 Сервер использует пространство имен {tpl-inlink httprequest HTTPRequest}.
 
+Это транспортное приложение предоставляет HTTP сервер для phpDaemon. Входящие Websocket соединения будут переданы приложению WebsocketServer.
+
+HTTP пробует определить приложение через AppResolver, не забудьте сконфигурировать его.
+
 #### options # Опции
+
+ - `listen (string = 'tcp://0.0.0.0')`  
+ Какие адреса слушать, через запятую
 
  - `port (integer = 80)`  
  Прослушиваемый порт
+
+ - `allowed-clients (string = '127.0.0.1')`  
+ IP адреса (через запятую) которым позволено делать запросы. CIDR-маски поддерживаются
 
  - `send-file (boolean = false)`  
  Оптимизирует обработку запросов, предварительно записывая их в файл.
@@ -24,7 +34,7 @@
  Включать версию PHPDaemon в заголовке `X-Powered-By`
 
  - `:p`keepalive ([Time](#config/types/time) = '0s')`  
- Время keepalive
+ Таймаут бездействия перед закрытием keep-alive соединения
 
  - `:p`chunksize ([Size](#config/types/size) = '8k')`  
  Размер куска
