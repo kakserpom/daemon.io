@@ -12,7 +12,7 @@
 
 @TODO
 
-#### pool # Класс Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
+#### pool # Класс Pool {tpl-git PHPDaemon/Clients/MySQL/Pool.php}
 
 ##### options # Опции по-умолчанию
 
