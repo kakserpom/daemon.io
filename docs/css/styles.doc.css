@@ -565,3 +565,11 @@ a .fa {
 .force_show_sidebar .toggle_sidebar_button{
     margin-left: 230px;
 }
+
+
+#disqus_thread {
+    position: absolute;
+    z-index: 100;
+    width: 700px;
+    background: #fff;
+}
