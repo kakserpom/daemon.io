@@ -24,6 +24,149 @@ AMI - программный интерфейс (API) Asterisk для управ
 
 @TODO
 
+```php
+<?php
+$session->getSipPeers(function(SocketSession $session, array $packet) {
+    // $session->addr содержит адрес соединения
+    // $session->context содержит контекст вызова (если был установлен)
+    // $packet - это массив пар заголовок-значение ответа
+    // что-нибудь делаем
+})
+// или
+$session->getConfig('chan_dahdi.conf', array($this, 'doSomething'));
+public function doSomething(SocketSession $session, array $packet) {
+
+}
+// или
+$session->action('Ping', function(SocketSession $session, array $packet) {
+    if($packet['response'] == 'success' && $packet['ping'] == 'pong') {
+        // успешно сыграли в пинг-понг
+    }    
+});
+// или
+// $channel содержит канал из события
+$session->redirect(array(
+    'Channel' => $channel,
+    'Context' => 'internal',
+    'Exten' => '116',
+    'Priority' => 1
+), function(SocketSession $session, array $packet) {
+  // узнаем успешно или нет из ответа сервера содержащегося в ассоциативном массиве $packet
+});
+?>
+```
+
+Функция обратного вызова при наступлении события в данном соединении определяется один раз и передается методу onEvent().
+
+Когда запущено несколько воркеров, чтобы не получилось, что события канала(характеризуются наличием уникального идентификатора(uniqueid) канала) кратны количеству воркеров(workers) можно воспользоваться таблицей блокировки. Вот пример, когда в качестве таблицы блокировки используется MongoDB коллекция(collection), которая позволяет ставить уникальный индекс на документ:
+
+```php
+<?php
+$session->onEvent(array($this, 'onPbxEvent'));
+// db.events.ensureIndex({"event": 1, "addr": 1}, {unique: true});
+public function onPbxEvent(SocketSession $session, array $event) {
+    if(method_exists('Foo_PbxEventDispatcher', "{$event['event']}Handler")) {
+        $handler = "{$event['event']}Handler";
+        if(isset($event['uniqueid']) || isset($event['uniqueid1'])) {
+            $appInstance = $this;
+            $this->db->events->insert(
+                array(
+                        'ts' => microtime(true),
+                        'event' => $event,
+                        'addr' => $session->addr
+                ),
+                function($result) use ($appInstance, $session, $event) {
+                    if($result['err'] === null) {
+                        $handler = "{$event['event']}Handler";
+                        Foo_PbxEventDispatcher::$handler($appInstance, $session, $event);
+                    }
+                }
+            );
+        }
+        else {
+            Foo_PbxEventDispatcher::$handler($this, $session, $event);
+        }
+    }
+}
+?>
+```
+
+Пример реконнекта
+
+
+```php
+<?php
+class Foo extends AppInstance {
+    // ...
+    public function onInit() {
+        // pbxConnections - array of connections
+        foreach($this->pbxConnections as $addr => $conn) {
+            $pbx_driver_session = $this->pbxDriver->getConnection($addr);
+            if($pbx_driver_session instanceof SocketSession) {
+                $pbx_driver_session->context = $this;
+                //$pbx_driver_session->onError(array($this, 'onPbxError'));
+                $pbx_driver_session->onConnected(array($this, 'onPbxConnected'));
+                $pbx_driver_session->onEvent(array($this, 'onPbxEvent'));
+                $pbx_driver_session->onFinish(array($this, 'onPbxFinish'));
+            }
+            else {
+                $this->runPbxReconnectInterval($pbx_driver_session);
+            }
+        }
+    }
+    // ...
+    public function onPbxConnected(SocketSession $session, $status) {
+        if($status) {
+            if($session->context instanceof PbxReconnector) {
+                $session->context->finish();
+            }
+            // do something...
+        }
+        else {
+            $this->runPbxReconnectInterval($session);
+        }
+    }
+    // ...
+    public function onPbxFinish(SocketSession $session) {
+        $this->runPbxReconnectInterval($session);
+    }
+    // ...
+    public function runPbxReconnectInterval(SocketSession $session) {
+                if(Daemon::$process->terminated) {
+            return;
+        }
+        foreach ($this->queue as &$r) {
+            if($r instanceof PbxReconnector) {
+                if ($r->attrs->addr == $session->addr) {
+                    return;
+                }
+            }
+        }
+        $interval = $this->pushRequest(new PbxReconnector($this, $this));
+        $interval->attrs->addr = $session->addr;
+    }
+    // ...
+}
+// ...
+class PbxReconnector extends Request {
+        public $interval = 0.3;
+
+    public function run() {
+        $pbx_driver_session = $this->appInstance->pbxDriver->getConnection($this->attrs->addr);
+        if($pbx_driver_session) {
+            if($this->appInstance->config->{'pbxreconnectorlogging'}->value) {
+                Daemon::log('Reconnecting to ' . $this->attrs->addr);
+            }
+            $pbx_driver_session->context = $this;
+            $pbx_driver_session->onConnected(array($this->appInstance, 'onPbxConnected'));
+            $pbx_driver_session->onFinish(array($this->appInstance, 'onPbxFinish'));
+        }
+        $this->sleep($this->interval);
+    }
+}
+?>
+```
+
 #### pool # Класс Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
 
 ##### options # Опции по-умолчанию
