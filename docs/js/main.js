@@ -142,6 +142,12 @@ $(function(){
 				top: bar.css('top') == '-35px' ? 35 : -35
 			}, 300);
 		});
+
+		$('.lang-chooser a').on('click', function(event) {
+			event.preventDefault();
+
+			window.location.href = $(this).attr('href') + window.location.hash;
+		});
 	})();
 
 	// remove <code> tag inside of <pre>
