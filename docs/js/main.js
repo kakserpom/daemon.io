@@ -132,6 +132,18 @@ $(function(){
 		}
 	});
 
+	(function(){
+		var bar = $('.lang-chooser').eq(0);
+
+		$('#langchoose').on('click', function(event) {
+			event.preventDefault();
+
+			bar.stop().animate({
+				top: bar.css('top') == '-35px' ? 35 : -35
+			}, 300);
+		});
+	})();
+
 	// remove <code> tag inside of <pre>
 	// $.each($('pre > code'), function(key, item) {
 	// 	$(item).parent().html($(item).html());

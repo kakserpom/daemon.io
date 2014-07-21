@@ -53,7 +53,7 @@ header {
 #logo {
     float: left;
     padding: 0 10px;
-    margin: 10px 40px 0 -10px;
+    margin: 10px 10px 0 -10px;
     width: 89px;
     height: 18px;
     background: url(/img/logo.png) no-repeat 50% 50%;
@@ -68,6 +68,33 @@ header {
     text-decoration: none;
     text-shadow: 0 1px 0 #000;
     letter-spacing: .08em;
+}
+#langchoose {
+    float: left;
+    padding: 0 10px;
+    margin: 10px 40px 0 0;
+    height: 18px;
+    background: url(../imgs/globus.png) no-repeat 50% 50%;
+    line-height: 17px;
+    text-indent: -30000px;
+}
+.lang-chooser {
+    position: fixed;
+    z-index: 500;
+    top: -35px;
+    left: 0;
+    margin: 0;
+    padding: 10px 30px;
+    background: #fff;
+    border-bottom: 1px solid #333;
+}
+.lang-chooser li {
+    display: inline;
+    margin-right: 40px;
+    list-style: none;
+}
+.lang-chooser .active {
+    font-weight: bold;
 }
 header, menu, nav, article, footer, section, aside {
     display: block;
@@ -177,7 +204,7 @@ header menu a:hover {
     top: 50%;
     left: -19px;
     margin-top: -6px;
-    background: url(mark.png);
+    background: url(../imgs/mark.png);
 }
 .sidebar ul ul ul .active:before {
     left: -29px;

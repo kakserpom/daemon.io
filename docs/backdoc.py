@@ -8,6 +8,7 @@ https://github.com/chibisov/backdoc
 """
 import sys
 import argparse
+import glob
 
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
@@ -2450,6 +2451,7 @@ https://github.com/chibisov/backdoc
     <header>
         <div class="center">
             <a href="/" id="logo" title="phpDaemon">phpDaemon</a>
+            <a href="?" id="langchoose" title="phpDaemon">Язык</a>
             <a href="/docs/{lang}/#install" id="download" title="Download">{menu-install}</a>
             <menu>
                 <li><span><a href="http://daemon.io/examples.html" title="Examples">{menu-examples}</a></span></li>
@@ -2461,6 +2463,9 @@ https://github.com/chibisov/backdoc
             </menu>
         </div>
     </header>
+    <ul class="lang-chooser">
+        <!-- block_langs -->
+    </ul>
     <a class="toggle_sidebar_button">
         <div class="line"></div>
         <div class="line"></div>
@@ -2474,6 +2479,7 @@ https://github.com/chibisov/backdoc
     </div>
     <div class="main_wrap">
         <div class="main_container">
+            
             <!-- main_content -->
         </div>
     </div>
@@ -2628,6 +2634,25 @@ class BackDoc(object):
         return self._parser_links_target_re.sub(self._parser_links_target_sub, text)
 
 
+    def parseLangs(self):
+        currpath = os.path.dirname(os.path.realpath(self.sourcePath))
+        rootpath = os.path.dirname(currpath)
+        currlangpath = os.path.basename(currpath)
+        result = []
+
+        for filename in glob.glob(rootpath + '/*/language'):
+            classes = ''
+            langname = open(filename, 'r').read()
+            langcode = os.path.basename(os.path.dirname(filename))
+
+            if langcode == currlangpath:
+                classes = ' class="active"'
+
+            result.append(('<li%s><a href="/docs/'+ langcode +'/">'+ langname +'</a></li>') % classes)
+
+        return result
+
+
     def get_result_html(self, title, markdown_src):
         if self.sourcePath:
             markdown_src = self.importParts(markdown_src, self.sourcePath)
@@ -2640,10 +2665,13 @@ class BackDoc(object):
         content = force_text(response)
         content = self.parser_links_target_do(content)
 
+        langsArr = self.parseLangs()
+
         return (
             self.template_html.replace('<!-- title -->', self.parser_vars['title'] or title)
                               .replace('<!-- toc -->', response.toc_html and force_text(response.toc_html) or '')
                               .replace('<!-- main_content -->', content)
+                              .replace('<!-- block_langs -->', force_text(', '.join(langsArr)))
         )
 
     def get_converted_to_html_response(self, markdown_src):
