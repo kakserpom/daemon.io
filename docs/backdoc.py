@@ -2463,9 +2463,13 @@ https://github.com/chibisov/backdoc
             </menu>
         </div>
     </header>
-    <ul class="lang-chooser">
-        <!-- block_langs -->
-    </ul>
+    <div class="lang-chooser">
+        <div class="center">
+            <ul>
+                <!-- block_langs -->
+            </ul>
+        </div>
+    </div>
     <a class="toggle_sidebar_button">
         <div class="line"></div>
         <div class="line"></div>

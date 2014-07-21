@@ -83,10 +83,15 @@ header {
     z-index: 500;
     top: -35px;
     left: 0;
+    width: 100%;
     margin: 0;
     padding: 10px 30px;
     background: #fff;
     border-bottom: 1px solid #333;
+}
+.lang-chooser ul {
+    margin: 0;
+    padding: 0;
 }
 .lang-chooser li {
     display: inline;
