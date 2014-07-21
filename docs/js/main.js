@@ -133,13 +133,14 @@ $(function(){
 	});
 
 	(function(){
-		var bar = $('.lang-chooser').eq(0);
+		var btn = $('#langchoose'),
+			bar = $('.lang-chooser').eq(0);
 
-		$('#langchoose').on('click', function(event) {
+		btn.on('click', function(event) {
 			event.preventDefault();
 
 			bar.stop().animate({
-				top: bar.css('top') == '-35px' ? 35 : -35
+				top: bar.css('top') != '-35px' ? -35 : 35
 			}, 300);
 		});
 
@@ -147,6 +148,7 @@ $(function(){
 			event.preventDefault();
 
 			window.location.href = $(this).attr('href') + window.location.hash;
+			btn.trigger('click');
 		});
 	})();
 
