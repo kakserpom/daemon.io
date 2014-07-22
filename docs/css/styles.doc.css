@@ -27,6 +27,7 @@ h5 {
 }
 
 .header-path {
+    position: relative;
     margin-left: 5px;
     font-size: 13px;
     color: #666;
@@ -40,6 +41,16 @@ h5 {
 }
 .header-path a:hover {
     color: #333;
+}
+
+h3 .header-path {
+    top: -0.22em;
+}
+h4 .header-path {
+    top: -0.18em;
+}
+h5 .header-path {
+    top: -0.1em;
 }
 
 

@@ -110,27 +110,36 @@ function setCookie(name, value, options) {
 
 $(function(){
 	var $win = $(window),
+		$body = $('body'),
 		global_lang = $('html').attr('lang');
 
 	$('.toggle_sidebar_button').on('click', function(){
-		$('body').toggleClass('force_show_sidebar');
+		$body.toggleClass('force_show_sidebar');
 	});
 
 	// hide sidebar on every click in menu (if small screen)
-	$('.sidebar').find('a').on('click', function(){
-		$('body').removeClass('force_show_sidebar');
+	$('.sidebar').on('click', 'a', function() {
+		$body.removeClass('force_show_sidebar');
 	});
 
 	// add anchors
-	$.each($('.main_container').find('h1,h2,h3,h4,h5,h6'), function(key, item){
-		if ($(item).attr('id')) {
-			$(item).addClass('anchor');
-			$(item).append($('<span class="anchor_char">¶</span>'));
-			$(item).on('click', function(){
-				window.location = '#' + $(item).attr('id');
-			});
-		}
-	});
+	$('.main_container')
+		.find('h1,h2,h3,h4,h5,h6')
+		.filter('[id]')
+		.addClass('anchor')
+		.each(function() {
+			var that = $(this),
+				path = that.find('.header-path');
+
+			if(path.length) {
+				path.before('<span class="anchor_char">¶</span>');
+			} else {
+				that.append('<span class="anchor_char">¶</span>');
+			}
+		})
+		.on('click', function() {
+			window.location = '#' + that.attr('id');
+		});
 
 	(function(){
 		var btn = $('#langchoose'),
