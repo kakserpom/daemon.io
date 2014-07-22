@@ -1,4 +1,5 @@
-### http # HTTP #> [Клиенты](#clients) \ HTTP {tpl-git PHPDaemon/Clients/HTTP}
+### http # HTTP #> HTTP {tpl-git PHPDaemon/Clients/HTTP}
+<!-- [Клиенты](#clients) \  -->
 
 `:h`namespace PHPDaemon\Clients\HTTP`
 

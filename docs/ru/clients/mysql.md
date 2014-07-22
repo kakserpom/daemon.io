@@ -1,4 +1,4 @@
-### mysql # MySQL #> [Клиенты](#clients) \ MySQL {tpl-git PHPDaemon/Clients/MySQL}
+### mysql # MySQL #> MySQL {tpl-git PHPDaemon/Clients/MySQL}
 
 `:h`namespace PHPDaemon\Clients\MySQL`
 

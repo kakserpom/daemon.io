@@ -1,4 +1,4 @@
-### asterisk # Asterisk #> [Клиенты](#clients) \ Asterisk {tpl-git PHPDaemon/Clients/Asterisk}
+### asterisk # Asterisk #> Asterisk {tpl-git PHPDaemon/Clients/Asterisk}
 
 `:h`namespace PHPDaemon\Clients\Asterisk`
 

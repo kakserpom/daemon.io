@@ -1273,6 +1273,7 @@ class Markdown(object):
         return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, html, n)
 
     _headers_stack = []
+    _headers_id_stack = []
 
     _atx_h_re = re.compile(r'''
         ^(\#{1,6})  # \1 = string of #'s
@@ -1300,7 +1301,15 @@ class Markdown(object):
         demote_headers = self.extras.get("demote-headers")
         if demote_headers:
             n = min(n + demote_headers, 6)
+
         header_id_attr = ""
+
+        # html = self._run_span_gamut(match.group(4))
+        if match.group(6):
+            html = match.group(6)
+        else:
+            html = match.group(4)
+
         if "header-ids" in self.extras:
             if match.group(3):
                 header_id = match.group(3)
@@ -1309,20 +1318,37 @@ class Markdown(object):
 
             if header_id:
                 self._headers_stack = self._headers_stack[0:n-2]
-                self._headers_stack.append(header_id)
-                header_path = '/'.join(self._headers_stack)
 
+                self._headers_id_stack = self._headers_id_stack[0:n-2]
+                self._headers_id_stack.append(header_id)
+
+                header_path = '/'.join(self._headers_id_stack)
                 header_id_attr = ' id="%s"' % header_path
 
-        # html = self._run_span_gamut(match.group(4))
-        html = match.group(4)
-        if "toc" in self.extras and header_id:
-            self._toc_add_entry(n, header_path, html)
+        if len(self._headers_stack):
+            hlinks = []
+            i = 0
 
-        if match.group(6):
-            return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, self._run_span_gamut(match.group(6)), n)
+            for name in self._headers_stack:
+                i += 1
+                linkarr = []
+
+                for hid in self._headers_id_stack[0:i]:
+                    linkarr.append(hid)
+
+                link = '/'.join(linkarr)
+                hlinks.append('<a href="#'+ link +'">'+ name +'</a>')
+
+            header_html = html + '<span class="header-path"> <i>&larr;</i> ' + ' <i>&larr;</i> '.join(reversed(hlinks)) + '</span>'
         else:
-            return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, self._run_span_gamut(html), n)
+            header_html = html
+
+        self._headers_stack.append(html)
+
+        if "toc" in self.extras and header_id:
+            self._toc_add_entry(n, header_path, match.group(4))
+
+        return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, self._run_span_gamut(header_html), n)
 
     def _do_headers(self, text):
         # Setext-style headers:
