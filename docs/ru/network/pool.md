@@ -2,11 +2,17 @@
 
 Хранит в себе активные объекты {tpl-inlink network/connection Соединение} и {tpl-inlink network/boundsocket ОткрытыйСокет}.
 
-Пул можно инстанцировать прямо в пользовательском приложении, например:
+Пул (клиент или сервер) можно инстанцировать из пользовательского приложении, например:
+
+```php
+$this->httpclient = \PHPDaemon\Clients\HTTP\Pool::getInstance();
+```
+
+или
 
 ```php
 /* ... */
-$this->pool = \PHPDaemon\Servers\FlashPolicy::getInstance([
+$this->pool = \PHPDaemon\Servers\FlashPolicy\Pool::getInstance([
     'listen' => 'tcp://0.0.0.0:843'
 ]);
 $this->pool->onReady();

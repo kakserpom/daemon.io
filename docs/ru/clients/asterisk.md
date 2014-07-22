@@ -22,8 +22,6 @@ AMI - программный интерфейс (API) Asterisk для управ
 
 #### examples # Примеры
 
-@TODO
-
 ```php
 <?php
 $session->getSipPeers(function(SocketSession $session, array $packet) {
@@ -90,83 +88,6 @@ public function onPbxEvent(SocketSession $session, array $event) {
 }
 ?>
 ```
-
-Пример реконнекта
-
-
-```php
-<?php
-class Foo extends AppInstance {
-    // ...
-    public function onInit() {
-        // pbxConnections - array of connections
-        foreach($this->pbxConnections as $addr => $conn) {
-            $pbx_driver_session = $this->pbxDriver->getConnection($addr);
-            if($pbx_driver_session instanceof SocketSession) {
-                $pbx_driver_session->context = $this;
-                //$pbx_driver_session->onError(array($this, 'onPbxError'));
-                $pbx_driver_session->onConnected(array($this, 'onPbxConnected'));
-                $pbx_driver_session->onEvent(array($this, 'onPbxEvent'));
-                $pbx_driver_session->onFinish(array($this, 'onPbxFinish'));
-            }
-            else {
-                $this->runPbxReconnectInterval($pbx_driver_session);
-            }
-        }
-    }
-    // ...
-    public function onPbxConnected(SocketSession $session, $status) {
-        if($status) {
-            if($session->context instanceof PbxReconnector) {
-                $session->context->finish();
-            }
-            // do something...
-        }
-        else {
-            $this->runPbxReconnectInterval($session);
-        }
-    }
-    // ...
-    public function onPbxFinish(SocketSession $session) {
-        $this->runPbxReconnectInterval($session);
-    }
-    // ...
-    public function runPbxReconnectInterval(SocketSession $session) {
-                if(Daemon::$process->terminated) {
-            return;
-        }
-        foreach ($this->queue as &$r) {
-            if($r instanceof PbxReconnector) {
-                if ($r->attrs->addr == $session->addr) {
-                    return;
-                }
-            }
-        }
-        $interval = $this->pushRequest(new PbxReconnector($this, $this));
-        $interval->attrs->addr = $session->addr;
-    }
-    // ...
-}
-// ...
-class PbxReconnector extends Request {
-        public $interval = 0.3;
-
-    public function run() {
-        $pbx_driver_session = $this->appInstance->pbxDriver->getConnection($this->attrs->addr);
-        if($pbx_driver_session) {
-            if($this->appInstance->config->{'pbxreconnectorlogging'}->value) {
-                Daemon::log('Reconnecting to ' . $this->attrs->addr);
-            }
-            $pbx_driver_session->context = $this;
-            $pbx_driver_session->onConnected(array($this->appInstance, 'onPbxConnected'));
-            $pbx_driver_session->onFinish(array($this->appInstance, 'onPbxFinish'));
-        }
-        $this->sleep($this->interval);
-    }
-}
-?>
-```
-
 #### pool # Класс Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
 
 ##### options # Опции по-умолчанию
