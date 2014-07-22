@@ -127,18 +127,18 @@ $(function(){
 		.find('h1,h2,h3,h4,h5,h6')
 		.filter('[id]')
 		.addClass('anchor')
-		.each(function() {
-			var that = $(this),
-				path = that.find('.header-path');
+		// .each(function() {
+		// 	var that = $(this),
+		// 		path = that.find('.header-path');
 
-			if(path.length) {
-				path.before('<span class="anchor_char">¶</span>');
-			} else {
-				that.append('<span class="anchor_char">¶</span>');
-			}
-		})
+		// 	if(path.length) {
+		// 		path.before('<span class="anchor_char">¶</span>');
+		// 	} else {
+		// 		that.append('<span class="anchor_char">¶</span>');
+		// 	}
+		// })
 		.on('click', function() {
-			window.location = '#' + that.attr('id');
+			window.location = '#' + $(this).attr('id');
 		});
 
 	(function(){
