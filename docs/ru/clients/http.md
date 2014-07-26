@@ -39,7 +39,7 @@ $httpclient->get('http://www.google.com/robots.txt',
    -.n Осуществляет GET запрос
    -.n.ti `:hc`$url` &mdash; запрашиваемый URL
    -.n `:hc`$params` &mdash; ассоциативный массив параметров запроса
-   -.n `:hc`$resultcb` &mdash; `:phc`callback ( [Connection](#clients/http/connection) $conn, boolean $success )` &mdash; Вызывается когда на запрос пришел ответ, либо произошла ошибка
+   -.n `:hc`$resultcb` &mdash; `:phc`callback ( [Connection](#../../connection) $conn, boolean $success )` &mdash; Вызывается когда на запрос пришел ответ, либо произошла ошибка
 
  -.method ```php.inline
  void public Pool::post ( url $url, array $data, array $params )
@@ -49,7 +49,7 @@ $httpclient->get('http://www.google.com/robots.txt',
    -.n.ti `:hc`$url` &mdash; запрашиваемый URL
    -.n `:hc`$data` &mdash; ассоциативный массив POST-параметров
    -.n `:hc`$params` &mdash; ассоциативный массив параметров запроса
-   -.n `:hc`$resultcb` &mdash; `:phc`callback ( [Connection](#clients/http/connection) $conn, boolean $success )` &mdash; Вызывается когда на запрос пришел ответ, либо произошла ошибка
+   -.n `:hc`$resultcb` &mdash; `:phc`callback ( [Connection](#../../connection) $conn, boolean $success )` &mdash; Вызывается когда на запрос пришел ответ, либо произошла ошибка
 
  -.method  ```php.inline
  string public static Pool::buildUrl ( string $str )
