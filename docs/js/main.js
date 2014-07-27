@@ -124,22 +124,147 @@ $(function(){
 
 	// add anchors
 	$('.main_container')
-		.find('h1,h2,h3,h4,h5,h6')
-		.filter('[id]')
-		.addClass('anchor')
-		// .each(function() {
-		// 	var that = $(this),
-		// 		path = that.find('.header-path');
+		.find(':header[id]')
+			.addClass('anchor')
+			// .each(function() {
+			// 	var that = $(this),
+			// 		path = that.find('.header-path');
 
-		// 	if(path.length) {
-		// 		path.before('<span class="anchor_char">¶</span>');
-		// 	} else {
-		// 		that.append('<span class="anchor_char">¶</span>');
-		// 	}
-		// })
-		.on('click', function() {
-			window.location = '#' + $(this).attr('id');
-		});
+			// 	if(path.length) {
+			// 		path.before('<span class="anchor_char">¶</span>');
+			// 	} else {
+			// 		that.append('<span class="anchor_char">¶</span>');
+			// 	}
+			// })
+			.on('click', function() {
+				window.location = '#' + $(this).attr('id');
+			})
+
+		.end()
+		.on('click', 'a', function(event) {
+				var that = $(this),
+					href = that.attr('href');
+
+				// #./link
+				if(href.indexOf('#./') === 0) {
+					event.preventDefault();
+
+					var postfix = href.slice(3);
+					var parent = that.parentsUntil('.main_container').last();
+
+					if(!parent.length) {
+						return false;
+					}
+
+					if( parent.is(':header') ) {
+						header = parent;
+					}
+					else {
+						curr = parent;
+
+						while(true) {
+							header = curr.prev();
+
+							if(!header.length) {
+								return false;
+							}
+
+							if(header.is(':header')) {
+								break;
+							}
+
+							curr = header;
+						}
+					}
+
+					if(header.length) {
+						window.location = '#' + header.attr('id') + (postfix ? '/'+postfix : '');
+					}
+				}
+				else
+				// #(../)+link
+				if(href.indexOf('#../') === 0) {
+					event.preventDefault();
+
+					var matches = href.match(/^\#(\.\.\/)+/g);
+					var postfix = href.slice(matches[0].length);
+					var count = (matches[0].length - 1) / 3 + 1;
+
+					var curr = that;
+					var header = null;
+					var level = 0;
+
+					loop:
+					while(true) {
+						if(level) {
+							while(true) {
+								header = curr.prev();
+
+								if(!header.length) {
+									break loop;
+								}
+
+								if(header.is('h'+ level +'[id]')) {
+									break;
+								}
+
+								curr = header;
+							}
+						} else {
+							var parent = curr.parentsUntil('.main_container').last();
+
+							if(!parent.length) {
+								break;
+							}
+
+							if( parent.is(':header') ) {
+								header = parent;
+							}
+							else {
+								curr = parent;
+
+								while(true) {
+									header = curr.prev();
+
+									if(!header.length) {
+										break loop;
+									}
+
+									if(header.is(':header')) {
+										break;
+									}
+
+									curr = header;
+								}
+							}
+
+							level = +header[0].tagName.slice(1);
+
+							if(level - count < 1) {
+								return false;
+							}
+
+							// console.log(header, level, count);
+						}
+
+						// console.log(header, level, count);
+
+						if(--count < 1 || !header.length) {
+							break;
+						}
+						
+						if(--level < 1) {
+							break;
+						}
+
+						curr = header;
+					}
+
+					if(header.length) {
+						window.location = '#' + header.attr('id') + (postfix ? '/'+postfix : '');
+					}
+				}
+			});
 
 	(function(){
 		var btn = $('#langchoose'),
@@ -262,6 +387,7 @@ $(function(){
 			}, 400);
 		});
 
+		// @TODO учитывать малую высоту окна и большую высоту секции в навигации
 		function setActiveSection() {
 			// scrolledTop = getPageScroll().top;
 			scrolledTop = mainWrap.scrollTop();
@@ -293,29 +419,33 @@ $(function(){
 
 					winHeight = getWindowHeight();
 
-					if(sidePrev.length) {
-						sidePrevRect = sidePrev[0].getBoundingClientRect();
-						
-						if(sidePrevRect.top < 0) {
-							scrollTo = sidebar.scrollTop() + sidePrevRect.top - topMarg;
-							scrollToDo();
-						}
-					} else {
-						scrollTo = 0;
-						scrollToDo();
-					}
 
 					if(sideNext.length) {
 						sideNextRect = sideNext[0].getBoundingClientRect();
 						
 						if(sideNextRect.bottom > winHeight) {
 							scrollTo = sidebar.scrollTop() + sideNext.position().top - sidebar.height();
-							scrollToDo();
+							// scrollToDo();
 						}
 					} else {
 						scrollTo = sidebarUl.height();
-						scrollToDo();
+						// scrollToDo();
 					}
+
+
+					if(sidePrev.length) {
+						sidePrevRect = sidePrev[0].getBoundingClientRect();
+						
+						if(sidePrevRect.top < 0) {
+							scrollTo = sidebar.scrollTop() + sidePrevRect.top - topMarg;
+							// scrollToDo();
+						}
+					} else {
+						scrollTo = 0;
+						// scrollToDo();
+					}
+
+					scrollToDo();
 				}
 			}
 

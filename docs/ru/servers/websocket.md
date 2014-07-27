@@ -1,4 +1,4 @@
-### websocket # WebSocket #> [Серверы](#servers) \ WebSocket {tpl-git PHPDaemon/Servers/WebSocket}
+### websocket # WebSocket #> WebSocket {tpl-git PHPDaemon/Servers/WebSocket}
 
 Сервер использует пространство имен {tpl-inlink httprequest HTTPRequest}.
 

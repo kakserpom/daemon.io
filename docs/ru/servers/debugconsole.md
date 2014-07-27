@@ -1,4 +1,4 @@
-### debugconsole # DebugConsole #> [Серверы](#servers) \ DebugConsole {tpl-git PHPDaemon/Servers/DebugConsole}
+### debugconsole # DebugConsole #> DebugConsole {tpl-git PHPDaemon/Servers/DebugConsole}
 
 Это транспортное приложение предоставляет интерактивную отладочную консоль для phpDaemon.
 

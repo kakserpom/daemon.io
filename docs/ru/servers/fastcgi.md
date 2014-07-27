@@ -1,4 +1,4 @@
-### fastcgi # FastCGI #> [Серверы](#servers) \ FastCGI {tpl-git PHPDaemon/Servers/FastCGI}
+### fastcgi # FastCGI #> FastCGI {tpl-git PHPDaemon/Servers/FastCGI}
 
 Сервер использует пространство имен {tpl-inlink httprequest HTTPRequest}.
 

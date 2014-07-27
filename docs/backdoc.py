@@ -1343,7 +1343,7 @@ class Markdown(object):
         else:
             header_html = html
 
-        self._headers_stack.append(html)
+        self._headers_stack.append(html) # match.group(4)
 
         if "toc" in self.extras and header_id:
             self._toc_add_entry(n, header_path, match.group(4))
