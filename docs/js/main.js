@@ -407,8 +407,8 @@ $(function(){
 					sideParent = activeObj.parent();
 					sideParent2 = sideParent.parent().parent();
 					sideParent.siblings('li').find('ul').hide();
-					sideParent2.siblings().children('ul').hide();
-
+					sideParent2.siblings('li').children('ul').hide();
+					
 					sideRoot = activeObj.parents('li').last();
 
 					sideRoot.addClass('gact')

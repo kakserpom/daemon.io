@@ -109,12 +109,13 @@ header {
     position: fixed;
     z-index: 500;
     top: -35px;
-    left: 0;
-    width: 100%;
-    margin: 0;
+    left: 50%;
+    width: 960px;
+    margin: 0 0 0 -481px;
     padding: 10px 30px;
     background: #fff;
-    border-bottom: 1px solid #333;
+    border: 1px solid #333;
+    border-width: 0 1px 1px;
 }
 .lang-chooser ul {
     margin: 0;
