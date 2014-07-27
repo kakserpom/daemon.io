@@ -1336,7 +1336,7 @@ class Markdown(object):
                 for hid in self._headers_id_stack[0:i]:
                     linkarr.append(hid)
 
-                link = '/'.join(linkarr)
+                link = '/'.join(linkarr);
                 hlinks.append('<a href="#'+ link +'">'+ name +'</a>')
 
             header_html = html + '<span class="header-path"> <i>&larr;</i> ' + ' <i>&larr;</i> '.join(reversed(hlinks)) + '</span>'
