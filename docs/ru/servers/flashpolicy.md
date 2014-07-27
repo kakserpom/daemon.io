@@ -1,4 +1,4 @@
-### flashpolicy # FlashPolicy #> [Серверы](#servers) \ FlashPolicy {tpl-git PHPDaemon/Servers/FlashPolicy}
+### flashpolicy # FlashPolicy #> FlashPolicy {tpl-git PHPDaemon/Servers/FlashPolicy}
 
 Это простое приложение предоставляет Flashpolicy сервер для phpDaemon.
 

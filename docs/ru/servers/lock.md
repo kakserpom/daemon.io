@@ -1,3 +1,3 @@
-### lock # Lock #> [Серверы](#servers) \ Lock {tpl-git PHPDaemon/Servers/Lock}
+### lock # Lock #> Lock {tpl-git PHPDaemon/Servers/Lock}
 
 Требует рефакторинга

@@ -178,7 +178,7 @@ $(function(){
 					}
 
 					if(header.length) {
-						window.location = '#' + header.attr('id') +'/'+ postfix;
+						window.location = '#' + header.attr('id') + (postfix ? '/'+postfix : '');
 					}
 				}
 				else
@@ -261,7 +261,7 @@ $(function(){
 					}
 
 					if(header.length) {
-						window.location = '#' + header.attr('id') +'/'+ postfix;
+						window.location = '#' + header.attr('id') + (postfix ? '/'+postfix : '');
 					}
 				}
 			});

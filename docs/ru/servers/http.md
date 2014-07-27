@@ -1,4 +1,4 @@
-### http # HTTP #> [Серверы](#servers) \ HTTP {tpl-git PHPDaemon/Servers/HTTP}
+### http # HTTP #> HTTP {tpl-git PHPDaemon/Servers/HTTP}
 
 Сервер использует пространство имен {tpl-inlink httprequest HTTPRequest}.
 
