@@ -4,7 +4,6 @@
 <!-- pvar lang ru -->
 <!-- pvar title Документация &laquo; phpDaemon -->
 
-<!-- pvar menu-install Установка -->
 <!-- pvar menu-examples Примеры -->
 <!-- pvar menu-docs Документация -->
 <!-- pvar menu-tracker Задачи/ошибки -->

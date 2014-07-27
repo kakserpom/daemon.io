@@ -2478,7 +2478,6 @@ https://github.com/chibisov/backdoc
         <div class="center">
             <a href="/" id="logo" title="phpDaemon">phpDaemon</a>
             <a href="?" id="langchoose" title="phpDaemon">Язык</a>
-            <a href="/docs/{lang}/#install" id="download" title="Download">{menu-install}</a>
             <menu>
                 <li><span><a href="http://daemon.io/examples.html" title="Examples">{menu-examples}</a></span></li>
                 <li class="active"><span><a href="http://daemon.io/docs/{lang}/" title="Publications">{menu-docs}</a></span></li>
@@ -2490,11 +2489,11 @@ https://github.com/chibisov/backdoc
         </div>
     </header>
     <div class="lang-chooser">
-        <div class="center">
+        <!-- <div class="center"> -->
             <ul>
                 <!-- block_langs -->
             </ul>
-        </div>
+        <!-- </div> -->
     </div>
     <a class="toggle_sidebar_button">
         <div class="line"></div>
