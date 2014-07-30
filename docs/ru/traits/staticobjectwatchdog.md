@@ -1,4 +1,4 @@
-### staticobjectwatchdog # StaticObjectWatchdog #> StaticObjectWatchdog {tpl-git PHPDaemon/Traits/StaticObjectWatchdog.php}
+### static-object-watchdog # StaticObjectWatchdog #> StaticObjectWatchdog {tpl-git PHPDaemon/Traits/StaticObjectWatchdog.php}
 
 Директива для использования: `use \PHPDaemon\Traits\StaticObjectWatchdog;`
 

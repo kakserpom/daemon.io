@@ -1,4 +1,4 @@
-### classwatchdog # ClassWatchdog #> ClassWatchdog {tpl-git PHPDaemon/Traits/ClassWatchdog.php}
+### class-watchdog # ClassWatchdog #> ClassWatchdog {tpl-git PHPDaemon/Traits/ClassWatchdog.php}
 
 Директива для использования: `use \PHPDaemon\Traits\ClassWatchdog;`
 
