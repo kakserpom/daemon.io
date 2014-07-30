@@ -1,1 +1,3 @@
-### deferredeventhandlers # Traits\DeferredEventHandlers
+### deferredeventhandlers # DeferredEventHandlers #> DeferredEventHandlers {tpl-git PHPDaemon/Traits/DeferredEventHandlers.php}
+
+@TODO Трейт реализует работу отложенных событий.
