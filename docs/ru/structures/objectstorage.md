@@ -1,6 +1,6 @@
 ### objectstorage # ObjectStorage #> ObjectStorage {tpl-git PHPDaemon/Structures/ObjectStorage.php}
 
-Данный класс наследует `SplObjectStorage` и предоставляет контейнер объектов с несколькими дополнительными методами
+Данный класс наследуется от {tpl-outlink http://php.net/manual/ru/class.splobjectstorage.php SplObjectStorage} и предоставляет контейнер объектов с несколькими дополнительными методами
 
 #### methods # Методы
 
