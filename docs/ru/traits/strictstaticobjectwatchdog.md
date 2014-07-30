@@ -1,5 +1,10 @@
 ### strictstaticobjectwatchdog # StrictStaticObjectWatchdog #> StrictStaticObjectWatchdog {tpl-git PHPDaemon/Traits/StrictStaticObjectWatchdog.php}
 
-Трейт содержит два "волшебных" метода `__set` и `__unset`.
+Директива для использования: `use \PHPDaemon\Traits\StrictStaticObjectWatchdog;`
 
-При записи данных в недоступные свойства или вызове `unset()` на недоступном свойстве будет выброшено исключение `UndefinedPropertySetting` или `UnsettingProperty` соответственно.
+Поведение аналогично {tpl-inlink StaticObjectWatchdog StaticObjectWatchdog}, но эта примесь бросает исключение, вместо записи в журнал.
+
+Определяет следующие магические методы:
+
+-.n.ti `__set` — бросает исключение UndefinedPropertySetting при попытке записать значение несуществующего или недоступного из этой области видимости свойства. 
+-.n.ti `__unset` — бросает исключение UnsettingProperty при попытке удалить свойство.
