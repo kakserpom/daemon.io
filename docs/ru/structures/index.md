@@ -1,7 +1,7 @@
 ## structures # Структуры
 
-<!-- import objectstorage.md -->
+<!-- import object-storage.md -->
 
-<!-- import priorityqueuecallbacks.md -->
+<!-- import priority-queue-callbacks.md -->
 
-<!-- import stackcallbacks.md -->
+<!-- import stack-callbacks.md -->

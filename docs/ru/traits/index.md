@@ -4,14 +4,14 @@
 
 Данный раздел описывает доступные для разработчиков встроенные примеси.
 
-<!-- import classwatchdog.md -->
+<!-- import class-watchdog.md -->
 
-<!-- import staticobjectwatchdog.md -->
+<!-- import static-object-watchdog.md -->
 
-<!-- import strictstaticobjectwatchdog.md -->
+<!-- import strict-static-object-watchdog.md -->
 
-<!-- import deferredeventhandlers.md -->
+<!-- import deferred-event-handlers.md -->
 
-<!-- import eventhandlers.md -->
+<!-- import event-handlers.md -->
 
 <!-- import sessions.md -->
