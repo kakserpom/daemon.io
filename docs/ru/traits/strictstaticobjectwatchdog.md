@@ -2,7 +2,7 @@
 
 Директива для использования: `use \PHPDaemon\Traits\StrictStaticObjectWatchdog;`
 
-Поведение аналогично {tpl-inlink StaticObjectWatchdog StaticObjectWatchdog}, но эта примесь бросает исключение, вместо записи в журнал.
+Поведение аналогично {tpl-inlink ../staticobjectwatchdog StaticObjectWatchdog}, но эта примесь бросает исключение, вместо записи в журнал.
 
 Определяет следующие магические методы:
 
