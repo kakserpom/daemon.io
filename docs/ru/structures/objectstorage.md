@@ -8,7 +8,7 @@
  integer public ObjectStorage::each ( string $method, mixed $args, ... )
  ```
    -.n Проходит по всем объектам, вызывая у каждого из них метод `:phc`$method` c заданными аргументами `:phc`$args` и возвращает количество объектов в контейнере
-   -.n.ti `:hc`$method` &mdash; вызываемый метод объекта
+   -.n.ti `:hc`$method` — вызываемый метод объекта
    -.n `:hc`$args` &mdash; аргументы
 
  -.method ```php.inline
