@@ -21,5 +21,3 @@
  ```
    -.n Возвращает ассоциативный массив вида {nick: string, unverified: bool, user: string, host: string, orig: string}
    -.n.ti `:hc`$mask` — маска вида `nick!~?user@host`
-
-
