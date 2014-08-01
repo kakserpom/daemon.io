@@ -90,6 +90,11 @@
    -.n @TODO
 
  -.method ```php.inline
+ void public Generic::__call ( string $m, array $args )
+ ```
+   -.n @TODO
+
+ -.method ```php.inline
  void public Generic::onPacket ( array $pct )
  ```
    -.n @TODO
