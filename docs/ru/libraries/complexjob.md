@@ -1,6 +1,6 @@
 ### complexjob # ComplexJob #> ComplexJob {tpl-git PHPDaemon/Core/ComplexJob.php}
 
-`:h`class PHPDaemon\Core\ComplexJob.php`
+`:h`class PHPDaemon\Core\ComplexJob`
 
 Объект класса ComplexJob позволяет повесить событие на завершение всех объявленных в нем асинхронных процедур.
 
