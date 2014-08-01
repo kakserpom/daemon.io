@@ -1,6 +1,6 @@
 ### crypt # Crypt #> Crypt {tpl-git PHPDaemon/Utils/Crypt.php}
 
-@TODO
+Данный класс содержит методы, относящиеся к криптографии.
 
 #### methods # Методы
 
@@ -15,12 +15,12 @@
  -.method ```php.inline
  string public static Crypt::randomString ( integer $len = 64, string $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-.' )
  ```
-   -.n Генерирует рандомную строку длиной `:hc`$len` из представленных в `:hc`$chars` символов
-   -.n.ti `:hc`$len` — длина результирующей строки
+   -.n Генерирует псевдослучайную строку длиной `:hc`$len` из представленных в `:hc`$chars` символов
+   -.n.ti `:hc`$len` — длина выходной строки
    -.n `:hc`$chars` — набор используемых символов
 
  -.method ```php.inline
  boolean public static Crypt::compareStrings ( string $a, string $b )
  ```
-   -.n @TODO
-   -.n.ti `:hc`$a` и `:hc`$b` — сравниваемые строки
+   -.n Сравнение строк устойчивое к атаке по времени (англ. Timing attack)
+   -.n.ti `:hc`$a` и `:hc`$b` — Строки для сравнения

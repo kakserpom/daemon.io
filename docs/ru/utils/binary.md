@@ -123,7 +123,7 @@
  -.method ```php.inline
  string public static Binary::getString ( string &$str )
  ```
-   -.n Возвращает подстроку до первого NUL-байта и удаляет её из исходной вместе NUL-байтом
+   -.n Возвращает подстроку до первого NUL-байта и удаляет её из исходной вместе с NUL-байтом
    -.n.ti `:hc`&$str` — Строка
 
  -.method ```php.inline
