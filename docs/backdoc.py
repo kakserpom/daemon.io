@@ -1533,6 +1533,7 @@ class Markdown(object):
     def _code_block_sub(self, match, is_fenced_code_block=False):
         lexer_name = None
 
+        mods = []
         pre_classes  = []
         code_classes = []
 
@@ -1540,10 +1541,21 @@ class Markdown(object):
             lexer_name = match.group(1)
             if lexer_name:
                 formatter_opts = self.extras['fenced-code-blocks'] or {}
-            codeblock = match.group(3)
+            codeblock = match.group(4)
             codeblock = codeblock[:-1]  # drop one trailing newline
 
-            pre_classes   = match.group(2)[1:].split('.')
+            if match.group(3):
+                pre_classes   = match.group(3)[1:].split('.')
+
+            if match.group(2):
+                mods = list(match.group(2))
+
+            # p - парсинг ссылок
+            if('p' in mods):
+                codeblock = self._do_links(codeblock)
+            else:
+                codeblock = self._encode_code(codeblock)
+
         else:
             codeblock = match.group(1)
             codeblock = self._outdent(codeblock)
@@ -1558,14 +1570,14 @@ class Markdown(object):
                 codeblock = rest.lstrip("\n")   # Remove lexer declaration line.
                 formatter_opts = self.extras['code-color'] or {}
 
+            codeblock = self._encode_code(codeblock)
+
         # if lexer_name:
         #     lexer = self._get_pygments_lexer(lexer_name)
         #     if lexer:
         #         colored = self._color_with_pygments(codeblock, lexer,
         #                                             **formatter_opts)
         #         return "\n\n%s\n\n" % colored
-
-        codeblock = self._encode_code(codeblock)
 
         if lexer_name:
             code_classes.append(lexer_name)
@@ -1608,8 +1620,8 @@ class Markdown(object):
 
     _fenced_code_block_re = re.compile(r'''
         (?:\n\n|\A\n?)
-        ^```([\w+-]+)?((?:\.[_a-zA-Z0-9-]+)*)[ \t]*\n      # opening fence, \1 = optional lang, \2 = classnames
-        (.*?)                       # \3 = code block content
+        ^```([\w+-]+)?(:[a-z]+)?((?:\.[_a-zA-Z0-9-]+)*)[ \t]*\n      # opening fence, \1 = optional lang, \2 = modificators,  \3 = classnames
+        (.*?)                       # \4 = code block content
         ^```[ \t]*\n                # closing fence
         ''', re.M | re.X | re.S)
 
