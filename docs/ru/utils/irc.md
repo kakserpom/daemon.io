@@ -1,6 +1,6 @@
 ### irc # IRC #> IRC {tpl-git PHPDaemon/Utils/IRC.php}
 
-@TODO описалово утилиты
+Класс используемый в IRC-клиенте и IRC-баунсере
 
 #### methods # Методы
 
@@ -19,5 +19,7 @@
  -.method ```php.inline
  string public static IRC::parseUsermask ( string $mask )
  ```
-   -.n Возвращает ассоциативный массив ... @TODO
-   -.n.ti `:hc`$mask` — маска какая то @TODO
+   -.n Возвращает ассоциативный массив вида {nick: string, unverified: bool, user: string, host: string, orig: string}
+   -.n.ti `:hc`$mask` — маска вида `nick!~?user@host`
+
+

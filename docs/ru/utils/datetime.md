@@ -1,7 +1,7 @@
 ### datetime # DateTime #> DateTime {tpl-git PHPDaemon/Utils/DateTime.php}
 
 Утилита DateTime наследуется от {tpl-outlink http://php.net/manual/class.datetime.php DateTime}.  
-Предоставляет возможность в качестве первого аргумента конструктора передавать метку времени Unix.
+В конструтор можно передавать метку времени Unix.
 
 #### methods # Методы
 
