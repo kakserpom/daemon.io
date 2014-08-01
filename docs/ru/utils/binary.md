@@ -152,6 +152,7 @@
 
  -.method ```php.inline
  string public static Binary::i2b ( integer $len, integer $int = 0, boolean $l = false )
+ ```
  
  Псевдоним метода Binary::int2bytes
 
