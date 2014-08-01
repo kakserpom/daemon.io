@@ -8,8 +8,8 @@
  void public PriorityQueueCallbacks::enqueue ( callable $cb, integer $pri = 0 )
  ```
    -.n Добавляет callback-функцию в очередь и пересортирует её
-   -.n.ti `:hc`$cb` &mdash; callback-функция
-   -.n `:hc`$pri` &mdash; приоритет
+   -.n.ti `:hc`$cb` — callback-функция
+   -.n `:hc`$pri` — приоритет
 
  -.method ```php.inline
  void public PriorityQueueCallbacks::insert ( callable $cb, integer $pri = 0 )
@@ -25,10 +25,10 @@
  boolean public PriorityQueueCallbacks::executeOne ( mixed $args, ... )
  ```
    -.n Извлекает первую из начала очереди callback-функцию и выполняет её с переданными аргументами. Возвращает `false` если очередь пуста
-   -.n.ti `:hc`$args` &mdash; аргументы
+   -.n.ti `:hc`$args` — аргументы
 
  -.method ```php.inline
  integer public PriorityQueueCallbacks::executeAll ( mixed $args, ... )
  ```
    -.n Извлекает и выполняет все callback-функции в очереди с переданными аргументами. Возвращает количество выполненных callback-функции
-   -.n.ti `:hc`$args` &mdash; аргументы
+   -.n.ti `:hc`$args` — аргументы

@@ -6,6 +6,6 @@
  string public static MIME::get ( string $path )
  ```
    -.n Возвращает MIME-заголовок файла или `false`
-   -.n.ti `:hc`$path` &mdash; путь до файла
+   -.n.ti `:hc`$path` — путь до файла
 
  -.method &nbsp;

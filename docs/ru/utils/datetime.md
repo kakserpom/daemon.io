@@ -9,7 +9,7 @@
  string public static DateTime::diffAsText ( mixed $datetime1, mixed $datetime2, boolean $absolute = false )
  ```
    -.n Возвращает разницу двух временных меток в виде строки. Пример: `:c`1 year. 2 mon. 6 day. 4 hours. 21 min. 10 sec.`
-   -.n.ti `:hc`$datetime1` и `:hc`$datetime2` &mdash; временные метки. Может быть объектом {tpl-outlink http://php.net/manual/class.datetimeinterface.php DateTimeInterface}, строкой или меткой времени Unix
-   -.n `:hc`$absolute` &mdash; используется, чтобы вернуть абсолютную разницу
+   -.n.ti `:hc`$datetime1` и `:hc`$datetime2` — временные метки. Может быть объектом {tpl-outlink http://php.net/manual/class.datetimeinterface.php DateTimeInterface}, строкой или меткой времени Unix
+   -.n `:hc`$absolute` — используется, чтобы вернуть абсолютную разницу
 
  -.method &nbsp;
