@@ -6,7 +6,7 @@
 
 Класс ComplexJob наследуется от {tpl-outlink http://php.net/manual/class.arrayaccess.php ArrayAccess}.
 
-##### vars # Свойства
+#### vars # Свойства
 
  -.method `:h`callable public $listeners;`  
  @TODO
@@ -29,7 +29,7 @@
  -.method `:h`array public $req;`  
  @TODO
 
-##### methods # Методы
+#### methods # Методы
 
  -.method ```php.inline
  void public ComplexJob::__construct ( callable $cb = null )
