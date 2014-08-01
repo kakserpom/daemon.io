@@ -14,12 +14,12 @@
  -.method ```php.inline
  void public PriorityQueueCallbacks::insert ( callable $cb, integer $pri = 0 )
  ```
-   -.n Синоним метода `:phc`PriorityQueueCallbacks::enqueue`
+   -.n Псевдоним метода `:hc`PriorityQueueCallbacks::enqueue`
 
  -.method ```php.inline
  CallbackWrapper public PriorityQueueCallbacks::dequeue ( )
  ```
-   -.n Извлекает callback-функцию из начала очереди и пересортирует её. Синоним метода `:phc`SplPriorityQueue::extract`
+   -.n Извлекает callback-функцию из начала очереди и пересортирует её. Псевдоним метода `:hc`SplPriorityQueue::extract`
 
  -.method ```php.inline
  boolean public PriorityQueueCallbacks::executeOne ( mixed $args, ... )
