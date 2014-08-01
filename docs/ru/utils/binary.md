@@ -136,6 +136,13 @@
    -.n `:hc`$lrev` — Если true, то Little-Endian
 
  -.method ```php.inline
+ string public static Binary::flags2bitarray ( array $flags, integer $len = 4 )
+ ```
+   -.n Кодирует массив флагов (числа должны быть степенями двойки – 2, 4, 16, 32...)
+   -.n.ti `:hc`$flags` — массив чисел
+   -.n `:hc`$len` — Количество байтов на выходе
+
+ -.method ```php.inline
  string public static Binary::int2bytes ( integer $len, integer $int = 0, boolean $l = false )
  ```
    -.n Кодирует целое число
@@ -144,16 +151,9 @@
    -.n `:hc`$l` — Если true, то Little-Endian
 
  -.method ```php.inline
- string public static Binary::flags2bitarray ( array $flags, integer $len = 4 )
- ```
-   -.n Кодирует массив флагов (числа должны быть степенями двойки – 2, 4, 16, 32...)
-   -.n.ti `:hc`$flags` — массив чисел
-   -.n `:hc`$len` — Количество байтов на выходе
-
- -.method ```php.inline
  string public static Binary::i2b ( integer $len, integer $int = 0, boolean $l = false )
  ```
-   -.n Псевдоним метода Binary::int2bytes
+   -.n Псевдоним метода `:hc`Binary::int2bytes`
 
  -.method ```php.inline
  integer public static Binary::bytes2int ( string $str, boolean $l = false )
@@ -165,7 +165,7 @@
  -.method ```php.inline
  integer public static Binary::b2i ( string $str, boolean $l = false )
  ```
-   -.n Псевдоним метода Binary::int2bytes
+   -.n Псевдоним метода `:hc`Binary::bytes2int`
 
  -.method ```php.inline
  string public static Binary::bitmap2bytes ( string $bitmap, integer $check_len = 0 )
