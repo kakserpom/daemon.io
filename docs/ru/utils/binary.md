@@ -153,8 +153,7 @@
  -.method ```php.inline
  string public static Binary::i2b ( integer $len, integer $int = 0, boolean $l = false )
  ```
- 
- Псевдоним метода Binary::int2bytes
+   -.n Псевдоним метода Binary::int2bytes
 
  -.method ```php.inline
  integer public static Binary::bytes2int ( string $str, boolean $l = false )
@@ -166,7 +165,7 @@
  -.method ```php.inline
  integer public static Binary::b2i ( string $str, boolean $l = false )
  ```
- Псевдоним метода Binary::int2bytes
+   -.n Псевдоним метода Binary::int2bytes
 
  -.method ```php.inline
  string public static Binary::bitmap2bytes ( string $bitmap, integer $check_len = 0 )
