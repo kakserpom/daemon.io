@@ -6,6 +6,20 @@
 
 #### capped-storage # Класс CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
 
+##### vars # Свойства
+
+ -.method `:h`callable public $sorter;`  
+ Метод сортировки
+
+ -.method `:h`integer public $maxCacheSize;`  
+ Размер хранилища
+
+ -.method `:h`integer public $capWindow;`  
+ @TODO
+
+ -.method `:h`array public $cache;`  
+ Ассоциативный массив хранимых элементов
+
 ##### methods # Методы
 
  -.method ```php.inline
@@ -41,3 +55,39 @@
    -.n.ti `:hc`$key` — ключ элемента
 
 #### item # Класс Item {tpl-git PHPDaemon/Cache/Item.php}
+
+##### vars # Свойства
+
+ -.method `:h`integer public $hits;`  
+ Количество обращений к значению элемента
+
+ -.method `:h`integer public $expire;`  
+ Время инвалидации элемента
+
+##### methods # Методы
+
+ -.method ```php.inline
+ integer public Item::getHits ( )
+ ```
+   -.n Возвращает количество обращений к значению элемента
+
+ -.method ```php.inline
+ mixed public Item::getValue ( )
+ ```
+   -.n Возвращает значение элемента
+
+ -.method ```php.inline
+ void public Item::addListener ( callable $cb )
+ ```
+   -.n Добавляет слушателя @TODO
+   -.n.ti `:hc`$cb` — callback-функция
+
+ -.method ```php.inline
+ void public Item::setValue ( mixed $value )
+ ```
+   -.n Устанавливает новое значение элемента и вызывает событие у всех слушателей @TODO
+   -.n.ti `:hc`$value` — новое значение элемента
+
+#### capped-storage-hits # Класс CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
+
+@TODO desc
