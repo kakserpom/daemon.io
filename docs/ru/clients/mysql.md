@@ -27,33 +27,33 @@
  boolean public static Pool::getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )
  ```
    -.n Выполняет callback-функцию когда будет установлена связь с сервером. Возвращает `false` если соединение невозможно установить
-   -.n.ti `:hc`$cb` &mdash; `:phc`callback ( [Connection](#../../connection) $conn )` &mdash; вызывается когда будет установлена связь с сервером
-   -.n `:hc`$url` &mdash; адрес сервера
-   -.n `:hc`$pri` &mdash; приоритет данного вызова среди других. Чем больше значение, тем выше приоритет
+   -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../../connection) $conn )` — вызывается когда будет установлена связь с сервером
+   -.n `:hc`$url` — адрес сервера
+   -.n `:hc`$pri` — приоритет данного вызова среди других. Чем больше значение, тем выше приоритет
 
  -.method ```php.inline
  string public static Pool::escape ( string $string )
  ```
    -.n Экранирует специальные символы: `\0`, `\n`, `\r`, `\`, `'`, `"`
-   -.n.ti `:hc`$string` &mdash; исходная строка
+   -.n.ti `:hc`$string` — исходная строка
      
  -.method ```php.inline
  string public static Pool::likeEscape ( string $string )
  ```
    -.n Работает как метод `:hc`Pool::escape` с дополнительными символами: `%` и `_`
-   -.n.ti `:hc`$string` &mdash; исходная строка
+   -.n.ti `:hc`$string` — исходная строка
 
  -.method ```php.inline
  string public static Pool::value ( mixed $mixed )
  ```
    -.n Преобразует строку или число `:hc`$mixed` для использоания в SQL-выражении и возвращает значение в одинарных кавычках `'`. Для всех остальных типов возвращает `'null'`
-   -.n.ti `:hc`$mixed` &mdash; конвертируемые данные
+   -.n.ti `:hc`$mixed` — конвертируемые данные
 
  -.method ```php.inline
  string public static Pool::values ( mixed $arr )
  ```
    -.n Преобразует массив `:hc`$arr` для использоания в SQL-выражении и возвращает список значений, разделенные запятой `,`. Для всех остальных типов возвращает пустую строку
-   -.n.ti `:hc`$mixed` &mdash; конвертируемые данные
+   -.n.ti `:hc`$mixed` — конвертируемые данные
 
 #### connection # Класс Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}
 
@@ -113,23 +113,23 @@
  void public Connection::onConnected ( callable $callback )
  ```
    -.n Выполняет callback-функцию когда будет установлена связь с сервером
-   -.n.ti `:hc`$callback` &mdash; `:phc`callback ( [Connection](#../) $conn, boolean $success )` &mdash; вызывается когда установлена связь с сервером, либо произошла ошибка
+   -.n.ti `:hc`$callback` — `:phc`callback ( [Connection](#../) $conn, boolean $success )` — вызывается когда установлена связь с сервером, либо произошла ошибка
 
  -.method ```php.inline
  boolean public Connection::query ( string $query, callable $callback = NULL )
  ```
    -.n Осуществляет SQL-запрос к серверу
-   -.n.ti `:hc`$query` &mdash; SQL-запрос
-   -.n `:hc`$callback` &mdash; `:phc`callback ( [Connection](#../) $conn, boolean $success )` &mdash; вызывается когда получен результат SQL-запроса, либо произошла ошибка
+   -.n.ti `:hc`$query` — SQL-запрос
+   -.n `:hc`$callback` — `:phc`callback ( [Connection](#../) $conn, boolean $success )` — вызывается когда получен результат SQL-запроса, либо произошла ошибка
 
  -.method ```php.inline
  boolean public Connection::ping ( callable $callback = NULL )
  ```
    -.n Проверяет работает ли соединение с сервером. Если оно утеряно, автоматически предпринимается попытка пересоединения
-   -.n.ti `:hc`$callback` &mdash; `:phc`callback ( [Connection](#../) $conn, boolean $success )` &mdash; вызывается когда получен результат, либо произошла ошибка
+   -.n.ti `:hc`$callback` — `:phc`callback ( [Connection](#../) $conn, boolean $success )` — вызывается когда получен результат, либо произошла ошибка
 
  -.method ```php.inline
  boolean public Connection::selectDB ( string $name )
  ```
    -.n Выбирает базу данных MySQL
-   -.n.ti `:hc`$name` &mdash; имя выбираемой базы данных
+   -.n.ti `:hc`$name` — имя выбираемой базы данных

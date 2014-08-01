@@ -8,31 +8,31 @@
  void public StackCallbacks::push ( callable $cb )
  ```
    -.n Добавляет callback-функцию в конец стека
-   -.n.ti `:hc`$cb` &mdash; callback-функция
+   -.n.ti `:hc`$cb` — callback-функция
 
  -.method ```php.inline
  void public StackCallbacks::unshift ( callable $cb )
  ```
    -.n Добавляет callback-функцию в начало стека
-   -.n.ti `:hc`$cb` &mdash; callback-функция
+   -.n.ti `:hc`$cb` — callback-функция
 
  -.method ```php.inline
  boolean public StackCallbacks::executeOne ( mixed $args, ... )
  ```
    -.n Извлекает первую callback-функцию из начала стека и выполняет её с переданными аргументами. Возвращает `false` если стек пуст
-   -.n.ti `:hc`$args` &mdash; аргументы
+   -.n.ti `:hc`$args` — аргументы
 
  -.method ```php.inline
  boolean public StackCallbacks::executeAndKeepOne ( mixed $args, ... )
  ```
    -.n Выполяет первую callback-функцию из начала стека с переданными аргументами без извлечения её из стека. Возвращает `false` если стек пуст
-   -.n.ti `:hc`$args` &mdash; аргументы
+   -.n.ti `:hc`$args` — аргументы
 
  -.method ```php.inline
  integer public StackCallbacks::executeAll ( mixed $args, ... )
  ```
    -.n Извлекает и выполняет все callback-функции в стеке с переданными аргументами. Возвращает количество выполненных callback-функции
-   -.n.ti `:hc`$args` &mdash; аргументы
+   -.n.ti `:hc`$args` — аргументы
 
  -.method ```php.inline
  array public StackCallbacks::toArray ( )
