@@ -49,7 +49,7 @@ $j(); // Запускаем
  ```
 
  -.method `:h`integer public $state;`  
- @TODO
+Состояние (константа STATE_*)
 
  -.method `:h`array public $jobs;`  
  @TODO
