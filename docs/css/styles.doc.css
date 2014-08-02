@@ -264,7 +264,8 @@ header menu a:hover {
     color: #333;
 }
 
-.sidebar .gact > a {
+/*.sidebar .gact > a*/
+.sidebar a {
     text-decoration: none;
 }
 
