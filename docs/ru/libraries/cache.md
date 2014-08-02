@@ -6,6 +6,8 @@
 
 #### capped-storage # Класс CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
 
+`:h`class PHPDaemon\Cache\CappedStorage`
+
 ##### vars # Свойства
 
  -.method `:h`callable public $sorter;`  
@@ -56,6 +58,8 @@
 
 #### item # Класс Item {tpl-git PHPDaemon/Cache/Item.php}
 
+`:h`class PHPDaemon\Cache\Item`
+
 ##### vars # Свойства
 
  -.method `:h`integer public $hits;`  
@@ -89,5 +93,7 @@
    -.n.ti `:hc`$value` — новое значение элемента
 
 #### capped-storage-hits # Класс CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
+
+`:h`class PHPDaemon\Cache\CappedStorageHits`
 
 @TODO desc

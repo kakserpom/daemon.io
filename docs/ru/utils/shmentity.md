@@ -1,5 +1,7 @@
 ### shmentity # ShmEntity #> ShmEntity {tpl-git PHPDaemon/Utils/ShmEntity.php}
 
+`:h`class PHPDaemon\Utils\ShmEntity`
+
 Эластичное хранилище кучи в разделяемой памяти
 
 > Используется для хранения массива состояний рабочих процессов

@@ -1,6 +1,6 @@
 ### encoding # Encoding #> Encoding {tpl-git PHPDaemon/Utils/Encoding.php}
 
-Класс `\PHPDaemon\Utils\Encoding`
+`:h`class PHPDaemon\Utils\Encoding`
 
 Сторонняя библиотека — {tpl-outlink https://github.com/neitanod/forceutf8 forceutf8}
 

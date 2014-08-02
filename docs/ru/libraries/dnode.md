@@ -4,6 +4,8 @@
 
 #### generic # Класс Generic {tpl-git PHPDaemon/DNode/Generic.php}
 
+`:h`class PHPDaemon\DNode\Generic`
+
 ##### methods # Методы
 
  -.method ```php.inline

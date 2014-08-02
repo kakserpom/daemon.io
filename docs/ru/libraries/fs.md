@@ -4,6 +4,8 @@
 
 #### filesystem # Класс FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
 
+`:h`class PHPDaemon\FS\FileSystem`
+
 ##### vars # Свойства
 
  -.method `:h`boolean public static $supported;`  
@@ -251,6 +253,8 @@
 
 #### file # Класс File {tpl-git PHPDaemon/FS/File.php}
 
+`:h`class PHPDaemon\FS\File`
+
 ##### vars # Свойства
 
 -.method `:h`integer public priority = 10;`  
@@ -452,6 +456,8 @@
    -.n @TODO
 
 #### filewatcher # Класс FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
+
+`:h`class PHPDaemon\FS\FileWatcher`
 
 ##### vars # Свойства
 

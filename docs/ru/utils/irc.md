@@ -1,5 +1,7 @@
 ### irc # IRC #> IRC {tpl-git PHPDaemon/Utils/IRC.php}
 
+`:h`class PHPDaemon\Utils\IRC`
+
 Класс используемый в IRC-клиенте и IRC-баунсере
 
 #### methods # Методы
