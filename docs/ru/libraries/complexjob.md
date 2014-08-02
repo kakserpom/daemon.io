@@ -77,26 +77,26 @@ $j(); // Запускаем
  -.method ```php.inline
  mixed public ComplexJob::offsetExists ( string $j )
  ```
-   -.n Позволяет сделать isset($j[$name])
+   -.n Позволяет сделать `:hc`isset($j[$name])`
    -.n.ti `:hc`$j` — имя подзадачи
 
  -.method ```php.inline
  mixed public ComplexJob::offsetGet ( string $j )
  ```
-   -.n Позволяет сделать isset($job[$name])
+   -.n Позволяет сделать `:hc`isset($job[$name])`
    -.n.ti `:hc`$j` — имя подзадачи
 
  -.method ```php.inline
  mixed public ComplexJob::offsetSet ( string $j, mixed $v )
  ```
-   -.n Позволяет сделать $job[$name] = $value
+   -.n Позволяет сделать `:hc`$job[$name] = $value`
    -.n.ti `:hc`$j` — имя подзадачи
    -.n `:hc`$v` — значение
 
  -.method ```php.inline
  mixed public ComplexJob::offsetUnset ( string $j )
  ```
-   -.n Позволяет сделать unset($job[$name])
+   -.n Позволяет сделать `:hc`unset($job[$name])`
    -.n.ti `:hc`$j` — имя подзадачи
 
  -.method ```php.inline
@@ -107,7 +107,7 @@ $j(); // Запускаем
  -.method ```php.inline
  void public ComplexJob::keep ( boolean $keep = true )
  ```
-   -.n Включает опцию keep, при которой, после выполнения всех подзадач не вызывается метод `cleanup()`
+   -.n Включает опцию keep, при которой, после выполнения всех подзадач не вызывается метод `:hc`cleanup()`
    -.n.ti `:hc`$keep` — true/false
 
  -.method ```php.inline
@@ -170,10 +170,10 @@ $j(); // Запускаем
  -.method ```php.inline
  boolean public ComplexJob::__invoke ( string $name = null, callable $cb = null )
  ```
-   -.n Синоним `addJob ( $name, $cb )`. Пример: $job('job', );
+   -.n Синоним `addJob ( $name, $cb )`. Пример: `:hc`$job('job', )`
 
 
 -.method ```php.inline
  boolean public ComplexJob::__invoke ( )
  ```
-   -.n Синоним `execute()`. Пример ```php.inline`$job();```
+   -.n Синоним `execute()`. Пример: `:hc`$job()`
