@@ -1,5 +1,7 @@
 ### mime # MIME #> MIME {tpl-git PHPDaemon/Utils/MIME.php}
 
+`:h`class PHPDaemon\Utils\MIME`
+
 #### methods # Методы
 
  -.method ```php.inline

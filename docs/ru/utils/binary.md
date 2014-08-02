@@ -1,5 +1,7 @@
 ### binary # Binary #> Binary {tpl-git PHPDaemon/Utils/Binary.php}
 
+`:h`class PHPDaemon\Utils\Binary`
+
 Данный класс предоставляет набор статических методов для работы с бинарными данными.
 
 #### methods # Методы

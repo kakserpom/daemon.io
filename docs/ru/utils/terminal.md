@@ -1,5 +1,7 @@
 ### terminal # Terminal #> Terminal {tpl-git PHPDaemon/Utils/Terminal.php}
 
+`:h`class PHPDaemon\Utils\Terminal`
+
 {tpl-catimg contribute/code}<br />Данный класс нуждается в доработке: не хватает полноценной поддержки ncurses.
 Если хотите помочь, нажмите на кота!<br />
 
