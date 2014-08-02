@@ -61,7 +61,7 @@
 
 ##### vars # Свойства
 
- -.method `:h`array public $sub = [];`  
+ -.method `:h`array public $sub = [ ];`  
  @TODO
 
  -.method `:h`callable public $actCb;`  

@@ -453,6 +453,11 @@ pre.inline code {
     white-space: pre-wrap;
 }
 
+pre a,
+code a {
+    text-decoration: none;
+}
+
 .main_container p, ul, pre {
     width: 100%;
 }
