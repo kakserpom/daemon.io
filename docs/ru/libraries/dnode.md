@@ -2,7 +2,9 @@
 
 `:h`namespace PHPDaemon\DNode`
 
-#### methods # Методы
+#### generic # Класс Generic {tpl-git PHPDaemon/DNode/Generic.php}
+
+##### methods # Методы
 
  -.method ```php.inline
  void public Generic::onHandshake ( )
