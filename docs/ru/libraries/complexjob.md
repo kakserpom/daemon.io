@@ -1,18 +1,52 @@
 ### complexjob # ComplexJob #> ComplexJob {tpl-git PHPDaemon/Core/ComplexJob.php}
 
-`:h`class PHPDaemon\Core\ComplexJob`
+`:h`class PHPDaemon\Core\ComplexJob` implements {tpl-outlink http://php.net/manual/class.arrayaccess.php ArrayAccess}
 
-Объект класса ComplexJob позволяет повесить событие на завершение всех объявленных в нем асинхронных процедур.
+Объект класса ComplexJob позволяет повесить функцию обратного вызова на завершение всех объявленных в нем процедур. Это удобно, когда нужно выполнить ряд независимых цепочек действий.
 
-Класс ComplexJob наследуется от {tpl-outlink http://php.net/manual/class.arrayaccess.php ArrayAccess}.
+
+#### examples # Примеры
+
+```php
+$j = new ComplexJob(function($j) { // Когда всё выполнилось
+   D($j['foo']); // this
+   D($j['foobar']); // is
+   D($j['bar']); // sparta
+});
+
+/* Добавляем задачу */
+$j('foo', function($name, $j) { 
+   $j[$name] = 'this'; // Вызываем setResult()
+
+
+   /* Еще задачу */
+   $j('foobar', function($name, $j) { 
+      $j[$name] = 'is';
+   });
+});
+
+/* И еще одну */
+$j('bar', function($name, $j) {
+   $j[$name] = 'sparta';
+});
+
+$j(); // Запускаем
+```
 
 #### vars # Свойства
 
  -.method `:h`callable public $listeners;`  
- @TODO
+Стек функций обратного вызова, которые вызываются при успешном выполнении всех объявленных процедур
 
  -.method `:h`integer public $results;`  
- @TODO
+ Ассоциативный массив результатов установленных через
+ ```php.inline
+ setResult($value, $value)
+ ```
+ или 
+ ```php.inline
+ $job[$name] = $value;
+ ```
 
  -.method `:h`integer public $state;`  
  @TODO
