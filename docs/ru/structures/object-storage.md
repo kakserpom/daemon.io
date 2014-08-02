@@ -1,6 +1,8 @@
 ### object-storage # ObjectStorage #> ObjectStorage {tpl-git PHPDaemon/Structures/ObjectStorage.php}
 
-Данный класс наследуется от {tpl-outlink http://php.net/manual/class.splobjectstorage.php SplObjectStorage} и предоставляет хранилище объектов с несколькими дополнительными методами.
+`:hp`class PHPDaemon\Structures\ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splobjectstorage.php)`
+
+Данный класс предоставляет хранилище объектов с несколькими дополнительными методами
 
 > Можно создавать классы-наследники ObjectStorage.
 > Класс {tpl-inlink network/pool Network/Pool} наследуется от ObjectStorage
