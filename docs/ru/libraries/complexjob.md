@@ -33,20 +33,24 @@ $j('bar', function($name, $j) {
 $j(); // Запускаем
 ```
 
+#### consts # Константы
+
+ -.method `:h`const STATE_WAITING = 1;`  
+ State: waiting. It means there are no listeners yet.
+
+ -.method `:h`const STATE_RUNNING = 2;`  
+ State: running. Event handler in progress.
+
+ -.method `:h`const STATE_DONE = 3;`  
+ State: done. Event handler is finished, result is saved.
+
 #### vars # Свойства
 
  -.method `:h`callable public $listeners;`  
-Стек функций обратного вызова, которые вызываются при успешном выполнении всех объявленных процедур
+ Стек функций обратного вызова, которые вызываются при успешном выполнении всех объявленных процедур
 
  -.method `:h`integer public $results;`  
- Ассоциативный массив результатов установленных через
- ```php.inline
- setResult($value, $value)
- ```
- или 
- ```php.inline
- $job[$name] = $value;
- ```
+ Ассоциативный массив результатов установленных через `:h`setResult($value, $value)` или `:h`$job[$name] = $value;`
 
  -.method `:h`integer public $state;`  
 Состояние (константа STATE_*) 
