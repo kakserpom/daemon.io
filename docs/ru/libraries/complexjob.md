@@ -49,133 +49,131 @@ $j(); // Запускаем
  ```
 
  -.method `:h`integer public $state;`  
-Состояние (константа STATE_*)
+Состояние (константа STATE_*) 
 
  -.method `:h`array public $jobs;`  
- @TODO
+ Ассоциативный массив, хранящий функции обратного вызова подзадач
 
  -.method `:h`array public $resultsNum;`  
- @TODO
+ Количество выполненных подзадач
 
  -.method `:h`array public $jobsNum;`  
- @TODO
-
- -.method `:h`array public $req;`  
- @TODO
-
+ Количество подзадач
+ 
 #### methods # Методы
 
  -.method ```php.inline
  void public ComplexJob::__construct ( callable $cb = null )
  ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
+   -.n Конструктор
+   -.n.ti `:hc`$cb` — функция обратного вызова для метода addListener
+
+-.method ```php.inline
+ void public ComplexJob::addListener ( callable $cb )
+ ```
+   -.n Переданная функция будет вызвана когда все подзадачи выполнены
+   -.n.ti `:hc`$cb` — функция обратного вызова
 
  -.method ```php.inline
  mixed public ComplexJob::offsetExists ( string $j )
  ```
-   -.n @TODO
-   -.n.ti `:hc`$j` — @TODO
+   -.n Позволяет сделать isset($j[$name])
+   -.n.ti `:hc`$j` — имя подзадачи
 
  -.method ```php.inline
  mixed public ComplexJob::offsetGet ( string $j )
  ```
-   -.n @TODO
-   -.n.ti `:hc`$j` — @TODO
+   -.n Позволяет сделать isset($job[$name])
+   -.n.ti `:hc`$j` — имя подзадачи
 
  -.method ```php.inline
- mixed public ComplexJob::offsetSet ( string $j, string $v )
+ mixed public ComplexJob::offsetSet ( string $j, mixed $v )
  ```
-   -.n @TODO
-   -.n.ti `:hc`$j` — @TODO
-   -.n `:hc`$v` — @TODO
+   -.n Позволяет сделать $job[$name] = $value
+   -.n.ti `:hc`$j` — имя подзадачи
+   -.n `:hc`$v` — значение
 
  -.method ```php.inline
  mixed public ComplexJob::offsetUnset ( string $j )
  ```
-   -.n @TODO
-   -.n.ti `:hc`$j` — @TODO
+   -.n Позволяет сделать unset($job[$name])
+   -.n.ti `:hc`$j` — имя подзадачи
 
  -.method ```php.inline
- mixed public ComplexJob::getResults ( )
+ array public ComplexJob::getResults ( )
  ```
-   -.n @TODO
+   -.n Возвращает ассоциативный массив результатов
 
  -.method ```php.inline
  void public ComplexJob::keep ( boolean $keep = true )
  ```
-   -.n @TODO
-   -.n.ti `:hc`$keep` — @TODO
+   -.n Включает опцию keep, при которой, после выполнения всех подзадач не вызывается метод `cleanup()`
+   -.n.ti `:hc`$keep` — true/false
 
  -.method ```php.inline
  boolean public ComplexJob::hasCompleted ( )
  ```
-   -.n @TODO
-
- -.method ```php.inline
- boolean public ComplexJob::__call ( string $name, array $args )
- ```
-   -.n @TODO
+   -.n Выполнены ли все подзадачи?
 
  -.method ```php:p.inline
- [ComplexJob](#../) public ComplexJob::maxConcurrency ( integer $n = 1 )
+ [ComplexJob](#../) public ComplexJob::maxConcurrency ( integer $n = -1 )
  ```
-   -.n @TODO
-   -.n.ti `:hc`$n` — @TODO
+   -.n Устанавливает максимальное количество одновременно выполняемых задач
+   -.n.ti `:hc`$n` — Натуральное число. При `-1` ограничение не действует.
 
  -.method ```php.inline
  boolean public ComplexJob::setResult ( string $jobname, mixed $result = null )
  ```
-   -.n @TODO
-   -.n.ti `:hc`$jobname` — @TODO
-   -.n `:hc`$result` — @TODO
+   -.n Устанавливает результат выполнения подзадачи
+   -.n.ti `:hc`$jobname` — Название подзадачи
+   -.n `:hc`$result` — Результат
 
  -.method ```php.inline
  mixed public ComplexJob::getResult ( string $jobname )
  ```
-   -.n @TODO
-   -.n.ti `:hc`$jobname` — @TODO
+   -.n Получить результат выполнения подзадачи по имени
+   -.n.ti `:hc`$jobname` — имя подзадачи
 
  -.method ```php.inline
  void public ComplexJob::checkQueue ( )
  ```
-   -.n @TODO
+   -.n Вызывается автоматически. Проверяет полна ли очередь и если нет, то пробует запустить еще подзадач из `backlog` и `more`.
 
  -.method ```php:p.inline
  [ComplexJob](#../) public ComplexJob::more ( callable $cb = null )
  ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
+   -.n Задает функцию обратного вызова, которая автоматически вызывается каждый раз, когда можно добавить еще подзадач.
+   -.n.ti `:hc`$cb` — функция обратного вызова
 
  -.method ```php.inline
  boolean public ComplexJob::isQueueFull ( )
  ```
-   -.n @TODO
+   -.n Проверяет полна ли на данный момент очередь задач (превышен ли параметр `maxConcurrency`)
 
  -.method ```php.inline
  boolean public ComplexJob::addJob ( string $name, callable $cb )
  ```
-   -.n @TODO
-   -.n.ti `:hc`$name` — @TODO
-   -.n `:hc`$cb` — @TODO
+   -.n Добавляет подзадачу
+   -.n.ti `:hc`$name` — имя подзадачи
+   -.n `:hc`$cb` — функция обратного вызова
 
  -.method ```php.inline
  void public ComplexJob::cleanup ( )
  ```
-   -.n @TODO
-
- -.method ```php.inline
- void public ComplexJob::addListener ( callable $cb )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
+   -.n Удаляет сохраненные результаты и функции обратного вызова. Вызывается автоматически, не задан параметр `keep`. В этом случае, во избежание утечек памяти вызывайте этот метод сами, когда закончили работать с данными.
 
  -.method ```php.inline
  void public ComplexJob::execute ( )
  ```
-   -.n @TODO
+   -.n Выполняет 
 
  -.method ```php.inline
  boolean public ComplexJob::__invoke ( string $name = null, callable $cb = null )
  ```
-   -.n @TODO
+   -.n Синоним `addJob ( $name, $cb )`. Пример: $job('job', );
+
+
+-.method ```php.inline
+ boolean public ComplexJob::__invoke ( )
+ ```
+   -.n Синоним `execute()`. Пример ```php.inline`$job();```
