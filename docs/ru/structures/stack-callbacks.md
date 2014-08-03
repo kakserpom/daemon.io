@@ -9,41 +9,41 @@
 #### methods # Методы
 
  -.method ```php.inline
- void public StackCallbacks::push ( callable $cb )
+ void public push ( callable $cb )
  ```
    -.n Добавляет функцию обратного вызова в конец стека
    -.n.ti `:hc`$cb` — функция
 
  -.method ```php.inline
- void public StackCallbacks::unshift ( callable $cb )
+ void public unshift ( callable $cb )
  ```
    -.n Добавляет функцию обратного вызова в начало стека
    -.n.ti `:hc`$cb` — функция
 
  -.method ```php.inline
- boolean public StackCallbacks::executeOne ( mixed $arg, ... )
+ boolean public executeOne ( mixed $arg, ... )
  ```
    -.n Извлекает первую функцию обратного вызова из начала стека и выполняет её с переданными аргументами. Возвращает `false` если стек пуст
    -.n.ti `:hc`$arg` — аргументы
 
  -.method ```php.inline
- boolean public StackCallbacks::executeAndKeepOne ( mixed $arg, ... )
+ boolean public executeAndKeepOne ( mixed $arg, ... )
  ```
    -.n Выполяет первую функцию обратного вызова из начала стека с переданными аргументами без извлечения её из стека. Возвращает `false` если стек пуст
    -.n.ti `:hc`$arg`, ... — аргументы
 
  -.method ```php.inline
- integer public StackCallbacks::executeAll ( mixed $arg, ... )
+ integer public executeAll ( mixed $arg, ... )
  ```
    -.n Извлекает все функции обратного вызова и выполняет с заданными аргументами. Возвращает количество выполненных функций.
    -.n.ti `:hc`$arg1`, ... — аргументы
 
  -.method ```php.inline
- array public StackCallbacks::toArray ( )
+ array public toArray ( )
  ```
    -.n Возвращает индексный массив стека
 
  -.method ```php.inline
- void public StackCallbacks::reset ( )
+ void public reset ( )
  ```
    -.n Удаляет все элементы из стека

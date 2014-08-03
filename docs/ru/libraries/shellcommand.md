@@ -22,36 +22,36 @@
 #### methods # Методы
 
  -.method ```php.inline
- string public ShellCommand::getCmd ( )
+ string public getCmd ( )
  ```
    -.n Возвращает строку исполняемой команды
 
  -.method ```php:p.inline
- [ShellCommand](#../) public ShellCommand::setUser ( string $val )
+ [ShellCommand](#../) public setUser ( string $val )
  ```
    -.n -.n Задает имя Unix-пользователя от имени которого выполняется команда
    -.n.ti `:hc`$val` — имя пользователя
 
  -.method ```php:p.inline
- [ShellCommand](#../) public ShellCommand::setGroup ( string $val )
+ [ShellCommand](#../) public setGroup ( string $val )
  ```
    -.n Задает название Unix-группы от которой выполняется команда
    -.n.ti `:hc`$val` — название группы
 
  -.method ```php:p.inline
- [ShellCommand](#../) public ShellCommand::setCwd ( string $dir )
+ [ShellCommand](#../) public setCwd ( string $dir )
  ```
    -.n Установить рабочий каталог для выполняемой команды
    -.n.ti `:hc`$dir` — @TODO
 
  -.method ```php:p.inline
- [ShellCommand](#../) public ShellCommand::setChroot ( string $dir )
+ [ShellCommand](#../) public setChroot ( string $dir )
  ```
    -.n Подменяет корневой каталог для выполняемой команды
    -.n.ti `:hc`$dir` — путь
 
  -.method ```php.inline
- void public static ShellCommand::exec ( string $binPath = null, callable $cb = null, array $args = null, array $env = null )
+ void public static exec ( string $binPath = null, callable $cb = null, array $args = null, array $env = null )
  ```
    -.n Выполняет команду (статический метод)
    -.n.ti `:hc`$binPath` — исполняемый путь
@@ -60,31 +60,31 @@
    -.n `:hc`$env` — ассоциативный массив переменных окружения (можно передать `:hc`$_ENV`)
 
  -.method ```php:p.inline
- [ShellCommand](#../) public ShellCommand::setArgs ( array $args = NULL )
+ [ShellCommand](#../) public setArgs ( array $args = NULL )
  ```
    -.n Установить список аргументов
    -.n.ti `:hc`$args` — массив аргументов
 
  -.method ```php:p.inline
- [ShellCommand](#../) public ShellCommand::setEnv ( array $env = NULL )
+ [ShellCommand](#../) public setEnv ( array $env = NULL )
  ```
    -.n Задает ассоциативный массив переменных окружения (можно передать `:hc`$_ENV`)
    -.n.ti `:hc`$env` — массив
 
  -.method ```php:p.inline
- [ShellCommand](#../) public ShellCommand::nice ( integer $nice = NULL )
+ [ShellCommand](#../) public nice ( integer $nice = NULL )
  ```
    -.n Задает приоритет выделения процессорного времени (меньше — выше)
    -.n.ti `:hc`$nice` — целое число
 
  -.method ```php.inline
- string public static ShellCommand::buildArgs ( array $args )
+ string public static buildArgs ( array $args )
  ```
    -.n Строит строку аргументов по массиву
    -.n.ti `:hc`$args` — массив аргумент
 
  -.method ```php:p.inline
- [ShellCommand](#../) public ShellCommand::execute ( string $binPath = NULL, array $args = NULL, array $env = NULL )
+ [ShellCommand](#../) public execute ( string $binPath = NULL, array $args = NULL, array $env = NULL )
  ```
    -.n Непосредственно выполняет команду
    -.n.ti `:hc`$binPath` — исполняемый путь
@@ -92,39 +92,39 @@
    -.n `:hc`$env` — ассоциативный массив переменных окружения (можно передать `:hc`$_ENV`)
 
  -.method ```php.inline
- boolean public ShellCommand::finishWrite ( )
+ boolean public finishWrite ( )
  ```
    -.n Закрывает поток ввода исполняемого процесса, когда буфер будет прочитан
 
  -.method ```php.inline
- void public ShellCommand::close ( )
+ void public close ( )
  ```
    -.n Завершает процесс
 
  -.method ```php:p.inline
- [ShellCommand](#../) public ShellCommand::closeWrite ( )
+ [ShellCommand](#../) public closeWrite ( )
  ```
    -.n Безусловно закрывает поток ввода исполняемого процесса (STDIN)
 
  -.method ```php.inline
- boolean public ShellCommand::eof ( )
+ boolean public eof ( )
  ```
    -.n Достигнут ли EOF (Конец Файла)?
 
  -.method ```php.inline
- boolean public ShellCommand::write ( string $data )
+ boolean public write ( string $data )
  ```
    -.n Записать строку в поток ввода процесса (STDIN)
    -.n.ti `:hc`$data` — строка
 
  -.method ```php.inline
- boolean public ShellCommand::writeln ( string $data )
+ boolean public writeln ( string $data )
  ```
    -.n Записать строку в поток ввода процессеса (STDIN) с добавлением перевода строки в конец
    -.n.ti `:hc`$data` — строка
 
  -.method ```php:p.inline
- [ShellCommand](#../) public ShellCommand::onEOF ( callable $cb = NULL )
+ [ShellCommand](#../) public onEOF ( callable $cb = NULL )
  ```
    -.n Переданная функция обратного вызова будет вызвана когда достигнут EOF (Конец Файла)
    -.n.ti `:hc`$cb` — функция обратного вызова

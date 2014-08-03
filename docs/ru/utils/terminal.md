@@ -8,34 +8,34 @@
 #### methods # Методы
 
  -.method ```php.inline
- string public Terminal::readln ( )
+ string public readln ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- void public Terminal::enableColor ( boolean $bool = true )
+ void public enableColor ( boolean $bool = true )
  ```
    -.n @TODO
    -.n.ti `:hc`$bool` — ...
 
  -.method ```php.inline
- void public Terminal::clearScreen ( )
+ void public clearScreen ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- void public Terminal::setStyle ( string $c )
+ void public setStyle ( string $c )
  ```
    -.n @TODO
    -.n.ti `:hc`$c` — ...
 
  -.method ```php.inline
- void public Terminal::resetStyle ( )
+ void public resetStyle ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- void public Terminal::drawParam ( string $name, string $description, array $values = '' )
+ void public drawParam ( string $name, string $description, array $values = '' )
  ```
    -.n @TODO
    -.n.ti `:hc`$name` — ...
@@ -43,7 +43,7 @@
    -.n `:hc`$values` — ...
 
  -.method ```php.inline
- void public Terminal::drawTable ( array $rows )
+ void public drawTable ( array $rows )
  ```
    -.n @TODO
    -.n.ti `:hc`$rows` — ...
