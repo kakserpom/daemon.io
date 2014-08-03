@@ -26,7 +26,6 @@ setTimeout(function($timer) use (&$i) {
  -.method ```php.inline
  setTimeout ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )
  ```
-
 	-.n Функция-псевдоним конструктора таймера 
 	-.n.ti `:hc`$cb` — функция обратного вызова
 	-.n `:hc`$timeout` — количество микросекунд через которое должна быть выполнена функция обратного вызова
@@ -57,7 +56,7 @@ setTimeout(function($timer) use (&$i) {
 #### methods # Методы
 
  -.method ```php.inline
- void public Timer::__construct ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )
+ void public __construct ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )
  ```
 	-.n Конструктор
 	-.n.ti `:hc`$cb` — функция обратного вызова
@@ -66,13 +65,13 @@ setTimeout(function($timer) use (&$i) {
 	-.n `:hc`$priority` — приоритет события таймера
 
  -.method ```php.inline
- void public Timer::setPriority ( integer $priority )
+ void public setPriority ( integer $priority )
  ```
 	-.n @TODO
 	-.n.ti `:hc`$priority` — @TODO
 
  -.method ```php.inline
- integer public static Timer::add ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )
+ integer public static add ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )
  ```
 	-.n @TODO
 	-.n.ti `:hc`$cb` — @TODO
@@ -81,46 +80,46 @@ setTimeout(function($timer) use (&$i) {
 	-.n `:hc`$priority` — @TODO
 
  -.method ```php.inline
- boolean public static Timer::setTimeout ( integer $id, integer $timeout = NULL )
+ boolean public static setTimeout ( integer $id, integer $timeout = NULL )
  ```
 	-.n @TODO
 	-.n.ti `:hc`$id` — @TODO
 	-.n `:hc`$timeout` — @TODO
 
  -.method ```php.inline
- void public static Timer::remove ( integer $id )
+ void public static remove ( integer $id )
  ```
 	-.n @TODO
 	-.n.ti `:hc`$id` — @TODO
 
  -.method ```php.inline
- void public static Timer::cancelTimeout ( integer $id )
+ void public static cancelTimeout ( integer $id )
  ```
 	-.n @TODO
 	-.n.ti `:hc`$id` — @TODO
 
  -.method ```php.inline
- void public Timer::timeout ( integer $timeout = null )
+ void public timeout ( integer $timeout = null )
  ```
 	-.n @TODO
 	-.n.ti `:hc`$timeout` — @TODO
 
  -.method ```php.inline
- void public Timer::cancel ( )
+ void public cancel ( )
  ```
 	-.n @TODO
 
  -.method ```php.inline
- void public Timer::finish ( )
+ void public finish ( )
  ```
 	-.n @TODO
 
  -.method ```php.inline
- void public Timer::__destruct ( )
+ void public __destruct ( )
  ```
 	-.n @TODO
 
  -.method ```php.inline
- void public Timer::free ( )
+ void public free ( )
  ```
 	-.n @TODO

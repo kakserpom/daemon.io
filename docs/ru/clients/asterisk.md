@@ -98,8 +98,8 @@ public function onPbxEvent(SocketSession $session, array $event) {
 ##### methods # Методы
 
  -.method ```php.inline
- boolean public static Pool::getConnection ( callable $cb )
- boolean public static Pool::getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )
+ boolean public static getConnection ( callable $cb )
+ boolean public static getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )
  ```
    -.n Выполняет callback-функцию когда будет установлена связь с сервером. Возвращает `false` если соединение невозможно установить
    -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../../connection) $conn, array $packet )` — вызывается когда будет установлена связь с сервером
@@ -113,21 +113,21 @@ public function onPbxEvent(SocketSession $session, array $event) {
 ##### methods # Методы
 
  -.method ```php.inline
- void public Connection::getSipPeers ( callable $cb )
+ void public getSipPeers ( callable $cb )
  ```
    -.n Выводит список сконфигурированных в данный момент равноправных участников SIP с указанием их статуса
    -.n Привилегии: system, all
    -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
  -.method ```php.inline
- void public Connection::getIaxPeers ( callable $cb )
+ void public getIaxPeers ( callable $cb )
  ```
    -.n Выводит список всех равноправных участников IAX2 с указанием их текущего статуса
    -.n Привилегии: none
    -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
  -.method ```php.inline
- void public Connection::getConfig ( string $filename, callable $cb )
+ void public getConfig ( string $filename, callable $cb )
  ```
    -.n Извлекает данные из конфигурационного файла Asterisk
    -.n Привилегии: config, all
@@ -135,7 +135,7 @@ public function onPbxEvent(SocketSession $session, array $event) {
    -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
  -.method ```php.inline
- void public Connection::getConfigJSON ( string $filename, callable $cb )
+ void public getConfigJSON ( string $filename, callable $cb )
  ```
    -.n Возвращает данные из конфигурационного файла Asterisk в JSON формате
    -.n Привилегии: config, all
@@ -143,7 +143,7 @@ public function onPbxEvent(SocketSession $session, array $event) {
    -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
  -.method ```php.inline
- void public Connection::setVar ( string $channel, string $variable, string $value, callable $cb )
+ void public setVar ( string $channel, string $variable, string $value, callable $cb )
  ```
    -.n Задает значение глобальной переменной или переменной канала
    -.n Привилегии: call, all
@@ -153,13 +153,13 @@ public function onPbxEvent(SocketSession $session, array $event) {
    -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
  -.method ```php.inline
- void public Connection::coreShowChannels ( callable $cb )
+ void public coreShowChannels ( callable $cb )
  ```
    -.n Отображает все активные каналы
    -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
  -.method ```php.inline
- void public Connection::status ( callable $cb, string $channel = null )
+ void public status ( callable $cb, string $channel = null )
  ```
    -.n Представляет статус одного или более каналов с подробной информацией об их текущем состоянии
    -.n Привилегии: call, all
@@ -167,7 +167,7 @@ public function onPbxEvent(SocketSession $session, array $event) {
    -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
  -.method ```php.inline
- void public Connection::redirect ( array $params, callable $cb )
+ void public redirect ( array $params, callable $cb )
  ```
    -.n Перенаправляет канал в новый контекст, добавочный номер и приоритет диалплана
    -.n Привилегии: call, all
@@ -175,7 +175,7 @@ public function onPbxEvent(SocketSession $session, array $event) {
    -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
  -.method ```php.inline
- void public Connection::originate ( array $params, callable $cb )
+ void public originate ( array $params, callable $cb )
  ```
    -.n Формирует исходящий вызов из Asterisk и соединяет канал с контекстом/добавочным номером/приоритетом или приложением диалплана
    -.n Привилегии: call, all
@@ -183,7 +183,7 @@ public function onPbxEvent(SocketSession $session, array $event) {
    -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
  -.method ```php.inline
- void public Connection::extensionState ( array $params, callable $cb )
+ void public extensionState ( array $params, callable $cb )
  ```
    -.n Сообщает о состоянии заданного добавочного номера. Если добавочный номер имеет подсказку, эта команда обеспечит передачу состояния устройства, соединенного с данным добавочным номером
    -.n Привилегии: call, all
@@ -191,13 +191,13 @@ public function onPbxEvent(SocketSession $session, array $event) {
    -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
  -.method ```php.inline
- void public Connection::ping ( callable $cb )
+ void public ping ( callable $cb )
  ```
    -.n Посылает запрос на сервер Asterisk, чтобы убедиться, что он до сих пор отвечает. Asterisk ответит сообщением Pong. Эта команда также может использоваться, чтобы не допустить разрыва соединения в результате истечения времени ожидания
    -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
  -.method ```php.inline
- void public Connection::action ( string $action, callable $cb, array $params = null, array $assertion = null )
+ void public action ( string $action, callable $cb, array $params = null, array $assertion = null )
  ```
    -.n Отправляет на сервер произвольную команду
    -.n.ti `:hc`$action` — команда
@@ -206,7 +206,7 @@ public function onPbxEvent(SocketSession $session, array $event) {
    -.n `:hc`$assertion` — @TODO If more events may follow as response this is a main part or full an action complete event indicating that all data has been sent
 
  -.method ```php.inline
- void public Connection::logoff ( callable $cb = null )
+ void public logoff ( callable $cb = null )
  ```
    -.n Завершает сеанс
    -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат

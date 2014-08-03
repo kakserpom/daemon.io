@@ -5,7 +5,7 @@
 #### methods # Методы
 
  -.method ```php.inline
- string public static MIME::get ( string $path )
+ string public static get ( string $path )
  ```
    -.n Возвращает MIME-заголовок файла или `false`
    -.n.ti `:hc`$path` — путь до файла

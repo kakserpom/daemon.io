@@ -6,7 +6,7 @@
 
 `:h`class PHPDaemon\FS\FileSystem`
 
-##### vars # Свойства
+##### properties # Свойства
 
  -.method `:h`boolean public static $supported;`  
  @TODO
@@ -35,45 +35,45 @@
 ##### methods # Методы
 
  -.method ```php.inline
- void public static FileSystem::init ( )
+ void public static init ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- void public static FileSystem::initEvent ( )
+ void public static initEvent ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- boolean public static FileSystem::checkFileReadable ( string $path )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-
- -.method ```php.inline
- void public static FileSystem::waitAllEvents ( )
- ```
-   -.n @TODO
-
- -.method ```php.inline
- void public static FileSystem::updateConfig ( )
- ```
-   -.n @TODO
-
- -.method ```php.inline
- string public static FileSystem::sanitizePath ( string $path )
+ boolean public static checkFileReadable ( string $path )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
 
  -.method ```php.inline
- array public static FileSystem::statPrepare ( array $stat )
+ void public static waitAllEvents ( )
+ ```
+   -.n @TODO
+
+ -.method ```php.inline
+ void public static updateConfig ( )
+ ```
+   -.n @TODO
+
+ -.method ```php.inline
+ string public static sanitizePath ( string $path )
+ ```
+   -.n @TODO
+   -.n.ti `:hc`$path` — @TODO
+
+ -.method ```php.inline
+ array public static statPrepare ( array $stat )
  ```
    -.n @TODO
    -.n.ti `:hc`$stat` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::stat ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public static stat ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -81,7 +81,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::unlink ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public static unlink ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -89,7 +89,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::rename ( string $path, string $newpath, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public static rename ( string $path, string $newpath, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -98,7 +98,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::statvfs ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public static statvfs ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -106,7 +106,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::lstat ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public static lstat ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -114,7 +114,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::realpath ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public static realpath ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -122,21 +122,21 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::sync ( callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public static sync ( callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::syncfs ( callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public static syncfs ( callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::touch ( string $path, integer $mtime, integer $atime = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public static touch ( string $path, integer $mtime, integer $atime = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -146,7 +146,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::rmdir ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public static rmdir ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -154,7 +154,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::mkdir ( string $path, integer $mode, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public static mkdir ( string $path, integer $mode, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -163,7 +163,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::readdir ( string $path, callable $cb = null, integer $flags, integer $pri = EIO_PRI_DEFAULT )
+ resource public static readdir ( string $path, callable $cb = null, integer $flags, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -172,7 +172,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::truncate ( string $path, integer $offset = 0, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public static truncate ( string $path, integer $offset = 0, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -181,7 +181,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- boolean public static FileSystem::sendfile ( mixed $outfd, string $path, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )
+ boolean public static sendfile ( mixed $outfd, string $path, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$outfd` — @TODO
@@ -193,7 +193,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::chown ( string $path, integer $uid, integer $gid = -1, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public static chown ( string $path, integer $uid, integer $gid = -1, callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -203,7 +203,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::readfile ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public static readfile ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -211,7 +211,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- void public static FileSystem::readfileChunked ( string $path, callable $cb, callable $chunkcb, integer $pri = EIO_PRI_DEFAULT )
+ void public static readfileChunked ( string $path, callable $cb, callable $chunkcb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -220,21 +220,21 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- string public static FileSystem::genRndTempnam ( string $dir = null, string $prefix = 'php' )
+ string public static genRndTempnam ( string $dir = null, string $prefix = 'php' )
  ```
    -.n @TODO
    -.n.ti `:hc`$dir` — @TODO
    -.n `:hc`$prefix` — @TODO
 
  -.method ```php.inline
- string public static FileSystem::genRndTempnamPrefix ( string $dir, string $prefix )
+ string public static genRndTempnamPrefix ( string $dir, string $prefix )
  ```
    -.n @TODO
    -.n.ti `:hc`$dir` — @TODO
    -.n `:hc`$prefix` — @TODO
 
  -.method ```php.inline
- void public static FileSystem::tempnam ( string $dir, string $prefix, callable $cb )
+ void public static tempnam ( string $dir, string $prefix, callable $cb )
  ```
    -.n @TODO
    -.n.ti `:hc`$dir` — @TODO
@@ -242,7 +242,7 @@
    -.n `:hc`$cb` — @TODO
 
  -.method ```php.inline
- resource public static FileSystem::open ( string $path, string $flags, callable $cb, integer $mode = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public static open ( string $path, string $flags, callable $cb, integer $mode = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -255,7 +255,7 @@
 
 `:h`class PHPDaemon\FS\File`
 
-##### vars # Свойства
+##### properties # Свойства
 
 -.method `:h`integer public priority = 10;`  
  @TODO
@@ -284,26 +284,26 @@
 ##### methods # Методы
 
  -.method ```php.inline
- void public File::__construct ( resource $fd, string $path )
+ void public __construct ( resource $fd, string $path )
  ```
    -.n @TODO
    -.n.ti `:hc`$fd` — @TODO
    -.n `:hc`$path` — @TODO
 
  -.method ```php.inline
- resource public File::getFd ( )
+ resource public getFd ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- mixed public static File::convertFlags ( string $mode, boolean $text = false )
+ mixed public static convertFlags ( string $mode, boolean $text = false )
  ```
    -.n @TODO
    -.n.ti `:hc`$mode` — @TODO
    -.n `:hc`$text` — @TODO
 
  -.method ```php.inline
- resource public File::truncate ( integer $offset = 0, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public truncate ( integer $offset = 0, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$offset` — @TODO
@@ -311,42 +311,42 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public File::stat ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public stat ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public File::statRefresh ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public statRefresh ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public File::statvfs ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public statvfs ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public File::sync ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public sync ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public File::datasync ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public datasync ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public File::write ( string $data, callable $cb = null, integer $offset = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public write ( string $data, callable $cb = null, integer $offset = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$data` — @TODO
@@ -355,7 +355,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public File::chown ( integer $uid, integer $gid = -1, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public chown ( integer $uid, integer $gid = -1, callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$uid` — @TODO
@@ -364,7 +364,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public File::touch ( integer $mtime, integer $atime = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public touch ( integer $mtime, integer $atime = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$mtime` — @TODO
@@ -373,12 +373,12 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- void public File::clearStatCache ( )
+ void public clearStatCache ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- boolean public File::read ( integer $length, integer $offset = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+ boolean public read ( integer $length, integer $offset = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$length` — @TODO
@@ -387,7 +387,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- boolean public File::sendfile ( mixed $outfd, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )
+ boolean public sendfile ( mixed $outfd, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$outfd` — @TODO
@@ -398,7 +398,7 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public File::readahead ( integer $length, integer $offset = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public readahead ( integer $length, integer $offset = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$length` — @TODO
@@ -407,14 +407,14 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- boolean public File::readAll ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ boolean public readAll ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- resource public File::readAllChunked ( callable $cb = null, callable $chunkcb = null, integer $pri = EIO_PRI_DEFAULT )
+ resource public readAllChunked ( callable $cb = null, callable $chunkcb = null, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
@@ -422,18 +422,18 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- string public File::__toString ( )
+ string public __toString ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- void public File::setChunkSize ( integer $n )
+ void public setChunkSize ( integer $n )
  ```
    -.n @TODO
    -.n.ti `:hc`$n` — @TODO
 
  -.method ```php.inline
- resource public File::seek ( integer $offset, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+ resource public seek ( integer $offset, callable $cb, integer $pri = EIO_PRI_DEFAULT )
  ```
    -.n @TODO
    -.n.ti `:hc`$offset` — @TODO
@@ -441,17 +441,17 @@
    -.n `:hc`$pri` — @TODO
 
  -.method ```php.inline
- integer public File::tell ( )
+ integer public tell ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- resource public File::close ( )
+ resource public close ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- void public File::__destruct ( )
+ void public __destruct ( )
  ```
    -.n @TODO
 
@@ -459,7 +459,7 @@
 
 `:h`class PHPDaemon\FS\FileWatcher`
 
-##### vars # Свойства
+##### properties # Свойства
 
 -.method `:h`array public files = [];`  
  @TODO
@@ -473,12 +473,12 @@
 ##### methods # Методы
 
  -.method ```php.inline
- void public FileWatcher::__construct ( )
+ void public __construct ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- boolean public FileWatcher::addWatch ( string $path, mixed $subscriber, integer $flags = NULL )
+ boolean public addWatch ( string $path, mixed $subscriber, integer $flags = NULL )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
@@ -486,19 +486,19 @@
    -.n `:hc`$flags` — @TODO
 
  -.method ```php.inline
- boolean public FileWatcher::rmWatch ( string $path, mixed $subscriber )
+ boolean public rmWatch ( string $path, mixed $subscriber )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
    -.n `:hc`$subscriber` — @TODO
 
  -.method ```php.inline
- void public FileWatcher::onFileChanged ( string $path )
+ void public onFileChanged ( string $path )
  ```
    -.n @TODO
    -.n.ti `:hc`$path` — @TODO
 
  -.method ```php.inline
- void public FileWatcher::watch ( )
+ void public watch ( )
  ```
    -.n @TODO

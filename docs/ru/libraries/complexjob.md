@@ -44,7 +44,7 @@ $j(); // Запускаем
  -.method `:h`const STATE_DONE = 3;`  
  Состояние: завершено
 
-#### vars # Свойства
+#### properties # Свойства
 
  -.method `:h`callable public $listeners;`  
  Стек функций обратного вызова, которые вызываются при успешном выполнении всех объявленных процедур
@@ -67,117 +67,117 @@ $j(); // Запускаем
 #### methods # Методы
 
  -.method ```php.inline
- void public ComplexJob::__construct ( callable $cb = null )
+ void public __construct ( callable $cb = null )
  ```
    -.n Конструктор
    -.n.ti `:hc`$cb` — функция обратного вызова для метода addListener
 
 -.method ```php.inline
- void public ComplexJob::addListener ( callable $cb )
+ void public addListener ( callable $cb )
  ```
    -.n Переданная функция будет вызвана когда все подзадачи выполнены
    -.n.ti `:hc`$cb` — функция обратного вызова
 
  -.method ```php.inline
- mixed public ComplexJob::offsetExists ( string $j )
+ mixed public offsetExists ( string $j )
  ```
    -.n Позволяет сделать `:hc`isset($j[$name])`
    -.n.ti `:hc`$j` — имя подзадачи
 
  -.method ```php.inline
- mixed public ComplexJob::offsetGet ( string $j )
+ mixed public offsetGet ( string $j )
  ```
    -.n Позволяет сделать `:hc`isset($job[$name])`
    -.n.ti `:hc`$j` — имя подзадачи
 
  -.method ```php.inline
- mixed public ComplexJob::offsetSet ( string $j, mixed $v )
+ mixed public offsetSet ( string $j, mixed $v )
  ```
    -.n Позволяет сделать `:hc`$job[$name] = $value`
    -.n.ti `:hc`$j` — имя подзадачи
    -.n `:hc`$v` — значение
 
  -.method ```php.inline
- mixed public ComplexJob::offsetUnset ( string $j )
+ mixed public offsetUnset ( string $j )
  ```
    -.n Позволяет сделать `:hc`unset($job[$name])`
    -.n.ti `:hc`$j` — имя подзадачи
 
  -.method ```php.inline
- array public ComplexJob::getResults ( )
+ array public getResults ( )
  ```
    -.n Возвращает ассоциативный массив результатов
 
  -.method ```php.inline
- void public ComplexJob::keep ( boolean $keep = true )
+ void public keep ( boolean $keep = true )
  ```
    -.n Включает опцию keep, при которой, после выполнения всех подзадач не вызывается метод `:hc`cleanup()`
    -.n.ti `:hc`$keep` — true/false
 
  -.method ```php.inline
- boolean public ComplexJob::hasCompleted ( )
+ boolean public hasCompleted ( )
  ```
    -.n Выполнены ли все подзадачи?
 
  -.method ```php:p.inline
- [ComplexJob](#../) public ComplexJob::maxConcurrency ( integer $n = -1 )
+ [ComplexJob](#../) public maxConcurrency ( integer $n = -1 )
  ```
    -.n Устанавливает максимальное количество одновременно выполняемых задач
    -.n.ti `:hc`$n` — Натуральное число. При `-1` ограничение не действует.
 
  -.method ```php.inline
- boolean public ComplexJob::setResult ( string $jobname, mixed $result = null )
+ boolean public setResult ( string $jobname, mixed $result = null )
  ```
    -.n Устанавливает результат выполнения подзадачи
    -.n.ti `:hc`$jobname` — Название подзадачи
    -.n `:hc`$result` — Результат
 
  -.method ```php.inline
- mixed public ComplexJob::getResult ( string $jobname )
+ mixed public getResult ( string $jobname )
  ```
    -.n Получить результат выполнения подзадачи по имени
    -.n.ti `:hc`$jobname` — имя подзадачи
 
  -.method ```php.inline
- void public ComplexJob::checkQueue ( )
+ void public checkQueue ( )
  ```
    -.n Вызывается автоматически. Проверяет полна ли очередь и если нет, то пробует запустить еще подзадач из `backlog` и `more`.
 
  -.method ```php:p.inline
- [ComplexJob](#../) public ComplexJob::more ( callable $cb = null )
+ [ComplexJob](#../) public more ( callable $cb = null )
  ```
    -.n Задает функцию обратного вызова, которая автоматически вызывается каждый раз, когда можно добавить еще подзадач.
    -.n.ti `:hc`$cb` — функция обратного вызова
 
  -.method ```php.inline
- boolean public ComplexJob::isQueueFull ( )
+ boolean public isQueueFull ( )
  ```
    -.n Проверяет полна ли на данный момент очередь задач (превышен ли параметр `maxConcurrency`)
 
  -.method ```php.inline
- boolean public ComplexJob::addJob ( string $name, callable $cb )
+ boolean public addJob ( string $name, callable $cb )
  ```
    -.n Добавляет подзадачу
    -.n.ti `:hc`$name` — имя подзадачи
    -.n `:hc`$cb` — функция обратного вызова
 
  -.method ```php.inline
- void public ComplexJob::cleanup ( )
+ void public cleanup ( )
  ```
    -.n Удаляет сохраненные результаты и функции обратного вызова. Вызывается автоматически, не задан параметр `keep`. В этом случае, во избежание утечек памяти вызывайте этот метод сами, когда закончили работать с данными.
 
  -.method ```php.inline
- void public ComplexJob::execute ( )
+ void public execute ( )
  ```
    -.n Выполняет 
 
  -.method ```php.inline
- boolean public ComplexJob::__invoke ( string $name = null, callable $cb = null )
+ boolean public __invoke ( string $name = null, callable $cb = null )
  ```
    -.n Синоним `addJob ( $name, $cb )`. Пример: `:hc`$job('job', )`
 
 
 -.method ```php.inline
- boolean public ComplexJob::__invoke ( )
+ boolean public __invoke ( )
  ```
    -.n Синоним `execute()`. Пример: `:hc`$job()`

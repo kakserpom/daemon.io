@@ -122,8 +122,8 @@
 Примеры:
 
 > &#96;&#96;&#96;php.inline  
-> void public Pool::post ( url $url, array $data, array $params )  
-> void public Pool::post ( url $url, array $data, callable $resultcb )  
+> void public post ( url $url, array $data, array $params )  
+> void public post ( url $url, array $data, callable $resultcb )  
 > &#96;&#96;&#96;
 
 > &#96;&#96;&#96;ruby  

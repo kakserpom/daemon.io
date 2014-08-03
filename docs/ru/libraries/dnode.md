@@ -9,24 +9,24 @@
 ##### methods # Методы
 
  -.method ```php.inline
- void public Generic::onHandshake ( )
+ void public onHandshake ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- void public Generic::defineLocalMethods ( array $arr )
+ void public defineLocalMethods ( array $arr )
  ```
    -.n @TODO
    -.n.ti `:hc`$arr` — @TODO
 
  -.method ```php.inline
- boolean public static Generic::ensureCallback ( mixed &$arg )
+ boolean public static ensureCallback ( mixed &$arg )
  ```
    -.n @TODO
    -.n.ti `:hc`&$arg` — @TODO
 
  -.method ```php.inline
- void public Generic::extractCallbacks ( array $args, array &$list, array &$path )
+ void public extractCallbacks ( array $args, array &$list, array &$path )
  ```
    -.n @TODO
    -.n.ti `:hc`$args` — @TODO
@@ -34,49 +34,49 @@
    -.n `:hc`&$path` — @TODO
 
  -.method ```php.inline
- void public Generic::callRemote ( )
+ void public callRemote ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- void public Generic::callRemoteArray ( string $method, array $args )
+ void public callRemoteArray ( string $method, array $args )
  ```
    -.n @TODO
    -.n.ti `:hc`$method` — @TODO
    -.n `:hc`$args` — @TODO
 
  -.method ```php.inline
- void public Generic::methodsMethod ( array $methods )
+ void public methodsMethod ( array $methods )
  ```
    -.n @TODO
    -.n.ti `:hc`$methods` — @TODO
 
  -.method ```php.inline
- string public Generic::toJson ( string $p )
+ string public toJson ( string $p )
  ```
    -.n @TODO
    -.n.ti `:hc`$p` — @TODO
 
  -.method ```php.inline
- void public Generic::toJsonDebugResursive ( array &$a )
+ void public toJsonDebugResursive ( array &$a )
  ```
    -.n @TODO
    -.n.ti `:hc`&$a` — @TODO
 
  -.method ```php.inline
- string public Generic::toJsonDebug ( array $p )
+ string public toJsonDebug ( array $p )
  ```
    -.n @TODO
    -.n.ti `:hc`$p` — @TODO
 
  -.method ```php.inline
- void public Generic::sendPacket ( array $p )
+ void public sendPacket ( array $p )
  ```
    -.n @TODO
    -.n.ti `:hc`$p` — @TODO
 
  -.method ```php.inline
- void public Generic::fakeIncomingCallExtractCallbacks ( array $args, array &$list, array &$path )
+ void public fakeIncomingCallExtractCallbacks ( array $args, array &$list, array &$path )
  ```
    -.n @TODO
    -.n.ti `:hc`$args` — @TODO
@@ -84,28 +84,28 @@
    -.n `:hc`&$path` — @TODO
 
  -.method ```php.inline
- void public Generic::fakeIncomingCall ( )
+ void public fakeIncomingCall ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- void public Generic::onFinish ( )
+ void public onFinish ( )
  ```
    -.n @TODO
 
  -.method ```php.inline
- void public Generic::__call ( string $m, array $args )
+ void public __call ( string $m, array $args )
  ```
    -.n @TODO
 
  -.method ```php.inline
- void public Generic::onPacket ( array $pct )
+ void public onPacket ( array $pct )
  ```
    -.n @TODO
    -.n.ti `:hc`$pct` — @TODO
 
  -.method ```php.inline
- voivoid public Generic::onFrame ( string $data, string $type )
+ voivoid public onFrame ( string $data, string $type )
  ```
    -.n @TODO
    -.n.ti `:hc`$data` — @TODO

@@ -33,8 +33,8 @@ $httpclient->get('http://www.google.com/robots.txt',
 ##### methods # Методы
 
  -.method ```php.inline
- void public Pool::get ( url $url, array $params )
- void public Pool::get ( url $url, callable $resultcb )
+ void public get ( url $url, array $params )
+ void public get ( url $url, callable $resultcb )
  ```
    -.n Осуществляет GET запрос
    -.n.ti `:hc`$url` — запрашиваемый URL
@@ -42,8 +42,8 @@ $httpclient->get('http://www.google.com/robots.txt',
    -.n `:hc`$resultcb` — `:phc`callback ( [Connection](#../../connection) $conn, boolean $success )` — Вызывается когда на запрос пришел ответ, либо произошла ошибка
 
  -.method ```php.inline
- void public Pool::post ( url $url, array $data, array $params )
- void public Pool::post ( url $url, array $data, callable $resultcb )
+ void public post ( url $url, array $data, array $params )
+ void public post ( url $url, array $data, callable $resultcb )
  ```
    -.n Осуществляет POST запрос
    -.n.ti `:hc`$url` — запрашиваемый URL
@@ -52,15 +52,15 @@ $httpclient->get('http://www.google.com/robots.txt',
    -.n `:hc`$resultcb` — `:phc`callback ( [Connection](#../../connection) $conn, boolean $success )` — Вызывается когда на запрос пришел ответ, либо произошла ошибка
 
  -.method  ```php.inline
- string public static Pool::buildUrl ( string $str )
- string public static Pool::buildUrl ( array $mixed )
+ string public static buildUrl ( string $str )
+ string public static buildUrl ( array $mixed )
  ```
    -.n Генерирует URL-кодированную строку запроса из предоставленного ассоциативного (или индексного) массива `:hc`$mixed` или возвращает строку `:hc`$str`. В случае ошибки возвращает `:hc`false`
    -.n.ti `:hc`$mixed` — массив параметров URL
 
  -.method ```php.inline
- string public static Pool::parseUrl ( string $str )
- string public static Pool::parseUrl ( array $mixed )
+ string public static parseUrl ( string $str )
+ string public static parseUrl ( array $mixed )
  ```
    -.n Разбирает массив `:hc`$mixed` или строку `:hc`$str` и возвращает ассоциативный массив, содержащий необходимые компоненты URL: `:hc`[$scheme, $host, $uri, $port]`. В случае ошибки возвращает `:hc`false`.  
    См. {tpl-outlink http://php.net/parse_url php.net/parse_url}
@@ -68,7 +68,7 @@ $httpclient->get('http://www.google.com/robots.txt',
 
 #### connection # Класс Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
 
-##### vars # Свойства
+##### properties # Свойства
 
  -.method `:h`array public $headers;`  
  Заголовки ответа
@@ -100,17 +100,17 @@ $httpclient->get('http://www.google.com/robots.txt',
 ##### methods # Методы
 
  -.method ```php.inline
- string public Connection::getBody ( void )
+ string public getBody ( void )
  ```
    -.n Возвращает тело ответа
 
  -.method ```php.inline
- string public Connection::getHeaders ( void )
+ string public getHeaders ( void )
  ```
    -.n Возвращает ассоциативный массив заголовков ответа
 
  -.method ```php.inline
- string public Connection::getHeader ( string $name )
+ string public getHeader ( string $name )
  ```
    -.n Возвращает заголовок ответа по имени или `:hc`null`
    -.n.ti `:hc`$name` — имя заголовка
