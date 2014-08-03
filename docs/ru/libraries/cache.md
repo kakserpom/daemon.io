@@ -2,11 +2,15 @@
 
 `:h`namespace PHPDaemon\Cache`
 
-@TODO desc
+Механизм локального LRU-кеша ключ-значение.
+
+> Используется для кеширования замыканий созданных через create_function. Также используется в {tpl-inlink #clients/dns Clients\DNS}
 
 #### capped-storage # Класс CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
 
-`:h`class PHPDaemon\Cache\CappedStorage`
+`:h`abstact class PHPDaemon\Cache\CappedStorage`
+
+Базовый абстрактный класс.
 
 ##### vars # Свойства
 
@@ -14,10 +18,10 @@
  Метод сортировки
 
  -.method `:h`integer public $maxCacheSize;`  
- Размер хранилища
+ Максимальное количество элементов в кеше
 
  -.method `:h`integer public $capWindow;`  
- @TODO
+Количество элементов, которые пропускаются в кеш сверх максимального количества, для уменьшения количества сортировок
 
  -.method `:h`array public $cache;`  
  Ассоциативный массив хранимых элементов
@@ -27,28 +31,28 @@
  -.method ```php.inline
  string public CappedStorage::hash ( string $key )
  ```
-   -.n Возвращает хеш ключа, который идентифицирует элемент хранилища
+   -.n Возвращает хеш ключа, который идентифицирует элемент хранилища, по-умолчанию используется crc32().
    -.n.ti `:hc`$key` — ключ элемента
 
  -.method ```php:p.inline
  [Item](#../../item) public CappedStorage::put ( string $key, mixed $value, float $ttl = null )
  ```
-   -.n Создает элемент {tpl-inlink #../../item Item} с значением `:hc`$value`, добавляет элемент в конец хранилища и производит пересортироку. Если элемент с таким ключом уже существует, то будет обновлено его значение
+   -.n Добавляет элемент в кеш {tpl-inlink #../../item Item} с значением `:hc`$value`
    -.n.ti `:hc`$key` — ключ элемента
-   -.n `:hc`$value` — значение добавляемого элемент
-   -.n `:hc`$ttl` — позволяет задать время жизни элемента в секундах
+   -.n `:hc`$value` — значение
+   -.n `:hc`$ttl` — время жизни в секундах
 
  -.method ```php.inline
  void public CappedStorage::invalidate ( string $key )
  ```
-   -.n Удаляет элемент хранилища
-   -.n.ti `:hc`$key` — ключ элемента
+   -.n Удаляет элемент кеша
+   -.n.ti `:hc`$key` — ключ
 
  -.method ```php:p.inline
  [Item](#../../item) public CappedStorage::get ( string $key )
  ```
    -.n Возвращает элемент хранилища {tpl-inlink #../../item Item}
-   -.n.ti `:hc`$key` — ключ элемента
+   -.n.ti `:hc`$key` — ключ
 
  -.method ```php.inline
  mixed public CappedStorage::getValue ( string $key )
@@ -66,7 +70,7 @@
  Количество обращений к значению элемента
 
  -.method `:h`integer public $expire;`  
- Время инвалидации элемента
+ Временная метка до которой элемент действителен
 
 ##### methods # Методы
 
@@ -83,17 +87,18 @@
  -.method ```php.inline
  void public Item::addListener ( callable $cb )
  ```
-   -.n Добавляет слушателя @TODO
-   -.n.ti `:hc`$cb` — callback-функция
+   -.n Переданная функция обратного вызова будет вызвана когда будет установлено значение элемента
+   -.n.ti `:hc`$cb` — функция обратного вызова
 
  -.method ```php.inline
  void public Item::setValue ( mixed $value )
  ```
-   -.n Устанавливает новое значение элемента и вызывает событие у всех слушателей @TODO
-   -.n.ti `:hc`$value` — новое значение элемента
+   -.n Устанавливает значение элемента
+   -.n.ti `:hc`$value` — значение
 
 #### capped-storage-hits # Класс CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
 
-`:h`class PHPDaemon\Cache\CappedStorageHits`
+`:h`class CappedStorageHits extends CappedStorage`
 
-@TODO desc
+Реализация {tpl-inlink #../capped-storage CappedStorage} с сортировкой по количеству обращений
+

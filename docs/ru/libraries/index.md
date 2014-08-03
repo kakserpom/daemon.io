@@ -1,4 +1,4 @@
-## libraries # Библиотеки
+## lib # Библиотеки
 
 <!-- import cache.md -->
 

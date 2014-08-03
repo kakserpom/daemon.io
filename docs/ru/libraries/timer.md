@@ -2,7 +2,7 @@
 
 `:h`class PHPDaemon\Core\Timer`
 
-#### vars # Свойства
+#### properties # Свойства
 
  -.method `:h`integer public $id;`  
  @TODO

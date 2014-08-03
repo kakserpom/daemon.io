@@ -36,13 +36,13 @@ $j(); // Запускаем
 #### consts # Константы
 
  -.method `:h`const STATE_WAITING = 1;`  
- State: waiting. It means there are no listeners yet.
+ Состояние: ожидание
 
  -.method `:h`const STATE_RUNNING = 2;`  
- State: running. Event handler in progress.
+ Состояние: в процессе
 
  -.method `:h`const STATE_DONE = 3;`  
- State: done. Event handler is finished, result is saved.
+ Состояние: завершено
 
 #### vars # Свойства
 
