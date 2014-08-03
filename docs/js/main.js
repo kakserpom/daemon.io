@@ -377,9 +377,13 @@ $(function(){
 			winHeight,
 			topMarg = 45;
 
-		var pushState = $.debounce(500, false, function(){
-			history.pushState(null, null, '#'+ link);
-		});
+		var lastPushedLink = '';
+			pushState = $.debounce(500, false, function(){
+				if(link !== lastPushedLink) {
+					history.pushState(null, null, '#'+ link);
+					lastPushedLink = link;
+				}
+			});
 
 		var scrollToDo = $.throttle(700, false, function(){
 			sidebar.stop().animate({
