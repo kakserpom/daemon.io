@@ -1,6 +1,6 @@
 ### strict-static-object-watchdog # StrictStaticObjectWatchdog #> StrictStaticObjectWatchdog {tpl-git PHPDaemon/Traits/StrictStaticObjectWatchdog.php}
 
-Директива для использования: `use \PHPDaemon\Traits\StrictStaticObjectWatchdog;`
+`:hp`trait \PHPDaemon\Traits\StrictStaticObjectWatchdog`
 
 Поведение аналогично {tpl-inlink ../static-object-watchdog StaticObjectWatchdog}, но эта примесь бросает исключение, вместо записи в журнал.
 

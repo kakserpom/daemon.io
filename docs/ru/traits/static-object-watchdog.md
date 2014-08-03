@@ -1,6 +1,6 @@
 ### static-object-watchdog # StaticObjectWatchdog #> StaticObjectWatchdog {tpl-git PHPDaemon/Traits/StaticObjectWatchdog.php}
 
-Директива для использования: `use \PHPDaemon\Traits\StaticObjectWatchdog;`
+`:hp`trait \PHPDaemon\Traits\SeStaticObjectWatchdogssions`
 
 > Данная примесь уже использована во всех базовых классах и при наследовании от них не нужно использовать её повторно.
 

@@ -1,6 +1,6 @@
 ### sessions # Sessions #> Sessions {tpl-git PHPDaemon/Traits/Sessions.php}
 
-Директива для использования: `use \PHPDaemon\Traits\Sessions;`
+`:hp`trait \PHPDaemon\Traits\Sessions`
 
 Эта примесь реализует механизм сессий.
 

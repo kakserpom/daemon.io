@@ -1,6 +1,6 @@
 ### event-handlers # EventHandlers #> EventHandlers {tpl-git PHPDaemon/Traits/EventHandlers.php}
 
-Директива для использования: `use \PHPDaemon\Traits\EventHandlers;`
+`:hp`trait \PHPDaemon\Traits\EventHandlers`
 
 Данная примесь реализует простой механизм PUB/SUB для объекта.
 
