@@ -2,6 +2,26 @@
 
 `:h`class PHPDaemon\Core\ShellCommand extends \PHPDaemon\Network\IOStream`
 
+Класс является наследником IOStream, так что в нём доступны такие методы как read[ln], write[ln], и так далее.
+
+#### examples # Примеры
+
+##### simple # Простое выполнение, аналог функции shell_exec
+
+```php
+ShellCommand::exec('echo "foo"', function($o, $data) {
+   D($data); // foo
+});
+```
+
+##### packet-processing # Пакетная обработка вывода
+
+```php
+ShellCommand::exec('echo "foo"', function($o, $data) {
+   D($data); // foo
+});
+```
+
 #### properties # Свойства
 
  -.method `:h`string public $binPath;`  
@@ -20,6 +40,16 @@
  
 
 #### methods # Методы
+
+-.method ```php.inline
+ void public static ShellCommand::exec ( string $binPath = null, callable $cb = null, array $args = null, array $env = null )
+ ```
+   -.n Выполняет команду (статический метод)
+   -.n.ti `:hc`$binPath` — исполняемый путь
+   -.n `:hc`$cb` — функция обратного вызова
+   -.n `:hc`$args` — массив аргументов
+   -.n `:hc`$env` — ассоциативный массив переменных окружения (можно передать `:hc`$_ENV`)
+
 
  -.method ```php.inline
  string public ShellCommand::getCmd ( )
@@ -42,7 +72,7 @@
  [ShellCommand](#../) public ShellCommand::setCwd ( string $dir )
  ```
    -.n Установить рабочий каталог для выполняемой команды
-   -.n.ti `:hc`$dir` — @TODO
+   -.n.ti `:hc`$dir` — путь
 
  -.method ```php:p.inline
  [ShellCommand](#../) public ShellCommand::setChroot ( string $dir )
@@ -50,14 +80,6 @@
    -.n Подменяет корневой каталог для выполняемой команды
    -.n.ti `:hc`$dir` — путь
 
- -.method ```php.inline
- void public static ShellCommand::exec ( string $binPath = null, callable $cb = null, array $args = null, array $env = null )
- ```
-   -.n Выполняет команду (статический метод)
-   -.n.ti `:hc`$binPath` — исполняемый путь
-   -.n `:hc`$cb` — функция обратного вызова
-   -.n `:hc`$args` — массив аргументов
-   -.n `:hc`$env` — ассоциативный массив переменных окружения (можно передать `:hc`$_ENV`)
 
  -.method ```php:p.inline
  [ShellCommand](#../) public ShellCommand::setArgs ( array $args = NULL )
@@ -110,18 +132,6 @@
  boolean public ShellCommand::eof ( )
  ```
    -.n Достигнут ли EOF (Конец Файла)?
-
- -.method ```php.inline
- boolean public ShellCommand::write ( string $data )
- ```
-   -.n Записать строку в поток ввода процесса (STDIN)
-   -.n.ti `:hc`$data` — строка
-
- -.method ```php.inline
- boolean public ShellCommand::writeln ( string $data )
- ```
-   -.n Записать строку в поток ввода процессеса (STDIN) с добавлением перевода строки в конец
-   -.n.ti `:hc`$data` — строка
 
  -.method ```php:p.inline
  [ShellCommand](#../) public ShellCommand::onEOF ( callable $cb = NULL )
