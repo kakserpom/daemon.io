@@ -57,7 +57,7 @@
 
 #### connection # Класс Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}
 
-##### vars # Свойства
+##### properties # Свойства
 
  -.method `:h`string public $serverver;`  
  @TODO

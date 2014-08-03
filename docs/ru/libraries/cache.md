@@ -12,7 +12,7 @@
 
 Базовый абстрактный класс.
 
-##### vars # Свойства
+##### properties # Свойства
 
  -.method `:h`callable public $sorter;`  
  Метод сортировки
@@ -64,7 +64,7 @@
 
 `:h`class PHPDaemon\Cache\Item`
 
-##### vars # Свойства
+##### properties # Свойства
 
  -.method `:h`integer public $hits;`  
  Количество обращений к значению элемента

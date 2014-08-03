@@ -6,7 +6,7 @@
 
 `:h`class PHPDaemon\FS\FileSystem`
 
-##### vars # Свойства
+##### properties # Свойства
 
  -.method `:h`boolean public static $supported;`  
  @TODO
@@ -255,7 +255,7 @@
 
 `:h`class PHPDaemon\FS\File`
 
-##### vars # Свойства
+##### properties # Свойства
 
 -.method `:h`integer public priority = 10;`  
  @TODO
@@ -459,7 +459,7 @@
 
 `:h`class PHPDaemon\FS\FileWatcher`
 
-##### vars # Свойства
+##### properties # Свойства
 
 -.method `:h`array public files = [];`  
  @TODO

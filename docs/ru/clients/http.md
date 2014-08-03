@@ -68,7 +68,7 @@ $httpclient->get('http://www.google.com/robots.txt',
 
 #### connection # Класс Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
 
-##### vars # Свойства
+##### properties # Свойства
 
  -.method `:h`array public $headers;`  
  Заголовки ответа

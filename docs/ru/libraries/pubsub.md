@@ -59,7 +59,7 @@
 
 `:hp`class PHPDaemon\PubSub\PubSubEvent extends \[SplObjectStorage](http://php.net/manual/class.splobjectstorage.php)`
 
-##### vars # Свойства
+##### properties # Свойства
 
  -.method `:h`array public $sub = [ ];`  
  @TODO
