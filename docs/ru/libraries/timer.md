@@ -26,6 +26,7 @@ setTimeout(function($timer) use (&$i) {
  -.method ```php.inline
  setTimeout ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )
  ```
+ 
 	-.n Функция-псевдоним конструктора таймера 
 	-.n.ti `:hc`$cb` — функция обратного вызова
 	-.n `:hc`$timeout` — количество микросекунд через которое должна быть выполнена функция обратного вызова
