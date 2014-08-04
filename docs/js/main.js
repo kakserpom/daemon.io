@@ -399,8 +399,13 @@ $(function(){
 			link = headers[line];
 
 			if(typeof link !== "undefined" && link !== prevActiveLink) {
-				activeObj.removeClass('active');
-				activeObj = anchors[link];
+				if(activeObj) {
+					activeObj.removeClass('active');
+				}
+
+				if(anchors[link]) {
+					activeObj = anchors[link];
+				}
 
 				if(activeObj) {
 					activeObj.addClass('active');

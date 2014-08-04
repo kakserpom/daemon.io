@@ -6,7 +6,7 @@
 
 #### examples # Примеры
 
-##### simple # Простое выполнение, аналог функции shell_exec
+#####$ simple # Простое выполнение, аналог функции shell_exec
 
 ```php
 ShellCommand::exec('echo "foo"', function($o, $data) {
@@ -14,7 +14,7 @@ ShellCommand::exec('echo "foo"', function($o, $data) {
 });
 ```
 
-##### packet-processing # Пакетная обработка вывода
+#####$ packet-processing # Пакетная обработка вывода
 
 ```php
 ShellCommand::exec('echo "foo"', function($o, $data) {

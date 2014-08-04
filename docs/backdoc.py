@@ -1277,19 +1277,20 @@ class Markdown(object):
 
     _atx_h_re = re.compile(r'''
         ^(\#{1,6})  # \1 = string of #'s
+        (\$?)         # \2 = simple
         (
             [ \t]+
-            ([a-zA-Z0-9_-]+) # \3 = id
+            ([a-zA-Z0-9_-]+) # \4 = id
             [ \t]+
             \#
         ){1}
         [ \t]+
-        (.+?)       # \4 = Header text
+        (.+?)       # \5 = Header text
         (
             [ \t]+
             \#>
             [ \t]+
-            (.+?)   # \6 Real Header text
+            (.+?)   # \7 Real Header text
         )?
         [ \t]*
         (?<!\\)     # ensure not an escaped trailing '#'
@@ -1303,18 +1304,19 @@ class Markdown(object):
             n = min(n + demote_headers, 6)
 
         header_id_attr = ""
+        isSimple = match.group(2) == '$'
 
         # html = self._run_span_gamut(match.group(4))
-        if match.group(6):
-            html = match.group(6)
+        if match.group(7):
+            html = match.group(7)
         else:
-            html = match.group(4)
+            html = match.group(5)
 
         if "header-ids" in self.extras:
-            if match.group(3):
-                header_id = match.group(3)
+            if match.group(4):
+                header_id = match.group(4)
             else:
-                header_id = self.header_id_from_text(match.group(4), self.extras["header-ids"], n)
+                header_id = self.header_id_from_text(match.group(5), self.extras["header-ids"], n)
 
             if header_id:
                 self._headers_stack = self._headers_stack[0:n-2]
@@ -1325,7 +1327,7 @@ class Markdown(object):
                 header_path = '/'.join(self._headers_id_stack)
                 header_id_attr = ' id="%s"' % header_path
 
-        if len(self._headers_stack):
+        if not isSimple and len(self._headers_stack):
             hlinks = []
             i = 0
 
@@ -1343,10 +1345,10 @@ class Markdown(object):
         else:
             header_html = html
 
-        self._headers_stack.append(html) # match.group(4)
+        self._headers_stack.append(html) # match.group(5)
 
-        if "toc" in self.extras and header_id:
-            self._toc_add_entry(n, header_path, match.group(4))
+        if not isSimple and "toc" in self.extras and header_id:
+            self._toc_add_entry(n, header_path, match.group(5))
 
         return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, self._run_span_gamut(header_html), n)
 
