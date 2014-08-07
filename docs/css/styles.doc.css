@@ -189,7 +189,12 @@ header menu a:hover {
     white-space: nowrap;
 }
 
-.anchor {
+h1.anchor,
+h2.anchor,
+h3.anchor,
+h4.anchor,
+h5.anchor,
+h6.anchor {
     cursor: pointer;
 }
 .anchor .anchor_char{

@@ -9,20 +9,30 @@ class Binary;
 
 #### methods # Методы
 
- -.method ```php.inline
+<md:method>
+string public static labels ( string $q )
+string public static labels ( string $q2 )
+
+Возвращает структуру имен. Используется в DNS
+
+$q
+Список имен через точку
+</md:method>
+
+#&labels  -#%s.method ```php:p.inline
  string public static labels ( string $q )
  ```
    -.n Возвращает структуру имен. Используется в DNS
    -.n.ti `:hc`$q` — Список имен через точку
 
- -.method ```php.inline
+#&parseLabels  -#%s.method ```php:p.inline
  string public static parseLabels ( string &$data, string $orig = null )
  ```
    -.n Разбирает структуру имен. Используется в DNS
    -.n.ti `:hc`&$data` — Структура
    -.n `:hc`$orig` — Изначальный пакет данных для обработки ссылок на подстроки
 
- -.method ```php.inline
+#&LV  -#%s.method ```php:p.inline
  string public static LV ( string $str, integer $len = 1, boolean $lrev = false )
  ```
    -.n Возвращает структуру Длина-Значение

@@ -369,7 +369,65 @@ class Markdown(object):
         desired. This is called after basic formatting of the text, but prior
         to any extras, safe mode, etc. processing.
         """
+
+        text = self.parseMdTagMethod(text)
+
         return text
+
+
+    _parseMdTagMethod_re = re.compile(r'''
+        ^<md:method>
+        (.+?)
+        </md:method>
+        ''', re.S | re.X | re.M)
+
+    _parseMdTagMethod_header_re = re.compile(r'\s([^\s]+)\s\(')
+
+    def _parseMdTagMethod_sub(self, match):
+        parts = match.group(1).split('\n\n')
+        result = ''
+
+        # 1. php код
+        code = parts.pop(0)
+
+        if code:
+            m = self._parseMdTagMethod_header_re.search(code)
+            header_id = m.group(1)
+
+            result += '''
+#&%s  -#%s.method ```php:p.inline
+ %s
+ ```
+''' % (header_id, '%s', code.strip().replace("\n", "\n "))
+
+        # 2. Описание
+        desc = parts.pop(0)
+
+        if desc:
+            result += "   -.n %s\n" % desc
+
+        # 3. Переменные
+        for i in range(len(parts)):
+            part = parts[i]
+            cells = part.strip().split('\n')
+
+            if i == 0:
+                eclass = '.ti'
+            else:
+                eclass = ''
+
+            if len(cells) == 3:
+                result += u'   -.n%s `:hc`%s` — `:phc`%s` — %s\n' % (eclass, cells[0], cells[1], cells[2])
+            else:
+                result += u'   -.n%s `:hc`%s` — %s\n' % (eclass, cells[0], cells[1])
+
+        return result
+
+    def parseMdTagMethod(self, text):
+        text = self._parseMdTagMethod_re.sub(self._parseMdTagMethod_sub, text)
+
+        return text
+
 
     # Is metadata if the content starts with '---'-fenced `key: value`
     # pairs. E.g. (indented for presentation):
@@ -1274,16 +1332,17 @@ class Markdown(object):
 
     _headers_stack = []
     _headers_id_stack = []
+    _headers_mode_link = False
 
     _atx_h_re = re.compile(r'''
         ^(\#{1,6})  # \1 = string of #'s
-        (\$?)         # \2 = simple
+        (\$|\&(?:[a-zA-Z0-9_\/-]+))?    # \2 = simple
         (
             [ \t]+
             ([a-zA-Z0-9_-]+) # \4 = id
             [ \t]+
             \#
-        ){1}
+        )?
         [ \t]+
         (.+?)       # \5 = Header text
         (
@@ -1295,7 +1354,9 @@ class Markdown(object):
         [ \t]*
         (?<!\\)     # ensure not an escaped trailing '#'
         \#*         # optional closing #'s (not counted)
-        \n+
+        \n
+        (.+?)?      # \8 second line for 'method'
+        \n*
         ''', re.X | re.M)
     def _atx_h_sub(self, match):
         n = len(match.group(1))
@@ -1304,6 +1365,8 @@ class Markdown(object):
             n = min(n + demote_headers, 6)
 
         header_id_attr = ""
+
+        isLink = match.group(2) and match.group(2)[0] == '&'
         isSimple = match.group(2) == '$'
 
         # html = self._run_span_gamut(match.group(4))
@@ -1312,11 +1375,25 @@ class Markdown(object):
         else:
             html = match.group(5)
 
+        # автоопределение значения n для ссылок
+        if isLink:
+            n = len(self._headers_stack) + 1
+
+            if not self._headers_mode_link:
+                n += 1
+
+            self._headers_mode_link = True
+        else:
+            self._headers_mode_link = False
+
         if "header-ids" in self.extras:
-            if match.group(4):
-                header_id = match.group(4)
+            if isLink:
+                header_id = match.group(2)[1:]
             else:
-                header_id = self.header_id_from_text(match.group(5), self.extras["header-ids"], n)
+                if match.group(4):
+                    header_id = match.group(4)
+                else:
+                    header_id = self.header_id_from_text(match.group(5), self.extras["header-ids"], n)
 
             if header_id:
                 self._headers_stack = self._headers_stack[0:n-2]
@@ -1326,6 +1403,9 @@ class Markdown(object):
 
                 header_path = '/'.join(self._headers_id_stack)
                 header_id_attr = ' id="%s"' % header_path
+
+        if isLink:
+            html = header_id
 
         if not isSimple and len(self._headers_stack):
             hlinks = []
@@ -1347,8 +1427,14 @@ class Markdown(object):
 
         self._headers_stack.append(html) # match.group(5)
 
-        if not isSimple and "toc" in self.extras and header_id:
+        if isLink and "toc" in self.extras and header_id:
+            self._toc_add_entry(n, header_path, header_id)
+        elif not isSimple and "toc" in self.extras and header_id:
             self._toc_add_entry(n, header_path, match.group(5))
+
+        if isLink:
+            start = len(match.group(1)) + len(match.group(2)) + 1
+            return match.group(0)[start:] % (header_path)
 
         return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, self._run_span_gamut(header_html), n)
 
@@ -1373,9 +1459,9 @@ class Markdown(object):
 
 
     _marker_ul_chars  = '*+-'
-    _marker_any = r'(?:[%s]|\d+\.)((?:\.[_a-zA-Z0-9-]+)*)' % _marker_ul_chars
-    _marker_ul = '(?:[%s])((?:\.[_a-zA-Z0-9-]+)*)' % _marker_ul_chars
-    _marker_ol = r'(?:\d+\.)((?:\.[_a-zA-Z0-9-]+)*)'
+    _marker_any = r'(?:[%s]|\d+\.)(\#[a-zA-Z0-9_\/-]+)?((?:\.[_a-zA-Z0-9-]+)*)' % _marker_ul_chars
+    _marker_ul = '(?:[%s])(\#[a-zA-Z0-9_\/-]+)?((?:\.[_a-zA-Z0-9-]+)*)' % _marker_ul_chars
+    _marker_ol = r'(?:\d+\.)(\#[a-zA-Z0-9_\/-]+)?((?:\.[_a-zA-Z0-9-]+)*)'
 
     def _list_sub(self, match):
         lst = match.group(1)
@@ -1440,18 +1526,18 @@ class Markdown(object):
     _list_item_re = re.compile(r'''
         (\n)?                   # leading line = \1
         (^[ \t]*)               # leading whitespace = \2
-        (?P<marker>%s) [ \t]+   # list marker = \3 classnames = \4
-        ((?:.+?)                # list item text = \5
-         (\n{1,2}))             # eols = \6
+        (?P<marker>%s) [ \t]+   # list marker = \3 id = \4 classnames = \5
+        ((?:.+?)                # list item text = \6
+         (\n{1,2}))             # eols = \7
         (?= \n* (\Z | \2 (?P<next_marker>%s) [ \t]+))
         ''' % (_marker_any, _marker_any),
         re.M | re.X | re.S)
 
     _last_li_endswith_two_eols = False
     def _list_item_sub(self, match):
-        item = match.group(5)
+        item = match.group(6)
         leading_line = match.group(1)
-        leading_space = match.group(2)
+        # leading_space = match.group(2)
         if leading_line or "\n\n" in item or self._last_li_endswith_two_eols:
             item = self._run_block_gamut(self._outdent(item))
         else:
@@ -1460,14 +1546,20 @@ class Markdown(object):
             if item.endswith('\n'):
                 item = item[:-1]
             item = self._run_span_gamut(item)
-        self._last_li_endswith_two_eols = (len(match.group(6)) == 2)
+        self._last_li_endswith_two_eols = (len(match.group(7)) == 2)
+
+        attrs = ''
+        classes = []
 
         if match.group(4):
-            classnames = ' class="' + ' '.join(match.group(4)[1:].split('.')) + '"'
-        else:
-            classnames = ''
+            attrs += ' id="' + match.group(4)[1:] + '"'
+            classes.append('anchor')
 
-        return "<li%s>%s</li>\n" % (classnames, item)
+        if match.group(5):
+            classes += match.group(5)[1:].split('.')
+            attrs += ' class="' + ' '.join(classes) + '"'
+
+        return "<li%s>%s</li>\n" % (attrs, item)
 
     def _process_list_items(self, list_str):
         # Process the contents of a single ordered or unordered list,
