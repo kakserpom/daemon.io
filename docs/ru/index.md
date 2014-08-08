@@ -79,14 +79,18 @@ PHPDaemon — это асинхронный демонизируемый фре�
 ## doc-authors # Авторы документации
 
 ### writing # Написание
- - Dmitry Efimenko <[ezheg89@gmail.com](mailto:ezheg89@gmail.com)>
- - Vasily Zorin <[maintainer@daemon.io](mailto:maintainer@daemon.io)>
+
+ - <a target="_blank" href="https://github.com/EzheG"><i class="fa fa-github"></i></a> Dmitry Efimenko <[ezheg89@gmail.com](mailto:ezheg89@gmail.com)>
+ - <a target="_blank" href="https://github.com/kakserpom"><i class="fa fa-github"></i></a> Vasily Zorin <[maintainer@daemon.io](mailto:maintainer@daemon.io)>
+ - <a target="_blank" href="https://github.com/nizsheanez"><i class="fa fa-github"></i></a> Alexey Sharov <[www.pismeco@gmail.com](mailto:www.pismeco@gmail.com)>
 
 ### translation # Перевод на русский
-- Vasily Zorin <[maintainer@daemon.io](mailto:maintainer@daemon.io)>
+
+ - <a target="_blank" href="https://github.com/kakserpom"><i class="fa fa-github"></i></a> Vasily Zorin <[maintainer@daemon.io](mailto:maintainer@daemon.io)>
 
 ### proofreading # Корректура русской версии
 ...
 
 ### proofreading # Программирование
-- Dmitry Efimenko <[ezheg89@gmail.com](mailto:ezheg89@gmail.com)>
+
+ - <a target="_blank" href="https://github.com/EzheG"><i class="fa fa-github"></i></a> Dmitry Efimenko <[ezheg89@gmail.com](mailto:ezheg89@gmail.com)>
