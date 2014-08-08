@@ -1,2 +1,3 @@
 #!/bin/bash
+# хук для git
 ./docs/build
