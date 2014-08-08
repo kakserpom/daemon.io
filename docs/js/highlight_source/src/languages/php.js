@@ -115,6 +115,10 @@ function(hljs) {
         contains: [hljs.UNDERSCORE_TITLE_MODE]
       },
       {
+        beginKeywords: 'trait', end: ';',
+        contains: [hljs.UNDERSCORE_TITLE_MODE]
+      },
+      {
         begin: '=>' // No markup, just a relevance booster
       },
       STRING,
