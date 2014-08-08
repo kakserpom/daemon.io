@@ -393,18 +393,20 @@ class Markdown(object):
         if code:
             m = self._parseMdTagMethod_header_re.search(code)
             header_id = m.group(1)
+            code = code.strip().replace("\n", "\n ")
+            code = self._parseMdTagMethod_header_re.sub(' <a href="#./%s">%s</a> (' % (header_id, header_id), code)
 
-            result += '''
+            result += u'''
 #&%s  -#%s.method ```php:p.inline
  %s
  ```
-''' % (header_id, '%s', code.strip().replace("\n", "\n "))
+''' % (header_id, '%s', code)
 
         # 2. Описание
         desc = parts.pop(0)
 
         if desc:
-            result += "   -.n %s\n" % desc
+            result += u'   -.n %s\n' % desc
 
         # 3. Переменные
         for i in range(len(parts)):
