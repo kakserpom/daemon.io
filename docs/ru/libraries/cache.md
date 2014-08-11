@@ -15,60 +15,82 @@ namespace PHPDaemon\Cache;
 abstact class CappedStorage;
 ```
 
-```php
-namespace PHPDaemon\Cache;
-abstact class CappedStorage;
-```
-
 Базовый абстрактный класс.
 
 ##### properties # Свойства
 
- -.method `:h`callable public $sorter;`  
- Метод сортировки
+<md:prop>
+callable public $sorter;
+Метод сортировки
+</md:prop>
 
- -.method `:h`integer public $maxCacheSize;`  
- Максимальное количество элементов в кеше
+<md:prop>
+integer public $maxCacheSize;
+Максимальное количество элементов в кеше
+</md:prop>
 
- -.method `:h`integer public $capWindow;`  
+<md:prop>
+integer public $capWindow;
 Количество элементов, которые пропускаются в кеш сверх максимального количества, для уменьшения количества сортировок
+</md:prop>
 
- -.method `:h`array public $cache;`  
- Ассоциативный массив хранимых элементов
+<md:prop>
+array public $cache;
+Ассоциативный массив хранимых элементов
+</md:prop>
 
 ##### methods # Методы
 
- -.method ```php.inline
- string public hash ( string $key )
- ```
-   -.n Возвращает хеш ключа, который идентифицирует элемент хранилища, по-умолчанию используется crc32().
-   -.n.ti `:hc`$key` — ключ элемента
+<md:method>
+string public hash ( string $key )
 
- -.method ```php:p.inline
- [Item](#../../item) public put ( string $key, mixed $value, float $ttl = null )
- ```
-   -.n Добавляет элемент в кеш {tpl-inlink #../../item Item} с значением `:hc`$value`
-   -.n.ti `:hc`$key` — ключ элемента
-   -.n `:hc`$value` — значение
-   -.n `:hc`$ttl` — время жизни в секундах
+Возвращает хеш ключа, который идентифицирует элемент хранилища, по-умолчанию используется crc32()
 
- -.method ```php.inline
- void public invalidate ( string $key )
- ```
-   -.n Удаляет элемент кеша
-   -.n.ti `:hc`$key` — ключ
+$key
+ключ элемента
+</md:method>
 
- -.method ```php:p.inline
- [Item](#../../item) public get ( string $key )
- ```
-   -.n Возвращает элемент хранилища {tpl-inlink #../../item Item}
-   -.n.ti `:hc`$key` — ключ
+<md:method>
+[Item](#../../item) public put ( string $key, mixed $value, float $ttl = null )
 
- -.method ```php.inline
- mixed public getValue ( string $key )
- ```
-   -.n Возвращает значение элемента хранилища
-   -.n.ti `:hc`$key` — ключ элемента
+Добавляет элемент в кеш {tpl-inlink #../../item Item} с значением `:hc`$value`
+
+$key
+ключ элемента
+
+$value
+значение
+
+$ttl
+время жизни в секундах
+</md:method>
+
+<md:method>
+void public invalidate ( string $key )
+
+Удаляет элемент кеша
+
+$key
+ключ
+</md:method>
+
+<md:method>
+[Item](#../../item) public get ( string $key )
+
+Возвращает элемент хранилища {tpl-inlink #../../item Item}
+
+$key
+ключ
+</md:method>
+
+<md:method>
+mixed public getValue ( string $key )
+
+Возвращает значение элемента хранилища
+
+$key
+ключ элемента
+</md:method>
 
 #### item # Класс Item {tpl-git PHPDaemon/Cache/Item.php}
 
@@ -79,35 +101,47 @@ class Item;
 
 ##### properties # Свойства
 
- -.method `:h`integer public $hits;`  
- Количество обращений к значению элемента
+<md:prop>
+integer public $hits;
+Количество обращений к значению элемента
+</md:prop>
 
- -.method `:h`integer public $expire;`  
- Временная метка до которой элемент действителен
+<md:prop>
+integer public $expire;
+Временная метка до которой элемент действителен
+</md:prop>
 
 ##### methods # Методы
 
- -.method ```php.inline
- integer public getHits ( )
- ```
-   -.n Возвращает количество обращений к значению элемента
+<md:method>
+integer public getHits ( )
 
- -.method ```php.inline
- mixed public getValue ( )
- ```
-   -.n Возвращает значение элемента
+Возвращает количество обращений к значению элемента
+</md:method>
 
- -.method ```php.inline
- void public addListener ( callable $cb )
- ```
-   -.n Переданная функция обратного вызова будет вызвана когда будет установлено значение элемента
-   -.n.ti `:hc`$cb` — функция обратного вызова
+<md:method>
+mixed public getValue ( )
 
- -.method ```php.inline
- void public setValue ( mixed $value )
- ```
-   -.n Устанавливает значение элемента
-   -.n.ti `:hc`$value` — значение
+Возвращает значение элемента
+</md:method>
+
+<md:method>
+void public addListener ( callable $cb )
+
+Переданная функция обратного вызова будет вызвана когда будет установлено значение элемента
+
+$cb
+функция обратного вызова
+</md:method>
+
+<md:method>
+void public setValue ( mixed $value )
+
+Устанавливает значение элемента
+
+$value
+значение
+</md:method>
 
 #### capped-storage-hits # Класс CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
 
