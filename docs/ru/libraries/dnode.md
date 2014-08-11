@@ -15,105 +15,158 @@ class Generic extends \PHPDaemon\WebSocket\Route;
 
 ##### methods # Методы
 
- -.method ```php.inline
- void public onHandshake ( )
- ```
-   -.n @TODO
+<md:method>
+void public onHandshake ( )
 
- -.method ```php.inline
- void public defineLocalMethods ( array $arr )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$arr` — @TODO
+@TODO
+</md:method>
 
- -.method ```php.inline
- boolean public static ensureCallback ( mixed &$arg )
- ```
-   -.n @TODO
-   -.n.ti `:hc`&$arg` — @TODO
+<md:method>
+void public defineLocalMethods ( array $arr )
 
- -.method ```php.inline
- void public extractCallbacks ( array $args, array &$list, array &$path )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$args` — @TODO
-   -.n `:hc`&$list` — @TODO
-   -.n `:hc`&$path` — @TODO
+@TODO
 
- -.method ```php.inline
- void public callRemote ( )
- ```
-   -.n @TODO
+$arr
+@TODO
+</md:method>
 
- -.method ```php.inline
- void public callRemoteArray ( string $method, array $args )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$method` — @TODO
-   -.n `:hc`$args` — @TODO
+<md:method>
+boolean public static ensureCallback ( mixed &$arg )
 
- -.method ```php.inline
- void public methodsMethod ( array $methods )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$methods` — @TODO
+@TODO
 
- -.method ```php.inline
- string public toJson ( string $p )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$p` — @TODO
+&$arg
+@TODO
+</md:method>
 
- -.method ```php.inline
- void public toJsonDebugResursive ( array &$a )
- ```
-   -.n @TODO
-   -.n.ti `:hc`&$a` — @TODO
+<md:method>
+void public extractCallbacks ( array $args, array &$list, array &$path )
 
- -.method ```php.inline
- string public toJsonDebug ( array $p )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$p` — @TODO
+@TODO
 
- -.method ```php.inline
- void public sendPacket ( array $p )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$p` — @TODO
+$args
+@TODO
 
- -.method ```php.inline
- void public fakeIncomingCallExtractCallbacks ( array $args, array &$list, array &$path )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$args` — @TODO
-   -.n `:hc`&$list` — @TODO
-   -.n `:hc`&$path` — @TODO
+&$list
+@TODO
 
- -.method ```php.inline
- void public fakeIncomingCall ( )
- ```
-   -.n @TODO
+&$path
+@TODO
+</md:method>
 
- -.method ```php.inline
- void public onFinish ( )
- ```
-   -.n @TODO
+<md:method>
+void public callRemote ( )
 
- -.method ```php.inline
- void public __call ( string $m, array $args )
- ```
-   -.n @TODO
+@TODO
+</md:method>
 
- -.method ```php.inline
- void public onPacket ( array $pct )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$pct` — @TODO
+<md:method>
+void public callRemoteArray ( string $method, array $args )
 
- -.method ```php.inline
- voivoid public onFrame ( string $data, string $type )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$data` — @TODO
-   -.n `:hc`$type` — @TODO
+@TODO
+
+$method
+@TODO
+
+$args
+@TODO
+</md:method>
+
+<md:method>
+void public methodsMethod ( array $methods )
+
+@TODO
+
+$methods
+@TODO
+</md:method>
+
+<md:method>
+string public toJson ( string $p )
+
+@TODO
+
+$p
+@TODO
+</md:method>
+
+<md:method>
+void public toJsonDebugResursive ( array &$a )
+
+@TODO
+
+&$a
+@TODO
+</md:method>
+
+<md:method>
+string public toJsonDebug ( array $p )
+
+@TODO
+
+$p
+@TODO
+</md:method>
+
+<md:method>
+void public sendPacket ( array $p )
+
+@TODO
+
+$p
+@TODO
+</md:method>
+
+<md:method>
+void public fakeIncomingCallExtractCallbacks ( array $args, array &$list, array &$path )
+
+@TODO
+
+$args
+@TODO
+
+&$list
+@TODO
+
+&$path
+@TODO
+</md:method>
+
+<md:method>
+void public fakeIncomingCall ( )
+
+@TODO
+</md:method>
+
+<md:method>
+void public onFinish ( )
+
+@TODO
+</md:method>
+
+<md:method>
+void public __call ( string $m, array $args )
+
+@TODO
+</md:method>
+
+<md:method>
+void public onPacket ( array $pct )
+
+@TODO
+
+$pct
+@TODO
+</md:method>
+
+<md:method>
+void public onFrame ( string $data, string $type )
+
+@TODO
+
+$data
+@TODO
+
+$type
+@TODO
+</md:method>
