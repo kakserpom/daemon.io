@@ -387,6 +387,9 @@ class Markdown(object):
         parts = match.group(1).split('\n\n')
         result = ''
 
+        if len(parts) == 0 or (len(parts) == 1 and parts[0].strip() == ''):
+            return ' -.method &nbsp;'
+
         # 1. php код
         code = parts.pop(0)
 

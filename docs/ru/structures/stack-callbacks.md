@@ -10,43 +10,59 @@ class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.ph
 > Используется в {tpl-inlink network/client Network/Client} для хранения стека функций обратного вызова запросов
 
 #### methods # Методы
+<md:method>
+void public push ( callable $cb )
 
- -.method ```php.inline
- void public push ( callable $cb )
- ```
-   -.n Добавляет функцию обратного вызова в конец стека
-   -.n.ti `:hc`$cb` — функция
+Добавляет функцию обратного вызова в конец стека
 
- -.method ```php.inline
- void public unshift ( callable $cb )
- ```
-   -.n Добавляет функцию обратного вызова в начало стека
-   -.n.ti `:hc`$cb` — функция
+$cb
+функция
+</md:method>
 
- -.method ```php.inline
- boolean public executeOne ( mixed $arg, ... )
- ```
-   -.n Извлекает первую функцию обратного вызова из начала стека и выполняет её с переданными аргументами. Возвращает `false` если стек пуст
-   -.n.ti `:hc`$arg` — аргументы
+<md:method>
+void public unshift ( callable $cb )
 
- -.method ```php.inline
- boolean public executeAndKeepOne ( mixed $arg, ... )
- ```
-   -.n Выполяет первую функцию обратного вызова из начала стека с переданными аргументами без извлечения её из стека. Возвращает `false` если стек пуст
-   -.n.ti `:hc`$arg`, ... — аргументы
+Добавляет функцию обратного вызова в начало стека
 
- -.method ```php.inline
- integer public executeAll ( mixed $arg, ... )
- ```
-   -.n Извлекает все функции обратного вызова и выполняет с заданными аргументами. Возвращает количество выполненных функций.
-   -.n.ti `:hc`$arg1`, ... — аргументы
+$cb
+функция
+</md:method>
 
- -.method ```php.inline
- array public toArray ( )
- ```
-   -.n Возвращает индексный массив стека
+<md:method>
+boolean public executeOne ( mixed $arg, ... )
 
- -.method ```php.inline
- void public reset ( )
- ```
-   -.n Удаляет все элементы из стека
+Извлекает первую функцию обратного вызова из начала стека и выполняет её с переданными аргументами. Возвращает `false` если стек пуст
+
+$arg
+аргументы
+</md:method>
+
+<md:method>
+boolean public executeAndKeepOne ( mixed $arg, ... )
+
+Выполяет первую функцию обратного вызова из начала стека с переданными аргументами без извлечения её из стека. Возвращает `false` если стек пуст
+
+$arg, ...
+аргументы
+</md:method>
+
+<md:method>
+integer public executeAll ( mixed $arg, ... )
+
+Извлекает все функции обратного вызова и выполняет с заданными аргументами. Возвращает количество выполненных функций.
+
+$arg1, ...
+аргументы
+</md:method>
+
+<md:method>
+array public toArray ( )
+
+Возвращает индексный массив стека
+</md:method>
+
+<md:method>
+void public reset ( )
+
+Удаляет все элементы из стека
+</md:method>

@@ -10,43 +10,62 @@ class Terminal;
 
 #### methods # Методы
 
- -.method ```php.inline
- string public readln ( )
- ```
-   -.n @TODO
+<md:method>
+string public readln ( )
 
- -.method ```php.inline
- void public enableColor ( boolean $bool = true )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$bool` — ...
+@TODO
+</md:method>
 
- -.method ```php.inline
- void public clearScreen ( )
- ```
-   -.n @TODO
+<md:method>
+void public enableColor ( boolean $bool = true )
 
- -.method ```php.inline
- void public setStyle ( string $c )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$c` — ...
+@TODO
 
- -.method ```php.inline
- void public resetStyle ( )
- ```
-   -.n @TODO
+$bool
+@TODO
+</md:method>
 
- -.method ```php.inline
- void public drawParam ( string $name, string $description, array $values = '' )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$name` — ...
-   -.n `:hc`$description` — ...
-   -.n `:hc`$values` — ...
+<md:method>
+void public clearScreen ( )
 
- -.method ```php.inline
- void public drawTable ( array $rows )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$rows` — ...
+@TODO
+</md:method>
+
+<md:method>
+void public setStyle ( string $c )
+
+@TODO
+
+$c
+@TODO
+</md:method>
+
+<md:method>
+void public resetStyle ( )
+
+@TODO
+</md:method>
+
+<md:method>
+void public drawParam ( string $name, string $description, array $values = '' )
+
+@TODO
+
+$name
+@TODO
+
+$description
+@TODO
+
+$values
+@TODO
+</md:method>
+
+<md:method>
+void public drawTable ( array $rows )
+
+@TODO
+
+$rows
+@TODO
+</md:method>

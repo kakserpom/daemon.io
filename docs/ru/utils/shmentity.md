@@ -11,47 +11,74 @@ class ShmEntity;
 
 #### methods # Методы
 
- -.method ```php.inline
- string public __construct ( string $path, integer $segsize, string $name, boolean $create = false )
- ```
-   -.n Конструктор
-   -.n.ti `:hc`$path` — путь до файла
-   -.n `:hc`$segsize` — размер сегмента
-   -.n `:hc`$name` — название
-   -.n `:hc`$create` — флаг создания сегмента
+<md:method>
+string public __construct ( string $path, integer $segsize, string $name, boolean $create = false )
 
- -.method ```php.inline
- string public open ( integer $segno = 0, boolean $create = false )
- ```
-   -.n Открывает сегмент разделяемой памяти
-   -.n.ti `:hc`$segno` — номер сегмента
-   -.n `:hc`$create` — флаг создания сегмента
+Конструктор
 
- -.method ```php.inline
- string public getSegments ( )
- ```
-   -.n Возвращает индексный массив всех сегментов
+$path
+путь до файла
 
- -.method ```php.inline
- string public openall ( )
- ```
-   -.n Открывает все сегменты
+$segsize
+размер сегмента
 
- -.method ```php.inline
- string public write ( string $data, integer $offset )
- ```
-   -.n Записывает данные `:hc`$data` со смещением `:hc`$offset`
-   -.n.ti `:hc`$data` — данные
-   -.n `:hc`$offset` — смещение
+$name
+название
 
- -.method ```php.inline
- string public read ( integer $offset, integer $length = 1 )
- ```
-   -.n Считывает данные длиной `:hc`$length` со смещением `:hc`$offset`
-   -.n.ti `:hc`$offset` — смещение
-   -.n `:hc`$length` — длина читаемых данных
+$create
+флаг создания сегмента
+</md:method>
 
- -.method ```php.inline
- string public delete ( )
- ```
-   -.n Удаляет все сегменты
+<md:method>
+string public open ( integer $segno = 0, boolean $create = false )
+
+Открывает сегмент разделяемой памяти
+
+$segno
+номер сегмента
+
+$create
+флаг создания сегмента
+</md:method>
+
+<md:method>
+string public getSegments ( )
+
+Возвращает индексный массив всех сегментов
+</md:method>
+
+<md:method>
+string public openall ( )
+
+Открывает все сегменты
+</md:method>
+
+<md:method>
+string public write ( string $data, integer $offset )
+
+Записывает данные `:hc`$data` со смещением `:hc`$offset`
+
+$data
+данные
+
+$offset
+смещение
+</md:method>
+
+<md:method>
+string public read ( integer $offset, integer $length = 1 )
+
+Считывает данные длиной `:hc`$length` со смещением `:hc`$offset`
+
+$offset
+смещение
+
+$length
+длина читаемых данных
+</md:method>
+
+<md:method>
+string public delete ( )
+
+Удаляет все сегменты
+</md:method>
