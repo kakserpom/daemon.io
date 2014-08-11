@@ -1,6 +1,9 @@
 ### priority-queue-callbacks # PriorityQueueCallbacks #> PriorityQueueCallbacks {tpl-git PHPDaemon/Structures/PriorityQueueCallbacks.php}
 
-`:hp`class PHPDaemon\Structures\PriorityQueueCallbacks extends \[SplPriorityQueue](http://php.net/manual/class.splpriorityqueue.php)`
+```php:p
+namespace PHPDaemon\Structures;
+class PriorityQueueCallbacks extends \[SplPriorityQueue](http://php.net/manual/class.splpriorityqueue.php);
+```
 
 > Используется в {tpl-inlink network/client Network/Client} для хранения вызовов, пока все доступные соединения заняты
 

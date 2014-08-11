@@ -1,6 +1,9 @@
 ### timer # Timer #> Timer {tpl-git PHPDaemon/Core/Timer.php}
 
-`:h`class PHPDaemon\Core\Timer`
+```php:p
+namespace PHPDaemon\Core;
+class Timer;
+```
 
 С помощью этого класса можно создавать отложенные во времени события (таймеры)
 

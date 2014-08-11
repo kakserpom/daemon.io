@@ -1,6 +1,9 @@
 ### event-handlers # EventHandlers #> EventHandlers {tpl-git PHPDaemon/Traits/EventHandlers.php}
 
-`:hp`trait \PHPDaemon\Traits\EventHandlers`
+```php
+namespace PHPDaemon\Traits;
+trait EventHandlers;
+```
 
 Данная примесь реализует простой механизм PUB/SUB для объекта.
 

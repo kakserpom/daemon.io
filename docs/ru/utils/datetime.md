@@ -1,6 +1,9 @@
 ### datetime # DateTime #> DateTime {tpl-git PHPDaemon/Utils/DateTime.php}
 
-`:hp`class PHPDaemon\Utils\DateTime extends \[DateTime](http://php.net/manual/class.datetime.php)`
+```php:p
+namespace PHPDaemon\Utils;
+class DateTime extends \[DateTime](http://php.net/manual/class.datetime.php);
+```
 
 В конструтор можно передавать метку времени Unix.
 

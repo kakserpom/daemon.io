@@ -1,6 +1,9 @@
 ### stack-callbacks # StackCallbacks #> StackCallbacks {tpl-git PHPDaemon/Structures/StackCallbacks.php}
 
-`:hp`class PHPDaemon\Structures\StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.php)`
+```php:p
+namespace PHPDaemon\Structures;
+class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.php);
+```
 
 Данный класс предоставляет стек функций обратного вызова с несколькими дополнительными методами
 

@@ -1,6 +1,9 @@
 ### shmentity # ShmEntity #> ShmEntity {tpl-git PHPDaemon/Utils/ShmEntity.php}
 
-`:h`class PHPDaemon\Utils\ShmEntity`
+```php
+namespace PHPDaemon\Utils;
+class ShmEntity;
+```
 
 Эластичное хранилище кучи в разделяемой памяти
 

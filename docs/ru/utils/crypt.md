@@ -1,6 +1,9 @@
 ### crypt # Crypt #> Crypt {tpl-git PHPDaemon/Utils/Crypt.php}
 
-`:h`class PHPDaemon\Utils\Crypt`
+```php
+namespace PHPDaemon\Utils;
+class Crypt;
+```
 
 Данный класс содержит методы, относящиеся к криптографии.
 

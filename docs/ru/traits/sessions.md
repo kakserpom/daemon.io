@@ -1,6 +1,9 @@
 ### sessions # Sessions #> Sessions {tpl-git PHPDaemon/Traits/Sessions.php}
 
-`:hp`trait \PHPDaemon\Traits\Sessions;`
+```php
+namespace PHPDaemon\Traits;
+trait Sessions;
+```
 
 Эта примесь реализует механизм сессий, именно реализует, а не является оберткой над `session_*` функциями
 

@@ -1,10 +1,15 @@
 ### fs # FS #> FS {tpl-git PHPDaemon/FS}
 
-`:h`namespace PHPDaemon\FS`
+```php
+namespace PHPDaemon\FS;
+```
 
 #### filesystem # Класс FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
 
-`:h`class PHPDaemon\FS\FileSystem`
+```php
+namespace PHPDaemon\FS;
+class FileSystem;
+```
 
 ##### properties # Свойства
 
@@ -253,7 +258,10 @@
 
 #### file # Класс File {tpl-git PHPDaemon/FS/File.php}
 
-`:h`class PHPDaemon\FS\File`
+```php
+namespace PHPDaemon\FS;
+class File;
+```
 
 ##### properties # Свойства
 
@@ -457,7 +465,10 @@
 
 #### filewatcher # Класс FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
 
-`:h`class PHPDaemon\FS\FileWatcher`
+```php
+namespace PHPDaemon\FS;
+class FileWatcher;
+```
 
 ##### properties # Свойства
 

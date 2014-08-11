@@ -1,6 +1,8 @@
 ### cache # Cache #> Cache {tpl-git PHPDaemon/Cache}
 
-`:h`namespace PHPDaemon\Cache`
+```php
+namespace PHPDaemon\Cache;
+```
 
 Механизм локального LRU-кеша ключ-значение.
 
@@ -8,7 +10,15 @@
 
 #### capped-storage # Класс CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
 
-`:h`abstact class PHPDaemon\Cache\CappedStorage`
+```php
+namespace PHPDaemon\Cache;
+abstact class CappedStorage;
+```
+
+```php
+namespace PHPDaemon\Cache;
+abstact class CappedStorage;
+```
 
 Базовый абстрактный класс.
 
@@ -62,7 +72,10 @@
 
 #### item # Класс Item {tpl-git PHPDaemon/Cache/Item.php}
 
-`:h`class PHPDaemon\Cache\Item`
+```php
+namespace PHPDaemon\Cache;
+class Item;
+```
 
 ##### properties # Свойства
 
@@ -98,7 +111,10 @@
 
 #### capped-storage-hits # Класс CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
 
-`:h`class CappedStorageHits extends CappedStorage`
+```php
+namespace PHPDaemon\Cache;
+class CappedStorageHits extends CappedStorage;
+```
 
 Реализация {tpl-inlink #../capped-storage CappedStorage} с сортировкой по количеству обращений
 

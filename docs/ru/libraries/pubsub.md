@@ -1,10 +1,15 @@
 ### pubsub # PubSub #> PubSub {tpl-git PHPDaemon/PubSub}
 
-`:h`namespace PHPDaemon\PubSub`
+```php
+namespace PHPDaemon\PubSub;
+```
 
 #### pubsub # Класс PubSub {tpl-git PHPDaemon/PubSub/PubSub.php}
 
-`:h`class PHPDaemon\PubSub\PubSub`
+```php
+namespace PHPDaemon\PubSub;
+class PubSub;
+```
 
 ##### methods # Методы
 
@@ -57,7 +62,10 @@
 
 #### pubsubevent # Класс PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
 
-`:hp`class PHPDaemon\PubSub\PubSubEvent extends \[SplObjectStorage](http://php.net/manual/class.splobjectstorage.php)`
+```php:p
+namespace PHPDaemon\PubSub;
+class PubSubEvent extends \[SplObjectStorage](http://php.net/manual/class.splobjectstorage.php);
+```
 
 ##### properties # Свойства
 

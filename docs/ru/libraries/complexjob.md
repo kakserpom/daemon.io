@@ -1,6 +1,9 @@
 ### complexjob # ComplexJob #> ComplexJob {tpl-git PHPDaemon/Core/ComplexJob.php}
 
-`:hp`class PHPDaemon\Core\ComplexJob extends \[ArrayAccess](http://php.net/manual/class.arrayaccess.php)`
+```php:p
+namespace PHPDaemon\Core;
+class ComplexJob extends \[ArrayAccess](http://php.net/manual/class.arrayaccess.php);
+```
 
 Объект класса ComplexJob позволяет повесить функцию обратного вызова на завершение всех объявленных в нем процедур. Это удобно, когда нужно выполнить ряд независимых цепочек действий.
 

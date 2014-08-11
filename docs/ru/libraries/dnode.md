@@ -1,10 +1,17 @@
 ### dnode # DNode #> DNode {tpl-git PHPDaemon/DNode}
 
-`:h`namespace PHPDaemon\DNode`
+```php
+namespace PHPDaemon\DNode;
+```
+
+@TODO desc
 
 #### generic # Класс Generic {tpl-git PHPDaemon/DNode/Generic.php}
 
-`:h`class PHPDaemon\DNode\Generic`
+```php
+namespace PHPDaemon\DNode;
+class Generic extends \PHPDaemon\WebSocket\Route;
+```
 
 ##### methods # Методы
 

@@ -1,6 +1,9 @@
 ### deferred-event-handlers # DeferredEventHandlers #> DeferredEventHandlers {tpl-git PHPDaemon/Traits/DeferredEventHandlers.php}
 
-`:hp`trait \PHPDaemon\Traits\DeferredEventHandlers`
+```php
+namespace PHPDaemon\Traits;
+trait DeferredEventHandlers;
+```
 
 Данная примесь реализует механизм отложенных событий в объекте.
 

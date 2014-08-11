@@ -1,6 +1,8 @@
 ### http # HTTP #> HTTP {tpl-git PHPDaemon/Clients/HTTP}
 
-`:h`namespace PHPDaemon\Clients\HTTP`
+```php
+namespace PHPDaemon\Clients\HTTP;
+```
 
 Предназначен для выполнения GET и POST запросов на удаленные хосты.
 
@@ -23,6 +25,11 @@ $httpclient->get('http://www.google.com/robots.txt',
 Рабочий пример клиента представлен в {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php Clients/HTTP/Examples/Simple.php}
 
 #### pool # Класс Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
+
+```php
+namespace PHPDaemon\Clients\HTTP;
+class Pool extends \PHPDaemon\Network\Client;
+```
 
 ##### options # Опции по-умолчанию
 
@@ -67,6 +74,11 @@ $httpclient->get('http://www.google.com/robots.txt',
    -.n.ti `:hc`$mixed` — массив параметров URL
 
 #### connection # Класс Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
+
+```php
+namespace PHPDaemon\Clients\HTTP;
+class Connection extends \PHPDaemon\Network\ClientConnection;
+```
 
 ##### properties # Свойства
 

@@ -1,6 +1,9 @@
 ### object-storage # ObjectStorage #> ObjectStorage {tpl-git PHPDaemon/Structures/ObjectStorage.php}
 
-`:hp`class PHPDaemon\Structures\ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splobjectstorage.php)`
+```php:p
+namespace PHPDaemon\Structures;
+class ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splobjectstorage.php);
+```
 
 Данный класс предоставляет хранилище объектов с несколькими дополнительными методами
 

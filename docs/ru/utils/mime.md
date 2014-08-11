@@ -1,6 +1,9 @@
 ### mime # MIME #> MIME {tpl-git PHPDaemon/Utils/MIME.php}
 
-`:h`class PHPDaemon\Utils\MIME`
+```php
+namespace PHPDaemon\Utils;
+class MIME;
+```
 
 #### methods # Методы
 

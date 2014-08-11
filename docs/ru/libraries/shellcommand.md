@@ -1,6 +1,9 @@
 ### shellcommand # ShellCommand #> ShellCommand {tpl-git PHPDaemon/Core/ShellCommand.php}
 
-`:h`class PHPDaemon\Core\ShellCommand extends \PHPDaemon\Network\IOStream`
+```php
+namespace PHPDaemon\Core;
+class ShellCommand extends \PHPDaemon\Network\IOStream;
+```
 
 Класс является наследником IOStream, так что в нём доступны такие методы как read[ln], write[ln], и так далее.
 

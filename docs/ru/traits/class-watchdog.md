@@ -1,6 +1,9 @@
 ### class-watchdog # ClassWatchdog #> ClassWatchdog {tpl-git PHPDaemon/Traits/ClassWatchdog.php}
 
-`:hp`trait \PHPDaemon\Traits\ClassWatchdog`
+```php
+namespace PHPDaemon\Traits;
+trait ClassWatchdog;
+```
 
 > Данная примесь уже использована во всех базовых классах и при наследовании от них не нужно использовать её повторно.
 
