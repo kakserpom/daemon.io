@@ -12,35 +12,46 @@ class ShellCommand extends \PHPDaemon\Network\IOStream;
 #####$ simple # Простое выполнение, аналог функции shell_exec
 
 ```php
-ShellCommand::exec('echo "foo"', function($o, $data) {
-   D($data); // foo
+ShellCommand::exec('echo "foo"', function($commandInstance, $output) {
+   D($output); // foo
 });
 ```
+
+#####$ with_params # С дополнительными параметрами и переменными окружения
+
+```php
+$command = 'git log';
+$cb = function($commandInstance, $output) {
+	 D($output); // foo
+};
+$arguments = ['-1', '--pretty' => 'oneline'];
+$env = [];
+ShellCommand::exec($command, $cb, $arguments, $env);
+```
+
+> Аргументы будут экранированы с помощью `escapeshellarg`
+
 
 #####$ packet-processing # Пакетная обработка вывода
 
-```php
-ShellCommand::exec('echo "foo"', function($o, $data) {
-   D($data); // foo
-});
-```
+@TODO
 
 #### properties # Свойства
 
- -.method `:h`string public $binPath;`  
+ -.method `:h`string public $binPath;`
  Исполняемый путь
 
- -.method `:h`string public $setUser;`  
+ -.method `:h`string public $setUser;`
  Имя Unix-пользователя от имени которого выполняется команда
 
- -.method `:h`string public $setGroup;`  
+ -.method `:h`string public $setGroup;`
 Имя Unix-группы от имени которого выполняется команда
 
- -.method `:h`string public $chroot = '/';`  
+ -.method `:h`string public $chroot = '/';`
 Подмена корневого каталога для выполняемой команды
 
- -.method `:h`string public $cwd;`  
- 
+ -.method `:h`string public $cwd;`
+
 
 #### methods # Методы
 
