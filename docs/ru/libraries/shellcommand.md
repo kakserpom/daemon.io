@@ -31,133 +31,197 @@ ShellCommand::exec($command, $cb, $arguments, $env);
 
 > Аргументы будут экранированы с помощью `escapeshellarg`
 
-
 #####$ packet-processing # Пакетная обработка вывода
 
 @TODO
 
 #### properties # Свойства
 
- -.method `:h`string public $binPath;`
- Исполняемый путь
+<md:prop>
+string public $binPath;
+Исполняемый путь
+</md:prop>
 
- -.method `:h`string public $setUser;`
- Имя Unix-пользователя от имени которого выполняется команда
+<md:prop>
+string public $setUser;
+Имя Unix-пользователя от имени которого выполняется команда
+</md:prop>
 
- -.method `:h`string public $setGroup;`
+<md:prop>
+string public $setGroup;
 Имя Unix-группы от имени которого выполняется команда
+</md:prop>
 
- -.method `:h`string public $chroot = '/';`
+<md:prop>
+string public $chroot = '/';
 Подмена корневого каталога для выполняемой команды
+</md:prop>
 
- -.method `:h`string public $cwd;`
-
+<md:prop>
+string public $cwd;
+@TODO
+</md:prop>
 
 #### methods # Методы
 
- -.method ```php.inline
- void public static exec ( string $binPath = null, callable $cb = null, array $args = null, array $env = null )
- ```
-   -.n Выполняет команду (статический метод)
-   -.n.ti `:hc`$binPath` — исполняемый путь
-   -.n `:hc`$cb` — функция обратного вызова
-   -.n `:hc`$args` — массив аргументов
-   -.n `:hc`$env` — ассоциативный массив переменных окружения (можно передать `:hc`$_ENV`)
+<md:method>
+void public static exec ( string $binPath = null, callable $cb = null, array $args = null, array $env = null )
 
--.method ```php.inline
- void public static ShellCommand::exec ( string $binPath = null, callable $cb = null, array $args = null, array $env = null )
- ```
-   -.n Выполняет команду (статический метод)
-   -.n.ti `:hc`$binPath` — исполняемый путь
-   -.n `:hc`$cb` — функция обратного вызова
-   -.n `:hc`$args` — массив аргументов
-   -.n `:hc`$env` — ассоциативный массив переменных окружения (можно передать `:hc`$_ENV`)
+Выполняет команду (статический метод)
 
+$binPath
+исполняемый путь
 
- -.method ```php.inline
- string public getCmd ( )
- ```
-   -.n Возвращает строку исполняемой команды
+$cb
+функция обратного вызова
 
- -.method ```php:p.inline
- [ShellCommand](#../) public setUser ( string $val )
- ```
-   -.n -.n Задает имя Unix-пользователя от имени которого выполняется команда
-   -.n.ti `:hc`$val` — имя пользователя
+$args
+массив аргументов
 
- -.method ```php:p.inline
- [ShellCommand](#../) public setGroup ( string $val )
- ```
-   -.n Задает название Unix-группы от которой выполняется команда
-   -.n.ti `:hc`$val` — название группы
+$env
+ассоциативный массив переменных окружения (можно передать $_ENV`)
+</md:method>
 
- -.method ```php:p.inline
- [ShellCommand](#../) public setCwd ( string $dir )
- ```
-   -.n Установить рабочий каталог для выполняемой команды
-   -.n.ti `:hc`$dir` — путь
+<md:method>
+void public static exec ( string $binPath = null, callable $cb = null, array $args = null, array $env = null )
 
- -.method ```php:p.inline
- [ShellCommand](#../) public setChroot ( string $dir )
- ```
-   -.n Подменяет корневой каталог для выполняемой команды
-   -.n.ti `:hc`$dir` — путь
+Выполняет команду (статический метод)
 
- -.method ```php:p.inline
- [ShellCommand](#../) public setArgs ( array $args = NULL )
- ```
-   -.n Установить список аргументов
-   -.n.ti `:hc`$args` — массив аргументов
+$binPath
+исполняемый путь
 
- -.method ```php:p.inline
- [ShellCommand](#../) public setEnv ( array $env = NULL )
- ```
-   -.n Задает ассоциативный массив переменных окружения (можно передать `:hc`$_ENV`)
-   -.n.ti `:hc`$env` — массив
+$cb
+функция обратного вызова
 
- -.method ```php:p.inline
- [ShellCommand](#../) public nice ( integer $nice = NULL )
- ```
-   -.n Задает приоритет выделения процессорного времени (меньше — выше)
-   -.n.ti `:hc`$nice` — целое число
+$args
+массив аргументов
 
- -.method ```php.inline
- string public static buildArgs ( array $args )
- ```
-   -.n Строит строку аргументов по массиву
-   -.n.ti `:hc`$args` — массив аргумент
+$env
+ассоциативный массив переменных окружения (можно передать $_ENV`)
+</md:method>
 
- -.method ```php:p.inline
- [ShellCommand](#../) public execute ( string $binPath = NULL, array $args = NULL, array $env = NULL )
- ```
-   -.n Непосредственно выполняет команду
-   -.n.ti `:hc`$binPath` — исполняемый путь
-   -.n `:hc`$args` — массив аргументов
-   -.n `:hc`$env` — ассоциативный массив переменных окружения (можно передать `:hc`$_ENV`)
+<md:method>
+string public getCmd ( )
 
- -.method ```php.inline
- boolean public finishWrite ( )
- ```
-   -.n Закрывает поток ввода исполняемого процесса, когда буфер будет прочитан
+Возвращает строку исполняемой команды
+</md:method>
 
- -.method ```php.inline
- void public close ( )
- ```
-   -.n Завершает процесс
+<md:method>
+[ShellCommand](#../) public setUser ( string $val )
 
- -.method ```php:p.inline
- [ShellCommand](#../) public closeWrite ( )
- ```
-   -.n Безусловно закрывает поток ввода исполняемого процесса (STDIN)
+Задает имя Unix-пользователя от имени которого выполняется команда
 
- -.method ```php.inline
- boolean public eof ( )
- ```
-   -.n Достигнут ли EOF (Конец Файла)?
+$val
+имя пользователя
+</md:method>
 
- -.method ```php:p.inline
- [ShellCommand](#../) public onEOF ( callable $cb = NULL )
- ```
-   -.n Переданная функция обратного вызова будет вызвана когда достигнут EOF (Конец Файла)
-   -.n.ti `:hc`$cb` — функция обратного вызова
+<md:method>
+[ShellCommand](#../) public setGroup ( string $val )
 
+Задает название Unix-группы от которой выполняется команда
+
+$val
+название группы
+</md:method>
+
+<md:method>
+[ShellCommand](#../) public setCwd ( string $dir )
+
+Установить рабочий каталог для выполняемой команды
+
+$dir
+путь
+</md:method>
+
+<md:method>
+[ShellCommand](#../) public setChroot ( string $dir )
+
+Подменяет корневой каталог для выполняемой команды
+
+$dir
+путь
+</md:method>
+
+<md:method>
+[ShellCommand](#../) public setArgs ( array $args = NULL )
+
+Установить список аргументов
+
+$args
+массив аргументов
+</md:method>
+
+<md:method>
+[ShellCommand](#../) public setEnv ( array $env = NULL )
+
+Задает ассоциативный массив переменных окружения (можно передать $_ENV`)
+
+$env
+массив
+</md:method>
+
+<md:method>
+[ShellCommand](#../) public nice ( integer $nice = NULL )
+
+Задает приоритет выделения процессорного времени (меньше — выше)
+
+$nice
+целое число
+</md:method>
+
+<md:method>
+string public static buildArgs ( array $args )
+
+Строит строку аргументов по массиву
+
+$args
+массив аргумент
+</md:method>
+
+<md:method>
+[ShellCommand](#../) public execute ( string $binPath = NULL, array $args = NULL, array $env = NULL )
+
+Непосредственно выполняет команду
+
+$binPath
+исполняемый путь
+
+$args
+массив аргументов
+
+$env
+ассоциативный массив переменных окружения (можно передать $_ENV`)
+</md:method>
+
+<md:method>
+boolean public finishWrite ( )
+
+Закрывает поток ввода исполняемого процесса, когда буфер будет прочитан
+</md:method>
+
+<md:method>
+void public close ( )
+
+Завершает процесс
+</md:method>
+
+<md:method>
+[ShellCommand](#../) public closeWrite ( )
+
+Безусловно закрывает поток ввода исполняемого процесса (STDIN)
+</md:method>
+
+<md:method>
+boolean public eof ( )
+
+Достигнут ли EOF (Конец Файла)?
+</md:method>
+
+<md:method>
+[ShellCommand](#../) public onEOF ( callable $cb = NULL )
+
+Переданная функция обратного вызова будет вызвана когда достигнут EOF (Конец Файла)
+
+$cb
+функция обратного вызова
+</md:method>
