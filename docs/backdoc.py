@@ -435,7 +435,7 @@ class Markdown(object):
         </md:method>
         ''', re.S | re.X | re.M)
 
-    _parseMdTagMethod_header_re = re.compile(r'\s([^\s]+)\s\(')
+    _parseMdTagMethod_header_re = re.compile(r'(?:^|\s)([^\s]+)\s\(')
 
     def _parseMdTagMethod_sub(self, match):
         parts = match.group(1).strip().split('\n\n')
