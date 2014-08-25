@@ -1,6 +1,9 @@
 ### sessions # Sessions #> Sessions {tpl-git PHPDaemon/Traits/Sessions.php}
 
-`:hp`trait \PHPDaemon\Traits\Sessions;`
+```php
+namespace PHPDaemon\Traits;
+trait Sessions;
+```
 
 Эта примесь реализует механизм сессий, именно реализует, а не является оберткой над `session_*` функциями
 
@@ -17,6 +20,14 @@
 Вы можете безопасно использовать PhpDaemon c существующими сессиями, сериализация совместима с нативной
 (См. {tpl-outlink http://php.net//manual/ru/function.session-encode.php session_encode}, {tpl-outlink http://php.net//manual/ru/function.session-decode.php session_decode})
 
-@TODO - добавить примеры использования
+Пример использования:
+```php
+$this->onSessionStart(function ($event) {
+	if (!$event->getResult()) {
+		//Session open failed
+	}
+	//Session open succeed
+});
+```
 
 > Данная примесь используется в {tpl-inlink HTTPRequest HTTPRequest} и {tpl-inlink servers/websocket/route Servers\WebSocket\Route}

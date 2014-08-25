@@ -370,7 +370,61 @@ class Markdown(object):
         to any extras, safe mode, etc. processing.
         """
 
+        text = self.parseMdTagConst(text)
+        text = self.parseMdTagPropertie(text)
         text = self.parseMdTagMethod(text)
+
+        return text
+
+
+    _parseMdTagConst_re = re.compile(r'''
+        ^<md:const>
+        (.+?)
+        </md:const>
+        ''', re.S | re.X | re.M)
+
+    def _parseMdTagConst_sub(self, match):
+        parts = match.group(1).strip().split('\n')
+        result = ''
+
+        if len(parts):
+            part = parts.pop(0)
+            result += u' -.method `:h`%s`  \n' % part
+
+        if len(parts):
+            part = parts.pop(0)
+            result += ' ' + part + '\n'
+
+        return result
+
+    def parseMdTagConst(self, text):
+        text = self._parseMdTagConst_re.sub(self._parseMdTagConst_sub, text)
+
+        return text
+
+
+    _parseMdTagPropertie_re = re.compile(r'''
+        ^<md:prop>
+        (.+?)
+        </md:prop>
+        ''', re.S | re.X | re.M)
+
+    def _parseMdTagPropertie_sub(self, match):
+        parts = match.group(1).strip().split('\n')
+        result = ''
+
+        if len(parts):
+            part = parts.pop(0)
+            result += u' -.method `:h`%s`  \n' % part
+
+        if len(parts):
+            part = parts.pop(0)
+            result += ' ' + part + '\n'
+
+        return result
+
+    def parseMdTagPropertie(self, text):
+        text = self._parseMdTagPropertie_re.sub(self._parseMdTagPropertie_sub, text)
 
         return text
 
@@ -381,11 +435,14 @@ class Markdown(object):
         </md:method>
         ''', re.S | re.X | re.M)
 
-    _parseMdTagMethod_header_re = re.compile(r'\s([^\s]+)\s\(')
+    _parseMdTagMethod_header_re = re.compile(r'(?:^|\s)([^\s]+)\s\(')
 
     def _parseMdTagMethod_sub(self, match):
-        parts = match.group(1).split('\n\n')
+        parts = match.group(1).strip().split('\n\n')
         result = ''
+
+        if len(parts) == 0 or (len(parts) == 1 and parts[0].strip() == ''):
+            return ' -.method &nbsp;'
 
         # 1. php код
         code = parts.pop(0)

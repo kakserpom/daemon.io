@@ -1,6 +1,8 @@
 ### mysql # MySQL #> MySQL {tpl-git PHPDaemon/Clients/MySQL}
 
-`:h`namespace PHPDaemon\Clients\MySQL`
+```php
+namespace PHPDaemon\Clients\MySQL;
+```
 
 Клиент для СУБД {tpl-outlink http://mysql.com/ MySQL}
 
@@ -13,6 +15,11 @@
 @TODO
 
 #### pool # Класс Pool {tpl-git PHPDaemon/Clients/MySQL/Pool.php}
+
+```php
+namespace PHPDaemon\Clients\MySQL;
+class Pool extends \PHPDaemon\Network\Client;
+```
 
 ##### options # Опции по-умолчанию
 
@@ -56,6 +63,11 @@
    -.n.ti `:hc`$mixed` — конвертируемые данные
 
 #### connection # Класс Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}
+
+```php
+namespace PHPDaemon\Clients\MySQL;
+class Connection extends \PHPDaemon\Network\ClientConnection;
+```
 
 ##### properties # Свойства
 

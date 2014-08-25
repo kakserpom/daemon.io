@@ -1,6 +1,9 @@
 ### static-object-watchdog # StaticObjectWatchdog #> StaticObjectWatchdog {tpl-git PHPDaemon/Traits/StaticObjectWatchdog.php}
 
-`:hp`trait \PHPDaemon\Traits\SeStaticObjectWatchdogssions`
+```php
+namespace PHPDaemon\Traits;
+trait StaticObjectWatchdog;
+```
 
 > Данная примесь уже использована во всех базовых классах и при наследовании от них не нужно использовать её повторно.
 

@@ -1,6 +1,8 @@
 ### asterisk # Asterisk #> Asterisk {tpl-git PHPDaemon/Clients/Asterisk}
 
-`:h`namespace PHPDaemon\Clients\Asterisk`
+```php
+namespace PHPDaemon\Clients\Asterisk;
+```
 
 {tpl-outlink http://www.asterisk.org/ Asterisk} - это АТС с открытым исходным кодом.
 AMI - программный интерфейс (API) Asterisk для управления системой, который позволяет разработчикам отправлять команды на сервер, считывать результаты их выполнения, а так же получать уведомления о происходящих событиях в реальном времени.
@@ -90,6 +92,11 @@ public function onPbxEvent(SocketSession $session, array $event) {
 ```
 #### pool # Класс Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
 
+```php
+namespace PHPDaemon\Clients\Asterisk;
+class Pool extends \PHPDaemon\Network\Client;
+```
+
 ##### options # Опции по-умолчанию
 
  - `authtype (string = 'md5')`
@@ -109,6 +116,11 @@ public function onPbxEvent(SocketSession $session, array $event) {
  -.n &nbsp;
 
 #### connection # Класс Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
+
+```php
+namespace PHPDaemon\Clients\Asterisk;
+class Connection extends \PHPDaemon\Network\ClientConnection;
+```
 
 ##### methods # Методы
 

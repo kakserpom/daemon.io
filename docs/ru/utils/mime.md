@@ -1,13 +1,20 @@
 ### mime # MIME #> MIME {tpl-git PHPDaemon/Utils/MIME.php}
 
-`:h`class PHPDaemon\Utils\MIME`
+```php
+namespace PHPDaemon\Utils;
+class MIME;
+```
 
 #### methods # Методы
 
- -.method ```php.inline
- string public static get ( string $path )
- ```
-   -.n Возвращает MIME-заголовок файла или `false`
-   -.n.ti `:hc`$path` — путь до файла
+<md:method>
+string public static get ( string $path )
 
- -.method &nbsp;
+Возвращает MIME-заголовок файла или `false`
+
+$path
+путь до файла
+</md:method>
+
+<md:method>
+</md:method>

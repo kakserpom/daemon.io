@@ -1,55 +1,82 @@
 ### encoding # Encoding #> Encoding {tpl-git PHPDaemon/Utils/Encoding.php}
 
-`:h`class PHPDaemon\Utils\Encoding`
+```php
+namespace PHPDaemon\Utils;
+class Encoding;
+```
 
 Сторонняя библиотека — {tpl-outlink https://github.com/neitanod/forceutf8 forceutf8}
 
 #### methods # Методы
 
- -.method ```php.inline
- string public static toUTF8 ( string $text )
- ```
-   -.n Приводит текст к UTF-8
-   -.n.ti `:hc`$text` — Текст
+<md:method>
+string public static toUTF8 ( string $text )
 
- -.method ```php.inline
- string public static toWin1252 ( string $text )
- ```
-   -.n Приводит к текст к Windows-1251
-   -.n.ti `:hc`$text` — Текст
+Приводит текст к UTF-8
 
- -.method ```php.inline
- string public static toISO8859 ( string $text )
- ```
-   -.n Приводит к текст к ISO-8859
-   -.n.ti `:hc`$text` — Текст
+$text
+Текст
+</md:method>
 
- -.method ```php.inline
- string public static toLatin1 ( string $text )
- ```
-   -.n Приводит к текст к Windows-1251
-   -.n.ti `:hc`$text` — Текст
+<md:method>
+string public static toWin1252 ( string $text )
 
- -.method ```php.inline
- string public static fixUTF8 ( string $text )
- ```
-   -.n Исправляет UTF-8
-   -.n.ti `:hc`$text` — Текст
+Приводит к текст к Windows-1251
 
- -.method ```php.inline
- string public static UTF8FixWin1252Chars ( string $text )
- ```
-   -.n Исправляет UTF-8 после конвертации из Windows-1252 так, будто это была ISO-8859
-   -.n.ti `:hc`$text` — Текст
+$text
+Текст
+</md:method>
 
- -.method ```php.inline
- string public static removeBOM ( string $str = "" )
- ```
-   -.n Удаляет Byte-order mark
-   -.n.ti `:hc`$str` — Текст
+<md:method>
+string public static toISO8859 ( string $text )
 
- -.method ```php.inline
- string public static normalizeEncoding ( string $encodingLabel )
- ```
-   -.n Приводит название кодировки к стандартной записи
-   -.n.ti `:hc`$encodingLabel` — Название кодировки
+Приводит к текст к ISO-8859
+
+$text
+Текст
+</md:method>
+
+<md:method>
+string public static toLatin1 ( string $text )
+
+Приводит к текст к Windows-1251
+
+$text
+Текст
+</md:method>
+
+<md:method>
+string public static fixUTF8 ( string $text )
+
+Исправляет UTF-8
+
+$text
+Текст
+</md:method>
+
+<md:method>
+string public static UTF8FixWin1252Chars ( string $text )
+
+Исправляет UTF-8 после конвертации из Windows-1252 так, будто это была ISO-8859
+
+$text
+Текст
+</md:method>
+
+<md:method>
+string public static removeBOM ( string $str = "" )
+
+Удаляет Byte-order mark
+
+$str
+Текст
+</md:method>
+
+<md:method>
+string public static normalizeEncoding ( string $encodingLabel )
+
+Приводит название кодировки к стандартной записи
+
+$encodingLabel
+Название кодировки
+</md:method>

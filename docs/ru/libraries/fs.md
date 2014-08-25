@@ -1,504 +1,880 @@
 ### fs # FS #> FS {tpl-git PHPDaemon/FS}
 
-`:h`namespace PHPDaemon\FS`
+```php
+namespace PHPDaemon\FS;
+```
 
 #### filesystem # Класс FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
 
-`:h`class PHPDaemon\FS\FileSystem`
+```php
+namespace PHPDaemon\FS;
+class FileSystem;
+```
 
 ##### properties # Свойства
 
- -.method `:h`boolean public static $supported;`  
- @TODO
+<md:prop>
+boolean public static $supported;
+@TODO
+</md:prop>
 
- -.method `:h`Event public static $ev;`  
- @TODO
+<md:prop>
+Event public static $ev;
+@TODO
+</md:prop>
 
- -.method `:h`resource public static $fd;`  
- @TODO
+<md:prop>
+resource public static $fd;
+@TODO
+</md:prop>
 
- -.method `:h`array public static $modeTypes;`  
- @TODO
+<md:prop>
+array public static $modeTypes;
+@TODO
+</md:prop>
 
- -.method `:h`integer public static $badFDttl = 5;`  
- @TODO
+<md:prop>
+integer public static $badFDttl = 5;
+@TODO
+</md:prop>
 
- -.method `:hp`[CappedStorage](#libraries/cache/capped-storage) public static $fdCache;`  
- @TODO
+<md:prop>
+[CappedStorage](#libraries/cache/capped-storage) public static $fdCache;
+@TODO
+</md:prop>
 
- -.method `:h`integer public static $fdCacheSize = 128;`  
- @TODO
+<md:prop>
+integer public static $fdCacheSize = 128;
+@TODO
+</md:prop>
 
- -.method `:h`string public static $eioVer = '1.2.1';`  
- @TODO
+<md:prop>
+string public static $eioVer = '1.2.1';
+@TODO
+</md:prop>
 
 ##### methods # Методы
 
- -.method ```php.inline
- void public static init ( )
- ```
-   -.n @TODO
+<md:method>
+void public static init ( )
 
- -.method ```php.inline
- void public static initEvent ( )
- ```
-   -.n @TODO
+@TODO
+</md:method>
 
- -.method ```php.inline
- boolean public static checkFileReadable ( string $path )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
+<md:method>
+void public static initEvent ( )
 
- -.method ```php.inline
- void public static waitAllEvents ( )
- ```
-   -.n @TODO
+@TODO
+</md:method>
 
- -.method ```php.inline
- void public static updateConfig ( )
- ```
-   -.n @TODO
+<md:method>
+boolean public static checkFileReadable ( string $path )
 
- -.method ```php.inline
- string public static sanitizePath ( string $path )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
+@TODO
 
- -.method ```php.inline
- array public static statPrepare ( array $stat )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$stat` — @TODO
+$path
+@TODO
+</md:method>
 
- -.method ```php.inline
- resource public static stat ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+<md:method>
+void public static waitAllEvents ( )
 
- -.method ```php.inline
- resource public static unlink ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+@TODO
+</md:method>
 
- -.method ```php.inline
- resource public static rename ( string $path, string $newpath, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$newpath` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+<md:method>
+void public static updateConfig ( )
 
- -.method ```php.inline
- resource public static statvfs ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+@TODO
+</md:method>
 
- -.method ```php.inline
- resource public static lstat ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+<md:method>
+string public static sanitizePath ( string $path )
 
- -.method ```php.inline
- resource public static realpath ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+@TODO
 
- -.method ```php.inline
- resource public static sync ( callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+$path
+@TODO
+</md:method>
 
- -.method ```php.inline
- resource public static syncfs ( callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+<md:method>
+array public static statPrepare ( array $stat )
 
- -.method ```php.inline
- resource public static touch ( string $path, integer $mtime, integer $atime = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$mtime` — @TODO
-   -.n `:hc`$atime` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+@TODO
 
- -.method ```php.inline
- resource public static rmdir ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+$stat
+@TODO
+</md:method>
 
- -.method ```php.inline
- resource public static mkdir ( string $path, integer $mode, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$mode` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+<md:method>
+resource public static stat ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
 
- -.method ```php.inline
- resource public static readdir ( string $path, callable $cb = null, integer $flags, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$flags` — @TODO
-   -.n `:hc`$pri` — @TODO
+@TODO
 
- -.method ```php.inline
- resource public static truncate ( string $path, integer $offset = 0, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$offset` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+$path
+@TODO
 
- -.method ```php.inline
- boolean public static sendfile ( mixed $outfd, string $path, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$outfd` — @TODO
-   -.n `:hc`$path` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$startCb` — @TODO
-   -.n `:hc`$offset` — @TODO
-   -.n `:hc`$length` — @TODO
-   -.n `:hc`$pri` — @TODO
+$cb
+@TODO
 
- -.method ```php.inline
- resource public static chown ( string $path, integer $uid, integer $gid = -1, callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$uid` — @TODO
-   -.n `:hc`$gid` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+$pri
+@TODO
+</md:method>
 
- -.method ```php.inline
- resource public static readfile ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+<md:method>
+resource public static unlink ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
 
- -.method ```php.inline
- void public static readfileChunked ( string $path, callable $cb, callable $chunkcb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$chunkcb` — @TODO
-   -.n `:hc`$pri` — @TODO
+@TODO
 
- -.method ```php.inline
- string public static genRndTempnam ( string $dir = null, string $prefix = 'php' )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$dir` — @TODO
-   -.n `:hc`$prefix` — @TODO
+$path
+@TODO
 
- -.method ```php.inline
- string public static genRndTempnamPrefix ( string $dir, string $prefix )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$dir` — @TODO
-   -.n `:hc`$prefix` — @TODO
+$cb
+@TODO
 
- -.method ```php.inline
- void public static tempnam ( string $dir, string $prefix, callable $cb )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$dir` — @TODO
-   -.n `:hc`$prefix` — @TODO
-   -.n `:hc`$cb` — @TODO
+$pri
+@TODO
+</md:method>
 
- -.method ```php.inline
- resource public static open ( string $path, string $flags, callable $cb, integer $mode = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$flags` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$mode` — @TODO
-   -.n `:hc`$pri` — @TODO
+<md:method>
+resource public static rename ( string $path, string $newpath, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$newpath
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public static statvfs ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public static lstat ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public static realpath ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public static sync ( callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public static syncfs ( callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public static touch ( string $path, integer $mtime, integer $atime = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$mtime
+@TODO
+
+$atime
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public static rmdir ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public static mkdir ( string $path, integer $mode, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$mode
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public static readdir ( string $path, callable $cb = null, integer $flags, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$cb
+@TODO
+
+$flags
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public static truncate ( string $path, integer $offset = 0, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$offset
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+boolean public static sendfile ( mixed $outfd, string $path, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$outfd
+@TODO
+
+$path
+@TODO
+
+$cb
+@TODO
+
+$startCb
+@TODO
+
+$offset
+@TODO
+
+$length
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public static chown ( string $path, integer $uid, integer $gid = -1, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$uid
+@TODO
+
+$gid
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public static readfile ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+void public static readfileChunked ( string $path, callable $cb, callable $chunkcb, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$cb
+@TODO
+
+$chunkcb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+string public static genRndTempnam ( string $dir = null, string $prefix = 'php' )
+
+@TODO
+
+$dir
+@TODO
+
+$prefix
+@TODO
+</md:method>
+
+<md:method>
+string public static genRndTempnamPrefix ( string $dir, string $prefix )
+
+@TODO
+
+$dir
+@TODO
+
+$prefix
+@TODO
+</md:method>
+
+<md:method>
+void public static tempnam ( string $dir, string $prefix, callable $cb )
+
+@TODO
+
+$dir
+@TODO
+
+$prefix
+@TODO
+
+$cb
+@TODO
+</md:method>
+
+<md:method>
+resource public static open ( string $path, string $flags, callable $cb, integer $mode = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$path
+@TODO
+
+$flags
+@TODO
+
+$cb
+@TODO
+
+$mode
+@TODO
+
+$pri
+@TODO
+</md:method>
 
 #### file # Класс File {tpl-git PHPDaemon/FS/File.php}
 
-`:h`class PHPDaemon\FS\File`
+```php
+namespace PHPDaemon\FS;
+class File;
+```
 
 ##### properties # Свойства
 
--.method `:h`integer public priority = 10;`  
- @TODO
+<md:prop>
+integer public priority = 10;
+@TODO
+</md:prop>
 
--.method `:h`integer public $chunkSize = 4096;`  
- @TODO
+<md:prop>
+integer public $chunkSize = 4096;
+@TODO
+</md:prop>
 
--.method `:h`integer public $offset = 0;`  
- @TODO
+<md:prop>
+integer public $offset = 0;
+@TODO
+</md:prop>
 
--.method `:h`string public $fdCacheKey;`  
- @TODO
+<md:prop>
+string public $fdCacheKey;
+@TODO
+</md:prop>
 
--.method `:h`boolean public $append;`  
- @TODO
+<md:prop>
+boolean public $append;
+@TODO
+</md:prop>
 
--.method `:h`string public $path;`  
- @TODO
+<md:prop>
+string public $path;
+@TODO
+</md:prop>
 
--.method `:h`boolean public $writing = false;`  
- @TODO
+<md:prop>
+boolean public $writing = false;
+@TODO
+</md:prop>
 
--.method `:h`boolean public $closed = false;`  
- @TODO
+<md:prop>
+boolean public $closed = false;
+@TODO
+</md:prop>
 
 ##### methods # Методы
 
- -.method ```php.inline
- void public __construct ( resource $fd, string $path )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$fd` — @TODO
-   -.n `:hc`$path` — @TODO
+<md:method>
+void public __construct ( resource $fd, string $path )
 
- -.method ```php.inline
- resource public getFd ( )
- ```
-   -.n @TODO
+@TODO
 
- -.method ```php.inline
- mixed public static convertFlags ( string $mode, boolean $text = false )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$mode` — @TODO
-   -.n `:hc`$text` — @TODO
+$fd
+@TODO
 
- -.method ```php.inline
- resource public truncate ( integer $offset = 0, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$offset` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+$path
+@TODO
+</md:method>
 
- -.method ```php.inline
- resource public stat ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+<md:method>
+resource public getFd ( )
 
- -.method ```php.inline
- resource public statRefresh ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+@TODO
+</md:method>
 
- -.method ```php.inline
- resource public statvfs ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+<md:method>
+mixed public static convertFlags ( string $mode, boolean $text = false )
 
- -.method ```php.inline
- resource public sync ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+@TODO
 
- -.method ```php.inline
- resource public datasync ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+$mode
+@TODO
 
- -.method ```php.inline
- resource public write ( string $data, callable $cb = null, integer $offset = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$data` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$offset` — @TODO
-   -.n `:hc`$pri` — @TODO
+$text
+@TODO
+</md:method>
 
- -.method ```php.inline
- resource public chown ( integer $uid, integer $gid = -1, callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$uid` — @TODO
-   -.n `:hc`$gid` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+<md:method>
+resource public truncate ( integer $offset = 0, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
 
- -.method ```php.inline
- resource public touch ( integer $mtime, integer $atime = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$mtime` — @TODO
-   -.n `:hc`$atime` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+@TODO
 
- -.method ```php.inline
- void public clearStatCache ( )
- ```
-   -.n @TODO
+$offset
+@TODO
 
- -.method ```php.inline
- boolean public read ( integer $length, integer $offset = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$length` — @TODO
-   -.n `:hc`$offset` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+$cb
+@TODO
 
- -.method ```php.inline
- boolean public sendfile ( mixed $outfd, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$outfd` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$startCb` — @TODO
-   -.n `:hc`$offset` — @TODO
-   -.n `:hc`$length` — @TODO
-   -.n `:hc`$pri` — @TODO
+$pri
+@TODO
+</md:method>
 
- -.method ```php.inline
- resource public readahead ( integer $length, integer $offset = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$length` — @TODO
-   -.n `:hc`$offset` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+<md:method>
+resource public stat ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
 
- -.method ```php.inline
- boolean public readAll ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+@TODO
 
- -.method ```php.inline
- resource public readAllChunked ( callable $cb = null, callable $chunkcb = null, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
-   -.n `:hc`$chunkcb` — @TODO
-   -.n `:hc`$pri` — @TODO
+$cb
+@TODO
 
- -.method ```php.inline
- string public __toString ( )
- ```
-   -.n @TODO
+$pri
+@TODO
+</md:method>
 
- -.method ```php.inline
- void public setChunkSize ( integer $n )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$n` — @TODO
+<md:method>
+resource public statRefresh ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
 
- -.method ```php.inline
- resource public seek ( integer $offset, callable $cb, integer $pri = EIO_PRI_DEFAULT )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$offset` — @TODO
-   -.n `:hc`$cb` — @TODO
-   -.n `:hc`$pri` — @TODO
+@TODO
 
- -.method ```php.inline
- integer public tell ( )
- ```
-   -.n @TODO
+$cb
+@TODO
 
- -.method ```php.inline
- resource public close ( )
- ```
-   -.n @TODO
+$pri
+@TODO
+</md:method>
 
- -.method ```php.inline
- void public __destruct ( )
- ```
-   -.n @TODO
+<md:method>
+resource public statvfs ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public sync ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public datasync ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public write ( string $data, callable $cb = null, integer $offset = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$data
+@TODO
+
+$cb
+@TODO
+
+$offset
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public chown ( integer $uid, integer $gid = -1, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$uid
+@TODO
+
+$gid
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public touch ( integer $mtime, integer $atime = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$mtime
+@TODO
+
+$atime
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+void public clearStatCache ( )
+
+@TODO
+</md:method>
+
+<md:method>
+boolean public read ( integer $length, integer $offset = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$length
+@TODO
+
+$offset
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+boolean public sendfile ( mixed $outfd, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$outfd
+@TODO
+
+$cb
+@TODO
+
+$startCb
+@TODO
+
+$offset
+@TODO
+
+$length
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public readahead ( integer $length, integer $offset = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$length
+@TODO
+
+$offset
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+boolean public readAll ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+resource public readAllChunked ( callable $cb = null, callable $chunkcb = null, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$cb
+@TODO
+
+$chunkcb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+string public __toString ( )
+
+@TODO
+</md:method>
+
+<md:method>
+void public setChunkSize ( integer $n )
+
+@TODO
+
+$n
+@TODO
+</md:method>
+
+<md:method>
+resource public seek ( integer $offset, callable $cb, integer $pri = EIO_PRI_DEFAULT )
+
+@TODO
+
+$offset
+@TODO
+
+$cb
+@TODO
+
+$pri
+@TODO
+</md:method>
+
+<md:method>
+integer public tell ( )
+
+@TODO
+</md:method>
+
+<md:method>
+resource public close ( )
+
+@TODO
+</md:method>
+
+<md:method>
+void public __destruct ( )
+
+@TODO
+</md:method>
 
 #### filewatcher # Класс FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
 
-`:h`class PHPDaemon\FS\FileWatcher`
+```php
+namespace PHPDaemon\FS;
+class FileWatcher;
+```
 
 ##### properties # Свойства
 
--.method `:h`array public files = [];`  
- @TODO
+<md:prop>
+array public files = [];
+@TODO
+</md:prop>
 
--.method `:h`resource public $inotify;`  
- @TODO
+<md:prop>
+resource public $inotify;
+@TODO
+</md:prop>
 
--.method `:h`array public $descriptors = [];`  
- @TODO
+<md:prop>
+array public $descriptors = [];
+@TODO
+</md:prop>
 
 ##### methods # Методы
 
- -.method ```php.inline
- void public __construct ( )
- ```
-   -.n @TODO
+<md:method>
+void public __construct ( )
 
- -.method ```php.inline
- boolean public addWatch ( string $path, mixed $subscriber, integer $flags = NULL )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$subscriber` — @TODO
-   -.n `:hc`$flags` — @TODO
+@TODO
+</md:method>
 
- -.method ```php.inline
- boolean public rmWatch ( string $path, mixed $subscriber )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
-   -.n `:hc`$subscriber` — @TODO
+<md:method>
+boolean public addWatch ( string $path, mixed $subscriber, integer $flags = NULL )
 
- -.method ```php.inline
- void public onFileChanged ( string $path )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$path` — @TODO
+@TODO
 
- -.method ```php.inline
- void public watch ( )
- ```
-   -.n @TODO
+$path
+@TODO
+
+$subscriber
+@TODO
+
+$flags
+@TODO
+</md:method>
+
+<md:method>
+boolean public rmWatch ( string $path, mixed $subscriber )
+
+@TODO
+
+$path
+@TODO
+
+$subscriber
+@TODO
+</md:method>
+
+<md:method>
+void public onFileChanged ( string $path )
+
+@TODO
+
+$path
+@TODO
+</md:method>
+
+<md:method>
+void public watch ( )
+
+@TODO
+</md:method>

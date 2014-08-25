@@ -1,6 +1,9 @@
 ### object-storage # ObjectStorage #> ObjectStorage {tpl-git PHPDaemon/Structures/ObjectStorage.php}
 
-`:hp`class PHPDaemon\Structures\ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splobjectstorage.php)`
+```php:p
+namespace PHPDaemon\Structures;
+class ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splobjectstorage.php);
+```
 
 Данный класс предоставляет хранилище объектов с несколькими дополнительными методами
 
@@ -8,25 +11,35 @@
 
 #### methods # Методы
 
- -.method ```php.inline
- integer public each ( string $method, mixed $arg, ... )
- ```
-   -.n Проходит по всем объектам, вызывая у каждого из них метод `:hc`$method` c заданными аргументами `:hc`$args` и возвращает количество объектов в хранилище
-   -.n.ti `:hc`$method` — вызываемый метод объекта
-   -.n `:hc`$arg`, ... — аргументы
+<md:method>
+integer public each ( string $method, mixed $arg, ... )
 
- -.method ```php.inline
- void public removeAll ( object $obj = null )
- ```
-   -.n Удаляет из текущего контейнера все объекты, которых нет в контейнере `:hc`$obj`
-   -.n.ti `:hc`$obj` — контейнер, содержащий элементы, которые должны остаться в текущем контейнере
+Проходит по всем объектам, вызывая у каждого из них метод `:hc`$method` c заданными аргументами `:hc`$args` и возвращает количество объектов в хранилище
 
- -.method ```php.inline
- object public detachFirst ( )
- ```
-   -.n Возвращает первый объект, удалив его из контейнера
+$method
+вызываемый метод объекта
 
- -.method ```php.inline
- object public getFirst ( )
- ```
-   -.n Возвращает первый объект контейнера
+$arg, ...
+аргументы
+</md:method>
+
+<md:method>
+void public removeAll ( object $obj = null )
+
+Удаляет из текущего контейнера все объекты, которых нет в контейнере `:hc`$obj`
+
+$obj
+контейнер, содержащий элементы, которые должны остаться в текущем контейнере
+</md:method>
+
+<md:method>
+object public detachFirst ( )
+
+Возвращает первый объект, удалив его из контейнера
+</md:method>
+
+<md:method>
+object public getFirst ( )
+
+Возвращает первый объект контейнера
+</md:method>

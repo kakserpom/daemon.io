@@ -1,116 +1,184 @@
 ### pubsub # PubSub #> PubSub {tpl-git PHPDaemon/PubSub}
 
-`:h`namespace PHPDaemon\PubSub`
+```php
+namespace PHPDaemon\PubSub;
+```
 
 #### pubsub # Класс PubSub {tpl-git PHPDaemon/PubSub/PubSub.php}
 
-`:h`class PHPDaemon\PubSub\PubSub`
+```php
+namespace PHPDaemon\PubSub;
+class PubSub;
+```
 
 ##### methods # Методы
 
- -.method ```php.inline
- boolean public eventExists ( string $id )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$id` — @TODO
+<md:method>
+boolean public eventExists ( string $id )
 
- -.method ```php:p.inline
- [PubSubEvent](#../../pubsubevent) public sub ( string $id, object $obj, callable $cb )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$id` — @TODO
-   -.n `:hc`$obj` — @TODO
-   -.n `:hc`$cb` — @TODO
+@TODO
 
- -.method ```php.inline
- void public addEvent ( string $id, PubSubEvent $obj )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$id` — @TODO
-   -.n `:hc`$obj` — @TODO
+$id
+@TODO
+</md:method>
 
- -.method ```php.inline
- void public removeEvent ( string $id )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$id` — @TODO
+<md:method>
+[PubSubEvent](#../../pubsubevent) public sub ( string $id, object $obj, callable $cb )
 
- -.method ```php:p.inline
- [PubSubEvent](#../../pubsubevent) public unsub ( string $id, object $obj )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$id` — @TODO
-   -.n `:hc`$obj` — @TODO
+@TODO
 
- -.method ```php:p.inline
- [PubSubEvent](#../../pubsubevent) public pub ( string $id, mixed $data )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$id` — @TODO
-   -.n `:hc`$data` — @TODO
+$id
+@TODO
 
- -.method ```php.inline
- boolean public unsubFromAll ( object $obj )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$obj` — @TODO
+$obj
+@TODO
+
+$cb
+@TODO
+</md:method>
+
+<md:method>
+void public addEvent ( string $id, PubSubEvent $obj )
+
+@TODO
+
+$id
+@TODO
+
+$obj
+@TODO
+</md:method>
+
+<md:method>
+void public removeEvent ( string $id )
+
+@TODO
+
+$id
+@TODO
+</md:method>
+
+<md:method>
+[PubSubEvent](#../../pubsubevent) public unsub ( string $id, object $obj )
+
+@TODO
+
+$id
+@TODO
+
+$obj
+@TODO
+</md:method>
+
+<md:method>
+[PubSubEvent](#../../pubsubevent) public pub ( string $id, mixed $data )
+
+@TODO
+
+$id
+@TODO
+
+$data
+@TODO
+</md:method>
+
+<md:method>
+boolean public unsubFromAll ( object $obj )
+
+@TODO
+
+$obj
+@TODO
+</md:method>
 
 #### pubsubevent # Класс PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
 
-`:hp`class PHPDaemon\PubSub\PubSubEvent extends \[SplObjectStorage](http://php.net/manual/class.splobjectstorage.php)`
+```php:p
+namespace PHPDaemon\PubSub;
+class PubSubEvent extends \[SplObjectStorage](http://php.net/manual/class.splobjectstorage.php);
+```
 
 ##### properties # Свойства
 
- -.method `:h`array public $sub = [ ];`  
- @TODO
+<md:prop>
+array public $sub = [ ];
+@TODO
+</md:prop>
 
- -.method `:h`callable public $actCb;`  
- @TODO
+<md:prop>
+callable public $actCb;
+@TODO
+</md:prop>
 
- -.method `:h`callable public $deactCb;`  
- @TODO
+<md:prop>
+callable public $deactCb;
+@TODO
+</md:prop>
 
 ##### methods # Методы
 
- -.method ```php.inline
- void public __construct ( callable $act = null, callable $deact = null )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$act` — @TODO
-   -.n `:hc`$deact` — @TODO
+<md:method>
+void public __construct ( callable $act = null, callable $deact = null )
 
- -.method ```php:p.inline
- [PubSubEvent](#../) public onActivation ( callable $cb )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
+@TODO
 
- -.method ```php:p.inline
- [PubSubEvent](#../) public onDeactivation ( callable $cb )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$cb` — @TODO
+$act
+@TODO
 
- -.method ```php:p.inline
- [PubSubEvent](#../) public static init ( )
- ```
-   -.n @TODO
+$deact
+@TODO
+</md:method>
 
- -.method ```php:p.inline
- [PubSubEvent](#../) public sub ( object $obj, callable $cb )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$obj` — @TODO
-   -.n `:hc`$cb` — @TODO
+<md:method>
+[PubSubEvent](#../) public onActivation ( callable $cb )
 
- -.method ```php:p.inline
- [PubSubEvent](#../) public unsub ( object $obj )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$obj` — @TODO
+@TODO
 
- -.method ```php:p.inline
- [PubSubEvent](#../) public pub ( mixed $data )
- ```
-   -.n @TODO
-   -.n.ti `:hc`$data` — @TODO
+$cb
+@TODO
+</md:method>
+
+<md:method>
+[PubSubEvent](#../) public onDeactivation ( callable $cb )
+
+@TODO
+
+$cb
+@TODO
+</md:method>
+
+<md:method>
+[PubSubEvent](#../) public static init ( )
+
+@TODO
+</md:method>
+
+<md:method>
+[PubSubEvent](#../) public sub ( object $obj, callable $cb )
+
+@TODO
+
+$obj
+@TODO
+
+$cb
+@TODO
+</md:method>
+
+<md:method>
+[PubSubEvent](#../) public unsub ( object $obj )
+
+@TODO
+
+$obj
+@TODO
+</md:method>
+
+<md:method>
+[PubSubEvent](#../) public pub ( mixed $data )
+
+@TODO
+
+$data
+@TODO
+</md:method>
