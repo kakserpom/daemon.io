@@ -91,11 +91,7 @@ string public static parseUrl ( string $str )
 string public static parseUrl ( array $mixed )
 
 Разбирает массив `:hc`$mixed` или строку `:hc`$str` и возвращает ассоциативный массив, содержащий необходимые компоненты URL: `:hc`[$scheme, $host, $uri, $port]`. В случае ошибки возвращает `:hc`false`.  
-<<<<<<< HEAD
 См. {tpl-outlink http://php.net/parse_url php.net/parse_url}
-=======
-   См. {tpl-outlink http://php.net/parse_url php.net/parse_url}
->>>>>>> FETCH_HEAD
 
 $mixed
 массив параметров URL
@@ -142,11 +138,8 @@ integer public $protocolError;
 
 <md:prop>
 integer public $responseCode;
-<<<<<<< HEAD
-Код ответа. См. {tpl-outlink http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP Список кодов состояния HTTP}</a>
-=======
+
 Код ответа. См. {tpl-outlink http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP Список кодов состояния HTTP}
->>>>>>> FETCH_HEAD
 </md:prop>
 
 <md:prop>
@@ -162,21 +155,13 @@ string public $rawHeaders;
 ##### methods # Методы
 
 <md:method>
-<<<<<<< HEAD
 string public getBody ( )
-=======
-string public getBody ( void )
->>>>>>> FETCH_HEAD
 
 Возвращает тело ответа
 </md:method>
 
 <md:method>
-<<<<<<< HEAD
 string public getHeaders ( )
-=======
-string public getHeaders ( void )
->>>>>>> FETCH_HEAD
 
 Возвращает ассоциативный массив заголовков ответа
 </md:method>

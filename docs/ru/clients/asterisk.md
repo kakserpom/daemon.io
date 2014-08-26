@@ -246,14 +246,6 @@ class Pool extends \PHPDaemon\Network\Client;
 <md:method>
 boolean public static getConnection ( callable $cb )
 boolean public static getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )
-<<<<<<< HEAD
-
-Выполняет callback-функцию когда будет установлена связь с сервером. Возвращает `false` если соединение невозможно установить
-$cb
-callback ( [Connection](#../../connection) $conn, array $packet )
-вызывается когда будет установлена связь с сервером
-
-=======
 
 Выполняет callback-функцию когда будет установлена связь с сервером. Возвращает `false` если соединение невозможно установить
 
@@ -261,7 +253,6 @@ $cb
 callback ( [Connection](#../../connection) $conn, array $packet )
 вызывается когда будет установлена связь с сервером
 
->>>>>>> FETCH_HEAD
 $url
 адрес сервера
 
@@ -284,13 +275,8 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 <md:method>
 void public getSipPeers ( callable $cb )
 
-<<<<<<< HEAD
 Выводит список сконфигурированных в данный момент равноправных участников SIP с указанием их статуса  
 Привилегии: system, all
-=======
-Выводит список сконфигурированных в данный момент равноправных участников SIP с указанием их статуса
-   -.n Привилегии: system, all
->>>>>>> FETCH_HEAD
 
 $cb
 callback ( [Connection](#../) $conn, array $packet )
@@ -300,13 +286,8 @@ callback ( [Connection](#../) $conn, array $packet )
 <md:method>
 void public getIaxPeers ( callable $cb )
 
-<<<<<<< HEAD
 Выводит список всех равноправных участников IAX2 с указанием их текущего статуса  
 Привилегии: none
-=======
-Выводит список всех равноправных участников IAX2 с указанием их текущего статуса
-   -.n Привилегии: none
->>>>>>> FETCH_HEAD
 
 $cb
 callback ( [Connection](#../) $conn, array $packet )
@@ -316,13 +297,8 @@ callback ( [Connection](#../) $conn, array $packet )
 <md:method>
 void public getConfig ( string $filename, callable $cb )
 
-<<<<<<< HEAD
 Извлекает данные из конфигурационного файла Asterisk  
 Привилегии: config, all
-=======
-Извлекает данные из конфигурационного файла Asterisk
-   -.n Привилегии: config, all
->>>>>>> FETCH_HEAD
 
 $filename
 имя конфигурационного файла, из которого должны извлекаться данные
@@ -335,13 +311,8 @@ callback ( [Connection](#../) $conn, array $packet )
 <md:method>
 void public getConfigJSON ( string $filename, callable $cb )
 
-<<<<<<< HEAD
 Возвращает данные из конфигурационного файла Asterisk в JSON формате  
 Привилегии: config, all
-=======
-Возвращает данные из конфигурационного файла Asterisk в JSON формате
-   -.n Привилегии: config, all
->>>>>>> FETCH_HEAD
 
 $filename
 имя конфигурационного файла, из которого должны извлекаться данные
@@ -354,13 +325,8 @@ callback ( [Connection](#../) $conn, array $packet )
 <md:method>
 void public setVar ( string $channel, string $variable, string $value, callable $cb )
 
-<<<<<<< HEAD
 Задает значение глобальной переменной или переменной канала  
 Привилегии: call, all
-=======
-Задает значение глобальной переменной или переменной канала
-   -.n Привилегии: call, all
->>>>>>> FETCH_HEAD
 
 $channel
 канал, для переменной которого задается значение. Если не указан, переменная будет задана как глобальная
@@ -389,13 +355,8 @@ callback ( [Connection](#../) $conn, array $packet )
 <md:method>
 void public status ( callable $cb, string $channel = null )
 
-<<<<<<< HEAD
 Представляет статус одного или более каналов с подробной информацией об их текущем состоянии  
 Привилегии: call, all
-=======
-Представляет статус одного или более каналов с подробной информацией об их текущем состоянии
-   -.n Привилегии: call, all
->>>>>>> FETCH_HEAD
 
 $channel
 ограничивает вывод статусом заданного канала
@@ -408,13 +369,8 @@ callback ( [Connection](#../) $conn, array $packet )
 <md:method>
 void public redirect ( array $params, callable $cb )
 
-<<<<<<< HEAD
 Перенаправляет канал в новый контекст, добавочный номер и приоритет диалплана  
 Привилегии: call, all
-=======
-Перенаправляет канал в новый контекст, добавочный номер и приоритет диалплана
-   -.n Привилегии: call, all
->>>>>>> FETCH_HEAD
 
 $params
 ассоциативный массив параметров команды
@@ -427,13 +383,8 @@ callback ( [Connection](#../) $conn, array $packet )
 <md:method>
 void public originate ( array $params, callable $cb )
 
-<<<<<<< HEAD
 Формирует исходящий вызов из Asterisk и соединяет канал с контекстом/добавочным номером/приоритетом или приложением диалплана  
 Привилегии: call, all
-=======
-Формирует исходящий вызов из Asterisk и соединяет канал с контекстом/добавочным номером/приоритетом или приложением диалплана
-   -.n Привилегии: call, all
->>>>>>> FETCH_HEAD
 
 $params
 ассоциативный массив параметров команды
@@ -446,13 +397,8 @@ callback ( [Connection](#../) $conn, array $packet )
 <md:method>
 void public extensionState ( array $params, callable $cb )
 
-<<<<<<< HEAD
 Сообщает о состоянии заданного добавочного номера. Если добавочный номер имеет подсказку, эта команда обеспечит передачу состояния устройства, соединенного с данным добавочным номером  
 Привилегии: call, all
-=======
-Сообщает о состоянии заданного добавочного номера. Если добавочный номер имеет подсказку, эта команда обеспечит передачу состояния устройства, соединенного с данным добавочным номером
-   -.n Привилегии: call, all
->>>>>>> FETCH_HEAD
 
 $params
 ассоциативный массив параметров команды
