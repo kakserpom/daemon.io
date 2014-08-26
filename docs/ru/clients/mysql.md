@@ -8,11 +8,48 @@ namespace PHPDaemon\Clients\MySQL;
 
 #### use # Использование
 
-@TODO переписать из [вики](https://github.com/kakserpom/phpdaemon/wiki/MySQLClient-%28приложение%29)
+@TODO
+
+В вашем приложении вам следует получать объект MySQLClient посредством `Daemon::$appResolver->getInstanceByAppName('MySQLClient')` и использовать как описано ниже.
+
+##### prepare # Подготовка объекта соединения
+
+```
+/*
+  @method getConnection
+  @description Establishes connection.
+  @param string Optional. Address.
+  @return integer Connection's ID.
+*/
+```
+
+Вам следует получить объект MySQLClientSession посредством метода $MySQLClient->getConnection(), затем вы можете положить ваш текущий запрос/сессию/что-нибудь еще в текущий контекст соединения (в свойство context).
+
+Затем используйте:
+
+```php
+$this->sql->onConnected(
+    function($sql, $success) {
+        if (!$success) {
+            return;
+        }
+        // your connection-dependent code
+    }
+);
+```
 
 #### examples # Примеры
 
-@TODO
+```php
+$sql->query('SHOW VARIABLES', 
+   function($sql, $success) {
+      $sql->context->queryResult = $sql->resultRows; // save the result
+      $sql->context->wakeup(); // wake up the request immediately
+   }
+);
+```
+
+Когда callback-функция вызвана, $sql->context содержит ваш объект, который вы туда положили перед этим. $sql->resultRows хранит результат в виде массива ассоциативных массивов. $sql->resultFields содержит поля ответа в виде массива ассоциативных массивов.
 
 #### pool # Класс Pool {tpl-git PHPDaemon/Clients/MySQL/Pool.php}
 
@@ -100,6 +137,7 @@ string public $serverver;
 string public $serverCaps;
 @TODO
 </md:prop>
+<<<<<<< HEAD
 
 <md:prop>
 string public $serverLang;
@@ -112,6 +150,111 @@ string public $serverStatus;
 </md:prop>
 
 <md:prop>
+integer public $warnCount;
+@TODO
+</md:prop>
+
+<md:prop>
+string public $message;
+@TODO Flags of this MySQL client
+</md:prop>
+
+<md:prop>
+string public $dbname;
+Текущая база данных
+</md:prop>
+
+<md:prop>
+array public $resultRows;
+Массив результата SQL-запроса в виде ассоциативных массивов
+</md:prop>
+
+<md:prop>
+array public $resultFields;
+Массив колонок таблицы в виде ассоциативных массивов
+</md:prop>
+
+<md:prop>
+string public $context;
+Контекст для выполняемых SQL-запросов
+</md:prop>
+
+<md:prop>
+integer public $insertId;
+Идентификатор, сгенерированный при последнем INSERT-запросе
+</md:prop>
+
+<md:prop>
+integer public $affectedRows;
+Число затронутых SQL-запросом строк
+</md:prop>
+
+<md:prop>
+integer public $protover;
+=======
+
+<md:prop>
+string public $serverLang;
+>>>>>>> FETCH_HEAD
+@TODO
+</md:prop>
+
+<md:prop>
+<<<<<<< HEAD
+integer public $timeout;
+=======
+string public $serverStatus;
+>>>>>>> FETCH_HEAD
+@TODO
+</md:prop>
+
+<md:prop>
+<<<<<<< HEAD
+integer public $errno;
+Численный код ошибки выполнения SQL-запроса
+</md:prop>
+
+<md:prop>
+string public $errmsg;
+Текст ошибки выполнения SQL-запроса
+</md:prop>
+
+##### methods # Методы
+
+<md:method>
+void public onConnected ( callable $callback )
+
+Выполняет callback-функцию когда будет установлена связь с сервером
+
+$callback
+callback ( [Connection](#../) $conn, boolean $success )
+вызывается когда установлена связь с сервером, либо произошла ошибка
+</md:method>
+
+<md:method>
+boolean public query ( string $query, callable $callback = NULL )
+
+Осуществляет SQL-запрос к серверу
+
+$query
+SQL-запрос
+
+$callback
+callback ( [Connection](#../) $conn, boolean $success )
+вызывается когда получен результат SQL-запроса, либо произошла ошибка
+</md:method>
+
+<md:method>
+boolean public ping ( callable $callback = NULL )
+
+Проверяет работает ли соединение с сервером. Если оно утеряно, автоматически предпринимается попытка пересоединения
+
+$callback
+callback ( [Connection](#../) $conn, boolean $success )
+вызывается когда получен результат, либо произошла ошибка
+</md:method>
+
+=======
 integer public $warnCount;
 @TODO
 </md:prop>
@@ -206,6 +349,7 @@ callback ( [Connection](#../) $conn, boolean $success )
 вызывается когда получен результат, либо произошла ошибка
 </md:method>
 
+>>>>>>> FETCH_HEAD
 <md:method>
 boolean public selectDB ( string $name )
 
