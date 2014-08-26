@@ -8,11 +8,48 @@ namespace PHPDaemon\Clients\MySQL;
 
 #### use # Использование
 
-@TODO переписать из [вики](https://github.com/kakserpom/phpdaemon/wiki/MySQLClient-%28приложение%29)
+@TODO
+
+В вашем приложении вам следует получать объект MySQLClient посредством `Daemon::$appResolver->getInstanceByAppName('MySQLClient')` и использовать как описано ниже.
+
+##### prepare # Подготовка объекта соединения
+
+```
+/*
+  @method getConnection
+  @description Establishes connection.
+  @param string Optional. Address.
+  @return integer Connection's ID.
+*/
+```
+
+Вам следует получить объект MySQLClientSession посредством метода $MySQLClient->getConnection(), затем вы можете положить ваш текущий запрос/сессию/что-нибудь еще в текущий контекст соединения (в свойство context).
+
+Затем используйте:
+
+```php
+$this->sql->onConnected(
+    function($sql, $success) {
+        if (!$success) {
+            return;
+        }
+        // your connection-dependent code
+    }
+);
+```
 
 #### examples # Примеры
 
-@TODO
+```php
+$sql->query('SHOW VARIABLES', 
+   function($sql, $success) {
+      $sql->context->queryResult = $sql->resultRows; // save the result
+      $sql->context->wakeup(); // wake up the request immediately
+   }
+);
+```
+
+Когда callback-функция вызвана, $sql->context содержит ваш объект, который вы туда положили перед этим. $sql->resultRows хранит результат в виде массива ассоциативных массивов. $sql->resultFields содержит поля ответа в виде массива ассоциативных массивов.
 
 #### pool # Класс Pool {tpl-git PHPDaemon/Clients/MySQL/Pool.php}
 

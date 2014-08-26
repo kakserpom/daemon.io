@@ -10,19 +10,74 @@ AMI - программный интерфейс (API) Asterisk для управ
 
 В основе документирования клиента лежит материал книги {tpl-outlink http://asterisk.ru/store/files/Asterisk_RU_OReilly_DRAFT.pdf Asterisk: будущее телефонии}.
 
+#### use # Использование
+
+@TODO это из вики, проверить
+
+Перед тем как посылать команды и получать события с сервера, нужно получить сессию(сессии) соединения(соединений) в вашем приложении. В вашем приложении вы получаете объект AsteriskDriver посредством:
+
+```php
+<?php
+$this->pbxDriver = Daemon::$appResolver->getInstanceByAppName('AsteriskDriver');
+?>
+```
+
+##### connect # Соединение
+
+Далее получаете объект AsteriskDriverSession посредством:
+
+```php
+<?php
+$session = $this->pbxDriver->getConnection();
+// или
+foreach($this->pbxConnections as $addr => $conn) {
+    $session = $this->pbxDriver->getConnection($addr);
+    // что-нибудь делаем...
+}
+?>
+```
+
+Добавляете (композиция) в него текущий контекст соединения посредством:
+
+```php
+<?php
+$session->context = $this;
+?>
+```
+
+При соединении:
+
+```php
+<?php
+$session->onConnected(function(SocketSession $session, $status) {
+    // ваш код, в зависимости от соединения
+});
+?>
+```
+
+При разрыве:
+
+```php
+<?php
+$session->onFinish(function(SocketSession $session) {
+    // возможно запустить интервал реконнекта...
+});
+?>
+```
+
+Предположим у вас несколько серверов Asterisk с которых вы хотите получать события(events) и на которые вы хотите отправлять команды(actions). Так же вы хотите отслеживать падение соединения(connection failed), и осуществлять реконнект. Смотрите пример реконнекта ниже.
+
+##### io # Немного о формате ввода-вывода
+
 Хотя протокол AMI является строковым, драйвер при вводе-выводе работает с ассоциативными массивами. При получении ответа на действие или события все заголовки и их значения приводятся к нижнему регистру, если значение не содержит информацию, для которой важен регистр - например имя пира.
+
+##### cmds # Отправка команд и получение ответа
 
 Для отправки команды и получения ответа вы можете воспользоваться либо методом-помощником, который снабжен подробным комментарием из документации Asterisk, либо универсальным методом Connection::action.
 
 В любом случае для каждой команды вы определяете функцию обратного вызова, в которую будет передан объект сессии соединения и ассоциативный массив пар заголовок-значение ответа.
 
 Клиент корректно обрабатывает, что порядок следования пакетов ответа не определен, корректно собирает составные пакеты ответа.
-
-#### use # Использование
-
-@TODO
-
-#### examples # Примеры
 
 ```php
 <?php
@@ -56,7 +111,15 @@ $session->redirect(array(
 ?>
 ```
 
+##### events # Получение событий сервера
+
 Функция обратного вызова при наступлении события в данном соединении определяется один раз и передается методу onEvent().
+
+```php
+<?php
+$session->onEvent(array($this, 'onPbxEvent'));
+?>
+```
 
 Когда запущено несколько воркеров, чтобы не получилось, что события канала(характеризуются наличием уникального идентификатора(uniqueid) канала) кратны количеству воркеров(workers) можно воспользоваться таблицей блокировки. Вот пример, когда в качестве таблицы блокировки используется MongoDB коллекция(collection), которая позволяет ставить уникальный индекс на документ:
 
@@ -90,6 +153,82 @@ public function onPbxEvent(SocketSession $session, array $event) {
 }
 ?>
 ```
+
+#### example # Пример реконнекта
+
+```php
+<?php
+class Foo extends AppInstance {
+    // ...
+    public function onInit() {
+        // pbxConnections - array of connections
+        foreach($this->pbxConnections as $addr => $conn) {
+            $pbx_driver_session = $this->pbxDriver->getConnection($addr);
+            if($pbx_driver_session instanceof SocketSession) {
+                $pbx_driver_session->context = $this;
+                //$pbx_driver_session->onError(array($this, 'onPbxError'));
+                $pbx_driver_session->onConnected(array($this, 'onPbxConnected'));
+                $pbx_driver_session->onEvent(array($this, 'onPbxEvent'));
+                $pbx_driver_session->onFinish(array($this, 'onPbxFinish'));
+            }
+            else {
+                $this->runPbxReconnectInterval($pbx_driver_session);
+            }
+        }
+    }
+    // ...
+    public function onPbxConnected(SocketSession $session, $status) {
+        if($status) {
+            if($session->context instanceof PbxReconnector) {
+                $session->context->finish();
+            }
+            // do something...
+        }
+        else {
+            $this->runPbxReconnectInterval($session);
+        }
+    }
+    // ...
+    public function onPbxFinish(SocketSession $session) {
+        $this->runPbxReconnectInterval($session);
+    }
+    // ...
+    public function runPbxReconnectInterval(SocketSession $session) {
+                if(Daemon::$process->terminated) {
+            return;
+        }
+        foreach ($this->queue as &$r) {
+            if($r instanceof PbxReconnector) {
+                if ($r->attrs->addr == $session->addr) {
+                    return;
+                }
+            }
+        }
+        $interval = $this->pushRequest(new PbxReconnector($this, $this));
+        $interval->attrs->addr = $session->addr;
+    }
+    // ...
+}
+// ...
+class PbxReconnector extends Request {
+        public $interval = 0.3;
+
+    public function run() {
+        $pbx_driver_session = $this->appInstance->pbxDriver->getConnection($this->attrs->addr);
+        if($pbx_driver_session) {
+            if($this->appInstance->config->{'pbxreconnectorlogging'}->value) {
+                Daemon::log('Reconnecting to ' . $this->attrs->addr);
+            }
+            $pbx_driver_session->context = $this;
+            $pbx_driver_session->onConnected(array($this->appInstance, 'onPbxConnected'));
+            $pbx_driver_session->onFinish(array($this->appInstance, 'onPbxFinish'));
+        }
+        $this->sleep($this->interval);
+    }
+}
+?>
+```
+
 #### pool # Класс Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
 
 ```php
