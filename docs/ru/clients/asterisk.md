@@ -104,16 +104,24 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### methods # Методы
 
- -.method ```php.inline
- boolean public static getConnection ( callable $cb )
- boolean public static getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )
- ```
-   -.n Выполняет callback-функцию когда будет установлена связь с сервером. Возвращает `false` если соединение невозможно установить
-   -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../../connection) $conn, array $packet )` — вызывается когда будет установлена связь с сервером
-   -.n `:hc`$url` — адрес сервера
-   -.n `:hc`$pri` — приоритет данного вызова среди других. Чем больше значение, тем выше приоритет
+<md:method>
+boolean public static getConnection ( callable $cb )
+boolean public static getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )
 
- -.n &nbsp;
+Выполняет callback-функцию когда будет установлена связь с сервером. Возвращает `false` если соединение невозможно установить
+$cb
+callback ( [Connection](#../../connection) $conn, array $packet )
+вызывается когда будет установлена связь с сервером
+
+$url
+адрес сервера
+
+$pri
+приоритет данного вызова среди других. Чем больше значение, тем выше приоритет
+</md:method>
+
+<md:method>
+</md:method>
 
 #### connection # Класс Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
 
@@ -124,101 +132,177 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 
 ##### methods # Методы
 
- -.method ```php.inline
- void public getSipPeers ( callable $cb )
- ```
-   -.n Выводит список сконфигурированных в данный момент равноправных участников SIP с указанием их статуса
-   -.n Привилегии: system, all
-   -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
+<md:method>
+void public getSipPeers ( callable $cb )
 
- -.method ```php.inline
- void public getIaxPeers ( callable $cb )
- ```
-   -.n Выводит список всех равноправных участников IAX2 с указанием их текущего статуса
-   -.n Привилегии: none
-   -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
+Выводит список сконфигурированных в данный момент равноправных участников SIP с указанием их статуса  
+Привилегии: system, all
 
- -.method ```php.inline
- void public getConfig ( string $filename, callable $cb )
- ```
-   -.n Извлекает данные из конфигурационного файла Asterisk
-   -.n Привилегии: config, all
-   -.n.ti `:hc`$filename` — имя конфигурационного файла, из которого должны извлекаться данные
-   -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+</md:method>
 
- -.method ```php.inline
- void public getConfigJSON ( string $filename, callable $cb )
- ```
-   -.n Возвращает данные из конфигурационного файла Asterisk в JSON формате
-   -.n Привилегии: config, all
-   -.n.ti `:hc`$filename` — имя конфигурационного файла, из которого должны извлекаться данные
-   -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
+<md:method>
+void public getIaxPeers ( callable $cb )
 
- -.method ```php.inline
- void public setVar ( string $channel, string $variable, string $value, callable $cb )
- ```
-   -.n Задает значение глобальной переменной или переменной канала
-   -.n Привилегии: call, all
-   -.n.ti `:hc`$channel` — канал, для переменной которого задается значение. Если не указан, переменная будет задана как глобальная
-   -.n `:hc`$variable` — имя переменной
-   -.n `:hc`$value` — значение
-   -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
+Выводит список всех равноправных участников IAX2 с указанием их текущего статуса  
+Привилегии: none
 
- -.method ```php.inline
- void public coreShowChannels ( callable $cb )
- ```
-   -.n Отображает все активные каналы
-   -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+</md:method>
 
- -.method ```php.inline
- void public status ( callable $cb, string $channel = null )
- ```
-   -.n Представляет статус одного или более каналов с подробной информацией об их текущем состоянии
-   -.n Привилегии: call, all
-   -.n.ti `:hc`$channel` — ограничивает вывод статусом заданного канала
-   -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
+<md:method>
+void public getConfig ( string $filename, callable $cb )
 
- -.method ```php.inline
- void public redirect ( array $params, callable $cb )
- ```
-   -.n Перенаправляет канал в новый контекст, добавочный номер и приоритет диалплана
-   -.n Привилегии: call, all
-   -.n.ti `:hc`$params` — ассоциативный массив параметров команды
-   -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
+Извлекает данные из конфигурационного файла Asterisk  
+Привилегии: config, all
 
- -.method ```php.inline
- void public originate ( array $params, callable $cb )
- ```
-   -.n Формирует исходящий вызов из Asterisk и соединяет канал с контекстом/добавочным номером/приоритетом или приложением диалплана
-   -.n Привилегии: call, all
-   -.n.ti `:hc`$params` — ассоциативный массив параметров команды
-   -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
+$filename
+имя конфигурационного файла, из которого должны извлекаться данные
 
- -.method ```php.inline
- void public extensionState ( array $params, callable $cb )
- ```
-   -.n Сообщает о состоянии заданного добавочного номера. Если добавочный номер имеет подсказку, эта команда обеспечит передачу состояния устройства, соединенного с данным добавочным номером
-   -.n Привилегии: call, all
-   -.n.ti `:hc`$params` — ассоциативный массив параметров команды
-   -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+</md:method>
 
- -.method ```php.inline
- void public ping ( callable $cb )
- ```
-   -.n Посылает запрос на сервер Asterisk, чтобы убедиться, что он до сих пор отвечает. Asterisk ответит сообщением Pong. Эта команда также может использоваться, чтобы не допустить разрыва соединения в результате истечения времени ожидания
-   -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
+<md:method>
+void public getConfigJSON ( string $filename, callable $cb )
 
- -.method ```php.inline
- void public action ( string $action, callable $cb, array $params = null, array $assertion = null )
- ```
-   -.n Отправляет на сервер произвольную команду
-   -.n.ti `:hc`$action` — команда
-   -.n `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
-   -.n `:hc`$params` — ассоциативный массив параметров команды
-   -.n `:hc`$assertion` — @TODO If more events may follow as response this is a main part or full an action complete event indicating that all data has been sent
+Возвращает данные из конфигурационного файла Asterisk в JSON формате  
+Привилегии: config, all
 
- -.method ```php.inline
- void public logoff ( callable $cb = null )
- ```
-   -.n Завершает сеанс
-   -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
+$filename
+имя конфигурационного файла, из которого должны извлекаться данные
+
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+</md:method>
+
+<md:method>
+void public setVar ( string $channel, string $variable, string $value, callable $cb )
+
+Задает значение глобальной переменной или переменной канала  
+Привилегии: call, all
+
+$channel
+канал, для переменной которого задается значение. Если не указан, переменная будет задана как глобальная
+
+$variable
+имя переменной
+
+$value
+значение
+
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+</md:method>
+
+<md:method>
+void public coreShowChannels ( callable $cb )
+
+Отображает все активные каналы
+
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+</md:method>
+
+<md:method>
+void public status ( callable $cb, string $channel = null )
+
+Представляет статус одного или более каналов с подробной информацией об их текущем состоянии  
+Привилегии: call, all
+
+$channel
+ограничивает вывод статусом заданного канала
+
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+</md:method>
+
+<md:method>
+void public redirect ( array $params, callable $cb )
+
+Перенаправляет канал в новый контекст, добавочный номер и приоритет диалплана  
+Привилегии: call, all
+
+$params
+ассоциативный массив параметров команды
+
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+</md:method>
+
+<md:method>
+void public originate ( array $params, callable $cb )
+
+Формирует исходящий вызов из Asterisk и соединяет канал с контекстом/добавочным номером/приоритетом или приложением диалплана  
+Привилегии: call, all
+
+$params
+ассоциативный массив параметров команды
+
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+</md:method>
+
+<md:method>
+void public extensionState ( array $params, callable $cb )
+
+Сообщает о состоянии заданного добавочного номера. Если добавочный номер имеет подсказку, эта команда обеспечит передачу состояния устройства, соединенного с данным добавочным номером  
+Привилегии: call, all
+
+$params
+ассоциативный массив параметров команды
+
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+</md:method>
+
+<md:method>
+void public ping ( callable $cb )
+
+Посылает запрос на сервер Asterisk, чтобы убедиться, что он до сих пор отвечает. Asterisk ответит сообщением Pong. Эта команда также может использоваться, чтобы не допустить разрыва соединения в результате истечения времени ожидания
+
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+</md:method>
+
+<md:method>
+void public action ( string $action, callable $cb, array $params = null, array $assertion = null )
+
+Отправляет на сервер произвольную команду
+
+$action
+команда
+
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+
+$params
+ассоциативный массив параметров команды
+
+$assertion
+@TODO If more events may follow as response this is a main part or full an action complete event indicating that all data has been sent
+</md:method>
+
+<md:method>
+void public logoff ( callable $cb = null )
+
+Завершает сеанс
+
+$cb
+callback ( [Connection](#../) $conn, array $packet )
+вызывается когда будет получен результат
+</md:method>

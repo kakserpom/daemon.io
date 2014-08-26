@@ -10,6 +10,7 @@ class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.ph
 > Используется в {tpl-inlink network/client Network/Client} для хранения стека функций обратного вызова запросов
 
 #### methods # Методы
+
 <md:method>
 void public push ( callable $cb )
 
