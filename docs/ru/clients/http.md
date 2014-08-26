@@ -39,39 +39,63 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### methods # Методы
 
- -.method ```php.inline
- void public get ( url $url, array $params )
- void public get ( url $url, callable $resultcb )
- ```
-   -.n Осуществляет GET запрос
-   -.n.ti `:hc`$url` — запрашиваемый URL
-   -.n `:hc`$params` — ассоциативный массив параметров запроса
-   -.n `:hc`$resultcb` — `:phc`callback ( [Connection](#../../connection) $conn, boolean $success )` — Вызывается когда на запрос пришел ответ, либо произошла ошибка
+<md:method>
+void public get ( url $url, array $params )
+void public get ( url $url, callable $resultcb )
 
- -.method ```php.inline
- void public post ( url $url, array $data, array $params )
- void public post ( url $url, array $data, callable $resultcb )
- ```
-   -.n Осуществляет POST запрос
-   -.n.ti `:hc`$url` — запрашиваемый URL
-   -.n `:hc`$data` — ассоциативный массив POST-параметров
-   -.n `:hc`$params` — ассоциативный массив параметров запроса
-   -.n `:hc`$resultcb` — `:phc`callback ( [Connection](#../../connection) $conn, boolean $success )` — Вызывается когда на запрос пришел ответ, либо произошла ошибка
+Осуществляет GET запрос
 
- -.method  ```php.inline
- string public static buildUrl ( string $str )
- string public static buildUrl ( array $mixed )
- ```
-   -.n Генерирует URL-кодированную строку запроса из предоставленного ассоциативного (или индексного) массива `:hc`$mixed` или возвращает строку `:hc`$str`. В случае ошибки возвращает `:hc`false`
-   -.n.ti `:hc`$mixed` — массив параметров URL
+$url
+запрашиваемый URL
 
- -.method ```php.inline
- string public static parseUrl ( string $str )
- string public static parseUrl ( array $mixed )
- ```
-   -.n Разбирает массив `:hc`$mixed` или строку `:hc`$str` и возвращает ассоциативный массив, содержащий необходимые компоненты URL: `:hc`[$scheme, $host, $uri, $port]`. В случае ошибки возвращает `:hc`false`.  
+$params
+ассоциативный массив параметров запроса
+
+$resultcb
+callback ( [Connection](#../../connection) $conn, boolean $success )
+Вызывается когда на запрос пришел ответ, либо произошла ошибка
+</md:method>
+
+<md:method>
+void public post ( url $url, array $data, array $params )
+void public post ( url $url, array $data, callable $resultcb )
+
+Осуществляет POST запрос
+
+$url
+запрашиваемый URL
+
+$data
+ассоциативный массив POST-параметров
+
+$params
+ассоциативный массив параметров запроса
+
+$resultcb
+callback ( [Connection](#../../connection) $conn, boolean $success )
+Вызывается когда на запрос пришел ответ, либо произошла ошибка
+</md:method>
+
+<md:method>
+string public static buildUrl ( string $str )
+string public static buildUrl ( array $mixed )
+
+Генерирует URL-кодированную строку запроса из предоставленного ассоциативного (или индексного) массива `:hc`$mixed` или возвращает строку `:hc`$str`. В случае ошибки возвращает `:hc`false`
+
+$mixed
+массив параметров URL
+</md:method>
+
+<md:method>
+string public static parseUrl ( string $str )
+string public static parseUrl ( array $mixed )
+
+Разбирает массив `:hc`$mixed` или строку `:hc`$str` и возвращает ассоциативный массив, содержащий необходимые компоненты URL: `:hc`[$scheme, $host, $uri, $port]`. В случае ошибки возвращает `:hc`false`.  
    См. {tpl-outlink http://php.net/parse_url php.net/parse_url}
-   -.n.ti `:hc`$mixed` — массив параметров URL
+
+$mixed
+массив параметров URL
+</md:method>
 
 #### connection # Класс Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
 
@@ -82,47 +106,70 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 
 ##### properties # Свойства
 
- -.method `:h`array public $headers;`  
- Заголовки ответа
+<md:prop>
+array public $headers;
+Заголовки ответа
+</md:prop>
 
- -.method `:h`string public $body;`  
- Тело ответа
+<md:prop>
+string public $body;
+Тело ответа
+</md:prop>
 
- -.method `:h`integer public $contentLength;`  
- Длина тела ответа
+<md:prop>
+integer public $contentLength;
+Длина тела ответа
+</md:prop>
 
- -.method `:h`string public $cookie;`  
- Ассоциативный массив Cookies пришедших в ответе
+<md:prop>
+string public $cookie;
+Ассоциативный массив Cookies пришедших в ответе
+</md:prop>
 
- -.method `:h`boolean public $chunked;`  
- Если true, то в заголовках был получен `Transfer-Encoding: chunked`
+<md:prop>
+boolean public $chunked;
+Если true, то в заголовках был получен `Transfer-Encoding: chunked`
+</md:prop>
 
- -.method `:h`integer public $protocolError;`  
- Если не `:hc`null`, то произошла серьезная ошибка при обработке ответа на запрос. Содержит номер строки в файле {tpl-git PHPDaemon/Clients/HTTP/Connection.php Connection.php}, по которому можно определить характер ошибки
+<md:prop>
+integer public $protocolError;
+Если не `:hc`null`, то произошла серьезная ошибка при обработке ответа на запрос. Содержит номер строки в файле {tpl-git PHPDaemon/Clients/HTTP/Connection.php Connection.php}, по которому можно определить характер ошибки
+</md:prop>
 
- -.method `:h`integer public $responseCode;`  
- Код ответа. См. {tpl-outlink http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP Список кодов состояния HTTP}</a>
+<md:prop>
+integer public $responseCode;
+Код ответа. См. {tpl-outlink http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP Список кодов состояния HTTP}
+</md:prop>
 
- -.method `:h`string public $lastURL;`  
- Последний запрошенный url
+<md:prop>
+string public $lastURL;
+Последний запрошенный url
+</md:prop>
 
- -.method `:h`string public $rawHeaders;`  
- Заголовки ответа в сыром виде
+<md:prop>
+string public $rawHeaders;
+Заголовки ответа в сыром виде
+</md:prop>
 
 ##### methods # Методы
 
- -.method ```php.inline
- string public getBody ( void )
- ```
-   -.n Возвращает тело ответа
+<md:method>
+string public getBody ( void )
 
- -.method ```php.inline
- string public getHeaders ( void )
- ```
-   -.n Возвращает ассоциативный массив заголовков ответа
+Возвращает тело ответа
+</md:method>
 
- -.method ```php.inline
- string public getHeader ( string $name )
- ```
-   -.n Возвращает заголовок ответа по имени или `:hc`null`
-   -.n.ti `:hc`$name` — имя заголовка
+<md:method>
+string public getHeaders ( void )
+
+Возвращает ассоциативный массив заголовков ответа
+</md:method>
+
+<md:method>
+string public getHeader ( string $name )
+
+Возвращает заголовок ответа по имени или `:hc`null`
+
+$name
+имя заголовка
+</md:method>
