@@ -586,9 +586,17 @@ $(function(){
 			}
 		});
 
-		sidebar.on('scroll', function(event) {
-			// event.stopImmediatePropagation();
-			sideScrollBtn();
+		sidebar.on({
+			scroll: function(event) {
+				sidebar.stop();
+				sideScrollBtn();
+			},
+			mouseenter: function() {
+				$body.css('overflow', 'hidden');
+			},
+			mouseleave: function() {
+				$body.css('overflow', '');
+			},
 		});
 		sideScrollBtn();
 
