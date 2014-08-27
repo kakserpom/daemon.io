@@ -407,6 +407,8 @@ $(function(){
 			winHeight,
 			topMarg = 45;
 
+		var mainhead = $('.mainhead');
+
 		var lastPushedLink = '';
 			pushState = $.debounce(500, false, function(){
 				if(link !== lastPushedLink) {
@@ -435,6 +437,8 @@ $(function(){
 
 				if(anchors[link]) {
 					activeObj = anchors[link];
+					// console.log(link);
+					mainhead.html( $('#'+ link.replace(/\//g, '\\/')).clone() );
 				}
 
 				if(activeObj) {
