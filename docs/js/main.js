@@ -32,22 +32,44 @@ var getPageScroll = (window.pageXOffset !== undefined) ?
 		return { top: top, left: left };
 	};
 
-function getOffset(domel) {
-	var box = domel.getBoundingClientRect();
+var getOffset = document.documentElement.getBoundingClientRect ?
+	function(elem) {
+		return getOffsetRect(elem);
+	} :
+	function(elem) {
+		return getOffsetSum(elem);
+	};
 
-	var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
-	// var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+function getOffsetSum(elem) {
+	var top=0, left=0;
 
-	var clientTop = docEl.clientTop || body.clientTop || 0;
-	// var clientLeft = docEl.clientLeft || body.clientLeft || 0;
-	
-	var top = Math.round(box.top + scrollTop - clientTop);
-	var bottom = top + box.bottom - box.top;
-	// var left = box.left + scrollLeft - clientLeft;
-	
+	while(elem) {
+		top = top + parseInt(elem.offsetTop, 10);
+		left = left + parseInt(elem.offsetLeft, 10);
+		elem = elem.offsetParent;
+	}
+
 	return {
 		top: top,
-		bottom: bottom
+		left: left
+	};
+}
+
+function getOffsetRect(elem) {
+	var box = elem.getBoundingClientRect();
+
+	var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+	var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+
+	var clientTop = docEl.clientTop || body.clientTop || 0;
+	var clientLeft = docEl.clientLeft || body.clientLeft || 0;
+
+	var top  = box.top +  scrollTop - clientTop;
+	var left = box.left + scrollLeft - clientLeft;
+
+	return {
+		top: Math.round(top),
+		left: Math.round(left)
 	};
 }
 
@@ -123,9 +145,17 @@ $(function(){
 	});
 
 	// add anchors
-	$('.main_container')
-		.find(':header[id]')
-			.addClass('anchor')
+	var main_container = $('.main_container'),
+		headers = main_container.find(':header[id]');
+
+	headers.wrapInner('<div class="in" />');
+	headers.find('.in').addClass('anchor');
+
+	main_container
+		.on('click', ':header[id] .anchor, .anchor[id] pre', function() {
+			window.location = '#' + $(this).parent().attr('id');
+		});
+
 			// .each(function() {
 			// 	var that = $(this),
 			// 		path = that.find('.header-path');
@@ -136,24 +166,83 @@ $(function(){
 			// 		that.append('<span class="anchor_char">¶</span>');
 			// 	}
 			// })
-			.on('click', function() {
-				window.location = '#' + $(this).attr('id');
-			})
 
-		.end()
-		.on('click', 'a', function(event) {
-				var that = $(this),
-					href = that.attr('href');
+	main_container.on('click', 'a', function(event) {
+		var that = $(this),
+			href = that.attr('href'),
+			postfix = '',
+			parent = null;
 
-				// #./link
-				if(href.indexOf('#./') === 0) {
-					event.preventDefault();
+		// #./link
+		if(href.indexOf('#./') === 0) {
+			event.preventDefault();
 
-					var postfix = href.slice(3);
-					var parent = that.parentsUntil('.main_container').last();
+			parent = that.parentsUntil('.main_container').last();
+			postfix = href.slice(3);
+
+			if(!parent.length) {
+				return false;
+			}
+
+			if( parent.is(':header') ) {
+				header = parent;
+			}
+			else {
+				curr = parent;
+
+				while(true) {
+					header = curr.prev();
+
+					if(!header.length) {
+						return false;
+					}
+
+					if(header.is(':header')) {
+						break;
+					}
+
+					curr = header;
+				}
+			}
+
+			if(header.length) {
+				window.location = '#' + header.attr('id') + (postfix ? '/'+postfix : '');
+			}
+		}
+		else
+		// #(../)+link
+		if(href.indexOf('#../') === 0) {
+			event.preventDefault();
+
+			var matches = href.match(/^\#(\.\.\/)+/g);
+			var count = (matches[0].length - 1) / 3 + 1;
+			postfix = href.slice(matches[0].length);
+
+			var curr = that;
+			var header = null;
+			var level = 0;
+
+			loop:
+			while(true) {
+				if(level) {
+					while(true) {
+						header = curr.prev();
+
+						if(!header.length) {
+							break loop;
+						}
+
+						if(header.is('h'+ level +'[id]')) {
+							break;
+						}
+
+						curr = header;
+					}
+				} else {
+					parent = curr.parentsUntil('.main_container').last();
 
 					if(!parent.length) {
-						return false;
+						break;
 					}
 
 					if( parent.is(':header') ) {
@@ -166,7 +255,7 @@ $(function(){
 							header = curr.prev();
 
 							if(!header.length) {
-								return false;
+								break loop;
 							}
 
 							if(header.is(':header')) {
@@ -177,94 +266,33 @@ $(function(){
 						}
 					}
 
-					if(header.length) {
-						window.location = '#' + header.attr('id') + (postfix ? '/'+postfix : '');
+					level = +header[0].tagName.slice(1);
+
+					if(level - count < 1) {
+						return false;
 					}
+
+					// console.log(header, level, count);
 				}
-				else
-				// #(../)+link
-				if(href.indexOf('#../') === 0) {
-					event.preventDefault();
 
-					var matches = href.match(/^\#(\.\.\/)+/g);
-					var postfix = href.slice(matches[0].length);
-					var count = (matches[0].length - 1) / 3 + 1;
+				// console.log(header, level, count);
 
-					var curr = that;
-					var header = null;
-					var level = 0;
-
-					loop:
-					while(true) {
-						if(level) {
-							while(true) {
-								header = curr.prev();
-
-								if(!header.length) {
-									break loop;
-								}
-
-								if(header.is('h'+ level +'[id]')) {
-									break;
-								}
-
-								curr = header;
-							}
-						} else {
-							var parent = curr.parentsUntil('.main_container').last();
-
-							if(!parent.length) {
-								break;
-							}
-
-							if( parent.is(':header') ) {
-								header = parent;
-							}
-							else {
-								curr = parent;
-
-								while(true) {
-									header = curr.prev();
-
-									if(!header.length) {
-										break loop;
-									}
-
-									if(header.is(':header')) {
-										break;
-									}
-
-									curr = header;
-								}
-							}
-
-							level = +header[0].tagName.slice(1);
-
-							if(level - count < 1) {
-								return false;
-							}
-
-							// console.log(header, level, count);
-						}
-
-						// console.log(header, level, count);
-
-						if(--count < 1 || !header.length) {
-							break;
-						}
-						
-						if(--level < 1) {
-							break;
-						}
-
-						curr = header;
-					}
-
-					if(header.length) {
-						window.location = '#' + header.attr('id') + (postfix ? '/'+postfix : '');
-					}
+				if(--count < 1 || !header.length) {
+					break;
 				}
-			});
+				
+				if(--level < 1) {
+					break;
+				}
+
+				curr = header;
+			}
+
+			if(header.length) {
+				window.location = '#' + header.attr('id') + (postfix ? '/'+postfix : '');
+			}
+		}
+	});
 
 	(function(){
 		var btn = $('#langchoose'),
@@ -343,21 +371,22 @@ $(function(){
 		});
 
 		var prevLink = '',
-			iter = 0, topStart = 0, topEnd = 0,
+			iter = 0, topStart = 0, topEnd = 0, lnum = 0,
 			step = 50,
 			headers = {},
 			// items = $('.main_container').find('h2, h3, h4, h5');
-			items = $('.main_container').find('.anchor[id]');
+			items = $('.main_container').find(':header[id], .anchor[id]');
 
 		prevLink = items.eq(0).attr('id');
 
 		items.each(function() {
 			obj = $(this);
 			iter = topStart;
-			topEnd = obj.offset().top - 30;
+			topEnd = getOffset(obj[0]).top ^ 0;
 
-			while(iter < topEnd) {
-				headers['l' + (iter / step ^ 0)] = prevLink;
+			while(iter <= topEnd) {
+				lnum = iter / step ^ 0;
+				headers['l' + lnum] = prevLink;
 
 				iter += step;
 			}
@@ -369,7 +398,7 @@ $(function(){
 		var scrolledTop = 0, scrollTo = 0,
 			line = '', link = '',
 			activeObj = $(), prevActiveLink = '',
-			mainWrap = $('.main_wrap'),
+			mainWrap = $(document), //$('.main_wrap'),
 			sidebar = $('.sidebar'),
 			sidebarUl = sidebar.children('ul').first(),
 			sideParent, sideParent2,
@@ -473,17 +502,48 @@ $(function(){
 				next = curr[dir]();
 
 				if(!next.length) {
-					next = curr.parents('li').first();
-					curr = next;
+					curr = curr.parent('ul').parent('li');
+
+					if(dir === 'prev') {
+						next = curr;
+						break;
+					}
+
 					continue;
 				}
 
-				curr = next;
-				url = next.children('a').eq(0).attr('href');
-				if(url) {
-					window.location = url;
-				}
 				break;
+			}
+
+			url = next.children('a').eq(0).attr('href');
+			if(url) {
+				window.location = url;
+			}
+		};
+
+		var hMove = function(event, dir) {
+			var curr = activeObj.parent(),
+				next = null,
+				url = '';
+
+			if(dir === 'right') {
+				next = curr.children('ul').eq(0).children('li').eq(0);
+
+				if(!next.length) {
+					return vMove(event, 'next');
+				}
+			}
+			else {
+				next = curr.parent('ul').parent('li');
+
+				if(!next.length) {
+					return vMove(event, 'prev');
+				}
+			}
+
+			url = next.children('a').eq(0).attr('href');
+			if(url) {
+				window.location = url;
 			}
 		};
 
@@ -493,26 +553,24 @@ $(function(){
 			// left
 			if(superKey && event.which === 37) {
 				event.preventDefault();
-				console.log(event.which, activeObj.text());
+				hMove(event, 'left');
 			}
 			else
 			// right
 			if(superKey && event.which === 39) {
 				event.preventDefault();
-				console.log(event.which, activeObj.text());
+				hMove(event, 'right');
 			}
 			else
 			// up
 			if(superKey && event.which === 38) {
-				// event.preventDefault();
-				// console.log(event.which, activeObj.text());
+				event.preventDefault();
 				vMove(event, 'prev');
 			}
 			else
 			// down
 			if(superKey && event.which === 40) {
-				// event.preventDefault();
-				// console.log(event.which, activeObj.text());
+				event.preventDefault();
 				vMove(event, 'next');
 			}
 		});
@@ -528,7 +586,10 @@ $(function(){
 			}
 		});
 
-		sidebar.on('scroll', sideScrollBtn);
+		sidebar.on('scroll', function(event) {
+			// event.stopImmediatePropagation();
+			sideScrollBtn();
+		});
 		sideScrollBtn();
 
 

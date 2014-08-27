@@ -389,7 +389,12 @@ class Markdown(object):
 
         if len(parts):
             part = parts.pop(0)
-            result += u' -.method `:h`%s`  \n' % part
+            # result += u' -.method `:h`%s`  \n' % part
+            result += u'''
+ -.method ```php:p.inline
+ %s
+ ```
+''' % part
 
         if len(parts):
             part = parts.pop(0)
@@ -415,7 +420,12 @@ class Markdown(object):
 
         if len(parts):
             part = parts.pop(0)
-            result += u' -.method `:h`%s`  \n' % part
+            # result += u' -.method `:h`%s`  \n' % part
+            result += u'''
+ -.method ```php:p.inline
+ %s
+ ```
+''' % part
 
         if len(parts):
             part = parts.pop(0)
@@ -442,7 +452,7 @@ class Markdown(object):
         result = ''
 
         if len(parts) == 0 or (len(parts) == 1 and parts[0].strip() == ''):
-            return ' -.method &nbsp;'
+            return ' -.method.fake &nbsp;'
 
         # 1. php код
         code = parts.pop(0)
