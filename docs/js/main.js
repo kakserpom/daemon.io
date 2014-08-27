@@ -464,6 +464,59 @@ $(function(){
 
 		mainWrap.on('scroll', setActiveSection);
 
+		var vMove = function(event, dir) {
+			var curr = activeObj.parent(),
+				next = null,
+				url = '';
+
+			while(1) {
+				next = curr[dir]();
+
+				if(!next.length) {
+					next = curr.parents('li').first();
+					curr = next;
+					continue;
+				}
+
+				curr = next;
+				url = next.children('a').eq(0).attr('href');
+				if(url) {
+					window.location = url;
+				}
+				break;
+			}
+		};
+
+		$(document).keydown(function(event) {
+			var superKey = event.ctrlKey || event.altKey;
+
+			// left
+			if(superKey && event.which === 37) {
+				event.preventDefault();
+				console.log(event.which, activeObj.text());
+			}
+			else
+			// right
+			if(superKey && event.which === 39) {
+				event.preventDefault();
+				console.log(event.which, activeObj.text());
+			}
+			else
+			// up
+			if(superKey && event.which === 38) {
+				// event.preventDefault();
+				// console.log(event.which, activeObj.text());
+				vMove(event, 'prev');
+			}
+			else
+			// down
+			if(superKey && event.which === 40) {
+				// event.preventDefault();
+				// console.log(event.which, activeObj.text());
+				vMove(event, 'next');
+			}
+		});
+
 		setTimeout(setActiveSection, 1000);
 
 		// тень сайдбара
