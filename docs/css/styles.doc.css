@@ -375,7 +375,7 @@ header menu a:hover {
 
 .mainhead {
     position: fixed;
-    z-index: 1005;
+    z-index: 905;
     top: 35px;
     left: 240px;
     right: 0;

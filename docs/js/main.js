@@ -167,6 +167,7 @@ $(function(){
 			// 	}
 			// })
 
+	// обработка сцец ссылок ./ и ../
 	main_container.on('click', 'a', function(event) {
 		var that = $(this),
 			href = that.attr('href'),
@@ -294,6 +295,7 @@ $(function(){
 		}
 	});
 
+	//выбор языка
 	(function(){
 		var btn = $('#langchoose'),
 			bar = $('.lang-chooser').eq(0);
@@ -330,9 +332,11 @@ $(function(){
 		'string': 1,
 		'integer': 1,
 		'float': 1,
-		'callable': 1
+		'callable': 1,
+		'mixed': '<a href="http://php.net/manual/ru/language.pseudo-types.php" target="_blank" />'
 	};
 
+	// типы переменных делаем ссылками
 	$('.code_highlight, pre.inline code').each(function(){
 		$('.hljs-keyword', this).each(function(){
 			var obj = $(this);
@@ -340,9 +344,10 @@ $(function(){
 
 			if(phpTypes[text] === 1) {
 				obj.wrap('<a href="http://php.net/manual/'+ global_lang +'/language.types.'+ text +'.php" target="_blank" />');
-			} else
-			if (text === 'mixed') {
-				obj.wrap('<a href="http://php.net/manual/ru/language.pseudo-types.php" target="_blank" />');
+			}
+			else
+			if (phpTypes[text]) {
+				obj.wrap( phpTypes[text] );
 			}
 		});
 
@@ -359,171 +364,93 @@ $(function(){
 	$('.hljs-class .hljs-title a').addClass('hljs-title');
 
 
-	(function() {
-		var obj;
+	var currLink = null,
+		prevLink = null,
+		currNavItem = null,
+		prevNavItem = null;
 
-		var anchors = {}, href = '';
+	var wrapSidebar = $('.sidebar'),
+		wrapSidebarUl = wrapSidebar.children('ul').eq(0),
+		wrapContent = $(document);
 
-		$('.sidebar a').each(function() {
-			obj = $(this);
-			href = obj.attr('href');
-			anchors[href.slice(1)] = obj;
-		});
-
-		var prevLink = '',
-			iter = 0, topStart = 0, topEnd = 0, lnum = 0,
-			step = 50,
-			headers = {},
-			// items = $('.main_container').find('h2, h3, h4, h5');
-			items = $('.main_container').find(':header[id], .anchor[id]');
-
-		prevLink = items.eq(0).attr('id');
-
-		items.each(function() {
-			obj = $(this);
-			iter = topStart;
-			topEnd = getOffset(obj[0]).top ^ 0;
-
-			while(iter <= topEnd) {
-				lnum = iter / step ^ 0;
-				headers['l' + lnum] = prevLink;
-
-				iter += step;
-			}
-
-			prevLink = obj.attr('id');
-			topStart = topEnd;
-		});
-
-		var scrolledTop = 0, scrollTo = 0,
-			line = '', link = '',
-			activeObj = $(), prevActiveLink = '',
-			mainWrap = $(document), //$('.main_wrap'),
-			sidebar = $('.sidebar'),
-			sidebarUl = sidebar.children('ul').first(),
-			sideParent, sideParent2,
-			sideRoot,
-			sideNext, sidePrev,
-			winHeight,
-			topMarg = 45;
-
-		var mainhead = $('.mainhead').eq(0),
-			mainheadDom = mainhead[0];
-
+	(function(){
+		var scrollTo = 0;
 		var lastPushedLink = '';
-			pushState = $.debounce(500, false, function(){
-				if(link !== lastPushedLink) {
-					history.pushState(null, null, '#'+ link);
-					lastPushedLink = link;
-				}
-			});
+
+		// переход по разделам
+		var pushState = $.debounce(500, false, function(){
+			if(currLink !== lastPushedLink) {
+				history.pushState(null, null, currLink);
+				lastPushedLink = currLink;
+			}
+		});
 
 		var scrollToDo = $.throttle(700, false, function(){
-			sidebar.stop().animate({
+			wrapSidebar.stop().animate({
 				scrollTop: scrollTo
 			}, 400);
 		});
 
-
-		var currHeadTopLimit = 0;
-
-		mainWrap.on('scroll', function() {
-			// console.log( getOffset(mainheadDom) );
-			var d = currHeadTopLimit - getOffset(mainheadDom).top;
-console.log(d);
-			if(d < 0) {
-				mainhead.css('marginTop', d);
+		// тень сайдбара
+		var wrapSidebarHasClass = false;
+		var wrapSidebarScrollBtn = $.throttle(200, false, function(){
+			if(wrapSidebar.scrollTop() >= wrapSidebarUl.height() - wrapSidebar.height()) {
+				if(wrapSidebarHasClass) {
+					wrapSidebar.removeClass('showbtn');
+					wrapSidebarHasClass = false;
+				}
+			} else {
+				if(!wrapSidebarHasClass) {
+					wrapSidebar.addClass('showbtn');
+					wrapSidebarHasClass = true;
+				}
 			}
 		});
 
+		wrapSidebar.on({
+			scroll: function(event) {
+				wrapSidebar.stop();
+				wrapSidebarScrollBtn();
+			},
+			mouseenter: function() {
+				$body.css('overflow', 'hidden');
+			},
+			mouseleave: function() {
+				$body.css('overflow', '');
+			},
+		});
+
+		wrapSidebarScrollBtn();
+
+		wrapSidebar.find('.downbtn').on('click', function() {
+			scrollTo = wrapSidebar.scrollTop() + 100;
+			scrollToDo();
+		});
+
 		function setMainhead() {
-			var currHead = $('.main_wrap #'+ link.replace(/\//g, '\\/')),
-				nextHeadNavLink = getNavElemH('right').children('a'),
-				nextHead = $('.main_wrap '+ nextHeadNavLink.attr('href').replace(/\//g, '\\/') );
-				nextHeadDom = nextHead[0];
-
-			currHeadTopLimit = getOffset(nextHeadDom).top;
-
-			mainhead.css('marginTop', 0).html( currHead.clone() );
-			console.log( 'a', getOffset(nextHeadDom) );
+			console.log('head');
 		}
 
-		// @TODO учитывать малую высоту окна и большую высоту секции в навигации
-		function setActiveSection() {
-			// scrolledTop = getPageScroll().top;
-			scrolledTop = mainWrap.scrollTop();
-			line = 'l' + (scrolledTop / step ^ 0);
-			link = headers[line];
+		function setNavActive() {
+			console.log('nav');
+		}
 
-			if(typeof link !== "undefined" && link !== prevActiveLink) {
-				if(activeObj) {
-					activeObj.removeClass('active');
-				}
+		$(':header[id], .anchor[id]').waypoint(function() {
+			var that = this;
 
-				if(anchors[link]) {
-					activeObj = anchors[link];
-					setMainhead();
-				}
-
-				if(activeObj) {
-					activeObj.addClass('active');
-					prevActiveLink = link;
-
-					activeObj.siblings('ul').add(activeObj.parents('ul')).show();
-
-					sideParent = activeObj.parent();
-					sideParent2 = sideParent.parent().parent();
-					sideParent.siblings('li').find('ul').hide();
-					sideParent2.siblings('li').children('ul').hide();
-					
-					sideRoot = activeObj.parents('li').last();
-
-					sideRoot.addClass('gact')
-						.siblings().removeClass('gact');
-
-					sideNext = sideRoot.next();
-					sidePrev = sideRoot.prev();
-
-					winHeight = getWindowHeight();
-
-
-					if(sideNext.length) {
-						sideNextRect = sideNext[0].getBoundingClientRect();
-						
-						if(sideNextRect.bottom > winHeight) {
-							scrollTo = sidebar.scrollTop() + sideNext.position().top - sidebar.height();
-							// scrollToDo();
-						}
-					} else {
-						scrollTo = sidebarUl.height();
-						// scrollToDo();
-					}
-
-
-					if(sidePrev.length) {
-						sidePrevRect = sidePrev[0].getBoundingClientRect();
-						
-						if(sidePrevRect.top < 0) {
-							scrollTo = sidebar.scrollTop() + sidePrevRect.top - topMarg;
-							// scrollToDo();
-						}
-					} else {
-						scrollTo = 0;
-						// scrollToDo();
-					}
-
-					scrollToDo();
-				}
+			if(that.tagName.slice(0,1).toLowerCase() === 'h') {
+				setMainhead();
 			}
 
+			setNavActive();
 			pushState();
-		}
+		}, {offset: -1});
+	})();
 
-		mainWrap.on('scroll', setActiveSection);
-
-
+	// навигация клавиатурой
+	(function(){
 		function getNavElemV(dir) {
-			var curr = activeObj.parent(),
+			var curr = currNavItem.parent(),
 				next = null;
 
 			while(1) {
@@ -547,7 +474,7 @@ console.log(d);
 		}
 
 		function getNavElemH(dir) {
-			var curr = activeObj.parent(),
+			var curr = currNavItem.parent(),
 				next = null;
 
 			if(dir === 'right') {
@@ -612,37 +539,6 @@ console.log(d);
 				event.preventDefault();
 				vMove('next');
 			}
-		});
-
-		setTimeout(setActiveSection, 1000);
-
-		// тень сайдбара
-		var sideScrollBtn = $.throttle(200, false, function(){
-			if(sidebar.scrollTop() >= sidebarUl.height() - sidebar.height()) {
-				sidebar.removeClass('showbtn');
-			} else {
-				sidebar.addClass('showbtn');
-			}
-		});
-
-		sidebar.on({
-			scroll: function(event) {
-				sidebar.stop();
-				sideScrollBtn();
-			},
-			mouseenter: function() {
-				$body.css('overflow', 'hidden');
-			},
-			mouseleave: function() {
-				$body.css('overflow', '');
-			},
-		});
-		sideScrollBtn();
-
-
-		sidebar.find('.downbtn').on('click', function() {
-			scrollTo = sidebar.scrollTop() + 100;
-			scrollToDo();
 		});
 	})();
 });
