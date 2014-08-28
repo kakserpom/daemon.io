@@ -407,7 +407,8 @@ $(function(){
 			winHeight,
 			topMarg = 45;
 
-		var mainhead = $('.mainhead');
+		var mainhead = $('.mainhead').eq(0),
+			mainheadDom = mainhead[0];
 
 		var lastPushedLink = '';
 			pushState = $.debounce(500, false, function(){
@@ -423,6 +424,30 @@ $(function(){
 			}, 400);
 		});
 
+
+		var currHeadTopLimit = 0;
+
+		mainWrap.on('scroll', function() {
+			// console.log( getOffset(mainheadDom) );
+			var d = currHeadTopLimit - getOffset(mainheadDom).top;
+console.log(d);
+			if(d < 0) {
+				mainhead.css('marginTop', d);
+			}
+		});
+
+		function setMainhead() {
+			var currHead = $('.main_wrap #'+ link.replace(/\//g, '\\/')),
+				nextHeadNavLink = getNavElemH('right').children('a'),
+				nextHead = $('.main_wrap '+ nextHeadNavLink.attr('href').replace(/\//g, '\\/') );
+				nextHeadDom = nextHead[0];
+
+			currHeadTopLimit = getOffset(nextHeadDom).top;
+
+			mainhead.css('marginTop', 0).html( currHead.clone() );
+			console.log( 'a', getOffset(nextHeadDom) );
+		}
+
 		// @TODO учитывать малую высоту окна и большую высоту секции в навигации
 		function setActiveSection() {
 			// scrolledTop = getPageScroll().top;
@@ -437,8 +462,7 @@ $(function(){
 
 				if(anchors[link]) {
 					activeObj = anchors[link];
-					// console.log(link);
-					mainhead.html( $('#'+ link.replace(/\//g, '\\/')).clone() );
+					setMainhead();
 				}
 
 				if(activeObj) {
@@ -497,10 +521,10 @@ $(function(){
 
 		mainWrap.on('scroll', setActiveSection);
 
-		var vMove = function(event, dir) {
+
+		function getNavElemV(dir) {
 			var curr = activeObj.parent(),
-				next = null,
-				url = '';
+				next = null;
 
 			while(1) {
 				next = curr[dir]();
@@ -519,37 +543,48 @@ $(function(){
 				break;
 			}
 
-			url = next.children('a').eq(0).attr('href');
-			if(url) {
-				window.location = url;
-			}
-		};
+			return next;
+		}
 
-		var hMove = function(event, dir) {
+		function getNavElemH(dir) {
 			var curr = activeObj.parent(),
-				next = null,
-				url = '';
+				next = null;
 
 			if(dir === 'right') {
 				next = curr.children('ul').eq(0).children('li').eq(0);
 
 				if(!next.length) {
-					return vMove(event, 'next');
+					return getNavElemV('next');
 				}
 			}
 			else {
 				next = curr.parent('ul').parent('li');
 
 				if(!next.length) {
-					return vMove(event, 'prev');
+					return getNavElemV('prev');
 				}
 			}
 
-			url = next.children('a').eq(0).attr('href');
+			return next;
+		}
+
+		function vMove(dir) {
+			var next = getNavElemV(dir);
+			var url = next.children('a').eq(0).attr('href');
+
 			if(url) {
 				window.location = url;
 			}
-		};
+		}
+
+		function hMove(dir) {
+			var next = getNavElemH(dir);
+			var url = next.children('a').eq(0).attr('href');
+
+			if(url) {
+				window.location = url;
+			}
+		}
 
 		$(document).keydown(function(event) {
 			var superKey = event.ctrlKey || event.altKey;
@@ -557,25 +592,25 @@ $(function(){
 			// left
 			if(superKey && event.which === 37) {
 				event.preventDefault();
-				hMove(event, 'left');
+				hMove('left');
 			}
 			else
 			// right
 			if(superKey && event.which === 39) {
 				event.preventDefault();
-				hMove(event, 'right');
+				hMove('right');
 			}
 			else
 			// up
 			if(superKey && event.which === 38) {
 				event.preventDefault();
-				vMove(event, 'prev');
+				vMove('prev');
 			}
 			else
 			// down
 			if(superKey && event.which === 40) {
 				event.preventDefault();
-				vMove(event, 'next');
+				vMove('next');
 			}
 		});
 

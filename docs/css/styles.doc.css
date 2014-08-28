@@ -380,11 +380,10 @@ header menu a:hover {
     left: 240px;
     right: 0;
     /*height: 50px;*/
-    padding: 10px 0;
-    background: #fff;
-    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.6);
-    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.6);
-    box-shadow: 0 1px 3px rgba(0,0,0,.6);
+    /*padding: 10px 0;*/
+    padding: 15px 0 5px;
+    background: #F9F9F9;
+    opacity: 0.6;
 }
 .mainhead h1,
 .mainhead h2,
@@ -394,7 +393,7 @@ header menu a:hover {
 .mainhead h6 {
     margin: 0;
     padding: 0 20px;
-    font-size: 20px;
+    /*font-size: 20px;*/
 }
 .mainhead .header-path {
     opacity: 1;
