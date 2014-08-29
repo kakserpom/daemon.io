@@ -367,11 +367,14 @@ $(function(){
 	var currLink = null,
 		prevLink = null,
 		currNavItem = null,
-		prevNavItem = null;
+		prevNavItem = null,
+		currNavLink = null,
+		prevNavLink = null;
 
 	var wrapSidebar = $('.sidebar'),
 		wrapSidebarUl = wrapSidebar.children('ul').eq(0),
-		wrapContent = $(document);
+		wrapContent = $(document),
+		wrapWaypoints = $(':header[id], .anchor[id]');
 
 	(function(){
 		var scrollTo = 0;
@@ -427,24 +430,116 @@ $(function(){
 			scrollToDo();
 		});
 
-		function setMainhead() {
-			console.log('head');
+		function setMainhead(header) {
+			// console.log('head');
 		}
 
-		function setNavActive() {
-			console.log('nav');
-		}
+		var sideParent, sideParent2, sideRoot, sideNext, sidePrev,
+			winHeight, sideNextRect, sidePrevRect,
+			upheader, topMarg = 45;
 
-		$(':header[id], .anchor[id]').waypoint(function() {
-			var that = this;
+		function setNavActive(header, dir) {
+			// console.log(header, dir);
 
-			if(that.tagName.slice(0,1).toLowerCase() === 'h') {
-				setMainhead();
+			prevNavLink = currNavLink;
+			currNavLink = wrapSidebar.find('a[href="'+ currLink +'"]');
+
+			prevNavItem = currNavItem;
+			currNavItem = currNavLink.parent();
+
+			if(prevNavLink) {
+				prevNavLink.removeClass('active');
 			}
 
-			setNavActive();
+			if(!currNavLink.length) {
+				return;
+			}
+
+			currNavLink.addClass('active');
+
+			currNavLink.siblings('ul').add(currNavLink.parents('ul')).show();
+
+			sideParent = currNavLink.parent();
+			sideParent2 = sideParent.parent().parent();
+			sideParent.siblings('li').find('ul').hide();
+			sideParent2.siblings('li').children('ul').hide();
+			
+			sideRoot = currNavLink.parents('li').last();
+
+			sideRoot.addClass('gact')
+				.siblings().removeClass('gact');
+
+			sideNext = sideRoot.next();
+			sidePrev = sideRoot.prev();
+
+			winHeight = getWindowHeight();
+
+
+			if(sideNext.length) {
+				sideNextRect = sideNext[0].getBoundingClientRect();
+				
+				if(sideNextRect.bottom > winHeight) {
+					scrollTo = wrapSidebar.scrollTop() + sideNext.position().top - wrapSidebar.height();
+					scrollToDo();
+				}
+			} else {
+				scrollTo = wrapSidebarUl.height();
+				scrollToDo();
+			}
+
+
+			if(sidePrev.length) {
+				sidePrevRect = sidePrev[0].getBoundingClientRect();
+				
+				if(sidePrevRect.top < 0) {
+					scrollTo = wrapSidebar.scrollTop() + sidePrevRect.top - topMarg;
+					scrollToDo();
+				}
+			} else {
+				scrollTo = 0;
+				scrollToDo();
+			}
+
+			// scrollToDo();
+		}
+
+		var callbackWaypoints = function(dir, elem) {
+			var that = this;
+
+			if(elem) {
+				that = elem;
+			}
+
+			if(dir === 'up') {
+				upheader = $(that).waypoint('prev').get(0);
+				if(upheader) that = upheader;
+			}
+
+			prevLink = currLink;
+			currLink = '#' + that.id;
+
+			setNavActive(that, dir);
+
+			if(that.tagName.slice(0,1).toLowerCase() === 'h') {
+				setMainhead(that, dir);
+			}
+
 			pushState();
-		}, {offset: -1});
+		};
+
+		var callbackWaypointsDebounce = $.debounce(100, false, callbackWaypoints);
+
+		wrapWaypoints.waypoint(callbackWaypointsDebounce, {
+			enabled: false
+			// offset: -1
+		});
+
+		wrapWaypoints.waypoint('enable');
+		callbackWaypoints('down', $(window.location.hash.replace(/\//g, '\\/')).get(0));
+
+		// .waypoint(callbackWaypoints, {
+		// 	// offset: -1
+		// });
 	})();
 
 	// навигация клавиатурой
