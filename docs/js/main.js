@@ -391,7 +391,7 @@ $(function(){
 		var scrollToDo = $.throttle(700, false, function(){
 			wrapSidebar.stop().animate({
 				scrollTop: scrollTo
-			}, 400);
+			}, 200);
 		});
 
 		// тень сайдбара
@@ -412,7 +412,6 @@ $(function(){
 
 		wrapSidebar.on({
 			scroll: function(event) {
-				wrapSidebar.stop();
 				wrapSidebarScrollBtn();
 			},
 			mouseenter: function() {
@@ -434,9 +433,9 @@ $(function(){
 			// console.log('head');
 		}
 
-		var sideParent, sideParent2, sideRoot, sideNext, sidePrev,
-			winHeight, sideNextRect, sidePrevRect,
-			upheader, topMarg = 45;
+		var wrapSidebarUlOffset, currNavItemRect, neighbor, neighborRect,
+			rectTop, rectBot, winHeight;
+			topMarg = 45;
 
 		function setNavActive(header, dir) {
 			// console.log(header, dir);
@@ -457,52 +456,44 @@ $(function(){
 
 			currNavLink.addClass('active');
 
-			currNavLink.siblings('ul').add(currNavLink.parents('ul')).show();
+			currNavItem
+				.children('ul').show()
+				.children('li').children('ul').hide();
+			currNavItem.parents('li').addBack().siblings('li').children('ul').hide();
+			currNavItem.parents('ul').show();
 
-			sideParent = currNavLink.parent();
-			sideParent2 = sideParent.parent().parent();
-			sideParent.siblings('li').find('ul').hide();
-			sideParent2.siblings('li').children('ul').hide();
-			
-			sideRoot = currNavLink.parents('li').last();
+			wrapSidebarUlOffset = wrapSidebarUl.offset();
+			currNavItemRect = getOffset(currNavItem.get(0));
+			rectTop = currNavItemRect.top - wrapSidebarUlOffset.top;
+			rectBot = rectTop + currNavItem.height();
+			neighbor = getNavElemV(dir === 'down' ? 'next' : 'prev').get(0);
 
-			sideRoot.addClass('gact')
-				.siblings().removeClass('gact');
-
-			sideNext = sideRoot.next();
-			sidePrev = sideRoot.prev();
+			if(neighbor) {
+				neighborRect = getOffset(neighbor);
+				rectTop = Math.min(rectTop, neighborRect.top - wrapSidebarUlOffset.top);
+				rectBot = Math.max(rectBot, neighborRect.top - wrapSidebarUlOffset.top + neighbor.clientHeight);
+			}
 
 			winHeight = getWindowHeight();
-
-
-			if(sideNext.length) {
-				sideNextRect = sideNext[0].getBoundingClientRect();
-				
-				if(sideNextRect.bottom > winHeight) {
-					scrollTo = wrapSidebar.scrollTop() + sideNext.position().top - wrapSidebar.height();
-					scrollToDo();
-				}
-			} else {
-				scrollTo = wrapSidebarUl.height();
-				scrollToDo();
-			}
-
-
-			if(sidePrev.length) {
-				sidePrevRect = sidePrev[0].getBoundingClientRect();
-				
-				if(sidePrevRect.top < 0) {
-					scrollTo = wrapSidebar.scrollTop() + sidePrevRect.top - topMarg;
-					scrollToDo();
-				}
-			} else {
-				scrollTo = 0;
-				scrollToDo();
-			}
-
-			// scrollToDo();
+			scrollTo = (rectTop + rectBot - winHeight)/2 + topMarg;
+			scrollToDo();
 		}
 
+		var callWaypointByHash = function() {
+			var hashObj, hash = window.location.hash;
+			if(hash) {
+				hashObj = $(hash.replace(/\//g, '\\/'));
+			}
+
+			if(hashObj && hashObj.length) {
+				callbackWaypoints('down', hashObj.get(0));
+			}
+			else {
+				callbackWaypoints('down', wrapWaypoints.get(0));
+			}
+		};
+
+		var upheader;
 		var callbackWaypoints = function(dir, elem) {
 			var that = this;
 
@@ -527,30 +518,29 @@ $(function(){
 			pushState();
 		};
 
-		var callbackWaypointsDebounce = $.debounce(100, false, callbackWaypoints);
+		// var callbackWaypointsDebounce = $.throttle(100, false, callbackWaypoints);
+		var callbackWaypointsDebounce = $.debounce(50, false, callbackWaypoints);
 
+		// ставим брейкпоинты в выключенном режиме, чтобы сразу все не сработали если находимся внизу страницы
 		wrapWaypoints.waypoint(callbackWaypointsDebounce, {
 			enabled: false
 			// offset: -1
 		});
 
+		// включаем брейкпоинты и активируем текущий по хештегу
 		wrapWaypoints.waypoint('enable');
-		callbackWaypoints('down', $(window.location.hash.replace(/\//g, '\\/')).get(0));
+		callWaypointByHash();
 
-		// .waypoint(callbackWaypoints, {
-		// 	// offset: -1
-		// });
-	})();
 
-	// навигация клавиатурой
-	(function(){
+		// навигация клавиатурой
 		function getNavElemV(dir) {
-			var curr = currNavItem.parent(),
+			var curr = currNavItem,
 				next = null;
 
-			while(1) {
-				next = curr[dir]();
+			while(true) {
+				if(!curr.length) break;
 
+				next = curr[dir]();
 				if(!next.length) {
 					curr = curr.parent('ul').parent('li');
 
@@ -569,7 +559,7 @@ $(function(){
 		}
 
 		function getNavElemH(dir) {
-			var curr = currNavItem.parent(),
+			var curr = currNavItem,
 				next = null;
 
 			if(dir === 'right') {

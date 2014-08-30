@@ -1,4 +1,4 @@
-### telnethoneypot # ServerStatus #> ServerStatus {tpl-git PHPDaemon/Applications/ServerStatus.php}
+### serverstatus # ServerStatus #> ServerStatus {tpl-git PHPDaemon/Applications/ServerStatus.php}
 
 ```php:p
 namespace PHPDaemon\Applications;
