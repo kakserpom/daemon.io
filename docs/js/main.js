@@ -148,8 +148,7 @@ $(function(){
 	var main_container = $('.main_container'),
 		headers = main_container.find(':header[id]');
 
-	headers.wrapInner('<div class="in" />');
-	headers.find('.in').addClass('anchor');
+	headers.wrapInner('<div class="in anchor" />');
 
 	main_container
 		.on('click', ':header[id] .anchor, .anchor[id] pre', function() {
@@ -476,43 +475,27 @@ $(function(){
 			scrollToDo();
 		}
 
-		var callbackNavWaypoints = function(dir, elem) {
-			var that = this;
-
-			if(elem) {
-				that = elem;
-			}
-
-			if(dir === 'up') {
-				var upheader = $(that).waypoint('prev').get(0);
-				if(upheader) that = upheader;
-			}
-
-			prevLink = currLink;
-			currLink = '#' + that.id;
-
-			setNavActive(that, dir);
-			pushState();
-		};
-
-		var callbackNavWaypointsDebounce = $.debounce(50, false, callbackNavWaypoints);
-
 		var wrapMainhead = $('.mainhead').eq(0),
 			wrapMainheadDom = wrapMainhead.get(0),
 			wrapMainheadTop = parseInt(wrapMainhead.css('top'), 10);
+
+		function getClearedHeadClone(obj) {
+			var clone = obj.clone();
+			clone.removeAttr('id');
+			return clone;
+		}
 
 		function fixCurrHead(dir) {
 			if(dir === 'down') {
 				var head = null;
 
 				if(this !== window) {
-					head = $(this).clone();
-					head.removeAttr('id');
+					head = getClearedHeadClone($(this));
 				}
 				else {
 					head = '';
 				}
-				
+
 				wrapMainhead
 					.html(head)
 					.attr('class', 'mainhead m-float')
@@ -523,7 +506,7 @@ $(function(){
 				if(curr.length) {
 					curr = $(curr.attr('href').replace(/\//g, '\\/'), wrapMain);
 					if(curr.length) {
-						wrapMainhead.html( curr.clone() );
+						wrapMainhead.html( getClearedHeadClone(curr) );
 						fixPrevHead.apply(this, ['down']);
 						return;
 					}
@@ -540,13 +523,15 @@ $(function(){
 					.css('top', getOffset(this).top);
 			}
 			else {
-				var curr = $(currLink.replace(/\//g, '\\/'), wrapMain).get(0);
-				if(curr && getPageScroll().top > 0) {
-					fixCurrHead.apply(curr, ['down']);
+				if(currLink) {
+					var curr = $(currLink.replace(/\//g, '\\/'), wrapMain).get(0);
+					if(curr && getPageScroll().top > 0) {
+						fixCurrHead.apply(curr, ['down']);
+						return;
+					}
 				}
-				else {
-					fixCurrHead.apply(null, ['down']);
-				}
+
+				fixCurrHead.apply(null, ['down']);
 			}
 		}
 
@@ -557,34 +542,51 @@ $(function(){
 			}
 
 			if(hashObj && hashObj.length) {
-				callbackNavWaypoints('down', hashObj.get(0));
+				callbackNavWaypointsDebounce('down', hashObj.get(0));
 			}
 			else {
-				callbackNavWaypoints('down', wrapHeadvWaypoints.get(0));
+				callbackNavWaypointsDebounce('down', wrapHeadvWaypoints.get(0));
 			}
 		};
+
+		var isCallbackNavWaypointsCalled = false;
+		var callbackNavWaypoints = function(dir, elem) {
+			isCallbackNavWaypointsCalled = true;
+
+			var that = this;
+
+			if(elem) {
+				that = elem;
+			}
+			
+			if(dir === 'up') {
+				var upheader = $(that).waypoint('prev').get(0);
+				if(upheader) that = upheader;
+			}
+
+			prevLink = currLink;
+			currLink = '#' + that.id;
+
+			setNavActive(that, dir);
+			pushState();
+		};
+
+		var callbackNavWaypointsDebounce = $.debounce(50, false, callbackNavWaypoints);
 
 		wrapNavWaypoints.waypoint(callbackNavWaypointsDebounce);
 
 		wrapHeadvWaypoints.waypoint(fixCurrHead);
 		wrapHeadvWaypoints.waypoint(fixPrevHead, {
-			// offset: function() {
-			// 	var rect = getOffset(this);
-			// 	$('body').append('<div style="position: absolute; top: '+rect.top+'px; background: #f00; width: 100%; height: 1px;" />');
-			// 	var offset = $(this).offset();
-			// 	$('body').append('<div style="position: absolute; top: '+(offset.top - $(this).height())+'px; background: #00f; width: 100%; height: 1px;" />');
-			// 	// return $(this).height();
-			// 	return wrapMainheadOffsetTop;
-			// 	// return getNavElemV('next', $(this)).outerHeight();
-			// }
 			offset: wrapMainheadTop
 		});
 
-		setTimeout(function(){
-			if(currLink === null) {
-				callWaypointByHash();
-			}
-		}, 200);
+		$win.on('load.waypoints.extra', function() {
+			setTimeout(function(){
+				if(!isCallbackNavWaypointsCalled) {
+					callWaypointByHash();
+				}
+			}, 100);
+		});
 
 
 		function getNavElemPrev(elem) {
