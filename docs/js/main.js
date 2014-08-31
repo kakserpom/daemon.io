@@ -373,8 +373,9 @@ $(function(){
 
 	var wrapSidebar = $('.sidebar'),
 		wrapSidebarUl = wrapSidebar.children('ul').eq(0),
-		wrapContent = $(document),
-		wrapWaypoints = $(':header[id], .anchor[id]');
+		wrapMain = $('.main_wrap'),
+		wrapNavWaypoints = $(':header[id], .anchor[id]');
+		wrapHeadvWaypoints = wrapNavWaypoints.filter(':header');
 
 	(function(){
 		var scrollTo = 0;
@@ -429,10 +430,6 @@ $(function(){
 			scrollToDo();
 		});
 
-		function setMainhead(header) {
-			// console.log('head');
-		}
-
 		var wrapSidebarUlOffset, currNavItemRect, neighbor, neighborRect,
 			rectTop, rectBot, winHeight;
 			topMarg = 45;
@@ -479,22 +476,7 @@ $(function(){
 			scrollToDo();
 		}
 
-		var callWaypointByHash = function() {
-			var hashObj, hash = window.location.hash;
-			if(hash) {
-				hashObj = $(hash.replace(/\//g, '\\/'));
-			}
-
-			if(hashObj && hashObj.length) {
-				callbackWaypoints('down', hashObj.get(0));
-			}
-			else {
-				callbackWaypoints('down', wrapWaypoints.get(0));
-			}
-		};
-
-		var upheader;
-		var callbackWaypoints = function(dir, elem) {
+		var callbackNavWaypoints = function(dir, elem) {
 			var that = this;
 
 			if(elem) {
@@ -502,7 +484,7 @@ $(function(){
 			}
 
 			if(dir === 'up') {
-				upheader = $(that).waypoint('prev').get(0);
+				var upheader = $(that).waypoint('prev').get(0);
 				if(upheader) that = upheader;
 			}
 
@@ -510,35 +492,143 @@ $(function(){
 			currLink = '#' + that.id;
 
 			setNavActive(that, dir);
-
-			if(that.tagName.slice(0,1).toLowerCase() === 'h') {
-				setMainhead(that, dir);
-			}
-
 			pushState();
 		};
 
-		// var callbackWaypointsDebounce = $.throttle(100, false, callbackWaypoints);
-		var callbackWaypointsDebounce = $.debounce(50, false, callbackWaypoints);
+		var callbackNavWaypointsDebounce = $.debounce(50, false, callbackNavWaypoints);
 
-		// ставим брейкпоинты в выключенном режиме, чтобы сразу все не сработали если находимся внизу страницы
-		wrapWaypoints.waypoint(callbackWaypointsDebounce, {
-			enabled: false
-			// offset: -1
+		var wrapMainhead = $('.mainhead').eq(0),
+			wrapMainheadDom = wrapMainhead.get(0),
+			wrapMainheadTop = parseInt(wrapMainhead.css('top'), 10);
+
+		function fixCurrHead(dir) {
+			if(dir === 'down') {
+				var head = null;
+
+				if(this !== window) {
+					head = $(this).clone();
+					head.removeAttr('id');
+				}
+				else {
+					head = '';
+				}
+				
+				wrapMainhead
+					.html(head)
+					.attr('class', 'mainhead m-float')
+					.css('top', wrapMainheadTop);
+			}
+			else {
+				var curr = getNavElemPrev().children('a').eq(0);
+				if(curr.length) {
+					curr = $(curr.attr('href').replace(/\//g, '\\/'), wrapMain);
+					if(curr.length) {
+						wrapMainhead.html( curr.clone() );
+						fixPrevHead.apply(this, ['down']);
+						return;
+					}
+				}
+
+				wrapMainhead.html('');
+			}
+		}
+
+		function fixPrevHead(dir) {
+			if(dir === 'down') {
+				wrapMainhead
+					.attr('class', 'mainhead m-fixed')
+					.css('top', getOffset(this).top);
+			}
+			else {
+				var curr = $(currLink.replace(/\//g, '\\/'), wrapMain).get(0);
+				if(curr && getPageScroll().top > 0) {
+					fixCurrHead.apply(curr, ['down']);
+				}
+				else {
+					fixCurrHead.apply(null, ['down']);
+				}
+			}
+		}
+
+		var callWaypointByHash = function() {
+			var hashObj, hash = window.location.hash;
+			if(hash) {
+				hashObj = $(hash.replace(/\//g, '\\/'));
+			}
+
+			if(hashObj && hashObj.length) {
+				callbackNavWaypoints('down', hashObj.get(0));
+			}
+			else {
+				callbackNavWaypoints('down', wrapHeadvWaypoints.get(0));
+			}
+		};
+
+		wrapNavWaypoints.waypoint(callbackNavWaypointsDebounce);
+
+		wrapHeadvWaypoints.waypoint(fixCurrHead);
+		wrapHeadvWaypoints.waypoint(fixPrevHead, {
+			// offset: function() {
+			// 	var rect = getOffset(this);
+			// 	$('body').append('<div style="position: absolute; top: '+rect.top+'px; background: #f00; width: 100%; height: 1px;" />');
+			// 	var offset = $(this).offset();
+			// 	$('body').append('<div style="position: absolute; top: '+(offset.top - $(this).height())+'px; background: #00f; width: 100%; height: 1px;" />');
+			// 	// return $(this).height();
+			// 	return wrapMainheadOffsetTop;
+			// 	// return getNavElemV('next', $(this)).outerHeight();
+			// }
+			offset: wrapMainheadTop
 		});
 
-		// включаем брейкпоинты и активируем текущий по хештегу
-		wrapWaypoints.waypoint('enable');
-		callWaypointByHash();
+		setTimeout(function(){
+			if(currLink === null) {
+				callWaypointByHash();
+			}
+		}, 200);
 
+
+		function getNavElemPrev(elem) {
+			var curr = currNavItem,
+				prev = null,
+				sub = null;
+
+			if(elem) {
+				curr = elem;
+			}
+
+			if(!curr || !curr.length) {
+				return $();
+			}
+
+			prev = curr.prev();
+			if(prev.length) {
+				sub = prev.find('li').last();
+				if(sub.length) {
+					return sub;
+				}
+
+				return prev;
+			}
+
+			curr = curr.parent('ul').parent('li');
+			if(curr.length) {
+				return curr;
+			}
+
+			return $();
+		}
 
 		// навигация клавиатурой
-		function getNavElemV(dir) {
+		function getNavElemV(dir, elem) {
 			var curr = currNavItem,
-				next = null;
+				next = $();
+
+			if(elem) {
+				curr = elem;
+			}
 
 			while(true) {
-				if(!curr.length) break;
+				if(!curr || !curr.length) break;
 
 				next = curr[dir]();
 				if(!next.length) {
@@ -558,9 +648,13 @@ $(function(){
 			return next;
 		}
 
-		function getNavElemH(dir) {
+		function getNavElemH(dir, elem) {
 			var curr = currNavItem,
-				next = null;
+				next = $();
+
+			if(elem) {
+				curr = elem;
+			}
 
 			if(dir === 'right') {
 				next = curr.children('ul').eq(0).children('li').eq(0);
