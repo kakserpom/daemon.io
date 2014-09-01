@@ -61,6 +61,13 @@ header menu li+li {
 header menu li+li span {
     border-left: 1px solid #242424;
 }
+header menu li.active span{
+    background:-webkit-linear-gradient(rgba(255,255,255,.35),rgba(0,0,0,0));
+    background:-moz-linear-gradient(rgba(255,255,255,.35),rgba(0,0,0,0));
+    background:-ms-linear-gradient(rgba(255,255,255,.35),rgba(0,0,0,0));
+    background:-o-linear-gradient(rgba(255,255,255,.35),rgba(0,0,0,0));
+    background:linear-gradient(rgba(255,255,255,.35),rgba(0,0,0,0))
+}
 header menu a {
     color: #b2b2b2;
     text-decoration: none;
@@ -104,6 +111,12 @@ header menu a:hover {
 }
 */
 
+.doc-notice {
+    margin: 60px 0 0;
+    padding: 10px 20px;
+    background: #faa;
+    border: 1px solid #f00;
+}
 
 .header-path {
     opacity: 0;
@@ -392,6 +405,9 @@ header {
 }
 .mainhead.m-fixed {
     position: absolute;
+}
+.mainhead.m-hidden {
+    visibility: hidden;
 }
 .mainhead h1,
 .mainhead h2,

@@ -150,21 +150,9 @@ $(function(){
 
 	headers.wrapInner('<div class="in anchor" />');
 
-	main_container
-		.on('click', ':header[id] .anchor, .anchor[id] pre', function() {
-			window.location = '#' + $(this).parent().attr('id');
-		});
-
-			// .each(function() {
-			// 	var that = $(this),
-			// 		path = that.find('.header-path');
-
-			// 	if(path.length) {
-			// 		path.before('<span class="anchor_char">¶</span>');
-			// 	} else {
-			// 		that.append('<span class="anchor_char">¶</span>');
-			// 	}
-			// })
+	main_container.on('click', ':header[id] .anchor, .anchor[id] pre', function() {
+		window.location = '#' + $(this).parent().attr('id');
+	});
 
 	// обработка сцец ссылок ./ и ../
 	main_container.on('click', 'a', function(event) {
@@ -373,8 +361,19 @@ $(function(){
 	var wrapSidebar = $('.sidebar'),
 		wrapSidebarUl = wrapSidebar.children('ul').eq(0),
 		wrapMain = $('.main_wrap'),
-		wrapNavWaypoints = $(':header[id], .anchor[id]');
-		wrapHeadvWaypoints = wrapNavWaypoints.filter(':header');
+		wrapNavWaypoints = $(':header[id], .anchor[id]'),
+		wrapHeadvWaypoints = wrapNavWaypoints.filter(':header'),
+		firstHeaderOffset = getOffset(wrapNavWaypoints.get(0)).top;
+		// @TODO херед методов
+		// wrapHeadvWaypoints = wrapNavWaypoints;
+
+	var wrapMainhead = $('.mainhead').eq(0),
+		wrapMainheadDom = wrapMainhead.get(0),
+		wrapMainheadTop = parseInt(wrapMainhead.css('top'), 10);
+	
+	wrapMainhead.on('click', ':header', function() {
+		window.location = '#' + $(this).data('id');
+	});
 
 	(function(){
 		var scrollTo = 0;
@@ -434,8 +433,6 @@ $(function(){
 			topMarg = 45;
 
 		function setNavActive(header, dir) {
-			// console.log(header, dir);
-
 			prevNavLink = currNavLink;
 			currNavLink = wrapSidebar.find('a[href="'+ currLink +'"]');
 
@@ -475,38 +472,69 @@ $(function(){
 			scrollToDo();
 		}
 
-		var wrapMainhead = $('.mainhead').eq(0),
-			wrapMainheadDom = wrapMainhead.get(0),
-			wrapMainheadTop = parseInt(wrapMainhead.css('top'), 10);
+		var headers_by_hash = {};
+		function getHeaderByHash(hash, context) {
+			if(headers_by_hash[hash]) {
+				return headers_by_hash[hash];
+			}
+
+			var obj = $(hash.replace(/\//g, '\\/'), context);
+			headers_by_hash[hash] = obj;
+			return obj;
+		}
 
 		function getClearedHeadClone(obj) {
-			var clone = obj.clone();
-			clone.removeAttr('id');
-			return clone;
+			return obj.clone().removeAttr('id').data('id', obj.attr('id'));
+
+			// @TODO херед методов
+			// if(!obj.is('.method')) {
+			// 	return obj.clone().removeAttr('id').data('id', obj.attr('id'));
+			// }
+
+			// var nav_item = getNavElemH('left').children('a');
+			// if(!nav_item.length) {
+			// 	return '';
+			// }
+
+			// var clone = getHeaderByHash(nav_item.attr('href')).clone();
+			// if(!clone.length) {
+			// 	return '';
+			// }
+
+			// var cloneDom = clone.get(0),
+			// 	result = $('<h5 />'),
+			// 	method_name = obj.find('code a[href^="#./"]').eq(0).text();
+
+			// $(cloneDom.childNodes[0].childNodes[1]).prepend( cloneDom.childNodes[0].childNodes[0] );
+			// clone = $(cloneDom);
+			// clone.children('.in').prepend(method_name).appendTo(result);
+
+			// return result;
 		}
 
 		function fixCurrHead(dir) {
 			if(dir === 'down') {
-				var head = null;
-
-				if(this !== window) {
-					head = getClearedHeadClone($(this));
-				}
-				else {
-					head = '';
-				}
-
+				var head = (this !== window) ? getClearedHeadClone($(this)) : '';
 				wrapMainhead
 					.html(head)
-					.attr('class', 'mainhead m-float')
+					.attr('class', head ? 'mainhead m-float' : 'mainhead m-hidden')
 					.css('top', wrapMainheadTop);
 			}
 			else {
-				var curr = getNavElemPrev().children('a').eq(0);
-				if(curr.length) {
-					curr = $(curr.attr('href').replace(/\//g, '\\/'), wrapMain);
-					if(curr.length) {
-						wrapMainhead.html( getClearedHeadClone(curr) );
+				var currHead,
+					currItem = getNavElemPrev().children('a').eq(0);
+
+				if(currItem.length) {
+					currHead = getHeaderByHash(currItem.attr('href'));
+					if(currHead.length && currHead.is('.method')) {
+						currItem = getNavElemH('left', currItem.parent()).children('a').eq(0);
+						if(currItem.length) {
+							currHead = getHeaderByHash(currItem.attr('href'));
+						}
+					}
+
+					if(currHead.length) {
+						wrapMainhead.html( getClearedHeadClone(currHead) );
 						fixPrevHead.apply(this, ['down']);
 						return;
 					}
@@ -524,9 +552,17 @@ $(function(){
 			}
 			else {
 				if(currLink) {
-					var curr = $(currLink.replace(/\//g, '\\/'), wrapMain).get(0);
-					if(curr && getPageScroll().top > 0) {
-						fixCurrHead.apply(curr, ['down']);
+					var currHead = getHeaderByHash(currLink);
+
+					if(currHead.length && currHead.is('.method')) {
+						var currItem = getNavElemH('left', currNavItem).children('a').eq(0);
+						if(currItem.length) {
+							currHead = getHeaderByHash(currItem.attr('href'));
+						}
+					}
+
+					if(currHead && getPageScroll().top >= firstHeaderOffset) {
+						fixCurrHead.apply(currHead, ['down']);
 						return;
 					}
 				}
@@ -538,7 +574,7 @@ $(function(){
 		var callWaypointByHash = function() {
 			var hashObj, hash = window.location.hash;
 			if(hash) {
-				hashObj = $(hash.replace(/\//g, '\\/'));
+				hashObj = getHeaderByHash(hash);
 			}
 
 			if(hashObj && hashObj.length) {
@@ -571,12 +607,14 @@ $(function(){
 			pushState();
 		};
 
-		var callbackNavWaypointsDebounce = $.debounce(50, false, callbackNavWaypoints);
+		var callbackNavWaypointsDebounce = $.debounce(50, false, callbackNavWaypoints),
+			fixCurrHeadDebounce = $.debounce(50, false, fixCurrHead),
+			fixPrevHeadDebounce = $.debounce(50, false, fixPrevHead);
 
 		wrapNavWaypoints.waypoint(callbackNavWaypointsDebounce);
 
-		wrapHeadvWaypoints.waypoint(fixCurrHead);
-		wrapHeadvWaypoints.waypoint(fixPrevHead, {
+		wrapHeadvWaypoints.waypoint(fixCurrHeadDebounce);
+		wrapHeadvWaypoints.waypoint(fixPrevHeadDebounce, {
 			offset: wrapMainheadTop
 		});
 
