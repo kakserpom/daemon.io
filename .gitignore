@@ -16,5 +16,5 @@ Thumbs.db
 .DS_Store
 
 #Project folders and files
-docs/**/index.html
+docs/*/index.html
 docs/js/highlight_source/build/docs
