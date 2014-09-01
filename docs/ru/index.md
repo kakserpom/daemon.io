@@ -11,6 +11,10 @@
 <!-- pvar menu-contribute Участие -->
 <!-- pvar menu-publications Публикации -->
 
+<br />
+<p class="doc-notice">English</p>
+<p class="doc-notice">Документация активно дорабатывается!</p>
+
 ## intro # Введение
 
 PHPDaemon — это асинхронный демонизируемый фреймворк.

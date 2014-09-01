@@ -83,24 +83,6 @@ $env
 </md:method>
 
 <md:method>
-void public static exec ( string $binPath = null, callable $cb = null, array $args = null, array $env = null )
-
-Выполняет команду (статический метод)
-
-$binPath
-исполняемый путь
-
-$cb
-функция обратного вызова
-
-$args
-массив аргументов
-
-$env
-ассоциативный массив переменных окружения (можно передать $_ENV`)
-</md:method>
-
-<md:method>
 string public getCmd ( )
 
 Возвращает строку исполняемой команды
