@@ -277,6 +277,7 @@ $(function(){
 			}
 
 			if(header.length) {
+				console.log( '#' + header.attr('id') + (postfix ? '/'+postfix : '') );
 				window.location = '#' + header.attr('id') + (postfix ? '/'+postfix : '');
 			}
 		}
