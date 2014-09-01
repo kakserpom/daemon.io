@@ -164,6 +164,7 @@ $(function(){
 		// #./link
 		if(href.indexOf('#./') === 0) {
 			event.preventDefault();
+			event.stopPropagation();
 
 			parent = that.parentsUntil('.main_container').last();
 			postfix = href.slice(3);
@@ -201,6 +202,7 @@ $(function(){
 		// #(../)+link
 		if(href.indexOf('#../') === 0) {
 			event.preventDefault();
+			event.stopPropagation();
 
 			var matches = href.match(/^\#(\.\.\/)+/g);
 			var count = (matches[0].length - 1) / 3 + 1;
@@ -277,7 +279,6 @@ $(function(){
 			}
 
 			if(header.length) {
-				console.log( '#' + header.attr('id') + (postfix ? '/'+postfix : '') );
 				window.location = '#' + header.attr('id') + (postfix ? '/'+postfix : '');
 			}
 		}
