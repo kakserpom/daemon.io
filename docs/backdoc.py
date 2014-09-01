@@ -1402,6 +1402,7 @@ class Markdown(object):
     _headers_stack = []
     _headers_id_stack = []
     _headers_mode_link = False
+    _header_path_stack = []
 
     _atx_h_re = re.compile(r'''
         ^(\#{1,6})  # \1 = string of #'s
@@ -1466,12 +1467,22 @@ class Markdown(object):
 
             if header_id:
                 self._headers_stack = self._headers_stack[0:n-2]
-
                 self._headers_id_stack = self._headers_id_stack[0:n-2]
                 self._headers_id_stack.append(header_id)
 
                 header_path = '/'.join(self._headers_id_stack)
                 header_id_attr = ' id="%s"' % header_path
+
+                pref = header_path
+                i = 1;
+
+                while True:
+                    if header_path not in self._header_path_stack:
+                        break
+
+                    header_path = pref + str(i + 1)
+
+                self._header_path_stack.append(header_path)
 
         if isLink:
             html = header_id
