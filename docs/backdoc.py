@@ -387,6 +387,9 @@ class Markdown(object):
         parts = match.group(1).strip().split('\n')
         result = ''
 
+        if len(parts) == 0 or (len(parts) == 1 and parts[0].strip() == ''):
+            return ' -.method.fake &nbsp;'
+
         if len(parts):
             part = parts.pop(0)
             # result += u' -.method `:h`%s`  \n' % part
@@ -417,6 +420,9 @@ class Markdown(object):
     def _parseMdTagPropertie_sub(self, match):
         parts = match.group(1).strip().split('\n')
         result = ''
+
+        if len(parts) == 0 or (len(parts) == 1 and parts[0].strip() == ''):
+            return ' -.method.fake &nbsp;'
 
         if len(parts):
             part = parts.pop(0)
@@ -1516,7 +1522,10 @@ class Markdown(object):
             start = len(match.group(1)) + len(match.group(2)) + 1
             return match.group(0)[start:] % (header_path)
 
-        return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, self._run_span_gamut(header_html), n)
+        if header_id_attr:
+            return "<h%d%s><div class=\"in anchor\">%s</div></h%d>\n\n" % (n, header_id_attr, self._run_span_gamut(header_html), n)
+        else:
+            return "<h%d%s>%s</h%d>\n\n" % (n, header_id_attr, self._run_span_gamut(header_html), n)
 
     def _do_headers(self, text):
         # Setext-style headers:
