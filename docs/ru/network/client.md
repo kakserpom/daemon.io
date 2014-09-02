@@ -2,7 +2,7 @@
 
 ```php
 namespace PHPDaemon\Network;
-class Client extends Pool;
+abstract class Client extends Pool;
 ```
 
 @TODO
@@ -37,7 +37,7 @@ Optional. Priority.
 </md:method>
 
 <md:method>
-void public detach ( @TODO $conn )
+void public detach ( [Connection](#../../connection) $conn )
 
 Detach Connection
 
