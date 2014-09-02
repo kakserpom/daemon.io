@@ -1,8 +1,8 @@
 ### clientconnection # ClientConnection #> ClientConnection {tpl-git PHPDaemon/Network/ClientConnection.php}
 
-```php
+```php:p
 namespace PHPDaemon\Network;
-class ClientConnection extends Connection;
+class ClientConnection extends [Connection](#../connection);
 ```
 
 @TODO

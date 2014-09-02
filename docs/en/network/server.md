@@ -1,8 +1,8 @@
 ### server # Server #> Server {tpl-git PHPDaemon/Network/Server.php}
 
-```php
+```php:p
 namespace PHPDaemon\Network;
-abstract class Server extends Pool;
+abstract class Server extends [Pool](#../pool);
 ```
 
 @TODO

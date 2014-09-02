@@ -1,8 +1,8 @@
 ### pool # Pool #> Pool {tpl-git PHPDaemon/Network/Pool.php}
 
-```php
+```php:p
 namespace PHPDaemon\Network;
-abstract class Pool extends ObjectStorage;
+abstract class Pool extends [ObjectStorage](#structures/object-storage);
 ```
 
 @TODO translate to english

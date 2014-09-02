@@ -1,8 +1,8 @@
 ### client # Client #> Client {tpl-git PHPDaemon/Network/Client.php}
 
-```php
+```php:p
 namespace PHPDaemon\Network;
-abstract class Client extends Pool;
+abstract class Client extends [Pool](#../pool);
 ```
 
 @TODO
