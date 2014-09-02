@@ -319,6 +319,7 @@ $(function(){
 			'integer': 1,
 			'float': 1,
 			'callable': 1,
+			'resource': 1,
 			'mixed': '<a href="http://php.net/manual/ru/language.pseudo-types.php" target="_blank" />'
 		};
 
