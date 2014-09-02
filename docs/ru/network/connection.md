@@ -1,8 +1,8 @@
 ### connection # Connection #> Connection {tpl-git PHPDaemon/Network/Connection.php}
 
-```php
+```php:p
 namespace PHPDaemon\Network;
-abstract class Connection extends IOStream;
+abstract class Connection extends [IOStream](#../iostream);
 ```
 
 @TODO

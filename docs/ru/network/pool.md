@@ -1,8 +1,8 @@
 ### pool # Пул #> Пул {tpl-git PHPDaemon/Network/Pool.php}
 
-```php
+```php:p
 namespace PHPDaemon\Network;
-abstract class Pool extends ObjectStorage;
+abstract class Pool extends [ObjectStorage](#structures/object-storage);
 ```
 
 Хранит в себе активные объекты {tpl-inlink network/connection Соединение} и {tpl-inlink network/boundsocket ОткрытыйСокет}.
