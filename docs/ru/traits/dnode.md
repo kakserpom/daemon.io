@@ -30,151 +30,121 @@ protected function dummyMethod($foo, $bar, $callback) {
 
 > Как вы могли заметить, пример `dummyMethod` использует вызов `:h`static::ensureCallback($callback)`. Всегда нужно проверять переданный аргумент с помощью {tpl-inlink traits/dnode/methods/ensureCallback ensureCallback} перед его исполнением. В противном случае, это обернётся серьёзной брешью безопасности.
 
-##### methods # Методы
+#### methods # Методы
 
 <md:method>
-void protected defineLocalMethods ( array $arr )
+void protected onHandshake ( )
 
-Задает набор серверных методов
-
-$arr
-@TODO
+Default onHandshake() method
 </md:method>
 
 <md:method>
 [DNode](#../) public callLocal ( )
 
-@TODO
+Calls a local method
 </md:method>
 
 <md:method>
-boolean public static ensureCallback ( mixed &$arg )
+void public extractCallbacks ( array &$args, array &$list, array &$path )
 
-@TODO
+Extracts callback functions from array of arguments
 
-&$arg
-@TODO
-</md:method>
-
-<md:method>
-void public extractCallbacks ( array $args, array &$list, array &$path )
-
-@TODO
-
-$args
-@TODO
+&$args
+Arguments
 
 &$list
-@TODO
+Output array for 'callbacks' property
 
 &$path
-@TODO
+Recursion path holder
 </md:method>
 
 <md:method>
 [DNode](#../) public callRemote ( )
 
-@TODO
+Calls a remote method
 </md:method>
 
 <md:method>
 [DNode](#../) public callRemoteArray ( string $method, array $args )
 
-@TODO
+Calls a remote method with array of arguments
 
 $method
-@TODO
+Method name
 
 $args
-@TODO
+Arguments
 </md:method>
 
 <md:method>
 void public methodsMethod ( array $methods )
 
-@TODO
+Handler of the 'methods' method
 
 $methods
-@TODO
-</md:method>
-
-<md:method>
-string public toJson ( array $p )
-
-@TODO
-
-$p
-@TODO
+Associative array of methods
 </md:method>
 
 <md:method>
 void public toJsonDebugResursive ( array &$a )
 
-@TODO
+Recursion handler for toJsonDebug()
 
 &$a
-@TODO
+Data
 </md:method>
 
 <md:method>
 string string public toJsonDebug ( array $p )
 
-@TODO
+Encodes object into JSON for debugging purposes
 
 $p
-@TODO
-</md:method>
-
-<md:method>
-void public sendPacket ( array $p )
-
-@TODO
-
-$p
-@TODO
+Data
 </md:method>
 
 <md:method>
 void public onFinish ( )
 
-@TODO
+Called when session is finished
 </md:method>
 
 <md:method>
 void public cleanup ( )
 
-@TODO
+Swipes internal structures
 </md:method>
 
 <md:method>
 mixed public __call ( string $m, array $args )
 
-@TODO
+Magic __call method
 
 $m
-@TODO
+Method name
 
 $args
-@TODO
+Arguments
 </md:method>
 
 <md:method>
 void public onPacket ( array $pct )
 
-@TODO
+Called when new packet is received
 
 $pct
-@TODO
+Data
 </md:method>
 
 <md:method>
 void public onFrame ( string $data, string $type )
 
-@TODO
+Called when new frame is received
 
 $data
-@TODO
+Frame's contents
 
 $type
-@TODO
+Frame's type
 </md:method>
