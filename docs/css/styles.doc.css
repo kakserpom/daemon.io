@@ -119,7 +119,7 @@ header menu a:hover {
 }
 
 .header-path {
-    opacity: 0;
+    /*opacity: 0;*/
     position: relative;
     margin-left: 5px;
     font-size: 13px;
@@ -390,6 +390,7 @@ header {
     }
 
 .mainhead {
+    display: none;
     position: fixed;
     z-index: 905;
     top: 50px;
@@ -444,6 +445,12 @@ header {
 
 .main_container p, ul{
     margin: 20px 0;
+}
+
+.tpl-outlink,
+.tpl-inlink {
+    color: #2a6496;
+    text-decoration: none;
 }
 
 /*.main_container p + ul {

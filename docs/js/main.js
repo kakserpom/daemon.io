@@ -613,10 +613,10 @@ $(function(){
 
 		wrapNavWaypoints.waypoint(callbackNavWaypointsDebounce);
 
-		wrapHeadvWaypoints.waypoint(fixCurrHeadDebounce);
-		wrapHeadvWaypoints.waypoint(fixPrevHeadDebounce, {
-			offset: wrapMainheadTop
-		});
+		// wrapHeadvWaypoints.waypoint(fixCurrHeadDebounce);
+		// wrapHeadvWaypoints.waypoint(fixPrevHeadDebounce, {
+		// 	offset: wrapMainheadTop
+		// });
 
 		$win.on('load.waypoints.extra', function() {
 			setTimeout(function(){
