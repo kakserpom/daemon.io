@@ -33,7 +33,7 @@ protected function dummyMethod($foo, $bar, $callback) {
 #### methods # Методы
 
 <md:method>
-void protected onHandshake ( )
+void public onHandshake ( )
 
 Default onHandshake() method
 </md:method>
