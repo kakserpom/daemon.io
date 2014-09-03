@@ -4,8 +4,7 @@
 
 Данная примесь применима в классах-наследниках  {tpl-inlink servers/websocket/route Servers\WebSocket\Route}.
 
-Реализует серверную часть протокола <a target="_blank" href="https://github.com/substack/dnode
-">DNode <i class="fa fa-external-link"></i></a>, который служит для вызова удаленных процедур (RPC).
+Реализует серверную часть протокола {tpl-outlink https://github.com/substack/dnode DNode}, который служит для вызова удаленных процедур (RPC).
 
 Для подключение примеси нужно внести `:hp`use \PHPDaemon\WebSocket\Traits\DNode` в определение своего класса-наследника {tpl-inlink servers/websocket/route Servers\WebSocket\Route}.
 

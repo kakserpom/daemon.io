@@ -534,7 +534,7 @@ pre.inline {
 }
 pre.inline code {
     float: left;
-    padding: 3px 5px;
+    padding: 2px 5px;
     border: 1px solid #ddd;
     background: #f8f8f8 !important;
     white-space: pre-wrap;
@@ -571,7 +571,7 @@ code a,
 
 code.code_highlight {
     display: inline;
-    padding: 3px 5px;
+    padding: 2px 5px;
     overflow: visible;
     /*line-height: 40px;*/
 }
