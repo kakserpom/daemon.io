@@ -7,7 +7,7 @@ class Input extends \EventBuffer;
 
 @TODO
 
-#### properties # Свойства
+#### properties # Properties
 
 <md:prop>
 array public $curPart;
@@ -17,7 +17,7 @@ Current Part
 <md:prop>
 </md:prop>
 
-#### methods # Методы
+#### methods # Methods
 
 <md:method>
 void public setBoundary ( string $boundary )

@@ -7,7 +7,7 @@ abstract class Generic extends \PHPDaemon\Request\Generic;
 
 @TODO
 
-#### properties # Свойства
+#### properties # Properties
 
 <md:prop>
 boolean public $keepalive = false;
@@ -29,7 +29,7 @@ array public static $htr = ['-' => '_'];
 State
 </md:prop>
 
-#### methods # Методы
+#### methods # Methods
 
 <md:method>
 void public firstDeferredEventUsed ( )
