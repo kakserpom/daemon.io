@@ -2245,7 +2245,7 @@ class UnicodeWithAttrs(unicode):
                     if not lines[-1].endswith("</li>"):
                         lines[-1] += "</li>"
                     lines.append("%s</ul></li>" % indent())
-            lines.append('%s<li><a href="#%s">%s</a>' % (
+            lines.append('%s<li><a href="#%s"><span>%s</span></a>' % (
                 indent(), id, name))
         while len(h_stack) > 1:
             h_stack.pop()

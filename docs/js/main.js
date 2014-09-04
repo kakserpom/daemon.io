@@ -360,6 +360,7 @@ $(function(){
 
 	var wrapSidebar = $('.sidebar'),
 		wrapSidebarUl = wrapSidebar.children('ul').eq(0),
+		wrapSidebarBtn = $('.sidebar-downbtn'),
 		wrapMain = $('.main_wrap'),
 		wrapNavWaypoints = $(':header[id], .anchor[id]'),
 		wrapHeadvWaypoints = wrapNavWaypoints.filter(':header'),
@@ -393,18 +394,26 @@ $(function(){
 			}, 200);
 		});
 
-		// тень сайдбара
-		var wrapSidebarHasClass = false;
+		// кнопка сайдбара
+		wrapSidebarBtn.on('click', function() {
+			scrollTo = wrapSidebar.scrollTop() + 100;
+			// scrollToDo();
+			wrapSidebar.stop().animate({
+				scrollTop: scrollTo
+			}, 200);
+		});
+
+		var wrapSidebarBtnHasClass = false;
 		var wrapSidebarScrollBtn = $.throttle(200, false, function(){
 			if(wrapSidebar.scrollTop() >= wrapSidebarUl.height() - wrapSidebar.height()) {
-				if(wrapSidebarHasClass) {
-					wrapSidebar.removeClass('showbtn');
-					wrapSidebarHasClass = false;
+				if(wrapSidebarBtnHasClass) {
+					wrapSidebarBtn.removeClass('showbtn');
+					wrapSidebarBtnHasClass = false;
 				}
 			} else {
-				if(!wrapSidebarHasClass) {
-					wrapSidebar.addClass('showbtn');
-					wrapSidebarHasClass = true;
+				if(!wrapSidebarBtnHasClass) {
+					wrapSidebarBtn.addClass('showbtn');
+					wrapSidebarBtnHasClass = true;
 				}
 			}
 		});
@@ -422,11 +431,6 @@ $(function(){
 		});
 
 		wrapSidebarScrollBtn();
-
-		wrapSidebar.find('.downbtn').on('click', function() {
-			scrollTo = wrapSidebar.scrollTop() + 100;
-			scrollToDo();
-		});
 
 		var wrapSidebarUlOffset, currNavItemRect, neighbor, neighborRect,
 			rectTop, rectBot, winHeight;

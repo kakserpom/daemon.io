@@ -146,10 +146,11 @@ h5 .header-path {
     top: -0.1em;
 }
 
-header,
+/*header,
 .lang-chooser,
 .mainhead,
-.main_wrap {
+.main_wrap*/
+.sidebar {
     transform: translate3d(0px, 0px, 0px) scale(1, 1);
     -o-transform: translate3d(0px, 0px, 0px) scale(1, 1);
     -ms-transform: translate3d(0px, 0px, 0px) scale(1, 1);
@@ -252,35 +253,6 @@ header {
     border-right: 1px solid #bbb;
     font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif !important;
 }
-
-.sidebar a {
-    padding: 2px 4px;
-}
-
-.sidebar .active {
-    position: relative;
-}
-
-.sidebar .active:before {
-    position: absolute;
-    content: "";
-    width: 19px;
-    height: 12px;
-    top: 50%;
-    left: -19px;
-    margin-top: -6px;
-    background: url(../imgs/mark.png);
-}
-.sidebar ul ul ul .active:before {
-    left: -29px;
-}
-.sidebar ul ul ul ul .active:before {
-    left: -39px;
-}
-.sidebar ul ul ul ul ul .active:before {
-    left: -49px;
-}
-
 .sidebar ul{
     display: none;
     margin: 0;
@@ -290,15 +262,19 @@ header {
 .sidebar li {
     white-space: nowrap;
 }
-
+/*.sidebar .gact > a*/
+.sidebar a {
+    /*display: block;*/
+    text-decoration: none;
+}
+.sidebar span {
+    /*display: block;*/
+    /*overflow: hidden;
+    text-overflow: ellipsis;*/
+}
 .sidebar ul a:hover {
     text-decoration: underline;
     color: #333;
-}
-
-/*.sidebar .gact > a*/
-.sidebar a {
-    text-decoration: none;
 }
 
 .sidebar > ul > li {
@@ -327,17 +303,42 @@ header {
 
 .sidebar ul ul ul {
     display: none;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
+    padding-left: 10px;
 }
 .sidebar ul ul ul ul {
     /*display: none;*/
 }
 
+.sidebar .active {
+    position: relative;
+}
 
-.sidebar .downbtn {
+.sidebar .active:before {
+    position: absolute;
+    content: "";
+    width: 19px;
+    height: 12px;
+    top: 50%;
+    left: -19px;
+    margin-top: -6px;
+    background: url(../imgs/mark.png);
+}
+.sidebar ul ul ul .active:before {
+    left: -29px;
+}
+.sidebar ul ul ul ul .active:before {
+    left: -39px;
+}
+.sidebar ul ul ul ul ul .active:before {
+    left: -49px;
+}
+
+
+.sidebar-downbtn {
     position: fixed;
     text-decoration: none;
-    width: 240px;
+    width: 239px;
     height: 16px;
     line-height: normal;
     padding: 2px 0;
@@ -358,7 +359,7 @@ header {
     transition: all .2s linear;
     cursor: pointer;
 }
-.sidebar.showbtn .downbtn {
+.sidebar-downbtn.showbtn {
     bottom: 0;
 }
 
