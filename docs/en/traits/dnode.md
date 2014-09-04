@@ -2,9 +2,9 @@
 
 `:hp`trait \PHPDaemon\WebSocket\Traits\DNode`
 
-Данная примесь применима в классах-наследниках  {tpl-inlink servers/websocket/route Servers\WebSocket\Route}.
+This trait is applicable in subclasses of {tpl-inlink servers/websocket/route Servers\WebSocket\Route}
 
-Реализует серверную часть протокола {tpl-outlink https://github.com/substack/dnode DNode}, который служит для вызова удаленных процедур (RPC).
+The trait implements server-side counterpart of {tpl-outlink https://github.com/substack/dnode DNode}, which serves for {tpl-outlink http://en.wikipedia.org/wiki/Remote_procedure_call Remote Procedure Call}.
 
 Для подключение примеси нужно внести `:hp`use \PHPDaemon\WebSocket\Traits\DNode` в определение своего класса-наследника {tpl-inlink servers/websocket/route Servers\WebSocket\Route}.
 
@@ -45,7 +45,7 @@ Calls a local method
 </md:method>
 
 <md:method>
-void public extractCallbacks ( array &$args, array &$list, array &$path )
+void protected extractCallbacks ( array &$args, array &$list, array &$path )
 
 Extracts callback functions from array of arguments
 
@@ -78,16 +78,16 @@ Arguments
 </md:method>
 
 <md:method>
-void public methodsMethod ( array $methods )
+void protected methodsMethod ( array $methods )
 
-Handler of the 'methods' method
+Handler of the `methods` method
 
 $methods
 Associative array of methods
 </md:method>
 
 <md:method>
-void public toJsonDebugResursive ( array &$a )
+void public toJsonDebugResursive ( mixed &$m )
 
 Recursion handler for toJsonDebug()
 
@@ -96,12 +96,12 @@ Data
 </md:method>
 
 <md:method>
-string string public toJsonDebug ( array $p )
+string string public toJsonDebug ( mixed $m )
 
-Encodes object into JSON for debugging purposes
+Encodes value into JSON for debugging purposes
 
 $p
-Data
+Array
 </md:method>
 
 <md:method>

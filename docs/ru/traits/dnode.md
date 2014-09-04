@@ -2,9 +2,9 @@
 
 `:hp`trait \PHPDaemon\WebSocket\Traits\DNode`
 
-Данная примесь применима в классах-наследниках  {tpl-inlink servers/websocket/route Servers\WebSocket\Route}.
+Данная примесь применима в классах-наследниках  {tpl-inlink servers/websocket/route Servers\WebSocket\Route}
 
-Реализует серверную часть протокола {tpl-outlink https://github.com/substack/dnode DNode}, который служит для вызова удаленных процедур (RPC).
+Примесь реализует серверную часть протокола {tpl-outlink https://github.com/substack/dnode DNode}, который служит для {tpl-outlink http://ru.wikipedia.org/wiki/Удалённый_вызов_процедур Удалённого вызова процедур} (RPC).
 
 Для подключение примеси нужно внести `:hp`use \PHPDaemon\WebSocket\Traits\DNode` в определение своего класса-наследника {tpl-inlink servers/websocket/route Servers\WebSocket\Route}.
 
@@ -41,97 +41,97 @@ Default onHandshake() method
 <md:method>
 [DNode](#../) public callLocal ( )
 
-Calls a local method
+Вызывает локальный метод
 </md:method>
 
 <md:method>
-void public extractCallbacks ( array &$args, array &$list, array &$path )
+void protected extractCallbacks ( array &$args, array &$list, array &$path )
 
-Extracts callback functions from array of arguments
+Извлекает функции обратного вызова из массива аргуметнов
 
 &$args
-Arguments
+Аргументы
 
 &$list
-Output array for 'callbacks' property
+Выходной массив для свойства 'callbacks'
 
 &$path
-Recursion path holder
+Текущий путь
 </md:method>
 
 <md:method>
 [DNode](#../) public callRemote ( )
 
-Calls a remote method
+Вызов удаленного метода
 </md:method>
 
 <md:method>
 [DNode](#../) public callRemoteArray ( string $method, array $args )
 
-Calls a remote method with array of arguments
+Вызов удаленного метода с передачей аргументов массивом
 
 $method
-Method name
+Название метода
 
 $args
-Arguments
+Аргументы
 </md:method>
 
 <md:method>
-void public methodsMethod ( array $methods )
+void protected methodsMethod ( array $methods )
 
-Handler of the 'methods' method
+Обработчик метода `methods`
 
 $methods
-Associative array of methods
+Ассоциативный массив методов
 </md:method>
 
 <md:method>
-void public toJsonDebugResursive ( array &$a )
+void public toJsonDebugResursive ( mixed &$m )
 
-Recursion handler for toJsonDebug()
+Обработчик рекурсии для метода {tpl-inlink ../toJsonDebug toJsonDebug}
 
-&$a
-Data
+&$m
+Значение
 </md:method>
 
 <md:method>
-string string public toJsonDebug ( array $p )
+string string public toJsonDebug ( mixed $m )
 
-Encodes object into JSON for debugging purposes
+Возвращает JSON-представление массива в отладочных целях
 
-$p
-Data
+$m
+Значение
 </md:method>
 
 <md:method>
 void public onFinish ( )
 
-Called when session is finished
+Вызывается когда сессия завершена
 </md:method>
 
 <md:method>
 void public cleanup ( )
 
-Swipes internal structures
+Очищает внутренние структуры
 </md:method>
 
 <md:method>
 mixed public __call ( string $m, array $args )
 
-Magic __call method
+Магический метод __call
 
 $m
-Method name
+Название метода
 
 $args
-Arguments
+Аргументы
 </md:method>
 
 <md:method>
 void public onPacket ( array $pct )
 
-Called when new packet is received
+Вызывается когда получен пакет
 
 $pct
 Data
@@ -140,11 +140,11 @@ Data
 <md:method>
 void public onFrame ( string $data, string $type )
 
-Called when new frame is received
+Вызывется когда получен фрейм
 
 $data
-Frame's contents
+Содержимое фрейма
 
 $type
-Frame's type
+Тип фрейма
 </md:method>
