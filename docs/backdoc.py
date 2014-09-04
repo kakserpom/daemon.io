@@ -2685,7 +2685,7 @@ class BackDoc(object):
                 f.close()
 
             except IOError:
-                return text
+                content = ''
 
             content = self.importParts(content, filepath)
 
