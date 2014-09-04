@@ -8,6 +8,7 @@
 <!-- pvar menu-docs Документация -->
 <!-- pvar menu-tracker Задачи/ошибки -->
 <!-- pvar menu-team Команда -->
+<!-- pvar menu-faq ЧАВО -->
 <!-- pvar menu-contribute Участие -->
 <!-- pvar menu-publications Публикации -->
 
@@ -99,3 +100,5 @@ PHPDaemon — это асинхронный демонизируемый фре�
 ### scripting # Программирование
 
  -.n <a target="_blank" href="https://github.com/EzheG"><i class="fa fa-github"></i></a> Dmitry Efimenko <[ezheg89@gmail.com](mailto:ezheg89@gmail.com)>
+
+Движок документации был изначально основан на <a target="_blank" href="https://github.com/chibisov/backdoc">Backdoc <i class="fa fa-github"></i></a>
