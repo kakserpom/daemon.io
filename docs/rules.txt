@@ -1,0 +1,47 @@
+1. В репозитории phpdaemon в каталогах лежат файлы doc.md
+2. doc.md содержит английскую версию документации раздела с использованием вставок формата:
+	<div include="type" path="path/to" commit="f4d35ab66859cfddc745" />
+
+3. Испольщуемые вставки
+	<div include="namespace" path="path/to" commit="" />
+	Используется path/to/doc.md. К нему добавляются опции (getConfigDefaults) и публичные методы, свойства, константы из классов.
+	Добавляются doc.md из дочерних каталогов (только 1 уровень вложенности)
+	Используется, например, для клиентов, серверов
+
+	<div include="header" path="path/to" commit="" />
+	Вставка заголовка неймспейса или класса
+
+4. Собранный из doc.md документ нуждается в дальнейшей компиляции в html-документ с парсингом phpdoc методов, свойств и констант
+5. Для другого языка за основу берется компилированная версия англиской документации.
+6. Изменения в документацию другого языка производятся на основе git коммитов в английскую версию.
+
+Пример doc.md для PHPDaemon/WebSocket/Traits/DNode.php
+==========
+<div include="header" path="PHPDaemon/WebSocket/Traits/DNode" commit="123123" />
+
+Данная примесь применима в классах-наследниках  {tpl-inlink servers/websocket/route Servers\WebSocket\Route}
+
+...
+
+> Как вы могли заметить, пример `dummyMethod` использует вызов `:h`static::ensureCallback($callback)`. Всегда нужно проверять переданный аргумент с помощью {tpl-inlink traits/dnode/methods/ensureCallback ensureCallback} перед его исполнением. В противном случае, это обернётся серьёзной брешью безопасности.
+
+<div include="namespace" path="PHPDaemon/WebSocket/Traits/DNode" commit="123123" />
+==========
+
+
+Свойство path может содержать:
+1) явный путь до каталога
+PHPDaemon/WebSocket/Traits
+
+2) явный путь до файла
+PHPDaemon/WebSocket/Traits/DNode.php
+
+3) неявный путь до файла
+PHPDaemon/WebSocket/Traits/DNode
+
+
+Из выше сказанного следует что стандартный doc.md будет содержать минимум две строки:
+==========
+<div include="header" path="PHPDaemon\SockJS" commit="123123" />
+<div include="namespace" path="PHPDaemon\SockJS" commit="123123" />
+==========
