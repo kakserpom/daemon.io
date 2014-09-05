@@ -1435,10 +1435,6 @@ class Markdown(object):
         # \n*
         ''', re.X | re.M)
     def _atx_h_sub(self, match):
-        if match.group(4) == 'markdown':
-            print match.group(0).encode('utf-8')
-            sys.stdout.flush()
-
         n = len(match.group(1))
         demote_headers = self.extras.get("demote-headers")
         if demote_headers:
@@ -2249,7 +2245,7 @@ class UnicodeWithAttrs(unicode):
                     if not lines[-1].endswith("</li>"):
                         lines[-1] += "</li>"
                     lines.append("%s</ul></li>" % indent())
-            lines.append('%s<li><a href="#%s"><span>%s</span></a>' % (
+            lines.append('%s<li><a class="link" href="#%s"><span>%s</span></a>' % (
                 indent(), id, name))
         while len(h_stack) > 1:
             h_stack.pop()

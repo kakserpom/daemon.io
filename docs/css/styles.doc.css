@@ -262,16 +262,18 @@ header {
 .sidebar li {
     white-space: nowrap;
 }
-/*.sidebar .gact > a*/
 .sidebar a {
-    /*display: block;*/
-    padding: 2px 4px;
     text-decoration: none;
 }
+.sidebar .link {
+    display: block;
+    /*padding: 2px 4px;*/
+    padding: 0 4px;
+}
 .sidebar span {
-    /*display: block;*/
-    /*overflow: hidden;
-    text-overflow: ellipsis;*/
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .sidebar ul a:hover {
     text-decoration: underline;
