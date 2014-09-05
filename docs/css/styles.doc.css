@@ -15,10 +15,10 @@ li ul, li ol{
 }
 
 h1, h2, h3, h4, h5, h6 {
-    /*margin-top: 0.8em;*/
-    /*padding-top: 0.7em;*/
-    margin-top: -10px;
-    padding-top: 50px;
+    margin-top: 0.8em;
+    padding-top: 0.7em;
+    /*margin-top: -10px;*/
+    /*padding-top: 50px;*/
 }
 
 h4 {
@@ -265,6 +265,7 @@ header {
 /*.sidebar .gact > a*/
 .sidebar a {
     /*display: block;*/
+    padding: 2px 4px;
     text-decoration: none;
 }
 .sidebar span {
@@ -477,8 +478,8 @@ header {
     margin-left: -15px;
     margin-bottom: 20px;
     list-style: none;
-    margin-top: -40px;
-    padding-top: 40px;
+    /*margin-top: -40px;*/
+    /*padding-top: 40px;*/
 }
 .main_container li.method.fake {
     margin-top: -20px;

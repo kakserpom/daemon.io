@@ -1430,11 +1430,15 @@ class Markdown(object):
         [ \t]*
         (?<!\\)     # ensure not an escaped trailing '#'
         \#*         # optional closing #'s (not counted)
-        \n
-        (.+?)?      # \8 second line for 'method'
-        \n*
+        \n 
+        # (.+?)?      # \8 second line for 'method'
+        # \n*
         ''', re.X | re.M)
     def _atx_h_sub(self, match):
+        if match.group(4) == 'markdown':
+            print match.group(0).encode('utf-8')
+            sys.stdout.flush()
+
         n = len(match.group(1))
         demote_headers = self.extras.get("demote-headers")
         if demote_headers:

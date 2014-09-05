@@ -24,7 +24,6 @@ HTTP {
 Также в `conf/AppResolver.php` в методе `getRequestRoute()` добавить условие для запуска метода `beginRequest()` в приложении ServerStatus. Например, чтобы получить информацию о phpDaemon по адресу http://<host>/ServerStatus/:
 
 ```php
-<?php
 /**
  * Routes incoming request to related application. Method is for overloading.   
  * @param object Request.
@@ -36,7 +35,6 @@ public function getRequestRoute($req, $upstream) {
         return $m[1];
     }
 }
-?>
 ```
 
 Пример ответа:

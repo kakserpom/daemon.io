@@ -4,6 +4,8 @@
 namespace PHPDaemon\Clients\Asterisk;
 ```
 
+{tpl-outdated}
+
 {tpl-outlink http://www.asterisk.org/ Asterisk} - это АТС с открытым исходным кодом.
 AMI - программный интерфейс (API) Asterisk для управления системой, который позволяет разработчикам отправлять команды на сервер, считывать результаты их выполнения, а так же получать уведомления о происходящих событиях в реальном времени.
 Клиент Asterisk обеспечивает высокоуровневый интерфейс к AMI, позволяющий разработчикам контролировать сервер Asterisk из приложений.
@@ -17,9 +19,7 @@ AMI - программный интерфейс (API) Asterisk для управ
 Перед тем как посылать команды и получать события с сервера, нужно получить сессию(сессии) соединения(соединений) в вашем приложении. В вашем приложении вы получаете объект AsteriskDriver посредством:
 
 ```php
-<?php
 $this->pbxDriver = Daemon::$appResolver->getInstanceByAppName('AsteriskDriver');
-?>
 ```
 
 ##### connect # Соединение
@@ -27,42 +27,34 @@ $this->pbxDriver = Daemon::$appResolver->getInstanceByAppName('AsteriskDriver');
 Далее получаете объект AsteriskDriverSession посредством:
 
 ```php
-<?php
 $session = $this->pbxDriver->getConnection();
 // или
 foreach($this->pbxConnections as $addr => $conn) {
     $session = $this->pbxDriver->getConnection($addr);
     // что-нибудь делаем...
 }
-?>
 ```
 
 Добавляете (композиция) в него текущий контекст соединения посредством:
 
 ```php
-<?php
 $session->context = $this;
-?>
 ```
 
 При соединении:
 
 ```php
-<?php
 $session->onConnected(function(SocketSession $session, $status) {
     // ваш код, в зависимости от соединения
 });
-?>
 ```
 
 При разрыве:
 
 ```php
-<?php
 $session->onFinish(function(SocketSession $session) {
     // возможно запустить интервал реконнекта...
 });
-?>
 ```
 
 Предположим у вас несколько серверов Asterisk с которых вы хотите получать события(events) и на которые вы хотите отправлять команды(actions). Так же вы хотите отслеживать падение соединения(connection failed), и осуществлять реконнект. Смотрите пример реконнекта ниже.
@@ -80,7 +72,6 @@ $session->onFinish(function(SocketSession $session) {
 Клиент корректно обрабатывает, что порядок следования пакетов ответа не определен, корректно собирает составные пакеты ответа.
 
 ```php
-<?php
 $session->getSipPeers(function(SocketSession $session, array $packet) {
     // $session->addr содержит адрес соединения
     // $session->context содержит контекст вызова (если был установлен)
@@ -108,7 +99,6 @@ $session->redirect(array(
 ), function(SocketSession $session, array $packet) {
   // узнаем успешно или нет из ответа сервера содержащегося в ассоциативном массиве $packet
 });
-?>
 ```
 
 ##### events # Получение событий сервера
@@ -116,15 +106,12 @@ $session->redirect(array(
 Функция обратного вызова при наступлении события в данном соединении определяется один раз и передается методу onEvent().
 
 ```php
-<?php
 $session->onEvent(array($this, 'onPbxEvent'));
-?>
 ```
 
 Когда запущено несколько воркеров, чтобы не получилось, что события канала(характеризуются наличием уникального идентификатора(uniqueid) канала) кратны количеству воркеров(workers) можно воспользоваться таблицей блокировки. Вот пример, когда в качестве таблицы блокировки используется MongoDB коллекция(collection), которая позволяет ставить уникальный индекс на документ:
 
 ```php
-<?php
 $session->onEvent(array($this, 'onPbxEvent'));
 // db.events.ensureIndex({"event": 1, "addr": 1}, {unique: true});
 public function onPbxEvent(SocketSession $session, array $event) {
@@ -151,13 +138,11 @@ public function onPbxEvent(SocketSession $session, array $event) {
         }
     }
 }
-?>
 ```
 
 #### example # Пример реконнекта
 
 ```php
-<?php
 class Foo extends AppInstance {
     // ...
     public function onInit() {
@@ -226,7 +211,6 @@ class PbxReconnector extends Request {
         $this->sleep($this->interval);
     }
 }
-?>
 ```
 
 #### pool # Класс Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
