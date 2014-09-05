@@ -2809,7 +2809,7 @@ class BackDoc(object):
             self.template_html.replace('<!-- title -->', self.parser_vars['title'] or title)
                               .replace('<!-- toc -->', response.toc_html and force_text(response.toc_html) or '')
                               .replace('<!-- main_content -->', content)
-                              .replace('<!-- block_langs -->', force_text(', '.join(langsArr)))
+                              .replace('<!-- block_langs -->', force_text(''.join(langsArr)))
         )
 
     def get_converted_to_html_response(self, markdown_src):
