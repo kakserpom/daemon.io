@@ -2,6 +2,7 @@
 
 require 'Parsedown.php';
 require 'ParsedownExtra.php';
+require 'ParsedownCustom.php';
 
 class DocBuilder {
 
@@ -57,11 +58,11 @@ class DocBuilder {
         $this->template = $this->parseTpls($this->template);
 
         // 4. Парсинг markdown
-        $Parsedown = new ParsedownExtra();
+        $Parsedown = new ParsedownCustom();
         $this->markdown = $Parsedown->text($this->markdown);
 
         // 5. Постобработка
-
+        // @todo
 
         $this->html = str_replace([
             '<!-- title -->',
@@ -70,7 +71,7 @@ class DocBuilder {
             '<!-- block_langs -->'
         ], [
             isset($this->consts['title']) ? $this->consts['title'] : '',
-            'nav',
+            $Parsedown->generateNavigate(),
             $this->markdown,
             $this->parseLangs()
         ],
@@ -151,7 +152,7 @@ class DocBuilder {
         $currpath = dirname(realpath($this->source_path));
         $rootpath = dirname($currpath);
         $currlangpath = basename($currpath);
-        $result = [];
+        $result = '';
 
         foreach (glob($rootpath . '/*/language') as $filename) {
             $classes = '';
@@ -162,9 +163,9 @@ class DocBuilder {
                 $classes = ' class="active"';
             }
 
-            $result[] = '<li'. $classes .'><a href="/docs/'. $langcode .'/">'. $langname .'</a></li>';
+            $result .= "<li{$classes}><a href=\"/docs/{$langcode}/\">{$langname}</a></li>";
         }
 
-        return implode('', $result);
+        return $result;
     }
 }
