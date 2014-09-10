@@ -1866,8 +1866,8 @@ class Pool extends \PHPDaemon\Network\Client;</code></pre>
 <h5 id="clients/asterisk/pool/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#clients/asterisk/pool">Класс Pool <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Clients/Asterisk/Pool.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#clients/asterisk">Asterisk <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Clients/Asterisk"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#clients">Клиенты</a></span></div>
 
 </h5>
-<h6>-#clients/asterisk/pool/methods/getConnection.method ```php:p.inline</h6>
-<p>boolean public static <a href="#./getConnection">getConnection</a> ( callable $cb )
+<p>#&amp;getConnection  -#%s.method ```php:p.inline
+boolean public static <a href="#./getConnection">getConnection</a> ( callable $cb )
 boolean public static getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )</p>
 <pre><code class="">   -.n Выполняет callback-функцию когда будет установлена связь с сервером. Возвращает `false` если соединение невозможно установить
    -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../../connection) $conn, array $packet )` — вызывается когда будет установлена связь с сервером
@@ -1884,8 +1884,8 @@ class Connection extends \PHPDaemon\Network\ClientConnection;</code></pre>
 <h5 id="clients/asterisk/pool/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#clients/asterisk/pool">Класс Pool <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Clients/Asterisk/Pool.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#clients/asterisk">Asterisk <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Clients/Asterisk"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#clients">Клиенты</a></span></div>
 
 </h5>
-<h6>-#clients/asterisk/pool/methods/getSipPeers.method ```php:p.inline</h6>
-<p>void public <a href="#./getSipPeers">getSipPeers</a> ( callable $cb )</p>
+<p>#&amp;getSipPeers  -#%s.method ```php:p.inline
+void public <a href="#./getSipPeers">getSipPeers</a> ( callable $cb )</p>
 <pre><code class="">   -.n Выводит список сконфигурированных в данный момент равноправных участников SIP с указанием их статуса  
 Привилегии: system, all
    -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
@@ -1897,8 +1897,8 @@ class Connection extends \PHPDaemon\Network\ClientConnection;</code></pre>
 Привилегии: none</li>
 <li class="n ti"><code class="code_highlight php clear">$cb</code> — <code class="code_highlight php clear">callback ( <a href="#../">Connection</a> $conn, array $packet )</code> — вызывается когда будет получен результат</li>
 </ul>
-<h6>-#clients/asterisk/pool/methods/getConfig.method ```php:p.inline</h6>
-<p>void public <a href="#./getConfig">getConfig</a> ( string $filename, callable $cb )</p>
+<p>#&amp;getConfig  -#%s.method ```php:p.inline
+void public <a href="#./getConfig">getConfig</a> ( string $filename, callable $cb )</p>
 <pre><code class="">   -.n Извлекает данные из конфигурационного файла Asterisk  
 Привилегии: config, all
    -.n.ti `:hc`$filename` — имя конфигурационного файла, из которого должны извлекаться данные
@@ -1912,8 +1912,8 @@ class Connection extends \PHPDaemon\Network\ClientConnection;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$filename</code> — имя конфигурационного файла, из которого должны извлекаться данные</li>
 <li class="n"><code class="code_highlight php clear">$cb</code> — <code class="code_highlight php clear">callback ( <a href="#../">Connection</a> $conn, array $packet )</code> — вызывается когда будет получен результат</li>
 </ul>
-<h6>-#clients/asterisk/pool/methods/setVar.method ```php:p.inline</h6>
-<p>void public <a href="#./setVar">setVar</a> ( string $channel, string $variable, string $value, callable $cb )</p>
+<p>#&amp;setVar  -#%s.method ```php:p.inline
+void public <a href="#./setVar">setVar</a> ( string $channel, string $variable, string $value, callable $cb )</p>
 <pre><code class="">   -.n Задает значение глобальной переменной или переменной канала  
 Привилегии: call, all
    -.n.ti `:hc`$channel` — канал, для переменной которого задается значение. Если не указан, переменная будет задана как глобальная
@@ -1927,8 +1927,8 @@ class Connection extends \PHPDaemon\Network\ClientConnection;</code></pre>
 <li class="n">Отображает все активные каналы</li>
 <li class="n ti"><code class="code_highlight php clear">$cb</code> — <code class="code_highlight php clear">callback ( <a href="#../">Connection</a> $conn, array $packet )</code> — вызывается когда будет получен результат</li>
 </ul>
-<h6>-#clients/asterisk/pool/methods/status.method ```php:p.inline</h6>
-<p>void public <a href="#./status">status</a> ( callable $cb, string $channel = null )</p>
+<p>#&amp;status  -#%s.method ```php:p.inline
+void public <a href="#./status">status</a> ( callable $cb, string $channel = null )</p>
 <pre><code class="">   -.n Представляет статус одного или более каналов с подробной информацией об их текущем состоянии  
 Привилегии: call, all
    -.n.ti `:hc`$channel` — ограничивает вывод статусом заданного канала
@@ -1942,8 +1942,8 @@ class Connection extends \PHPDaemon\Network\ClientConnection;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$params</code> — ассоциативный массив параметров команды</li>
 <li class="n"><code class="code_highlight php clear">$cb</code> — <code class="code_highlight php clear">callback ( <a href="#../">Connection</a> $conn, array $packet )</code> — вызывается когда будет получен результат</li>
 </ul>
-<h6>-#clients/asterisk/pool/methods/originate.method ```php:p.inline</h6>
-<p>void public <a href="#./originate">originate</a> ( array $params, callable $cb )</p>
+<p>#&amp;originate  -#%s.method ```php:p.inline
+void public <a href="#./originate">originate</a> ( array $params, callable $cb )</p>
 <pre><code class="">   -.n Формирует исходящий вызов из Asterisk и соединяет канал с контекстом/добавочным номером/приоритетом или приложением диалплана  
 Привилегии: call, all
    -.n.ti `:hc`$params` — ассоциативный массив параметров команды
@@ -1957,8 +1957,8 @@ class Connection extends \PHPDaemon\Network\ClientConnection;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$params</code> — ассоциативный массив параметров команды</li>
 <li class="n"><code class="code_highlight php clear">$cb</code> — <code class="code_highlight php clear">callback ( <a href="#../">Connection</a> $conn, array $packet )</code> — вызывается когда будет получен результат</li>
 </ul>
-<h6>-#clients/asterisk/pool/methods/ping.method ```php:p.inline</h6>
-<p>void public <a href="#./ping">ping</a> ( callable $cb )</p>
+<p>#&amp;ping  -#%s.method ```php:p.inline
+void public <a href="#./ping">ping</a> ( callable $cb )</p>
 <pre><code class="">   -.n Посылает запрос на сервер Asterisk, чтобы убедиться, что он до сих пор отвечает. Asterisk ответит сообщением Pong. Эта команда также может использоваться, чтобы не допустить разрыва соединения в результате истечения времени ожидания
    -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
@@ -1971,8 +1971,8 @@ class Connection extends \PHPDaemon\Network\ClientConnection;</code></pre>
 <li class="n"><code class="code_highlight php clear">$params</code> — ассоциативный массив параметров команды</li>
 <li class="n"><code class="code_highlight php clear">$assertion</code> — @TODO If more events may follow as response this is a main part or full an action complete event indicating that all data has been sent</li>
 </ul>
-<h6>-#clients/asterisk/pool/methods/logoff.method ```php:p.inline</h6>
-<p>void public <a href="#./logoff">logoff</a> ( callable $cb = null )</p>
+<p>#&amp;logoff  -#%s.method ```php:p.inline
+void public <a href="#./logoff">logoff</a> ( callable $cb = null )</p>
 <pre><code class="">   -.n Завершает сеанс
    -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../) $conn, array $packet )` — вызывается когда будет получен результат
 
@@ -2014,8 +2014,8 @@ class Pool extends \PHPDaemon\Network\Client;</code></pre>
 <h5 id="clients/asterisk/pool/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#clients/asterisk/pool">Класс Pool <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Clients/HTTP/Pool.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#clients/asterisk">Asterisk <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Clients/Asterisk"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#clients">Клиенты</a></span></div>
 
 </h5>
-<h6>-#clients/asterisk/pool/methods/get.method ```php:p.inline</h6>
-<p>void public <a href="#./get">get</a> ( url $url, array $params )
+<p>#&amp;get  -#%s.method ```php:p.inline
+void public <a href="#./get">get</a> ( url $url, array $params )
 void public get ( url $url, callable $resultcb )</p>
 <pre><code class="">   -.n Осуществляет GET запрос
    -.n.ti `:hc`$url` — запрашиваемый URL
@@ -2032,8 +2032,8 @@ void public get ( url $url, callable $resultcb )</p>
 <li class="n"><code class="code_highlight php clear">$params</code> — ассоциативный массив параметров запроса</li>
 <li class="n"><code class="code_highlight php clear">$resultcb</code> — <code class="code_highlight php clear">callback ( <a href="#../../connection">Connection</a> $conn, boolean $success )</code> — Вызывается когда на запрос пришел ответ, либо произошла ошибка</li>
 </ul>
-<h6>-#clients/asterisk/pool/methods/buildUrl.method ```php:p.inline</h6>
-<p>string public static <a href="#./buildUrl">buildUrl</a> ( string $str )
+<p>#&amp;buildUrl  -#%s.method ```php:p.inline
+string public static <a href="#./buildUrl">buildUrl</a> ( string $str )
 string public static buildUrl ( array $mixed )</p>
 <pre><code class="">   -.n Генерирует URL-кодированную строку запроса из предоставленного ассоциативного (или индексного) массива `:hc`$mixed` или возвращает строку `:hc`$str`. В случае ошибки возвращает `:hc`false`
    -.n.ti `:hc`$mixed` — массив параметров URL
@@ -2094,8 +2094,8 @@ class Connection extends \PHPDaemon\Network\ClientConnection;</code></pre>
 <h5 id="clients/asterisk/connection/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#clients/asterisk/connection">Класс Connection <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Clients/HTTP/Connection.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#clients/asterisk">Asterisk <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Clients/Asterisk"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#clients">Клиенты</a></span></div>
 
 </h5>
-<h6>-#clients/asterisk/connection/methods/getBody.method ```php:p.inline</h6>
-<p>string public <a href="#./getBody">getBody</a> ( )</p>
+<p>#&amp;getBody  -#%s.method ```php:p.inline
+string public <a href="#./getBody">getBody</a> ( )</p>
 <pre><code class="">   -.n Возвращает тело ответа
 
 #&getHeaders  -#%s.method ```php:p.inline
@@ -2103,8 +2103,8 @@ class Connection extends \PHPDaemon\Network\ClientConnection;</code></pre>
 <ul>
 <li class="n">Возвращает ассоциативный массив заголовков ответа</li>
 </ul>
-<h6>-#clients/asterisk/connection/methods/getHeader.method ```php:p.inline</h6>
-<p>string public <a href="#./getHeader">getHeader</a> ( string $name )</p>
+<p>#&amp;getHeader  -#%s.method ```php:p.inline
+string public <a href="#./getHeader">getHeader</a> ( string $name )</p>
 <pre><code class="">   -.n Возвращает заголовок ответа по имени или `:hc`null`
    -.n.ti `:hc`$name` — имя заголовка
 
@@ -2175,8 +2175,8 @@ class Pool extends \PHPDaemon\Network\Client;</code></pre>
 <h5 id="clients/asterisk/pool/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#clients/asterisk/pool">Класс Pool <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Clients/MySQL/Pool.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#clients/asterisk">Asterisk <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Clients/Asterisk"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#clients">Клиенты</a></span></div>
 
 </h5>
-<h6>-#clients/asterisk/pool/methods/getConnection2.method ```php:p.inline</h6>
-<p>boolean public static <a href="#./getConnection">getConnection</a> ( callable $cb )
+<p>#&amp;getConnection  -#%s.method ```php:p.inline
+boolean public static <a href="#./getConnection">getConnection</a> ( callable $cb )
 boolean public static getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )</p>
 <pre><code class="">   -.n Выполняет callback-функцию когда будет установлена связь с сервером. Возвращает `false` если соединение невозможно установить
    -.n.ti `:hc`$cb` — `:phc`callback ( [Connection](#../../connection) $conn )` — вызывается когда будет установлена связь с сервером
@@ -2189,8 +2189,8 @@ boolean public static getConnection ( string $url = null, callable $cb = null, i
 <li class="n">Экранирует специальные символы: <code>\0</code>, <code>\n</code>, <code>\r</code>, <code>\</code>, <code>'</code>, <code>"</code></li>
 <li class="n ti"><code class="code_highlight php clear">$string</code> — исходная строка</li>
 </ul>
-<h6>-#clients/asterisk/pool/methods/likeEscape.method ```php:p.inline</h6>
-<p>string public static <a href="#./likeEscape">likeEscape</a> ( string $string )</p>
+<p>#&amp;likeEscape  -#%s.method ```php:p.inline
+string public static <a href="#./likeEscape">likeEscape</a> ( string $string )</p>
 <pre><code class="">   -.n Работает как метод `:hc`Pool::escape` с дополнительными символами: `%` и `_`
    -.n.ti `:hc`$string` — исходная строка
 
@@ -2200,8 +2200,8 @@ boolean public static getConnection ( string $url = null, callable $cb = null, i
 <li class="n">Преобразует строку или число <code class="code_highlight php clear">$mixed</code> для использоания в SQL-выражении и возвращает значение в одинарных кавычках <code>'</code>. Для всех остальных типов возвращает <code>'null'</code></li>
 <li class="n ti"><code class="code_highlight php clear">$mixed</code> — конвертируемые данные</li>
 </ul>
-<h6>-#clients/asterisk/pool/methods/values.method ```php:p.inline</h6>
-<p>string public static <a href="#./values">values</a> ( mixed $arr )</p>
+<p>#&amp;values  -#%s.method ```php:p.inline
+string public static <a href="#./values">values</a> ( mixed $arr )</p>
 <pre><code class="">   -.n Преобразует массив `:hc`$arr` для использоания в SQL-выражении и возвращает список значений, разделенные запятой `,`. Для всех остальных типов возвращает пустую строку
    -.n.ti `:hc`$mixed` — конвертируемые данные
 
@@ -2282,8 +2282,8 @@ class Connection extends \PHPDaemon\Network\ClientConnection;</code></pre>
 <h5 id="clients/asterisk/pool/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#clients/asterisk/pool">Класс Pool <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Clients/MySQL/Pool.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#clients/asterisk">Asterisk <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Clients/Asterisk"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#clients">Клиенты</a></span></div>
 
 </h5>
-<h6>-#clients/asterisk/pool/methods/onConnected.method ```php:p.inline</h6>
-<p>void public <a href="#./onConnected">onConnected</a> ( callable $callback )</p>
+<p>#&amp;onConnected  -#%s.method ```php:p.inline
+void public <a href="#./onConnected">onConnected</a> ( callable $callback )</p>
 <pre><code class="">   -.n Выполняет callback-функцию когда будет установлена связь с сервером
    -.n.ti `:hc`$callback` — `:phc`callback ( [Connection](#../) $conn, boolean $success )` — вызывается когда установлена связь с сервером, либо произошла ошибка
 
@@ -2294,8 +2294,8 @@ class Connection extends \PHPDaemon\Network\ClientConnection;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$query</code> — SQL-запрос</li>
 <li class="n"><code class="code_highlight php clear">$callback</code> — <code class="code_highlight php clear">callback ( <a href="#../">Connection</a> $conn, boolean $success )</code> — вызывается когда получен результат SQL-запроса, либо произошла ошибка</li>
 </ul>
-<h6>-#clients/asterisk/pool/methods/ping2.method ```php:p.inline</h6>
-<p>boolean public <a href="#./ping">ping</a> ( callable $callback = NULL )</p>
+<p>#&amp;ping  -#%s.method ```php:p.inline
+boolean public <a href="#./ping">ping</a> ( callable $callback = NULL )</p>
 <pre><code class="">   -.n Проверяет работает ли соединение с сервером. Если оно утеряно, автоматически предпринимается попытка пересоединения
    -.n.ti `:hc`$callback` — `:phc`callback ( [Connection](#../) $conn, boolean $success )` — вызывается когда получен результат, либо произошла ошибка
 
@@ -2361,8 +2361,8 @@ abstact class CappedStorage;</code></pre>
 <h5 id="lib/cache/capped-storage/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#lib/cache/capped-storage">Класс CappedStorage <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Cache/CappedStorage.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib/cache">Cache <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Cache"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib">Библиотеки</a></span></div>
 
 </h5>
-<h6>-#lib/cache/capped-storage/methods/hash.method ```php:p.inline</h6>
-<p>string public <a href="#./hash">hash</a> ( string $key )</p>
+<p>#&amp;hash  -#%s.method ```php:p.inline
+string public <a href="#./hash">hash</a> ( string $key )</p>
 <pre><code class="">   -.n Возвращает хеш ключа, который идентифицирует элемент хранилища, по-умолчанию используется crc32()
    -.n.ti `:hc`$key` — ключ элемента
 
@@ -2374,8 +2374,8 @@ abstact class CappedStorage;</code></pre>
 <li class="n"><code class="code_highlight php clear">$value</code> — значение</li>
 <li class="n"><code class="code_highlight php clear">$ttl</code> — время жизни в секундах</li>
 </ul>
-<h6>-#lib/cache/capped-storage/methods/invalidate.method ```php:p.inline</h6>
-<p>void public <a href="#./invalidate">invalidate</a> ( string $key )</p>
+<p>#&amp;invalidate  -#%s.method ```php:p.inline
+void public <a href="#./invalidate">invalidate</a> ( string $key )</p>
 <pre><code class="">   -.n Удаляет элемент кеша
    -.n.ti `:hc`$key` — ключ
 
@@ -2385,8 +2385,8 @@ abstact class CappedStorage;</code></pre>
 <li class="n">Возвращает элемент хранилища <a target="_self" class="tpl-inlink" href="##../../item">Item<i class="fa fa-caret-square-o-up"></i></a></li>
 <li class="n ti"><code class="code_highlight php clear">$key</code> — ключ</li>
 </ul>
-<h6>-#lib/cache/capped-storage/methods/getValue.method ```php:p.inline</h6>
-<p>mixed public <a href="#./getValue">getValue</a> ( string $key )</p>
+<p>#&amp;getValue  -#%s.method ```php:p.inline
+mixed public <a href="#./getValue">getValue</a> ( string $key )</p>
 <pre><code class="">   -.n Возвращает значение элемента хранилища
    -.n.ti `:hc`$key` — ключ элемента
 
@@ -2411,8 +2411,8 @@ class Item;</code></pre>
 <h5 id="lib/cache/capped-storage/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#lib/cache/capped-storage">Класс CappedStorage <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Cache/CappedStorage.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib/cache">Cache <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Cache"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib">Библиотеки</a></span></div>
 
 </h5>
-<h6>-#lib/cache/capped-storage/methods/getHits.method ```php:p.inline</h6>
-<p>integer public <a href="#./getHits">getHits</a> ( )</p>
+<p>#&amp;getHits  -#%s.method ```php:p.inline
+integer public <a href="#./getHits">getHits</a> ( )</p>
 <pre><code class="">   -.n Возвращает количество обращений к значению элемента
 
 #&getValue  -#%s.method ```php:p.inline
@@ -2420,8 +2420,8 @@ class Item;</code></pre>
 <ul>
 <li class="n">Возвращает значение элемента</li>
 </ul>
-<h6>-#lib/cache/capped-storage/methods/addListener.method ```php:p.inline</h6>
-<p>void public <a href="#./addListener">addListener</a> ( callable $cb )</p>
+<p>#&amp;addListener  -#%s.method ```php:p.inline
+void public <a href="#./addListener">addListener</a> ( callable $cb )</p>
 <pre><code class="">   -.n Переданная функция обратного вызова будет вызвана когда будет установлено значение элемента
    -.n.ti `:hc`$cb` — функция обратного вызова
 
@@ -2517,8 +2517,8 @@ $j(); // Запускаем</code></pre>
 <h4 id="lib/complexjob/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#lib/complexjob">ComplexJob <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Core/ComplexJob.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib">Библиотеки</a></span></div>
 
 </h4>
-<h5>-#lib/complexjob/methods/__construct.method ```php:p.inline</h5>
-<p>void public <a href="#./__construct">__construct</a> ( callable $cb = null )</p>
+<p>#&amp;<strong>construct  -#%s.method ```php:p.inline
+void public &lt;a href="#./</strong>construct">__construct</a> ( callable $cb = null )</p>
 <pre><code class="">   -.n Конструктор
    -.n.ti `:hc`$cb` — функция обратного вызова для метода addListener
 
@@ -2528,8 +2528,8 @@ $j(); // Запускаем</code></pre>
 <li class="n">Переданная функция будет вызвана когда все подзадачи выполнены</li>
 <li class="n ti"><code class="code_highlight php clear">$cb</code> — функция обратного вызова</li>
 </ul>
-<h5>-#lib/complexjob/methods/offsetExists.method ```php:p.inline</h5>
-<p>mixed public <a href="#./offsetExists">offsetExists</a> ( string $j )</p>
+<p>#&amp;offsetExists  -#%s.method ```php:p.inline
+mixed public <a href="#./offsetExists">offsetExists</a> ( string $j )</p>
 <pre><code class="">   -.n Позволяет сделать `:hc`isset($j[$name])`
    -.n.ti `:hc`$j` — имя подзадачи
 
@@ -2539,8 +2539,8 @@ $j(); // Запускаем</code></pre>
 <li class="n">Позволяет сделать <code class="code_highlight php clear">isset($job[$name])</code></li>
 <li class="n ti"><code class="code_highlight php clear">$j</code> — имя подзадачи</li>
 </ul>
-<h5>-#lib/complexjob/methods/offsetSet.method ```php:p.inline</h5>
-<p>mixed public <a href="#./offsetSet">offsetSet</a> ( string $j, mixed $v )</p>
+<p>#&amp;offsetSet  -#%s.method ```php:p.inline
+mixed public <a href="#./offsetSet">offsetSet</a> ( string $j, mixed $v )</p>
 <pre><code class="">   -.n Позволяет сделать `:hc`$job[$name] = $value`
    -.n.ti `:hc`$j` — имя подзадачи
    -.n `:hc`$v` — значение
@@ -2551,8 +2551,8 @@ $j(); // Запускаем</code></pre>
 <li class="n">Позволяет сделать <code class="code_highlight php clear">unset($job[$name])</code></li>
 <li class="n ti"><code class="code_highlight php clear">$j</code> — имя подзадачи</li>
 </ul>
-<h5>-#lib/complexjob/methods/getResults.method ```php:p.inline</h5>
-<p>array public <a href="#./getResults">getResults</a> ( )</p>
+<p>#&amp;getResults  -#%s.method ```php:p.inline
+array public <a href="#./getResults">getResults</a> ( )</p>
 <pre><code class="">   -.n Возвращает ассоциативный массив результатов
 
 #&keep  -#%s.method ```php:p.inline
@@ -2561,8 +2561,8 @@ $j(); // Запускаем</code></pre>
 <li class="n">Включает опцию keep, при которой, после выполнения всех подзадач не вызывается метод <code class="code_highlight php clear">cleanup()</code></li>
 <li class="n ti"><code class="code_highlight php clear">$keep</code> — true/false</li>
 </ul>
-<h5>-#lib/complexjob/methods/hasCompleted.method ```php:p.inline</h5>
-<p>boolean public <a href="#./hasCompleted">hasCompleted</a> ( )</p>
+<p>#&amp;hasCompleted  -#%s.method ```php:p.inline
+boolean public <a href="#./hasCompleted">hasCompleted</a> ( )</p>
 <pre><code class="">   -.n Выполнены ли все подзадачи?
 
 #&maxConcurrency  -#%s.method ```php:p.inline
@@ -2571,8 +2571,8 @@ $j(); // Запускаем</code></pre>
 <li class="n">Устанавливает максимальное количество одновременно выполняемых задач</li>
 <li class="n ti"><code class="code_highlight php clear">$n</code> — Натуральное число. При <code>-1</code> ограничение не действует.</li>
 </ul>
-<h5>-#lib/complexjob/methods/setResult.method ```php:p.inline</h5>
-<p>boolean public <a href="#./setResult">setResult</a> ( string $jobname, mixed $result = null )</p>
+<p>#&amp;setResult  -#%s.method ```php:p.inline
+boolean public <a href="#./setResult">setResult</a> ( string $jobname, mixed $result = null )</p>
 <pre><code class="">   -.n Устанавливает результат выполнения подзадачи
    -.n.ti `:hc`$jobname` — Название подзадачи
    -.n `:hc`$result` — Результат
@@ -2583,8 +2583,8 @@ $j(); // Запускаем</code></pre>
 <li class="n">Получить результат выполнения подзадачи по имени</li>
 <li class="n ti"><code class="code_highlight php clear">$jobname</code> — имя подзадачи</li>
 </ul>
-<h5>-#lib/complexjob/methods/checkQueue.method ```php:p.inline</h5>
-<p>void public <a href="#./checkQueue">checkQueue</a> ( )</p>
+<p>#&amp;checkQueue  -#%s.method ```php:p.inline
+void public <a href="#./checkQueue">checkQueue</a> ( )</p>
 <pre><code class="">   -.n Вызывается автоматически. Проверяет полна ли очередь и если нет, то пробует запустить еще подзадач из `backlog` и `more`.
 
 #&more  -#%s.method ```php:p.inline
@@ -2593,8 +2593,8 @@ $j(); // Запускаем</code></pre>
 <li class="n">Задает функцию обратного вызова, которая автоматически вызывается каждый раз, когда можно добавить еще подзадач.</li>
 <li class="n ti"><code class="code_highlight php clear">$cb</code> — функция обратного вызова</li>
 </ul>
-<h5>-#lib/complexjob/methods/isQueueFull.method ```php:p.inline</h5>
-<p>boolean public <a href="#./isQueueFull">isQueueFull</a> ( )</p>
+<p>#&amp;isQueueFull  -#%s.method ```php:p.inline
+boolean public <a href="#./isQueueFull">isQueueFull</a> ( )</p>
 <pre><code class="">   -.n Проверяет полна ли на данный момент очередь задач (превышен ли параметр `maxConcurrency`)
 
 #&addJob  -#%s.method ```php:p.inline
@@ -2604,8 +2604,8 @@ $j(); // Запускаем</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$name</code> — имя подзадачи</li>
 <li class="n"><code class="code_highlight php clear">$cb</code> — функция обратного вызова</li>
 </ul>
-<h5>-#lib/complexjob/methods/cleanup.method ```php:p.inline</h5>
-<p>void public <a href="#./cleanup">cleanup</a> ( )</p>
+<p>#&amp;cleanup  -#%s.method ```php:p.inline
+void public <a href="#./cleanup">cleanup</a> ( )</p>
 <pre><code class="">   -.n Удаляет сохраненные результаты и функции обратного вызова. Вызывается автоматически, не задан параметр `keep`. В этом случае, во избежание утечек памяти вызывайте этот метод сами, когда закончили работать с данными.
 
 #&execute  -#%s.method ```php:p.inline
@@ -2613,8 +2613,8 @@ $j(); // Запускаем</code></pre>
 <ul>
 <li class="n">Выполняет</li>
 </ul>
-<h5>-#lib/complexjob/methods/__invoke.method ```php:p.inline</h5>
-<p>boolean public <a href="#./__invoke">__invoke</a> ( string $name = null, callable $cb = null )</p>
+<p>#&amp;<strong>invoke  -#%s.method ```php:p.inline
+boolean public &lt;a href="#./</strong>invoke">__invoke</a> ( string $name = null, callable $cb = null )</p>
 <pre><code class="">   -.n Синоним `addJob ( $name, $cb )`. Пример: `:hc`$job('job', )`
 
 #&__invoke  -#%s.method ```php:p.inline
@@ -2682,8 +2682,8 @@ ShellCommand::exec($command, $cb, $arguments, $env);</code></pre>
 <h4 id="lib/shellcommand/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#lib/shellcommand">ShellCommand <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Core/ShellCommand.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib">Библиотеки</a></span></div>
 
 </h4>
-<h5>-#lib/shellcommand/methods/exec.method ```php:p.inline</h5>
-<p>void public static <a href="#./exec">exec</a> ( string $binPath = null, callable $cb = null, array $args = null, array $env = null )</p>
+<p>#&amp;exec  -#%s.method ```php:p.inline
+void public static <a href="#./exec">exec</a> ( string $binPath = null, callable $cb = null, array $args = null, array $env = null )</p>
 <pre><code class="">   -.n Выполняет команду (статический метод)
    -.n.ti `:hc`$binPath` — исполняемый путь
    -.n `:hc`$cb` — функция обратного вызова
@@ -2695,8 +2695,8 @@ ShellCommand::exec($command, $cb, $arguments, $env);</code></pre>
 <ul>
 <li class="n">Возвращает строку исполняемой команды</li>
 </ul>
-<h5>-#lib/shellcommand/methods/setUser.method ```php:p.inline</h5>
-<p><a href="#../">ShellCommand</a> public <a href="#./setUser">setUser</a> ( string $val )</p>
+<p>#&amp;setUser  -#%s.method ```php:p.inline
+<a href="#../">ShellCommand</a> public <a href="#./setUser">setUser</a> ( string $val )</p>
 <pre><code class="">   -.n Задает имя Unix-пользователя от имени которого выполняется команда
    -.n.ti `:hc`$val` — имя пользователя
 
@@ -2706,8 +2706,8 @@ ShellCommand::exec($command, $cb, $arguments, $env);</code></pre>
 <li class="n">Задает название Unix-группы от которой выполняется команда</li>
 <li class="n ti"><code class="code_highlight php clear">$val</code> — название группы</li>
 </ul>
-<h5>-#lib/shellcommand/methods/setCwd.method ```php:p.inline</h5>
-<p><a href="#../">ShellCommand</a> public <a href="#./setCwd">setCwd</a> ( string $dir )</p>
+<p>#&amp;setCwd  -#%s.method ```php:p.inline
+<a href="#../">ShellCommand</a> public <a href="#./setCwd">setCwd</a> ( string $dir )</p>
 <pre><code class="">   -.n Установить рабочий каталог для выполняемой команды
    -.n.ti `:hc`$dir` — путь
 
@@ -2717,8 +2717,8 @@ ShellCommand::exec($command, $cb, $arguments, $env);</code></pre>
 <li class="n">Подменяет корневой каталог для выполняемой команды</li>
 <li class="n ti"><code class="code_highlight php clear">$dir</code> — путь</li>
 </ul>
-<h5>-#lib/shellcommand/methods/setArgs.method ```php:p.inline</h5>
-<p><a href="#../">ShellCommand</a> public <a href="#./setArgs">setArgs</a> ( array $args = NULL )</p>
+<p>#&amp;setArgs  -#%s.method ```php:p.inline
+<a href="#../">ShellCommand</a> public <a href="#./setArgs">setArgs</a> ( array $args = NULL )</p>
 <pre><code class="">   -.n Установить список аргументов
    -.n.ti `:hc`$args` — массив аргументов
 
@@ -2728,8 +2728,8 @@ ShellCommand::exec($command, $cb, $arguments, $env);</code></pre>
 <li class="n">Задает ассоциативный массив переменных окружения (можно передать $_ENV`)</li>
 <li class="n ti"><code class="code_highlight php clear">$env</code> — массив</li>
 </ul>
-<h5>-#lib/shellcommand/methods/nice.method ```php:p.inline</h5>
-<p><a href="#../">ShellCommand</a> public <a href="#./nice">nice</a> ( integer $nice = NULL )</p>
+<p>#&amp;nice  -#%s.method ```php:p.inline
+<a href="#../">ShellCommand</a> public <a href="#./nice">nice</a> ( integer $nice = NULL )</p>
 <pre><code class="">   -.n Задает приоритет выделения процессорного времени (меньше — выше)
    -.n.ti `:hc`$nice` — целое число
 
@@ -2739,8 +2739,8 @@ ShellCommand::exec($command, $cb, $arguments, $env);</code></pre>
 <li class="n">Строит строку аргументов по массиву</li>
 <li class="n ti"><code class="code_highlight php clear">$args</code> — массив аргумент</li>
 </ul>
-<h5>-#lib/shellcommand/methods/execute.method ```php:p.inline</h5>
-<p><a href="#../">ShellCommand</a> public <a href="#./execute">execute</a> ( string $binPath = NULL, array $args = NULL, array $env = NULL )</p>
+<p>#&amp;execute  -#%s.method ```php:p.inline
+<a href="#../">ShellCommand</a> public <a href="#./execute">execute</a> ( string $binPath = NULL, array $args = NULL, array $env = NULL )</p>
 <pre><code class="">   -.n Непосредственно выполняет команду
    -.n.ti `:hc`$binPath` — исполняемый путь
    -.n `:hc`$args` — массив аргументов
@@ -2751,8 +2751,8 @@ ShellCommand::exec($command, $cb, $arguments, $env);</code></pre>
 <ul>
 <li class="n">Закрывает поток ввода исполняемого процесса, когда буфер будет прочитан</li>
 </ul>
-<h5>-#lib/shellcommand/methods/close.method ```php:p.inline</h5>
-<p>void public <a href="#./close">close</a> ( )</p>
+<p>#&amp;close  -#%s.method ```php:p.inline
+void public <a href="#./close">close</a> ( )</p>
 <pre><code class="">   -.n Завершает процесс
 
 #&closeWrite  -#%s.method ```php:p.inline
@@ -2760,8 +2760,8 @@ ShellCommand::exec($command, $cb, $arguments, $env);</code></pre>
 <ul>
 <li class="n">Безусловно закрывает поток ввода исполняемого процесса (STDIN)</li>
 </ul>
-<h5>-#lib/shellcommand/methods/eof.method ```php:p.inline</h5>
-<p>boolean public <a href="#./eof">eof</a> ( )</p>
+<p>#&amp;eof  -#%s.method ```php:p.inline
+boolean public <a href="#./eof">eof</a> ( )</p>
 <pre><code class="">   -.n Достигнут ли EOF (Конец Файла)?
 
 #&onEOF  -#%s.method ```php:p.inline
@@ -2794,8 +2794,8 @@ setTimeout(function($timer) use (&$i) {
 <h4 id="lib/timer/global-functions"><div class="in anchor">Глобальные функции <span class="header-path"> <i>&larr;</i> <a href="#lib/timer">Timer <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Core/Timer.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib">Библиотеки</a></span></div>
 
 </h4>
-<h5>-#lib/timer/global-functions/setTimeout.method ```php:p.inline</h5>
-<p>integer <a href="#./setTimeout">setTimeout</a> ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )</p>
+<p>#&amp;setTimeout  -#%s.method ```php:p.inline
+integer <a href="#./setTimeout">setTimeout</a> ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )</p>
 <pre><code class="">   -.n Функция-псевдоним `Timer::add`
    -.n.ti `:hc`$cb` — функция обратного вызова
    -.n `:hc`$timeout` — количество микросекунд через которое должна быть выполнена функция обратного вызова
@@ -2834,8 +2834,8 @@ setTimeout(function($timer) use (&$i) {
 <h4 id="lib/timer/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#lib/timer">Timer <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Core/Timer.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib">Библиотеки</a></span></div>
 
 </h4>
-<h5>-#lib/timer/methods/__construct.method ```php:p.inline</h5>
-<p>void public <a href="#./__construct">__construct</a> ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )</p>
+<p>#&amp;<strong>construct  -#%s.method ```php:p.inline
+void public &lt;a href="#./</strong>construct">__construct</a> ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )</p>
 <pre><code class="">   -.n Конструктор
    -.n.ti `:hc`$cb` — функция обратного вызова
    -.n `:hc`$timeout` — количество микросекунд через которое должна быть выполнена функция обратного вызова
@@ -2848,8 +2848,8 @@ setTimeout(function($timer) use (&$i) {
 <li class="n">@TODO</li>
 <li class="n ti"><code class="code_highlight php clear">$priority</code> — @TODO</li>
 </ul>
-<h5>-#lib/timer/methods/add.method ```php:p.inline</h5>
-<p>integer public static <a href="#./add">add</a> ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )</p>
+<p>#&amp;add  -#%s.method ```php:p.inline
+integer public static <a href="#./add">add</a> ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$timeout` — @TODO
@@ -2863,8 +2863,8 @@ setTimeout(function($timer) use (&$i) {
 <li class="n ti"><code class="code_highlight php clear">$id</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$timeout</code> — @TODO</li>
 </ul>
-<h5>-#lib/timer/methods/remove.method ```php:p.inline</h5>
-<p>void public static <a href="#./remove">remove</a> ( integer $id )</p>
+<p>#&amp;remove  -#%s.method ```php:p.inline
+void public static <a href="#./remove">remove</a> ( integer $id )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$id` — @TODO
 
@@ -2874,8 +2874,8 @@ setTimeout(function($timer) use (&$i) {
 <li class="n">@TODO</li>
 <li class="n ti"><code class="code_highlight php clear">$id</code> — @TODO</li>
 </ul>
-<h5>-#lib/timer/methods/timeout.method ```php:p.inline</h5>
-<p>void public <a href="#./timeout">timeout</a> ( integer $timeout = null )</p>
+<p>#&amp;timeout  -#%s.method ```php:p.inline
+void public <a href="#./timeout">timeout</a> ( integer $timeout = null )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$timeout` — @TODO
 
@@ -2884,8 +2884,8 @@ setTimeout(function($timer) use (&$i) {
 <ul>
 <li class="n">@TODO</li>
 </ul>
-<h5>-#lib/timer/methods/finish.method ```php:p.inline</h5>
-<p>void public <a href="#./finish">finish</a> ( )</p>
+<p>#&amp;finish  -#%s.method ```php:p.inline
+void public <a href="#./finish">finish</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 #&__destruct  -#%s.method ```php:p.inline
@@ -2893,8 +2893,8 @@ setTimeout(function($timer) use (&$i) {
 <ul>
 <li class="n">@TODO</li>
 </ul>
-<h5>-#lib/timer/methods/free.method ```php:p.inline</h5>
-<p>void public <a href="#./free">free</a> ( )</p>
+<p>#&amp;free  -#%s.method ```php:p.inline
+void public <a href="#./free">free</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 ### transport-context # TransportContext #> TransportContext <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Core/TransportContext.php"><i class="fa fa-github"></i></a>
@@ -2952,8 +2952,8 @@ class FileSystem;</code></pre>
 <h5 id="lib/fs/filesystem/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#lib/fs/filesystem">Класс FileSystem <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/FS/FileSystem.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib/fs">FS <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/FS"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib">Библиотеки</a></span></div>
 
 </h5>
-<h6>-#lib/fs/filesystem/methods/init.method ```php:p.inline</h6>
-<p>void public static <a href="#./init">init</a> ( )</p>
+<p>#&amp;init  -#%s.method ```php:p.inline
+void public static <a href="#./init">init</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 #&initEvent  -#%s.method ```php:p.inline
@@ -2961,8 +2961,8 @@ class FileSystem;</code></pre>
 <ul>
 <li class="n">@TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/checkFileReadable.method ```php:p.inline</h6>
-<p>boolean public static <a href="#./checkFileReadable">checkFileReadable</a> ( string $path )</p>
+<p>#&amp;checkFileReadable  -#%s.method ```php:p.inline
+boolean public static <a href="#./checkFileReadable">checkFileReadable</a> ( string $path )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$path` — @TODO
 
@@ -2971,8 +2971,8 @@ class FileSystem;</code></pre>
 <ul>
 <li class="n">@TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/updateConfig.method ```php:p.inline</h6>
-<p>void public static <a href="#./updateConfig">updateConfig</a> ( )</p>
+<p>#&amp;updateConfig  -#%s.method ```php:p.inline
+void public static <a href="#./updateConfig">updateConfig</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 #&sanitizePath  -#%s.method ```php:p.inline
@@ -2981,8 +2981,8 @@ class FileSystem;</code></pre>
 <li class="n">@TODO</li>
 <li class="n ti"><code class="code_highlight php clear">$path</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/statPrepare.method ```php:p.inline</h6>
-<p>array public static <a href="#./statPrepare">statPrepare</a> ( array $stat )</p>
+<p>#&amp;statPrepare  -#%s.method ```php:p.inline
+array public static <a href="#./statPrepare">statPrepare</a> ( array $stat )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$stat` — @TODO
 
@@ -2994,8 +2994,8 @@ class FileSystem;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/unlink.method ```php:p.inline</h6>
-<p>resource public static <a href="#./unlink">unlink</a> ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;unlink  -#%s.method ```php:p.inline
+resource public static <a href="#./unlink">unlink</a> ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$path` — @TODO
    -.n `:hc`$cb` — @TODO
@@ -3010,8 +3010,8 @@ class FileSystem;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/statvfs.method ```php:p.inline</h6>
-<p>resource public static <a href="#./statvfs">statvfs</a> ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;statvfs  -#%s.method ```php:p.inline
+resource public static <a href="#./statvfs">statvfs</a> ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$path` — @TODO
    -.n `:hc`$cb` — @TODO
@@ -3025,8 +3025,8 @@ class FileSystem;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/realpath.method ```php:p.inline</h6>
-<p>resource public static <a href="#./realpath">realpath</a> ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;realpath  -#%s.method ```php:p.inline
+resource public static <a href="#./realpath">realpath</a> ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$path` — @TODO
    -.n `:hc`$cb` — @TODO
@@ -3039,8 +3039,8 @@ class FileSystem;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/syncfs.method ```php:p.inline</h6>
-<p>resource public static <a href="#./syncfs">syncfs</a> ( callable $cb = null, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;syncfs  -#%s.method ```php:p.inline
+resource public static <a href="#./syncfs">syncfs</a> ( callable $cb = null, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
@@ -3055,8 +3055,8 @@ class FileSystem;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/rmdir.method ```php:p.inline</h6>
-<p>resource public static <a href="#./rmdir">rmdir</a> ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;rmdir  -#%s.method ```php:p.inline
+resource public static <a href="#./rmdir">rmdir</a> ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$path` — @TODO
    -.n `:hc`$cb` — @TODO
@@ -3071,8 +3071,8 @@ class FileSystem;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/readdir.method ```php:p.inline</h6>
-<p>resource public static <a href="#./readdir">readdir</a> ( string $path, callable $cb = null, integer $flags, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;readdir  -#%s.method ```php:p.inline
+resource public static <a href="#./readdir">readdir</a> ( string $path, callable $cb = null, integer $flags, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$path` — @TODO
    -.n `:hc`$cb` — @TODO
@@ -3088,8 +3088,8 @@ class FileSystem;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/sendfile.method ```php:p.inline</h6>
-<p>boolean public static <a href="#./sendfile">sendfile</a> ( mixed $outfd, string $path, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;sendfile  -#%s.method ```php:p.inline
+boolean public static <a href="#./sendfile">sendfile</a> ( mixed $outfd, string $path, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$outfd` — @TODO
    -.n `:hc`$path` — @TODO
@@ -3109,8 +3109,8 @@ class FileSystem;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/readfile.method ```php:p.inline</h6>
-<p>resource public static <a href="#./readfile">readfile</a> ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;readfile  -#%s.method ```php:p.inline
+resource public static <a href="#./readfile">readfile</a> ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$path` — @TODO
    -.n `:hc`$cb` — @TODO
@@ -3125,8 +3125,8 @@ class FileSystem;</code></pre>
 <li class="n"><code class="code_highlight php clear">$chunkcb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/genRndTempnam.method ```php:p.inline</h6>
-<p>string public static <a href="#./genRndTempnam">genRndTempnam</a> ( string $dir = null, string $prefix = 'php' )</p>
+<p>#&amp;genRndTempnam  -#%s.method ```php:p.inline
+string public static <a href="#./genRndTempnam">genRndTempnam</a> ( string $dir = null, string $prefix = 'php' )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$dir` — @TODO
    -.n `:hc`$prefix` — @TODO
@@ -3138,8 +3138,8 @@ class FileSystem;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$dir</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$prefix</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filesystem/methods/tempnam.method ```php:p.inline</h6>
-<p>void public static <a href="#./tempnam">tempnam</a> ( string $dir, string $prefix, callable $cb )</p>
+<p>#&amp;tempnam  -#%s.method ```php:p.inline
+void public static <a href="#./tempnam">tempnam</a> ( string $dir, string $prefix, callable $cb )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$dir` — @TODO
    -.n `:hc`$prefix` — @TODO
@@ -3200,8 +3200,8 @@ class File;</code></pre>
 <h5 id="lib/fs/file/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#lib/fs/file">Класс File <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/FS/File.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib/fs">FS <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/FS"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib">Библиотеки</a></span></div>
 
 </h5>
-<h6>-#lib/fs/file/methods/__construct.method ```php:p.inline</h6>
-<p>void public <a href="#./__construct">__construct</a> ( resource $fd, string $path )</p>
+<p>#&amp;<strong>construct  -#%s.method ```php:p.inline
+void public &lt;a href="#./</strong>construct">__construct</a> ( resource $fd, string $path )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$fd` — @TODO
    -.n `:hc`$path` — @TODO
@@ -3211,8 +3211,8 @@ class File;</code></pre>
 <ul>
 <li class="n">@TODO</li>
 </ul>
-<h6>-#lib/fs/file/methods/convertFlags.method ```php:p.inline</h6>
-<p>mixed public static <a href="#./convertFlags">convertFlags</a> ( string $mode, boolean $text = false )</p>
+<p>#&amp;convertFlags  -#%s.method ```php:p.inline
+mixed public static <a href="#./convertFlags">convertFlags</a> ( string $mode, boolean $text = false )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$mode` — @TODO
    -.n `:hc`$text` — @TODO
@@ -3225,8 +3225,8 @@ class File;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/file/methods/stat.method ```php:p.inline</h6>
-<p>resource public <a href="#./stat">stat</a> ( callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;stat  -#%s.method ```php:p.inline
+resource public <a href="#./stat">stat</a> ( callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
@@ -3238,8 +3238,8 @@ class File;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/file/methods/statvfs.method ```php:p.inline</h6>
-<p>resource public <a href="#./statvfs">statvfs</a> ( callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;statvfs  -#%s.method ```php:p.inline
+resource public <a href="#./statvfs">statvfs</a> ( callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
@@ -3251,8 +3251,8 @@ class File;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/file/methods/datasync.method ```php:p.inline</h6>
-<p>resource public <a href="#./datasync">datasync</a> ( callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;datasync  -#%s.method ```php:p.inline
+resource public <a href="#./datasync">datasync</a> ( callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
@@ -3266,8 +3266,8 @@ class File;</code></pre>
 <li class="n"><code class="code_highlight php clear">$offset</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/file/methods/chown.method ```php:p.inline</h6>
-<p>resource public <a href="#./chown">chown</a> ( integer $uid, integer $gid = -1, callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;chown  -#%s.method ```php:p.inline
+resource public <a href="#./chown">chown</a> ( integer $uid, integer $gid = -1, callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$uid` — @TODO
    -.n `:hc`$gid` — @TODO
@@ -3283,8 +3283,8 @@ class File;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/file/methods/clearStatCache.method ```php:p.inline</h6>
-<p>void public <a href="#./clearStatCache">clearStatCache</a> ( )</p>
+<p>#&amp;clearStatCache  -#%s.method ```php:p.inline
+void public <a href="#./clearStatCache">clearStatCache</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 #&read  -#%s.method ```php:p.inline
@@ -3296,8 +3296,8 @@ class File;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/file/methods/sendfile.method ```php:p.inline</h6>
-<p>boolean public <a href="#./sendfile">sendfile</a> ( mixed $outfd, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;sendfile  -#%s.method ```php:p.inline
+boolean public <a href="#./sendfile">sendfile</a> ( mixed $outfd, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$outfd` — @TODO
    -.n `:hc`$cb` — @TODO
@@ -3315,8 +3315,8 @@ class File;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/file/methods/readAll.method ```php:p.inline</h6>
-<p>boolean public <a href="#./readAll">readAll</a> ( callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;readAll  -#%s.method ```php:p.inline
+boolean public <a href="#./readAll">readAll</a> ( callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
    -.n `:hc`$pri` — @TODO
@@ -3329,8 +3329,8 @@ class File;</code></pre>
 <li class="n"><code class="code_highlight php clear">$chunkcb</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/file/methods/__toString.method ```php:p.inline</h6>
-<p>string public <a href="#./__toString">__toString</a> ( )</p>
+<p>#&amp;<strong>toString  -#%s.method ```php:p.inline
+string public &lt;a href="#./</strong>toString">__toString</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 #&setChunkSize  -#%s.method ```php:p.inline
@@ -3339,8 +3339,8 @@ class File;</code></pre>
 <li class="n">@TODO</li>
 <li class="n ti"><code class="code_highlight php clear">$n</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/file/methods/seek.method ```php:p.inline</h6>
-<p>resource public <a href="#./seek">seek</a> ( integer $offset, callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
+<p>#&amp;seek  -#%s.method ```php:p.inline
+resource public <a href="#./seek">seek</a> ( integer $offset, callable $cb, integer $pri = EIO_PRI_DEFAULT )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$offset` — @TODO
    -.n `:hc`$cb` — @TODO
@@ -3351,8 +3351,8 @@ class File;</code></pre>
 <ul>
 <li class="n">@TODO</li>
 </ul>
-<h6>-#lib/fs/file/methods/close.method ```php:p.inline</h6>
-<p>resource public <a href="#./close">close</a> ( )</p>
+<p>#&amp;close  -#%s.method ```php:p.inline
+resource public <a href="#./close">close</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 #&__destruct  -#%s.method ```php:p.inline
@@ -3385,8 +3385,8 @@ class FileWatcher;</code></pre>
 <h5 id="lib/fs/filewatcher/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#lib/fs/filewatcher">Класс FileWatcher <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/FS/FileWatcher.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib/fs">FS <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/FS"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib">Библиотеки</a></span></div>
 
 </h5>
-<h6>-#lib/fs/filewatcher/methods/__construct.method ```php:p.inline</h6>
-<p>void public <a href="#./__construct">__construct</a> ( )</p>
+<p>#&amp;<strong>construct  -#%s.method ```php:p.inline
+void public &lt;a href="#./</strong>construct">__construct</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 #&addWatch  -#%s.method ```php:p.inline
@@ -3397,8 +3397,8 @@ class FileWatcher;</code></pre>
 <li class="n"><code class="code_highlight php clear">$subscriber</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$flags</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filewatcher/methods/rmWatch.method ```php:p.inline</h6>
-<p>boolean public <a href="#./rmWatch">rmWatch</a> ( string $path, mixed $subscriber )</p>
+<p>#&amp;rmWatch  -#%s.method ```php:p.inline
+boolean public <a href="#./rmWatch">rmWatch</a> ( string $path, mixed $subscriber )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$path` — @TODO
    -.n `:hc`$subscriber` — @TODO
@@ -3409,8 +3409,8 @@ class FileWatcher;</code></pre>
 <li class="n">@TODO</li>
 <li class="n ti"><code class="code_highlight php clear">$path</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/filewatcher/methods/watch.method ```php:p.inline</h6>
-<p>void public <a href="#./watch">watch</a> ( )</p>
+<p>#&amp;watch  -#%s.method ```php:p.inline
+void public <a href="#./watch">watch</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 ### pubsub # PubSub #> PubSub <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/PubSub"><i class="fa fa-github"></i></a>
@@ -3425,8 +3425,8 @@ class PubSub;</code></pre>
 <h5 id="lib/fs/pubsub/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#lib/fs/pubsub">Класс PubSub <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/PubSub/PubSub.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib/fs">FS <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/FS"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib">Библиотеки</a></span></div>
 
 </h5>
-<h6>-#lib/fs/pubsub/methods/eventExists.method ```php:p.inline</h6>
-<p>boolean public <a href="#./eventExists">eventExists</a> ( string $id )</p>
+<p>#&amp;eventExists  -#%s.method ```php:p.inline
+boolean public <a href="#./eventExists">eventExists</a> ( string $id )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$id` — @TODO
 
@@ -3438,8 +3438,8 @@ class PubSub;</code></pre>
 <li class="n"><code class="code_highlight php clear">$obj</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/pubsub/methods/addEvent.method ```php:p.inline</h6>
-<p>void public <a href="#./addEvent">addEvent</a> ( string $id, PubSubEvent $obj )</p>
+<p>#&amp;addEvent  -#%s.method ```php:p.inline
+void public <a href="#./addEvent">addEvent</a> ( string $id, PubSubEvent $obj )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$id` — @TODO
    -.n `:hc`$obj` — @TODO
@@ -3450,8 +3450,8 @@ class PubSub;</code></pre>
 <li class="n">@TODO</li>
 <li class="n ti"><code class="code_highlight php clear">$id</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/pubsub/methods/unsub.method ```php:p.inline</h6>
-<p><a href="#../../pubsubevent">PubSubEvent</a> public <a href="#./unsub">unsub</a> ( string $id, object $obj )</p>
+<p>#&amp;unsub  -#%s.method ```php:p.inline
+<a href="#../../pubsubevent">PubSubEvent</a> public <a href="#./unsub">unsub</a> ( string $id, object $obj )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$id` — @TODO
    -.n `:hc`$obj` — @TODO
@@ -3463,8 +3463,8 @@ class PubSub;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$id</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$data</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/pubsub/methods/unsubFromAll.method ```php:p.inline</h6>
-<p>boolean public <a href="#./unsubFromAll">unsubFromAll</a> ( object $obj )</p>
+<p>#&amp;unsubFromAll  -#%s.method ```php:p.inline
+boolean public <a href="#./unsubFromAll">unsubFromAll</a> ( object $obj )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$obj` — @TODO
 
@@ -3493,8 +3493,8 @@ class PubSubEvent extends \[SplObjectStorage](http://php.net/manual/class.splobj
 <h5 id="lib/fs/pubsub/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#lib/fs/pubsub">Класс PubSub <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/PubSub/PubSub.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib/fs">FS <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/FS"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib">Библиотеки</a></span></div>
 
 </h5>
-<h6>-#lib/fs/pubsub/methods/__construct.method ```php:p.inline</h6>
-<p>void public <a href="#./__construct">__construct</a> ( callable $act = null, callable $deact = null )</p>
+<p>#&amp;<strong>construct  -#%s.method ```php:p.inline
+void public &lt;a href="#./</strong>construct">__construct</a> ( callable $act = null, callable $deact = null )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$act` — @TODO
    -.n `:hc`$deact` — @TODO
@@ -3505,8 +3505,8 @@ class PubSubEvent extends \[SplObjectStorage](http://php.net/manual/class.splobj
 <li class="n">@TODO</li>
 <li class="n ti"><code class="code_highlight php clear">$cb</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/pubsub/methods/onDeactivation.method ```php:p.inline</h6>
-<p><a href="#../">PubSubEvent</a> public <a href="#./onDeactivation">onDeactivation</a> ( callable $cb )</p>
+<p>#&amp;onDeactivation  -#%s.method ```php:p.inline
+<a href="#../">PubSubEvent</a> public <a href="#./onDeactivation">onDeactivation</a> ( callable $cb )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$cb` — @TODO
 
@@ -3515,8 +3515,8 @@ class PubSubEvent extends \[SplObjectStorage](http://php.net/manual/class.splobj
 <ul>
 <li class="n">@TODO</li>
 </ul>
-<h6>-#lib/fs/pubsub/methods/sub.method ```php:p.inline</h6>
-<p><a href="#../">PubSubEvent</a> public <a href="#./sub">sub</a> ( object $obj, callable $cb )</p>
+<p>#&amp;sub  -#%s.method ```php:p.inline
+<a href="#../">PubSubEvent</a> public <a href="#./sub">sub</a> ( object $obj, callable $cb )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$obj` — @TODO
    -.n `:hc`$cb` — @TODO
@@ -3527,8 +3527,8 @@ class PubSubEvent extends \[SplObjectStorage](http://php.net/manual/class.splobj
 <li class="n">@TODO</li>
 <li class="n ti"><code class="code_highlight php clear">$obj</code> — @TODO</li>
 </ul>
-<h6>-#lib/fs/pubsub/methods/pub.method ```php:p.inline</h6>
-<p><a href="#../">PubSubEvent</a> public <a href="#./pub">pub</a> ( mixed $data )</p>
+<p>#&amp;pub  -#%s.method ```php:p.inline
+<a href="#../">PubSubEvent</a> public <a href="#./pub">pub</a> ( mixed $data )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$data` — @TODO
 
@@ -3544,8 +3544,8 @@ class Application extends \PHPDaemon\Core\AppInstance;</code></pre>
 <h5 id="lib/fs/application/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#lib/fs/application">Класс Application <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/SockJS/Application.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib/fs">FS <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/FS"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#lib">Библиотеки</a></span></div>
 
 </h5>
-<h6>-#lib/fs/application/methods/getLocalSubscribersCount.method ```php:p.inline</h6>
-<p>public function <a href="#./getLocalSubscribersCount">getLocalSubscribersCount</a> ( $chan )</p>
+<p>#&amp;getLocalSubscribersCount  -#%s.method ```php:p.inline
+public function <a href="#./getLocalSubscribersCount">getLocalSubscribersCount</a> ( $chan )</p>
 <pre><code class="">   -.n @DESC
    -.n.ti `:hc`$params` — params
 
@@ -3555,8 +3555,8 @@ class Application extends \PHPDaemon\Core\AppInstance;</code></pre>
 <li class="n">@DESC</li>
 <li class="n ti"><code class="code_highlight php clear">$params</code> — params</li>
 </ul>
-<h6>-#lib/fs/application/methods/setnx.method ```php:p.inline</h6>
-<p>public function <a href="#./setnx">setnx</a> ( $key, $value, $cb = null )</p>
+<p>#&amp;setnx  -#%s.method ```php:p.inline
+public function <a href="#./setnx">setnx</a> ( $key, $value, $cb = null )</p>
 <pre><code class="">   -.n @DESC
    -.n.ti `:hc`$params` — params
 
@@ -3566,8 +3566,8 @@ class Application extends \PHPDaemon\Core\AppInstance;</code></pre>
 <li class="n">@DESC</li>
 <li class="n ti"><code class="code_highlight php clear">$params</code> — params</li>
 </ul>
-<h6>-#lib/fs/application/methods/getkey.method ```php:p.inline</h6>
-<p>public function <a href="#./getkey">getkey</a> ( $key, $cb = null )</p>
+<p>#&amp;getkey  -#%s.method ```php:p.inline
+public function <a href="#./getkey">getkey</a> ( $key, $cb = null )</p>
 <pre><code class="">   -.n @DESCNS
    -.n.ti `:hc`$params` — params
 
@@ -3577,8 +3577,8 @@ class Application extends \PHPDaemon\Core\AppInstance;</code></pre>
 <li class="n">@DESC</li>
 <li class="n ti"><code class="code_highlight php clear">$params</code> — params</li>
 </ul>
-<h6>-#lib/fs/application/methods/unsubscribe.method ```php:p.inline</h6>
-<p>public function <a href="#./unsubscribe">unsubscribe</a> ( $chan, $cb, $opcb = null )</p>
+<p>#&amp;unsubscribe  -#%s.method ```php:p.inline
+public function <a href="#./unsubscribe">unsubscribe</a> ( $chan, $cb, $opcb = null )</p>
 <pre><code class="">   -.n @DESC
    -.n.ti `:hc`$params` — params
 
@@ -3588,8 +3588,8 @@ class Application extends \PHPDaemon\Core\AppInstance;</code></pre>
 <li class="n">@DESC</li>
 <li class="n ti"><code class="code_highlight php clear">$params</code> — params</li>
 </ul>
-<h6>-#lib/fs/application/methods/publish.method ```php:p.inline</h6>
-<p>public function <a href="#./publish">publish</a> ( $chan, $cb, $opcb = null )</p>
+<p>#&amp;publish  -#%s.method ```php:p.inline
+public function <a href="#./publish">publish</a> ( $chan, $cb, $opcb = null )</p>
 <pre><code class="">   -.n @DESC
    -.n.ti `:hc`$params` — params
 
@@ -3599,8 +3599,8 @@ class Application extends \PHPDaemon\Core\AppInstance;</code></pre>
 <li class="n">@DESCспользуется в DNS</li>
 <li class="n ti"><code class="code_highlight php clear">$params</code> — params</li>
 </ul>
-<h6>-#lib/fs/application/methods/onFinish.method ```php:p.inline</h6>
-<p>public function <a href="#./onFinish">onFinish</a> (  )</p>
+<p>#&amp;onFinish  -#%s.method ```php:p.inline
+public function <a href="#./onFinish">onFinish</a> (  )</p>
 <pre><code class="">   -.n @DESCпользуется в DNS
    -.n.ti `:hc`$params` — params
 
@@ -3610,8 +3610,8 @@ class Application extends \PHPDaemon\Core\AppInstance;</code></pre>
 <li class="n">@DESCуется в DNS</li>
 <li class="n ti"><code class="code_highlight php clear">$params</code> — params</li>
 </ul>
-<h6>-#lib/fs/application/methods/wsHandler.method ```php:p.inline</h6>
-<p>public function <a href="#./wsHandler">wsHandler</a> ( $ws, $path, $client, $state )</p>
+<p>#&amp;wsHandler  -#%s.method ```php:p.inline
+public function <a href="#./wsHandler">wsHandler</a> ( $ws, $path, $client, $state )</p>
 <pre><code class="">   -.n @DESC
    -.n.ti `:hc`$params` — params
 
@@ -3621,8 +3621,8 @@ class Application extends \PHPDaemon\Core\AppInstance;</code></pre>
 <li class="n">@DESCуется в DNS</li>
 <li class="n ti"><code class="code_highlight php clear">$params</code> — params</li>
 </ul>
-<h6>-#lib/fs/application/methods/beginSession.method ```php:p.inline</h6>
-<p>public function <a href="#./beginSession">beginSession</a> ( $path, $sessId, $server )</p>
+<p>#&amp;beginSession  -#%s.method ```php:p.inline
+public function <a href="#./beginSession">beginSession</a> ( $path, $sessId, $server )</p>
 <pre><code class="">   -.n @DESC
    -.n.ti `:hc`$params` — params
 
@@ -3632,8 +3632,8 @@ class Application extends \PHPDaemon\Core\AppInstance;</code></pre>
 <li class="n">@DESC DNS</li>
 <li class="n ti"><code class="code_highlight php clear">$params</code> — params</li>
 </ul>
-<h6>-#lib/fs/application/methods/endSession.method ```php:p.inline</h6>
-<p>public function <a href="#./endSession">endSession</a> ( $session )</p>
+<p>#&amp;endSession  -#%s.method ```php:p.inline
+public function <a href="#./endSession">endSession</a> ( $session )</p>
 <pre><code class="">   -.n @DESC в DNS
    -.n.ti `:hc`$params` — params
 
@@ -3643,8 +3643,8 @@ class Application extends \PHPDaemon\Core\AppInstance;</code></pre>
 <li class="n">@DESC</li>
 <li class="n ti"><code class="code_highlight php clear">$params</code> — params</li>
 </ul>
-<h6>-#lib/fs/application/methods/callMethod.method ```php:p.inline</h6>
-<p>public function <a href="#./callMethod">callMethod</a> ( $method, $req, $upstream )</p>
+<p>#&amp;callMethod  -#%s.method ```php:p.inline
+public function <a href="#./callMethod">callMethod</a> ( $method, $req, $upstream )</p>
 <pre><code class="">   -.n @DESC
    -.n.ti `:hc`$params` — params
 
@@ -3745,8 +3745,8 @@ class Binary;</code></pre>
 <h4 id="utils/binary/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/binary">Binary <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Utils/Binary.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/binary/methods/labels.method ```php:p.inline</h5>
-<p>string public static <a href="#./labels">labels</a> ( string $q )</p>
+<p>#&amp;labels  -#%s.method ```php:p.inline
+string public static <a href="#./labels">labels</a> ( string $q )</p>
 <pre><code class="">   -.n Возвращает структуру имен. Используется в DNS
    -.n.ti `:hc`$q` — Список имен через точку
 
@@ -3757,8 +3757,8 @@ class Binary;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">&$data</code> — Структура</li>
 <li class="n"><code class="code_highlight php clear">$orig</code> — Изначальный пакет данных для обработки ссылок на подстроки</li>
 </ul>
-<h5>-#utils/binary/methods/LV.method ```php:p.inline</h5>
-<p>string public static <a href="#./LV">LV</a> ( string $str, integer $len = 1, boolean $lrev = false )</p>
+<p>#&amp;LV  -#%s.method ```php:p.inline
+string public static <a href="#./LV">LV</a> ( string $str, integer $len = 1, boolean $lrev = false )</p>
 <pre><code class="">   -.n Возвращает структуру Длина-Значение
    -.n.ti `:hc`$str` — Значение
    -.n `:hc`$len` — Количество байтов для записи длины
@@ -3770,8 +3770,8 @@ class Binary;</code></pre>
 <li class="n">Возвращает структуру Длина-Значение с Little-Endian размером длины в два байта и NUL-байтом после строки</li>
 <li class="n ti"><code class="code_highlight php clear">$str</code> — Значение</li>
 </ul>
-<h5>-#utils/binary/methods/byte.method ```php:p.inline</h5>
-<p>string public static <a href="#./byte">byte</a> ( integer $int )</p>
+<p>#&amp;byte  -#%s.method ```php:p.inline
+string public static <a href="#./byte">byte</a> ( integer $int )</p>
 <pre><code class="">   -.n Кодирует целое число в один байт
    -.n.ti `:hc`$int` — Число от 0 до 255
 
@@ -3781,8 +3781,8 @@ class Binary;</code></pre>
 <li class="n">Кодирует целое число в два байта</li>
 <li class="n ti"><code class="code_highlight php clear">$int</code> — Целое от 0 до 65535</li>
 </ul>
-<h5>-#utils/binary/methods/wordl.method ```php:p.inline</h5>
-<p>string public static <a href="#./wordl">wordl</a> ( integer $int )</p>
+<p>#&amp;wordl  -#%s.method ```php:p.inline
+string public static <a href="#./wordl">wordl</a> ( integer $int )</p>
 <pre><code class="">   -.n Кодирует целое число в два байта Little-Endian
    -.n.ti `:hc`$int` — Целое от 0 до 65535
 
@@ -3792,8 +3792,8 @@ class Binary;</code></pre>
 <li class="n">Кодирует целое число в четыре байта</li>
 <li class="n ti"><code class="code_highlight php clear">$int</code> — Целое от 0 до 4294967295</li>
 </ul>
-<h5>-#utils/binary/methods/dwordl.method ```php:p.inline</h5>
-<p>string public static <a href="#./dwordl">dwordl</a> ( integer $int )</p>
+<p>#&amp;dwordl  -#%s.method ```php:p.inline
+string public static <a href="#./dwordl">dwordl</a> ( integer $int )</p>
 <pre><code class="">   -.n Кодирует целое число в четыре байта Little-Endian
    -.n.ti `:hc`$int` — Целое от 0 до 4294967295
 
@@ -3803,8 +3803,8 @@ class Binary;</code></pre>
 <li class="n">Кодирует целое число в восемь байт</li>
 <li class="n ti"><code class="code_highlight php clear">$int</code> — Целое от 0 до 18446744073709551615</li>
 </ul>
-<h5>-#utils/binary/methods/qwordl.method ```php:p.inline</h5>
-<p>string public static <a href="#./qwordl">qwordl</a> ( integer $int )</p>
+<p>#&amp;qwordl  -#%s.method ```php:p.inline
+string public static <a href="#./qwordl">qwordl</a> ( integer $int )</p>
 <pre><code class="">   -.n Кодирует целое число в восемь байт Little-Endian
    -.n.ti `:hc`$int` — Целое от 0 до 18446744073709551615
 
@@ -3814,8 +3814,8 @@ class Binary;</code></pre>
 <li class="n">Удаляет первый байт из строки и возвращает его в виде целого числа от 0 до 255</li>
 <li class="n ti"><code class="code_highlight php clear">&$p</code> — Строка</li>
 </ul>
-<h5>-#utils/binary/methods/getChar.method ```php:p.inline</h5>
-<p>string public static <a href="#./getChar">getChar</a> ( string &amp;$p )</p>
+<p>#&amp;getChar  -#%s.method ```php:p.inline
+string public static <a href="#./getChar">getChar</a> ( string &amp;$p )</p>
 <pre><code class="">   -.n Удаляет первый байт из строки и возвращает его в виде строки
    -.n.ti `:hc`&$p` — Строка
 
@@ -3826,8 +3826,8 @@ class Binary;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">&$p</code> — Строка</li>
 <li class="n"><code class="code_highlight php clear">$l</code> — Если true, то Little-Endian</li>
 </ul>
-<h5>-#utils/binary/methods/getStrWord.method ```php:p.inline</h5>
-<p>string public static <a href="#./getStrWord">getStrWord</a> ( string &amp;$p, boolean $l = false )</p>
+<p>#&amp;getStrWord  -#%s.method ```php:p.inline
+string public static <a href="#./getStrWord">getStrWord</a> ( string &amp;$p, boolean $l = false )</p>
 <pre><code class="">   -.n Удаляет первые два байта из строки и возвращает их
    -.n.ti `:hc`&$p` — Строка
    -.n `:hc`$l` — Если true, то Little-Endian
@@ -3839,8 +3839,8 @@ class Binary;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">&$p</code> — Строка</li>
 <li class="n"><code class="code_highlight php clear">$l</code> — Если true, то Little-Endian</li>
 </ul>
-<h5>-#utils/binary/methods/getQword.method ```php:p.inline</h5>
-<p>integer public static <a href="#./getQword">getQword</a> ( string &amp;$p, boolean $l = false )</p>
+<p>#&amp;getQword  -#%s.method ```php:p.inline
+integer public static <a href="#./getQword">getQword</a> ( string &amp;$p, boolean $l = false )</p>
 <pre><code class="">   -.n Удаляет первые восемь байт из строки и возвращает их в виде целого от 0 до 18446744073709551615
    -.n.ti `:hc`&$p` — Строка
    -.n `:hc`$l` — Если true, то Little-Endian
@@ -3852,8 +3852,8 @@ class Binary;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">&$p</code> — Строка</li>
 <li class="n"><code class="code_highlight php clear">$l</code> — Если true, то Little-Endian</li>
 </ul>
-<h5>-#utils/binary/methods/getString.method ```php:p.inline</h5>
-<p>string public static <a href="#./getString">getString</a> ( string &amp;$str )</p>
+<p>#&amp;getString  -#%s.method ```php:p.inline
+string public static <a href="#./getString">getString</a> ( string &amp;$str )</p>
 <pre><code class="">   -.n Возвращает подстроку до первого NUL-байта и удаляет её из исходной вместе с NUL-байтом
    -.n.ti `:hc`&$str` — Строка
 
@@ -3866,8 +3866,8 @@ class Binary;</code></pre>
 <li class="n"><code class="code_highlight php clear">$nul</code> — Если true, то воспринимать как NUL-завершенную строку</li>
 <li class="n"><code class="code_highlight php clear">$lrev</code> — Если true, то Little-Endian</li>
 </ul>
-<h5>-#utils/binary/methods/flags2bitarray.method ```php:p.inline</h5>
-<p>string public static <a href="#./flags2bitarray">flags2bitarray</a> ( array $flags, integer $len = 4 )</p>
+<p>#&amp;flags2bitarray  -#%s.method ```php:p.inline
+string public static <a href="#./flags2bitarray">flags2bitarray</a> ( array $flags, integer $len = 4 )</p>
 <pre><code class="">   -.n Кодирует массив флагов (числа должны быть степенями двойки – 2, 4, 16, 32...)
    -.n.ti `:hc`$flags` — массив чисел
    -.n `:hc`$len` — Количество байтов на выходе
@@ -3880,8 +3880,8 @@ class Binary;</code></pre>
 <li class="n"><code class="code_highlight php clear">$int</code> — Целое число</li>
 <li class="n"><code class="code_highlight php clear">$l</code> — Если true, то Little-Endian</li>
 </ul>
-<h5>-#utils/binary/methods/i2b.method ```php:p.inline</h5>
-<p>string public static <a href="#./i2b">i2b</a> ( integer $len, integer $int = 0, boolean $l = false )</p>
+<p>#&amp;i2b  -#%s.method ```php:p.inline
+string public static <a href="#./i2b">i2b</a> ( integer $len, integer $int = 0, boolean $l = false )</p>
 <pre><code class="">   -.n Псевдоним метода `:hc`int2bytes`
 
 #&bytes2int  -#%s.method ```php:p.inline
@@ -3891,8 +3891,8 @@ class Binary;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$str</code> — Строку</li>
 <li class="n"><code class="code_highlight php clear">$l</code> — Если true, то Little-Endian</li>
 </ul>
-<h5>-#utils/binary/methods/b2i.method ```php:p.inline</h5>
-<p>integer public static <a href="#./b2i">b2i</a> ( string $str, boolean $l = false )</p>
+<p>#&amp;b2i  -#%s.method ```php:p.inline
+integer public static <a href="#./b2i">b2i</a> ( string $str, boolean $l = false )</p>
 <pre><code class="">   -.n Псевдоним метода `:hc`bytes2int`
 
 #&bitmap2bytes  -#%s.method ```php:p.inline
@@ -3902,8 +3902,8 @@ class Binary;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$bitmap</code> — Строка состоящая из 1 и 0</li>
 <li class="n"><code class="code_highlight php clear">$check_len</code> — Ожидаемое количество байт на выходе, при несовпадении будет возвращено false</li>
 </ul>
-<h5>-#utils/binary/methods/getbitmap.method ```php:p.inline</h5>
-<p>string public static <a href="#./getbitmap">getbitmap</a> ( string $byte )</p>
+<p>#&amp;getbitmap  -#%s.method ```php:p.inline
+string public static <a href="#./getbitmap">getbitmap</a> ( string $byte )</p>
 <pre><code class="">   -.n Получить побитовое представление в виде строки из 1 и 0
    -.n.ti `:hc`$byte` — Строка из одного байта
 
@@ -3916,8 +3916,8 @@ class Crypt;</code></pre>
 <h4 id="utils/binary/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/binary">Binary <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Utils/Binary.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/binary/methods/hash.method ```php:p.inline</h5>
-<p>string public static <a href="#./hash">hash</a> ( string $str, string $salt = '', boolean $plain = false )</p>
+<p>#&amp;hash  -#%s.method ```php:p.inline
+string public static <a href="#./hash">hash</a> ( string $str, string $salt = '', boolean $plain = false )</p>
 <pre><code class="">   -.n Возвращает хеш строки по алгоритму Keccak
    -.n.ti `:hc`$str` — исходная строка
    -.n `:hc`$salt` — примесь для хеширования
@@ -3930,8 +3930,8 @@ class Crypt;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$len</code> — длина выходной строки</li>
 <li class="n"><code class="code_highlight php clear">$chars</code> — набор используемых символов</li>
 </ul>
-<h5>-#utils/binary/methods/compareStrings.method ```php:p.inline</h5>
-<p>boolean public static <a href="#./compareStrings">compareStrings</a> ( string $a, string $b )</p>
+<p>#&amp;compareStrings  -#%s.method ```php:p.inline
+boolean public static <a href="#./compareStrings">compareStrings</a> ( string $a, string $b )</p>
 <pre><code class="">   -.n Сравнение строк устойчивое к атаке по времени (англ. Timing attack)
    -.n.ti `:hc`$a, $b` — Строки для сравнения
 
@@ -3944,8 +3944,8 @@ class DateTime extends \[DateTime](http://php.net/manual/class.datetime.php);</c
 <h4 id="utils/binary/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/binary">Binary <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Utils/Binary.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/binary/methods/diffAsText.method ```php:p.inline</h5>
-<p>string public static <a href="#./diffAsText">diffAsText</a> ( mixed $datetime1, mixed $datetime2, boolean $absolute = false )</p>
+<p>#&amp;diffAsText  -#%s.method ```php:p.inline
+string public static <a href="#./diffAsText">diffAsText</a> ( mixed $datetime1, mixed $datetime2, boolean $absolute = false )</p>
 <pre><code class="">   -.n Возвращает разницу двух временных меток в виде строки. Пример: `:c`1 year. 2 mon. 6 day. 4 hours. 21 min. 10 sec.`
    -.n.ti `:hc`$datetime1, $datetime2` — временные метки. Может быть объектом <a target="_blank" class="tpl-outlink" href="http://php.net/manual/class.datetimeinterface.php">DateTimeInterface<i class="fa fa-external-link"></i></a>, строкой или меткой времени Unix
    -.n `:hc`$absolute` — используется, чтобы вернуть абсолютную разницу
@@ -3961,8 +3961,8 @@ class Encoding;</code></pre>
 <h4 id="utils/binary/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/binary">Binary <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Utils/Binary.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/binary/methods/toUTF8.method ```php:p.inline</h5>
-<p>string public static <a href="#./toUTF8">toUTF8</a> ( string $text )</p>
+<p>#&amp;toUTF8  -#%s.method ```php:p.inline
+string public static <a href="#./toUTF8">toUTF8</a> ( string $text )</p>
 <pre><code class="">   -.n Приводит текст к UTF-8
    -.n.ti `:hc`$text` — Текст
 
@@ -3972,8 +3972,8 @@ class Encoding;</code></pre>
 <li class="n">Приводит к текст к Windows-1251</li>
 <li class="n ti"><code class="code_highlight php clear">$text</code> — Текст</li>
 </ul>
-<h5>-#utils/binary/methods/toISO8859.method ```php:p.inline</h5>
-<p>string public static <a href="#./toISO8859">toISO8859</a> ( string $text )</p>
+<p>#&amp;toISO8859  -#%s.method ```php:p.inline
+string public static <a href="#./toISO8859">toISO8859</a> ( string $text )</p>
 <pre><code class="">   -.n Приводит к текст к ISO-8859
    -.n.ti `:hc`$text` — Текст
 
@@ -3983,8 +3983,8 @@ class Encoding;</code></pre>
 <li class="n">Приводит к текст к Windows-1251</li>
 <li class="n ti"><code class="code_highlight php clear">$text</code> — Текст</li>
 </ul>
-<h5>-#utils/binary/methods/fixUTF8.method ```php:p.inline</h5>
-<p>string public static <a href="#./fixUTF8">fixUTF8</a> ( string $text )</p>
+<p>#&amp;fixUTF8  -#%s.method ```php:p.inline
+string public static <a href="#./fixUTF8">fixUTF8</a> ( string $text )</p>
 <pre><code class="">   -.n Исправляет UTF-8
    -.n.ti `:hc`$text` — Текст
 
@@ -3994,8 +3994,8 @@ class Encoding;</code></pre>
 <li class="n">Исправляет UTF-8 после конвертации из Windows-1252 так, будто это была ISO-8859</li>
 <li class="n ti"><code class="code_highlight php clear">$text</code> — Текст</li>
 </ul>
-<h5>-#utils/binary/methods/removeBOM.method ```php:p.inline</h5>
-<p>string public static <a href="#./removeBOM">removeBOM</a> ( string $str = "" )</p>
+<p>#&amp;removeBOM  -#%s.method ```php:p.inline
+string public static <a href="#./removeBOM">removeBOM</a> ( string $str = "" )</p>
 <pre><code class="">   -.n Удаляет Byte-order mark
    -.n.ti `:hc`$str` — Текст
 
@@ -4014,8 +4014,8 @@ class IRC;</code></pre>
 <h4 id="utils/irc/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/irc">IRC <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Utils/IRC.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/irc/methods/getCommandByCode.method ```php:p.inline</h5>
-<p>string public static <a href="#./getCommandByCode">getCommandByCode</a> ( integer $code )</p>
+<p>#&amp;getCommandByCode  -#%s.method ```php:p.inline
+string public static <a href="#./getCommandByCode">getCommandByCode</a> ( integer $code )</p>
 <pre><code class="">   -.n Возвращает строковое представление команды по её коду
    -.n.ti `:hc`$code` — код команды
 
@@ -4025,8 +4025,8 @@ class IRC;</code></pre>
 <li class="n">Возвращает код команды по её строковому представлению</li>
 <li class="n ti"><code class="code_highlight php clear">$cmd</code> — строковое представление команды</li>
 </ul>
-<h5>-#utils/irc/methods/parseUsermask.method ```php:p.inline</h5>
-<p>string public static <a href="#./parseUsermask">parseUsermask</a> ( string $mask )</p>
+<p>#&amp;parseUsermask  -#%s.method ```php:p.inline
+string public static <a href="#./parseUsermask">parseUsermask</a> ( string $mask )</p>
 <pre><code class="">   -.n Возвращает ассоциативный массив вида {nick: string, unverified: bool, user: string, host: string, orig: string}
    -.n.ti `:hc`$mask` — маска вида `nick!~?user@host`
 
@@ -4038,8 +4038,8 @@ class MIME;</code></pre>
 <h4 id="utils/irc/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/irc">IRC <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Utils/IRC.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/irc/methods/get.method ```php:p.inline</h5>
-<p>string public static <a href="#./get">get</a> ( string $path )</p>
+<p>#&amp;get  -#%s.method ```php:p.inline
+string public static <a href="#./get">get</a> ( string $path )</p>
 <pre><code class="">   -.n Возвращает MIME-заголовок файла или `false`
    -.n.ti `:hc`$path` — путь до файла
 
@@ -4057,8 +4057,8 @@ class ShmEntity;</code></pre>
 <h4 id="utils/irc/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/irc">IRC <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Utils/IRC.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/irc/methods/__construct.method ```php:p.inline</h5>
-<p>string public <a href="#./__construct">__construct</a> ( string $path, integer $segsize, string $name, boolean $create = false )</p>
+<p>#&amp;<strong>construct  -#%s.method ```php:p.inline
+string public &lt;a href="#./</strong>construct">__construct</a> ( string $path, integer $segsize, string $name, boolean $create = false )</p>
 <pre><code class="">   -.n Конструктор
    -.n.ti `:hc`$path` — путь до файла
    -.n `:hc`$segsize` — размер сегмента
@@ -4072,8 +4072,8 @@ class ShmEntity;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$segno</code> — номер сегмента</li>
 <li class="n"><code class="code_highlight php clear">$create</code> — флаг создания сегмента</li>
 </ul>
-<h5>-#utils/irc/methods/getSegments.method ```php:p.inline</h5>
-<p>string public <a href="#./getSegments">getSegments</a> ( )</p>
+<p>#&amp;getSegments  -#%s.method ```php:p.inline
+string public <a href="#./getSegments">getSegments</a> ( )</p>
 <pre><code class="">   -.n Возвращает индексный массив всех сегментов
 
 #&openall  -#%s.method ```php:p.inline
@@ -4081,8 +4081,8 @@ class ShmEntity;</code></pre>
 <ul>
 <li class="n">Открывает все сегменты</li>
 </ul>
-<h5>-#utils/irc/methods/write.method ```php:p.inline</h5>
-<p>string public <a href="#./write">write</a> ( string $data, integer $offset )</p>
+<p>#&amp;write  -#%s.method ```php:p.inline
+string public <a href="#./write">write</a> ( string $data, integer $offset )</p>
 <pre><code class="">   -.n Записывает данные `:hc`$data` со смещением `:hc`$offset`
    -.n.ti `:hc`$data` — данные
    -.n `:hc`$offset` — смещение
@@ -4094,8 +4094,8 @@ class ShmEntity;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$offset</code> — смещение</li>
 <li class="n"><code class="code_highlight php clear">$length</code> — длина читаемых данных</li>
 </ul>
-<h5>-#utils/irc/methods/delete.method ```php:p.inline</h5>
-<p>string public <a href="#./delete">delete</a> ( )</p>
+<p>#&amp;delete  -#%s.method ```php:p.inline
+string public <a href="#./delete">delete</a> ( )</p>
 <pre><code class="">   -.n Удаляет все сегменты
 
 ### terminal # Terminal #> Terminal <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Utils/Terminal.php"><i class="fa fa-github"></i></a>
@@ -4108,8 +4108,8 @@ class Terminal;</code></pre>
 <h4 id="utils/irc/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/irc">IRC <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Utils/IRC.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/irc/methods/readln.method ```php:p.inline</h5>
-<p>string public <a href="#./readln">readln</a> ( )</p>
+<p>#&amp;readln  -#%s.method ```php:p.inline
+string public <a href="#./readln">readln</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 #&enableColor  -#%s.method ```php:p.inline
@@ -4118,8 +4118,8 @@ class Terminal;</code></pre>
 <li class="n">@TODO</li>
 <li class="n ti"><code class="code_highlight php clear">$bool</code> — @TODO</li>
 </ul>
-<h5>-#utils/irc/methods/clearScreen.method ```php:p.inline</h5>
-<p>void public <a href="#./clearScreen">clearScreen</a> ( )</p>
+<p>#&amp;clearScreen  -#%s.method ```php:p.inline
+void public <a href="#./clearScreen">clearScreen</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 #&setStyle  -#%s.method ```php:p.inline
@@ -4128,8 +4128,8 @@ class Terminal;</code></pre>
 <li class="n">@TODO</li>
 <li class="n ti"><code class="code_highlight php clear">$c</code> — @TODO</li>
 </ul>
-<h5>-#utils/irc/methods/resetStyle.method ```php:p.inline</h5>
-<p>void public <a href="#./resetStyle">resetStyle</a> ( )</p>
+<p>#&amp;resetStyle  -#%s.method ```php:p.inline
+void public <a href="#./resetStyle">resetStyle</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 #&drawParam  -#%s.method ```php:p.inline
@@ -4140,8 +4140,8 @@ class Terminal;</code></pre>
 <li class="n"><code class="code_highlight php clear">$description</code> — @TODO</li>
 <li class="n"><code class="code_highlight php clear">$values</code> — @TODO</li>
 </ul>
-<h5>-#utils/irc/methods/drawTable.method ```php:p.inline</h5>
-<p>void public <a href="#./drawTable">drawTable</a> ( array $rows )</p>
+<p>#&amp;drawTable  -#%s.method ```php:p.inline
+void public <a href="#./drawTable">drawTable</a> ( array $rows )</p>
 <pre><code class="">   -.n @TODO
    -.n.ti `:hc`$rows` — @TODO
 
@@ -4159,8 +4159,8 @@ class ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splo
 <h4 id="utils/irc/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/irc">IRC <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Utils/IRC.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/irc/methods/each.method ```php:p.inline</h5>
-<p>integer public <a href="#./each">each</a> ( string $method, mixed $arg, ... )</p>
+<p>#&amp;each  -#%s.method ```php:p.inline
+integer public <a href="#./each">each</a> ( string $method, mixed $arg, ... )</p>
 <pre><code class="">   -.n Проходит по всем объектам, вызывая у каждого из них метод `:hc`$method` c заданными аргументами `:hc`$args` и возвращает количество объектов в хранилище
    -.n.ti `:hc`$method` — вызываемый метод объекта
    -.n `:hc`$arg, ...` — аргументы
@@ -4171,8 +4171,8 @@ class ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splo
 <li class="n">Удаляет из текущего контейнера все объекты, которых нет в контейнере <code class="code_highlight php clear">$obj</code></li>
 <li class="n ti"><code class="code_highlight php clear">$obj</code> — контейнер, содержащий элементы, которые должны остаться в текущем контейнере</li>
 </ul>
-<h5>-#utils/irc/methods/detachFirst.method ```php:p.inline</h5>
-<p>object public <a href="#./detachFirst">detachFirst</a> ( )</p>
+<p>#&amp;detachFirst  -#%s.method ```php:p.inline
+object public <a href="#./detachFirst">detachFirst</a> ( )</p>
 <pre><code class="">   -.n Возвращает первый объект, удалив его из контейнера
 
 #&getFirst  -#%s.method ```php:p.inline
@@ -4191,8 +4191,8 @@ class PriorityQueueCallbacks extends \<a href="http://php.net/manual/class.splpr
 <h4 id="utils/priority-queue-callbacks/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/priority-queue-callbacks">PriorityQueueCallbacks <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Structures/PriorityQueueCallbacks.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/priority-queue-callbacks/methods/enqueue.method ```php:p.inline</h5>
-<p>void public <a href="#./enqueue">enqueue</a> ( callable $cb, integer $pri = 0 )</p>
+<p>#&amp;enqueue  -#%s.method ```php:p.inline
+void public <a href="#./enqueue">enqueue</a> ( callable $cb, integer $pri = 0 )</p>
 <pre><code class="">   -.n Добавляет функцию обратного вызова в очередь и пересортирует её
    -.n.ti `:hc`$cb` — функция обратного вызова
    -.n `:hc`$pri` — приоритет
@@ -4202,8 +4202,8 @@ class PriorityQueueCallbacks extends \<a href="http://php.net/manual/class.splpr
 <ul>
 <li class="n">Псевдоним метода <code class="code_highlight php clear">enqueue</code></li>
 </ul>
-<h5>-#utils/priority-queue-callbacks/methods/dequeue.method ```php:p.inline</h5>
-<p>CallbackWrapper public <a href="#./dequeue">dequeue</a> ( )</p>
+<p>#&amp;dequeue  -#%s.method ```php:p.inline
+CallbackWrapper public <a href="#./dequeue">dequeue</a> ( )</p>
 <pre><code class="">   -.n Извлекает функцию обратного вызова из начала очереди и пересортирует её. Псевдоним метода `:hc`SplPriorityQueue::extract`
 
 #&executeOne  -#%s.method ```php:p.inline
@@ -4212,8 +4212,8 @@ class PriorityQueueCallbacks extends \<a href="http://php.net/manual/class.splpr
 <li class="n">Извлекает первую из начала очереди функцию обратного вызова и выполняет её с переданными аргументами. Возвращает <code>false</code> если очередь пуста</li>
 <li class="n ti"><code class="code_highlight php clear">$arg, ...</code> — аргументы</li>
 </ul>
-<h5>-#utils/priority-queue-callbacks/methods/executeAll.method ```php:p.inline</h5>
-<p>integer public <a href="#./executeAll">executeAll</a> ( mixed $arg, ... )</p>
+<p>#&amp;executeAll  -#%s.method ```php:p.inline
+integer public <a href="#./executeAll">executeAll</a> ( mixed $arg, ... )</p>
 <pre><code class="">   -.n Извлекает и выполняет все функции обратного вызова в очереди с переданными аргументами. Возвращает количество выполненных функций обратного вызова
    -.n.ti `:hc`$arg, ...` — аргументы
 
@@ -4229,8 +4229,8 @@ class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.ph
 <h4 id="utils/priority-queue-callbacks/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/priority-queue-callbacks">PriorityQueueCallbacks <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Structures/PriorityQueueCallbacks.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/priority-queue-callbacks/methods/push.method ```php:p.inline</h5>
-<p>void public <a href="#./push">push</a> ( callable $cb )</p>
+<p>#&amp;push  -#%s.method ```php:p.inline
+void public <a href="#./push">push</a> ( callable $cb )</p>
 <pre><code class="">   -.n Добавляет функцию обратного вызова в конец стека
    -.n.ti `:hc`$cb` — функция
 
@@ -4240,8 +4240,8 @@ class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.ph
 <li class="n">Добавляет функцию обратного вызова в начало стека</li>
 <li class="n ti"><code class="code_highlight php clear">$cb</code> — функция</li>
 </ul>
-<h5>-#utils/priority-queue-callbacks/methods/executeOne.method ```php:p.inline</h5>
-<p>boolean public <a href="#./executeOne">executeOne</a> ( mixed $arg, ... )</p>
+<p>#&amp;executeOne  -#%s.method ```php:p.inline
+boolean public <a href="#./executeOne">executeOne</a> ( mixed $arg, ... )</p>
 <pre><code class="">   -.n Извлекает первую функцию обратного вызова из начала стека и выполняет её с переданными аргументами. Возвращает `false` если стек пуст
    -.n.ti `:hc`$arg` — аргументы
 
@@ -4251,8 +4251,8 @@ class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.ph
 <li class="n">Выполяет первую функцию обратного вызова из начала стека с переданными аргументами без извлечения её из стека. Возвращает <code>false</code> если стек пуст</li>
 <li class="n ti"><code class="code_highlight php clear">$arg, ...</code> — аргументы</li>
 </ul>
-<h5>-#utils/priority-queue-callbacks/methods/executeAll2.method ```php:p.inline</h5>
-<p>integer public <a href="#./executeAll">executeAll</a> ( mixed $arg, ... )</p>
+<p>#&amp;executeAll  -#%s.method ```php:p.inline
+integer public <a href="#./executeAll">executeAll</a> ( mixed $arg, ... )</p>
 <pre><code class="">   -.n Извлекает все функции обратного вызова и выполняет с заданными аргументами. Возвращает количество выполненных функций.
    -.n.ti `:hc`$arg1, ...` — аргументы
 
@@ -4261,8 +4261,8 @@ class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.ph
 <ul>
 <li class="n">Возвращает индексный массив стека</li>
 </ul>
-<h5>-#utils/priority-queue-callbacks/methods/reset.method ```php:p.inline</h5>
-<p>void public <a href="#./reset">reset</a> ( )</p>
+<p>#&amp;reset  -#%s.method ```php:p.inline
+void public <a href="#./reset">reset</a> ( )</p>
 <pre><code class="">   -.n Удаляет все элементы из стека
 
 ## traits # Примеси
@@ -4412,8 +4412,8 @@ trait Sessions;</code></pre>
 <h4 id="utils/dnode/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/dnode">DNode <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/WebSocket/Traits/DNode.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/dnode/methods/onHandshake.method ```php:p.inline</h5>
-<p>void public <a href="#./onHandshake">onHandshake</a> ( )</p>
+<p>#&amp;onHandshake  -#%s.method ```php:p.inline
+void public <a href="#./onHandshake">onHandshake</a> ( )</p>
 <pre><code class="">   -.n Default onHandshake() method
 
 #&callLocal  -#%s.method ```php:p.inline
@@ -4421,8 +4421,8 @@ trait Sessions;</code></pre>
 <ul>
 <li class="n">Вызывает локальный метод</li>
 </ul>
-<h5>-#utils/dnode/methods/extractCallbacks.method ```php:p.inline</h5>
-<p>void protected <a href="#./extractCallbacks">extractCallbacks</a> ( array &amp;$args, array &amp;$list, array &amp;$path )</p>
+<p>#&amp;extractCallbacks  -#%s.method ```php:p.inline
+void protected <a href="#./extractCallbacks">extractCallbacks</a> ( array &amp;$args, array &amp;$list, array &amp;$path )</p>
 <pre><code class="">   -.n Извлекает функции обратного вызова из массива аргуметнов
    -.n.ti `:hc`&$args` — Аргументы
    -.n `:hc`&$list` — Выходной массив для свойства 'callbacks'
@@ -4433,8 +4433,8 @@ trait Sessions;</code></pre>
 <ul>
 <li class="n">Вызов удаленного метода</li>
 </ul>
-<h5>-#utils/dnode/methods/callRemoteArray.method ```php:p.inline</h5>
-<p><a href="#../">DNode</a> public <a href="#./callRemoteArray">callRemoteArray</a> ( string $method, array $args )</p>
+<p>#&amp;callRemoteArray  -#%s.method ```php:p.inline
+<a href="#../">DNode</a> public <a href="#./callRemoteArray">callRemoteArray</a> ( string $method, array $args )</p>
 <pre><code class="">   -.n Вызов удаленного метода с передачей аргументов массивом
    -.n.ti `:hc`$method` — Название метода
    -.n `:hc`$args` — Аргументы
@@ -4445,8 +4445,8 @@ trait Sessions;</code></pre>
 <li class="n">Обработчик метода <code>methods</code></li>
 <li class="n ti"><code class="code_highlight php clear">$methods</code> — Ассоциативный массив методов</li>
 </ul>
-<h5>-#utils/dnode/methods/toJsonDebugResursive.method ```php:p.inline</h5>
-<p>void public <a href="#./toJsonDebugResursive">toJsonDebugResursive</a> ( mixed &amp;$m )</p>
+<p>#&amp;toJsonDebugResursive  -#%s.method ```php:p.inline
+void public <a href="#./toJsonDebugResursive">toJsonDebugResursive</a> ( mixed &amp;$m )</p>
 <pre><code class="">   -.n Обработчик рекурсии для метода <a target="_self" class="tpl-inlink" href="#../toJsonDebug">toJsonDebug<i class="fa fa-caret-square-o-up"></i></a>
    -.n.ti `:hc`&$m` — Значение
 
@@ -4456,8 +4456,8 @@ trait Sessions;</code></pre>
 <li class="n">Возвращает JSON-представление массива в отладочных целях</li>
 <li class="n ti"><code class="code_highlight php clear">$m</code> — Значение</li>
 </ul>
-<h5>-#utils/dnode/methods/onFinish.method ```php:p.inline</h5>
-<p>void public <a href="#./onFinish">onFinish</a> ( )</p>
+<p>#&amp;onFinish  -#%s.method ```php:p.inline
+void public <a href="#./onFinish">onFinish</a> ( )</p>
 <pre><code class="">   -.n Вызывается когда сессия завершена
 
 #&cleanup  -#%s.method ```php:p.inline
@@ -4465,8 +4465,8 @@ trait Sessions;</code></pre>
 <ul>
 <li class="n">Очищает внутренние структуры</li>
 </ul>
-<h5>-#utils/dnode/methods/__call.method ```php:p.inline</h5>
-<p>mixed public <a href="#./__call">__call</a> ( string $m, array $args )</p>
+<p>#&amp;<strong>call  -#%s.method ```php:p.inline
+mixed public &lt;a href="#./</strong>call">__call</a> ( string $m, array $args )</p>
 <pre><code class="">   -.n Магический метод __call
    -.n.ti `:hc`$m` — Название метода
    -.n `:hc`$args` — Аргументы
@@ -4477,8 +4477,8 @@ trait Sessions;</code></pre>
 <li class="n">Вызывается когда получен пакет</li>
 <li class="n ti"><code class="code_highlight php clear">$pct</code> — Data</li>
 </ul>
-<h5>-#utils/dnode/methods/onFrame.method ```php:p.inline</h5>
-<p>void public <a href="#./onFrame">onFrame</a> ( string $data, string $type )</p>
+<p>#&amp;onFrame  -#%s.method ```php:p.inline
+void public <a href="#./onFrame">onFrame</a> ( string $data, string $type )</p>
 <pre><code class="">   -.n Вызывется когда получен фрейм
    -.n.ti `:hc`$data` — Содержимое фрейма
    -.n `:hc`$type` — Тип фрейма
@@ -4551,8 +4551,8 @@ Pool:HTTPServer {
 <h4 id="utils/dnode/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/dnode">DNode <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/WebSocket/Traits/DNode.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/dnode/methods/__construct.method ```php:p.inline</h5>
-<p>public <a href="#./__construct">__construct</a> ( array $config = [], boolean $init = true )</p>
+<p>#&amp;<strong>construct  -#%s.method ```php:p.inline
+public &lt;a href="#./</strong>construct">__construct</a> ( array $config = [], boolean $init = true )</p>
 <pre><code class="">   -.n Constructor
    -.n.ti `:hc`$config` — Config variables
    -.n `:hc`$init` — @TODO
@@ -4562,8 +4562,8 @@ Pool:HTTPServer {
 <ul>
 <li class="n">Called when the worker is ready to go</li>
 </ul>
-<h5>-#utils/dnode/methods/onConfigUpdated.method ```php:p.inline</h5>
-<p>public <a href="#./onConfigUpdated">onConfigUpdated</a> ( )</p>
+<p>#&amp;onConfigUpdated  -#%s.method ```php:p.inline
+public <a href="#./onConfigUpdated">onConfigUpdated</a> ( )</p>
 <pre><code class="">   -.n Called when worker is going to update configuration
 
 #&getInstance  -#%s.method ```php:p.inline
@@ -4573,8 +4573,8 @@ Pool:HTTPServer {
 <li class="n ti"><code class="code_highlight php clear">$arg</code> — name / array config / ConfigSection</li>
 <li class="n"><code class="code_highlight php clear">$spawn</code> — Spawn? Default is true</li>
 </ul>
-<h5>-#utils/dnode/methods/setConnectionClass.method ```php:p.inline</h5>
-<p>public <a href="#./setConnectionClass">setConnectionClass</a> ( string $class )</p>
+<p>#&amp;setConnectionClass  -#%s.method ```php:p.inline
+public <a href="#./setConnectionClass">setConnectionClass</a> ( string $class )</p>
 <pre><code class="">   -.n Sets default connection class
    -.n.ti `:hc`$class` — String name
 
@@ -4583,8 +4583,8 @@ Pool:HTTPServer {
 <ul>
 <li class="n">Enable socket events</li>
 </ul>
-<h5>-#utils/dnode/methods/disable.method ```php:p.inline</h5>
-<p>public <a href="#./disable">disable</a> ( )</p>
+<p>#&amp;disable  -#%s.method ```php:p.inline
+public <a href="#./disable">disable</a> ( )</p>
 <pre><code class="">   -.n Disable all events of sockets
 
 #&onShutdown  -#%s.method ```php:p.inline
@@ -4593,8 +4593,8 @@ Pool:HTTPServer {
 <li class="n">Called when application instance is going to shutdown</li>
 <li class="n ti"><code class="code_highlight php clear">$graceful</code> — graceful</li>
 </ul>
-<h5>-#utils/dnode/methods/finish.method ```php:p.inline</h5>
-<p>public <a href="#./finish">finish</a> ( boolean $graceful = false )</p>
+<p>#&amp;finish  -#%s.method ```php:p.inline
+public <a href="#./finish">finish</a> ( boolean $graceful = false )</p>
 <pre><code class="">   -.n Finishes ConnectionPool
    -.n.ti `:hc`$graceful` — graceful
 
@@ -4605,8 +4605,8 @@ Pool:HTTPServer {
 <li class="n ti"><code class="code_highlight php clear">$conn</code> — Connection</li>
 <li class="n"><code class="code_highlight php clear">$inf</code> — Info</li>
 </ul>
-<h5>-#utils/dnode/methods/detach.method ```php:p.inline</h5>
-<p>public <a href="#./detach">detach</a> ( <a href="#../../connection">Connection</a> $conn )</p>
+<p>#&amp;detach  -#%s.method ```php:p.inline
+public <a href="#./detach">detach</a> ( <a href="#../../connection">Connection</a> $conn )</p>
 <pre><code class="">   -.n Detach Connection
    -.n.ti `:hc`$conn` — Connection
 
@@ -4627,8 +4627,8 @@ abstract class Client extends <a href="#../pool">Pool</a>;</code></pre>
 <h4 id="utils/client/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/client">Client <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Network/Client.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/client/methods/addServer.method ```php:p.inline</h5>
-<p>void public <a href="#./addServer">addServer</a> ( string $url, integer $weight = NULL )</p>
+<p>#&amp;addServer  -#%s.method ```php:p.inline
+void public <a href="#./addServer">addServer</a> ( string $url, integer $weight = NULL )</p>
 <pre><code class="">   -.n Adds server
    -.n.ti `:hc`$url` — Server URL
    -.n `:hc`$weight` — Weight
@@ -4641,8 +4641,8 @@ abstract class Client extends <a href="#../pool">Pool</a>;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — onConnected</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — Optional. Priority.</li>
 </ul>
-<h5>-#utils/client/methods/detach.method ```php:p.inline</h5>
-<p>void public <a href="#./detach">detach</a> ( <a href="#../../connection">Connection</a> $conn )</p>
+<p>#&amp;detach  -#%s.method ```php:p.inline
+void public <a href="#./detach">detach</a> ( <a href="#../../connection">Connection</a> $conn )</p>
 <pre><code class="">   -.n Detach Connection
    -.n.ti `:hc`$conn` — Connection
 
@@ -4653,8 +4653,8 @@ abstract class Client extends <a href="#../pool">Pool</a>;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$conn</code> — Connection</li>
 <li class="n"><code class="code_highlight php clear">$url</code> — URL</li>
 </ul>
-<h5>-#utils/client/methods/markConnBusy.method ```php:p.inline</h5>
-<p>void public <a href="#./markConnBusy">markConnBusy</a> ( <a href="#../../clientconnection">ClientConnection</a> $conn, string $url )</p>
+<p>#&amp;markConnBusy  -#%s.method ```php:p.inline
+void public <a href="#./markConnBusy">markConnBusy</a> ( <a href="#../../clientconnection">ClientConnection</a> $conn, string $url )</p>
 <pre><code class="">   -.n Mark connection as busy
    -.n.ti `:hc`$conn` — Connection
    -.n `:hc`$url` — URL
@@ -4666,8 +4666,8 @@ abstract class Client extends <a href="#../pool">Pool</a>;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$conn</code> — Connection</li>
 <li class="n"><code class="code_highlight php clear">$url</code> — URL</li>
 </ul>
-<h5>-#utils/client/methods/touchPending.method ```php:p.inline</h5>
-<p>void public <a href="#./touchPending">touchPending</a> ( string $url )</p>
+<p>#&amp;touchPending  -#%s.method ```php:p.inline
+void public <a href="#./touchPending">touchPending</a> ( string $url )</p>
 <pre><code class="">   -.n Touch pending "requests for connection"
    -.n.ti `:hc`$url` — URL
 
@@ -4678,8 +4678,8 @@ abstract class Client extends <a href="#../pool">Pool</a>;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$key</code> — Key</li>
 <li class="n"><code class="code_highlight php clear">$cb</code> — Callback</li>
 </ul>
-<h5>-#utils/client/methods/getConnectionRR.method ```php:p.inline</h5>
-<p>boolean public <a href="#./getConnectionRR">getConnectionRR</a> ( callable $cb = null )</p>
+<p>#&amp;getConnectionRR  -#%s.method ```php:p.inline
+boolean public <a href="#./getConnectionRR">getConnectionRR</a> ( callable $cb = null )</p>
 <pre><code class="">   -.n Returns available connection from the pool
    -.n.ti `:hc`$cb` — Callback
 
@@ -4691,8 +4691,8 @@ abstract class Client extends <a href="#../pool">Pool</a>;</code></pre>
 <li class="n"><code class="code_highlight php clear">$data</code> — Request</li>
 <li class="n"><code class="code_highlight php clear">$onResponse</code> — Callback called when the request complete</li>
 </ul>
-<h5>-#utils/client/methods/requestByKey.method ```php:p.inline</h5>
-<p>boolean public <a href="#./requestByKey">requestByKey</a> ( string $key, string $data, callable $onResponse = null )</p>
+<p>#&amp;requestByKey  -#%s.method ```php:p.inline
+boolean public <a href="#./requestByKey">requestByKey</a> ( string $key, string $data, callable $onResponse = null )</p>
 <pre><code class="">   -.n Sends a request to server according to the key
    -.n.ti `:hc`$key` — Key
    -.n `:hc`$data` — Request
@@ -4713,8 +4713,8 @@ class ClientConnection extends <a href="#../connection">Connection</a>;</code></
 <h4 id="utils/clientconnection/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/clientconnection">ClientConnection <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Network/ClientConnection.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/clientconnection/methods/__construct.method ```php:p.inline</h5>
-<p>void public <a href="#./__construct">__construct</a> ( resource $fd, object $pool = null )</p>
+<p>#&amp;<strong>construct  -#%s.method ```php:p.inline
+void public &lt;a href="#./</strong>construct">__construct</a> ( resource $fd, object $pool = null )</p>
 <pre><code class="">   -.n Constructor
    -.n.ti `:hc`$fd` — File descriptor
    -.n `:hc`$pool` — ConnectionPool
@@ -4724,8 +4724,8 @@ class ClientConnection extends <a href="#../connection">Connection</a>;</code></
 <ul>
 <li class="n">Busy?</li>
 </ul>
-<h5>-#utils/clientconnection/methods/onResponse.method ```php:p.inline</h5>
-<p>void public <a href="#./onResponse">onResponse</a> ( callable $cb )</p>
+<p>#&amp;onResponse  -#%s.method ```php:p.inline
+void public <a href="#./onResponse">onResponse</a> ( callable $cb )</p>
 <pre><code class="">   -.n Push callback to onReponse stack
    -.n.ti `:hc`$cb` — callable
 
@@ -4734,8 +4734,8 @@ class ClientConnection extends <a href="#../connection">Connection</a>;</code></
 <ul>
 <li class="n">Called when the connection is handshaked (at low-level), and peer is ready to recv. data</li>
 </ul>
-<h5>-#utils/clientconnection/methods/setFree.method ```php:p.inline</h5>
-<p>void public <a href="#./setFree">setFree</a> ( boolean $free = true )</p>
+<p>#&amp;setFree  -#%s.method ```php:p.inline
+void public <a href="#./setFree">setFree</a> ( boolean $free = true )</p>
 <pre><code class="">   -.n Set connection free/busy
    -.n.ti `:hc`$free` — Free?
 
@@ -4744,8 +4744,8 @@ class ClientConnection extends <a href="#../connection">Connection</a>;</code></
 <ul>
 <li class="n">Set connection free</li>
 </ul>
-<h5>-#utils/clientconnection/methods/checkFree.method ```php:p.inline</h5>
-<p>void public <a href="#./checkFree">checkFree</a> ( )</p>
+<p>#&amp;checkFree  -#%s.method ```php:p.inline
+void public <a href="#./checkFree">checkFree</a> ( )</p>
 <pre><code class="">   -.n Set connection free/busy according to onResponse emptiness and ->finished
 
 #&getQueueLength  -#%s.method ```php:p.inline
@@ -4753,8 +4753,8 @@ class ClientConnection extends <a href="#../connection">Connection</a>;</code></
 <ul>
 <li class="n">@TODO</li>
 </ul>
-<h5>-#utils/clientconnection/methods/isQueueEmpty.method ```php:p.inline</h5>
-<p>boolean public <a href="#./isQueueEmpty">isQueueEmpty</a> ( )</p>
+<p>#&amp;isQueueEmpty  -#%s.method ```php:p.inline
+boolean public <a href="#./isQueueEmpty">isQueueEmpty</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 #&onFinish  -#%s.method ```php:p.inline
@@ -4771,8 +4771,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <h4 id="utils/connection/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/connection">Connection <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Network/Connection.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/connection/methods/isConnected.method ```php:p.inline</h5>
-<p>boolean public <a href="#./isConnected">isConnected</a> ( )</p>
+<p>#&amp;isConnected  -#%s.method ```php:p.inline
+boolean public <a href="#./isConnected">isConnected</a> ( )</p>
 <pre><code class="">   -.n Connected?
 
 #&setDgram  -#%s.method ```php:p.inline
@@ -4781,8 +4781,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <li class="n">Sets DGRAM mode</li>
 <li class="n ti"><code class="code_highlight php clear">$bool</code> — @TODO</li>
 </ul>
-<h5>-#utils/connection/methods/setPeername.method ```php:p.inline</h5>
-<p>void public <a href="#./setPeername">setPeername</a> ( string $host, integer $port )</p>
+<p>#&amp;setPeername  -#%s.method ```php:p.inline
+void public <a href="#./setPeername">setPeername</a> ( string $host, integer $port )</p>
 <pre><code class="">   -.n Sets peer name
    -.n.ti `:hc`$host` — Hostname
    -.n `:hc`$port` — Port
@@ -4793,8 +4793,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <li class="n">Getter</li>
 <li class="n ti"><code class="code_highlight php clear">$name</code> — Name</li>
 </ul>
-<h5>-#utils/connection/methods/getSocketName.method ```php:p.inline</h5>
-<p>void public <a href="#./getSocketName">getSocketName</a> ( string &amp;$addr, string &amp;$port )</p>
+<p>#&amp;getSocketName  -#%s.method ```php:p.inline
+void public <a href="#./getSocketName">getSocketName</a> ( string &amp;$addr, string &amp;$port )</p>
 <pre><code class="">   -.n Get socket name
    -.n.ti `:hc`&$addr` — Addr
    -.n `:hc`&$port` — Port
@@ -4804,8 +4804,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <ul>
 <li class="n">Sets parent socket</li>
 </ul>
-<h5>-#utils/connection/methods/onUdpPacket.method ```php:p.inline</h5>
-<p>void public <a href="#./onUdpPacket">onUdpPacket</a> ( @TODO $pct )</p>
+<p>#&amp;onUdpPacket  -#%s.method ```php:p.inline
+void public <a href="#./onUdpPacket">onUdpPacket</a> ( @TODO $pct )</p>
 <pre><code class="">   -.n Called when new UDP packet received
    -.n.ti `:hc`$pct` — @TODO
 
@@ -4814,8 +4814,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <ul>
 <li class="n">Called when the connection is handshaked (at low-level), and peer is ready to recv. data</li>
 </ul>
-<h5>-#utils/connection/methods/onInheritanceFromRequest.method ```php:p.inline</h5>
-<p>void public <a href="#./onInheritanceFromRequest">onInheritanceFromRequest</a> ( object $req )</p>
+<p>#&amp;onInheritanceFromRequest  -#%s.method ```php:p.inline
+void public <a href="#./onInheritanceFromRequest">onInheritanceFromRequest</a> ( object $req )</p>
 <pre><code class="">   -.n Called if we inherit connection from request
    -.n.ti `:hc`$req` — Parent Request
 
@@ -4824,8 +4824,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <ul>
 <li class="n">Called when the connection failed to be established</li>
 </ul>
-<h5>-#utils/connection/methods/onFailureEv.method ```php:p.inline</h5>
-<p>void public <a href="#./onFailureEv">onFailureEv</a> ( \EventBufferEvent $bev = null )</p>
+<p>#&amp;onFailureEv  -#%s.method ```php:p.inline
+void public <a href="#./onFailureEv">onFailureEv</a> ( \EventBufferEvent $bev = null )</p>
 <pre><code class="">   -.n Called when the connection failed
    -.n.ti `:hc`$bev` — @TODO
 
@@ -4834,8 +4834,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <ul>
 <li class="n">Destructor</li>
 </ul>
-<h5>-#utils/connection/methods/write.method ```php:p.inline</h5>
-<p>boolean public <a href="#./write">write</a> ( string $data )</p>
+<p>#&amp;write  -#%s.method ```php:p.inline
+boolean public <a href="#./write">write</a> ( string $data )</p>
 <pre><code class="">   -.n Send data to the connection. Note that it just writes to buffer that flushes at every baseloop
    -.n.ti `:hc`$data` — Data to send
 
@@ -4845,8 +4845,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <li class="n">Executes the given callback when/if the connection is handshaked</li>
 <li class="n ti"><code class="code_highlight php clear">$cb</code> — callable</li>
 </ul>
-<h5>-#utils/connection/methods/getUrl.method ```php:p.inline</h5>
-<p>string public <a href="#./getUrl">getUrl</a> ( )</p>
+<p>#&amp;getUrl  -#%s.method ```php:p.inline
+string public <a href="#./getUrl">getUrl</a> ( )</p>
 <pre><code class="">   -.n Get URL
 
 #&getHost  -#%s.method ```php:p.inline
@@ -4854,8 +4854,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <ul>
 <li class="n">Get host</li>
 </ul>
-<h5>-#utils/connection/methods/getPort.method ```php:p.inline</h5>
-<p>integer public <a href="#./getPort">getPort</a> ( )</p>
+<p>#&amp;getPort  -#%s.method ```php:p.inline
+integer public <a href="#./getPort">getPort</a> ( )</p>
 <pre><code class="">   -.n Get port
 
 #&connect  -#%s.method ```php:p.inline
@@ -4865,8 +4865,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <li class="n ti"><code class="code_highlight php clear">$url</code> — URL</li>
 <li class="n"><code class="code_highlight php clear">$cb</code> — Callback</li>
 </ul>
-<h5>-#utils/connection/methods/connectUnix.method ```php:p.inline</h5>
-<p>boolean public <a href="#./connectUnix">connectUnix</a> ( string $path )</p>
+<p>#&amp;connectUnix  -#%s.method ```php:p.inline
+boolean public <a href="#./connectUnix">connectUnix</a> ( string $path )</p>
 <pre><code class="">   -.n Establish UNIX socket connection
    -.n.ti `:hc`$path` — Path
 
@@ -4876,8 +4876,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <li class="n">Establish raw socket connection</li>
 <li class="n ti"><code class="code_highlight php clear">$host</code> — Host</li>
 </ul>
-<h5>-#utils/connection/methods/connectUdp.method ```php:p.inline</h5>
-<p>boolean public <a href="#./connectUdp">connectUdp</a> ( string $host, integer $port )</p>
+<p>#&amp;connectUdp  -#%s.method ```php:p.inline
+boolean public <a href="#./connectUdp">connectUdp</a> ( string $host, integer $port )</p>
 <pre><code class="">   -.n Establish UDP connection
    -.n.ti `:hc`$host` — Hostname
    -.n `:hc`$port` — Port
@@ -4889,8 +4889,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <li class="n ti"><code class="code_highlight php clear">$host</code> — Hostname</li>
 <li class="n"><code class="code_highlight php clear">$port</code> — Port</li>
 </ul>
-<h5>-#utils/connection/methods/setKeepalive.method ```php:p.inline</h5>
-<p>void public <a href="#./setKeepalive">setKeepalive</a> ( boolean $bool )</p>
+<p>#&amp;setKeepalive  -#%s.method ```php:p.inline
+void public <a href="#./setKeepalive">setKeepalive</a> ( boolean $bool )</p>
 <pre><code class="">   -.n Set keepalive
    -.n.ti `:hc`$bool` — @TODO
 
@@ -4899,8 +4899,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <ul>
 <li class="n">Close the connection</li>
 </ul>
-<h5>-#utils/connection/methods/setTimeouts.method ```php:p.inline</h5>
-<p>void public <a href="#./setTimeouts">setTimeouts</a> ( integer $read, integer $write )</p>
+<p>#&amp;setTimeouts  -#%s.method ```php:p.inline
+void public <a href="#./setTimeouts">setTimeouts</a> ( integer $read, integer $write )</p>
 <pre><code class="">   -.n Set timeouts
    -.n.ti `:hc`$read` — Read timeout in seconds
    -.n `:hc`$write` — Write timeout in seconds
@@ -4913,8 +4913,8 @@ abstract class Connection extends <a href="#../iostream">IOStream</a>;</code></p
 <li class="n"><code class="code_highlight php clear">$optname</code> — Option</li>
 <li class="n"><code class="code_highlight php clear">$val</code> — Value</li>
 </ul>
-<h5>-#utils/connection/methods/onFinish.method ```php:p.inline</h5>
-<p>void public <a href="#./onFinish">onFinish</a> ( )</p>
+<p>#&amp;onFinish  -#%s.method ```php:p.inline
+void public <a href="#./onFinish">onFinish</a> ( )</p>
 <pre><code class="">   -.n Called when connection finishes
 
 ### iostream # IOStream #> IOStream <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Network/IOStream.php"><i class="fa fa-github"></i></a>
@@ -4938,8 +4938,8 @@ abstract class IOStream;</code></pre>
 <h4 id="utils/connection/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/connection">Connection <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Network/Connection.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/connection/methods/__construct.method ```php:p.inline</h5>
-<p>void public <a href="#./__construct">__construct</a> ( resource $fd = null, object $pool = null )</p>
+<p>#&amp;<strong>construct  -#%s.method ```php:p.inline
+void public &lt;a href="#./</strong>construct">__construct</a> ( resource $fd = null, object $pool = null )</p>
 <pre><code class="">   -.n IOStream constructor
    -.n.ti `:hc`$fd` — File descriptor. Optional.
    -.n `:hc`$pool` — Pool. Optional.
@@ -4950,8 +4950,8 @@ abstract class IOStream;</code></pre>
 <li class="n">Getter</li>
 <li class="n ti"><code class="code_highlight php clear">$name</code> — Name</li>
 </ul>
-<h5>-#utils/connection/methods/isFreed.method ```php:p.inline</h5>
-<p>boolean public <a href="#./isFreed">isFreed</a> ( )</p>
+<p>#&amp;isFreed  -#%s.method ```php:p.inline
+boolean public <a href="#./isFreed">isFreed</a> ( )</p>
 <pre><code class="">   -.n Freed?
 
 #&isFinished  -#%s.method ```php:p.inline
@@ -4959,8 +4959,8 @@ abstract class IOStream;</code></pre>
 <ul>
 <li class="n">Finished?</li>
 </ul>
-<h5>-#utils/connection/methods/getBev.method ```php:p.inline</h5>
-<p>\EventBufferEvent public <a href="#./getBev">getBev</a> ( )</p>
+<p>#&amp;getBev  -#%s.method ```php:p.inline
+\EventBufferEvent public <a href="#./getBev">getBev</a> ( )</p>
 <pre><code class="">   -.n Get EventBufferEvent
 
 #&getFd  -#%s.method ```php:p.inline
@@ -4968,8 +4968,8 @@ abstract class IOStream;</code></pre>
 <ul>
 <li class="n">Get file descriptor</li>
 </ul>
-<h5>-#utils/connection/methods/setContext.method ```php:p.inline</h5>
-<p>void public <a href="#./setContext">setContext</a> ( object $ctx, integer $mode )</p>
+<p>#&amp;setContext  -#%s.method ```php:p.inline
+void public <a href="#./setContext">setContext</a> ( object $ctx, integer $mode )</p>
 <pre><code class="">   -.n Sets context mode
    -.n.ti `:hc`$ctx` — Context
    -.n `:hc`$mode` — Mode
@@ -4981,8 +4981,8 @@ abstract class IOStream;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$fd</code> — File descriptor</li>
 <li class="n"><code class="code_highlight php clear">$bev</code> — EventBufferEvent</li>
 </ul>
-<h5>-#utils/connection/methods/setTimeout.method ```php:p.inline</h5>
-<p>void public <a href="#./setTimeout">setTimeout</a> ( integer $rw )</p>
+<p>#&amp;setTimeout  -#%s.method ```php:p.inline
+void public <a href="#./setTimeout">setTimeout</a> ( integer $rw )</p>
 <pre><code class="">   -.n Set timeout
    -.n.ti `:hc`$rw` — Timeout
 
@@ -4993,8 +4993,8 @@ abstract class IOStream;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$read</code> — Read timeout in seconds</li>
 <li class="n"><code class="code_highlight php clear">$write</code> — Write timeout in seconds</li>
 </ul>
-<h5>-#utils/connection/methods/setPriority.method ```php:p.inline</h5>
-<p>void public <a href="#./setPriority">setPriority</a> ( integer $p )</p>
+<p>#&amp;setPriority  -#%s.method ```php:p.inline
+void public <a href="#./setPriority">setPriority</a> ( integer $p )</p>
 <pre><code class="">   -.n Sets priority
    -.n.ti `:hc`$p` — Priority
 
@@ -5005,8 +5005,8 @@ abstract class IOStream;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$low</code> — Low</li>
 <li class="n"><code class="code_highlight php clear">$high</code> — High</li>
 </ul>
-<h5>-#utils/connection/methods/readLine.method ```php:p.inline</h5>
-<p>string public <a href="#./readLine">readLine</a> ( integer $eol = null )</p>
+<p>#&amp;readLine  -#%s.method ```php:p.inline
+string public <a href="#./readLine">readLine</a> ( integer $eol = null )</p>
 <pre><code class="">   -.n Reads line from buffer
    -.n.ti `:hc`$eol` — @TODO
 
@@ -5016,8 +5016,8 @@ abstract class IOStream;</code></pre>
 <li class="n">Drains buffer</li>
 <li class="n ti"><code class="code_highlight php clear">$n</code> — Numbers of bytes to drain</li>
 </ul>
-<h5>-#utils/connection/methods/drainIfMatch.method ```php:p.inline</h5>
-<p>boolean public <a href="#./drainIfMatch">drainIfMatch</a> ( string $str )</p>
+<p>#&amp;drainIfMatch  -#%s.method ```php:p.inline
+boolean public <a href="#./drainIfMatch">drainIfMatch</a> ( string $str )</p>
 <pre><code class="">   -.n Drains buffer it matches the string
    -.n.ti `:hc`$str` — Data
 
@@ -5028,8 +5028,8 @@ abstract class IOStream;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$n</code> — Number of bytes to read</li>
 <li class="n"><code class="code_highlight php clear">$o</code> — Offset</li>
 </ul>
-<h5>-#utils/connection/methods/prependInput.method ```php:p.inline</h5>
-<p>boolean public <a href="#./prependInput">prependInput</a> ( string $str )</p>
+<p>#&amp;prependInput  -#%s.method ```php:p.inline
+boolean public <a href="#./prependInput">prependInput</a> ( string $str )</p>
 <pre><code class="">   -.n Prepends data to input buffer
    -.n.ti `:hc`$str` — Data
 
@@ -5039,8 +5039,8 @@ abstract class IOStream;</code></pre>
 <li class="n">Prepends data to output buffer</li>
 <li class="n ti"><code class="code_highlight php clear">$str</code> — Data</li>
 </ul>
-<h5>-#utils/connection/methods/look.method ```php:p.inline</h5>
-<p>string public <a href="#./look">look</a> ( integer $n, integer $o = 0 )</p>
+<p>#&amp;look  -#%s.method ```php:p.inline
+string public <a href="#./look">look</a> ( integer $n, integer $o = 0 )</p>
 <pre><code class="">   -.n Read from buffer without draining
    -.n.ti `:hc`$n` — Number of bytes to read
    -.n `:hc`$o` — Offset
@@ -5052,8 +5052,8 @@ abstract class IOStream;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$o</code> — Offset</li>
 <li class="n"><code class="code_highlight php clear">$n</code> — Number of bytes to read</li>
 </ul>
-<h5>-#utils/connection/methods/search.method ```php:p.inline</h5>
-<p>integer public <a href="#./search">search</a> ( string $what, integer $start = 0, integer $end = -1 )</p>
+<p>#&amp;search  -#%s.method ```php:p.inline
+integer public <a href="#./search">search</a> ( string $what, integer $start = 0, integer $end = -1 )</p>
 <pre><code class="">   -.n Searches first occurence of the string in input buffer
    -.n.ti `:hc`$what` — Needle
    -.n `:hc`$start` — Offset start
@@ -5065,8 +5065,8 @@ abstract class IOStream;</code></pre>
 <li class="n">Reads exact $n bytes from buffer</li>
 <li class="n ti"><code class="code_highlight php clear">$n</code> — Number of bytes to read</li>
 </ul>
-<h5>-#utils/connection/methods/getInputLength.method ```php:p.inline</h5>
-<p>integer public <a href="#./getInputLength">getInputLength</a> ( )</p>
+<p>#&amp;getInputLength  -#%s.method ```php:p.inline
+integer public <a href="#./getInputLength">getInputLength</a> ( )</p>
 <pre><code class="">   -.n Returns length of input buffer
 
 #&gracefulShutdown  -#%s.method ```php:p.inline
@@ -5074,8 +5074,8 @@ abstract class IOStream;</code></pre>
 <ul>
 <li class="n">Called when the worker is going to shutdown</li>
 </ul>
-<h5>-#utils/connection/methods/freezeInput.method ```php:p.inline</h5>
-<p>boolean public <a href="#./freezeInput">freezeInput</a> ( boolean $at_front = false )</p>
+<p>#&amp;freezeInput  -#%s.method ```php:p.inline
+boolean public <a href="#./freezeInput">freezeInput</a> ( boolean $at_front = false )</p>
 <pre><code class="">   -.n Freeze input
    -.n.ti `:hc`$at_front` — At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen.
 
@@ -5085,8 +5085,8 @@ abstract class IOStream;</code></pre>
 <li class="n">Unfreeze input</li>
 <li class="n ti"><code class="code_highlight php clear">$at_front</code> — At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen.</li>
 </ul>
-<h5>-#utils/connection/methods/freezeOutput.method ```php:p.inline</h5>
-<p>boolean public <a href="#./freezeOutput">freezeOutput</a> ( boolean $at_front = true )</p>
+<p>#&amp;freezeOutput  -#%s.method ```php:p.inline
+boolean public <a href="#./freezeOutput">freezeOutput</a> ( boolean $at_front = true )</p>
 <pre><code class="">   -.n Freeze output
    -.n.ti `:hc`$at_front` — At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen.
 
@@ -5096,8 +5096,8 @@ abstract class IOStream;</code></pre>
 <li class="n">Unfreeze output</li>
 <li class="n ti"><code class="code_highlight php clear">$at_front</code> — At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen.</li>
 </ul>
-<h5>-#utils/connection/methods/onWrite.method ```php:p.inline</h5>
-<p>void public <a href="#./onWrite">onWrite</a> ( )</p>
+<p>#&amp;onWrite  -#%s.method ```php:p.inline
+void public <a href="#./onWrite">onWrite</a> ( )</p>
 <pre><code class="">   -.n Called when the connection is ready to accept new data
 
 #&write  -#%s.method ```php:p.inline
@@ -5106,8 +5106,8 @@ abstract class IOStream;</code></pre>
 <li class="n">Send data to the connection. Note that it just writes to buffer that flushes at every baseloop</li>
 <li class="n ti"><code class="code_highlight php clear">$data</code> — Data to send</li>
 </ul>
-<h5>-#utils/connection/methods/writeln.method ```php:p.inline</h5>
-<p>boolean public <a href="#./writeln">writeln</a> ( string $data )</p>
+<p>#&amp;writeln  -#%s.method ```php:p.inline
+boolean public <a href="#./writeln">writeln</a> ( string $data )</p>
 <pre><code class="">   -.n Send data and appending \n to connection. Note that it just writes to buffer flushed at every baseloop
    -.n.ti `:hc`$data` — Data to send
 
@@ -5116,8 +5116,8 @@ abstract class IOStream;</code></pre>
 <ul>
 <li class="n">Finish the session. You should not worry about buffers, they are going to be flushed properly.</li>
 </ul>
-<h5>-#utils/connection/methods/close.method ```php:p.inline</h5>
-<p>void public <a href="#./close">close</a> ( )</p>
+<p>#&amp;close  -#%s.method ```php:p.inline
+void public <a href="#./close">close</a> ( )</p>
 <pre><code class="">   -.n Close the connection
 
 #&unsetFd  -#%s.method ```php:p.inline
@@ -5125,8 +5125,8 @@ abstract class IOStream;</code></pre>
 <ul>
 <li class="n">Unsets pointers of associated EventBufferEvent and File descriptr</li>
 </ul>
-<h5>-#utils/connection/methods/onReadEv.method ```php:p.inline</h5>
-<p>void public <a href="#./onReadEv">onReadEv</a> ( \EventBufferEvent $bev )</p>
+<p>#&amp;onReadEv  -#%s.method ```php:p.inline
+void public <a href="#./onReadEv">onReadEv</a> ( \EventBufferEvent $bev )</p>
 <pre><code class="">   -.n Called when the connection has got new data
    -.n.ti `:hc`$bev` — Bufferevent
 
@@ -5136,8 +5136,8 @@ abstract class IOStream;</code></pre>
 <li class="n">Push callback which will be called only once, when writing is available next time</li>
 <li class="n ti"><code class="code_highlight php clear">$cb</code> — Callback</li>
 </ul>
-<h5>-#utils/connection/methods/onWriteEv.method ```php:p.inline</h5>
-<p>void public <a href="#./onWriteEv">onWriteEv</a> ( \EventBufferEvent $bev )</p>
+<p>#&amp;onWriteEv  -#%s.method ```php:p.inline
+void public <a href="#./onWriteEv">onWriteEv</a> ( \EventBufferEvent $bev )</p>
 <pre><code class="">   -.n Called when the connection is ready to accept new data
    -.n.ti `:hc`$bev` — Bufferedevent
 
@@ -5148,8 +5148,8 @@ abstract class IOStream;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$bev</code> — Bufferevent</li>
 <li class="n"><code class="code_highlight php clear">$events</code> — Events</li>
 </ul>
-<h5>-#utils/connection/methods/moveToBuffer.method ```php:p.inline</h5>
-<p>integer public <a href="#./moveToBuffer">moveToBuffer</a> ( \EventBuffer $dest, integer $n )</p>
+<p>#&amp;moveToBuffer  -#%s.method ```php:p.inline
+integer public <a href="#./moveToBuffer">moveToBuffer</a> ( \EventBuffer $dest, integer $n )</p>
 <pre><code class="">   -.n Moves arbitrary number of bytes from input buffer to given buffer
    -.n.ti `:hc`$dest` — Destination nuffer
    -.n `:hc`$n` — Max. number of bytes to move
@@ -5161,8 +5161,8 @@ abstract class IOStream;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$src</code> — Source buffer</li>
 <li class="n"><code class="code_highlight php clear">$n</code> — Max. number of bytes to move</li>
 </ul>
-<h5>-#utils/connection/methods/read.method ```php:p.inline</h5>
-<p>string public <a href="#./read">read</a> ( integer $n )</p>
+<p>#&amp;read  -#%s.method ```php:p.inline
+string public <a href="#./read">read</a> ( integer $n )</p>
 <pre><code class="">   -.n Read data from the connection's buffer
    -.n.ti `:hc`$n` — Max. number of bytes to read
 
@@ -5193,8 +5193,8 @@ abstract class Server extends <a href="#../pool">Pool</a>;</code></pre>
 <h4 id="utils/server/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#utils/server">Server <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/Network/Server.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#utils">Утилиты</a></span></div>
 
 </h4>
-<h5>-#utils/server/methods/__construct.method ```php:p.inline</h5>
-<p>void public <a href="#./__construct">__construct</a> ( array $config = [], boolean $init = true )</p>
+<p>#&amp;<strong>construct  -#%s.method ```php:p.inline
+void public &lt;a href="#./</strong>construct">__construct</a> ( array $config = [], boolean $init = true )</p>
 <pre><code class="">   -.n Constructor
    -.n.ti `:hc`$config` — Config variables
    -.n `:hc`$init` — @TODO
@@ -5205,8 +5205,8 @@ abstract class Server extends <a href="#../pool">Pool</a>;</code></pre>
 <li class="n">Finishes ConnectionPool</li>
 <li class="n ti"><code class="code_highlight php clear">$graceful</code> — @TODO</li>
 </ul>
-<h5>-#utils/server/methods/bindSockets.method ```php:p.inline</h5>
-<p>integer public <a href="#./bindSockets">bindSockets</a> ( mixed $addrs = [], integer $max = 0 )</p>
+<p>#&amp;bindSockets  -#%s.method ```php:p.inline
+integer public <a href="#./bindSockets">bindSockets</a> ( mixed $addrs = [], integer $max = 0 )</p>
 <pre><code class="">   -.n Bind given sockets
    -.n.ti `:hc`$addrs` — Addresses to bind
    -.n `:hc`$max` — Number of bound
@@ -5217,8 +5217,8 @@ abstract class Server extends <a href="#../pool">Pool</a>;</code></pre>
 <li class="n">Bind given socket</li>
 <li class="n ti"><code class="code_highlight php clear">$uri</code> — Address to bind</li>
 </ul>
-<h5>-#utils/server/methods/attachBound.method ```php:p.inline</h5>
-<p>void public <a href="#./attachBound">attachBound</a> ( \PHPDaemon\BoundSocket\Generic $bound, mixed $inf = null )</p>
+<p>#&amp;attachBound  -#%s.method ```php:p.inline
+void public <a href="#./attachBound">attachBound</a> ( \PHPDaemon\BoundSocket\Generic $bound, mixed $inf = null )</p>
 <pre><code class="">   -.n Attach Generic
    -.n.ti `:hc`$bound` — Generic
    -.n `:hc`$inf` — Info
@@ -5229,8 +5229,8 @@ abstract class Server extends <a href="#../pool">Pool</a>;</code></pre>
 <li class="n">Detach Generic</li>
 <li class="n ti"><code class="code_highlight php clear">$bound</code> — Generic</li>
 </ul>
-<h5>-#utils/server/methods/closeBound.method ```php:p.inline</h5>
-<p>void public <a href="#./closeBound">closeBound</a> ( )</p>
+<p>#&amp;closeBound  -#%s.method ```php:p.inline
+void public <a href="#./closeBound">closeBound</a> ( )</p>
 <pre><code class="">   -.n Close each of binded sockets
 
 #&inheritFromRequest  -#%s.method ```php:p.inline
@@ -5273,8 +5273,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <h4 id="httprequest/generic/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#httprequest/generic">Generic <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/HTTPRequest/Generic.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#httprequest">HTTPRequest</a></span></div>
 
 </h4>
-<h5>-#httprequest/generic/methods/firstDeferredEventUsed.method ```php:p.inline</h5>
-<p>void public <a href="#./firstDeferredEventUsed">firstDeferredEventUsed</a> ( )</p>
+<p>#&amp;firstDeferredEventUsed  -#%s.method ```php:p.inline
+void public <a href="#./firstDeferredEventUsed">firstDeferredEventUsed</a> ( )</p>
 <pre><code class="">   -.n @TODO
 
 #&sendfile  -#%s.method ```php:p.inline
@@ -5285,8 +5285,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <li class="n"><code class="code_highlight php clear">$cb</code> — Callback</li>
 <li class="n"><code class="code_highlight php clear">$pri</code> — Priority</li>
 </ul>
-<h5>-#httprequest/generic/methods/checkIfReady.method ```php:p.inline</h5>
-<p>boolean public <a href="#./checkIfReady">checkIfReady</a> ( )</p>
+<p>#&amp;checkIfReady  -#%s.method ```php:p.inline
+boolean public <a href="#./checkIfReady">checkIfReady</a> ( )</p>
 <pre><code class="">   -.n Called to check if Request is ready
 
 #&getUploadMaxSize  -#%s.method ```php:p.inline
@@ -5294,8 +5294,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <ul>
 <li class="n">Upload maximum file size</li>
 </ul>
-<h5>-#httprequest/generic/methods/postPrepare.method ```php:p.inline</h5>
-<p>void public <a href="#./postPrepare">postPrepare</a> ( )</p>
+<p>#&amp;postPrepare  -#%s.method ```php:p.inline
+void public <a href="#./postPrepare">postPrepare</a> ( )</p>
 <pre><code class="">   -.n Prepares the request body
 
 #&ensureSentHeaders  -#%s.method ```php:p.inline
@@ -5303,8 +5303,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <ul>
 <li class="n">Ensure that headers are sent</li>
 </ul>
-<h5>-#httprequest/generic/methods/out.method ```php:p.inline</h5>
-<p>boolean public <a href="#./out">out</a> ( string $s, boolean $flush = true )</p>
+<p>#&amp;out  -#%s.method ```php:p.inline
+boolean public <a href="#./out">out</a> ( string $s, boolean $flush = true )</p>
 <pre><code class="">   -.n Output some data
    -.n.ti `:hc`$s` — String to out
    -.n `:hc`$flush` — Flush
@@ -5314,8 +5314,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <ul>
 <li class="n">Called when request's headers parsed</li>
 </ul>
-<h5>-#httprequest/generic/methods/combinedOut.method ```php:p.inline</h5>
-<p>boolean public <a href="#./combinedOut">combinedOut</a> ( string $s )</p>
+<p>#&amp;combinedOut  -#%s.method ```php:p.inline
+boolean public <a href="#./combinedOut">combinedOut</a> ( string $s )</p>
 <pre><code class="">   -.n Outputs data with headers (split by \r\n\r\n)
    -.n.ti `:hc`$s` — String to out
 
@@ -5324,8 +5324,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <ul>
 <li class="n">Use chunked encoding</li>
 </ul>
-<h5>-#httprequest/generic/methods/onWakeup.method ```php:p.inline</h5>
-<p>void public <a href="#./onWakeup">onWakeup</a> ( )</p>
+<p>#&amp;onWakeup  -#%s.method ```php:p.inline
+void public <a href="#./onWakeup">onWakeup</a> ( )</p>
 <pre><code class="">   -.n Called when the request wakes up
 
 #&onSleep  -#%s.method ```php:p.inline
@@ -5333,8 +5333,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <ul>
 <li class="n">Called when the request starts sleep</li>
 </ul>
-<h5>-#httprequest/generic/methods/status.method ```php:p.inline</h5>
-<p>boolean public <a href="#./status">status</a> ( integer $code = 200 )</p>
+<p>#&amp;status  -#%s.method ```php:p.inline
+boolean public <a href="#./status">status</a> ( integer $code = 200 )</p>
 <pre><code class="">   -.n Send HTTP-status
    -.n.ti `:hc`$code` — Code
 
@@ -5345,8 +5345,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">&$file</code> — File name where output started in the file and line variables</li>
 <li class="n"><code class="code_highlight php clear">&$line</code> — Line number where output started in the file and line variables</li>
 </ul>
-<h5>-#httprequest/generic/methods/headers_list.method ```php:p.inline</h5>
-<p>array public <a href="#./headers_list">headers_list</a> ( )</p>
+<p>#&amp;headers_list  -#%s.method ```php:p.inline
+array public <a href="#./headers_list">headers_list</a> ( )</p>
 <pre><code class="">   -.n Return current list of headers
 
 #&setcookie  -#%s.method ```php:p.inline
@@ -5361,8 +5361,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <li class="n"><code class="code_highlight php clear">$secure</code> — Optional. Secure. Default is false</li>
 <li class="n"><code class="code_highlight php clear">$HTTPOnly</code> — Optional. HTTPOnly. Default is false</li>
 </ul>
-<h5>-#httprequest/generic/methods/header.method ```php:p.inline</h5>
-<p>boolean public <a href="#./header">header</a> ( string $s, boolean $replace = true, integer $code = false )</p>
+<p>#&amp;header  -#%s.method ```php:p.inline
+boolean public <a href="#./header">header</a> ( string $s, boolean $replace = true, integer $code = false )</p>
 <pre><code class="">   -.n Send the header
    -.n.ti `:hc`$s` — Header. Example: `Location: http://php.net/`
    -.n `:hc`$replace` — Optional. Replace?
@@ -5374,8 +5374,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <li class="n">Removes a header</li>
 <li class="n ti"><code class="code_highlight php clear">$s</code> — Header name. Example: <code>Location</code></li>
 </ul>
-<h5>-#httprequest/generic/methods/parseSize.method ```php:p.inline</h5>
-<p>integer public static <a href="#./parseSize">parseSize</a> ( string $value )</p>
+<p>#&amp;parseSize  -#%s.method ```php:p.inline
+integer public static <a href="#./parseSize">parseSize</a> ( string $value )</p>
 <pre><code class="">   -.n Converts human-readable representation of size to number of bytes
    -.n.ti `:hc`$value` — Data
 
@@ -5385,8 +5385,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <li class="n">Called when file upload started</li>
 <li class="n ti"><code class="code_highlight php clear">$in</code> — Input</li>
 </ul>
-<h5>-#httprequest/generic/methods/onUploadFileChunk.method ```php:p.inline</h5>
-<p>void public <a href="#./onUploadFileChunk">onUploadFileChunk</a> ( <a href="#../input">Input</a> $in, boolean $last = false )</p>
+<p>#&amp;onUploadFileChunk  -#%s.method ```php:p.inline
+void public <a href="#./onUploadFileChunk">onUploadFileChunk</a> ( <a href="#../input">Input</a> $in, boolean $last = false )</p>
 <pre><code class="">   -.n Called when chunk of incoming file has arrived
    -.n.ti `:hc`$in` — Input
    -.n `:hc`$last` — Last?
@@ -5396,8 +5396,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <ul>
 <li class="n">@TODO</li>
 </ul>
-<h5>-#httprequest/generic/methods/isUploadedFile.method ```php:p.inline</h5>
-<p>boolean public <a href="#./isUploadedFile">isUploadedFile</a> ( string $path )</p>
+<p>#&amp;isUploadedFile  -#%s.method ```php:p.inline
+boolean public <a href="#./isUploadedFile">isUploadedFile</a> ( string $path )</p>
 <pre><code class="">   -.n Tells whether the file was uploaded via HTTP POST
    -.n.ti `:hc`$path` — The filename being checked
 
@@ -5408,8 +5408,8 @@ abstract class Generic extends \PHPDaemon\Request\Generic;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$filename</code> — The filename of the uploaded file</li>
 <li class="n"><code class="code_highlight php clear">$dest</code> — The destination of the moved file</li>
 </ul>
-<h5>-#httprequest/generic/methods/readBodyFile.method ```php:p.inline</h5>
-<p>boolean public <a href="#./readBodyFile">readBodyFile</a> ( )</p>
+<p>#&amp;readBodyFile  -#%s.method ```php:p.inline
+boolean public <a href="#./readBodyFile">readBodyFile</a> ( )</p>
 <pre><code class="">   -.n Read request body from the file given in REQUEST_BODY_FILE parameter
 
 #&parse_str  -#%s.method ```php:p.inline
@@ -5441,8 +5441,8 @@ class Input extends \EventBuffer;</code></pre>
 <h4 id="httprequest/input/methods"><div class="in anchor">Методы<span class="header-path"> <i>&larr;</i> <a href="#httprequest/input">Input <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/PHPDaemon/HTTPRequest/Input.php"><i class="fa fa-github"></i></a></a> <i>&larr;</i> <a href="#httprequest">HTTPRequest</a></span></div>
 
 </h4>
-<h5>-#httprequest/input/methods/setBoundary.method ```php:p.inline</h5>
-<p>void public <a href="#./setBoundary">setBoundary</a> ( string $boundary )</p>
+<p>#&amp;setBoundary  -#%s.method ```php:p.inline
+void public <a href="#./setBoundary">setBoundary</a> ( string $boundary )</p>
 <pre><code class="">   -.n Set boundary
    -.n.ti `:hc`$boundary` — @TODO
 
@@ -5452,8 +5452,8 @@ class Input extends \EventBuffer;</code></pre>
 <li class="n">Freeze input</li>
 <li class="n ti"><code class="code_highlight php clear">$at_front</code> — At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen.</li>
 </ul>
-<h5>-#httprequest/input/methods/unfreeze.method ```php:p.inline</h5>
-<p>void public <a href="#./unfreeze">unfreeze</a> ( boolean $at_front = false )</p>
+<p>#&amp;unfreeze  -#%s.method ```php:p.inline
+void public <a href="#./unfreeze">unfreeze</a> ( boolean $at_front = false )</p>
 <pre><code class="">   -.n Unfreeze input
    -.n.ti `:hc`$at_front` — At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen.
 
@@ -5462,8 +5462,8 @@ class Input extends \EventBuffer;</code></pre>
 <ul>
 <li class="n">Is frozen?</li>
 </ul>
-<h5>-#httprequest/input/methods/isEof.method ```php:p.inline</h5>
-<p>boolean public <a href="#./isEof">isEof</a> ( )</p>
+<p>#&amp;isEof  -#%s.method ```php:p.inline
+boolean public <a href="#./isEof">isEof</a> ( )</p>
 <pre><code class="">   -.n Is EOF?
 
 #&setRequest  -#%s.method ```php:p.inline
@@ -5472,8 +5472,8 @@ class Input extends \EventBuffer;</code></pre>
 <li class="n">Set request</li>
 <li class="n ti"><code class="code_highlight php clear">$req</code> — @TODO</li>
 </ul>
-<h5>-#httprequest/input/methods/sendEOF.method ```php:p.inline</h5>
-<p>void public <a href="#./sendEOF">sendEOF</a> ( )</p>
+<p>#&amp;sendEOF  -#%s.method ```php:p.inline
+void public <a href="#./sendEOF">sendEOF</a> ( )</p>
 <pre><code class="">   -.n Send EOF
 
 #&readFromBuffer  -#%s.method ```php:p.inline
@@ -5482,8 +5482,8 @@ class Input extends \EventBuffer;</code></pre>
 <li class="n">Moves $n bytes from input buffer to arbitrary buffer</li>
 <li class="n ti"><code class="code_highlight php clear">$buf</code> — Source nuffer</li>
 </ul>
-<h5>-#httprequest/input/methods/readFromString.method ```php:p.inline</h5>
-<p>void public <a href="#./readFromString">readFromString</a> ( string $chunk, boolean $final = true )</p>
+<p>#&amp;readFromString  -#%s.method ```php:p.inline
+void public <a href="#./readFromString">readFromString</a> ( string $chunk, boolean $final = true )</p>
 <pre><code class="">   -.n Append string to input buffer
    -.n.ti `:hc`$chunk` — Piece of request input
    -.n `:hc`$final` — Final call is THIS SEQUENCE of calls (not mandatory final in request)?
@@ -5495,8 +5495,8 @@ class Input extends \EventBuffer;</code></pre>
 <li class="n ti"><code class="code_highlight php clear">$n</code> — Number of bytes to read</li>
 <li class="n"><code class="code_highlight php clear">$o</code> — Offset</li>
 </ul>
-<h5>-#httprequest/input/methods/parseMultipart.method ```php:p.inline</h5>
-<p>void public <a href="#./parseMultipart">parseMultipart</a> ( )</p>
+<p>#&amp;parseMultipart  -#%s.method ```php:p.inline
+void public <a href="#./parseMultipart">parseMultipart</a> ( )</p>
 <pre><code class="">   -.n Parses multipart
 
 #&getChunkString  -#%s.method ```php:p.inline
@@ -5504,8 +5504,8 @@ class Input extends \EventBuffer;</code></pre>
 <ul>
 <li class="n">Get current upload chunk as string</li>
 </ul>
-<h5>-#httprequest/input/methods/writeChunkToFd.method ```php:p.inline</h5>
-<p>boolean public <a href="#./writeChunkToFd">writeChunkToFd</a> ( resource $fd, callable $cb = null )</p>
+<p>#&amp;writeChunkToFd  -#%s.method ```php:p.inline
+boolean public <a href="#./writeChunkToFd">writeChunkToFd</a> ( resource $fd, callable $cb = null )</p>
 <pre><code class="">   -.n Write current upload chunk to file descriptor
    -.n.ti `:hc`$fd` — File destriptor
    -.n `:hc`$cb` — Callback

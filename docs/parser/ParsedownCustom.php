@@ -32,7 +32,7 @@ class ParsedownCustom extends ParsedownExtra
      * @param  array $Line
      * @return array
      */
-    protected function identifyAtx($Line)
+    protected function identifyAtx($Line, $CurrentBlock)
     {
         // 1 = string of #
         // 2 = simple/link
@@ -42,7 +42,9 @@ class ParsedownCustom extends ParsedownExtra
         $isLink = isset($matches[2]) && $matches[2] && $matches[2][0] === '&';
         $isSimple = isset($matches[2]) && $matches[2] === '$';
 
-        $text = substr($Line['text'], strlen($matches[0]));
+        $match1len = isset($matches[1]) ? strlen($matches[1]) : 0;
+        $match2len = isset($matches[2]) ? strlen($matches[2]) : 0;
+        $text = substr($Line['text'], $match1len + $match2len + 1);
         $parts = preg_split('/\s+\#\>?\s+/', $text, 3, PREG_SPLIT_NO_EMPTY);
 
         if(empty($parts)) {
@@ -138,7 +140,22 @@ class ParsedownCustom extends ParsedownExtra
             // $start = strlen($matches[1]) + strlen($matches[2]) + 1;
             // $Block['element']['text'] = sprintf(substr($matches[0], $start), $header_path);
             // $Block['element']['handler'] = 'lines';
-            $Block['element']['text'] = sprintf($text, $header_path); // (array)
+            // $Block['element']['text'] = sprintf($text, $header_path); // (array)
+            
+            $line = $text;
+            $indent = 0;
+
+            while (isset($line[$indent]) and $line[$indent] === ' ')
+            {
+                $indent ++;
+            }
+
+            $Line['body'] = $text;
+            $Line['indent'] = $indent;
+            $Line['text'] = $indent > 0 ? substr($line, $indent) : $line;
+
+            // так нельзя, надо по-правильному
+            return $this->identifyList($Line);
         } else {
             $Block['element']['text'] = "<div class=\"in anchor\">$header_html</div>\n\n";
             $Block['element']['attributes'] = $header_id_attr;
