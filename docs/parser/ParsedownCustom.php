@@ -29,46 +29,22 @@ class ParsedownCustom extends ParsedownExtra
 
     protected function identifyAtx($Line)
     {
-        $regex = "/
-            ^(\#{1,6})                      # 1 = string of #
-            (\$|\&(?:[a-zA-Z0-9_\/-]+))?    # 2 = simple
-            (
-                [ \t]+
-                ([a-zA-Z0-9_-]+)            # 4 = id
-                [ \t]+
-                \#
-            )?
-            [ \t]+
-            (.+?)                           # 5 = Header text
-            (
-                [ \t]+
-                \#>
-                [ \t]+
-                (.+?)                       # 7 Real Header text
-            )?
-            [ \t]*
-            (?<!\\\\)                       # ensure not an escaped trailing #
-            \#*                             # optional closing # (not counted)
-            \n
-            /xmu";
+        // 1 = string of #
+        // 2 = simple/link
+        preg_match('/^(\#{1,6})(\$|\&(?:[a-zA-Z0-9_\/-]+))?\s+/', $Line['text'], $matches);
 
-        $v = preg_match($regex, $Line['text'], $matches);
+        $n = strlen($matches[1]);
+        $isLink = isset($matches[2]) && $matches[2] && $matches[2][0] === '&';
+        $isSimple = isset($matches[2]) && $matches[2] === '$';
 
-        if(!$v) {
+        $text = substr($Line['text'], strlen($matches[0]));
+        $parts = preg_split('/\s+\#\>?\s+/', $text, 3, PREG_SPLIT_NO_EMPTY);
+
+        if(empty($parts)) {
             return;
         }
 
-        // if($matches[4] === 'websocket') {
-        //     var_dump($matches);
-        //     die();
-        // }
-
-        $n = strlen($matches[1]);
-
-        $isLink = $matches[2] and $matches[2][0] === '&';
-        $isSimple = $matches[2] === '$';
-
-        $html = isset($matches[7]) && $matches[7] ? $matches[7] : $matches[5];
+        $html = isset($parts[2]) ? $parts[2] : $parts[1];
 
         # автоопределение значения n для ссылок
         if($isLink) {
@@ -86,10 +62,10 @@ class ParsedownCustom extends ParsedownExtra
         if($isLink) {
             $header_id = substr($matches[2], 1);
         } else {
-            if(isset($matches[4]) && $matches[4]) {
-                $header_id = $matches[4];
+            if(isset($parts[0])) {
+                $header_id = $parts[0];
             } else {
-                $header_id = $this->translit($matches[5], '-');
+                $header_id = $this->translit($parts[1], '-');
             }
         }
 
@@ -143,7 +119,7 @@ class ParsedownCustom extends ParsedownExtra
         if($isLink) {
             $this->navigate[] = [$n, $header_path, $header_id];
         } elseif (!$isSimple) {
-            $this->navigate[] = [$n, $header_path, $matches[5]];
+            $this->navigate[] = [$n, $header_path, $parts[1]];
         }
 
         $Block = array(
@@ -154,8 +130,9 @@ class ParsedownCustom extends ParsedownExtra
         );
 
         if($isLink) {
-            $start = strlen($matches[1]) + strlen($matches[2]) + 1;
-            $Block['element']['text'] = sprintf(substr($matches[0], $start), $header_path);
+            // $start = strlen($matches[1]) + strlen($matches[2]) + 1;
+            // $Block['element']['text'] = sprintf(substr($matches[0], $start), $header_path);
+            $Block['element']['text'] = sprintf($text, $header_path);
         } else {
             $Block['element']['text'] = "<div class=\"in anchor\">$header_html</div>\n\n";
             $Block['element']['attributes'] = $header_id_attr;
