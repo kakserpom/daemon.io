@@ -260,6 +260,7 @@ header {
     padding: 0;
 }
 .sidebar li {
+    position: relative;
     white-space: nowrap;
 }
 .sidebar a {
@@ -307,7 +308,7 @@ header {
 .sidebar ul ul ul {
     display: none;
     /*margin-left: 10px;*/
-    padding-left: 10px;
+    padding-left: 15px;
 }
 .sidebar ul ul ul ul {
     /*display: none;*/
@@ -323,18 +324,25 @@ header {
     width: 19px;
     height: 12px;
     top: 50%;
-    left: -19px;
+    left: 0;
+    margin-left: -22px;
     margin-top: -6px;
     background: url(../imgs/mark.png);
 }
 .sidebar ul ul ul .active:before {
-    left: -29px;
+    left: -15px;
 }
 .sidebar ul ul ul ul .active:before {
-    left: -39px;
+    left: -30px;
 }
 .sidebar ul ul ul ul ul .active:before {
-    left: -49px;
+    left: -45px;
+}
+
+.sidebar .tpl-git {
+    position: absolute;
+    top: 0;
+    left: -14px;
 }
 
 

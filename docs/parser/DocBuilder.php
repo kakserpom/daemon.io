@@ -57,7 +57,12 @@ class DocBuilder {
         $this->markdown = $this->parseTpls($this->markdown);
         $this->template = $this->parseTpls($this->template);
 
-        // 4. Парсинг markdown
+        // 4. Парсинг <md: />
+        $this->markdown = $this->parseMdConstants($this->markdown);
+        $this->markdown = $this->parseMdProperties($this->markdown);
+        $this->markdown = $this->parseMdMethods($this->markdown);
+
+        // 5. Парсинг markdown
         $Parsedown = new ParsedownCustom();
         $this->markdown = $Parsedown->text($this->markdown);
 
@@ -164,6 +169,127 @@ class DocBuilder {
             }
 
             $result .= "<li{$classes}><a href=\"/docs/{$langcode}/\">{$langname}</a></li>";
+        }
+
+        return $result;
+    }
+
+    /**
+     *  Парсер тега md:const
+     */
+    protected function parseMdConstants($source) {
+        return preg_replace_callback('/^<md:const>(.+?)<\/md:const>/ims', function($matches) {
+            $result = '';
+            $lines = $this->getTextLines($matches[1]);
+
+            if(count($lines) === 0 or (count($lines) === 1 and $lines[0] === '')) {
+                return ' -.method.fake &nbsp;';
+            }
+
+            if(count($lines)) {
+                $part = array_shift($lines);
+                $result .= "-.method ```php:p.inline\n $part\n ```\n";
+            }
+
+            if(count($lines)) {
+                $part = array_shift($lines);
+                $result .= ' ' . $part . "\n";
+            }
+
+            return $result;
+        }, $source);
+    }
+
+    /**
+     *  Парсер тега md:prop
+     */
+    protected function parseMdProperties($source) {
+        return preg_replace_callback('/^<md:prop>(.+?)<\/md:prop>/ims', function($matches) {
+            $result = '';
+            $lines = $this->getTextLines($matches[1]);
+
+            if(count($lines) === 0 or (count($lines) === 1 and $lines[0] === '')) {
+                return ' -.method.fake &nbsp;';
+            }
+
+            if(count($lines)) {
+                $part = array_shift($lines);
+                $result .= "-.method ```php:p.inline\n $part\n ```\n";
+            }
+
+            if(count($lines)) {
+                $part = array_shift($lines);
+                $result .= ' ' . $part . "\n";
+            }
+
+            return $result;
+        }, $source);
+    }
+
+    /**
+     *  Парсер тега md:method
+     */
+    protected function parseMdMethods($source) {
+        return preg_replace_callback('/^<md:method>(.+?)<\/md:method>/ims', function($matches) {
+            $result = '';
+            $lines = $this->getTextLines($matches[1], '/\n[\s]*\n/');
+
+            if(count($lines) === 0 or (count($lines) === 1 and $lines[0] === '')) {
+                return ' -.method.fake &nbsp;';
+            }
+
+            // 1. php код
+            $code = array_shift($lines);
+
+            if($code) {
+                $code = str_replace("\n", "\n ", $code);
+                $matches2 = [];
+                $code = preg_replace_callback('/(?:^|\s)([^\s]+)\s\(/', function($matches) use (&$matches2) {
+                    $matches2 = $matches;
+                    return " <a href=\"#./{$matches[1]}\">{$matches[1]}</a> (";
+                }, $code, 1);
+
+                $result .= "#&{$matches2[1]}  -#%s.method ```php:p.inline\n {$code}\n ```\n";
+            }
+
+            # 2. Описание
+            $desc = array_shift($lines);
+
+            if($desc) {
+                $result .= "   -.n {$desc}\n";
+            }
+
+            # 3. Переменные
+            $i = 0;
+            foreach ($lines as $line) {
+                $cells = explode("\n", $line);
+
+                if($i++ == 0) {
+                    $eclass = '.ti';
+                } else {
+                    $eclass = '';
+                }
+
+                if(count($cells) === 3) {
+                    $result .= "   -.n{$eclass} `:hc`{$cells[0]}` — `:phc`{$cells[1]}` — {$cells[2]}\n";
+                } else {
+                    $result .= "   -.n{$eclass} `:hc`{$cells[0]}` — {$cells[1]}\n";
+                }
+            }
+
+            return $result;
+        }, $source);
+    }
+
+    protected function getTextLines($text, $sep = '/\n/') {
+        $text = trim($text);
+        $text = str_replace("\r\n", "\n", $text);
+        $text = str_replace("\r", "\n", $text);
+
+        $lines = preg_split($sep, $text);
+        $result = [];
+        foreach ($lines as $line) {
+            $result[] = trim($line);
         }
 
         return $result;
