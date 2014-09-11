@@ -16,7 +16,7 @@
 
 Чтобы внести изменения в эту документацию, необходимо:
 
- 1. Сделать Fork репозитория {tpl-outlink https://github.com/kakserpom/daemon.io kakserpom/daemon.io}
+ 1. Сделать Fork репозитория [kakserpom/daemon.io](https://github.com/kakserpom/daemon.io)
  2. Внести изменения в Markdown (.md) файлыв папке `./docs/<язык>/`
  3. Скомпилировать index.html, выполнив команду `./docs/build`
  4. Посмотреть как выглядят внесенные изменения в браузере
@@ -26,7 +26,7 @@
 > Запустите `watch -n1 ./docs/build` — она будет выполняться раз в секунду
 
 #### markdown # Формат документации
-Мы используем {tpl-outlink http://ru.wikipedia.org/wiki/Markdown Markdown} ({tpl-outlink http://rukeba.com/by-the-way/markdown-sintaksis-po-russki/ о синтаксисе по-русски}) с некоторыми дополнениями.
+Мы используем [Markdown](http://ru.wikipedia.org/wiki/Markdown) ([о синтаксисе по-русски](http://rukeba.com/by-the-way/markdown-sintaksis-po-russki/)) с некоторыми дополнениями.
 
 ##### nesting # Вложенность
 
@@ -134,10 +134,6 @@
 >     maxconcurrency 1;  
 > }  
 > &#96;&#96;&#96;
-
-##### tables # Таблицы
-
-Включена возможность создавать таблицы по формату {tpl-outlink http://code.google.com/p/support/wiki/WikiSyntax#Tables Google Code Wiki-style}.
 
 ### php-doc # PHPDoc
 

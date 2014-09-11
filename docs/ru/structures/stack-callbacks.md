@@ -7,7 +7,7 @@ class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.ph
 
 Данный класс предоставляет стек функций обратного вызова с несколькими дополнительными методами
 
-> Используется в {tpl-inlink network/client Network/Client} для хранения стека функций обратного вызова запросов
+> Используется в [Network/Client](#network/client) для хранения стека функций обратного вызова запросов
 
 #### methods # Методы
 

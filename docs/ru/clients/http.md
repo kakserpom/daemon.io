@@ -6,11 +6,11 @@ namespace PHPDaemon\Clients\HTTP;
 
 Предназначен для выполнения GET и POST запросов на удаленные хосты.
 
-Клиент использует пространство имен {tpl-inlink httprequest HTTPRequest}.
+Клиент использует пространство имен [HTTPRequest](#httprequest).
 
 #### examples # Примеры
 
-Получение файла {tpl-outlink http://www.google.com/robots.txt google.com/robots.txt} GET запросом:
+Получение файла [google.com/robots.txt](http://www.google.com/robots.txt) GET запросом:
 
 ```php
 $httpclient = \PHPDaemon\Clients\HTTP\Pool::getInstance();
@@ -91,7 +91,7 @@ string public static parseUrl ( string $str )
 string public static parseUrl ( array $mixed )
 
 Разбирает массив `:hc`$mixed` или строку `:hc`$str` и возвращает ассоциативный массив, содержащий необходимые компоненты URL: `:hc`[$scheme, $host, $uri, $port]`. В случае ошибки возвращает `:hc`false`.  
-См. {tpl-outlink http://php.net/parse_url php.net/parse_url}
+См. [php.net/parse_url](http://php.net/parse_url)
 
 $mixed
 массив параметров URL
@@ -139,7 +139,7 @@ integer public $protocolError;
 <md:prop>
 integer public $responseCode;
 
-Код ответа. См. {tpl-outlink http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP Список кодов состояния HTTP}
+Код ответа. См. [Список кодов состояния HTTP](http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP)
 </md:prop>
 
 <md:prop>

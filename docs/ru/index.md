@@ -85,13 +85,13 @@ PHPDaemon — это асинхронный демонизируемый фре�
 
 ### writing # Написание
 
- -.n <a target="_blank" href="https://github.com/EzheG"><i class="fa fa-github"></i></a> Dmitry Efimenko &lt;<ezheg89@gmail.com>&gt;
- -.n <a target="_blank" href="https://github.com/kakserpom"><i class="fa fa-github"></i></a> Vasily Zorin &lt;<maintainer@daemon.io>&gt;
- -.n <a target="_blank" href="https://github.com/nizsheanez"><i class="fa fa-github"></i></a> Alexey Sharov &lt;<www.pismeco@gmail.com>&gt;
+ -.n [i](https://github.com/EzheG) Dmitry Efimenko &lt;<ezheg89@gmail.com>&gt;
+ -.n [i](https://github.com/kakserpom) Vasily Zorin &lt;<maintainer@daemon.io>&gt;
+ -.n [i](https://github.com/nizsheanez) Alexey Sharov &lt;<www.pismeco@gmail.com>&gt;
 
 ### translation # Перевод на русский
 
- -.n <a target="_blank" href="https://github.com/kakserpom"><i class="fa fa-github"></i></a> Vasily Zorin &lt;<maintainer@daemon.io>&gt;
+ -.n [i](https://github.com/kakserpom) Vasily Zorin &lt;<maintainer@daemon.io>&gt;
 
 ### proofreading # Корректура русской версии
 
@@ -99,4 +99,4 @@ PHPDaemon — это асинхронный демонизируемый фре�
 
 ### scripting # Программирование
 
- -.n <a target="_blank" href="https://github.com/EzheG"><i class="fa fa-github"></i></a> Dmitry Efimenko &lt;<ezheg89@gmail.com>&gt;
+ -.n [i](https://github.com/EzheG) Dmitry Efimenko &lt;<ezheg89@gmail.com>&gt;

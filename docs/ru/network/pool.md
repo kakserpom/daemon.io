@@ -5,7 +5,7 @@ namespace PHPDaemon\Network;
 abstract class Pool extends [ObjectStorage](#structures/object-storage);
 ```
 
-Хранит в себе активные объекты {tpl-inlink network/connection Соединение} и {tpl-inlink network/boundsocket ОткрытыйСокет}.
+Хранит в себе активные объекты [Соединение](#network/connection) и [ОткрытыйСокет](#network/boundsocket).
 
 Пул (клиент или сервер) можно инстанцировать из пользовательского приложении, например:
 

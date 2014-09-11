@@ -426,7 +426,8 @@ header {
 }
 
 .tpl-outlink,
-.tpl-inlink {
+.tpl-inlink,
+.tpl-git-text {
     color: #2a6496;
     text-decoration: none;
 }

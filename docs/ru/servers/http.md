@@ -1,6 +1,6 @@
 ### http # HTTP #> HTTP {tpl-git PHPDaemon/Servers/HTTP}
 
-Сервер использует пространство имен {tpl-inlink httprequest HTTPRequest}.
+Сервер использует пространство имен [HTTPRequest](#httprequest).
 
 Это транспортное приложение предоставляет HTTP сервер для phpDaemon. Входящие Websocket соединения будут переданы приложению WebsocketServer.
 

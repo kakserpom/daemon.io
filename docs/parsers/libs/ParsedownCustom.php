@@ -436,6 +436,76 @@ class ParsedownCustom extends ParsedownExtra
 		return $markup;
 	}
 
+	protected function identifyLink($Excerpt) {
+		$result = parent::identifyLink($Excerpt);
+		$href = $result['element']['attributes']['href'];
+
+		// <a target="_self" class="tpl-inlink" href="#%s">%s<i class="fa fa-caret-square-o-up"></i></a>
+		if($href[0] === '#') {
+			if($href[1] === '.') {
+// 				$stack = $this->headers_id_stack;
+
+// 				if($href[2] === '/') {
+// 					array_pop($stack);
+// 					$stack[] = substr($href, 3);
+// 					$href = '#' . implode('/', $stack);
+// 				} else
+// 				if($href[2] === '.') {
+// var_dump($href);
+// 					$href = preg_replace_callback('/^\#(\.\.\/)+/', function($matches) use ($stack, $href) {
+// 						$n = (strlen($matches[0]) - 1) / 3;
+// var_dump($n, $stack);
+// 						for($i = 0; $i < $n; ++$i) {
+// 							array_pop($stack);
+// 						}
+// var_dump($stack);
+// 						$stack[] = substr($href, strlen($matches[0]));
+// var_dump('#' . implode('/', $stack));
+// die();
+// 						return '#' . implode('/', $stack);
+// 					}, $href);
+// 				}
+
+// 				$result['element']['attributes']['href'] = $href;
+			}
+
+			$result['element']['text'] .= '<i class="fa fa-caret-square-o-up"></i>';
+			$result['element']['attributes']['class'] = 'tpl-inlink';
+			return $result;
+		} else
+		// <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/%s">%s<i class="fa fa-github"></i></a>
+		if(preg_match('/^[a-z]+\:\/\/github\.com\//i', $href)) {
+			if($result['element']['text'] === 'i') {
+				$result['element']['text'] = '<i class="fa fa-github"></i>';
+				$result['element']['attributes']['class'] = 'tpl-git';
+			} else {
+				$result['element']['text'] .= '<i class="fa fa-github"></i>';
+				$result['element']['attributes']['class'] = 'tpl-git tpl-git-text';
+			}
+			$result['element']['attributes']['target'] = '_blank';
+			return $result;
+		} else
+		if(preg_match('/^([a-z]+\:\/\/)PHPDaemon\//i', $href, $matches)) {
+			if($result['element']['text'] === 'i') {
+				$result['element']['text'] = '<i class="fa fa-github"></i>';
+				$result['element']['attributes']['class'] = 'tpl-git';
+			} else {
+				$result['element']['text'] .= '<i class="fa fa-github"></i>';
+				$result['element']['attributes']['class'] = 'tpl-git tpl-git-text';
+			}
+			$result['element']['attributes']['href'] = 'https://github.com/kakserpom/phpdaemon/tree/master/' . substr($href, strlen($matches[1]));
+			$result['element']['attributes']['target'] = '_blank';
+			return $result;
+		} else
+		// <a target="_blank" class="tpl-outlink" href="%s">%s<i class="fa fa-external-link"></i></a>
+		if(preg_match('/^[a-z]+\:\/\//i', $href)) {
+			$result['element']['text'] .= '<i class="fa fa-external-link"></i>';
+			$result['element']['attributes']['class'] = 'tpl-outlink';
+			$result['element']['attributes']['target'] = '_blank';
+			return $result;
+		}
+	}
+
 	/**
 	 * Добавляет заголовок
 	 * @param  string $header_id   Строковый ID

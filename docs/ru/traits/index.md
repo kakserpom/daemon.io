@@ -1,6 +1,6 @@
 ## traits # Примеси
 
-Примеси (англ. traits). {tpl-outlink http://php.net/traits}
+[Примеси](http://php.net/traits) (англ. traits).
 
 Данный раздел описывает доступные для разработчиков встроенные примеси.
 

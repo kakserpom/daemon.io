@@ -2,13 +2,13 @@
 
 `:hp`trait \PHPDaemon\WebSocket\Traits\DNode`
 
-Данная примесь применима в классах-наследниках  {tpl-inlink servers/websocket/route Servers\WebSocket\Route}
+Данная примесь применима в классах-наследниках [Servers\WebSocket\Route](#servers/websocket/route)
 
-Примесь реализует серверную часть протокола {tpl-outlink https://github.com/substack/dnode DNode}, который служит для {tpl-outlink http://ru.wikipedia.org/wiki/Удалённый_вызов_процедур Удалённого вызова процедур} (RPC).
+Примесь реализует серверную часть протокола [DNode](https://github.com/substack/dnode), который служит для [Удалённого вызова процедур](http://ru.wikipedia.org/wiki/Удалённый_вызов_процедур) (RPC).
 
-Для подключение примеси нужно внести `:hp`use \PHPDaemon\WebSocket\Traits\DNode` в определение своего класса-наследника {tpl-inlink servers/websocket/route Servers\WebSocket\Route}.
+Для подключение примеси нужно внести `:hp`use \PHPDaemon\WebSocket\Traits\DNode` в определение своего класса-наследника [Servers\WebSocket\Route](#servers/websocket/route).
 
-Затем необходимо определить методы, доступные клиенту. Фактически это делает метод {tpl-inlink traits/dnode/methods/defineLocalMethods defineLocalMethods}, который должен вызываться в {tpl-inlink servers/websocket/route/methods/onHandshake onHandshake}.
+Затем необходимо определить методы, доступные клиенту. Фактически это делает метод [defineLocalMethods](#traits/dnode/methods/defineLocalMethods), который должен вызываться в [onHandshake](#servers/websocket/route/methods/onHandshake).
 
 Давайте, для примера, создадим метод `dummy` с аргументами `:hc`$foo`, `:hc`$bar` и `:hc`$callback`:
 
@@ -26,9 +26,9 @@ protected function dummyMethod($foo, $bar, $callback) {
 
 В качестве аргументов можно передавать передавать собственные функции обратного вызова, но учтите, что они удаляются  из памяти после вызова, если возвратное значение не является `:hc`true`. Таким образом, следует понимать ожидается ли повторный вызов, и в этом случае возвращать `:hc`true`. Это делается во избежание утечек памяти.
 
-Для вызова удаленного метода по имени, используйте {tpl-inlink traits/dnode/methods/callRemote callRemote}.
+Для вызова удаленного метода по имени, используйте [callRemote](#traits/dnode/methods/callRemote).
 
-> Как вы могли заметить, пример `dummyMethod` использует вызов `:h`static::ensureCallback($callback)`. Всегда нужно проверять переданный аргумент с помощью {tpl-inlink traits/dnode/methods/ensureCallback ensureCallback} перед его исполнением. В противном случае, это обернётся серьёзной брешью безопасности.
+> Как вы могли заметить, пример `dummyMethod` использует вызов `:h`static::ensureCallback($callback)`. Всегда нужно проверять переданный аргумент с помощью [ensureCallback](#traits/dnode/methods/ensureCallback) перед его исполнением. В противном случае, это обернётся серьёзной брешью безопасности.
 
 #### methods # Методы
 
@@ -89,7 +89,7 @@ $methods
 <md:method>
 void public toJsonDebugResursive ( mixed &$m )
 
-Обработчик рекурсии для метода {tpl-inlink ../toJsonDebug toJsonDebug}
+Обработчик рекурсии для метода [toJsonDebug](#../toJsonDebug)
 
 &$m
 Значение

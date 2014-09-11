@@ -5,7 +5,7 @@ namespace PHPDaemon\Utils;
 class Encoding;
 ```
 
-Сторонняя библиотека — {tpl-outlink https://github.com/neitanod/forceutf8 forceutf8}
+Сторонняя библиотека — [forceutf8](https://github.com/neitanod/forceutf8)
 
 #### methods # Методы
 

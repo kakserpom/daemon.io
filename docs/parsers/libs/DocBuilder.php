@@ -4,6 +4,8 @@ require 'Parsedown.php';
 require 'ParsedownExtra.php';
 require 'ParsedownCustom.php';
 
+require 'simple_html_dom.php';
+
 class DocBuilder {
 
 	/**
@@ -66,7 +68,7 @@ class DocBuilder {
 		$Parsedown = new ParsedownCustom();
 		$this->markdown = $Parsedown->text($this->markdown);
 
-		// 5. Постобработка
+		// 6. Постобработка
 		// @todo
 
 		$this->html = str_replace([

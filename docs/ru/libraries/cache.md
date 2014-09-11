@@ -6,7 +6,7 @@ namespace PHPDaemon\Cache;
 
 Механизм локального LRU-кеша ключ-значение.
 
-> Используется для кеширования замыканий созданных через create_function. Также используется в {tpl-inlink #clients/dns Clients\DNS}
+> Используется для кеширования замыканий созданных через create_function. Также используется в [Clients\DNS](#clients/dns)
 
 #### capped-storage # Класс CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
 
@@ -53,7 +53,7 @@ $key
 <md:method>
 [Item](#../../item) public put ( string $key, mixed $value, float $ttl = null )
 
-Добавляет элемент в кеш {tpl-inlink #../../item Item} с значением `:hc`$value`
+Добавляет элемент в кеш [Item](#../../item) с значением `:hc`$value`
 
 $key
 ключ элемента
@@ -77,7 +77,7 @@ $key
 <md:method>
 [Item](#../../item) public get ( string $key )
 
-Возвращает элемент хранилища {tpl-inlink #../../item Item}
+Возвращает элемент хранилища [Item](#../../item)
 
 $key
 ключ
@@ -150,5 +150,5 @@ namespace PHPDaemon\Cache;
 class CappedStorageHits extends CappedStorage;
 ```
 
-Реализация {tpl-inlink #../capped-storage CappedStorage} с сортировкой по количеству обращений
+Реализация [CappedStorage](#../capped-storage) с сортировкой по количеству обращений
 

@@ -5,7 +5,7 @@ namespace PHPDaemon\Traits;
 trait StrictStaticObjectWatchdog;
 ```
 
-Поведение аналогично {tpl-inlink ../static-object-watchdog StaticObjectWatchdog}, но эта примесь бросает исключение, вместо записи в журнал.
+Поведение аналогично [StaticObjectWatchdog](#../static-object-watchdog), но эта примесь бросает исключение, вместо записи в журнал.
 
 Определяет следующие магические методы:
 

@@ -6,11 +6,12 @@ namespace PHPDaemon\Clients\Asterisk;
 
 {tpl-outdated}
 
-{tpl-outlink http://www.asterisk.org/ Asterisk} - это АТС с открытым исходным кодом.
+
+[Asterisk](http://www.asterisk.org) - это АТС с открытым исходным кодом.
 AMI - программный интерфейс (API) Asterisk для управления системой, который позволяет разработчикам отправлять команды на сервер, считывать результаты их выполнения, а так же получать уведомления о происходящих событиях в реальном времени.
 Клиент Asterisk обеспечивает высокоуровневый интерфейс к AMI, позволяющий разработчикам контролировать сервер Asterisk из приложений.
 
-В основе документирования клиента лежит материал книги {tpl-outlink http://asterisk.ru/store/files/Asterisk_RU_OReilly_DRAFT.pdf Asterisk: будущее телефонии}.
+В основе документирования клиента лежит материал книги [Asterisk: будущее телефонии](http://asterisk.ru/store/files/Asterisk_RU_OReilly_DRAFT.pdf).
 
 #### use # Использование
 

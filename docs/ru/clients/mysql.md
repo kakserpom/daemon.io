@@ -4,7 +4,7 @@
 namespace PHPDaemon\Clients\MySQL;
 ```
 
-Клиент для СУБД {tpl-outlink http://mysql.com/ MySQL}
+Клиент для СУБД [MySQL](http://mysql.com/)
 
 #### use # Использование
 
