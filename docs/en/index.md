@@ -5,7 +5,7 @@
 <!-- pvar title Documentation &laquo; phpDaemon -->
 
 <!-- pvar menu-examples Examples -->
-<!-- pvar menu-docs Documentations -->
+<!-- pvar menu-docs Documentation -->
 <!-- pvar menu-faq FAQ -->
 <!-- pvar menu-tracker Issues -->
 <!-- pvar menu-team Team -->
