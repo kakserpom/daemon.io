@@ -31,18 +31,19 @@
 
 Для записи массива используется разделитель пробел&nbsp;`" "` или запятая&nbsp;`","`. В одном значении можно использовать оба разделителя одновременно.
 
-|| **Пример опции** || **Вывод var_dump** ||
-|| var-name; || bool(true) ||
-|| var-name null; || NULL ||
-|| var-name true; || bool(true) ||
-|| var-name false; || bool(false) ||
-|| var-name 0; || int(0) ||
-|| var-name 1; || int(1) ||
-|| var-name 3.14; || float(3.14) ||
-|| var-name "3.14"; || string(4) "3.14" ||
-|| var-name "пример. длинной строки,второй пример"; || string(67) "пример. длинной строки,второй пример" ||
-|| var-name пример. длинной строки,второй пример; || array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(13) "пример."<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(14) "длинной"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "строки"<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "второй"<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "пример"<br>} ||
-|| var-name 1, 'a' null 3.14 'пару слов'; || array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;int(1)<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(1) "a"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;NULL<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;float(3.14)<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(17) "пару слов"<br>} ||
+| Пример опции | Вывод var_dump |
+|--|--|
+| var-name; | bool(true) |
+| var-name null; | NULL |
+| var-name true; | bool(true) |
+| var-name false; | bool(false) |
+| var-name 0; | int(0) |
+| var-name 1; | int(1) |
+| var-name 3.14; | float(3.14) |
+| var-name "3.14"; | string(4) "3.14" |
+| var-name "пример. длинной строки,второй пример"; | string(67) "пример. длинной строки,второй пример" |
+| var-name пример. длинной строки,второй пример; | array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(13) "пример."<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(14) "длинной"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "строки"<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "второй"<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "пример"<br>} |
+| var-name 1, 'a' null 3.14 'пару слов'; | array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;int(1)<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(1) "a"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;NULL<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;float(3.14)<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(17) "пару слов"<br>} |
 
 Ниже будут перечислены глобальные опции демона в формате:  
 `название-опции (тип-данных = значение-по-умолчанию);`

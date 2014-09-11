@@ -249,7 +249,7 @@ class DocBuilder {
                     return " <a href=\"#./{$matches[1]}\">{$matches[1]}</a> (";
                 }, $code, 1);
 
-                $result .= "#&{$matches2[1]}  -#%s.method ```php:p.inline\n {$code}\n ```\n";
+                $result .= " -#{$matches2[1]}.method ```php:p.inline\n {$code}\n ```\n\n";
             }
 
             # 2. Описание

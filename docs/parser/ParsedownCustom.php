@@ -124,9 +124,9 @@ class ParsedownCustom extends ParsedownExtra
         $this->headers_stack[] = $html;
 
         if($isLink) {
-            $this->navigate[] = [$n, $header_path, $header_id];
+            $this->navigate[] = [$n, $header_path, $html];
         } elseif (!$isSimple) {
-            $this->navigate[] = [$n, $header_path, $parts[1]];
+            $this->navigate[] = [$n, $header_path, isset($parts[1]) ? $parts[1] : ''];
         }
 
         $Block = array(
@@ -138,11 +138,11 @@ class ParsedownCustom extends ParsedownExtra
 
         if($isLink) {
             // $start = strlen($matches[1]) + strlen($matches[2]) + 1;
-            // $Block['element']['text'] = sprintf(substr($matches[0], $start), $header_path);
+            // $text = sprintf(substr($text, $start), $header_path);
             // $Block['element']['handler'] = 'lines';
             // $Block['element']['text'] = sprintf($text, $header_path); // (array)
-            
-            $line = $text;
+
+            $line = sprintf($text, $header_path);
             $indent = 0;
 
             while (isset($line[$indent]) and $line[$indent] === ' ')
@@ -150,12 +150,26 @@ class ParsedownCustom extends ParsedownExtra
                 $indent ++;
             }
 
+            $line = $indent > 0 ? substr($line, $indent) : $line;
+
             $Line['body'] = $text;
             $Line['indent'] = $indent;
-            $Line['text'] = $indent > 0 ? substr($line, $indent) : $line;
+            $Line['text'] = $line;
 
             // так нельзя, надо по-правильному
-            return $this->identifyList($Line);
+            $Block = $this->identifyList($Line);
+            $Block['type'] = 'List';
+            $Block['incomplete'] = true;
+            return $Block;
+
+            // array(
+            //     'element' => array(
+            //         'handler' => 'lines',
+            //         'text' => (array) $line
+            //     )
+            // );
+
+            return $Block;
         } else {
             $Block['element']['text'] = "<div class=\"in anchor\">$header_html</div>\n\n";
             $Block['element']['attributes'] = $header_id_attr;
@@ -200,8 +214,11 @@ class ParsedownCustom extends ParsedownExtra
             );
 
             if($matches[2]) {
-                $Block['li']['attributes']['id'] = $matches[2];
-                if($classes) $classes .= '';
+                $id = substr($matches[2], 1);
+                $header_path = $this->addChildHeader($id, $id);
+
+                $Block['li']['attributes']['id'] = $header_path;
+                if($classes) $classes .= ' ';
                 $classes .= 'anchor';
             }
 
@@ -239,8 +256,11 @@ class ParsedownCustom extends ParsedownExtra
             );
 
             if($matches[2]) {
-                $Block['li']['attributes']['id'] = $matches[2];
-                if($classes) $classes .= '';
+                $id = substr($matches[2], 1);
+                $header_path = $this->addChildHeader($id, $id);
+
+                $Block['li']['attributes']['id'] = $header_path;
+                if($classes) $classes .= ' ';
                 $classes .= 'anchor';
             }
 
@@ -507,6 +527,22 @@ class ParsedownCustom extends ParsedownExtra
         }
 
         return $markup;
+    }
+
+    /**
+     * Добавляет дочерний заголовок
+     * @param  string $header_id
+     * @param  string $name
+     * @return string $header_path
+     */
+    protected function addChildHeader($header_id, $name) {
+        $stack = array_merge($this->headers_id_stack, [$header_id]);
+        $header_path = implode('/', $stack);
+        $n = count($this->headers_stack) + 2;
+
+        $this->navigate[] = [$n, $header_path, $name];
+
+        return $header_path;
     }
 
     /**
