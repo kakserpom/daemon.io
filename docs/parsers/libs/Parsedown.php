@@ -57,7 +57,7 @@ class Parsedown
     # Setters
     #
 
-    private $breaksEnabled;
+    protected $breaksEnabled;
 
     function setBreaksEnabled($breaksEnabled)
     {
@@ -111,7 +111,7 @@ class Parsedown
     # Blocks
     #
 
-    private function lines(array $lines)
+    protected function lines(array $lines)
     {
         $CurrentBlock = null;
 
@@ -1349,7 +1349,7 @@ class Parsedown
         return $instance;
     }
 
-    private static $instances = array();
+    protected static $instances = array();
 
     #
     # Deprecated Methods

@@ -4,7 +4,7 @@ define("CURRENT_WORKING_DIR", str_replace("\\", "/", dirname(__FILE__)));
 
 foreach (explode("\n", trim(shell_exec('find '.CURRENT_WORKING_DIR.'/*/index.md'))) as $source) {
 	$html = preg_replace('~\.md$~', '.html', $source);
-	passthru('python '.CURRENT_WORKING_DIR.'/backdoc.py'
-		.' --source '.escapeshellarg($source)
+	passthru('php '.CURRENT_WORKING_DIR.'/parsers/parse_docs.php'
+		.' '.escapeshellarg($source)
 		.' > '.escapeshellarg($html.'.tmp').'; mv -f '.escapeshellarg($html.'.tmp').' '.escapeshellarg($html));
 }

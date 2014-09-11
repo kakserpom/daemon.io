@@ -291,7 +291,7 @@ class ParsedownExtra extends Parsedown
         }
     }
 
-    private $footnoteCount = 0;
+    protected $footnoteCount = 0;
 
     #
     # Link
@@ -387,10 +387,10 @@ class ParsedownExtra extends Parsedown
     }
 
     #
-    # Private
+    # protected
     #
 
-    private function parseAttributes($attributeString)
+    protected function parseAttributes($attributeString)
     {
         $Data = array();
 
@@ -416,5 +416,5 @@ class ParsedownExtra extends Parsedown
         return $Data;
     }
 
-    private $attributesPattern = '{((?:[#.][-\w]+[ ]*)+)}';
+    protected $attributesPattern = '{((?:[#.][-\w]+[ ]*)+)}';
 }
