@@ -17,8 +17,6 @@ li ul, li ol{
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0.8em;
     padding-top: 0.7em;
-    /*margin-top: -10px;*/
-    /*padding-top: 50px;*/
 }
 
 h4 {
@@ -99,17 +97,6 @@ header menu a:hover {
 .anchor pre {
     cursor: pointer;
 }
-/*
-.anchor .anchor_char{
-    visibility: hidden;
-    padding-left: 0.2em;
-    font-size: 0.9em;
-    opacity: 0.5;
-}
-.anchor:hover .anchor_char{
-    visibility: visible;
-}
-*/
 
 .doc-notice {
     margin: 60px 0 0;
@@ -119,7 +106,6 @@ header menu a:hover {
 }
 
 .header-path {
-    /*opacity: 0;*/
     position: relative;
     margin-left: 5px;
     font-size: 13px;
@@ -146,10 +132,6 @@ h5 .header-path {
     top: -0.1em;
 }
 
-/*header,
-.lang-chooser,
-.mainhead,
-.main_wrap*/
 .sidebar {
     transform: translate3d(0px, 0px, 0px) scale(1, 1);
     -o-transform: translate3d(0px, 0px, 0px) scale(1, 1);
@@ -236,7 +218,6 @@ header {
 
 
 .sidebar {
-/*.main_wrap {*/
     top: 35px;
 }
 
@@ -294,10 +275,6 @@ header {
     font-size: 11px;
     line-height: 14px;
 }
-
-/*.sidebar ul ul li:before {
-    content: "- "; 
-}*/
 .sidebar ul ul li {
     margin-bottom: 3px;
 }
@@ -307,11 +284,10 @@ header {
 
 .sidebar ul ul ul {
     display: none;
-    /*margin-left: 10px;*/
     padding-left: 15px;
 }
 .sidebar ul ul ul ul {
-    /*display: none;*/
+    padding-left: 10px;
 }
 
 .sidebar .active {
@@ -333,10 +309,10 @@ header {
     left: -15px;
 }
 .sidebar ul ul ul ul .active:before {
-    left: -30px;
+    left: -25px;
 }
 .sidebar ul ul ul ul ul .active:before {
-    left: -45px;
+    left: -35px;
 }
 
 .sidebar .tpl-git {
@@ -390,16 +366,16 @@ header {
     background: rgba(0,0,0,1);
     cursor: pointer;
 }
-    .toggle_sidebar_button .line{
-        height: 2px;
-        width: 21px;
-        margin-left: 11px;
-        margin-top: 5px;
-        background: #FFF;
-    }
-    .toggle_sidebar_button .line:first-child {
-        margin-top: 15px;
-    }
+.toggle_sidebar_button .line{
+    height: 2px;
+    width: 21px;
+    margin-left: 11px;
+    margin-top: 5px;
+    background: #FFF;
+}
+.toggle_sidebar_button .line:first-child {
+    margin-top: 15px;
+}
 
 .mainhead {
     display: none;
@@ -410,8 +386,6 @@ header {
     right: 0;
     padding: 0 0 5px;
     background: #F9F9F9;
-    /*background: #0f0;*/
-    /*opacity: 0.6;*/
 }
 .mainhead.m-float {
     position: fixed;
@@ -430,7 +404,6 @@ header {
 .mainhead h6 {
     margin: -20px 0 0;
     padding: 20px 20px 0;
-    /*font-size: 20px;*/
     background: #F9F9F9;
 }
 .mainhead .header-path {
@@ -438,12 +411,6 @@ header {
 }
 
 .main_wrap {
-    /*position: fixed;
-    z-index: 5;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: auto;*/
     margin-left: 260px;
     margin-top: 30px;
 }
@@ -451,7 +418,6 @@ header {
     width: 840px;
     margin: 30px;
     margin-left: 0px;
-    /*padding-left: 260px;*/
     padding-right: 30px;
 }
 
@@ -465,13 +431,7 @@ header {
     text-decoration: none;
 }
 
-/*.main_container p + ul {
-    margin-top: -15px;
-}*/
-
 .main_container ul {
-    /*list-style: circle;*/
-    /*font-size: 13px;*/
     line-height: 18px;
     padding-left: 15px;
 }
@@ -488,8 +448,6 @@ header {
     margin-left: -15px;
     margin-bottom: 20px;
     list-style: none;
-    /*margin-top: -40px;*/
-    /*padding-top: 40px;*/
 }
 .main_container li.method.fake {
     margin-top: -20px;
@@ -585,7 +543,6 @@ code.code_highlight {
     display: inline;
     padding: 2px 5px;
     overflow: visible;
-    /*line-height: 40px;*/
 }
 
 code.code_highlight a {
