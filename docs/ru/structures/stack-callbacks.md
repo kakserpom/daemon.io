@@ -30,29 +30,29 @@ $cb
 </md:method>
 
 <md:method>
-boolean public executeOne ( mixed $arg, ... )
+boolean public executeOne ( mixed ...$args )
 
 Извлекает первую функцию обратного вызова из начала стека и выполняет её с переданными аргументами. Возвращает `false` если стек пуст
 
-$arg
+...$args
 аргументы
 </md:method>
 
 <md:method>
-boolean public executeAndKeepOne ( mixed $arg, ... )
+boolean public executeAndKeepOne ( mixed ...$args )
 
 Выполяет первую функцию обратного вызова из начала стека с переданными аргументами без извлечения её из стека. Возвращает `false` если стек пуст
 
-$arg, ...
+...$args
 аргументы
 </md:method>
 
 <md:method>
-integer public executeAll ( mixed $arg, ... )
+integer public executeAll ( mixed ...$args )
 
 Извлекает все функции обратного вызова и выполняет с заданными аргументами. Возвращает количество выполненных функций.
 
-$arg1, ...
+...$args
 аргументы
 </md:method>
 

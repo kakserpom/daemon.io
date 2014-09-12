@@ -34,19 +34,19 @@ CallbackWrapper public dequeue ( )
 </md:method>
 
 <md:method>
-boolean public executeOne ( mixed $arg, ... )
+boolean public executeOne ( mixed ...$args )
 
 Извлекает первую из начала очереди функцию обратного вызова и выполняет её с переданными аргументами. Возвращает `false` если очередь пуста
 
-$arg, ...
+...$args
 аргументы
 </md:method>
 
 <md:method>
-integer public executeAll ( mixed $arg, ... )
+integer public executeAll ( mixed ...$args )
 
 Извлекает и выполняет все функции обратного вызова в очереди с переданными аргументами. Возвращает количество выполненных функций обратного вызова
 
-$arg, ...
+...$args
 аргументы
 </md:method>

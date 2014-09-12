@@ -12,14 +12,14 @@ class ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splo
 #### methods # Методы
 
 <md:method>
-integer public each ( string $method, mixed $arg, ... )
+integer public each ( string $method, mixed ...$args )
 
 Проходит по всем объектам, вызывая у каждого из них метод `:hc`$method` c заданными аргументами `:hc`$args` и возвращает количество объектов в хранилище
 
 $method
 вызываемый метод объекта
 
-$arg, ...
+...$args
 аргументы
 </md:method>
 
