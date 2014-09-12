@@ -4,7 +4,7 @@ require 'Parsedown.php';
 require 'ParsedownExtra.php';
 require 'ParsedownCustom.php';
 
-require 'simple_html_dom.php';
+// require 'simple_html_dom.php';
 
 class DocBuilder {
 
@@ -251,7 +251,8 @@ class DocBuilder {
 				$matches2 = [];
 				$code = preg_replace_callback('/(?:^|\s)([^\s]+)\s\(/', function($matches) use (&$matches2) {
 					$matches2 = $matches;
-					return " <a href=\"#./{$matches[1]}\">{$matches[1]}</a> (";
+					// return " <a href=\"#./{$matches[1]}\">{$matches[1]}</a> (";
+					return " [!:$matches[1]](#./$matches[1]) (";
 				}, $code, 1);
 
 				$result .= " -#{$matches2[1]}.method ```php:p.inline\n {$code}\n ```\n\n";

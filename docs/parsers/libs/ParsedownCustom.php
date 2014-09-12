@@ -22,6 +22,202 @@ class ParsedownCustom extends ParsedownExtra
 	public static $fromLower = Array("э", "ч", "ш", "ё", "ё", "ж", "ю", "ю", "я", "я", "а", "б", "в", "г", "д", "е", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "щ", "ъ", "ы", "ь");
 	public static $toLower = Array("e", "ch", "sh", "yo", "jo", "zh", "yu", "ju", "ya", "ja", "a", "b", "v", "g", "d", "e", "z", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "f", "h", "c", "w", "", "y", "");
 
+	protected function lines(array $lines)
+	{
+		$CurrentBlock = null;
+
+		foreach ($lines as $line)
+		{
+			if (chop($line) === '')
+			{
+				if (isset($CurrentBlock))
+				{
+					$CurrentBlock['interrupted'] = true;
+				}
+
+				continue;
+			}
+
+			$indent = 0;
+
+			while (isset($line[$indent]) and $line[$indent] === ' ')
+			{
+				$indent ++;
+			}
+
+			$text = $indent > 0 ? substr($line, $indent) : $line;
+
+			# ~
+
+			$Line = array('body' => $line, 'indent' => $indent, 'text' => $text);
+
+			# ~
+			# 
+			$this->parseRelativeLinks($CurrentBlock);
+
+			if (isset($CurrentBlock['incomplete']))
+			{
+				$Block = $this->{'addTo'.$CurrentBlock['type']}($Line, $CurrentBlock);
+
+				if (isset($Block))
+				{
+					$CurrentBlock = $Block;
+
+					continue;
+				}
+				else
+				{
+					if (method_exists($this, 'complete'.$CurrentBlock['type']))
+					{
+						$CurrentBlock = $this->{'complete'.$CurrentBlock['type']}($CurrentBlock);
+					}
+
+					unset($CurrentBlock['incomplete']);
+				}
+			}
+
+			# ~
+
+			$marker = $text[0];
+
+			if (isset($this->DefinitionTypes[$marker]))
+			{
+				foreach ($this->DefinitionTypes[$marker] as $definitionType)
+				{
+					$Definition = $this->{'identify'.$definitionType}($Line, $CurrentBlock);
+
+					if (isset($Definition))
+					{
+						$this->Definitions[$definitionType][$Definition['id']] = $Definition['data'];
+
+						continue 2;
+					}
+				}
+			}
+
+			# ~
+
+			$blockTypes = $this->unmarkedBlockTypes;
+
+			if (isset($this->BlockTypes[$marker]))
+			{
+				foreach ($this->BlockTypes[$marker] as $blockType)
+				{
+					$blockTypes []= $blockType;
+				}
+			}
+
+			#
+			# ~
+
+			foreach ($blockTypes as $blockType)
+			{
+				$Block = $this->{'identify'.$blockType}($Line, $CurrentBlock);
+
+				if (isset($Block))
+				{
+					$Block['type'] = $blockType;
+
+					if ( ! isset($Block['identified']))
+					{
+						$Elements []= $CurrentBlock['element'];
+
+						$Block['identified'] = true;
+					}
+
+					if (method_exists($this, 'addTo'.$blockType))
+					{
+						$Block['incomplete'] = true;
+					}
+
+					$CurrentBlock = $Block;
+
+					continue 2;
+				}
+			}
+
+			# ~
+
+			if (isset($CurrentBlock) and ! isset($CurrentBlock['type']) and ! isset($CurrentBlock['interrupted']))
+			{
+				$CurrentBlock['element']['text'] .= "\n".$text;
+			}
+			else
+			{
+				$Elements []= $CurrentBlock['element'];
+
+				$CurrentBlock = $this->buildParagraph($Line);
+
+				$CurrentBlock['identified'] = true;
+			}
+		}
+
+		# ~
+
+		if (isset($CurrentBlock['incomplete']) and method_exists($this, 'complete'.$CurrentBlock['type']))
+		{
+			$CurrentBlock = $this->{'complete'.$CurrentBlock['type']}($CurrentBlock);
+		}
+
+		# ~
+
+		$Elements []= $CurrentBlock['element'];
+
+		unset($Elements[0]);
+
+		# ~
+
+		$markup = $this->elements($Elements);
+
+		# ~
+
+		return $markup;
+	}
+
+	protected function trace(&$arr, $callback) {
+		if(!is_array($arr)) {
+			return;
+		}
+
+		foreach ($arr as $key => &$el) {
+			if (is_array($el)) {
+				$this->trace($el, $callback);
+			} else
+			if(is_int($key) || $key === 'text') {
+				$this->$callback($el);
+			}
+		}
+	}
+
+	protected function parse_relative_links(&$text) {
+		$text = preg_replace_callback('/\]\(\#[\.\/]+(.*?)\)/', function($matches) {
+			$href = trim($matches[0], ']()');
+			$postfix = $matches[1];
+			$stack = $this->headers_id_stack;
+
+			if($href[1] === '.' && $href[2] === '/') {
+				if($postfix) {
+					$stack[] = $postfix;
+				}
+			} else
+			if($href[1] === '.' && $href[2] === '.' && $href[3] === '/') {
+				$n = (strlen($href) - strlen($postfix) - 1) / 3;
+				for($i = 0; $i < $n; ++$i) {
+					array_pop($stack);
+				}
+				if($postfix) {
+					$stack[] = $postfix;
+				}
+			}
+
+			return '](#'. implode('/', $stack) .')';
+		}, $text);
+	}
+
+	protected function parseRelativeLinks(&$CurrentBlock) {
+		$this->trace($CurrentBlock, 'parse_relative_links');
+	}
+
 	/**
 	 * Сложная обработка заголовков. Составление навигации
 	 * @param  array $Line
@@ -438,40 +634,21 @@ class ParsedownCustom extends ParsedownExtra
 
 	protected function identifyLink($Excerpt) {
 		$result = parent::identifyLink($Excerpt);
+
+		$text = $result['element']['text'];
 		$href = $result['element']['attributes']['href'];
+
+		$mode_clear = false;
+
+		if($text[0] === '!' && $text[1] === ':') {
+			$mode_clear = true;
+			$result['element']['text'] = $text = substr($text, 2);
+		}
 
 		// <a target="_self" class="tpl-inlink" href="#%s">%s<i class="fa fa-caret-square-o-up"></i></a>
 		if($href[0] === '#') {
-			if($href[1] === '.') {
-// 				$stack = $this->headers_id_stack;
-
-// 				if($href[2] === '/') {
-// 					array_pop($stack);
-// 					$stack[] = substr($href, 3);
-// 					$href = '#' . implode('/', $stack);
-// 				} else
-// 				if($href[2] === '.') {
-// var_dump($href);
-// 					$href = preg_replace_callback('/^\#(\.\.\/)+/', function($matches) use ($stack, $href) {
-// 						$n = (strlen($matches[0]) - 1) / 3;
-// var_dump($n, $stack);
-// 						for($i = 0; $i < $n; ++$i) {
-// 							array_pop($stack);
-// 						}
-// var_dump($stack);
-// 						$stack[] = substr($href, strlen($matches[0]));
-// var_dump('#' . implode('/', $stack));
-// die();
-// 						return '#' . implode('/', $stack);
-// 					}, $href);
-// 				}
-
-// 				$result['element']['attributes']['href'] = $href;
-			}
-
 			$result['element']['text'] .= '<i class="fa fa-caret-square-o-up"></i>';
 			$result['element']['attributes']['class'] = 'tpl-inlink';
-			return $result;
 		} else
 		// <a target="_blank" class="tpl-git" href="https://github.com/kakserpom/phpdaemon/tree/master/%s">%s<i class="fa fa-github"></i></a>
 		if(preg_match('/^[a-z]+\:\/\/github\.com\//i', $href)) {
@@ -483,7 +660,6 @@ class ParsedownCustom extends ParsedownExtra
 				$result['element']['attributes']['class'] = 'tpl-git tpl-git-text';
 			}
 			$result['element']['attributes']['target'] = '_blank';
-			return $result;
 		} else
 		if(preg_match('/^([a-z]+\:\/\/)PHPDaemon\//i', $href, $matches)) {
 			if($result['element']['text'] === 'i') {
@@ -495,15 +671,22 @@ class ParsedownCustom extends ParsedownExtra
 			}
 			$result['element']['attributes']['href'] = 'https://github.com/kakserpom/phpdaemon/tree/master/' . substr($href, strlen($matches[1]));
 			$result['element']['attributes']['target'] = '_blank';
-			return $result;
 		} else
 		// <a target="_blank" class="tpl-outlink" href="%s">%s<i class="fa fa-external-link"></i></a>
 		if(preg_match('/^[a-z]+\:\/\//i', $href)) {
 			$result['element']['text'] .= '<i class="fa fa-external-link"></i>';
 			$result['element']['attributes']['class'] = 'tpl-outlink';
 			$result['element']['attributes']['target'] = '_blank';
-			return $result;
 		}
+
+		if($mode_clear) {
+			$result['element']['text'] = $text;
+			if(isset($result['element']['attributes']['class'])) {
+				unset($result['element']['attributes']['class']);
+			}
+		}
+
+		return $result;
 	}
 
 	/**
