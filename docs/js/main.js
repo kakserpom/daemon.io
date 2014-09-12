@@ -145,123 +145,125 @@ $(function(){
 		$body.removeClass('force_show_sidebar');
 	});
 
+	// @deprecated
 	// ./
-	function parseLinkCurr(event) {
-		var that = $(this),
-			href = that.attr('href'),
-			postfix = href.slice(3),
-			parent = that.parentsUntil('.main_container').last();
+	// function parseLinkCurr(event) {
+	// 	var that = $(this),
+	// 		href = that.attr('href'),
+	// 		postfix = href.slice(3),
+	// 		parent = that.parentsUntil('.main_container').last();
 
-		if(!parent.length) {
-			return false;
-		}
+	// 	if(!parent.length) {
+	// 		return false;
+	// 	}
 
-		if( parent.is(':header') ) {
-			header = parent;
-		}
-		else {
-			curr = parent;
+	// 	if( parent.is(':header') ) {
+	// 		header = parent;
+	// 	}
+	// 	else {
+	// 		curr = parent;
 
-			while(true) {
-				header = curr.prev();
+	// 		while(true) {
+	// 			header = curr.prev();
 
-				if(!header.length) {
-					return false;
-				}
+	// 			if(!header.length) {
+	// 				return false;
+	// 			}
 
-				if(header.is(':header')) {
-					break;
-				}
+	// 			if(header.is(':header')) {
+	// 				break;
+	// 			}
 
-				curr = header;
-			}
-		}
+	// 			curr = header;
+	// 		}
+	// 	}
 
-		if(header.length) {
-			return '#' + header.attr('id') + (postfix ? '/'+postfix : '');
-		}
-	}
+	// 	if(header.length) {
+	// 		return '#' + header.attr('id') + (postfix ? '/'+postfix : '');
+	// 	}
+	// }
 
+	// @deprecated
 	// ../
-	function parseLinkPrev(event) {
-		var that = $(this),
-			href = that.attr('href'),
-			parent = null;
+	// function parseLinkPrev(event) {
+	// 	var that = $(this),
+	// 		href = that.attr('href'),
+	// 		parent = null;
 
-		var matches = href.match(/^\#(\.\.\/)+/g),
-			count = (matches[0].length - 1) / 3 + 1,
-			postfix = href.slice(matches[0].length);
+	// 	var matches = href.match(/^\#(\.\.\/)+/g),
+	// 		count = (matches[0].length - 1) / 3 + 1,
+	// 		postfix = href.slice(matches[0].length);
 
-		var curr = that,
-			header = null,
-			level = 0;
+	// 	var curr = that,
+	// 		header = null,
+	// 		level = 0;
 
-		loop:
-		while(true) {
-			if(level) {
-				while(true) {
-					header = curr.prev();
+	// 	loop:
+	// 	while(true) {
+	// 		if(level) {
+	// 			while(true) {
+	// 				header = curr.prev();
 
-					if(!header.length) {
-						break loop;
-					}
+	// 				if(!header.length) {
+	// 					break loop;
+	// 				}
 
-					if(header.is('h'+ level +'[id]')) {
-						break;
-					}
+	// 				if(header.is('h'+ level +'[id]')) {
+	// 					break;
+	// 				}
 
-					curr = header;
-				}
-			} else {
-				parent = curr.parentsUntil('.main_container').last();
+	// 				curr = header;
+	// 			}
+	// 		} else {
+	// 			parent = curr.parentsUntil('.main_container').last();
 
-				if(!parent.length) {
-					break;
-				}
+	// 			if(!parent.length) {
+	// 				break;
+	// 			}
 
-				if( parent.is(':header') ) {
-					header = parent;
-				}
-				else {
-					curr = parent;
+	// 			if( parent.is(':header') ) {
+	// 				header = parent;
+	// 			}
+	// 			else {
+	// 				curr = parent;
 
-					while(true) {
-						header = curr.prev();
+	// 				while(true) {
+	// 					header = curr.prev();
 
-						if(!header.length) {
-							break loop;
-						}
+	// 					if(!header.length) {
+	// 						break loop;
+	// 					}
 
-						if(header.is(':header')) {
-							break;
-						}
+	// 					if(header.is(':header')) {
+	// 						break;
+	// 					}
 
-						curr = header;
-					}
-				}
+	// 					curr = header;
+	// 				}
+	// 			}
 
-				level = +header[0].tagName.slice(1);
+	// 			level = +header[0].tagName.slice(1);
 
-				if(level - count < 1) {
-					return false;
-				}
-			}
+	// 			if(level - count < 1) {
+	// 				return false;
+	// 			}
+	// 		}
 
-			if(--count < 1 || !header.length) {
-				break;
-			}
+	// 		if(--count < 1 || !header.length) {
+	// 			break;
+	// 		}
 			
-			if(--level < 1) {
-				break;
-			}
+	// 		if(--level < 1) {
+	// 			break;
+	// 		}
 
-			curr = header;
-		}
+	// 		curr = header;
+	// 	}
 
-		if(header.length) {
-			return '#' + header.attr('id') + (postfix ? '/'+postfix : '');
-		}
-	}
+	// 	if(header.length) {
+	// 		return '#' + header.attr('id') + (postfix ? '/'+postfix : '');
+	// 	}
+	// }
 
 	$doc
 		.on('click', '.method code a', function(event) {
@@ -269,19 +271,22 @@ $(function(){
 		})
 		.on('click', ':header[id] .anchor, .anchor[id] pre', function() {
 			window.location = '#' + $(this).parent().attr('id');
-		})
-		// обработка сцец ссылок ./
-		.on('click', 'a[href^="#./"]', function(event) {
-			event.preventDefault();
-			var res = parseLinkCurr.apply(this, [event]);
-			if(res) window.location = res;
-		})
-		// обработка сцец ссылок ../
-		.on('click', 'a[href^="#../"]', function(event) {
-			event.preventDefault();
-			var res = parseLinkPrev.apply(this, [event]);
-			if(res) window.location = res;
 		});
+
+		// @deprecated
+		// обработка сцец ссылок ./
+		// .on('click', 'a[href^="#./"]', function(event) {
+		// 	event.preventDefault();
+		// 	var res = parseLinkCurr.apply(this, [event]);
+		// 	if(res) window.location = res;
+		// })
+		// @deprecated
+		// обработка сцец ссылок ../
+		// .on('click', 'a[href^="#../"]', function(event) {
+		// 	event.preventDefault();
+		// 	var res = parseLinkPrev.apply(this, [event]);
+		// 	if(res) window.location = res;
+		// })
 
 	//выбор языка
 	(function(){
