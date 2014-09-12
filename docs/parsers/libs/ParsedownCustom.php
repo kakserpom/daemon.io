@@ -22,6 +22,12 @@ class ParsedownCustom extends ParsedownExtra
 	public static $fromLower = Array("э", "ч", "ш", "ё", "ё", "ж", "ю", "ю", "я", "я", "а", "б", "в", "г", "д", "е", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "щ", "ъ", "ы", "ь");
 	public static $toLower = Array("e", "ch", "sh", "yo", "jo", "zh", "yu", "ju", "ya", "ja", "a", "b", "v", "g", "d", "e", "z", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "f", "h", "c", "w", "", "y", "");
 
+	/**
+	 * Построчный парсинг документа
+	 * Добавлена обработка ссылок parseRelativeLinks
+	 * @param  array  $lines
+	 * @return string
+	 */
 	protected function lines(array $lines)
 	{
 		$CurrentBlock = null;
@@ -174,6 +180,19 @@ class ParsedownCustom extends ParsedownExtra
 		return $markup;
 	}
 
+	/**
+	 * Парсим все ссылки вида #./ и #../ в массиве блока
+	 * @param  array $CurrentBlock
+	 */
+	protected function parseRelativeLinks(&$CurrentBlock) {
+		$this->trace($CurrentBlock, 'parseRelativeLinksDo');
+	}
+
+	/**
+	 * Рекурсивный проход по всем значниям массива с выполнением $callback метода
+	 * @param  array  $arr
+	 * @param  string $callback
+	 */
 	protected function trace(&$arr, $callback) {
 		if(!is_array($arr)) {
 			return;
@@ -189,7 +208,12 @@ class ParsedownCustom extends ParsedownExtra
 		}
 	}
 
-	protected function parse_relative_links(&$text) {
+	/**
+	 * Парсим все ссылки вида #./ и #../ в строке
+	 * @param  [type] $text [description]
+	 * @return [type]       [description]
+	 */
+	protected function parseRelativeLinksDo(&$text) {
 		$text = preg_replace_callback('/\]\(\#[\.\/]+(.*?)\)/', function($matches) {
 			$href = trim($matches[0], ']()');
 			$postfix = $matches[1];
@@ -215,10 +239,6 @@ class ParsedownCustom extends ParsedownExtra
 
 			return $matches[0];
 		}, $text);
-	}
-
-	protected function parseRelativeLinks(&$CurrentBlock) {
-		$this->trace($CurrentBlock, 'parse_relative_links');
 	}
 
 	/**
