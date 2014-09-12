@@ -199,7 +199,9 @@ class ParsedownCustom extends ParsedownExtra
 				if($postfix) {
 					$stack[] = $postfix;
 				}
-			} else
+				return '](#'. implode('/', $stack) .')';
+			}
+
 			if($href[1] === '.' && $href[2] === '.' && $href[3] === '/') {
 				$n = (strlen($href) - strlen($postfix) - 1) / 3;
 				for($i = 0; $i < $n; ++$i) {
@@ -208,9 +210,10 @@ class ParsedownCustom extends ParsedownExtra
 				if($postfix) {
 					$stack[] = $postfix;
 				}
+				return '](#'. implode('/', $stack) .')';
 			}
 
-			return '](#'. implode('/', $stack) .')';
+			return $matches[0];
 		}, $text);
 	}
 
