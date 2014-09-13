@@ -193,25 +193,58 @@ class DocBuilder {
 	 */
 	protected function parseMdConstants($source) {
 		return preg_replace_callback('/^<md:const>(.+?)<\/md:const>/ims', function($matches) {
-			$result = '';
-			$lines = $this->getTextLines($matches[1]);
-
-			if(count($lines) === 0 or (count($lines) === 1 and $lines[0] === '')) {
-				return ' -.method.fake &nbsp;';
+			$text = $matches[1];
+			if(substr(ltrim($text),0,3) === '/**') {
+				$text = $this->parseMdConstantsFromPHPDoc($text);
 			}
 
-			if(count($lines)) {
-				$part = array_shift($lines);
-				$result .= "-.method ```php:p.inline\n $part\n ```\n";
-			}
-
-			if(count($lines)) {
-				$part = array_shift($lines);
-				$result .= ' ' . $part . "\n";
-			}
-
-			return $result;
+			return $this->parseMdConstantsDef($text);
 		}, $source);
+	}
+
+	/**
+	 * Парсит описание константы из phpdoc в стандартизованный вид для дальнейшей обработки
+	 * @param  string $text
+	 * @return string
+	 */
+	protected function parseMdConstantsFromPHPDoc($text) {
+		$lines = $this->getTextLines($text);
+
+		$code = trim(array_pop($lines));
+		$comment = implode("\n", $lines);
+
+		$PHPDoc = new DocBlock($comment);
+
+		$desc_text_arr = preg_split('/\s*\n\s*/', trim($PHPDoc->getShortDescription() ."\n". $PHPDoc->getLongDescription()), -1, PREG_SPLIT_NO_EMPTY);
+		$desc_text = implode("  \n", $desc_text_arr);
+
+		return $code ."\n". $desc_text;
+	}
+
+	/**
+	 * Парсит станлартизованныое описание константы в md
+	 * @param  string $text
+	 * @return string
+	 */
+	protected function parseMdConstantsDef($text) {
+		$result = '';
+		$lines = $this->getTextLines($text);
+
+		if(count($lines) === 0 or (count($lines) === 1 and $lines[0] === '')) {
+			return ' -.method.fake &nbsp;';
+		}
+
+		if(count($lines)) {
+			$part = array_shift($lines);
+			$result .= " -.method ```php:p.inline\n $part\n ```\n";
+		}
+
+		if(count($lines)) {
+			$part = array_shift($lines);
+			$result .= ' <ul><li class="n">' . $part . "</li></ul>\n";
+		}
+
+		return $result;
 	}
 
 	/**
@@ -219,25 +252,67 @@ class DocBuilder {
 	 */
 	protected function parseMdProperties($source) {
 		return preg_replace_callback('/^<md:prop>(.+?)<\/md:prop>/ims', function($matches) {
-			$result = '';
-			$lines = $this->getTextLines($matches[1]);
-
-			if(count($lines) === 0 or (count($lines) === 1 and $lines[0] === '')) {
-				return ' -.method.fake &nbsp;';
+			$text = $matches[1];
+			if(substr(ltrim($text),0,3) === '/**') {
+				$text = $this->parseMdPropertieFromPHPDoc($text);
 			}
 
-			if(count($lines)) {
-				$part = array_shift($lines);
-				$result .= "-.method ```php:p.inline\n $part\n ```\n";
-			}
-
-			if(count($lines)) {
-				$part = array_shift($lines);
-				$result .= ' ' . $part . "\n";
-			}
-
-			return $result;
+			return $this->parseMdPropertieDef($text);
 		}, $source);
+	}
+
+	/**
+	 * Парсит описание свойства из phpdoc в стандартизованный вид для дальнейшей обработки
+	 * @param  string $text
+	 * @return string
+	 */
+	protected function parseMdPropertieFromPHPDoc($text) {
+		$lines = $this->getTextLines($text);
+
+		$code = trim(array_pop($lines));
+		$comment = implode("\n", $lines);
+
+		$PHPDoc = new DocBlock($comment);
+
+		$doc_var = $PHPDoc->getTagsByName('var');
+
+		if(empty($doc_var)) {
+			return $code;
+		}
+
+		$tag = $doc_var[0];
+
+		$type = $tag->getType();
+		$deftype = $this->getDocDefaultType($type);
+		$desc = $tag->getDescription();
+
+		return $deftype .' '. $code ."\n". $desc;
+	}
+
+	/**
+	 * Парсит станлартизованныое описание свойства в md
+	 * @param  string $text
+	 * @return string
+	 */
+	protected function parseMdPropertieDef($text) {
+		$result = '';
+		$lines = $this->getTextLines($text);
+
+		if(count($lines) === 0 or (count($lines) === 1 and $lines[0] === '')) {
+			return ' -.method.fake &nbsp;';
+		}
+
+		if(count($lines)) {
+			$part = array_shift($lines);
+			$result .= " -.method ```php:p.inline\n $part\n ```\n";
+		}
+
+		if(count($lines)) {
+			$part = array_shift($lines);
+			$result .= ' <ul><li class="n">' . $part . "</li></ul>\n";
+		}
+
+		return $result;
 	}
 
 	/**
@@ -247,14 +322,19 @@ class DocBuilder {
 		return preg_replace_callback('/^<md:method>(.+?)<\/md:method>/ims', function($matches) {
 			$text = $matches[1];
 			if(substr(ltrim($text),0,3) === '/**') {
-				$text = $this->parseMdMethodsNew($text);
+				$text = $this->parseMdMethodFromPHPDoc($text);
 			}
 
-			return $this->parseMdMethodsOld($text);
+			return $this->parseMdMethodDef($text);
 		}, $source);
 	}
 
-	protected function parseMdMethodsNew($text) {
+	/**
+	 * Парсит описание метода из phpdoc в стандартизованный вид для дальнейшей обработки
+	 * @param  string $text
+	 * @return string
+	 */
+	protected function parseMdMethodFromPHPDoc($text) {
 		$lines = $this->getTextLines($text);
 
 		$code = trim(array_pop($lines));
@@ -272,17 +352,20 @@ class DocBuilder {
 		$PHPDoc = new DocBlock($comment);
 
 		$doc_result = $PHPDoc->getTagsByName('result');
-		$code_return_type = empty($params_result) ? 'void' : $params_result[0]->getType();
+		$code_return_type = empty($params_result) ? 'void' : $this->getDocDefaultType($params_result[0]->getType());
 
 		$cbi = 0;
 		$doc_params    = $PHPDoc->getTagsByName('param');
 		$doc_callbacks = $PHPDoc->getTagsByName('callback');
 		foreach ($doc_params as $tag) {
-			$varname = $tag->getVariableName();
-			$code_params[] = $tag->getType() .' '. $varname . (isset($args[$varname]) ? ' = '.$args[$varname] : '');
+			$name = $tag->getVariableName();
+			$type = $tag->getType();
+			$deftype = $this->getDocDefaultType($type);
+
+			$code_params[] = $deftype .' '. $name . (isset($args[$name]) ? ' = '.$args[$name] : '');
 
 			$extra = '';
-			if($tag->getType() === 'callable') {
+			if($deftype === 'callable') {
 				if(isset($doc_callbacks[$cbi])) {
 					$extra = "callback {$doc_callbacks[$cbi]->getDescription()}\n";
 				}
@@ -298,11 +381,16 @@ class DocBuilder {
 		$result = $code_return_type .' '. $code_out_params .' ( '. implode(', ', $code_params) ." )\n\n";
 		$result .= $desc_text . "\n\n";
 		$result .= implode("\n\n", $desc_params);
-		
+
 		return $result;
 	}
 
-	protected function parseMdMethodsOld($text) {
+	/**
+	 * Парсит станлартизованныое описание метода в md
+	 * @param  string $text
+	 * @return string
+	 */
+	protected function parseMdMethodDef($text) {
 		$result = '';
 		$lines = $this->getTextLines($text, '/\n[\s]*\n/');
 
@@ -325,7 +413,7 @@ class DocBuilder {
 				$matches2[1] = '';
 			}
 
-			$result .= " -#{$matches2[1]}.method ```php:p.inline\n {$code}\n ```\n\n";
+			$result .= " -#{$matches2[1]}.method ```php:p.inline\n {$code}\n ```\n";
 		}
 
 		# 2. Описание
@@ -356,6 +444,25 @@ class DocBuilder {
 		return $result;
 	}
 
+	/**
+	 * Возвращает настоящий тип переменной
+	 * @param  string $type
+	 * @return string
+	 */
+	protected function getDocDefaultType($type) {
+		$len = strlen($type);
+		if(substr($type, $len - 2, 2) === '[]') {
+			return 'array';
+		}
+		return $type;
+	}
+
+	/**
+	 * Разбивает строку на массив подстрок
+	 * @param  string $text Text
+	 * @param  string $sep  Regex
+	 * @return array
+	 */
 	protected function getTextLines($text, $sep = '/\n/') {
 		$text = trim($text);
 		$text = str_replace("\r\n", "\n", $text);
