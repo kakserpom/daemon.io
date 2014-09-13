@@ -1,8 +1,19 @@
 <?php
 
+spl_autoload_register(function($class_name) {
+	$filepath = __DIR__ . DIRECTORY_SEPARATOR . str_replace('\\', '/', $class_name) . '.php';
+	if(!file_exists($filepath)) {
+		return false;
+	}
+
+	require $filepath;
+});
+
 require 'Parsedown.php';
 require 'ParsedownExtra.php';
 require 'ParsedownCustom.php';
+
+use phpDocumentor\Reflection\DocBlock as DocBlock;
 
 class DocBuilder {
 
@@ -234,55 +245,115 @@ class DocBuilder {
 	 */
 	protected function parseMdMethods($source) {
 		return preg_replace_callback('/^<md:method>(.+?)<\/md:method>/ims', function($matches) {
-			$result = '';
-			$lines = $this->getTextLines($matches[1], '/\n[\s]*\n/');
-
-			if(count($lines) === 0 or (count($lines) === 1 and $lines[0] === '')) {
-				return ' -.method.fake &nbsp;';
+			$text = $matches[1];
+			if(substr(ltrim($text),0,3) === '/**') {
+				$text = $this->parseMdMethodsNew($text);
 			}
 
-			// 1. php код
-			$code = array_shift($lines);
-
-			if($code) {
-				$code = str_replace("\n", "\n ", $code);
-				$matches2 = [];
-				$code = preg_replace_callback('/(?:^|\s)([^\s]+)\s\(/', function($matches) use (&$matches2) {
-					$matches2 = $matches;
-					// return " <a href=\"#./{$matches[1]}\">{$matches[1]}</a> (";
-					return " [!:$matches[1]](#./$matches[1]) (";
-				}, $code, 1);
-
-				$result .= " -#{$matches2[1]}.method ```php:p.inline\n {$code}\n ```\n\n";
-			}
-
-			# 2. Описание
-			$desc = array_shift($lines);
-
-			if($desc) {
-				$result .= "   -.n {$desc}\n";
-			}
-
-			# 3. Переменные
-			$i = 0;
-			foreach ($lines as $line) {
-				$cells = explode("\n", $line);
-
-				if($i++ == 0) {
-					$eclass = '.ti';
-				} else {
-					$eclass = '';
-				}
-
-				if(count($cells) === 3) {
-					$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — `:phc`{$cells[1]}` — {$cells[2]}\n";
-				} else {
-					$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — {$cells[1]}\n";
-				}
-			}
-
-			return $result;
+			return $this->parseMdMethodsOld($text);
 		}, $source);
+	}
+
+	protected function parseMdMethodsNew($text) {
+		$lines = $this->getTextLines($text);
+
+		$code = trim(array_pop($lines));
+		$code_out_params = trim(substr($code, 0, strpos($code, '(')));
+		$comment = implode("\n", $lines);
+
+		$args = [];
+		preg_match_all('/(\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)\s*\=\s*(.+?)(\,|\))/', $code, $matches, PREG_SET_ORDER);
+		foreach ($matches as $matche) {
+			$args[$matche[1]] = $matche[2];
+		}
+
+		$code_params = [];
+		$desc_params = [];
+		$PHPDoc = new DocBlock($comment);
+
+		$doc_result = $PHPDoc->getTagsByName('result');
+		$code_return_type = empty($params_result) ? 'void' : $params_result[0]->getType();
+
+		$cbi = 0;
+		$doc_params    = $PHPDoc->getTagsByName('param');
+		$doc_callbacks = $PHPDoc->getTagsByName('callback');
+		foreach ($doc_params as $tag) {
+			$varname = $tag->getVariableName();
+			$code_params[] = $tag->getType() .' '. $varname . (isset($args[$varname]) ? ' = '.$args[$varname] : '');
+
+			$extra = '';
+			if($tag->getType() === 'callable') {
+				if(isset($doc_callbacks[$cbi])) {
+					$extra = "callback {$doc_callbacks[$cbi]->getDescription()}\n";
+				}
+				
+				$cbi++;
+			}
+			$desc_params[] = $tag->getVariableName() ."\n". $extra. $tag->getDescription();
+		}
+
+		$desc_text_arr = preg_split('/\s*\n\s*/', trim($PHPDoc->getShortDescription() ."\n". $PHPDoc->getLongDescription()), -1, PREG_SPLIT_NO_EMPTY);
+		$desc_text = implode("  \n", $desc_text_arr);
+
+		$result = $code_return_type .' '. $code_out_params .' ( '. implode(', ', $code_params) ." )\n\n";
+		$result .= $desc_text . "\n\n";
+		$result .= implode("\n\n", $desc_params);
+		
+		return $result;
+	}
+
+	protected function parseMdMethodsOld($text) {
+		$result = '';
+		$lines = $this->getTextLines($text, '/\n[\s]*\n/');
+
+		if(count($lines) === 0 or (count($lines) === 1 and $lines[0] === '')) {
+			return ' -.method.fake &nbsp;';
+		}
+
+		// 1. php код
+		$code = array_shift($lines);
+
+		if($code) {
+			$code = str_replace("\n", "\n ", $code);
+			$matches2 = [];
+			$code = preg_replace_callback('/(?:^|\s)([^\s]+)\s\(/', function($matches) use (&$matches2) {
+				$matches2 = $matches;
+				return " [!:$matches[1]](#./$matches[1]) (";
+			}, $code, 1);
+
+			if(!isset($matches2[1])) {
+				$matches2[1] = '';
+			}
+
+			$result .= " -#{$matches2[1]}.method ```php:p.inline\n {$code}\n ```\n\n";
+		}
+
+		# 2. Описание
+		$desc = array_shift($lines);
+
+		if($desc) {
+			$result .= "   -.n {$desc}\n";
+		}
+
+		# 3. Переменные
+		$i = 0;
+		foreach ($lines as $line) {
+			$cells = explode("\n", $line);
+
+			if($i++ == 0) {
+				$eclass = '.ti';
+			} else {
+				$eclass = '';
+			}
+
+			if(count($cells) === 3) {
+				$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — `:phc`{$cells[1]}` — {$cells[2]}\n";
+			} else {
+				$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — {$cells[1]}\n";
+			}
+		}
+
+		return $result;
 	}
 
 	protected function getTextLines($text, $sep = '/\n/') {

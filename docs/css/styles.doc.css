@@ -93,8 +93,7 @@ header menu a:hover {
     white-space: nowrap;
 }
 
-.in.anchor,
-.anchor pre {
+.in.anchor {
     cursor: pointer;
 }
 

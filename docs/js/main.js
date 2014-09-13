@@ -269,7 +269,7 @@ $(function(){
 		.on('click', '.method code a', function(event) {
 			event.stopPropagation();
 		})
-		.on('click', ':header[id] .anchor, .anchor[id] pre', function() {
+		.on('click', ':header[id] .anchor', function() {
 			window.location = '#' + $(this).parent().attr('id');
 		});
 

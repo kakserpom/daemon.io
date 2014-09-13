@@ -13,6 +13,19 @@
 
 ## intro # Введение
 
+<md:method>
+	/**
+	 * Send broadcast RPC
+	 * You can override it
+	 * @param  string   $method Method name
+	 * @param  array    $args   Arguments
+	 * @param  callable $cb     Callback
+	 * @callback ( Connection $conn, array $packet )
+	 * @return boolean Success
+	 */
+	public function broadcastCall($method, $args = [], $cb = NULL)
+</md:method>
+
 <p class="doc-notice"><strong>Achtung!</strong><br />Only Russian version is available at the moment, but we are about to publish the English one and a variety of other translations. Currently you may consider reading old Wiki or auto-translating this page.<br />We are terribly sorry for the inconviniece.</p>
 <p class="doc-notice">Документация активно дорабатывается!</p>
 
