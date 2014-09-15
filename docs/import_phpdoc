@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+define("CURRENT_WORKING_DIR", str_replace("\\", "/", dirname(__FILE__)));
+
+$config = parse_ini_file("import_phpdoc.conf");
+
+if(!isset($config['phpdaemon'])) {
+	die('path to phpdaemon?');
+}
+
+passthru('php '.CURRENT_WORKING_DIR.'/parsers/import_phpdoc.php'
+	.' '. CURRENT_WORKING_DIR.'/en'
+	.' '. $config['phpdaemon']);
