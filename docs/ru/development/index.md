@@ -1,7 +1,5 @@
 ## development # Разработка
 
-<!-- import pseudotypes.md -->
-
 <!-- import app_instance.md -->
 
 <!-- import request.md -->
