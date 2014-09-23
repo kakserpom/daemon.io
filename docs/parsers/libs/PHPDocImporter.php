@@ -9,7 +9,20 @@ spl_autoload_register(function($class_name) {
 	require $filepath;
 });
 
+if(!function_exists('glob_recursive')) {
+	// Does not support flag GLOB_BRACE
+	function glob_recursive($pattern, $flags = 0) {
+		$files = glob($pattern, $flags);
+		foreach (glob(dirname($pattern).'/*', GLOB_ONLYDIR|GLOB_NOSORT) as $dir) {
+			$files = array_merge($files, glob_recursive($dir.'/'.basename($pattern), $flags));
+		}
+		return $files;
+	}
+}
+
 class PHPDocImporter {
+	protected $sourcePath;
+
 	protected $flagFileChanged = false;
 
 	protected $tags = [
@@ -31,8 +44,12 @@ class PHPDocImporter {
 	}
 
 	public function parse($doc_path, $phd_path) {
+		$this->sourcePath = $phd_path;
+
 		// @todo test => prod
-		// $mdfiles = glob($doc_path . '/*/*.md', GLOB_NOSORT);
+		$mdfiles = glob($doc_path . '/**/*.md', GLOB_NOSORT);
+var_dump($mdfiles);
+die();
 		$mdfiles = glob($doc_path . '/structures/object-storage.md', GLOB_NOSORT);
 
 		foreach ($mdfiles as $mdpath) {
@@ -78,11 +95,24 @@ class PHPDocImporter {
 		// ставим флаг что контент будет изменен
 		$this->flagFileChanged = true;
 
-		// парсим все данные и записываем в файл
+		$classes = $this->getSourceClasses($params['path']);
+var_dump($classes);
+die();
 		$content = '';
-		$content .= $this->getDocConstants($params['path']);
-		$content .= $this->getDocProperties($params['path']);
-		$content .= $this->getDocMethods($params['path']);
+		$is_header = count($classes) > 1;
+
+		foreach ($classes as $class_path => $class_name) {
+			require_once($class_path);
+			$ReflectionClass = new ReflectionClass($class_name);
+
+			if($is_header) {
+				$content .= $this->getClassHeader($ReflectionClass);
+			}
+
+			$content .= $this->getClassConstants($ReflectionClass);
+			$content .= $this->getClassProperties($ReflectionClass);
+			$content .= $this->getClassMethods($ReflectionClass);
+		}
 
 		return $matches['start']
 			. $this->tags['namespace']['open']
@@ -123,15 +153,42 @@ class PHPDocImporter {
 	}
 
 
-	protected function getDocConstants($sourcepath) {
+	protected function getSourceClasses($path) {
+		$filepath = $this->sourcePath .'/'. trim(str_replace('\\', '/', $path), '/');
+		$result = [];
+
+		if(substr($filepath, -4, 4) === '.php' && file_exists($filepath)) {
+			$result[$filepath] = substr($path, 0, -4);
+		}
+		else
+		if(!is_dir($filepath) && file_exists($filepath.'.php')) {
+			$result[$filepath.'.php'] = $path;
+		}
+		else
+		if(is_dir($filepath)) {
+			$files = glob($filepath . '/**/*.php', GLOB_NOSORT);
+			foreach ($files as $filepath) {
+				$result[$filepath] = substr(basename($filepath), 0, -4);
+			}
+		}
+
+		return $result;
+	}
+
+
+	protected function getClassHeader($ReflectionClass) {
 
 	}
 
-	protected function getDocProperties($sourcepath) {
+	protected function getClassConstants($ReflectionClass) {
 
 	}
 
-	protected function getDocMethods($sourcepath) {
+	protected function getClassProperties($ReflectionClass) {
+
+	}
+
+	protected function getClassMethods($ReflectionClass) {
 
 	}
 }
