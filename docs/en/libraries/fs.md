@@ -4,877 +4,632 @@
 namespace PHPDaemon\FS;
 ```
 
-#### filesystem # Класс FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
-
-```php
-namespace PHPDaemon\FS;
-class FileSystem;
-```
-
-##### properties # Свойства
-
-<md:prop>
-boolean public static $supported;
-@TODO
-</md:prop>
-
-<md:prop>
-Event public static $ev;
-@TODO
-</md:prop>
-
-<md:prop>
-resource public static $fd;
-@TODO
-</md:prop>
-
-<md:prop>
-array public static $modeTypes;
-@TODO
-</md:prop>
-
-<md:prop>
-integer public static $badFDttl = 5;
-@TODO
-</md:prop>
-
-<md:prop>
-[CappedStorage](#libraries/cache/capped-storage) public static $fdCache;
-@TODO
-</md:prop>
-
-<md:prop>
-integer public static $fdCacheSize = 128;
-@TODO
-</md:prop>
-
-<md:prop>
-string public static $eioVer = '1.2.1';
-@TODO
-</md:prop>
-
-##### methods # Методы
-
-<md:method>
-void public static init ( )
-
-@TODO
-</md:method>
-
-<md:method>
-void public static initEvent ( )
-
-@TODO
-</md:method>
-
-<md:method>
-boolean public static checkFileReadable ( string $path )
-
-@TODO
-
-$path
-@TODO
-</md:method>
-
-<md:method>
-void public static waitAllEvents ( )
-
-@TODO
-</md:method>
-
-<md:method>
-void public static updateConfig ( )
-
-@TODO
-</md:method>
-
-<md:method>
-string public static sanitizePath ( string $path )
-
-@TODO
-
-$path
-@TODO
-</md:method>
-
-<md:method>
-array public static statPrepare ( array $stat )
-
-@TODO
-
-$stat
-@TODO
-</md:method>
-
-<md:method>
-resource public static stat ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static unlink ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static rename ( string $path, string $newpath, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$newpath
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static statvfs ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static lstat ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static realpath ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static sync ( callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static syncfs ( callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static touch ( string $path, integer $mtime, integer $atime = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$mtime
-@TODO
-
-$atime
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static rmdir ( string $path, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static mkdir ( string $path, integer $mode, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$mode
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static readdir ( string $path, callable $cb = null, integer $flags, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$cb
-@TODO
-
-$flags
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static truncate ( string $path, integer $offset = 0, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$offset
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-boolean public static sendfile ( mixed $outfd, string $path, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$outfd
-@TODO
-
-$path
-@TODO
-
-$cb
-@TODO
-
-$startCb
-@TODO
-
-$offset
-@TODO
-
-$length
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static chown ( string $path, integer $uid, integer $gid = -1, callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$uid
-@TODO
-
-$gid
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-resource public static readfile ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-void public static readfileChunked ( string $path, callable $cb, callable $chunkcb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$cb
-@TODO
-
-$chunkcb
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-<md:method>
-string public static genRndTempnam ( string $dir = null, string $prefix = 'php' )
-
-@TODO
-
-$dir
-@TODO
-
-$prefix
-@TODO
-</md:method>
-
-<md:method>
-string public static genRndTempnamPrefix ( string $dir, string $prefix )
-
-@TODO
-
-$dir
-@TODO
-
-$prefix
-@TODO
-</md:method>
-
-<md:method>
-void public static tempnam ( string $dir, string $prefix, callable $cb )
-
-@TODO
-
-$dir
-@TODO
-
-$prefix
-@TODO
-
-$cb
-@TODO
-</md:method>
-
-<md:method>
-resource public static open ( string $path, string $flags, callable $cb, integer $mode = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$path
-@TODO
-
-$flags
-@TODO
-
-$cb
-@TODO
-
-$mode
-@TODO
-
-$pri
-@TODO
-</md:method>
-
-#### file # Класс File {tpl-git PHPDaemon/FS/File.php}
+<!-- include-namespace path="\PHPDaemon\FS" commit="" level="3" access="" -->
+#### file # Class File {tpl-git PHPDaemon/FS/File.php}
 
 ```php
 namespace PHPDaemon\FS;
 class File;
 ```
 
-##### properties # Свойства
-
-<md:prop>
-integer public priority = 10;
-@TODO
-</md:prop>
-
-<md:prop>
-integer public $chunkSize = 4096;
-@TODO
-</md:prop>
-
-<md:prop>
-integer public $offset = 0;
-@TODO
-</md:prop>
-
-<md:prop>
-string public $fdCacheKey;
-@TODO
-</md:prop>
-
-<md:prop>
-boolean public $append;
-@TODO
-</md:prop>
-
-<md:prop>
-string public $path;
-@TODO
-</md:prop>
-
-<md:prop>
-boolean public $writing = false;
-@TODO
-</md:prop>
-
-<md:prop>
-boolean public $closed = false;
-@TODO
-</md:prop>
-
-##### methods # Методы
+##### methods # Methods
 
 <md:method>
-void public __construct ( resource $fd, string $path )
-
-@TODO
-
-$fd
-@TODO
-
-$path
-@TODO
+/**
+	 * File constructor
+	 * @param resource $fd   Descriptor
+	 * @param string   $path Path
+	 */
+public function __construct($fd, $path) {
 </md:method>
 
 <md:method>
-resource public getFd ( )
-
-@TODO
+/**
+	 * Get file descriptor
+	 * @return resource File descriptor
+	 */
+public function getFd() {
 </md:method>
 
 <md:method>
-mixed public static convertFlags ( string $mode, boolean $text = false )
-
-@TODO
-
-$mode
-@TODO
-
-$text
-@TODO
+/**
+	 * Converts string of flags to integer or standard text representation
+	 * @param  string  $mode Mode
+	 * @param  boolean $text Text?
+	 * @return mixed
+	 */
+public static function convertFlags($mode, $text = false) {
 </md:method>
 
 <md:method>
-resource public truncate ( integer $offset = 0, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$offset
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
+/**
+	 * Truncates this file
+	 * @param  integer  $offset Offset. Default is 0
+	 * @param  callable $cb     Callback
+	 * @param  integer  $pri    Priority
+	 * @return resource|boolean
+	 */
+public function truncate($offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-resource public stat ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
+/**
+	 * Stat()
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|boolean
+	 */
+public function stat($cb, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-resource public statRefresh ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
+/**
+	 * Stat() non-cached
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|boolean
+	 */
+public function statRefresh($cb, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-resource public statvfs ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
+/**
+	 * Statvfs()
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|boolean
+	 */
+public function statvfs($cb, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-resource public sync ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
+/**
+	 * Sync()
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|false
+	 */
+public function sync($cb, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-resource public datasync ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
+/**
+	 * Datasync()
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|false
+	 */
+public function datasync($cb, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-resource public write ( string $data, callable $cb = null, integer $offset = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$data
-@TODO
-
-$cb
-@TODO
-
-$offset
-@TODO
-
-$pri
-@TODO
+/**
+	 * Writes data to file
+	 * @param  string   $data   Data
+	 * @param  callable $cb     Callback
+	 * @param  integer  $offset Offset
+	 * @param  integer  $pri    Priority
+	 * @return resource|false
+	 */
+public function write($data, $cb = null, $offset = null, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-resource public chown ( integer $uid, integer $gid = -1, callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$uid
-@TODO
-
-$gid
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
+/**
+	 * Changes ownership of this file
+	 * @param  integer  $uid User ID
+	 * @param  integer  $gid Group ID
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|false
+	 */
+public function chown($uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-resource public touch ( integer $mtime, integer $atime = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$mtime
-@TODO
-
-$atime
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
+/**
+	 * touch()
+	 * @param  integer  $mtime Last modification time
+	 * @param  integer  $atime Last access time
+	 * @param  callable $cb    Callback
+	 * @param  integer  $pri   Priority
+	 * @return resource|false
+	 */
+public function touch($mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-void public clearStatCache ( )
-
-@TODO
+/**
+	 * Clears cache of stat() and statvfs()
+	 * @return void
+	 */
+public function clearStatCache() {
 </md:method>
 
 <md:method>
-boolean public read ( integer $length, integer $offset = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$length
-@TODO
-
-$offset
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
+/**
+	 * Reads data from file
+	 * @param  integer  $length Length
+	 * @param  integer  $offset Offset
+	 * @param  callable $cb     Callback
+	 * @param  integer  $pri    Priority
+	 * @return boolean
+	 */
+public function read($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-boolean public sendfile ( mixed $outfd, callable $cb, callable $startCb = null, integer $offset = 0, integer $length = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$outfd
-@TODO
-
-$cb
-@TODO
-
-$startCb
-@TODO
-
-$offset
-@TODO
-
-$length
-@TODO
-
-$pri
-@TODO
+/**
+	 * sendfile()
+	 * @param  mixed    $outfd   File descriptor
+	 * @param  callable $cb      Callback
+	 * @param  callable $startCb Start callback
+	 * @param  integer  $offset  Offset
+	 * @param  integer  $length  Length
+	 * @param  integer  $pri     Priority
+	 * @return boolean           Success
+	 */
+public function sendfile($outfd, $cb, $startCb = null, $offset = 0, $length = null, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-resource public readahead ( integer $length, integer $offset = null, callable $cb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$length
-@TODO
-
-$offset
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
+/**
+	 * readahead()
+	 * @param  integer  $length Length
+	 * @param  integer  $offset Offset
+	 * @param  callable $cb     Callback
+	 * @param  integer  $pri    Priority
+	 * @return resource|false
+	 */
+public function readahead($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-boolean public readAll ( callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
+/**
+	 * Reads whole file
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return boolean       Success
+	 */
+public function readAll($cb, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-resource public readAllChunked ( callable $cb = null, callable $chunkcb = null, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$cb
-@TODO
-
-$chunkcb
-@TODO
-
-$pri
-@TODO
+/**
+	 * Reads file chunk-by-chunk
+	 * @param  callable $cb      Callback
+	 * @param  callable $chunkcb Callback of chunk
+	 * @param  integer  $pri     Priority
+	 * @return resource|false
+	 */
+public function readAllChunked($cb = null, $chunkcb = null, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-string public __toString ( )
-
-@TODO
+/**
+	 * toString handler
+	 * @return string
+	 */
+public function __toString() {
 </md:method>
 
 <md:method>
-void public setChunkSize ( integer $n )
-
-@TODO
-
-$n
-@TODO
+/**
+	 * Set chunk size
+	 * @param  integer $n Chunk size
+	 * @return void
+	 */
+public function setChunkSize($n) {
 </md:method>
 
 <md:method>
-resource public seek ( integer $offset, callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-@TODO
-
-$offset
-@TODO
-
-$cb
-@TODO
-
-$pri
-@TODO
+/**
+	 * Move pointer to arbitrary position
+	 * @param  integer  $offset Offset
+	 * @param  callable $cb     Callback
+	 * @param  integer  $pri    Priority
+	 * @return resource|false
+	 */
+public function seek($offset, $cb, $pri = EIO_PRI_DEFAULT) {
 </md:method>
 
 <md:method>
-integer public tell ( )
-
-@TODO
+/**
+	 * Get current pointer position
+	 * @return integer
+	 */
+public function tell() {
 </md:method>
 
 <md:method>
-resource public close ( )
-
-@TODO
+/**
+	 * Close the file
+	 * @return resource|false
+	 */
+public function close() {
 </md:method>
 
 <md:method>
-void public __destruct ( )
-
-@TODO
+/**
+	 * Destructor
+	 */
+public function __destruct() {
 </md:method>
 
-#### filewatcher # Класс FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
+#### fil-system # Class FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
+
+```php
+namespace PHPDaemon\FS;
+class FileSystem;
+```
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Initialize FS driver
+	 * @return void
+	 */
+public static function init() {
+</md:method>
+
+<md:method>
+/**
+	 * Initialize main FS event
+	 * @return void
+	 */
+public static function initEvent() {
+</md:method>
+
+<md:method>
+/**
+	 * Checks if file exists and readable
+	 * @param  string $path Path
+	 * @return boolean      Exists and readable?
+	 */
+public static function checkFileReadable($path) {
+</md:method>
+
+<md:method>
+/**
+	 * Block until all FS events are completed
+	 * @return void
+	 */
+public static function waitAllEvents() {
+</md:method>
+
+<md:method>
+/**
+	 * Called when config is updated
+	 * @return void
+	 */
+public static function updateConfig() {
+</md:method>
+
+<md:method>
+/**
+	 * Sanitize path
+	 * @param  string $path Path
+	 * @return string       Sanitized path
+	 */
+public static function sanitizePath($path) {
+</md:method>
+
+<md:method>
+/**
+	 * Prepare value of stat()
+	 * @param  mixed $stat Data
+	 * @return array hash
+	 */
+public static function statPrepare($stat) {
+</md:method>
+
+<md:method>
+/**
+	 * Gets stat() information
+	 * @param  string   $path Path
+	 * @param  callable $cb   Callback
+	 * @param  integer  $pri  Priority
+	 * @return resource|true
+	 */
+public static function stat($path, $cb, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * Unlink file
+	 * @param  string   $path Path
+	 * @param  callable $cb   Callback
+	 * @param  integer  $pri  Priority
+	 * @return resource|boolean
+	 */
+public static function unlink($path, $cb = null, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * Rename
+	 * @param  string   $path    Path
+	 * @param  string   $newpath New path
+	 * @param  callable $cb      Callback
+	 * @param  integer  $pri     Priority
+	 * @return resource|boolean
+	 */
+public static function rename($path, $newpath, $cb = null, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * statvfs()
+	 * @param  string   $path Path
+	 * @param  callable $cb   Callback
+	 * @param  integer  $pri  Priority
+	 * @return resource|false
+	 */
+public static function statvfs($path, $cb, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * lstat()
+	 * @param  string   $path Path
+	 * @param  callable $cb   Callback
+	 * @param  integer  $pri  Priority
+	 * @return resource|true
+	 */
+public static function lstat($path, $cb, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * realpath()
+	 * @param  string   $path Path
+	 * @param  callable $cb   Callback
+	 * @param  integer  $pri  Priority
+	 * @return resource|true
+	 */
+public static function realpath($path, $cb, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * sync()
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|false
+	 */
+public static function sync($cb = null, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * statfs()
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|false
+	 */
+public static function syncfs($cb = null, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * touch()
+	 * @param  string   $path  Path
+	 * @param  integer  $mtime Last modification time
+	 * @param  integer  $atime Last access time
+	 * @param  callable $cb    Callback
+	 * @param  integer  $pri   Priority
+	 * @return resource|boolean
+	 */
+public static function touch($path, $mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * Removes empty directory
+	 * @param  string   $path Path
+	 * @param  callable $cb   Callback
+	 * @param  integer  $pri  Priority
+	 * @return resource|boolean
+	 */
+public static function rmdir($path, $cb = null, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * Creates directory
+	 * @param  string   $path Path
+	 * @param  integer  $mode Mode (octal)
+	 * @param  callable $cb   Callback
+	 * @param  integer  $pri  Priority
+	 * @return resource|boolean
+	 */
+public static function mkdir($path, $mode, $cb = null, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * Readdir()
+	 * @param  string   $path  Path
+	 * @param  callable $cb    Callback
+	 * @param  integer  $flags Flags
+	 * @param  integer  $pri   Priority
+	 * @return resource|true
+	 */
+public static function readdir($path, $cb = null, $flags, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * Truncate file
+	 * @param  string   $path   Path
+	 * @param  integer  $offset Offset
+	 * @param  callable $cb     Callback
+	 * @param  integer  $pri    Priority
+	 * @return resource|boolean
+	 */
+public static function truncate($path, $offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * sendfile()
+	 * @param  mixed    $outfd   File descriptor
+	 * @param  string   $path    Path
+	 * @param  callable $cb      Callback
+	 * @param  callable $startCb Start callback
+	 * @param  integer  $offset  Offset
+	 * @param  integer  $length  Length
+	 * @param  integer  $pri     Priority
+	 * @return true              Success
+	 */
+public static function sendfile($outfd, $path, $cb, $startCb = null, $offset = 0, $length = null, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * Changes ownership of file/directory
+	 * @param  string   $path Path
+	 * @param  integer  $uid  User ID
+	 * @param  integer  $gid  Group ID
+	 * @param  callable $cb   Callback
+	 * @param  integer  $pri  Priority
+	 * @return resource|boolean
+	 */
+public static function chown($path, $uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * Reads whole file
+	 * @param  string   $path Path
+	 * @param  callable $cb   Callback (Path, Contents)
+	 * @param  integer  $pri  Priority
+	 * @return resource|true
+	 */
+public static function readfile($path, $cb, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * Reads file chunk-by-chunk
+	 * @param  string   $path    Path
+	 * @param  callable $cb      Callback (Path, Success)
+	 * @param  callable $chunkcb Chunk callback (Path, Chunk)
+	 * @param  integer  $pri     Priority
+	 * @return resource
+	 */
+public static function readfileChunked($path, $cb, $chunkcb, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+<md:method>
+/**
+	 * Returns random temporary file name
+	 * @param  string $dir    Directory
+	 * @param  string $prefix Prefix
+	 * @return string         Path
+	 */
+public static function genRndTempnam($dir = null, $prefix = 'php') {
+</md:method>
+
+<md:method>
+/**
+	 * Returns random temporary file name
+	 * @param  string $dir    Directory
+	 * @param  string $prefix Prefix
+	 * @return string         Path
+	 */
+public static function genRndTempnamPrefix($dir, $prefix) {
+</md:method>
+
+<md:method>
+/**
+	 * Generates closure tempnam handler
+	 * @param  $dir
+	 * @param  $prefix
+	 * @param  $cb
+	 * @param  $tries
+	 */
+protected static function tempnamHandler($dir, $prefix, $cb, &$tries) {
+</md:method>
+
+<md:method>
+/**
+	 * Obtain exclusive temporary file
+	 * @param  string   $dir    Directory
+	 * @param  string   $prefix Prefix
+	 * @param  callable $cb     Callback (File)
+	 * @return resource
+	 */
+public static function tempnam($dir, $prefix, $cb) {
+</md:method>
+
+<md:method>
+/**
+	 * Open file
+	 * @param  string   $path  Path
+	 * @param  string   $flags Flags
+	 * @param  callable $cb    Callback (File)
+	 * @param  integer  $mode  Mode (see EIO_S_I* constants)
+	 * @param  integer  $pri   Priority
+	 * @return resource
+	 */
+public static function open($path, $flags, $cb, $mode = null, $pri = EIO_PRI_DEFAULT) {
+</md:method>
+
+#### fil-watcher # Class FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
 
 ```php
 namespace PHPDaemon\FS;
 class FileWatcher;
 ```
 
-##### properties # Свойства
-
-<md:prop>
-array public files = [];
-@TODO
-</md:prop>
-
-<md:prop>
-resource public $inotify;
-@TODO
-</md:prop>
-
-<md:prop>
-array public $descriptors = [];
-@TODO
-</md:prop>
-
-##### methods # Методы
+##### methods # Methods
 
 <md:method>
-void public __construct ( )
-
-@TODO
+/**
+	 * Constructor
+	 */
+public function __construct() {
 </md:method>
 
 <md:method>
-boolean public addWatch ( string $path, mixed $subscriber, integer $flags = NULL )
-
-@TODO
-
-$path
-@TODO
-
-$subscriber
-@TODO
-
-$flags
-@TODO
+/**
+	 * Adds your subscription on object in FS
+	 * @param  string  $path	Path
+	 * @param  mixed   $cb		Callback
+	 * @param  integer $flags	Look inotify_add_watch()
+	 * @return true
+	 */
+public function addWatch($path, $cb, $flags = null) {
 </md:method>
 
 <md:method>
-boolean public rmWatch ( string $path, mixed $subscriber )
-
-@TODO
-
-$path
-@TODO
-
-$subscriber
-@TODO
+/**
+	 * Cancels your subscription on object in FS
+	 * @param  string  $path	Path
+	 * @param  mixed   $cb		Callback
+	 * @return boolean
+	 */
+public function rmWatch($path, $cb) {
 </md:method>
 
 <md:method>
-void public onFileChanged ( string $path )
-
-@TODO
-
-$path
-@TODO
+/**
+	 * Called when file $path is changed
+	 * @param  string $path Path
+	 * @return void
+	 */
+public function onFileChanged($path) {
 </md:method>
 
 <md:method>
-void public watch ( )
-
-@TODO
+/**
+	 * Check the file system, triggered by timer
+	 * @return void
+	 */
+public function watch() {
 </md:method>
+
+
+<!--/ include-namespace -->

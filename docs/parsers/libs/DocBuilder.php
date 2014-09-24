@@ -434,10 +434,13 @@ class DocBuilder {
 				$eclass = '';
 			}
 
+			if(count($cells) === 2) {
+				$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — {$cells[1]}\n";
+			} else
 			if(count($cells) === 3) {
 				$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — `:phc`{$cells[1]}` — {$cells[2]}\n";
 			} else {
-				$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — {$cells[1]}\n";
+				$result .= "   -.n{$eclass} `:hc`{$cells[0]}`\n";
 			}
 		}
 

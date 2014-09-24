@@ -1,7 +1,7 @@
 <?php
 
 spl_autoload_register(function($class_name) {
-	$filepath = __DIR__ . DIRECTORY_SEPARATOR . str_replace('\\', '/', $class_name) . '.php';
+	$filepath = __DIR__ . '/' . str_replace('\\', '/', $class_name) . '.php';
 	if(!file_exists($filepath)) {
 		return false;
 	}
@@ -9,6 +9,9 @@ spl_autoload_register(function($class_name) {
 	require $filepath;
 });
 
+/**
+ * Рекурсивный вариант функции glob
+ */
 if(!function_exists('glob_recursive')) {
 	// Does not support flag GLOB_BRACE
 	function glob_recursive($pattern, $flags = 0) {
@@ -43,26 +46,46 @@ class PHPDocImporter {
 		}
 	}
 
+	/**
+	 * Основной метод парсинга
+	 * @param  string $doc_path Путь до доки
+	 * @param  string $phd_path Путь до файлов проекта
+	 */
 	public function parse($doc_path, $phd_path) {
 		$this->sourcePath = $phd_path;
+		$this->autoloadRegister();
 
 		// @todo test => prod
-		$mdfiles = glob($doc_path . '/**/*.md', GLOB_NOSORT);
-var_dump($mdfiles);
-die();
-		$mdfiles = glob($doc_path . '/structures/object-storage.md', GLOB_NOSORT);
+		// $mdfiles = glob_recursive($doc_path . '/*.md', GLOB_NOSORT);
+		// $mdfiles = glob_recursive($doc_path . '/structures/object-storage.md', GLOB_NOSORT);
+		$mdfiles = glob_recursive($doc_path . '/libraries/fs.md', GLOB_NOSORT);
 
 		foreach ($mdfiles as $mdpath) {
 			$this->parseFile($mdpath);
 		}
 	}
 
+	protected function autoloadRegister() {
+		spl_autoload_register(function($class_name) {
+			$filepath = $this->sourcePath . '/' . str_replace('\\', '/', trim($class_name, '/')) . '.php';
+			if(!file_exists($filepath)) {
+				return false;
+			}
+
+			require $filepath;
+		});
+	}
+
+	/**
+	 * Парсинг каждогоо файла доки отдельно
+	 * @param  string $mdpath
+	 */
 	public function parseFile($mdpath) {
 		$this->flagFileChanged = false;
 		$content = file_get_contents($mdpath);
 
 		// последовательный парсинг тегов
-		$this->tagNamespaceRegex($content);
+		$this->tagNamespace($content);
 
 		if($this->flagFileChanged) {
 			// @todo test => prod
@@ -71,7 +94,11 @@ die();
 		}
 	}
 
-	protected function tagNamespaceRegex(&$content) {
+	/**
+	 * Парсинг тега "namespace"
+	 * @param  string $content
+	 */
+	protected function tagNamespace(&$content) {
 		$regex = '/(?P<start>^|\s+)'
 			. $this->tagsRegex['namespace']['open']
 			. ' (.+?)'
@@ -80,10 +107,15 @@ die();
 			. $this->tagsRegex['namespace']['close']
 			. ')?/ims';
 
-		$content = preg_replace_callback($regex, [$this, 'tagNamespace'], $content);
+		$content = preg_replace_callback($regex, [$this, 'tagNamespaceCallback'], $content);
 	}
 
-	protected function tagNamespace($matches) {
+	/**
+	 * Обработчик парсера тега "namespace"
+	 * @param  [type] $matches [description]
+	 * @return [type]          [description]
+	 */
+	protected function tagNamespaceCallback($matches) {
 		$params = $this->parseTagParams($matches[2]);
 		$isActual = $this->isCommitActual($params['path'], $params['commit']);
 
@@ -94,24 +126,25 @@ die();
 
 		// ставим флаг что контент будет изменен
 		$this->flagFileChanged = true;
-
 		$classes = $this->getSourceClasses($params['path']);
-var_dump($classes);
-die();
 		$content = '';
 		$is_header = count($classes) > 1;
 
 		foreach ($classes as $class_path => $class_name) {
-			require_once($class_path);
-			$ReflectionClass = new ReflectionClass($class_name);
-
-			if($is_header) {
-				$content .= $this->getClassHeader($ReflectionClass);
+			if(!class_exists($class_name)) {
+				// @todo выбрасывать ошибку?
+				continue;
 			}
 
-			$content .= $this->getClassConstants($ReflectionClass);
-			$content .= $this->getClassProperties($ReflectionClass);
-			$content .= $this->getClassMethods($ReflectionClass);
+			$ReflectionClass = new ReflectionClass($class_name);
+
+			// if($is_header) {
+				$content .= $this->getClassHeader($ReflectionClass, $params, $class_path, $class_name);
+			// }
+
+			// $content .= $this->getClassConstants($ReflectionClass, $params, $class_path, $class_name);
+			// $content .= $this->getClassProperties($ReflectionClass, $params, $class_path, $class_name);
+			$content .= $this->getClassMethods($ReflectionClass, $params, $class_path, $class_name);
 		}
 
 		return $matches['start']
@@ -126,10 +159,17 @@ die();
 			. $this->tags['namespace']['close'];
 	}
 
+	/**
+	 * Парсинг параметров тега. Возврашает ассоциативный массив параметров
+	 * @param  string $str
+	 * @return array
+	 */
 	protected function parseTagParams($str) {
 		$params = [
-			'path' => false,
-			'commit' => false
+			'path'   => false,
+			'commit' => false,
+			'level'  => 0,
+			'access' => false
 		];
 
 		preg_match_all('/([a-z]+)\=\"(.*?)\"/i', $str, $matches, PREG_SET_ORDER);
@@ -139,11 +179,22 @@ die();
 		return $params;
 	}
 
+	/**
+	 * Проверяем изменился ли коммит
+	 * @param  [type]  $sourcepath [description]
+	 * @param  [type]  $commit     [description]
+	 * @return boolean             [description]
+	 */
 	protected function isCommitActual($sourcepath, $commit) {
 		// @todo
 		return false;
 	}
 
+	/**
+	 * Преобразованеи массива параметров в строку
+	 * @param  array  $params
+	 * @return string
+	 */
 	protected function paramsToStr($params) {
 		$out = [];
 		foreach ($params as $key => $value) {
@@ -152,23 +203,31 @@ die();
 		return implode(' ', $out);
 	}
 
-
+	/**
+	 * Возвращает ассоциативный массив исходных файлов [fullpath => namespace]
+	 * @param  string $path Путь до класса/классов
+	 * @return array
+	 */
 	protected function getSourceClasses($path) {
-		$filepath = $this->sourcePath .'/'. trim(str_replace('\\', '/', $path), '/');
+		$filepath = trim(str_replace('\\', '/', $path), '/');
+		$fullpath = $this->sourcePath .'/'. $filepath;
 		$result = [];
 
-		if(substr($filepath, -4, 4) === '.php' && file_exists($filepath)) {
+		if(substr($fullpath, -4, 4) === '.php' && file_exists($fullpath)) {
 			$result[$filepath] = substr($path, 0, -4);
 		}
 		else
-		if(!is_dir($filepath) && file_exists($filepath.'.php')) {
+		if(!is_dir($fullpath) && file_exists($fullpath.'.php')) {
 			$result[$filepath.'.php'] = $path;
 		}
 		else
-		if(is_dir($filepath)) {
-			$files = glob($filepath . '/**/*.php', GLOB_NOSORT);
+		if(is_dir($fullpath)) {
+			$preflen = strlen($this->sourcePath);
+			$files = glob_recursive($fullpath . '/*.php', GLOB_NOSORT);
 			foreach ($files as $filepath) {
-				$result[$filepath] = substr(basename($filepath), 0, -4);
+				$fp = substr($filepath, $preflen + 1);
+				$ns = '\\' . str_replace('/', '\\', substr($fp, 0, -4));
+				$result[$fp] = $ns;
 			}
 		}
 
@@ -176,19 +235,102 @@ die();
 	}
 
 
-	protected function getClassHeader($ReflectionClass) {
+	protected function getClassHeader($ReflectionClass, $params, $class_path, $class_name) {
+		$ns = $ReflectionClass->getNamespaceName();
+		$name = $ReflectionClass->getName();
 
+		if($ns) {
+			$name = substr($ReflectionClass->getName(), strlen($ns) + 1);
+		}
+
+		$parent = $ReflectionClass->getParentClass();
+		$extra_parent = '';
+		if($parent instanceof ReflectionClass) {
+			$parent_ns = $parent->getNamespaceName();
+			$parent_name = '\\' . $parent->getName();
+			$extra_parent = ' extends '.$parent_name;
+		}
+
+		$altname = strtolower(preg_replace('/[a-z]([A-Z])/', '-$1', $name));
+		$type = 'Class';
+
+		if($ReflectionClass->isTrait()) {
+			$type = 'Trait';
+		}
+
+		$typeLower = strtolower($type);
+
+		$level = $params['level'] ? $params['level'] + 1 : 3;
+		$level = str_repeat('#', $level);
+
+		$result = <<<TPL
+$level $altname # $type $name {tpl-git $class_path}
+
+```php
+namespace $ns;
+$typeLower {$name}{$extra_parent};
+```
+
+
+TPL;
+
+		return $result;
 	}
 
-	protected function getClassConstants($ReflectionClass) {
-
+	protected function getClassConstants($ReflectionClass, $params, $class_path, $class_name) {
+		return '';
 	}
 
-	protected function getClassProperties($ReflectionClass) {
-
+	protected function getClassProperties($ReflectionClass, $params, $class_path, $class_name) {
+		return '';
 	}
 
-	protected function getClassMethods($ReflectionClass) {
+	protected function getClassMethods($ReflectionClass, $params, $class_path, $class_name) {
+		$access = ReflectionMethod::IS_PUBLIC;
 
+		if($params['access'] == 1) {
+			$access = $access | ReflectionMethod::IS_PROTECTED;
+		}
+
+		if($params['access'] == 2) {
+			$access = $access | ReflectionMethod::IS_PROTECTED | ReflectionMethod::IS_PRIVATE;
+		}
+
+		$level = $params['level'] ? $params['level'] + 2 : 4;
+		$level = str_repeat('#', $level);
+		$result = "$level methods # Methods\n\n";
+		$methods = $ReflectionClass->getMethods(ReflectionMethod::IS_STATIC | ReflectionMethod::IS_FINAL | $access);
+
+		foreach ($methods as $ReflectionMethod) {
+			$fname = $ReflectionMethod->getName();
+			$comment = $ReflectionMethod->getDocComment();
+			$code = $this->getCodeLine($class_path, $ReflectionMethod->getStartLine() - 1);
+			$code = trim(rtrim($code, '{'));
+
+			if(strpos($code, "function $fname") === false) {
+				continue;
+			}
+
+			$result .= "<md:method>\n";
+			$result .= $comment."\n";
+			$result .= $code."\n";
+			$result .= "</md:method>\n\n";
+		}
+
+		return $result;
+	}
+
+	protected function getCodeLine($path, $line) {
+		$cache = [];
+
+		if(!isset($cache[$path])) {
+			$cache[$path] = file($this->sourcePath . '/' . $path);
+		}
+
+		if(isset($cache[$path][$line])) {
+			return $cache[$path][$line];
+		}
+
+		return null;
 	}
 }
