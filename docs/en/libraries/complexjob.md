@@ -105,7 +105,7 @@ public $jobsNum;
 	 * Constructor
 	 * @param callable $cb Listener
 	 */
-public function __construct($cb = null) {
+public function __construct($cb = null)
 </md:method>
 
 <md:method>
@@ -114,7 +114,7 @@ public function __construct($cb = null) {
 	 * @param  string $j Job name
 	 * @return boolean
 	 */
-public function offsetExists($j) {
+public function offsetExists($j)
 </md:method>
 
 <md:method>
@@ -123,7 +123,7 @@ public function offsetExists($j) {
 	 * @param  string $j Job name
 	 * @return mixed
 	 */
-public function offsetGet($j) {
+public function offsetGet($j)
 </md:method>
 
 <md:method>
@@ -133,7 +133,7 @@ public function offsetGet($j) {
 	 * @param  mixed  $v Job result
 	 * @return void
 	 */
-public function offsetSet($j, $v) {
+public function offsetSet($j, $v)
 </md:method>
 
 <md:method>
@@ -142,7 +142,7 @@ public function offsetSet($j, $v) {
 	 * @param  string $j Job name
 	 * @return void
 	 */
-public function offsetUnset($j) {
+public function offsetUnset($j)
 </md:method>
 
 <md:method>
@@ -150,7 +150,7 @@ public function offsetUnset($j) {
 	 * Returns associative array of results
 	 * @return array
 	 */
-public function getResults() {
+public function getResults()
 </md:method>
 
 <md:method>
@@ -159,7 +159,7 @@ public function getResults() {
 	 * @param  boolean $keep Keep?
 	 * @return void
 	 */
-public function keep($keep = true) {
+public function keep($keep = true)
 </md:method>
 
 <md:method>
@@ -167,7 +167,7 @@ public function keep($keep = true) {
 	 * Has completed?
 	 * @return boolean
 	 */
-public function hasCompleted() {
+public function hasCompleted()
 </md:method>
 
 <md:method>
@@ -176,7 +176,7 @@ public function hasCompleted() {
 	 * @param  integer $n Natural number or -1 (no limit)
 	 * @return this
 	 */
-public function maxConcurrency($n = -1) {
+public function maxConcurrency($n = -1)
 </md:method>
 
 <md:method>
@@ -186,7 +186,7 @@ public function maxConcurrency($n = -1) {
 	 * @param  mixed  $result  Result
 	 * @return boolean
 	 */
-public function setResult($jobname, $result = null) {
+public function setResult($jobname, $result = null)
 </md:method>
 
 <md:method>
@@ -195,7 +195,7 @@ public function setResult($jobname, $result = null) {
 	 * @param  string $jobname Job name
 	 * @return mixed Result or null
 	 */
-public function getResult($jobname) {
+public function getResult($jobname)
 </md:method>
 
 <md:method>
@@ -203,7 +203,7 @@ public function getResult($jobname) {
 	 * Called automatically. Checks whether if the queue is full. If not, tries to pull more jobs from backlog and 'more'
 	 * @return void
 	 */
-public function checkQueue() {
+public function checkQueue()
 </md:method>
 
 <md:method>
@@ -212,7 +212,7 @@ public function checkQueue() {
 	 * @param  callable $cb Callback
 	 * @return this
 	 */
-public function more($cb = null) {
+public function more($cb = null)
 </md:method>
 
 <md:method>
@@ -220,7 +220,7 @@ public function more($cb = null) {
 	 * Returns whether or not the queue is full (maxConcurrency option exceed)
 	 * @return boolean
 	 */
-public function isQueueFull() {
+public function isQueueFull()
 </md:method>
 
 <md:method>
@@ -230,7 +230,7 @@ public function isQueueFull() {
 	 * @param  callable $cb   Callback
 	 * @return boolean Success
 	 */
-public function addJob($name, $cb) {
+public function addJob($name, $cb)
 </md:method>
 
 <md:method>
@@ -238,7 +238,7 @@ public function addJob($name, $cb) {
 	 * Clean up
 	 * @return void
 	 */
-public function cleanup() {
+public function cleanup()
 </md:method>
 
 <md:method>
@@ -247,7 +247,7 @@ public function cleanup() {
 	 * @param  callable $cb Callback
 	 * @return void
 	 */
-public function addListener($cb) {
+public function addListener($cb)
 </md:method>
 
 <md:method>
@@ -255,7 +255,7 @@ public function addListener($cb) {
 	 * Runs the job
 	 * @return void
 	 */
-public function execute() {
+public function execute()
 </md:method>
 
 <md:method>
@@ -265,7 +265,7 @@ public function execute() {
 	 * @param  callable $cb
 	 * @return void
 	 */
-public function __invoke($name = null, $cb = null) {
+public function __invoke($name = null, $cb = null)
 </md:method>
 
 

@@ -364,7 +364,7 @@ TPL;
 			$name = $ReflectionMethod->getName();
 			$comment = $ReflectionMethod->getDocComment();
 			$code = $this->getCodeLine($class_path, $ReflectionMethod->getStartLine() - 1);
-			$code = trim(rtrim($code, '{'));
+			$code = trim(rtrim(rtrim($code), '{'));
 
 			if(strpos($code, "function $name") === false) {
 				continue;

@@ -351,8 +351,8 @@ class DocBuilder {
 		$desc_params = [];
 		$PHPDoc = new DocBlock($comment);
 
-		$doc_result = $PHPDoc->getTagsByName('result');
-		$code_return_type = empty($params_result) ? 'void' : $this->getDocDefaultType($params_result[0]->getType());
+		$doc_result = $PHPDoc->getTagsByName('return');
+		$code_return_type = empty($doc_result) ? 'void' : $this->getDocDefaultType($doc_result[0]->getType());
 
 		$cbi = 0;
 		$doc_params    = $PHPDoc->getTagsByName('param');
@@ -378,11 +378,15 @@ class DocBuilder {
 		$desc_text_arr = preg_split('/\s*\n\s*/', trim($PHPDoc->getShortDescription() ."\n". $PHPDoc->getLongDescription()), -1, PREG_SPLIT_NO_EMPTY);
 		$desc_text = implode("  \n", $desc_text_arr);
 
-		$result = $code_return_type .' '. $code_out_params .' ( '. implode(', ', $code_params) ." )\n\n";
+		$result = $this->showReturnType($code_return_type) .' '. $code_out_params .' ( '. implode(', ', $code_params) ." )\n\n";
 		$result .= $desc_text . "\n\n";
 		$result .= implode("\n\n", $desc_params);
 
 		return $result;
+	}
+
+	protected function showReturnType($type) {
+		return $type;
 	}
 
 	/**
