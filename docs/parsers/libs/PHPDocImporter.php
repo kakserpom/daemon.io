@@ -58,7 +58,8 @@ class PHPDocImporter {
 		// @todo test => prod
 		// $mdfiles = glob_recursive($doc_path . '/*.md', GLOB_NOSORT);
 		// $mdfiles = glob_recursive($doc_path . '/structures/object-storage.md', GLOB_NOSORT);
-		$mdfiles = glob_recursive($doc_path . '/libraries/fs.md', GLOB_NOSORT);
+		// $mdfiles = glob_recursive($doc_path . '/libraries/fs.md', GLOB_NOSORT);
+		$mdfiles = glob_recursive($doc_path . '/libraries/complexjob.md', GLOB_NOSORT);
 
 		foreach ($mdfiles as $mdpath) {
 			$this->parseFile($mdpath);
@@ -138,12 +139,12 @@ class PHPDocImporter {
 
 			$ReflectionClass = new ReflectionClass($class_name);
 
-			// if($is_header) {
+			if($is_header) {
 				$content .= $this->getClassHeader($ReflectionClass, $params, $class_path, $class_name);
-			// }
+			}
 
-			// $content .= $this->getClassConstants($ReflectionClass, $params, $class_path, $class_name);
-			// $content .= $this->getClassProperties($ReflectionClass, $params, $class_path, $class_name);
+			$content .= $this->getClassConstants($ReflectionClass, $params, $class_path, $class_name);
+			$content .= $this->getClassProperties($ReflectionClass, $params, $class_path, $class_name);
 			$content .= $this->getClassMethods($ReflectionClass, $params, $class_path, $class_name);
 		}
 
@@ -278,11 +279,69 @@ TPL;
 	}
 
 	protected function getClassConstants($ReflectionClass, $params, $class_path, $class_name) {
-		return '';
+		$level = $params['level'] ? $params['level'] + 2 : 4;
+		$level = str_repeat('#', $level);
+		$result = "$level consts # Constants\n\n";
+
+		$ConstDoc = new ConstDoc($class_name);
+		$constants = $ConstDoc->getDocComments();
+
+		foreach ($constants as $constant => $value) {
+			$code = $this->getConstantCode($class_path, $constant);
+
+			$result .= "<md:const>\n";
+			$result .= $code."\n";
+			$result .= $value."\n";
+			$result .= "</md:const>\n\n";
+		}
+
+		return $result;
+	}
+
+	protected function getConstantCode($path, $constant) {
+		static $cache = [];
+
+		if(!isset($cache[$path])) {
+			$cache[$path] = file_get_contents($this->sourcePath . '/' . $path);
+		}
+
+		preg_match("/^\s*(const $constant \= (.+?)\;)/im", $cache[$path], $matches);
+		return $matches[1];
 	}
 
 	protected function getClassProperties($ReflectionClass, $params, $class_path, $class_name) {
-		return '';
+		$access = ReflectionProperty::IS_PUBLIC;
+
+		if($params['access'] == 1) {
+			$access = $access | ReflectionProperty::IS_PROTECTED;
+		}
+
+		if($params['access'] == 2) {
+			$access = $access | ReflectionProperty::IS_PROTECTED | ReflectionProperty::IS_PRIVATE;
+		}
+
+		$level = $params['level'] ? $params['level'] + 2 : 4;
+		$level = str_repeat('#', $level);
+		$result = "$level properties # Properties\n\n";
+		$properties = $ReflectionClass->getProperties(ReflectionProperty::IS_STATIC | $access);
+
+		foreach ($properties as $ReflectionProperty) {
+			$name = $ReflectionProperty->getName();
+			$comment = $ReflectionProperty->getDocComment();
+			$code = $this->getPropertyCode((string) $ReflectionProperty);
+			
+			$result .= "<md:prop>\n";
+			$result .= $comment."\n";
+			$result .= $code."\n";
+			$result .= "</md:prop>\n\n";
+		}
+
+		return $result;
+	}
+
+	protected function getPropertyCode($str) {
+		preg_match('/\[ (.+?) \]/', $str, $matches);
+		return trim(str_replace('<default>', '', $matches[1])) . ';';
 	}
 
 	protected function getClassMethods($ReflectionClass, $params, $class_path, $class_name) {
@@ -302,12 +361,12 @@ TPL;
 		$methods = $ReflectionClass->getMethods(ReflectionMethod::IS_STATIC | ReflectionMethod::IS_FINAL | $access);
 
 		foreach ($methods as $ReflectionMethod) {
-			$fname = $ReflectionMethod->getName();
+			$name = $ReflectionMethod->getName();
 			$comment = $ReflectionMethod->getDocComment();
 			$code = $this->getCodeLine($class_path, $ReflectionMethod->getStartLine() - 1);
 			$code = trim(rtrim($code, '{'));
 
-			if(strpos($code, "function $fname") === false) {
+			if(strpos($code, "function $name") === false) {
 				continue;
 			}
 
@@ -321,7 +380,7 @@ TPL;
 	}
 
 	protected function getCodeLine($path, $line) {
-		$cache = [];
+		static $cache = [];
 
 		if(!isset($cache[$path])) {
 			$cache[$path] = file($this->sourcePath . '/' . $path);

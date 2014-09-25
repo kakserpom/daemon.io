@@ -4,13 +4,71 @@
 namespace PHPDaemon\FS;
 ```
 
-<!-- include-namespace path="\PHPDaemon\FS" commit="" level="3" access="" -->
+<!-- include-namespace path="\PHPDaemon\FS" commit="" -->
 #### file # Class File {tpl-git PHPDaemon/FS/File.php}
 
 ```php
 namespace PHPDaemon\FS;
 class File;
 ```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var integer Priority
+	 */
+public $priority;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Chunk size
+	 */
+public $chunkSize;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Current offset
+	 */
+public $offset;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string Cache key
+	 */
+public $fdCacheKey;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean Append?
+	 */
+public $append;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string Path
+	 */
+public $path;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean Writing?
+	 */
+public $writing;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean Closed?
+	 */
+public $closed;
+</md:prop>
 
 ##### methods # Methods
 
@@ -262,6 +320,64 @@ public function __destruct() {
 namespace PHPDaemon\FS;
 class FileSystem;
 ```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var boolean Is EIO supported?
+	 */
+public static $supported;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var Event Main FS event
+	 */
+public static $ev;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var resource EIO file descriptor
+	 */
+public static $fd;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array Mode types
+	 */
+public static $modeTypes;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer TTL for bad descriptors in seconds
+	 */
+public static $badFDttl;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var PHPDaemon\Cache\CappedStorage File descriptor cache
+	 */
+public static $fdCache;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Maximum number of open files in cache
+	 */
+public static $fdCacheSize;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string Required EIO version
+	 */
+public static $eioVer;
+</md:prop>
 
 ##### methods # Methods
 
@@ -583,6 +699,29 @@ public static function open($path, $flags, $cb, $mode = null, $pri = EIO_PRI_DEF
 namespace PHPDaemon\FS;
 class FileWatcher;
 ```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var array Associative array of the files being observed
+	 */
+public $files;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var resource Resource returned by inotify_init()
+	 */
+public $inotify;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var Array of inotify descriptors
+	 */
+public $descriptors;
+</md:prop>
 
 ##### methods # Methods
 

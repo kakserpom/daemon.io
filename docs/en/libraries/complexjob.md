@@ -36,218 +36,237 @@ $j('bar', function($name, $j) {
 $j(); // Запускаем
 ```
 
-#### consts # Константы
+<!-- include-namespace path="\PHPDaemon\Core\ComplexJob" commit="" level="" access="" -->
+#### consts # Constants
 
 <md:const>
 const STATE_WAITING = 1;
-Состояние: ожидание
+State: waiting
 </md:const>
 
 <md:const>
 const STATE_RUNNING = 2;
-Состояние: в процессе
+State: running
 </md:const>
 
 <md:const>
 const STATE_DONE = 3;
-Состояние: завершено
+State: done
 </md:const>
 
-#### properties # Свойства
+#### properties # Properties
 
 <md:prop>
-callable public $listeners;
-Стек функций обратного вызова, которые вызываются при успешном выполнении всех объявленных процедур
+/**
+	 * @var array Listeners [callable, ...]
+	 */
+public $listeners;
 </md:prop>
 
 <md:prop>
-integer public $results;
-Ассоциативный массив результатов установленных через `:h`setResult($value, $value)` или `:h`$job[$name] = $value;`
+/**
+	 * @var array Hash of results [jobname -> result, ...]
+	 */
+public $results;
 </md:prop>
 
 <md:prop>
-integer public $state;
-Состояние (константа STATE_*) 
+/**
+	 * @var integer Current state
+	 */
+public $state;
 </md:prop>
 
 <md:prop>
-array public $jobs;
-Ассоциативный массив, хранящий функции обратного вызова подзадач
+/**
+	 * @var array Hash of jobs [jobname -> callback, ...]
+	 */
+public $jobs;
 </md:prop>
 
 <md:prop>
-array public $resultsNum;
-Количество выполненных подзадач
+/**
+	 * @var integer Number of results
+	 */
+public $resultsNum;
 </md:prop>
 
 <md:prop>
-array public $jobsNum;
-Количество подзадач
+/**
+	 * @var integer Number of jobs
+	 */
+public $jobsNum;
 </md:prop>
- 
-#### methods # Методы
+
+#### methods # Methods
 
 <md:method>
-void public __construct ( callable $cb = null )
-
-Конструктор
-
-$cb
-функция обратного вызова для метода addListener
+/**
+	 * Constructor
+	 * @param callable $cb Listener
+	 */
+public function __construct($cb = null) {
 </md:method>
 
 <md:method>
-void public addListener ( callable $cb )
-
-Переданная функция будет вызвана когда все подзадачи выполнены
-
-$cb
-функция обратного вызова
+/**
+	 * Handler of isset($job[$name])
+	 * @param  string $j Job name
+	 * @return boolean
+	 */
+public function offsetExists($j) {
 </md:method>
 
 <md:method>
-mixed public offsetExists ( string $j )
-
-Позволяет сделать `:hc`isset($j[$name])`
-
-$j
-имя подзадачи
+/**
+	 * Handler of $job[$name]
+	 * @param  string $j Job name
+	 * @return mixed
+	 */
+public function offsetGet($j) {
 </md:method>
 
 <md:method>
-mixed public offsetGet ( string $j )
-
-Позволяет сделать `:hc`isset($job[$name])`
-
-$j
-имя подзадачи
+/**
+	 * Handler of $job[$name] = $value
+	 * @param  string $j Job name
+	 * @param  mixed  $v Job result
+	 * @return void
+	 */
+public function offsetSet($j, $v) {
 </md:method>
 
 <md:method>
-mixed public offsetSet ( string $j, mixed $v )
-
-Позволяет сделать `:hc`$job[$name] = $value`
-
-$j
-имя подзадачи
-
-$v
-значение
+/**
+	 * Handler of unset($job[$name])
+	 * @param  string $j Job name
+	 * @return void
+	 */
+public function offsetUnset($j) {
 </md:method>
 
 <md:method>
-mixed public offsetUnset ( string $j )
-
-Позволяет сделать `:hc`unset($job[$name])`
-
-$j
-имя подзадачи
+/**
+	 * Returns associative array of results
+	 * @return array
+	 */
+public function getResults() {
 </md:method>
 
 <md:method>
-array public getResults ( )
-
-Возвращает ассоциативный массив результатов
+/**
+	 * Keep
+	 * @param  boolean $keep Keep?
+	 * @return void
+	 */
+public function keep($keep = true) {
 </md:method>
 
 <md:method>
-void public keep ( boolean $keep = true )
-
-Включает опцию keep, при которой, после выполнения всех подзадач не вызывается метод `:hc`cleanup()`
-
-$keep
-true/false
+/**
+	 * Has completed?
+	 * @return boolean
+	 */
+public function hasCompleted() {
 </md:method>
 
 <md:method>
-boolean public hasCompleted ( )
-
-Выполнены ли все подзадачи?
+/**
+	 * Sets a limit of simultaneously executing tasks
+	 * @param  integer $n Natural number or -1 (no limit)
+	 * @return this
+	 */
+public function maxConcurrency($n = -1) {
 </md:method>
 
 <md:method>
-[ComplexJob](#../) public maxConcurrency ( integer $n = -1 )
-
-Устанавливает максимальное количество одновременно выполняемых задач
-
-$n
-Натуральное число. При `-1` ограничение не действует.
+/**
+	 * Set result
+	 * @param  string $jobname Job name
+	 * @param  mixed  $result  Result
+	 * @return boolean
+	 */
+public function setResult($jobname, $result = null) {
 </md:method>
 
 <md:method>
-boolean public setResult ( string $jobname, mixed $result = null )
-
-Устанавливает результат выполнения подзадачи
-
-$jobname
-Название подзадачи
-
-$result
-Результат
+/**
+	 * Get result
+	 * @param  string $jobname Job name
+	 * @return mixed Result or null
+	 */
+public function getResult($jobname) {
 </md:method>
 
 <md:method>
-mixed public getResult ( string $jobname )
-
-Получить результат выполнения подзадачи по имени
-
-$jobname
-имя подзадачи
+/**
+	 * Called automatically. Checks whether if the queue is full. If not, tries to pull more jobs from backlog and 'more'
+	 * @return void
+	 */
+public function checkQueue() {
 </md:method>
 
 <md:method>
-void public checkQueue ( )
-
-Вызывается автоматически. Проверяет полна ли очередь и если нет, то пробует запустить еще подзадач из `backlog` и `more`.
+/**
+	 * Sets a callback which is going to be fired always when we have a room for more jobs
+	 * @param  callable $cb Callback
+	 * @return this
+	 */
+public function more($cb = null) {
 </md:method>
 
 <md:method>
-[ComplexJob](#../) public more ( callable $cb = null )
-
-Задает функцию обратного вызова, которая автоматически вызывается каждый раз, когда можно добавить еще подзадач.
-
-$cb
-функция обратного вызова
+/**
+	 * Returns whether or not the queue is full (maxConcurrency option exceed)
+	 * @return boolean
+	 */
+public function isQueueFull() {
 </md:method>
 
 <md:method>
-boolean public isQueueFull ( )
-
-Проверяет полна ли на данный момент очередь задач (превышен ли параметр `maxConcurrency`)
+/**
+	 * Adds job
+	 * @param  string   $name Job name
+	 * @param  callable $cb   Callback
+	 * @return boolean Success
+	 */
+public function addJob($name, $cb) {
 </md:method>
 
 <md:method>
-boolean public addJob ( string $name, callable $cb )
-
-Добавляет подзадачу
-
-$name
-имя подзадачи
-
-$cb
-функция обратного вызова
+/**
+	 * Clean up
+	 * @return void
+	 */
+public function cleanup() {
 </md:method>
 
 <md:method>
-void public cleanup ( )
-
-Удаляет сохраненные результаты и функции обратного вызова. Вызывается автоматически, не задан параметр `keep`. В этом случае, во избежание утечек памяти вызывайте этот метод сами, когда закончили работать с данными.
+/**
+	 * Adds listener
+	 * @param  callable $cb Callback
+	 * @return void
+	 */
+public function addListener($cb) {
 </md:method>
 
 <md:method>
-void public execute ( )
-
-Выполняет 
+/**
+	 * Runs the job
+	 * @return void
+	 */
+public function execute() {
 </md:method>
 
 <md:method>
-boolean public __invoke ( string $name = null, callable $cb = null )
-
-Синоним `addJob ( $name, $cb )`. Пример: `:hc`$job('job', )`
+/**
+	 * Adds new job or calls execute() method
+	 * @param  mixed    $name
+	 * @param  callable $cb
+	 * @return void
+	 */
+public function __invoke($name = null, $cb = null) {
 </md:method>
 
-<md:method>
-boolean public __invoke ( )
 
-Синоним `execute()`. Пример: `:hc`$job()`
-</md:method>
+<!--/ include-namespace -->
