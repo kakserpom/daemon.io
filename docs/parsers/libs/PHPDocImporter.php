@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @todo
+ * \this в коде методов менять на текущий класс или заменять на ссылку
+ * 
+ */
+
 spl_autoload_register(function($class_name) {
 	$filepath = __DIR__ . '/' . str_replace('\\', '/', $class_name) . '.php';
 	if(!file_exists($filepath)) {
@@ -127,6 +133,7 @@ class PHPDocImporter {
 
 		// ставим флаг что контент будет изменен
 		$this->flagFileChanged = true;
+
 		$classes = $this->getSourceClasses($params['path']);
 		$content = '';
 		$is_header = count($classes) > 1;
@@ -369,6 +376,8 @@ TPL;
 			if(strpos($code, "function $name") === false) {
 				continue;
 			}
+
+			$code = str_replace(array("function $name", '(  )'), array("$name", '( )'), $code);
 
 			$result .= "<md:method>\n";
 			$result .= $comment."\n";

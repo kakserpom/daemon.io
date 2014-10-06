@@ -375,10 +375,22 @@ class DocBuilder {
 			$desc_params[] = $tag->getVariableName() ."\n". $extra. $tag->getDescription();
 		}
 
+		$result = '';
+		
 		$desc_text_arr = preg_split('/\s*\n\s*/', trim($PHPDoc->getShortDescription() ."\n". $PHPDoc->getLongDescription()), -1, PREG_SPLIT_NO_EMPTY);
 		$desc_text = implode("  \n", $desc_text_arr);
 
-		$result = $this->showReturnType($code_return_type) .' '. $code_out_params .' ( '. implode(', ', $code_params) ." )\n\n";
+		$doc_methods = $PHPDoc->getTagsByName('call');
+
+		if(empty($doc_methods)) {
+			$result .= $this->showReturnType($code_return_type) .' '. $code_out_params .' ( '. implode(', ', $code_params) ." )\n\n";
+		} else {
+			foreach ($doc_methods as $tag) {
+				$result .= $tag->getDescription() . "\n";
+			}
+			$result .= "\n";
+		}
+
 		$result .= $desc_text . "\n\n";
 		$result .= implode("\n\n", $desc_params);
 
@@ -411,7 +423,7 @@ class DocBuilder {
 			$code = preg_replace_callback('/(?:^|\s)([^\s]+)\s\(/', function($matches) use (&$matches2) {
 				$matches2 = $matches;
 				return " [!:$matches[1]](#./$matches[1]) (";
-			}, $code, 1);
+			}, $code);
 
 			if(!isset($matches2[1])) {
 				$matches2[1] = '';

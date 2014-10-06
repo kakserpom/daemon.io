@@ -8,6 +8,21 @@ if(!isset($config['phpdaemon'])) {
 	die('path to phpdaemon?');
 }
 
+if(!is_array($config['phpdaemon'])) {
+	$config['phpdaemon'] = array(
+		$config['phpdaemon']
+	);
+}
+
+$phpdpath = '';
+
+foreach ($config['phpdaemon'] as $path) {
+	if(file_exists($path) && is_dir($path)) {
+		$phpdpath = $path;
+		break;
+	}
+}
+
 passthru('php '.CURRENT_WORKING_DIR.'/parsers/import_phpdoc.php'
 	.' '. CURRENT_WORKING_DIR.'/en'
-	.' '. $config['phpdaemon']);
+	.' '. $phpdpath);

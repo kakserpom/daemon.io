@@ -37,5 +37,238 @@ $j(); // Запускаем
 ```
 
 <!-- include-namespace path="\PHPDaemon\Core\ComplexJob" commit="" level="" access="" -->
+#### consts # Constants
+
+<md:const>
+const STATE_WAITING = 1;
+State: waiting
+</md:const>
+
+<md:const>
+const STATE_RUNNING = 2;
+State: running
+</md:const>
+
+<md:const>
+const STATE_DONE = 3;
+State: done
+</md:const>
+
+#### properties # Properties
+
+<md:prop>
+/**
+	 * @var array Listeners [callable, ...]
+	 */
+public $listeners;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array Hash of results [jobname -> result, ...]
+	 */
+public $results;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Current state
+	 */
+public $state;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array Hash of jobs [jobname -> callback, ...]
+	 */
+public $jobs;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Number of results
+	 */
+public $resultsNum;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Number of jobs
+	 */
+public $jobsNum;
+</md:prop>
+
+#### methods # Methods
+
+<md:method>
+/**
+	 * Constructor
+	 * @param callable $cb Listener
+	 * @call void public __construct ( )
+	 * @call void public __construct ( callable $cb )
+	 */
+public __construct($cb = null)
+</md:method>
+
+<md:method>
+/**
+	 * Handler of isset($job[$name])
+	 * @param  string $j Job name
+	 * @return boolean
+	 */
+public offsetExists($j)
+</md:method>
+
+<md:method>
+/**
+	 * Handler of $job[$name]
+	 * @param  string $j Job name
+	 * @return mixed
+	 */
+public offsetGet($j)
+</md:method>
+
+<md:method>
+/**
+	 * Handler of $job[$name] = $value
+	 * @param  string $j Job name
+	 * @param  mixed  $v Job result
+	 * @return void
+	 */
+public offsetSet($j, $v)
+</md:method>
+
+<md:method>
+/**
+	 * Handler of unset($job[$name])
+	 * @param  string $j Job name
+	 * @return void
+	 */
+public offsetUnset($j)
+</md:method>
+
+<md:method>
+/**
+	 * Returns associative array of results
+	 * @return array
+	 */
+public getResults()
+</md:method>
+
+<md:method>
+/**
+	 * Keep
+	 * @param  boolean $keep Keep?
+	 * @return void
+	 */
+public keep($keep = true)
+</md:method>
+
+<md:method>
+/**
+	 * Has completed?
+	 * @return boolean
+	 */
+public hasCompleted()
+</md:method>
+
+<md:method>
+/**
+	 * Sets a limit of simultaneously executing tasks
+	 * @param  integer $n Natural number or -1 (no limit)
+	 * @return this
+	 */
+public maxConcurrency($n = -1)
+</md:method>
+
+<md:method>
+/**
+	 * Set result
+	 * @param  string $jobname Job name
+	 * @param  mixed  $result  Result
+	 * @return boolean
+	 */
+public setResult($jobname, $result = null)
+</md:method>
+
+<md:method>
+/**
+	 * Get result
+	 * @param  string $jobname Job name
+	 * @return mixed Result or null
+	 */
+public getResult($jobname)
+</md:method>
+
+<md:method>
+/**
+	 * Called automatically. Checks whether if the queue is full. If not, tries to pull more jobs from backlog and 'more'
+	 * @return void
+	 */
+public checkQueue()
+</md:method>
+
+<md:method>
+/**
+	 * Sets a callback which is going to be fired always when we have a room for more jobs
+	 * @param  callable $cb Callback
+	 * @return this
+	 */
+public more($cb = null)
+</md:method>
+
+<md:method>
+/**
+	 * Returns whether or not the queue is full (maxConcurrency option exceed)
+	 * @return boolean
+	 */
+public isQueueFull()
+</md:method>
+
+<md:method>
+/**
+	 * Adds job
+	 * @param  string   $name Job name
+	 * @param  callable $cb   Callback
+	 * @return boolean Success
+	 */
+public addJob($name, $cb)
+</md:method>
+
+<md:method>
+/**
+	 * Clean up
+	 * @return void
+	 */
+public cleanup()
+</md:method>
+
+<md:method>
+/**
+	 * Adds listener
+	 * @param  callable $cb Callback
+	 * @return void
+	 */
+public addListener($cb)
+</md:method>
+
+<md:method>
+/**
+	 * Runs the job
+	 * @return void
+	 */
+public execute()
+</md:method>
+
+<md:method>
+/**
+	 * Adds new job or calls execute() method
+	 * @param  mixed    $name
+	 * @param  callable $cb
+	 * @return void
+	 */
+public __invoke($name = null, $cb = null)
+</md:method>
+
 
 <!--/ include-namespace -->
