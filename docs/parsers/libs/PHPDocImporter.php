@@ -223,7 +223,8 @@ class PHPDocImporter {
 	 * @return boolean             [description]
 	 */
 	protected function isCommitActual($sourcepath, $commit, &$result) {
-		// @todo
+		return false;
+		
 		$filepath = trim(str_replace('\\', '/', $sourcepath), '/');
 		$cmd = "cd $this->sourcePath;git log --pretty=format:\"%H\" -1 $this->sourcePath/$filepath";
 		$result = exec($cmd);
@@ -296,7 +297,7 @@ class PHPDocImporter {
 			$extra_parent = ' extends '.$parent_name;
 		}
 
-		$altname = strtolower(preg_replace('/[a-z]([A-Z])/', '-$1', $name));
+		$altname = strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $name));
 		$type = 'Class';
 
 		if($ReflectionClass->isTrait()) {
@@ -325,7 +326,7 @@ TPL;
 	protected function getClassConstants($ReflectionClass, $params, $class_path, $class_name) {
 		$level = $params['level'] ? $params['level'] + 2 : 4;
 		$level = str_repeat('#', $level);
-		$result = "$level consts # Constants\n\n";
+		$result = '';
 
 		$ConstDoc = new ConstDoc($class_name);
 		$constants = $ConstDoc->getDocComments();
@@ -339,7 +340,11 @@ TPL;
 			$result .= "</md:const>\n\n";
 		}
 
-		return $result;
+		if($result === '') {
+			return '';
+		}
+
+		return "$level consts # Constants\n\n" . $result;
 	}
 
 	protected function getConstantCode($path, $constant) {
@@ -349,8 +354,11 @@ TPL;
 			$cache[$path] = file_get_contents($this->sourcePath . '/' . $path);
 		}
 
-		preg_match("/^\s*(const $constant \= (.+?)\;)/im", $cache[$path], $matches);
-		return $matches[1];
+		if(preg_match("/^\s*(const[ \t]*{$constant}[ \t]*\=[ \t]*(.+?)\;)/im", $cache[$path], $matches)) {
+			return "const $constant = {$matches[2]};";
+		}
+
+		return false;
 	}
 
 	protected function getClassProperties($ReflectionClass, $params, $class_path, $class_name) {
@@ -366,7 +374,7 @@ TPL;
 
 		$level = $params['level'] ? $params['level'] + 2 : 4;
 		$level = str_repeat('#', $level);
-		$result = "$level properties # Properties\n\n";
+		$result = '';
 		$properties = $ReflectionClass->getProperties(ReflectionProperty::IS_STATIC | $access);
 
 		foreach ($properties as $ReflectionProperty) {
@@ -380,7 +388,11 @@ TPL;
 			$result .= "</md:prop>\n\n";
 		}
 
-		return $result;
+		if($result === '') {
+			return '';
+		}
+
+		return "$level properties # Properties\n\n" . $result;
 	}
 
 	protected function getPropertyCode($str) {
@@ -401,7 +413,7 @@ TPL;
 
 		$level = $params['level'] ? $params['level'] + 2 : 4;
 		$level = str_repeat('#', $level);
-		$result = "$level methods # Methods\n\n";
+		$result = '';
 		$methods = $ReflectionClass->getMethods(ReflectionMethod::IS_STATIC | ReflectionMethod::IS_FINAL | $access);
 
 		foreach ($methods as $ReflectionMethod) {
@@ -422,7 +434,11 @@ TPL;
 			$result .= "</md:method>\n\n";
 		}
 
-		return $result;
+		if($result === '') {
+			return '';
+		}
+
+		return "$level methods # Methods\n\n" . $result;
 	}
 
 	protected function getCodeLine($path, $line) {

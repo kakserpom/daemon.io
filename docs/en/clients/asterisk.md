@@ -214,220 +214,554 @@ class PbxReconnector extends Request {
 }
 ```
 
-#### pool # Класс Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
-
-```php
-namespace PHPDaemon\Clients\Asterisk;
-class Pool extends \PHPDaemon\Network\Client;
-```
-
-##### options # Опции по-умолчанию
-
- - `authtype (string = 'md5')`
- - `port (integer = 5280)`
-
-##### methods # Методы
-
-<md:method>
-boolean public static getConnection ( callable $cb )
-boolean public static getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )
-
-Выполняет callback-функцию когда будет установлена связь с сервером. Возвращает `false` если соединение невозможно установить
-
-$cb
-callback ( [Connection](#../../connection) $conn, array $packet )
-вызывается когда будет установлена связь с сервером
-
-$url
-адрес сервера
-
-$pri
-приоритет данного вызова среди других. Чем больше значение, тем выше приоритет
-</md:method>
-
-<md:method>
-</md:method>
-
-#### connection # Класс Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
+<!-- include-namespace path="\PHPDaemon\Clients\Asterisk" commit="" level="" access="" -->
+### connection # Class Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
 
 ```php
 namespace PHPDaemon\Clients\Asterisk;
 class Connection extends \PHPDaemon\Network\ClientConnection;
 ```
 
-##### methods # Методы
+#### consts # Constants
+
+<md:const>
+const CONN_STATE_START = 0;
+@TODO DESCR
+</md:const>
+
+<md:const>
+const CONN_STATE_GOT_INITIAL_PACKET = 0.1;
+@TODO DESCR
+</md:const>
+
+<md:const>
+const CONN_STATE_AUTH = 1;
+@TODO DESCR
+</md:const>
+
+<md:const>
+const CONN_STATE_LOGIN_PACKET_SENT = 1.1;
+@TODO DESCR
+</md:const>
+
+<md:const>
+const CONN_STATE_CHALLENGE_PACKET_SENT = 1.2;
+@TODO DESCR
+</md:const>
+
+<md:const>
+const CONN_STATE_LOGIN_PACKET_SENT_AFTER_CHALLENGE = 1.3;
+@TODO DESCR
+</md:const>
+
+<md:const>
+const CONN_STATE_HANDSHAKED_OK = 2.1;
+@TODO DESCR
+</md:const>
+
+<md:const>
+const CONN_STATE_HANDSHAKED_ERROR = 2.2;
+@TODO DESCR
+</md:const>
+
+<md:const>
+const INPUT_STATE_START = 0;
+@TODO DESCR
+</md:const>
+
+<md:const>
+const INPUT_STATE_END_OF_PACKET = 1;
+@TODO DESCR
+</md:const>
+
+<md:const>
+const INPUT_STATE_PROCESSING = 2;
+@TODO DESCR
+</md:const>
+
+#### properties # Properties
+
+<md:prop>
+/**
+	 * @TODO DESCR
+	 * @var string
+	 */
+public $EOL;
+</md:prop>
+
+<md:prop>
+/**
+	 * The username to access the interface.
+	 * @var string
+	 */
+public $username;
+</md:prop>
+
+<md:prop>
+/**
+	 * The password defined in manager interface of server.
+	 * @var string
+	 */
+public $secret;
+</md:prop>
+
+<md:prop>
+/**
+	 * Connection's state.
+	 * @var float
+	 */
+public $state;
+</md:prop>
+
+<md:prop>
+/**
+	 * Input state.
+	 * @var integer
+	 */
+public $instate;
+</md:prop>
+
+<md:prop>
+/**
+	 * Received packets.
+	 * @var array
+	 */
+public $packets;
+</md:prop>
+
+<md:prop>
+/**
+	 * For composite response on action.
+	 * @var integer
+	 */
+public $cnt;
+</md:prop>
+
+<md:prop>
+/**
+	 * Stack of callbacks called when response received.
+	 * @var array
+	 */
+public $callbacks;
+</md:prop>
+
+<md:prop>
+/**
+	 * Assertions for callbacks.
+	 * Assertion: if more events may follow as response this is a main part or full
+	 * an action complete event indicating that all data has been sent.
+	 *
+	 * @var array
+	 */
+public $assertions;
+</md:prop>
+
+<md:prop>
+/**
+	 * Callback. Called when received response on challenge action.
+	 * @var callback
+	 */
+public $onChallenge;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var CappedStorage Context cache
+	 */
+protected static $contextCache;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var number Context cache size
+	 */
+protected static $contextCacheSize;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var object Associated pool
+	 */
+public $pool;
+</md:prop>
+
+#### methods # Methods
 
 <md:method>
-void public getSipPeers ( callable $cb )
-
-Выводит список сконфигурированных в данный момент равноправных участников SIP с указанием их статуса  
-Привилегии: system, all
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
+/**
+	 * Execute the given callback when/if the connection is handshaked.
+	 * @param Callback
+	 * @return void
+	 */
+public onConnected($cb)
 </md:method>
 
 <md:method>
-void public getIaxPeers ( callable $cb )
-
-Выводит список всех равноправных участников IAX2 с указанием их текущего статуса  
-Привилегии: none
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
+/**
+	 * Called when the connection is handshaked (at low-level), and peer is ready to recv. data
+	 * @return void
+	 */
+public onReady()
 </md:method>
 
 <md:method>
-void public getConfig ( string $filename, callable $cb )
-
-Извлекает данные из конфигурационного файла Asterisk  
-Привилегии: config, all
-
-$filename
-имя конфигурационного файла, из которого должны извлекаться данные
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
+/**
+	 * Called when the worker is going to shutdown
+	 * @return boolean Ready to shutdown?
+	 */
+public gracefulShutdown()
 </md:method>
 
 <md:method>
-void public getConfigJSON ( string $filename, callable $cb )
-
-Возвращает данные из конфигурационного файла Asterisk в JSON формате  
-Привилегии: config, all
-
-$filename
-имя конфигурационного файла, из которого должны извлекаться данные
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
+/**
+	 * Called when session finishes
+	 * @return void
+	 */
+public onFinish()
 </md:method>
 
 <md:method>
-void public setVar ( string $channel, string $variable, string $value, callable $cb )
-
-Задает значение глобальной переменной или переменной канала  
-Привилегии: call, all
-
-$channel
-канал, для переменной которого задается значение. Если не указан, переменная будет задана как глобальная
-
-$variable
-имя переменной
-
-$value
-значение
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
+/**
+	 * Called when new data received.
+	 * @return void
+	 */
+public onRead()
 </md:method>
 
 <md:method>
-void public coreShowChannels ( callable $cb )
-
-Отображает все активные каналы
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
+/**
+	 * Action: SIPpeers
+	 * Synopsis: List SIP peers (text format)
+	 * Privilege: system,reporting,all
+	 * Description: Lists SIP peers in text format with details on current status.
+	 * Peerlist will follow as separate events, followed by a final event called
+	 * PeerlistComplete.
+	 * Variables:
+	 * ActionID: <id>    Action ID for this transaction. Will be returned.
+	 *
+	 * @param callable $cb Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
+	 * @return void
+	 */
+public getSipPeers($cb)
 </md:method>
 
 <md:method>
-void public status ( callable $cb, string $channel = null )
-
-Представляет статус одного или более каналов с подробной информацией об их текущем состоянии  
-Привилегии: call, all
-
-$channel
-ограничивает вывод статусом заданного канала
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
+/**
+	 * Action: IAXpeerlist
+	 * Synopsis: List IAX Peers
+	 * Privilege: system,reporting,all
+	 *
+	 * @param callable $cb Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
+	 * @return void
+	 */
+public getIaxPeers($cb)
 </md:method>
 
 <md:method>
-void public redirect ( array $params, callable $cb )
-
-Перенаправляет канал в новый контекст, добавочный номер и приоритет диалплана  
-Привилегии: call, all
-
-$params
-ассоциативный массив параметров команды
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
+/**
+	 * Action: GetConfig
+	 * Synopsis: Retrieve configuration
+	 * Privilege: system,config,all
+	 * Description: A 'GetConfig' action will dump the contents of a configuration
+	 * file by category and contents or optionally by specified category only.
+	 * Variables: (Names marked with * are required)
+	 *   *Filename: Configuration filename (e.g. foo.conf)
+	 *   Category: Category in configuration file
+	 *
+	 * @param  string   $filename Filename
+	 * @param  callable $cb       Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
+	 * @return void
+	 */
+public getConfig($filename, $cb)
 </md:method>
 
 <md:method>
-void public originate ( array $params, callable $cb )
-
-Формирует исходящий вызов из Asterisk и соединяет канал с контекстом/добавочным номером/приоритетом или приложением диалплана  
-Привилегии: call, all
-
-$params
-ассоциативный массив параметров команды
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
+/**
+	 * Action: GetConfigJSON
+	 * Synopsis: Retrieve configuration
+	 * Privilege: system,config,all
+	 * Description: A 'GetConfigJSON' action will dump the contents of a configuration
+	 * file by category and contents in JSON format.  This only makes sense to be used
+	 * using rawman over the HTTP interface.
+	 * Variables:
+	 *    Filename: Configuration filename (e.g. foo.conf)
+	 *
+	 * @param  string   $filename Filename
+	 * @param callable $cb Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
+	 * @return void
+	 */
+public getConfigJSON($filename, $cb)
 </md:method>
 
 <md:method>
-void public extensionState ( array $params, callable $cb )
-
-Сообщает о состоянии заданного добавочного номера. Если добавочный номер имеет подсказку, эта команда обеспечит передачу состояния устройства, соединенного с данным добавочным номером  
-Привилегии: call, all
-
-$params
-ассоциативный массив параметров команды
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
+/**
+	 * Action: Setvar
+	 * Synopsis: Set Channel Variable
+	 * Privilege: call,all
+	 * Description: Set a global or local channel variable.
+	 * Variables: (Names marked with * are required)
+	 * Channel: Channel to set variable for
+	 *  *Variable: Variable name
+	 *  *Value: Value
+	 */
+public setVar($channel, $variable, $value, $cb)
 </md:method>
 
 <md:method>
-void public ping ( callable $cb )
-
-Посылает запрос на сервер Asterisk, чтобы убедиться, что он до сих пор отвечает. Asterisk ответит сообщением Pong. Эта команда также может использоваться, чтобы не допустить разрыва соединения в результате истечения времени ожидания
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
+/**
+	 * Action: CoreShowChannels
+	 * Synopsis: List currently active channels
+	 * Privilege: system,reporting,all
+	 * Description: List currently defined channels and some information
+	 *        about them.
+	 * Variables:
+	 *        ActionID: Optional Action id for message matching.
+	 */
+public coreShowChannels($cb)
 </md:method>
 
 <md:method>
-void public action ( string $action, callable $cb, array $params = null, array $assertion = null )
-
-Отправляет на сервер произвольную команду
-
-$action
-команда
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
-
-$params
-ассоциативный массив параметров команды
-
-$assertion
-@TODO If more events may follow as response this is a main part or full an action complete event indicating that all data has been sent
+/**
+	 * Action: Status
+	 * Synopsis: Lists channel status
+	 * Privilege: system,call,reporting,all
+	 * Description: Lists channel status along with requested channel vars.
+	 * Variables: (Names marked with * are required)
+	 *Channel: Name of the channel to query for status
+	 *    Variables: Comma ',' separated list of variables to include
+	 * ActionID: Optional ID for this transaction
+	 * Will return the status information of each channel along with the
+	 * value for the specified channel variables.
+	 */
+public status($cb, $channel = null)
 </md:method>
 
 <md:method>
-void public logoff ( callable $cb = null )
-
-Завершает сеанс
-
-$cb
-callback ( [Connection](#../) $conn, array $packet )
-вызывается когда будет получен результат
+/**
+	 * Action: Redirect
+	 * Synopsis: Redirect (transfer) a call
+	 * Privilege: call,all
+	 * Description: Redirect (transfer) a call.
+	 * Variables: (Names marked with * are required)
+	 * *Channel: Channel to redirect
+	 *  ExtraChannel: Second call leg to transfer (optional)
+	 * *Exten: Extension to transfer to
+	 * *Context: Context to transfer to
+	 * *Priority: Priority to transfer to
+	 * ActionID: Optional Action id for message matching.
+	 *
+	 * @param array $params
+	 * @param callable $cb Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
+	 * @return void
+	 */
+public redirect(array $params, $cb)
 </md:method>
+
+<md:method>
+/**
+	 * Action: Originate
+	 * Synopsis: Originate a call
+	 * Privilege: call,all
+	 * Description: first the Channel is rung. Then, when that answers, the Extension is dialled within the Context
+	 *  to initiate the other end of the call.
+	 * Variables: (Names marked with * are required)
+	 * *Channel: Channel on which to originate the call (The same as you specify in the Dial application command)
+	 * *Context: Context to use on connect (must use Exten & Priority with it)
+	 * *Exten: Extension to use on connect (must use Context & Priority with it)
+	 * *Priority: Priority to use on connect (must use Context & Exten with it)
+	 * Timeout: Timeout (in milliseconds) for the originating connection to happen(defaults to 30000 milliseconds)
+	 * *CallerID: CallerID to use for the call
+	 * Variable: Channels variables to set (max 32). Variables will be set for both channels (local and connected).
+	 * Account: Account code for the call
+	 * Application: Application to use on connect (use Data for parameters)
+	 * Data : Data if Application parameter is used
+	 * ActionID: Optional Action id for message matching.
+	 *
+	 * @param array $params
+	 * @param callable $cb Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
+	 * @return void
+	 */
+public originate(array $params, $cb)
+</md:method>
+
+<md:method>
+/**
+	 * Action: ExtensionState
+	 * Synopsis: Get an extension's state.
+	 * Description: function can be used to retrieve the state from any	hinted extension.
+	 * Variables: (Names marked with * are required)
+	 * *Exten: Extension to get state
+	 * Context: Context for exten
+	 * ActionID: Optional Action id for message matching.
+	 *
+	 * @param array $params
+	 * @param callable $cb Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
+	 * @return void
+	 */
+public extensionState(array $params, $cb)
+</md:method>
+
+<md:method>
+/**
+	 * Action: Ping
+	 * Description: A 'Ping' action will ellicit a 'Pong' response.  Used to keep the
+	 *   manager connection open.
+	 * Variables: NONE
+	 *
+	 * @param calalble Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
+	 * @return void
+	 */
+public ping($cb)
+</md:method>
+
+<md:method>
+/**
+	 * For almost any actions in Action: ListCommands
+	 * Privilege: depends on $action
+	 *
+	 * @param string $action
+	 * @param callable              Callback called when response received.
+	 * @param array|null $params
+	 * @param array|null $assertion If more events may follow as response this is a main part or full an action complete event indicating that all data has been sent.
+	 * @callback ( Connection $conn, array $packet )
+	 * @return void
+	 */
+public action($action, $cb, array $params = null, array $assertion = null)
+</md:method>
+
+<md:method>
+/**
+	 * Action: Logoff
+	 * Synopsis: Logoff Manager
+	 * Privilege: <none>
+	 * Description: Logoff this manager session
+	 * Variables: NONE
+	 *
+	 * @param callable $cb Optional callback called when response received
+	 * @callback ( Connection $conn, array $packet )
+	 * @return void
+	 */
+public logoff($cb = null)
+</md:method>
+
+<md:method>
+/**
+	 * Called when event occured.
+	 * @param callable $cb Callback
+	 * @deprecated Replaced with ->bind('event', ...)
+	 * @return void
+	 */
+public onEvent($cb)
+</md:method>
+
+### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
+
+```php
+namespace PHPDaemon\Clients\Asterisk;
+class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
+```
+
+### pool # Class Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
+
+```php
+namespace PHPDaemon\Clients\Asterisk;
+class Pool extends \PHPDaemon\Network\Client;
+```
+
+#### properties # Properties
+
+<md:prop>
+/**
+	 * Beginning of the string in the header or value that indicates whether the save value case.
+	 * @var array
+	 */
+public static $safeCaseValues;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string Default connection class
+	 */
+public $connectionClass;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string Name
+	 */
+public $name;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var \PHPDaemon\Config\Section Configuration
+	 */
+public $config;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var ConnectionPool[] Instances storage
+	 */
+protected static $instances;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Max concurrency
+	 */
+public $maxConcurrency;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Max allowed packet
+	 */
+public $maxAllowedPacket;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var object|null Application instance object
+	 */
+public $appInstance;
+</md:prop>
+
+#### methods # Methods
+
+<md:method>
+/** Sets AMI version
+	 * @param string $addr Address
+	 * @param string $ver  Version
+	 * @return void
+	 */
+public setAmiVersion($addr, $ver)
+</md:method>
+
+<md:method>
+/** Prepares environment scope
+	 * @param string $data Address
+	 * @return array
+	 */
+public static prepareEnv($data)
+</md:method>
+
+<md:method>
+/**
+	 * Extract key and value pair from line.
+	 * @param string $line
+	 * @return array
+	 */
+public static extract($line)
+</md:method>
+
+
+<!--/ include-namespace -->

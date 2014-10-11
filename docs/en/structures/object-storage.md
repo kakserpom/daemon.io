@@ -9,39 +9,43 @@ class ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splo
 
 > Можно создавать классы-наследники
 
-<!-- include-namespace path="\PHPDaemon\Structures\ObjectStorage" commit="" -->
-#### methods # Методы
+<!-- include-namespace path="\PHPDaemon\Structures\ObjectStorage" commit="" level="" access="" -->
+#### methods # Methods
 
 <md:method>
-integer public each ( string $method, mixed ...$args )
-
-Проходит по всем объектам, вызывая у каждого из них метод `:hc`$method` c заданными аргументами `:hc`$args` и возвращает количество объектов в хранилище
-
-$method
-вызываемый метод объекта
-
-...$args
-аргументы
+/**
+	 * Call given method of all objects in storage
+	 * @param  string $method  Method name
+	 * @param  mixed  ...$args Arguments
+	 * @return integer Number of called objects
+	 */
+public each()
 </md:method>
 
 <md:method>
-void public removeAll ( object $obj = null )
-
-Удаляет из текущего контейнера все объекты, которых нет в контейнере `:hc`$obj`
-
-$obj
-контейнер, содержащий элементы, которые должны остаться в текущем контейнере
+/**
+	 * Remove all objects from this storage, which contained in another storage
+	 * @param  \SplObjectStorage $obj
+	 * @return void
+	 */
+public removeAll($obj = null)
 </md:method>
 
 <md:method>
-object public detachFirst ( )
-
-Возвращает первый объект, удалив его из контейнера
+/**
+	 * Detaches first object and returns it
+	 * @return object
+	 */
+public detachFirst()
 </md:method>
 
 <md:method>
-object public getFirst ( )
-
-Возвращает первый объект контейнера
+/**
+	 * Returns first object
+	 * @return object
+	 */
+public getFirst()
 </md:method>
+
+
 <!--/ include-namespace -->
