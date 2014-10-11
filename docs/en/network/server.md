@@ -7,97 +7,139 @@ abstract class Server extends [Pool](#../pool);
 
 @TODO
 
+<!-- include-namespace path="\PHPDaemon\Network\Server" commit="" level="" access="" -->
 #### properties # Properties
 
 <md:prop>
-array public $allowedClients = null;
-Allowed clients
+/**
+	 * @var array|null Allowed clients
+	 */
+public $allowedClients;
 </md:prop>
 
 <md:prop>
-integer public $maxAllowedPacket;
-@TODO
+/**
+	 * @var string Default connection class
+	 */
+public $connectionClass;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string Name
+	 */
+public $name;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var \PHPDaemon\Config\Section Configuration
+	 */
+public $config;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var ConnectionPool[] Instances storage
+	 */
+protected static $instances;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Max concurrency
+	 */
+public $maxConcurrency;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Max allowed packet
+	 */
+public $maxAllowedPacket;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var object|null Application instance object
+	 */
+public $appInstance;
 </md:prop>
 
 #### methods # Methods
 
 <md:method>
-void public __construct ( array $config = [], boolean $init = true )
-
-Constructor
-
-$config
-Config variables
-
-$init
-@TODO
+/**
+	 * Constructor
+	 * @param array   $config Config variables
+	 * @param boolean $init
+	 */
+public __construct($config = [], $init = true)
 </md:method>
 
 <md:method>
-boolean public finish ( boolean $graceful = false )
-
-Finishes ConnectionPool
-
-$graceful
-@TODO
+/**
+	 * Finishes ConnectionPool
+	 * @return boolean Success
+	 */
+public finish($graceful = false)
 </md:method>
 
 <md:method>
-integer public bindSockets ( mixed $addrs = [], integer $max = 0 )
-
-Bind given sockets
-
-$addrs
-Addresses to bind
-
-$max
-Number of bound
+/**
+	 * Bind given sockets
+	 * @param  mixed   $addrs Addresses to bind
+	 * @param  integer $max   Maximum
+	 * @return integer        Number of bound
+	 */
+public bindSockets($addrs = [], $max = 0)
 </md:method>
 
 <md:method>
-boolean public bindSocket ( string $uri )
-
-Bind given socket
-
-$uri
-Address to bind
+/**
+	 * Bind given socket
+	 * @param  string  $uri Address to bind
+	 * @return boolean      Success
+	 */
+public bindSocket($uri)
 </md:method>
 
 <md:method>
-void public attachBound ( \PHPDaemon\BoundSocket\Generic $bound, mixed $inf = null )
-
-Attach Generic
-
-$bound
-Generic
-
-$inf
-Info
+/**
+	 * Attach Generic
+	 * @param  \PHPDaemon\BoundSocket\Generic $bound Generic
+	 * @param  mixed $inf Info
+	 * @return void
+	 */
+public attachBound(\PHPDaemon\BoundSocket\Generic $bound, $inf = null)
 </md:method>
 
 <md:method>
-void public detachBound ( \PHPDaemon\BoundSocket\Generic $bound )
-
-Detach Generic
-
-$bound
-Generic
+/**
+	 * Detach Generic
+	 * @param  \PHPDaemon\BoundSocket\Generic $bound Generic
+	 * @return void
+	 */
+public detachBound(\PHPDaemon\BoundSocket\Generic $bound)
 </md:method>
 
 <md:method>
-void public closeBound ( )
-
-Close each of binded sockets
+/**
+	 * Close each of binded sockets
+	 * @return void
+	 */
+public closeBound()
 </md:method>
 
 <md:method>
-boolean public inheritFromRequest ( object $req, object $oldConn )
-
-Called when a request to HTTP-server looks like another connection
-
-$req
-@TODO
-
-$oldConn
-@TODO
+/**
+	 * Called when a request to HTTP-server looks like another connection
+	 * @param  object  $req     Request
+	 * @param  object  $oldConn Connection
+	 * @return boolean Success
+	 */
+public inheritFromRequest($req, $oldConn)
 </md:method>
+
+
+<!--/ include-namespace -->

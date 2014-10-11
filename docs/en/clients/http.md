@@ -24,153 +24,462 @@ $httpclient->get('http://www.google.com/robots.txt',
 
 Рабочий пример клиента представлен в {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php Clients/HTTP/Examples/Simple.php}
 
-#### pool # Класс Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
-
-```php
-namespace PHPDaemon\Clients\HTTP;
-class Pool extends \PHPDaemon\Network\Client;
-```
-
-##### options # Опции по-умолчанию
-
- - `port (integer = 80)`
- - `ssl-port (integer = 443)`
- - `expose (boolean = true)`
-
-##### methods # Методы
-
-<md:method>
-void public get ( url $url, array $params )
-void public get ( url $url, callable $resultcb )
-
-Осуществляет GET запрос
-
-$url
-запрашиваемый URL
-
-$params
-ассоциативный массив параметров запроса
-
-$resultcb
-callback ( [Connection](#../../connection) $conn, boolean $success )
-Вызывается когда на запрос пришел ответ, либо произошла ошибка
-</md:method>
-
-<md:method>
-void public post ( url $url, array $data, array $params )
-void public post ( url $url, array $data, callable $resultcb )
-
-Осуществляет POST запрос
-
-$url
-запрашиваемый URL
-
-$data
-ассоциативный массив POST-параметров
-
-$params
-ассоциативный массив параметров запроса
-
-$resultcb
-callback ( [Connection](#../../connection) $conn, boolean $success )
-Вызывается когда на запрос пришел ответ, либо произошла ошибка
-</md:method>
-
-<md:method>
-string public static buildUrl ( string $str )
-string public static buildUrl ( array $mixed )
-
-Генерирует URL-кодированную строку запроса из предоставленного ассоциативного (или индексного) массива `:hc`$mixed` или возвращает строку `:hc`$str`. В случае ошибки возвращает `:hc`false`
-
-$mixed
-массив параметров URL
-</md:method>
-
-<md:method>
-string public static parseUrl ( string $str )
-string public static parseUrl ( array $mixed )
-
-Разбирает массив `:hc`$mixed` или строку `:hc`$str` и возвращает ассоциативный массив, содержащий необходимые компоненты URL: `:hc`[$scheme, $host, $uri, $port]`. В случае ошибки возвращает `:hc`false`.  
-См. [php.net/parse_url](http://php.net/parse_url)
-
-$mixed
-массив параметров URL
-</md:method>
-
-#### connection # Класс Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
+<!-- include-namespace path="\PHPDaemon\Clients\HTTP" commit="" level="" access="" -->
+#### connection # Class Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
 
 ```php
 namespace PHPDaemon\Clients\HTTP;
 class Connection extends \PHPDaemon\Network\ClientConnection;
 ```
 
-##### properties # Свойства
+##### consts # Constants
+
+<md:const>
+const STATE_HEADERS = 1;
+State: headers @var integer
+</md:const>
+
+<md:const>
+const STATE_BODY = 2;
+State: body @var integer
+</md:const>
+
+##### properties # Properties
 
 <md:prop>
-array public $headers;
-Заголовки ответа
+/**
+	 * Associative array of headers
+	 * @var array
+	 */
+public $headers;
 </md:prop>
 
 <md:prop>
-string public $body;
-Тело ответа
+/**
+	 * Content length
+	 * @var int
+	 */
+public $contentLength;
 </md:prop>
 
 <md:prop>
-integer public $contentLength;
-Длина тела ответа
+/**
+	 * Contains response body
+	 * @var string
+	 */
+public $body;
 </md:prop>
 
 <md:prop>
-string public $cookie;
-Ассоциативный массив Cookies пришедших в ответе
+/**
+	 * Associative array of Cookies
+	 * @var array
+	 */
+public $cookie;
 </md:prop>
 
 <md:prop>
-boolean public $chunked;
-Если true, то в заголовках был получен `Transfer-Encoding: chunked`
+/**
+	 * @var bool
+	 */
+public $chunked;
 </md:prop>
 
 <md:prop>
-integer public $protocolError;
-Если не `:hc`null`, то произошла серьезная ошибка при обработке ответа на запрос. Содержит номер строки в файле {tpl-git PHPDaemon/Clients/HTTP/Connection.php Connection.php}, по которому можно определить характер ошибки
+/**
+	 * @var
+	 */
+public $protocolError;
 </md:prop>
 
 <md:prop>
-integer public $responseCode;
-
-Код ответа. См. [Список кодов состояния HTTP](http://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP)
+/**
+	 * @var int
+	 */
+public $responseCode;
 </md:prop>
 
 <md:prop>
-string public $lastURL;
-Последний запрошенный url
+/**
+	 * Last requested URL
+	 * @var string
+	 */
+public $lastURL;
 </md:prop>
 
 <md:prop>
-string public $rawHeaders;
-Заголовки ответа в сыром виде
+/**
+	 * Raw headers array
+	 * @var array
+	 */
+public $rawHeaders;
 </md:prop>
 
-##### methods # Методы
+<md:prop>
+
+public $contentType;
+</md:prop>
+
+<md:prop>
+
+public $charset;
+</md:prop>
+
+<md:prop>
+
+public $eofTerminated;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var CappedStorage Context cache
+	 */
+protected static $contextCache;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var number Context cache size
+	 */
+protected static $contextCacheSize;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var object Associated pool
+	 */
+public $pool;
+</md:prop>
+
+##### methods # Methods
 
 <md:method>
-string public getBody ( )
-
-Возвращает тело ответа
+/**
+	 * Performs GET-request
+	 * @param string $url
+	 * @param array $params
+	 */
+public get($url, $params = null)
 </md:method>
 
 <md:method>
-string public getHeaders ( )
-
-Возвращает ассоциативный массив заголовков ответа
+/** 
+	 * Performs POST-request
+	 * @param string $url
+	 * @param array $data
+	 * @param array $params
+	 */
+public post($url, $data = [], $params = null)
 </md:method>
 
 <md:method>
-string public getHeader ( string $name )
 
-Возвращает заголовок ответа по имени или `:hc`null`
-
-$name
-имя заголовка
+public getBody()
 </md:method>
+
+<md:method>
+
+public getHeaders()
+</md:method>
+
+<md:method>
+
+public getHeader($name)
+</md:method>
+
+<md:method>
+/**
+	 * Called when new data received
+	 * @param string New data
+	 * @return void
+	 */
+public onRead()
+</md:method>
+
+<md:method>
+/**
+	 * Called when connection finishes
+	 * @return void
+	 */
+public onFinish()
+</md:method>
+
+#### pool # Class Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
+
+```php
+namespace PHPDaemon\Clients\HTTP;
+class Pool extends \PHPDaemon\Network\Client;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var string Default connection class
+	 */
+public $connectionClass;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string Name
+	 */
+public $name;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var \PHPDaemon\Config\Section Configuration
+	 */
+public $config;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var ConnectionPool[] Instances storage
+	 */
+protected static $instances;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Max concurrency
+	 */
+public $maxConcurrency;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Max allowed packet
+	 */
+public $maxAllowedPacket;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var object|null Application instance object
+	 */
+public $appInstance;
+</md:prop>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Performs GET-request
+	 * @param string $url
+	 * @param array $params
+	 * @call  void public get ( url $url, array $params )
+	 * @call  void public get ( url $url, callable $resultcb )
+	 * @callback ( Connection $conn, boolean $success )
+	 */
+public get($url, $params)
+</md:method>
+
+<md:method>
+/**
+	 * Performs HTTP request
+	 * @param string $url
+	 * @param array $data
+	 * @param array $params
+	 * @call  void public post ( url $url, array $data, array $params )
+	 * @call  void public post ( url $url, array $data, callable $resultcb )
+	 * @callback ( Connection $conn, boolean $success )
+	 */
+public post($url, $data = [], $params)
+</md:method>
+
+<md:method>
+/**
+	 * Builds URL from array
+	 * @param string $mixed
+	 * @call  string public static buildUrl ( string $str )
+	 * @call  string public static buildUrl ( array $mixed )
+	 * @return string|false
+	 */
+public static buildUrl($mixed)
+</md:method>
+
+<md:method>
+/**
+	 * Parse URL
+	 * @param string $mixed Look Pool::buildUrl()
+	 * @call  string public static parseUrl ( string $str )
+	 * @call  string public static parseUrl ( array $mixed )
+	 * @return array|bool
+	 */
+public static parseUrl($mixed)
+</md:method>
+
+#### simple # Class Simple {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php}
+
+```php
+namespace PHPDaemon\Clients\HTTP\Examples;
+class Simple extends \PHPDaemon\Core\AppInstance;
+```
+
+##### properties # Properties
+
+<md:prop>
+
+public $httpclient;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean If true, it's allowed to be run without defined config section'
+	 */
+public static $runOnDemand;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string Optional passphrase
+	 */
+public $passphrase;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean Ready to run?
+	 */
+public $ready;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var object Related config section
+	 */
+public $config;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean Is RPC enabled?
+	 */
+public $enableRPC;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var null|string Default class of incoming requests
+	 */
+public $requestClass;
+</md:prop>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Constructor.
+	 * @return void
+	 */
+public init()
+</md:method>
+
+<md:method>
+/**
+	 * Called when the worker is ready to go.
+	 * @return void
+	 */
+public onReady()
+</md:method>
+
+<md:method>
+/**
+	 * Called when application instance is going to shutdown.
+	 * @return boolean Ready to shutdown?
+	 */
+public onShutdown($graceful = false)
+</md:method>
+
+<md:method>
+/**
+	 * Creates Request.
+	 * @param object Request.
+	 * @param object Upstream application instance.
+	 * @return SimpleRequest Request.
+	 */
+public beginRequest($req, $upstream)
+</md:method>
+
+#### simple-request # Class SimpleRequest {tpl-git PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php}
+
+```php
+namespace PHPDaemon\Clients\HTTP\Examples;
+class SimpleRequest extends \PHPDaemon\HTTPRequest\Generic;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var array Status codes
+	 */
+protected static $codes;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean Keepalive?
+	 */
+public $keepalive;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Current response length
+	 */
+public $responseLength;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array Replacement pairs for processing some header values in parse_str()
+	 */
+public static $hvaltr;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array State
+	 */
+public static $htr;
+</md:prop>
+
+<md:prop>
+/**
+	 * Related Application instance
+	 * @var \PHPDaemon\Core\AppInstance
+	 */
+public $appInstance;
+</md:prop>
+
+<md:prop>
+/**
+	 * Attributes
+	 * @var \StdCLass
+	 */
+public $attrs;
+</md:prop>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Constructor.
+	 * @return void
+	 */
+public init()
+</md:method>
+
+<md:method>
+/**
+	 * Called when request iterated.
+	 * @return integer Status.
+	 */
+public run()
+</md:method>
+
+
+<!--/ include-namespace -->

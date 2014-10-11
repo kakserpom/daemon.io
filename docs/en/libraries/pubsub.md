@@ -4,181 +4,176 @@
 namespace PHPDaemon\PubSub;
 ```
 
-#### pubsub # Класс PubSub {tpl-git PHPDaemon/PubSub/PubSub.php}
+<!-- include-namespace path="\PHPDaemon\PubSub" commit="" level="" access="" -->
+#### pub-sub # Class PubSub {tpl-git PHPDaemon/PubSub/PubSub.php}
 
 ```php
 namespace PHPDaemon\PubSub;
 class PubSub;
 ```
 
-##### methods # Методы
+##### methods # Methods
 
 <md:method>
-boolean public eventExists ( string $id )
-
-@TODO
-
-$id
-@TODO
+/**
+	 * Is event exists?
+	 * @param  string  $id Event ID
+	 * @return boolean
+	 */
+public eventExists($id)
 </md:method>
 
 <md:method>
-[PubSubEvent](#../../pubsubevent) public sub ( string $id, object $obj, callable $cb )
-
-@TODO
-
-$id
-@TODO
-
-$obj
-@TODO
-
-$cb
-@TODO
+/**
+	 * Subcribe to event
+	 * @param  string   $id  Event ID
+	 * @param  object   $obj Subscriber
+	 * @param  callable $cb  Callback
+	 * @return boolean       Success
+	 */
+public sub($id, $obj, $cb)
 </md:method>
 
 <md:method>
-void public addEvent ( string $id, PubSubEvent $obj )
-
-@TODO
-
-$id
-@TODO
-
-$obj
-@TODO
+/**
+	 * Adds event
+	 * @param  string      $id  Event ID
+	 * @param  PubSubEvent $obj
+	 * @return void
+	 */
+public addEvent($id, PubSubEvent $obj)
 </md:method>
 
 <md:method>
-void public removeEvent ( string $id )
-
-@TODO
-
-$id
-@TODO
+/**
+	 * Removes event
+	 * @param  string $id Event ID
+	 * @return void
+	 */
+public removeEvent($id)
 </md:method>
 
 <md:method>
-[PubSubEvent](#../../pubsubevent) public unsub ( string $id, object $obj )
-
-@TODO
-
-$id
-@TODO
-
-$obj
-@TODO
+/**
+	 * Unsubscribe object from event
+	 * @param  string  $id  Event ID
+	 * @param  object  $obj Subscriber
+	 * @return boolean      Success
+	 */
+public unsub($id, $obj)
 </md:method>
 
 <md:method>
-[PubSubEvent](#../../pubsubevent) public pub ( string $id, mixed $data )
-
-@TODO
-
-$id
-@TODO
-
-$data
-@TODO
+/**
+	 * Publish
+	 * @param  string  $id   Event ID
+	 * @param  mixed   $data Data
+	 * @return boolean       Success
+	 */
+public pub($id, $data)
 </md:method>
 
 <md:method>
-boolean public unsubFromAll ( object $obj )
-
-@TODO
-
-$obj
-@TODO
+/**
+	 * Unsubscribe object from all events
+	 * @param  object  $obj Subscriber
+	 * @return boolean      Success
+	 */
+public unsubFromAll($obj)
 </md:method>
 
-#### pubsubevent # Класс PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
+#### pub-sub-event # Class PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
 
-```php:p
+```php
 namespace PHPDaemon\PubSub;
-class PubSubEvent extends \[SplObjectStorage](http://php.net/manual/class.splobjectstorage.php);
+class PubSubEvent extends \SplObjectStorage;
 ```
 
-##### properties # Свойства
+##### properties # Properties
 
 <md:prop>
-array public $sub = [ ];
-@TODO
+/**
+	 * @var array Subscriptions
+	 */
+public $sub;
 </md:prop>
 
 <md:prop>
-callable public $actCb;
-@TODO
+/**
+	 * @var callable Activation callback
+	 */
+public $actCb;
 </md:prop>
 
 <md:prop>
-callable public $deactCb;
-@TODO
+/**
+	 * @var callable Deactivation callback
+	 */
+public $deactCb;
 </md:prop>
 
-##### methods # Методы
+##### methods # Methods
 
 <md:method>
-void public __construct ( callable $act = null, callable $deact = null )
-
-@TODO
-
-$act
-@TODO
-
-$deact
-@TODO
+/**
+	 * Constructor
+	 */
+public __construct($act = null, $deact = null)
 </md:method>
 
 <md:method>
-[PubSubEvent](#../) public onActivation ( callable $cb )
-
-@TODO
-
-$cb
-@TODO
+/**
+	 * Sets onActivation callback
+	 * @param  callable $cb Callback
+	 * @return this
+	 */
+public onActivation($cb)
 </md:method>
 
 <md:method>
-[PubSubEvent](#../) public onDeactivation ( callable $cb )
-
-@TODO
-
-$cb
-@TODO
+/**
+	 * Sets onDeactivation callback
+	 * @param callable $cb Callback
+	 * @return this
+	 */
+public onDeactivation($cb)
 </md:method>
 
 <md:method>
-[PubSubEvent](#../) public static init ( )
-
-@TODO
+/**
+	 * Init
+	 * @return object
+	 */
+public static init()
 </md:method>
 
 <md:method>
-[PubSubEvent](#../) public sub ( object $obj, callable $cb )
-
-@TODO
-
-$obj
-@TODO
-
-$cb
-@TODO
+/**
+	 * Subscribe
+	 * @param  object   $obj Subcriber object
+	 * @param  callable $cb  Callback
+	 * @return this
+	 */
+public sub($obj, $cb)
 </md:method>
 
 <md:method>
-[PubSubEvent](#../) public unsub ( object $obj )
-
-@TODO
-
-$obj
-@TODO
+/**
+	 * Unsubscripe
+	 * @param  object $obj Subscriber object
+	 * @return this
+	 */
+public unsub($obj)
 </md:method>
 
 <md:method>
-[PubSubEvent](#../) public pub ( mixed $data )
-
-@TODO
-
-$data
-@TODO
+/**
+	 * Publish
+	 * @param  mixed $data Data
+	 * @return this
+	 */
+public pub($data)
 </md:method>
+
+
+<!--/ include-namespace -->

@@ -7,46 +7,62 @@ class PriorityQueueCallbacks extends \[SplPriorityQueue](http://php.net/manual/c
 
 > Используется в [Network/Client](#network/client) для хранения вызовов, пока все доступные соединения заняты
 
-#### methods # Методы
+<!-- include-namespace path="\PHPDaemon\Structures\PriorityQueueCallbacks" commit="" level="" access="" -->
+#### methods # Methods
 
 <md:method>
-void public enqueue ( callable $cb, integer $pri = 0 )
-
-Добавляет функцию обратного вызова в очередь и пересортирует её
-
-$cb
-функция обратного вызова
-
-$pri
-приоритет
+/**
+	 * Insert callback
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return void
+	 */
+public insert($cb, $pri = 0)
 </md:method>
 
 <md:method>
-void public insert ( callable $cb, integer $pri = 0 )
-
-Псевдоним метода `:hc`enqueue`
+/**
+	 * Enqueue callback
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return void
+	 */
+public enqueue($cb, $pri = 0)
 </md:method>
 
 <md:method>
-CallbackWrapper public dequeue ( )
-
-Извлекает функцию обратного вызова из начала очереди и пересортирует её. Псевдоним метода `:hc`SplPriorityQueue::extract`
+/**
+	 * Dequeue
+	 * @return callable
+	 */
+public dequeue()
 </md:method>
 
 <md:method>
-boolean public executeOne ( mixed ...$args )
-
-Извлекает первую из начала очереди функцию обратного вызова и выполняет её с переданными аргументами. Возвращает `false` если очередь пуста
-
-...$args
-аргументы
+/**
+	 * Compare two priorities
+	 * @param  integer $pri1
+	 * @param  integer $pri2
+	 * @return integer
+	 */
+public compare($pri1, $pri2)
 </md:method>
 
 <md:method>
-integer public executeAll ( mixed ...$args )
-
-Извлекает и выполняет все функции обратного вызова в очереди с переданными аргументами. Возвращает количество выполненных функций обратного вызова
-
-...$args
-аргументы
+/**
+	 * Executes one callback from the top of queue with arbitrary arguments
+	 * @return boolean
+	 */
+public executeOne()
 </md:method>
+
+<md:method>
+/**
+	 * Executes all callbacks from the top of queue to bottom with arbitrary arguments
+	 * @return integer
+	 */
+public executeAll()
+</md:method>
+
+
+<!--/ include-namespace -->

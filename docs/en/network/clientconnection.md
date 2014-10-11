@@ -7,76 +7,114 @@ class ClientConnection extends [Connection](#../connection);
 
 @TODO
 
+<!-- include-namespace path="\PHPDaemon\Network\ClientConnection" commit="" level="" access="" -->
+#### properties # Properties
+
+<md:prop>
+/**
+	 * @var CappedStorage Context cache
+	 */
+protected static $contextCache;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var number Context cache size
+	 */
+protected static $contextCacheSize;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var object Associated pool
+	 */
+public $pool;
+</md:prop>
+
 #### methods # Methods
 
 <md:method>
-void public __construct ( resource $fd, object $pool = null )
-
-Constructor
-
-$fd
-File descriptor
-
-$pool
-ConnectionPool
+/**
+	 * Constructor
+	 * @param resource $fd   File descriptor
+	 * @param mixed    $pool ConnectionPool
+	 */
+public __construct($fd, $pool = null)
 </md:method>
 
 <md:method>
-boolean public isBusy ( )
-
-Busy?
+/**
+	 * Busy?
+	 * @return boolean
+	 */
+public isBusy()
 </md:method>
 
 <md:method>
-void public onResponse ( callable $cb )
-
-Push callback to onReponse stack
-
-$cb
-callable
+/**
+	 * Push callback to onReponse stack
+	 * @param  callable $cb Callback
+	 * @return void
+	 */
+public onResponse($cb)
 </md:method>
 
 <md:method>
-void public onReady ( )
-
-Called when the connection is handshaked (at low-level), and peer is ready to recv. data
+/**
+	 * Called when the connection is handshaked (at low-level), and peer is ready to recv. data
+	 * @return void
+	 */
+public onReady()
 </md:method>
 
 <md:method>
-void public setFree ( boolean $free = true )
-
-Set connection free/busy
-
-$free
-Free?
+/**
+	 * Set connection free/busy
+	 * @param  boolean $free Free?
+	 * @return void
+	 */
+public setFree($free = true)
 </md:method>
 
 <md:method>
-void public release ( )
-
-Set connection free
+/**
+	 * Set connection free
+	 * @return void
+	 */
+public release()
 </md:method>
 
 <md:method>
-void public checkFree ( )
-
-Set connection free/busy according to onResponse emptiness and ->finished
+/**
+	 * Set connection free/busy according to onResponse emptiness and ->finished
+	 * @return void
+	 */
+public checkFree()
 </md:method>
 
 <md:method>
-integer public getQueueLength ( )
-
-@TODO
+/**
+	 * getQueueLength
+	 * @return integer
+	 */
+public getQueueLength()
 </md:method>
 
 <md:method>
-boolean public isQueueEmpty ( )
-
-@TODO
+/**
+	 * isQueueEmpty
+	 * @return boolean
+	 */
+public isQueueEmpty()
 </md:method>
 
 <md:method>
-void public onFinish ( )
-
-Called when connection finishes
+/**
+	 * Called when connection finishes
+	 * @return void
+	 */
+public onFinish()
 </md:method>
+
+
+<!--/ include-namespace -->

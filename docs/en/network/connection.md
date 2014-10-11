@@ -7,241 +7,273 @@ abstract class Connection extends [IOStream](#../iostream);
 
 @TODO
 
+<!-- include-namespace path="\PHPDaemon\Network\Connection" commit="" level="" access="" -->
+#### properties # Properties
+
+<md:prop>
+/**
+	 * @var CappedStorage Context cache
+	 */
+protected static $contextCache;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var number Context cache size
+	 */
+protected static $contextCacheSize;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var object Associated pool
+	 */
+public $pool;
+</md:prop>
+
 #### methods # Methods
 
 <md:method>
-boolean public isConnected ( )
-
-Connected?
+/**
+	 * Connected?
+	 * @return boolean
+	 */
+public isConnected()
 </md:method>
 
 <md:method>
-void public setDgram ( boolean $bool )
-
-Sets DGRAM mode
-
-$bool
-@TODO
+/**
+	 * Sets DGRAM mode
+	 * @param  boolean $bool DGRAM Mode
+	 * @return void
+	 */
+public setDgram($bool)
 </md:method>
 
 <md:method>
-void public setPeername ( string $host, integer $port )
-
-Sets peer name
-
-$host
-Hostname
-
-$port
-Port
+/**
+	 * Sets peer name
+	 * @param  string  $host Hostname
+	 * @param  integer $port Port
+	 * @return void
+	 */
+public setPeername($host, $port)
 </md:method>
 
 <md:method>
-mixed public __get ( string $name )
-
-Getter
-
-$name
-Name
+/**
+	 * Getter
+	 * @param  string $name Name
+	 * @return mixed
+	 */
+public __get($name)
 </md:method>
 
 <md:method>
-void public getSocketName ( string &$addr, string &$port )
-
-Get socket name
-
-&$addr
-Addr
-
-&$port
-Port
+/**
+	 * Get socket name
+	 * @param  string &$addr Addr
+	 * @param  srting &$port Port
+	 * @return void
+	 */
+public getSocketName(&$addr, &$port)
 </md:method>
 
 <md:method>
-void public setParentSocket ( \PHPDaemon\BoundSocket\Generic $sock )
-
-Sets parent socket
+/**
+	 * Sets parent socket
+	 * @param \PHPDaemon\BoundSocket\Generic $sock
+	 * @return void
+	 */
+public setParentSocket(Generic $sock)
 </md:method>
 
 <md:method>
-void public onUdpPacket ( @TODO $pct )
-
-Called when new UDP packet received
-
-$pct
-@TODO
+/**
+	 * Called when new UDP packet received
+	 * @param  object $pct Packet
+	 * @return void
+	 */
+public onUdpPacket($pct)
 </md:method>
 
 <md:method>
-void public onReady ( )
-
-Called when the connection is handshaked (at low-level), and peer is ready to recv. data
+/**
+	 * Called when the connection is handshaked (at low-level), and peer is ready to recv. data
+	 * @return void
+	 */
+public onReady()
 </md:method>
 
 <md:method>
-void public onInheritanceFromRequest ( object $req )
-
-Called if we inherit connection from request
-
-$req
-Parent Request
+/**
+	 * Called if we inherit connection from request
+	 * @param  Request $req Parent Request
+	 * @return void
+	 */
+public onInheritanceFromRequest($req)
 </md:method>
 
 <md:method>
-void public onFailure ( )
-
-Called when the connection failed to be established
+/**
+	 * Called when the connection failed to be established
+	 * @return void
+	 */
+public onFailure()
 </md:method>
 
 <md:method>
-void public onFailureEv ( \EventBufferEvent $bev = null )
-
-Called when the connection failed
-
-$bev
-@TODO
+/**
+	 * Called when the connection failed
+	 * @param  EventBufferEvent $bev
+	 * @return void
+	 */
+public onFailureEv($bev = null)
 </md:method>
 
 <md:method>
-void public __destruct ( )
-
-Destructor
+/**
+	 * Destructor
+	 * @return void
+	 */
+public __destruct()
 </md:method>
 
 <md:method>
-boolean public write ( string $data )
-
-Send data to the connection. Note that it just writes to buffer that flushes at every baseloop
-
-$data
-Data to send
+/**
+	 * Send data to the connection. Note that it just writes to buffer that flushes at every baseloop
+	 * @param  string  $data Data to send
+	 * @return boolean       Success
+	 */
+public write($data)
 </md:method>
 
 <md:method>
-void public onConnected ( callable $cb )
-
-Executes the given callback when/if the connection is handshaked
-
-$cb
-callable
+/**
+	 * Executes the given callback when/if the connection is handshaked
+	 * @param  callable $cb Callback
+	 * @return void
+	 */
+public onConnected($cb)
 </md:method>
 
 <md:method>
-string public getUrl ( )
-
-Get URL
+/**
+	 * Get URL
+	 * @return string
+	 */
+public getUrl()
 </md:method>
 
 <md:method>
-string public getHost ( )
-
-Get host
+/**
+	 * Get host
+	 * @return string
+	 */
+public getHost()
 </md:method>
 
 <md:method>
-integer public getPort ( )
-
-Get port
+/**
+	 * Get port
+	 * @return integer
+	 */
+public getPort()
 </md:method>
 
 <md:method>
-boolean public connect ( string $url, callable $cb = null )
-
-Connects to URL
-
-$url
-URL
-
-$cb
-Callback
+/**
+	 * Connects to URL
+	 * @param  string   $url URL
+	 * @param  callable $cb  Callback
+	 * @return boolean       Success
+	 */
+public connect($url, $cb = null)
 </md:method>
 
 <md:method>
-boolean public connectUnix ( string $path )
-
-Establish UNIX socket connection
-
-$path
-Path
+/**
+	 * Establish UNIX socket connection
+	 * @param  string  $path Path
+	 * @return boolean       Success
+	 */
+public connectUnix($path)
 </md:method>
 
 <md:method>
-boolean public connectRaw ( string $host )
-
-Establish raw socket connection
-
-$host
-Host
+/**
+	 * Establish raw socket connection
+	 * @param  string  $host Hostname
+	 * @return boolean       Success
+	 */
+public connectRaw($host)
 </md:method>
 
 <md:method>
-boolean public connectUdp ( string $host, integer $port )
-
-Establish UDP connection
-
-$host
-Hostname
-
-$port
-Port
+/**
+	 * Establish UDP connection
+	 * @param  string  $host Hostname
+	 * @param  integer $port Port
+	 * @return boolean       Success
+	 */
+public connectUdp($host, $port)
 </md:method>
 
 <md:method>
-boolean public connectTcp ( string $host, integer $port )
-
-Establish TCP connection
-
-$host
-Hostname
-
-$port
-Port
+/**
+	 * Establish TCP connection
+	 * @param  string  $host Hostname
+	 * @param  integer $port Port
+	 * @return boolean       Success
+	 */
+public connectTcp($host, $port)
 </md:method>
 
 <md:method>
-void public setKeepalive ( boolean $bool )
-
-Set keepalive
-
-$bool
-@TODO
+/**
+	 * Set keepalive
+	 * @param  boolean $bool
+	 * @return void
+	 */
+public setKeepalive($bool)
 </md:method>
 
 <md:method>
-void public close ( )
-
-Close the connection
+/**
+	 * Close the connection
+	 * @return void
+	 */
+public close()
 </md:method>
 
 <md:method>
-void public setTimeouts ( integer $read, integer $write )
-
-Set timeouts
-
-$read
-Read timeout in seconds
-
-$write
-Write timeout in seconds
+/**
+	 * Set timeouts
+	 * @param  integer $read  Read timeout in seconds
+	 * @param  integer $write Write timeout in seconds
+	 * @return void
+	 */
+public setTimeouts($read, $write)
 </md:method>
 
 <md:method>
-void public setOption ( integer $level, integer $optname, mixed $val )
-
-Set socket option
-
-$level
-Level
-
-$optname
-Option
-
-$val
-Value
+/**
+	 * Set socket option
+	 * @param  integer $level   Level
+	 * @param  integer $optname Option
+	 * @param  mixed   $val     Value
+	 * @return void
+	 */
+public setOption($level, $optname, $val)
 </md:method>
 
 <md:method>
-void public onFinish ( )
-
-Called when connection finishes
+/**
+	 * Called when connection finishes
+	 * @return void
+	 */
+public onFinish()
 </md:method>
+
+
+<!--/ include-namespace -->

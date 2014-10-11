@@ -5,14 +5,14 @@ namespace PHPDaemon\FS;
 ```
 
 <!-- include-namespace path="\PHPDaemon\FS" commit="" level="" access="" -->
-### file # Class File {tpl-git PHPDaemon/FS/File.php}
+#### file # Class File {tpl-git PHPDaemon/FS/File.php}
 
 ```php
 namespace PHPDaemon\FS;
 class File;
 ```
 
-#### properties # Properties
+##### properties # Properties
 
 <md:prop>
 /**
@@ -70,7 +70,7 @@ public $writing;
 public $closed;
 </md:prop>
 
-#### methods # Methods
+##### methods # Methods
 
 <md:method>
 /**
@@ -314,14 +314,14 @@ public close()
 public __destruct()
 </md:method>
 
-### file-system # Class FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
+#### file-system # Class FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
 
 ```php
 namespace PHPDaemon\FS;
 class FileSystem;
 ```
 
-#### properties # Properties
+##### properties # Properties
 
 <md:prop>
 /**
@@ -379,7 +379,7 @@ public static $fdCacheSize;
 public static $eioVer;
 </md:prop>
 
-#### methods # Methods
+##### methods # Methods
 
 <md:method>
 /**
@@ -693,14 +693,14 @@ public static tempnam($dir, $prefix, $cb)
 public static open($path, $flags, $cb, $mode = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
-### file-watcher # Class FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
+#### file-watcher # Class FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
 
 ```php
 namespace PHPDaemon\FS;
 class FileWatcher;
 ```
 
-#### properties # Properties
+##### properties # Properties
 
 <md:prop>
 /**
@@ -723,7 +723,7 @@ public $inotify;
 public $descriptors;
 </md:prop>
 
-#### methods # Methods
+##### methods # Methods
 
 <md:method>
 /**

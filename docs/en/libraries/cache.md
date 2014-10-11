@@ -8,147 +8,224 @@ namespace PHPDaemon\Cache;
 
 > Используется для кеширования замыканий созданных через create_function. Также используется в {tpl-inlink #clients/dns Clients\DNS}
 
-#### capped-storage # Класс CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
+<!-- include-namespace path="\PHPDaemon\Cache" commit="" level="" access="" -->
+#### capped-storage # Class CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
 
 ```php
 namespace PHPDaemon\Cache;
-abstact class CappedStorage;
+class CappedStorage;
 ```
 
-Базовый абстрактный класс.
-
-##### properties # Свойства
+##### properties # Properties
 
 <md:prop>
-callable public $sorter;
-Метод сортировки
+/**
+	 * @var callable Sorter function
+	 */
+public $sorter;
 </md:prop>
 
 <md:prop>
-integer public $maxCacheSize;
-Максимальное количество элементов в кеше
+/**
+	 * @var integer Maximum number of cached elements
+	 */
+public $maxCacheSize;
 </md:prop>
 
 <md:prop>
-integer public $capWindow;
-Количество элементов, которые пропускаются в кеш сверх максимального количества, для уменьшения количества сортировок
+/**
+	 * @var integer Additional window to decrease number of sorter calls
+	 */
+public $capWindow;
 </md:prop>
 
 <md:prop>
-array public $cache;
-Ассоциативный массив хранимых элементов
+/**
+	 * @var array Storage of cached items
+	 */
+public $cache;
 </md:prop>
 
-##### methods # Методы
+##### methods # Methods
 
 <md:method>
-string public hash ( string $key )
-
-Возвращает хеш ключа, который идентифицирует элемент хранилища, по-умолчанию используется crc32()
-
-$key
-ключ элемента
+/**
+	 * Sets cache size
+	 * @param  integer $size Maximum number of elements
+	 * @return void
+	 */
+public setMaxCacheSize($size)
 </md:method>
 
 <md:method>
-[Item](#../../item) public put ( string $key, mixed $value, float $ttl = null )
-
-Добавляет элемент в кеш {tpl-inlink #../../item Item} с значением `:hc`$value`
-
-$key
-ключ элемента
-
-$value
-значение
-
-$ttl
-время жизни в секундах
+/**
+	 * Sets cap window
+	 * @param  integer $w Additional window to decrease number of sorter calls
+	 * @return void
+	 */
+public setCapWindow($w)
 </md:method>
 
 <md:method>
-void public invalidate ( string $key )
-
-Удаляет элемент кеша
-
-$key
-ключ
+/**
+	 * Hash function
+	 * @param  string $key Key
+	 * @return integer
+	 */
+public hash($key)
 </md:method>
 
 <md:method>
-[Item](#../../item) public get ( string $key )
-
-Возвращает элемент хранилища {tpl-inlink #../../item Item}
-
-$key
-ключ
+/**
+	 * Puts element in cache
+	 * @param  string  $key   Key
+	 * @param  mixed   $value Value
+	 * @param  integer $ttl   Time to live
+	 * @return mixed
+	 */
+public put($key, $value, $ttl = null)
 </md:method>
 
 <md:method>
-mixed public getValue ( string $key )
-
-Возвращает значение элемента хранилища
-
-$key
-ключ элемента
+/**
+	 * Invalidates cache element
+	 * @param  string $key Key
+	 * @return void
+	 */
+public invalidate($key)
 </md:method>
 
-#### item # Класс Item {tpl-git PHPDaemon/Cache/Item.php}
+<md:method>
+/**
+	 * Gets element by key
+	 * @param  string $key Key
+	 * @return object Item
+	 */
+public get($key)
+</md:method>
+
+<md:method>
+/**
+	 * Gets value of element by key
+	 * @param  string $key Key
+	 * @return mixed
+	 */
+public getValue($key)
+</md:method>
+
+#### capped-storage-hits # Class CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
+
+```php
+namespace PHPDaemon\Cache;
+class CappedStorageHits extends \PHPDaemon\Cache\CappedStorage;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var callable Sorter function
+	 */
+public $sorter;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Maximum number of cached elements
+	 */
+public $maxCacheSize;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Additional window to decrease number of sorter calls
+	 */
+public $capWindow;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array Storage of cached items
+	 */
+public $cache;
+</md:prop>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Constructor
+	 * @param  integer $max Maximum number of cached elements
+	 */
+public __construct($max = null)
+</md:method>
+
+<md:method>
+</md:method>
+
+#### item # Class Item {tpl-git PHPDaemon/Cache/Item.php}
 
 ```php
 namespace PHPDaemon\Cache;
 class Item;
 ```
 
-##### properties # Свойства
+##### properties # Properties
 
 <md:prop>
-integer public $hits;
-Количество обращений к значению элемента
+/**
+	 * @var integer Hits counter
+	 */
+public $hits;
 </md:prop>
 
 <md:prop>
-integer public $expire;
-Временная метка до которой элемент действителен
+/**
+	 * @var integer Expire time
+	 */
+public $expire;
 </md:prop>
 
-##### methods # Методы
+##### methods # Methods
 
 <md:method>
-integer public getHits ( )
-
-Возвращает количество обращений к значению элемента
+/**
+	 * Constructor
+	 */
+public __construct($value)
 </md:method>
 
 <md:method>
-mixed public getValue ( )
-
-Возвращает значение элемента
+/**
+	 * Get hits number
+	 * @return integer
+	 */
+public getHits()
 </md:method>
 
 <md:method>
-void public addListener ( callable $cb )
-
-Переданная функция обратного вызова будет вызвана когда будет установлено значение элемента
-
-$cb
-функция обратного вызова
+/**
+	 * Get value
+	 * @return mixed
+	 */
+public getValue()
 </md:method>
 
 <md:method>
-void public setValue ( mixed $value )
-
-Устанавливает значение элемента
-
-$value
-значение
+/**
+	 * Adds listener callback
+	 * @param callable $cb
+	 */
+public addListener($cb)
 </md:method>
 
-#### capped-storage-hits # Класс CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
+<md:method>
+/**
+	 * Sets the value
+	 * @param mixed $value
+	 */
+public setValue($value)
+</md:method>
 
-```php
-namespace PHPDaemon\Cache;
-class CappedStorageHits extends CappedStorage;
-```
 
-Реализация {tpl-inlink #../capped-storage CappedStorage} с сортировкой по количеству обращений
-
+<!--/ include-namespace -->

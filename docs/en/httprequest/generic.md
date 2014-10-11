@@ -7,272 +7,301 @@ abstract class Generic extends \PHPDaemon\Request\Generic;
 
 @TODO
 
+<!-- include-namespace path="\PHPDaemon\HTTPRequest\Generic" commit="" level="" access="" -->
 #### properties # Properties
 
 <md:prop>
-boolean public $keepalive = false;
-@TODO
+/**
+	 * @var array Status codes
+	 */
+protected static $codes;
 </md:prop>
 
 <md:prop>
-integer public $responseLength = 0;
-Current response length
+/**
+	 * @var boolean Keepalive?
+	 */
+public $keepalive;
 </md:prop>
 
 <md:prop>
-array public static $hvaltr = ['; ' => '&', ';' => '&', ' ' => '%20'];
-Replacement pairs for processing some header values in parse_str()
+/**
+	 * @var integer Current response length
+	 */
+public $responseLength;
 </md:prop>
 
 <md:prop>
-array public static $htr = ['-' => '_'];
-State
+/**
+	 * @var array Replacement pairs for processing some header values in parse_str()
+	 */
+public static $hvaltr;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array State
+	 */
+public static $htr;
+</md:prop>
+
+<md:prop>
+/**
+	 * Related Application instance
+	 * @var \PHPDaemon\Core\AppInstance
+	 */
+public $appInstance;
+</md:prop>
+
+<md:prop>
+/**
+	 * Attributes
+	 * @var \StdCLass
+	 */
+public $attrs;
 </md:prop>
 
 #### methods # Methods
 
 <md:method>
-void public firstDeferredEventUsed ( )
-
-@TODO
+/**
+	 * Called when first deferred event used
+	 * @return void
+	 */
+public firstDeferredEventUsed ()
 </md:method>
 
 <md:method>
-boolean public sendfile ( string $path, callable $cb, integer $pri = EIO_PRI_DEFAULT )
-
-Output whole contents of file
-
-$path
-Path
-
-$cb
-Callback
-
-$pri
-Priority
+/**
+	 * Output whole contents of file
+	 * @param  string   $path Path
+	 * @param  callable $cb   Callback
+	 * @param  integer  $pri  Priority
+	 * @return boolean        Success
+	 */
+public sendfile($path, $cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
-boolean public checkIfReady ( )
-
-Called to check if Request is ready
+/**
+	 * Called to check if Request is ready
+	 * @return boolean Ready?
+	 */
+public checkIfReady()
 </md:method>
 
 <md:method>
-integer public getUploadMaxSize ( )
-
-Upload maximum file size
+/**
+	 * Upload maximum file size
+	 * @return integer
+	 */
+public getUploadMaxSize()
 </md:method>
 
 <md:method>
-void public postPrepare ( )
-
-Prepares the request body
+/**
+	 * Prepares the request body
+	 * @return void
+	 */
+public postPrepare()
 </md:method>
 
 <md:method>
-boolean public ensureSentHeaders ( )
-
-Ensure that headers are sent
+/**
+	 * Ensure that headers are sent
+	 * @return boolean Were already sent?
+	 */
+public ensureSentHeaders()
 </md:method>
 
 <md:method>
-boolean public out ( string $s, boolean $flush = true )
-
-Output some data
-
-$s
-String to out
-
-$flush
-Flush
+/**
+	 * Output some data
+	 * @param  string  $s     String to out
+	 * @param  boolean $flush ob_flush?
+	 * @return boolean        Success
+	 */
+public out($s, $flush = true)
 </md:method>
 
 <md:method>
-void public onParsedParams ( )
-
-Called when request's headers parsed
+/**
+	 * Called when request's headers parsed
+	 * @return void
+	 */
+public onParsedParams()
 </md:method>
 
 <md:method>
-boolean public combinedOut ( string $s )
-
-Outputs data with headers (split by \r\n\r\n)
-
-$s
-String to out
+/**
+	 * Outputs data with headers (split by \r\n\r\n)
+	 * @param  string  $s Data
+	 * @return boolean    Success
+	 */
+public combinedOut($s)
 </md:method>
 
 <md:method>
-void public chunked ( )
-
-Use chunked encoding
+/**
+	 * Use chunked encoding
+	 * @return void
+	 */
+public chunked()
 </md:method>
 
 <md:method>
-void public onWakeup ( )
-
-Called when the request wakes up
+/**
+	 * Called when the request wakes up
+	 * @return void
+	 */
+public onWakeup()
 </md:method>
 
 <md:method>
-void public onSleep ( )
-
-Called when the request starts sleep
+/**
+	 * Called when the request starts sleep
+	 * @return void
+	 */
+public onSleep()
 </md:method>
 
 <md:method>
-boolean public status ( integer $code = 200 )
-
-Send HTTP-status
-
-$code
-Code
+/**
+	 * Send HTTP-status
+	 * @param  integer $code Code
+	 * @throws RequestHeadersAlreadySent
+	 * @return boolean Success
+	 */
+public status($code = 200)
 </md:method>
 
 <md:method>
-boolean public headers_sent ( string &$file, integer &$line )
-
-Checks if headers have been sent
-
-&$file
-File name where output started in the file and line variables
-
-&$line
-Line number where output started in the file and line variables
+/**
+	 * Checks if headers have been sent
+	 * @param  string  &$file File name
+	 * @param  integer &$line Line in file
+	 * @return boolean        Success
+	 */
+public headers_sent(&$file, &$line)
 </md:method>
 
 <md:method>
-array public headers_list ( )
-
-Return current list of headers
+/**
+	 * Return current list of headers
+	 * @return array Headers
+	 */
+public headers_list()
 </md:method>
 
 <md:method>
-void public setcookie ( string $name, string $value = '', штеупук $maxage = 0, string $path = '', string $domain = '', boolean $secure = false, boolean $HTTPOnly = false )
-
-Set the cookie
-
-$name
-Name of cookie
-
-$value
-Value
-
-$maxage
-Optional. Max-Age. Default is 0
-
-$path
-Optional. Path. Default is empty string
-
-$domain
-@TODO
-
-$secure
-Optional. Secure. Default is false
-
-$HTTPOnly
-Optional. HTTPOnly. Default is false
+/**
+	 * Set the cookie
+	 * @param string  $name     Name of cookie
+	 * @param string  $value    Value
+	 * @param integer $maxage   Optional. Max-Age. Default is 0
+	 * @param string  $path     Optional. Path. Default is empty string
+	 * @param string  $domain   Optional. Domain. Default is empty string
+	 * @param boolean $secure   Optional. Secure. Default is false
+	 * @param boolean $HTTPOnly Optional. HTTPOnly. Default is false
+	 * @return void
+	 */
+public setcookie($name, $value = '', $maxage = 0, $path = '', $domain = '', $secure = false, $HTTPOnly = false)
 </md:method>
 
 <md:method>
-boolean public header ( string $s, boolean $replace = true, integer $code = false )
-
-Send the header
-
-$s
-Header. Example: `Location: http://php.net/`
-
-$replace
-Optional. Replace?
-
-$code
-Optional. HTTP response code
+/**
+	 * Send the header
+	 * @param  string  $s       Header. Example: 'Location: http://php.net/'
+	 * @param  boolean $replace Optional. Replace?
+	 * @param  integer $code    Optional. HTTP response code
+	 * @throws \PHPDaemon\Request\RequestHeadersAlreadySent
+	 * @return boolean Success
+	 */
+public header($s, $replace = true, $code = false)
 </md:method>
 
 <md:method>
-void public removeHeader ( string $s )
-
-Removes a header
-
-$s
-Header name. Example: `Location`
+/**
+	 * Removes a header
+	 * @param  string $s Header name. Example: 'Location'
+	 * @return void
+	 */
+public removeHeader($s)
 </md:method>
 
 <md:method>
-integer public static parseSize ( string $value )
-
-Converts human-readable representation of size to number of bytes
-
-$value
-Data
+/**
+	 * Converts human-readable representation of size to number of bytes
+	 * @param  string $value String of size
+	 * @return integer
+	 */
+public static parseSize($value)
 </md:method>
 
 <md:method>
-void public onUploadFileStart ( [Input](#../input) $in )
-
-Called when file upload started
-
-$in
-Input
+/**
+	 * Called when file upload started
+	 * @param  Input $in Input buffer
+	 * @return void
+	 */
+public onUploadFileStart($in)
 </md:method>
 
 <md:method>
-void public onUploadFileChunk ( [Input](#../input) $in, boolean $last = false )
-
-Called when chunk of incoming file has arrived
-
-$in
-Input
-
-$last
-Last?
+/**
+	 * Called when chunk of incoming file has arrived
+	 * @param  Input   $in   Input buffer
+	 * @param  boolean $last Last?
+	 * @return void
+	 */
+public onUploadFileChunk($in, $last = false)
 </md:method>
 
 <md:method>
-string public getUploadTempDir ( )
-
-@TODO
+/**
+	 * Returns path to directory of temporary upload files
+	 * @return string
+	 */
+public getUploadTempDir()
 </md:method>
 
 <md:method>
-boolean public isUploadedFile ( string $path )
-
-Tells whether the file was uploaded via HTTP POST
-
-$path
-The filename being checked
+/**
+	 * Tells whether the file was uploaded via HTTP POST
+	 * @param  string  $path The filename being checked
+	 * @return boolean       Whether if this is uploaded file
+	 */
+public isUploadedFile($path)
 </md:method>
 
 <md:method>
-boolean public moveUploadedFile ( string $filename, string $dest )
-
-Moves an uploaded file to a new location
-
-$filename
-The filename of the uploaded file
-
-$dest
-The destination of the moved file
+/**
+	 * Moves an uploaded file to a new location
+	 * @param  string  $filename The filename of the uploaded file
+	 * @param  string  $dest     The destination of the moved file
+	 * @return boolean           Success
+	 */
+public moveUploadedFile($filename, $dest)
 </md:method>
 
 <md:method>
-boolean public readBodyFile ( )
-
-Read request body from the file given in REQUEST_BODY_FILE parameter
+/**
+	 * Read request body from the file given in REQUEST_BODY_FILE parameter
+	 * @return boolean Success
+	 */
+public readBodyFile()
 </md:method>
 
 <md:method>
-void public static parse_str ( string $s, array &$var, boolean $header = false )
-
-Replacement for default parse_str(), it supoorts UCS-2 like this: %uXXXX
-
-$s
-String to parse
-
-&$var
-Reference to the resulting array
-
-$header
-Header-style string
+/**
+	 * Replacement for default parse_str(), it supoorts UCS-2 like this: %uXXXX
+	 * @param  string  $s      String to parse
+	 * @param  array   &$var   Reference to the resulting array
+	 * @param  boolean $header Header-style string
+	 * @return void
+	 */
+public static parse_str($s, &$var, $header = false)
 </md:method>
+
+
+<!--/ include-namespace -->

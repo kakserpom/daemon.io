@@ -7,398 +7,408 @@ abstract class IOStream;
 
 @TODO
 
+<!-- include-namespace path="\PHPDaemon\Network\IOStream" commit="" level="" access="" -->
+#### consts # Constants
+
+<md:const>
+const STATE_ROOT = 0;
+Alias of STATE_STANDBY
+</md:const>
+
+<md:const>
+const STATE_STANDBY = 0;
+Standby state (default state)
+</md:const>
+
 #### properties # Properties
 
 <md:prop>
-ConnectionPool public $pool;
-Associated pool
-</md:prop>
-
-<md:prop>
+/**
+	 * @var object Associated pool
+	 */
+public $pool;
 </md:prop>
 
 #### methods # Methods
 
 <md:method>
-void public __construct ( resource $fd = null, object $pool = null )
-
-IOStream constructor
-
-$fd
-File descriptor. Optional.
-
-$pool
-Pool. Optional.
+/**
+	 * IOStream constructor
+	 * @param resource $fd   File descriptor. Optional
+	 * @param object   $pool Pool. Optional
+	 */
+public __construct($fd = null, $pool = null)
 </md:method>
 
 <md:method>
-mixed public __get ( string $name )
-
-Getter
-
-$name
-Name
+/**
+	 * Getter
+	 * @param  string $name Name
+	 * @return mixed
+	 */
+public __get($name)
 </md:method>
 
 <md:method>
-boolean public isFreed ( )
-
-Freed?
+/**
+	 * Freed?
+	 * @return boolean
+	 */
+public isFreed()
 </md:method>
 
 <md:method>
-boolean public isFinished ( )
-
-Finished?
+/**
+	 * Finished?
+	 * @return boolean
+	 */
+public isFinished()
 </md:method>
 
 <md:method>
-\EventBufferEvent public getBev ( )
-
-Get EventBufferEvent
+/**
+	 * Get EventBufferEvent
+	 * @return EventBufferEvent
+	 */
+public getBev()
 </md:method>
 
 <md:method>
-resource public getFd ( )
-
-Get file descriptor
+/**
+	 * Get file descriptor
+	 * @return resource File descriptor
+	 */
+public getFd()
 </md:method>
 
 <md:method>
-void public setContext ( object $ctx, integer $mode )
-
-Sets context mode
-
-$ctx
-Context
-
-$mode
-Mode
+/**
+	 * Sets context mode
+	 * @param  object  $ctx  Context
+	 * @param  integer $mode Mode
+	 * @return void
+	 */
+public setContext($ctx, $mode)
 </md:method>
 
 <md:method>
-void public setFd ( resource $fd, \EventBufferEvent $bev = null )
-
-Sets fd
-
-$fd
-File descriptor
-
-$bev
-EventBufferEvent
+/**
+	 * Sets fd
+	 * @param  resource $fd  File descriptor
+	 * @param  object   $bev EventBufferEvent
+	 * @return void
+	 */
+public setFd($fd, $bev = null)
 </md:method>
 
 <md:method>
-void public setTimeout ( integer $rw )
-
-Set timeout
-
-$rw
-Timeout
+/**
+	 * Set timeout
+	 * @param  integer $rw Timeout
+	 * @return void
+	 */
+public setTimeout($rw)
 </md:method>
 
 <md:method>
-void public setTimeouts ( integer $read, integer $write )
-
-Set timeouts
-
-$read
-Read timeout in seconds
-
-$write
-Write timeout in seconds
+/**
+	 * Set timeouts
+	 * @param  integer $read  Read timeout in seconds
+	 * @param  integer $write Write timeout in seconds
+	 * @return void
+	 */
+public setTimeouts($read, $write)
 </md:method>
 
 <md:method>
-void public setPriority ( integer $p )
-
-Sets priority
-
-$p
-Priority
+/**
+	 * Sets priority
+	 * @param  integer $p Priority
+	 * @return void
+	 */
+public setPriority($p)
 </md:method>
 
 <md:method>
-void public setWatermark ( integer $low = null, integer $high = null )
-
-Sets watermark
-
-$low
-Low
-
-$high
-High
+/**
+	 * Sets watermark
+	 * @param  integer|null $low  Low
+	 * @param  integer|null $high High
+	 * @return void
+	 */
+public setWatermark($low = null, $high = null)
 </md:method>
 
 <md:method>
-string public readLine ( integer $eol = null )
-
-Reads line from buffer
-
-$eol
-@TODO
+/**
+	 * Reads line from buffer
+	 * @param  integer     $eol EOLS_*
+	 * @return string|null
+	 */
+public readLine($eol = null)
 </md:method>
 
 <md:method>
-boolean public drain ( integer $n )
-
-Drains buffer
-
-$n
-Numbers of bytes to drain
+/**
+	 * Drains buffer
+	 * @param  integer $n Numbers of bytes to drain
+	 * @return boolean    Success
+	 */
+public drain($n)
 </md:method>
 
 <md:method>
-boolean public drainIfMatch ( string $str )
-
-Drains buffer it matches the string
-
-$str
-Data
+/**
+	 * Drains buffer it matches the string
+	 * @param  string       $str Data
+	 * @return boolean|null      Success
+	 */
+public drainIfMatch($str)
 </md:method>
 
 <md:method>
-string public lookExact ( integer $n, integer $o = 0 )
-
-Reads exact $n bytes of buffer without draining
-
-$n
-Number of bytes to read
-
-$o
-Offset
+/**
+	 * Reads exact $n bytes of buffer without draining
+	 * @param  integer $n Number of bytes to read
+	 * @param  integer $o Offset
+	 * @return string|false
+	 */
+public lookExact($n, $o = 0)
 </md:method>
 
 <md:method>
-boolean public prependInput ( string $str )
-
-Prepends data to input buffer
-
-$str
-Data
+/**
+	 * Prepends data to input buffer
+	 * @param  string  $str Data
+	 * @return boolean      Success
+	 */
+public prependInput($str)
 </md:method>
 
 <md:method>
-boolean public prependOutput ( string $str )
-
-Prepends data to output buffer
-
-$str
-Data
+/**
+	 * Prepends data to output buffer
+	 * @param  string  $str Data
+	 * @return boolean      Success
+	 */
+public prependOutput($str)
 </md:method>
 
 <md:method>
-string public look ( integer $n, integer $o = 0 )
-
-Read from buffer without draining
-
-$n
-Number of bytes to read
-
-$o
-Offset
+/**
+	 * Read from buffer without draining
+	 * @param integer $n Number of bytes to read
+	 * @param integer $o Offset
+	 * @return string|false
+	 */
+public look($n, $o = 0)
 </md:method>
 
 <md:method>
-string public substr ( integer $o, integer $n = -1 )
-
-Read from buffer without draining
-
-$o
-Offset
-
-$n
-Number of bytes to read
+/**
+	 * Read from buffer without draining
+	 * @param  integer $o Offset
+	 * @param  integer $n Number of bytes to read
+	 * @return string|false
+	 */
+public substr($o, $n = -1)
 </md:method>
 
 <md:method>
-integer public search ( string $what, integer $start = 0, integer $end = -1 )
-
-Searches first occurence of the string in input buffer
-
-$what
-Needle
-
-$start
-Offset start
-
-$end
-Offset end
+/**
+	 * Searches first occurence of the string in input buffer
+	 * @param  string  $what  Needle
+	 * @param  integer $start Offset start
+	 * @param  integer $end   Offset end
+	 * @return integer        Position
+	 */
+public search($what, $start = 0, $end = -1)
 </md:method>
 
 <md:method>
-string public readExact ( integer $n )
-
-Reads exact $n bytes from buffer
-
-$n
-Number of bytes to read
+/**
+	 * Reads exact $n bytes from buffer
+	 * @param  integer      $n Number of bytes to read
+	 * @return string|false
+	 */
+public readExact($n)
 </md:method>
 
 <md:method>
-integer public getInputLength ( )
-
-Returns length of input buffer
+/**
+	 * Returns length of input buffer
+	 * @return integer
+	 */
+public getInputLength()
 </md:method>
 
 <md:method>
-boolean public gracefulShutdown ( )
-
-Called when the worker is going to shutdown
+/**
+	 * Called when the worker is going to shutdown
+	 * @return boolean Ready to shutdown?
+	 */
+public gracefulShutdown()
 </md:method>
 
 <md:method>
-boolean public freezeInput ( boolean $at_front = false )
-
-Freeze input
-
-$at_front
-At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen.
+/**
+	 * Freeze input
+	 * @param  boolean $at_front At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen
+	 * @return boolean           Success
+	 */
+public freezeInput($at_front = false)
 </md:method>
 
 <md:method>
-boolean public unfreezeInput ( boolean $at_front = false )
-
-Unfreeze input
-
-$at_front
-At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen.
+/**
+	 * Unfreeze input
+	 * @param  boolean $at_front At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen
+	 * @return boolean           Success
+	 */
+public unfreezeInput($at_front = false)
 </md:method>
 
 <md:method>
-boolean public freezeOutput ( boolean $at_front = true )
-
-Freeze output
-
-$at_front
-At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen.
+/**
+	 * Freeze output
+	 * @param  boolean $at_front At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen
+	 * @return boolean           Success
+	 */
+public freezeOutput($at_front = true)
 </md:method>
 
 <md:method>
-boolean public unfreezeOutput ( boolean $at_front = true )
-
-Unfreeze output
-
-$at_front
-At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen.
+/**
+	 * Unfreeze output
+	 * @param  boolean $at_front At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen
+	 * @return boolean           Success
+	 */
+public unfreezeOutput($at_front = true)
 </md:method>
 
 <md:method>
-void public onWrite ( )
-
-Called when the connection is ready to accept new data
+/**
+	 * Called when the connection is ready to accept new data
+	 * @return void
+	 */
+public onWrite()
 </md:method>
 
 <md:method>
-boolean public write ( string $data )
-
-Send data to the connection. Note that it just writes to buffer that flushes at every baseloop
-
-$data
-Data to send
+/**
+	 * Send data to the connection. Note that it just writes to buffer that flushes at every baseloop
+	 * @param  string  $data Data to send
+	 * @return boolean       Success
+	 */
+public write($data)
 </md:method>
 
 <md:method>
-boolean public writeln ( string $data )
-
-Send data and appending \n to connection. Note that it just writes to buffer flushed at every baseloop
-
-$data
-Data to send
+/**
+	 * Send data and appending \n to connection. Note that it just writes to buffer flushed at every baseloop
+	 * @param  string  $data Data to send
+	 * @return boolean       Success
+	 */
+public writeln($data)
 </md:method>
 
 <md:method>
-void public finish ( )
-
-Finish the session. You should not worry about buffers, they are going to be flushed properly.
+/**
+	 * Finish the session. You should not worry about buffers, they are going to be flushed properly
+	 * @return void
+	 */
+public finish()
 </md:method>
 
 <md:method>
-void public close ( )
-
-Close the connection
+/**
+	 * Close the connection
+	 * @return void
+	 */
+public close()
 </md:method>
 
 <md:method>
-void public unsetFd ( )
-
-Unsets pointers of associated EventBufferEvent and File descriptr
+/**
+	 * Unsets pointers of associated EventBufferEvent and File descriptr
+	 * @return void
+	 */
+public unsetFd()
 </md:method>
 
 <md:method>
-void public onReadEv ( \EventBufferEvent $bev )
-
-Called when the connection has got new data
-
-$bev
-Bufferevent
+/**
+	 * Called when the connection has got new data
+	 * @param  object $bev EventBufferEvent
+	 * @return void
+	 */
+public onReadEv($bev)
 </md:method>
 
 <md:method>
-void public onWriteOnce ( callable $cb )
-
-Push callback which will be called only once, when writing is available next time
-
-$cb
-Callback
+/**
+	 * Push callback which will be called only once, when writing is available next time
+	 * @param  callable $cb Callback
+	 * @return void
+	 */
+public onWriteOnce($cb)
 </md:method>
 
 <md:method>
-void public onWriteEv ( \EventBufferEvent $bev )
-
-Called when the connection is ready to accept new data
-
-$bev
-Bufferedevent
+/**
+	 * Called when the connection is ready to accept new data
+	 * @param  object $bev EventBufferEvent
+	 * @return void
+	 */
+public onWriteEv($bev)
 </md:method>
 
 <md:method>
-void public onStateEv ( \EventBufferEvent $bev, integer $events )
-
-Called when the connection state changed
-
-$bev
-Bufferevent
-
-$events
-Events
+/**
+	 * Called when the connection state changed
+	 * @param  object  $bev    EventBufferEvent
+	 * @param  integer $events Events
+	 * @return void
+	 */
+public onStateEv($bev, $events)
 </md:method>
 
 <md:method>
-integer public moveToBuffer ( \EventBuffer $dest, integer $n )
-
-Moves arbitrary number of bytes from input buffer to given buffer
-
-$dest
-Destination nuffer
-
-$n
-Max. number of bytes to move
+/**
+	 * Moves arbitrary number of bytes from input buffer to given buffer
+	 * @param  \EventBuffer $dest Destination nuffer
+	 * @param  integer      $n    Max. number of bytes to move
+	 * @return integer|false
+	 */
+public moveToBuffer(\EventBuffer $dest, $n)
 </md:method>
 
 <md:method>
-integer public writeFromBuffer ( \EventBuffer $src, integer $n )
-
-Moves arbitrary number of bytes from given buffer to output buffer
-
-$src
-Source buffer
-
-$n
-Max. number of bytes to move
+/**
+	 * Moves arbitrary number of bytes from given buffer to output buffer
+	 * @param  \EventBuffer $src Source buffer
+	 * @param  integer      $n   Max. number of bytes to move
+	 * @return integer|false
+	 */
+public writeFromBuffer(\EventBuffer $src, $n)
 </md:method>
 
 <md:method>
-string public read ( integer $n )
-
-Read data from the connection's buffer
-
-$n
-Max. number of bytes to read
+/**
+	 * Read data from the connection's buffer
+	 * @param  integer      $n Max. number of bytes to read
+	 * @return string|false    Readed data
+	 */
+public read($n)
 </md:method>
 
 <md:method>
-string public readUnlimited ( )
-
-Reads all data from the connection's buffer
+/**
+	 * Reads all data from the connection's buffer
+	 * @return string Readed data
+	 */
+public readUnlimited()
 </md:method>
+
+
+<!--/ include-namespace -->

@@ -7,145 +7,180 @@ abstract class Client extends [Pool](#../pool);
 
 @TODO
 
+<!-- include-namespace path="\PHPDaemon\Network\Client" commit="" level="" access="" -->
+#### properties # Properties
+
+<md:prop>
+/**
+	 * @var string Default connection class
+	 */
+public $connectionClass;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string Name
+	 */
+public $name;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var \PHPDaemon\Config\Section Configuration
+	 */
+public $config;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var ConnectionPool[] Instances storage
+	 */
+protected static $instances;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Max concurrency
+	 */
+public $maxConcurrency;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Max allowed packet
+	 */
+public $maxAllowedPacket;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var object|null Application instance object
+	 */
+public $appInstance;
+</md:prop>
+
 #### methods # Methods
 
 <md:method>
-void public addServer ( string $url, integer $weight = NULL )
-
-Adds server
-
-$url
-Server URL
-
-$weight
-Weight
+/**
+	 * Adds server
+	 * @param  string  $url    Server URL
+	 * @param  integer $weight Weight
+	 * @return void
+	 */
+public addServer($url, $weight = NULL)
 </md:method>
 
 <md:method>
-boolean public getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )
-
-Returns available connection from the pool
-
-$url
-Address
-
-$cb
-onConnected
-
-$pri
-Optional. Priority.
+/**
+	 * Returns available connection from the pool
+	 * @param  string   $url Address
+	 * @param  callback $cb  onConnected
+	 * @param  integer  $pri Optional. Priority
+	 * @call   boolean public getConnection ( callable $cb )
+	 * @call   boolean public getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )
+	 * @return boolean       Success|Connection
+	 */
+public getConnection($url = null, $cb = null, $pri = 0)
 </md:method>
 
 <md:method>
-void public detach ( [Connection](#../../connection) $conn )
-
-Detach Connection
-
-$conn
-Connection
+/**
+	 * Detach Connection
+	 * @param  object $conn Connection
+	 * @return void
+	 */
+public detach($conn)
 </md:method>
 
 <md:method>
-void public markConnFree ( [ClientConnection](#../../clientconnection) $conn, string $url )
-
-Mark connection as free
-
-$conn
-Connection
-
-$url
-URL
+/**
+	 * Mark connection as free
+	 * @param  ClientConnection $conn Connection
+	 * @param  string           $url  URL
+	 * @return void
+	 */
+public markConnFree(ClientConnection $conn, $url)
 </md:method>
 
 <md:method>
-void public markConnBusy ( [ClientConnection](#../../clientconnection) $conn, string $url )
-
-Mark connection as busy
-
-$conn
-Connection
-
-$url
-URL
+/**
+	 * Mark connection as busy
+	 * @param  ClientConnection $conn Connection
+	 * @param  string           $url  URL
+	 * @return void
+	 */
+public markConnBusy(ClientConnection $conn, $url)
 </md:method>
 
 <md:method>
-void public detachConnFromUrl ( [ClientConnection](#../../clientconnection) $conn, string $url )
-
-Detaches connection from URL
-
-$conn
-Connection
-
-$url
-URL
+/**
+	 * Detaches connection from URL
+	 * @param  ClientConnection $conn Connection
+	 * @param  string           $url  URL
+	 * @return void
+	 */
+public detachConnFromUrl(ClientConnection $conn, $url)
 </md:method>
 
 <md:method>
-void public touchPending ( string $url )
-
-Touch pending "requests for connection"
-
-$url
-URL
+/**
+	 * Touch pending "requests for connection"
+	 * @param  string $url URL
+	 * @return void
+	 */
+public touchPending($url)
 </md:method>
 
 <md:method>
-boolean public getConnectionByKey ( string $key, callable $cb = null )
-
-Returns available connection from the pool by key
-
-$key
-Key
-
-$cb
-Callback
+/**
+	 * Returns available connection from the pool by key
+	 * @param  string   $key Key
+	 * @param  callable $cb  Callback
+	 * @return boolean       Success
+	 */
+public getConnectionByKey($key, $cb = null)
 </md:method>
 
 <md:method>
-boolean public getConnectionRR ( callable $cb = null )
-
-Returns available connection from the pool
-
-$cb
-Callback
+/**
+	 * Returns available connection from the pool
+	 * @param  callable $cb Callback
+	 * @return boolean      Success
+	 */
+public getConnectionRR($cb = null)
 </md:method>
 
 <md:method>
-boolean public requestByServer ( string $server, string $data, callable $onResponse = null )
-
-Sends a request to arbitrary server
-
-$server
-Server
-
-$data
-Request
-
-$onResponse
-Callback called when the request complete
+/**
+	 * Sends a request to arbitrary server
+	 * @param  string   $server     Server
+	 * @param  string   $data       Data
+	 * @param  callable $onResponse Called when the request complete
+	 * @return boolean              Success
+	 */
+public requestByServer($server, $data, $onResponse = null)
 </md:method>
 
 <md:method>
-boolean public requestByKey ( string $key, string $data, callable $onResponse = null )
-
-Sends a request to server according to the key
-
-$key
-Key
-
-$data
-Request
-
-$onResponse
-Callback called when the request complete
+/**
+	 * Sends a request to server according to the key
+	 * @param  string   $key        Key
+	 * @param  string   $data       Data
+	 * @param  callable $onResponse Callback called when the request complete
+	 * @return boolean              Success
+	 */
+public requestByKey($key, $data, $onResponse = null)
 </md:method>
 
 <md:method>
-boolean public onShutdown ( boolean $graceful = false )
-
-Called when application instance is going to shutdown
-
-$graceful
-@TODO
+/**
+	 * Called when application instance is going to shutdown
+	 * @param  boolean $graceful Graceful?
+	 * @return boolean           Ready to shutdown?
+	 */
+public onShutdown($graceful = false)
 </md:method>
+
+
+<!--/ include-namespace -->

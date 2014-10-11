@@ -9,61 +9,69 @@ class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.ph
 
 > Используется в [Network/Client](#network/client) для хранения стека функций обратного вызова запросов
 
-#### methods # Методы
+<!-- include-namespace path="\PHPDaemon\Structures\StackCallbacks" commit="" level="" access="" -->
+#### methods # Methods
 
 <md:method>
-void public push ( callable $cb )
-
-Добавляет функцию обратного вызова в конец стека
-
-$cb
-функция
+/**
+	 * Push callback to the bottom of stack
+	 * @param  callable $cb Callback
+	 * @return void
+	 */
+public push($cb)
 </md:method>
 
 <md:method>
-void public unshift ( callable $cb )
-
-Добавляет функцию обратного вызова в начало стека
-
-$cb
-функция
+/**
+	 * Push callback to the top of stack
+	 * @param  callable $cb Callback
+	 * @return void
+	 */
+public unshift($cb)
 </md:method>
 
 <md:method>
-boolean public executeOne ( mixed ...$args )
-
-Извлекает первую функцию обратного вызова из начала стека и выполняет её с переданными аргументами. Возвращает `false` если стек пуст
-
-...$args
-аргументы
+/**
+	 * Executes one callback from the top with given arguments
+	 * @param  mixed   ...$args Arguments
+	 * @return boolean
+	 */
+public executeOne()
 </md:method>
 
 <md:method>
-boolean public executeAndKeepOne ( mixed ...$args )
-
-Выполяет первую функцию обратного вызова из начала стека с переданными аргументами без извлечения её из стека. Возвращает `false` если стек пуст
-
-...$args
-аргументы
+/**
+	 * Executes one callback from the top with given arguments without taking it out
+	 * @param  mixed   ...$args Arguments
+	 * @return boolean
+	 */
+public executeAndKeepOne()
 </md:method>
 
 <md:method>
-integer public executeAll ( mixed ...$args )
-
-Извлекает все функции обратного вызова и выполняет с заданными аргументами. Возвращает количество выполненных функций.
-
-...$args
-аргументы
+/**
+	 * Executes all callbacks with given arguments
+	 * @param  mixed   ...$args Arguments
+	 * @return integer
+	 */
+public executeAll()
 </md:method>
 
 <md:method>
-array public toArray ( )
-
-Возвращает индексный массив стека
+/**
+	 * Return array
+	 * @return array
+	 */
+public toArray()
 </md:method>
 
 <md:method>
-void public reset ( )
-
-Удаляет все элементы из стека
+/**
+	 * Shifts all callbacks sequentially
+	 * @return void
+	 */
+public reset()
 </md:method>
+
+
+<!--/ include-namespace -->

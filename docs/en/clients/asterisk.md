@@ -215,14 +215,14 @@ class PbxReconnector extends Request {
 ```
 
 <!-- include-namespace path="\PHPDaemon\Clients\Asterisk" commit="" level="" access="" -->
-### connection # Class Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
+#### connection # Class Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
 
 ```php
 namespace PHPDaemon\Clients\Asterisk;
 class Connection extends \PHPDaemon\Network\ClientConnection;
 ```
 
-#### consts # Constants
+##### consts # Constants
 
 <md:const>
 const CONN_STATE_START = 0;
@@ -279,7 +279,7 @@ const INPUT_STATE_PROCESSING = 2;
 @TODO DESCR
 </md:const>
 
-#### properties # Properties
+##### properties # Properties
 
 <md:prop>
 /**
@@ -385,7 +385,7 @@ protected static $contextCacheSize;
 public $pool;
 </md:prop>
 
-#### methods # Methods
+##### methods # Methods
 
 <md:method>
 /**
@@ -662,21 +662,21 @@ public logoff($cb = null)
 public onEvent($cb)
 </md:method>
 
-### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
+#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
 
 ```php
 namespace PHPDaemon\Clients\Asterisk;
 class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
 ```
 
-### pool # Class Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
+#### pool # Class Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
 
 ```php
 namespace PHPDaemon\Clients\Asterisk;
 class Pool extends \PHPDaemon\Network\Client;
 ```
 
-#### properties # Properties
+##### properties # Properties
 
 <md:prop>
 /**
@@ -735,7 +735,7 @@ public $maxAllowedPacket;
 public $appInstance;
 </md:prop>
 
-#### methods # Methods
+##### methods # Methods
 
 <md:method>
 /** Sets AMI version

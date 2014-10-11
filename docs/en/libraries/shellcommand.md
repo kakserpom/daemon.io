@@ -35,175 +35,237 @@ ShellCommand::exec($command, $cb, $arguments, $env);
 
 @TODO
 
-#### properties # Свойства
+<!-- include-namespace path="\PHPDaemon\Core\ShellCommand" commit="" level="" access="" -->
+#### properties # Properties
 
 <md:prop>
-string public $binPath;
-Исполняемый путь
+/**
+	 * @var string Executable path
+	 */
+public $binPath;
 </md:prop>
 
 <md:prop>
-string public $setUser;
-Имя Unix-пользователя от имени которого выполняется команда
+/**
+	 * @var string SUID
+	 */
+public $setUser;
 </md:prop>
 
 <md:prop>
-string public $setGroup;
-Имя Unix-группы от имени которого выполняется команда
+/**
+	 * @var string SGID
+	 */
+public $setGroup;
 </md:prop>
 
 <md:prop>
-string public $chroot = '/';
-Подмена корневого каталога для выполняемой команды
+/**
+	 * @var string Chroot
+	 */
+public $chroot;
 </md:prop>
 
 <md:prop>
-string public $cwd;
-@TODO
+/**
+	 * @var string Chdir
+	 */
+public $cwd;
 </md:prop>
 
-#### methods # Методы
+<md:prop>
+/**
+	 * @var object Associated pool
+	 */
+public $pool;
+</md:prop>
+
+#### methods # Methods
 
 <md:method>
-void public static exec ( string $binPath = null, callable $cb = null, array $args = null, array $env = null )
-
-Выполняет команду (статический метод)
-
-$binPath
-исполняемый путь
-
-$cb
-функция обратного вызова
-
-$args
-массив аргументов
-
-$env
-ассоциативный массив переменных окружения (можно передать $_ENV`)
+/**
+	 * Get command string
+	 * @return string
+	 */
+public getCmd()
 </md:method>
 
 <md:method>
-string public getCmd ( )
-
-Возвращает строку исполняемой команды
+/**
+	 * Set group
+	 * @return this
+	 */
+public setGroup($val)
 </md:method>
 
 <md:method>
-[ShellCommand](#../) public setUser ( string $val )
-
-Задает имя Unix-пользователя от имени которого выполняется команда
-
-$val
-имя пользователя
+/**
+	 * Set cwd
+	 * @param  string $dir
+	 * @return this
+	 */
+public setCwd($dir)
 </md:method>
 
 <md:method>
-[ShellCommand](#../) public setGroup ( string $val )
-
-Задает название Unix-группы от которой выполняется команда
-
-$val
-название группы
+/**
+	 * Set group
+	 * @param  string $val
+	 * @return this
+	 */
+public setUser($val)
 </md:method>
 
 <md:method>
-[ShellCommand](#../) public setCwd ( string $dir )
-
-Установить рабочий каталог для выполняемой команды
-
-$dir
-путь
+/**
+	 * Set chroot
+	 * @param  string $dir
+	 * @return this
+	 */
+public setChroot($dir)
 </md:method>
 
 <md:method>
-[ShellCommand](#../) public setChroot ( string $dir )
-
-Подменяет корневой каталог для выполняемой команды
-
-$dir
-путь
+/**
+	 * Execute
+	 * @param  string   $binPath Binpath
+	 * @param  callable $cb 	 Callback
+	 * @param  array    $args    Optional. Arguments
+	 * @param  array    $env     Optional. Hash of environment's variables
+	 */
+public static exec($binPath = null, $cb = null, $args = null, $env = null)
 </md:method>
 
 <md:method>
-[ShellCommand](#../) public setArgs ( array $args = NULL )
-
-Установить список аргументов
-
-$args
-массив аргументов
+/**
+	 * Sets fd
+	 * @param  resource          $fd File descriptor
+	 * @param  \EventBufferEvent $bev
+	 * @return void
+	 */
+public setFd($fd, $bev = null)
 </md:method>
 
 <md:method>
-[ShellCommand](#../) public setEnv ( array $env = NULL )
-
-Задает ассоциативный массив переменных окружения (можно передать $_ENV`)
-
-$env
-массив
+/**
+	 * Sets an array of arguments
+	 * @param  array Arguments
+	 * @return this
+	 */
+public setArgs($args = NULL)
 </md:method>
 
 <md:method>
-[ShellCommand](#../) public nice ( integer $nice = NULL )
-
-Задает приоритет выделения процессорного времени (меньше — выше)
-
-$nice
-целое число
+/**
+	 * Set a hash of environment's variables
+	 * @param  array Hash of environment's variables
+	 * @return this
+	 */
+public setEnv($env = NULL)
 </md:method>
 
 <md:method>
-string public static buildArgs ( array $args )
-
-Строит строку аргументов по массиву
-
-$args
-массив аргумент
+/**
+	 * Called when got EOF
+	 * @return void
+	 */
+public onEofEvent()
 </md:method>
 
 <md:method>
-[ShellCommand](#../) public execute ( string $binPath = NULL, array $args = NULL, array $env = NULL )
-
-Непосредственно выполняет команду
-
-$binPath
-исполняемый путь
-
-$args
-массив аргументов
-
-$env
-ассоциативный массив переменных окружения (можно передать $_ENV`)
+/**
+	 * Set priority
+	 * @param  integer $nice Priority
+	 * @return this
+	 */
+public nice($nice = NULL)
 </md:method>
 
 <md:method>
-boolean public finishWrite ( )
-
-Закрывает поток ввода исполняемого процесса, когда буфер будет прочитан
+/**
+	 * Build arguments string from associative/enumerated array (may be mixed)
+	 * @param  array $args
+	 * @return string
+	 */
+public static buildArgs($args)
 </md:method>
 
 <md:method>
-void public close ( )
-
-Завершает процесс
+/**
+	 * Execute
+	 * @param  string $binPath Optional. Binpath
+	 * @param  array  $args    Optional. Arguments
+	 * @param  array  $env     Optional. Hash of environment's variables
+	 * @return this
+	 */
+public execute($binPath = NULL, $args = NULL, $env = NULL)
 </md:method>
 
 <md:method>
-[ShellCommand](#../) public closeWrite ( )
-
-Безусловно закрывает поток ввода исполняемого процесса (STDIN)
+/**
+	 * Finish write stream
+	 * @return boolean
+	 */
+public finishWrite()
 </md:method>
 
 <md:method>
-boolean public eof ( )
-
-Достигнут ли EOF (Конец Файла)?
+/**
+	 * Close the process
+	 * @return void
+	 */
+public close()
 </md:method>
 
 <md:method>
-[ShellCommand](#../) public onEOF ( callable $cb = NULL )
-
-Переданная функция обратного вызова будет вызвана когда достигнут EOF (Конец Файла)
-
-$cb
-функция обратного вызова
+/**
+	 * Called when stream is finished
+	 */
+public onFinish()
 </md:method>
+
+<md:method>
+/**
+	 * Close write stream
+	 * @return this
+	 */
+public closeWrite()
+</md:method>
+
+<md:method>
+/**
+	 * Got EOF?
+	 * @return boolean
+	 */
+public eof()
+</md:method>
+
+<md:method>
+/**
+	 * Send data to the connection. Note that it just writes to buffer that flushes at every baseloop
+	 * @param  string $data Data to send
+	 * @return boolean Success
+	 */
+public write($data)
+</md:method>
+
+<md:method>
+/**
+	 * Send data and appending \n to connection. Note that it just writes to buffer flushed at every baseloop
+	 * @param  string Data to send
+	 * @return boolean Success
+	 */
+public writeln($data)
+</md:method>
+
+<md:method>
+/**
+	 * Sets callback which will be called once when got EOF
+	 * @param  callable $cb
+	 * @return this
+	 */
+public onEOF($cb = NULL)
+</md:method>
+
+
+<!--/ include-namespace -->

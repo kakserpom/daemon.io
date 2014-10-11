@@ -23,6 +23,18 @@ foreach ($config['phpdaemon'] as $path) {
 	}
 }
 
+$ignores = '';
+if(isset($config['ignore_namespace'])) {
+	if(!is_array($config['ignore_namespace'])) {
+		$config['ignore_namespace'] = [
+			$config['ignore_namespace']
+		];
+	}
+
+	$ignores = implode(':', $config['ignore_namespace']);
+}
+
 passthru('php '.CURRENT_WORKING_DIR.'/parsers/import_phpdoc.php'
 	.' '. CURRENT_WORKING_DIR.'/en'
-	.' '. $phpdpath);
+	.' '. $phpdpath
+	.($ignores !== '' ? ' "'.$ignores.'"' : ''));

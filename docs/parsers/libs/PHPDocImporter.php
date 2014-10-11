@@ -57,8 +57,10 @@ class PHPDocImporter {
 	 * @param  string $doc_path Путь до доки
 	 * @param  string $phd_path Путь до файлов проекта
 	 */
-	public function parse($doc_path, $phd_path) {
-		$this->sourcePath = $phd_path;
+	public function parse($params) {
+		$doc_path = $params[0];
+		$this->sourcePath = $params[1];
+		$this->ignoreNamespaces = explode(':', $params[2]);
 		$this->autoloadRegister();
 
 		// @todo test => prod
@@ -146,12 +148,22 @@ class PHPDocImporter {
 			$is_header = count($classes) > 1;
 
 			foreach ($classes as $class_path => $class_name) {
+				if(in_array($class_name, $this->ignoreNamespaces)) {
+					continue;
+				}
+
 				if(!class_exists($class_name)) {
 					// @todo выбрасывать ошибку?
 					continue;
 				}
 
-				$ReflectionClass = new ReflectionClass($class_name);
+				// try {
+					$ReflectionClass = new ReflectionClass($class_name);
+				// } catch (LogicException $Exception) {
+				// 	die('Not gonna make it in here...');
+				// } catch (ReflectionException $Exception) {
+				// 	die('Your class does not exist!');
+				// }
 
 				if($is_header) {
 					$content .= $this->getClassHeader($ReflectionClass, $params, $class_path, $class_name);
@@ -281,7 +293,7 @@ class PHPDocImporter {
 	}
 
 
-	protected function getClassHeader($ReflectionClass, $params, $class_path, $class_name) {
+	protected function getClassHeader($ReflectionClass, &$params, $class_path, $class_name) {
 		$ns = $ReflectionClass->getNamespaceName();
 		$name = $ReflectionClass->getName();
 
@@ -306,8 +318,10 @@ class PHPDocImporter {
 
 		$typeLower = strtolower($type);
 
-		$level = $params['level'] ? $params['level'] + 1 : 3;
-		$level = str_repeat('#', $level);
+		if(!isset($params['level']) || !$params['level']) {
+			$params['level'] = 3;
+		}
+		$level = str_repeat('#', $params['level'] + 1);
 
 		$result = <<<TPL
 $level $altname # $type $name {tpl-git $class_path}
@@ -416,6 +430,7 @@ TPL;
 		$result = '';
 		$methods = $ReflectionClass->getMethods(ReflectionMethod::IS_STATIC | ReflectionMethod::IS_FINAL | $access);
 
+		$i = 0;
 		foreach ($methods as $ReflectionMethod) {
 			$name = $ReflectionMethod->getName();
 			$comment = $ReflectionMethod->getDocComment();
@@ -432,6 +447,12 @@ TPL;
 			$result .= $comment."\n";
 			$result .= $code."\n";
 			$result .= "</md:method>\n\n";
+
+			++$i;
+		}
+
+		if($i === 1) {
+			$result .= "<md:method>\n</md:method>\n\n";
 		}
 
 		if($result === '') {

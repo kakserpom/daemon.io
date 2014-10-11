@@ -11,4 +11,5 @@ if(!isset($argv[1]) || !isset($argv[2])) {
 }
 
 $PHPDocImporter = new PHPDocImporter;
-echo $PHPDocImporter->parse($argv[1], $argv[2]);
+array_shift($argv);
+echo $PHPDocImporter->parse($argv);

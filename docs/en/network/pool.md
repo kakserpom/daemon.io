@@ -50,147 +50,166 @@ Pool:HTTPServer {
 }
 ```
 
+<!-- include-namespace path="\PHPDaemon\Network\Pool" commit="" level="" access="" -->
 #### properties # Properties
 
 <md:prop>
-string public $connectionClass;
-Default connection class
+/**
+	 * @var string Default connection class
+	 */
+public $connectionClass;
 </md:prop>
 
 <md:prop>
-string public $name;
-Name
+/**
+	 * @var string Name
+	 */
+public $name;
 </md:prop>
 
 <md:prop>
-\PHPDaemon\Config\Section public $config;
-Configuration
+/**
+	 * @var \PHPDaemon\Config\Section Configuration
+	 */
+public $config;
 </md:prop>
 
 <md:prop>
-integer public $maxConcurrency = 0;
-Max concurrency
+/**
+	 * @var ConnectionPool[] Instances storage
+	 */
+protected static $instances;
 </md:prop>
 
 <md:prop>
-integer public $maxAllowedPacket = 0;
-Max allowed packet
+/**
+	 * @var integer Max concurrency
+	 */
+public $maxConcurrency;
 </md:prop>
 
 <md:prop>
-object public $appInstance;
-Application instance object
+/**
+	 * @var integer Max allowed packet
+	 */
+public $maxAllowedPacket;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var object|null Application instance object
+	 */
+public $appInstance;
 </md:prop>
 
 #### methods # Methods
 
 <md:method>
-public __construct ( array $config = [], boolean $init = true )
-
-Constructor
-
-$config
-Config variables
-
-$init
-@TODO
+/**
+	 * Constructor
+	 * @param array   $config Config variables
+	 * @param boolean $init
+	 */
+public __construct($config = [], $init = true)
 </md:method>
 
 <md:method>
-public onReady ( )
-
-Called when the worker is ready to go
+/**
+	 * Called when the worker is ready to go
+	 * @return void
+	 */
+public onReady()
 </md:method>
 
 <md:method>
-public onConfigUpdated ( )
-
-Called when worker is going to update configuration
+/**
+	 * Called when worker is going to update configuration
+	 * @return void
+	 */
+public onConfigUpdated()
 </md:method>
 
 <md:method>
-public static getInstance ( string $arg = '', boolean $spawn = true )
-
-Returns instance object
-
-$arg
-name / array config / ConfigSection
-
-$spawn
-Spawn? Default is true
+/**
+	 * Returns instance object
+	 * @param  string  $arg   name / array config / ConfigSection
+	 * @param  boolean $spawn Spawn? Default is true
+	 * @return this
+	 */
+public static getInstance($arg = '', $spawn = true)
 </md:method>
 
 <md:method>
-public setConnectionClass ( string $class )
-
-Sets default connection class
-
-$class
-String name
+/**
+	 * Sets default connection class
+	 * @param  string $class Connection class name
+	 * @return void
+	 */
+public setConnectionClass($class)
 </md:method>
 
 <md:method>
-public enable ( )
-
-Enable socket events
+/**
+	 * Enable socket events
+	 * @return void
+	 */
+public enable()
 </md:method>
 
 <md:method>
-public disable ( )
-
-Disable all events of sockets
+/**
+	 * Disable all events of sockets
+	 * @return void
+	 */
+public disable()
 </md:method>
 
 <md:method>
-public onShutdown ( boolean $graceful = false )
-
-Called when application instance is going to shutdown
-
-$graceful
-graceful
+/**
+	 * Called when application instance is going to shutdown
+	 * @param  boolean $graceful
+	 * @return boolean Ready to shutdown?
+	 */
+public onShutdown($graceful = false)
 </md:method>
 
 <md:method>
-public finish ( boolean $graceful = false )
-
-Finishes ConnectionPool
-
-$graceful
-graceful
+/**
+	 * Finishes ConnectionPool
+	 * @return boolean Success
+	 */
+public finish($graceful = false)
 </md:method>
 
 <md:method>
-public attach ( [Connection](#../../connection) $conn, $inf = null )
-
-Attach Connection
-
-$conn
-Connection
-
-$inf
-Info
+/**
+	 * Attach Connection
+	 * @param  object $conn Connection
+	 * @param  mixed  $inf  Info
+	 * @return void
+	 */
+public attach($conn, $inf = null)
 </md:method>
 
 <md:method>
-public detach ( [Connection](#../../connection) $conn )
-
-Detach Connection
-
-$conn
-Connection
+/**
+	 * Detach Connection
+	 * @param  object $conn Connection
+	 * @return void
+	 */
+public detach($conn)
 </md:method>
 
 <md:method>
-public connect ( string $url, callable $cb, string $class = null )
-
-Establish a connection with remote peer
-
-$url
-URL
-
-$cb
-Optional. Callback
-
-$class
-Optional. Connection class name
+/**
+	 * Establish a connection with remote peer
+	 * @param  string   $url   URL
+	 * @param  callback $cb    Callback
+	 * @param  string   $class Optional. Connection class name
+	 * @return integer         Connection's ID. Boolean false when failed
+	 */
+public connect($url, $cb, $class = null)
 </md:method>
+
+
+<!--/ include-namespace -->

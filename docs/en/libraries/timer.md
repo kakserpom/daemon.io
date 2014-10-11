@@ -47,145 +47,168 @@ $priority
 <md:method>
 </md:method>
 
-#### properties # Свойства
+<!-- include-namespace path="\PHPDaemon\Core\Timer" commit="" level="" access="" -->
+#### properties # Properties
 
 <md:prop>
-integer public $id;
-Идентификатор таймера
+/**
+	 * @var integer|null Timer id
+	 */
+public $id;
 </md:prop>
 
 <md:prop>
-integer public $lastTimeout;
-Количество микросекунд на которое был взведен таймер последний раз
+/**
+	 * @var integer Current timeout holder
+	 */
+public $lastTimeout;
 </md:prop>
 
 <md:prop>
-boolean public $finished = false;
-Завершен ли данный таймер?
+/**
+	 * @var boolean Is the timer finished?
+	 */
+public $finished;
 </md:prop>
 
 <md:prop>
-callable public $cb;
-Функция обратного вызова
+/**
+	 * @var callable Callback
+	 */
+public $cb;
 </md:prop>
 
 <md:prop>
-array public static $list = [];
-Ассоциативный массив всех таймеров
+/**
+	 * @var Timer[] List of timers
+	 */
+protected static $list;
 </md:prop>
 
 <md:prop>
-integer public $priority;
-Приоритет события данного таймера 
+/**
+	 * @var integer Priority
+	 */
+public $priority;
 </md:prop>
 
+<md:prop>
+/**
+	 * @var integer Counter
+	 */
+protected static $counter;
+</md:prop>
 
-#### methods # Методы
+#### methods # Methods
 
 <md:method>
-void public __construct ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )
-
-Конструктор
-
-$cb
-функция обратного вызова
-
-$timeout
-количество микросекунд через которое должна быть выполнена функция обратного вызова
-
-$id
-идентификатор таймера
-
-$priority
-приоритет события таймера
+/**
+	 * Constructor
+	 * @param  callable       $cb       Callback
+	 * @param  integer        $timeout  Timeout
+	 * @param  integer|string $id       Timer ID
+	 * @param  integer        $priority Priority
+	 */
+public __construct($cb, $timeout = null, $id = null, $priority = null)
 </md:method>
 
 <md:method>
-void public setPriority ( integer $priority )
-
-@TODO
-
-$priority
-@TODO
+/**
+	 * Called when timer is triggered
+	 * @return void
+	 */
+public eventCall()
 </md:method>
 
 <md:method>
-integer public static add ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )
-
-@TODO
-
-$cb
-@TODO
-
-$timeout
-@TODO
-
-$id
-@TODO
-
-$priority
-@TODO
+/**
+	 * Set prioriry
+	 * @param  integer $priority Priority
+	 * @return void
+	 */
+public setPriority($priority)
 </md:method>
 
 <md:method>
-boolean public static setTimeout ( integer $id, integer $timeout = NULL )
-
-@TODO
-
-$id
-@TODO
-
-$timeout
-@TODO
+/**
+	 * Adds timer
+	 * @param  callable       $cb       Callback
+	 * @param  integer        $timeout  Timeout
+	 * @param  integer|string $id       Timer ID
+	 * @param  integer        $priority Priority
+	 * @return integer|string           Timer ID
+	 */
+public static add($cb, $timeout = null, $id = null, $priority = null)
 </md:method>
 
 <md:method>
-void public static remove ( integer $id )
-
-@TODO
-
-$id
-@TODO
+/**
+	 * Sets timeout
+	 * @param  integer|string $id       Timer ID
+	 * @param  integer        $timeout  Timeout
+	 * @return boolean
+	 */
+public static setTimeout($id, $timeout = NULL)
 </md:method>
 
 <md:method>
-void public static cancelTimeout ( integer $id )
-
-@TODO
-
-$id
-@TODO
+/**
+	 * Removes timer by ID
+	 * @param  integer|string $id Timer ID
+	 * @return void
+	 */
+public static remove($id)
 </md:method>
 
 <md:method>
-void public timeout ( integer $timeout = null )
-
-@TODO
-
-$timeout
-@TODO
+/**
+	 * Cancels timer by ID
+	 * @param  integer|string $id Timer ID
+	 * @return void
+	 */
+public static cancelTimeout($id)
 </md:method>
 
 <md:method>
-void public cancel ( )
-
-@TODO
+/**
+	 * Sets timeout
+	 * @param  integer $timeout Timeout
+	 * @return void
+	 */
+public timeout($timeout = null)
 </md:method>
 
 <md:method>
-void public finish ( )
-
-@TODO
+/**
+	 * Cancels timer
+	 * @return void
+	 */
+public cancel()
 </md:method>
 
 <md:method>
-void public __destruct ( )
-
-@TODO
+/**
+	 * Finishes timer
+	 * @return void
+	 */
+public finish()
 </md:method>
 
 <md:method>
-void public free ( )
-
-@TODO
+/**
+	 * Destructor
+	 * @return void
+	 */
+public __destruct()
 </md:method>
+
+<md:method>
+/**
+	 * Frees the timer
+	 * @return void
+	 */
+public free()
+</md:method>
+
+
+<!--/ include-namespace -->
