@@ -3,7 +3,7 @@
 /**
  * @todo
  * \this в коде методов менять на текущий класс или заменять на ссылку
- * 
+ * опции в описании клиентов
  */
 
 spl_autoload_register(function($class_name) {
@@ -62,10 +62,10 @@ class PHPDocImporter {
 		$this->autoloadRegister();
 
 		// @todo test => prod
-		// $mdfiles = glob_recursive($doc_path . '/*.md', GLOB_NOSORT);
+		$mdfiles = glob_recursive($doc_path . '/*.md', GLOB_NOSORT);
 		// $mdfiles = glob_recursive($doc_path . '/structures/object-storage.md', GLOB_NOSORT);
 		// $mdfiles = glob_recursive($doc_path . '/libraries/fs.md', GLOB_NOSORT);
-		$mdfiles = glob_recursive($doc_path . '/libraries/complexjob.md', GLOB_NOSORT);
+		// $mdfiles = glob_recursive($doc_path . '/libraries/complexjob.md', GLOB_NOSORT);
 
 		foreach ($mdfiles as $mdpath) {
 			$this->parseFile($mdpath);
@@ -95,9 +95,7 @@ class PHPDocImporter {
 		$this->tagNamespace($content);
 
 		if($this->flagFileChanged) {
-			// @todo test => prod
-			// file_put_contents($mdpath, $content, LOCK_EX);
-			file_put_contents(str_replace('object-storage.md', 'object-storage-new.md', $mdpath), $content, LOCK_EX);
+			file_put_contents($mdpath, $content, LOCK_EX);
 		}
 	}
 
@@ -124,35 +122,47 @@ class PHPDocImporter {
 	 */
 	protected function tagNamespaceCallback($matches) {
 		$params = $this->parseTagParams($matches[2]);
-		$isActual = $this->isCommitActual($params['path'], $params['commit']);
 
-		// commit прежний
-		if($isActual) {
-			return $matches[0];
+		$commit   = '';
+		$rootpath = $this->getSourceRootPath($params['path']);
+
+		if(!$rootpath) {
+			$content = 'ERROR! Source root path not found';
 		}
-
-		// ставим флаг что контент будет изменен
-		$this->flagFileChanged = true;
-
-		$classes = $this->getSourceClasses($params['path']);
-		$content = '';
-		$is_header = count($classes) > 1;
-
-		foreach ($classes as $class_path => $class_name) {
-			if(!class_exists($class_name)) {
-				// @todo выбрасывать ошибку?
-				continue;
+		else {
+			$isActual = $this->isCommitActual($rootpath, $params['commit'], $commit);
+			
+			// commit прежний
+			if($isActual) {
+				return $matches[0];
 			}
 
-			$ReflectionClass = new ReflectionClass($class_name);
+			// ставим флаг что контент будет изменен
+			$this->flagFileChanged = true;
 
-			if($is_header) {
-				$content .= $this->getClassHeader($ReflectionClass, $params, $class_path, $class_name);
+			$classes = $this->getSourceClasses($params['path']);
+
+			$content = '';
+			$is_header = count($classes) > 1;
+
+			foreach ($classes as $class_path => $class_name) {
+				if(!class_exists($class_name)) {
+					// @todo выбрасывать ошибку?
+					continue;
+				}
+
+				$ReflectionClass = new ReflectionClass($class_name);
+
+				if($is_header) {
+					$content .= $this->getClassHeader($ReflectionClass, $params, $class_path, $class_name);
+				}
+
+				$content .= $this->getClassConstants($ReflectionClass, $params, $class_path, $class_name);
+				$content .= $this->getClassProperties($ReflectionClass, $params, $class_path, $class_name);
+				$content .= $this->getClassMethods($ReflectionClass, $params, $class_path, $class_name);
 			}
 
-			$content .= $this->getClassConstants($ReflectionClass, $params, $class_path, $class_name);
-			$content .= $this->getClassProperties($ReflectionClass, $params, $class_path, $class_name);
-			$content .= $this->getClassMethods($ReflectionClass, $params, $class_path, $class_name);
+			$params['commit'] = $commit;
 		}
 
 		return $matches['start']
@@ -165,6 +175,25 @@ class PHPDocImporter {
 			. $content
 			. "\n"
 			. $this->tags['namespace']['close'];
+	}
+
+	protected function getSourceRootPath($path) {
+		$filepath = trim(str_replace('\\', '/', $path), '/');
+		$fullpath = $this->sourcePath .'/'. $filepath;
+
+		if(substr($fullpath, -4, 4) === '.php' && file_exists($fullpath)) {
+			return $filepath;
+		}
+		else
+		if(!is_dir($fullpath) && file_exists($fullpath.'.php')) {
+			return $filepath.'.php';
+		}
+		else
+		if(is_dir($fullpath)) {
+			return $filepath;
+		}
+
+		return false;
 	}
 
 	/**
@@ -193,8 +222,16 @@ class PHPDocImporter {
 	 * @param  [type]  $commit     [description]
 	 * @return boolean             [description]
 	 */
-	protected function isCommitActual($sourcepath, $commit) {
+	protected function isCommitActual($sourcepath, $commit, &$result) {
 		// @todo
+		$filepath = trim(str_replace('\\', '/', $sourcepath), '/');
+		$cmd = "cd $this->sourcePath;git log --pretty=format:\"%H\" -1 $this->sourcePath/$filepath";
+		$result = exec($cmd);
+
+		if(strlen($result) === 40 && $result === $commit) {
+			return true;
+		}
+
 		return false;
 	}
 

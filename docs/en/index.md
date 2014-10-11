@@ -1,6 +1,5 @@
 <!-- import ../pvars.md -->
 
-
 <!-- pvar lang en -->
 <!-- pvar title Documentation &laquo; phpDaemon -->
 
@@ -93,5 +92,3 @@ As you may see, whole documentation is placed on one page, so feel free to use s
 ### scripting # Scripting
 
  -.n <a target="_blank" href="https://github.com/EzheG"><i class="fa fa-github"></i></a> Dmitry Efimenko <[ezheg89@gmail.com](mailto:ezheg89@gmail.com)>
-
-The documentation engine was originally based on <a target="_blank" href="https://github.com/chibisov/backdoc">Backdoc <i class="fa fa-github"></i></a>

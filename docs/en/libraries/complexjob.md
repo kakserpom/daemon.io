@@ -36,7 +36,7 @@ $j('bar', function($name, $j) {
 $j(); // Запускаем
 ```
 
-<!-- include-namespace path="\PHPDaemon\Core\ComplexJob" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Core\ComplexJob" commit="9e41c8d6137cb90945cdfcf71719ab085ed28239" level="" access="" -->
 #### consts # Constants
 
 <md:const>
@@ -104,8 +104,6 @@ public $jobsNum;
 /**
 	 * Constructor
 	 * @param callable $cb Listener
-	 * @call void public __construct ( )
-	 * @call void public __construct ( callable $cb )
 	 */
 public __construct($cb = null)
 </md:method>
