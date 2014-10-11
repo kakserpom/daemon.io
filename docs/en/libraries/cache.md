@@ -160,9 +160,6 @@ public $cache;
 public __construct($max = null)
 </md:method>
 
-<md:method>
-</md:method>
-
 #### item # Class Item {tpl-git PHPDaemon/Cache/Item.php}
 
 ```php

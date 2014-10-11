@@ -430,7 +430,6 @@ TPL;
 		$result = '';
 		$methods = $ReflectionClass->getMethods(ReflectionMethod::IS_STATIC | ReflectionMethod::IS_FINAL | $access);
 
-		$i = 0;
 		foreach ($methods as $ReflectionMethod) {
 			$name = $ReflectionMethod->getName();
 			$comment = $ReflectionMethod->getDocComment();
@@ -447,12 +446,6 @@ TPL;
 			$result .= $comment."\n";
 			$result .= $code."\n";
 			$result .= "</md:method>\n\n";
-
-			++$i;
-		}
-
-		if($i === 1) {
-			$result .= "<md:method>\n</md:method>\n\n";
 		}
 
 		if($result === '') {

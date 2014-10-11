@@ -26,8 +26,5 @@ protected static $fileTypes;
 public static get($path)
 </md:method>
 
-<md:method>
-</md:method>
-
 
 <!--/ include-namespace -->
