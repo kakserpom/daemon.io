@@ -15,7 +15,7 @@ class Terminal;
 /**
 	 * Constructor
 	 */
-public __construct()
+public function __construct()
 </md:method>
 
 <md:method>
@@ -23,7 +23,7 @@ public __construct()
 	 * Read a line from STDIN
 	 * @return string Line
 	 */
-public readln()
+public function readln()
 </md:method>
 
 <md:method>
@@ -32,7 +32,7 @@ public readln()
 	 * @param  boolean $bool Enable?
 	 * @return void
 	 */
-public enableColor($bool = true)
+public function enableColor($bool = true)
 </md:method>
 
 <md:method>
@@ -40,7 +40,7 @@ public enableColor($bool = true)
 	 * Clear the terminal with CLR
 	 * @return void
 	 */
-public clearScreen()
+public function clearScreen()
 </md:method>
 
 <md:method>
@@ -49,7 +49,7 @@ public clearScreen()
 	 * @param  string $c Style
 	 * @return void
 	 */
-public setStyle($c)
+public function setStyle($c)
 </md:method>
 
 <md:method>
@@ -57,7 +57,7 @@ public setStyle($c)
 	 * Reset style to default
 	 * @return void
 	 */
-public resetStyle()
+public function resetStyle()
 </md:method>
 
 <md:method>
@@ -68,7 +68,7 @@ public resetStyle()
 	 * @param array  $values      Param allowed values
 	 * @return void
 	 */
-public drawParam($name, $description, $values = '')
+public function drawParam($name, $description, $values = '')
 </md:method>
 
 <md:method>
@@ -77,7 +77,7 @@ public drawParam($name, $description, $values = '')
 	 * @param  array Array of table's rows
 	 * @return void
 	 */
-public drawTable($rows)
+public function drawTable($rows)
 </md:method>
 
 

@@ -74,7 +74,7 @@ public $appInstance;
 	 * @param array   $config Config variables
 	 * @param boolean $init
 	 */
-public __construct($config = [], $init = true)
+public function __construct($config = [], $init = true)
 </md:method>
 
 <md:method>
@@ -82,7 +82,7 @@ public __construct($config = [], $init = true)
 	 * Finishes ConnectionPool
 	 * @return boolean Success
 	 */
-public finish($graceful = false)
+public function finish($graceful = false)
 </md:method>
 
 <md:method>
@@ -92,7 +92,7 @@ public finish($graceful = false)
 	 * @param  integer $max   Maximum
 	 * @return integer        Number of bound
 	 */
-public bindSockets($addrs = [], $max = 0)
+public function bindSockets($addrs = [], $max = 0)
 </md:method>
 
 <md:method>
@@ -101,7 +101,7 @@ public bindSockets($addrs = [], $max = 0)
 	 * @param  string  $uri Address to bind
 	 * @return boolean      Success
 	 */
-public bindSocket($uri)
+public function bindSocket($uri)
 </md:method>
 
 <md:method>
@@ -111,7 +111,7 @@ public bindSocket($uri)
 	 * @param  mixed $inf Info
 	 * @return void
 	 */
-public attachBound(\PHPDaemon\BoundSocket\Generic $bound, $inf = null)
+public function attachBound(\PHPDaemon\BoundSocket\Generic $bound, $inf = null)
 </md:method>
 
 <md:method>
@@ -120,7 +120,7 @@ public attachBound(\PHPDaemon\BoundSocket\Generic $bound, $inf = null)
 	 * @param  \PHPDaemon\BoundSocket\Generic $bound Generic
 	 * @return void
 	 */
-public detachBound(\PHPDaemon\BoundSocket\Generic $bound)
+public function detachBound(\PHPDaemon\BoundSocket\Generic $bound)
 </md:method>
 
 <md:method>
@@ -128,7 +128,7 @@ public detachBound(\PHPDaemon\BoundSocket\Generic $bound)
 	 * Close each of binded sockets
 	 * @return void
 	 */
-public closeBound()
+public function closeBound()
 </md:method>
 
 <md:method>
@@ -138,7 +138,7 @@ public closeBound()
 	 * @param  object  $oldConn Connection
 	 * @return boolean Success
 	 */
-public inheritFromRequest($req, $oldConn)
+public function inheritFromRequest($req, $oldConn)
 </md:method>
 
 

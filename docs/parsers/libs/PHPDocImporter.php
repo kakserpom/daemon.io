@@ -440,7 +440,8 @@ TPL;
 				continue;
 			}
 
-			$code = str_replace(array("function $name", '(  )'), array("$name", '( )'), $code);
+			// $code = str_replace(array("function $name", '(  )'), array("$name", '( )'), $code);
+			$code = str_replace('(  )', '( )', $code);
 
 			$result .= "<md:method>\n";
 			$result .= $comment."\n";

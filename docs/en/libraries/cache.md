@@ -54,7 +54,7 @@ public $cache;
 	 * @param  integer $size Maximum number of elements
 	 * @return void
 	 */
-public setMaxCacheSize($size)
+public function setMaxCacheSize($size)
 </md:method>
 
 <md:method>
@@ -63,7 +63,7 @@ public setMaxCacheSize($size)
 	 * @param  integer $w Additional window to decrease number of sorter calls
 	 * @return void
 	 */
-public setCapWindow($w)
+public function setCapWindow($w)
 </md:method>
 
 <md:method>
@@ -72,7 +72,7 @@ public setCapWindow($w)
 	 * @param  string $key Key
 	 * @return integer
 	 */
-public hash($key)
+public function hash($key)
 </md:method>
 
 <md:method>
@@ -83,7 +83,7 @@ public hash($key)
 	 * @param  integer $ttl   Time to live
 	 * @return mixed
 	 */
-public put($key, $value, $ttl = null)
+public function put($key, $value, $ttl = null)
 </md:method>
 
 <md:method>
@@ -92,7 +92,7 @@ public put($key, $value, $ttl = null)
 	 * @param  string $key Key
 	 * @return void
 	 */
-public invalidate($key)
+public function invalidate($key)
 </md:method>
 
 <md:method>
@@ -101,7 +101,7 @@ public invalidate($key)
 	 * @param  string $key Key
 	 * @return object Item
 	 */
-public get($key)
+public function get($key)
 </md:method>
 
 <md:method>
@@ -110,7 +110,7 @@ public get($key)
 	 * @param  string $key Key
 	 * @return mixed
 	 */
-public getValue($key)
+public function getValue($key)
 </md:method>
 
 #### capped-storage-hits # Class CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
@@ -157,7 +157,7 @@ public $cache;
 	 * Constructor
 	 * @param  integer $max Maximum number of cached elements
 	 */
-public __construct($max = null)
+public function __construct($max = null)
 </md:method>
 
 #### item # Class Item {tpl-git PHPDaemon/Cache/Item.php}
@@ -189,7 +189,7 @@ public $expire;
 /**
 	 * Constructor
 	 */
-public __construct($value)
+public function __construct($value)
 </md:method>
 
 <md:method>
@@ -197,7 +197,7 @@ public __construct($value)
 	 * Get hits number
 	 * @return integer
 	 */
-public getHits()
+public function getHits()
 </md:method>
 
 <md:method>
@@ -205,7 +205,7 @@ public getHits()
 	 * Get value
 	 * @return mixed
 	 */
-public getValue()
+public function getValue()
 </md:method>
 
 <md:method>
@@ -213,7 +213,7 @@ public getValue()
 	 * Adds listener callback
 	 * @param callable $cb
 	 */
-public addListener($cb)
+public function addListener($cb)
 </md:method>
 
 <md:method>
@@ -221,7 +221,7 @@ public addListener($cb)
 	 * Sets the value
 	 * @param mixed $value
 	 */
-public setValue($value)
+public function setValue($value)
 </md:method>
 
 

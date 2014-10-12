@@ -1,1 +1,4 @@
 python3 tools/build.py languages bash javascript markdown nginx php ruby sql
+
+export NODE_PATH=/usr/local/lib/node_modules
+node /Users/ezheg/Documents/git/daemon.io/docs/js/highlight_source/tools/build.js -n bash javascript markdown nginx php ruby sql

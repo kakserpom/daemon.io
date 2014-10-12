@@ -19,7 +19,7 @@ class ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splo
 	 * @param  mixed  ...$args Arguments
 	 * @return integer Number of called objects
 	 */
-public each()
+public function each()
 </md:method>
 
 <md:method>
@@ -28,7 +28,7 @@ public each()
 	 * @param  \SplObjectStorage $obj
 	 * @return void
 	 */
-public removeAll($obj = null)
+public function removeAll($obj = null)
 </md:method>
 
 <md:method>
@@ -36,7 +36,7 @@ public removeAll($obj = null)
 	 * Detaches first object and returns it
 	 * @return object
 	 */
-public detachFirst()
+public function detachFirst()
 </md:method>
 
 <md:method>
@@ -44,7 +44,7 @@ public detachFirst()
 	 * Returns first object
 	 * @return object
 	 */
-public getFirst()
+public function getFirst()
 </md:method>
 
 

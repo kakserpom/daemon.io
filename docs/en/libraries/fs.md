@@ -78,7 +78,7 @@ public $closed;
 	 * @param resource $fd   Descriptor
 	 * @param string   $path Path
 	 */
-public __construct($fd, $path)
+public function __construct($fd, $path)
 </md:method>
 
 <md:method>
@@ -86,7 +86,7 @@ public __construct($fd, $path)
 	 * Get file descriptor
 	 * @return resource File descriptor
 	 */
-public getFd()
+public function getFd()
 </md:method>
 
 <md:method>
@@ -96,7 +96,7 @@ public getFd()
 	 * @param  boolean $text Text?
 	 * @return mixed
 	 */
-public static convertFlags($mode, $text = false)
+public static function convertFlags($mode, $text = false)
 </md:method>
 
 <md:method>
@@ -107,7 +107,7 @@ public static convertFlags($mode, $text = false)
 	 * @param  integer  $pri    Priority
 	 * @return resource|boolean
 	 */
-public truncate($offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT)
+public function truncate($offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -117,7 +117,7 @@ public truncate($offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri Priority
 	 * @return resource|boolean
 	 */
-public stat($cb, $pri = EIO_PRI_DEFAULT)
+public function stat($cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -127,7 +127,7 @@ public stat($cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri Priority
 	 * @return resource|boolean
 	 */
-public statRefresh($cb, $pri = EIO_PRI_DEFAULT)
+public function statRefresh($cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -137,7 +137,7 @@ public statRefresh($cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri Priority
 	 * @return resource|boolean
 	 */
-public statvfs($cb, $pri = EIO_PRI_DEFAULT)
+public function statvfs($cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -147,7 +147,7 @@ public statvfs($cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri Priority
 	 * @return resource|false
 	 */
-public sync($cb, $pri = EIO_PRI_DEFAULT)
+public function sync($cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -157,7 +157,7 @@ public sync($cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri Priority
 	 * @return resource|false
 	 */
-public datasync($cb, $pri = EIO_PRI_DEFAULT)
+public function datasync($cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -169,7 +169,7 @@ public datasync($cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri    Priority
 	 * @return resource|false
 	 */
-public write($data, $cb = null, $offset = null, $pri = EIO_PRI_DEFAULT)
+public function write($data, $cb = null, $offset = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -181,7 +181,7 @@ public write($data, $cb = null, $offset = null, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri Priority
 	 * @return resource|false
 	 */
-public chown($uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT)
+public function chown($uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -193,7 +193,7 @@ public chown($uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri   Priority
 	 * @return resource|false
 	 */
-public touch($mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEFAULT)
+public function touch($mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -201,7 +201,7 @@ public touch($mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * Clears cache of stat() and statvfs()
 	 * @return void
 	 */
-public clearStatCache()
+public function clearStatCache()
 </md:method>
 
 <md:method>
@@ -213,7 +213,7 @@ public clearStatCache()
 	 * @param  integer  $pri    Priority
 	 * @return boolean
 	 */
-public read($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT)
+public function read($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -227,7 +227,7 @@ public read($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri     Priority
 	 * @return boolean           Success
 	 */
-public sendfile($outfd, $cb, $startCb = null, $offset = 0, $length = null, $pri = EIO_PRI_DEFAULT)
+public function sendfile($outfd, $cb, $startCb = null, $offset = 0, $length = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -239,7 +239,7 @@ public sendfile($outfd, $cb, $startCb = null, $offset = 0, $length = null, $pri 
 	 * @param  integer  $pri    Priority
 	 * @return resource|false
 	 */
-public readahead($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT)
+public function readahead($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -249,7 +249,7 @@ public readahead($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri Priority
 	 * @return boolean       Success
 	 */
-public readAll($cb, $pri = EIO_PRI_DEFAULT)
+public function readAll($cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -260,7 +260,7 @@ public readAll($cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri     Priority
 	 * @return resource|false
 	 */
-public readAllChunked($cb = null, $chunkcb = null, $pri = EIO_PRI_DEFAULT)
+public function readAllChunked($cb = null, $chunkcb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -268,7 +268,7 @@ public readAllChunked($cb = null, $chunkcb = null, $pri = EIO_PRI_DEFAULT)
 	 * toString handler
 	 * @return string
 	 */
-public __toString()
+public function __toString()
 </md:method>
 
 <md:method>
@@ -277,7 +277,7 @@ public __toString()
 	 * @param  integer $n Chunk size
 	 * @return void
 	 */
-public setChunkSize($n)
+public function setChunkSize($n)
 </md:method>
 
 <md:method>
@@ -288,7 +288,7 @@ public setChunkSize($n)
 	 * @param  integer  $pri    Priority
 	 * @return resource|false
 	 */
-public seek($offset, $cb, $pri = EIO_PRI_DEFAULT)
+public function seek($offset, $cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -296,7 +296,7 @@ public seek($offset, $cb, $pri = EIO_PRI_DEFAULT)
 	 * Get current pointer position
 	 * @return integer
 	 */
-public tell()
+public function tell()
 </md:method>
 
 <md:method>
@@ -304,14 +304,14 @@ public tell()
 	 * Close the file
 	 * @return resource|false
 	 */
-public close()
+public function close()
 </md:method>
 
 <md:method>
 /**
 	 * Destructor
 	 */
-public __destruct()
+public function __destruct()
 </md:method>
 
 #### file-system # Class FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
@@ -386,7 +386,7 @@ public static $eioVer;
 	 * Initialize FS driver
 	 * @return void
 	 */
-public static init()
+public static function init()
 </md:method>
 
 <md:method>
@@ -394,7 +394,7 @@ public static init()
 	 * Initialize main FS event
 	 * @return void
 	 */
-public static initEvent()
+public static function initEvent()
 </md:method>
 
 <md:method>
@@ -403,7 +403,7 @@ public static initEvent()
 	 * @param  string $path Path
 	 * @return boolean      Exists and readable?
 	 */
-public static checkFileReadable($path)
+public static function checkFileReadable($path)
 </md:method>
 
 <md:method>
@@ -411,7 +411,7 @@ public static checkFileReadable($path)
 	 * Block until all FS events are completed
 	 * @return void
 	 */
-public static waitAllEvents()
+public static function waitAllEvents()
 </md:method>
 
 <md:method>
@@ -419,7 +419,7 @@ public static waitAllEvents()
 	 * Called when config is updated
 	 * @return void
 	 */
-public static updateConfig()
+public static function updateConfig()
 </md:method>
 
 <md:method>
@@ -428,7 +428,7 @@ public static updateConfig()
 	 * @param  string $path Path
 	 * @return string       Sanitized path
 	 */
-public static sanitizePath($path)
+public static function sanitizePath($path)
 </md:method>
 
 <md:method>
@@ -437,7 +437,7 @@ public static sanitizePath($path)
 	 * @param  mixed $stat Data
 	 * @return array hash
 	 */
-public static statPrepare($stat)
+public static function statPrepare($stat)
 </md:method>
 
 <md:method>
@@ -448,7 +448,7 @@ public static statPrepare($stat)
 	 * @param  integer  $pri  Priority
 	 * @return resource|true
 	 */
-public static stat($path, $cb, $pri = EIO_PRI_DEFAULT)
+public static function stat($path, $cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -459,7 +459,7 @@ public static stat($path, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri  Priority
 	 * @return resource|boolean
 	 */
-public static unlink($path, $cb = null, $pri = EIO_PRI_DEFAULT)
+public static function unlink($path, $cb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -471,7 +471,7 @@ public static unlink($path, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri     Priority
 	 * @return resource|boolean
 	 */
-public static rename($path, $newpath, $cb = null, $pri = EIO_PRI_DEFAULT)
+public static function rename($path, $newpath, $cb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -482,7 +482,7 @@ public static rename($path, $newpath, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri  Priority
 	 * @return resource|false
 	 */
-public static statvfs($path, $cb, $pri = EIO_PRI_DEFAULT)
+public static function statvfs($path, $cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -493,7 +493,7 @@ public static statvfs($path, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri  Priority
 	 * @return resource|true
 	 */
-public static lstat($path, $cb, $pri = EIO_PRI_DEFAULT)
+public static function lstat($path, $cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -504,7 +504,7 @@ public static lstat($path, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri  Priority
 	 * @return resource|true
 	 */
-public static realpath($path, $cb, $pri = EIO_PRI_DEFAULT)
+public static function realpath($path, $cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -514,7 +514,7 @@ public static realpath($path, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri Priority
 	 * @return resource|false
 	 */
-public static sync($cb = null, $pri = EIO_PRI_DEFAULT)
+public static function sync($cb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -524,7 +524,7 @@ public static sync($cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri Priority
 	 * @return resource|false
 	 */
-public static syncfs($cb = null, $pri = EIO_PRI_DEFAULT)
+public static function syncfs($cb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -537,7 +537,7 @@ public static syncfs($cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri   Priority
 	 * @return resource|boolean
 	 */
-public static touch($path, $mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEFAULT)
+public static function touch($path, $mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -548,7 +548,7 @@ public static touch($path, $mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEF
 	 * @param  integer  $pri  Priority
 	 * @return resource|boolean
 	 */
-public static rmdir($path, $cb = null, $pri = EIO_PRI_DEFAULT)
+public static function rmdir($path, $cb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -560,7 +560,7 @@ public static rmdir($path, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri  Priority
 	 * @return resource|boolean
 	 */
-public static mkdir($path, $mode, $cb = null, $pri = EIO_PRI_DEFAULT)
+public static function mkdir($path, $mode, $cb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -572,7 +572,7 @@ public static mkdir($path, $mode, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri   Priority
 	 * @return resource|true
 	 */
-public static readdir($path, $cb = null, $flags, $pri = EIO_PRI_DEFAULT)
+public static function readdir($path, $cb = null, $flags, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -584,7 +584,7 @@ public static readdir($path, $cb = null, $flags, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri    Priority
 	 * @return resource|boolean
 	 */
-public static truncate($path, $offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT)
+public static function truncate($path, $offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -599,7 +599,7 @@ public static truncate($path, $offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri     Priority
 	 * @return true              Success
 	 */
-public static sendfile($outfd, $path, $cb, $startCb = null, $offset = 0, $length = null, $pri = EIO_PRI_DEFAULT)
+public static function sendfile($outfd, $path, $cb, $startCb = null, $offset = 0, $length = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -612,7 +612,7 @@ public static sendfile($outfd, $path, $cb, $startCb = null, $offset = 0, $length
 	 * @param  integer  $pri  Priority
 	 * @return resource|boolean
 	 */
-public static chown($path, $uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT)
+public static function chown($path, $uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -623,7 +623,7 @@ public static chown($path, $uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri  Priority
 	 * @return resource|true
 	 */
-public static readfile($path, $cb, $pri = EIO_PRI_DEFAULT)
+public static function readfile($path, $cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -635,7 +635,7 @@ public static readfile($path, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @param  integer  $pri     Priority
 	 * @return resource
 	 */
-public static readfileChunked($path, $cb, $chunkcb, $pri = EIO_PRI_DEFAULT)
+public static function readfileChunked($path, $cb, $chunkcb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -645,7 +645,7 @@ public static readfileChunked($path, $cb, $chunkcb, $pri = EIO_PRI_DEFAULT)
 	 * @param  string $prefix Prefix
 	 * @return string         Path
 	 */
-public static genRndTempnam($dir = null, $prefix = 'php')
+public static function genRndTempnam($dir = null, $prefix = 'php')
 </md:method>
 
 <md:method>
@@ -655,7 +655,7 @@ public static genRndTempnam($dir = null, $prefix = 'php')
 	 * @param  string $prefix Prefix
 	 * @return string         Path
 	 */
-public static genRndTempnamPrefix($dir, $prefix)
+public static function genRndTempnamPrefix($dir, $prefix)
 </md:method>
 
 <md:method>
@@ -666,7 +666,7 @@ public static genRndTempnamPrefix($dir, $prefix)
 	 * @param  $cb
 	 * @param  $tries
 	 */
-protected static tempnamHandler($dir, $prefix, $cb, &$tries)
+protected static function tempnamHandler($dir, $prefix, $cb, &$tries)
 </md:method>
 
 <md:method>
@@ -677,7 +677,7 @@ protected static tempnamHandler($dir, $prefix, $cb, &$tries)
 	 * @param  callable $cb     Callback (File)
 	 * @return resource
 	 */
-public static tempnam($dir, $prefix, $cb)
+public static function tempnam($dir, $prefix, $cb)
 </md:method>
 
 <md:method>
@@ -690,7 +690,7 @@ public static tempnam($dir, $prefix, $cb)
 	 * @param  integer  $pri   Priority
 	 * @return resource
 	 */
-public static open($path, $flags, $cb, $mode = null, $pri = EIO_PRI_DEFAULT)
+public static function open($path, $flags, $cb, $mode = null, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 #### file-watcher # Class FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
@@ -729,7 +729,7 @@ public $descriptors;
 /**
 	 * Constructor
 	 */
-public __construct()
+public function __construct()
 </md:method>
 
 <md:method>
@@ -740,7 +740,7 @@ public __construct()
 	 * @param  integer $flags	Look inotify_add_watch()
 	 * @return true
 	 */
-public addWatch($path, $cb, $flags = null)
+public function addWatch($path, $cb, $flags = null)
 </md:method>
 
 <md:method>
@@ -750,7 +750,7 @@ public addWatch($path, $cb, $flags = null)
 	 * @param  mixed   $cb		Callback
 	 * @return boolean
 	 */
-public rmWatch($path, $cb)
+public function rmWatch($path, $cb)
 </md:method>
 
 <md:method>
@@ -759,7 +759,7 @@ public rmWatch($path, $cb)
 	 * @param  string $path Path
 	 * @return void
 	 */
-public onFileChanged($path)
+public function onFileChanged($path)
 </md:method>
 
 <md:method>
@@ -767,7 +767,7 @@ public onFileChanged($path)
 	 * Check the file system, triggered by timer
 	 * @return void
 	 */
-public watch()
+public function watch()
 </md:method>
 
 

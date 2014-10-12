@@ -109,7 +109,7 @@ protected static $counter;
 	 * @param  integer|string $id       Timer ID
 	 * @param  integer        $priority Priority
 	 */
-public __construct($cb, $timeout = null, $id = null, $priority = null)
+public function __construct($cb, $timeout = null, $id = null, $priority = null)
 </md:method>
 
 <md:method>
@@ -117,7 +117,7 @@ public __construct($cb, $timeout = null, $id = null, $priority = null)
 	 * Called when timer is triggered
 	 * @return void
 	 */
-public eventCall()
+public function eventCall()
 </md:method>
 
 <md:method>
@@ -126,7 +126,7 @@ public eventCall()
 	 * @param  integer $priority Priority
 	 * @return void
 	 */
-public setPriority($priority)
+public function setPriority($priority)
 </md:method>
 
 <md:method>
@@ -138,7 +138,7 @@ public setPriority($priority)
 	 * @param  integer        $priority Priority
 	 * @return integer|string           Timer ID
 	 */
-public static add($cb, $timeout = null, $id = null, $priority = null)
+public static function add($cb, $timeout = null, $id = null, $priority = null)
 </md:method>
 
 <md:method>
@@ -148,7 +148,7 @@ public static add($cb, $timeout = null, $id = null, $priority = null)
 	 * @param  integer        $timeout  Timeout
 	 * @return boolean
 	 */
-public static setTimeout($id, $timeout = NULL)
+public static function setTimeout($id, $timeout = NULL)
 </md:method>
 
 <md:method>
@@ -157,7 +157,7 @@ public static setTimeout($id, $timeout = NULL)
 	 * @param  integer|string $id Timer ID
 	 * @return void
 	 */
-public static remove($id)
+public static function remove($id)
 </md:method>
 
 <md:method>
@@ -166,7 +166,7 @@ public static remove($id)
 	 * @param  integer|string $id Timer ID
 	 * @return void
 	 */
-public static cancelTimeout($id)
+public static function cancelTimeout($id)
 </md:method>
 
 <md:method>
@@ -175,7 +175,7 @@ public static cancelTimeout($id)
 	 * @param  integer $timeout Timeout
 	 * @return void
 	 */
-public timeout($timeout = null)
+public function timeout($timeout = null)
 </md:method>
 
 <md:method>
@@ -183,7 +183,7 @@ public timeout($timeout = null)
 	 * Cancels timer
 	 * @return void
 	 */
-public cancel()
+public function cancel()
 </md:method>
 
 <md:method>
@@ -191,7 +191,7 @@ public cancel()
 	 * Finishes timer
 	 * @return void
 	 */
-public finish()
+public function finish()
 </md:method>
 
 <md:method>
@@ -199,7 +199,7 @@ public finish()
 	 * Destructor
 	 * @return void
 	 */
-public __destruct()
+public function __destruct()
 </md:method>
 
 <md:method>
@@ -207,7 +207,7 @@ public __destruct()
 	 * Frees the timer
 	 * @return void
 	 */
-public free()
+public function free()
 </md:method>
 
 

@@ -23,7 +23,7 @@ protected static $fileTypes;
 	 * @param  string $path Path
 	 * @return string       MIME type
 	 */
-public static get($path)
+public static function get($path)
 </md:method>
 
 

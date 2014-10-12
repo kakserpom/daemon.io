@@ -16,7 +16,7 @@ class Binary;
 	 * @param  string $q Dot-separated labels list
 	 * @return string
 	 */
-public static labels($q)
+public static function labels($q)
 </md:method>
 
 <md:method>
@@ -26,7 +26,7 @@ public static labels($q)
 	 * @param  string $orig  Original packet
 	 * @return string        Dot-separated labels list
 	 */
-public static parseLabels(&$data, $orig = null)
+public static function parseLabels(&$data, $orig = null)
 </md:method>
 
 <md:method>
@@ -37,7 +37,7 @@ public static parseLabels(&$data, $orig = null)
 	 * @param boolean $lrev Reverse?
 	 * @return string
 	 */
-public static LV($str, $len = 1, $lrev = FALSE)
+public static function LV($str, $len = 1, $lrev = FALSE)
 </md:method>
 
 <md:method>
@@ -46,7 +46,7 @@ public static LV($str, $len = 1, $lrev = FALSE)
 	 * @param string $str Data
 	 * @return string
 	 */
-public static LVnull($str)
+public static function LVnull($str)
 </md:method>
 
 <md:method>
@@ -55,7 +55,7 @@ public static LVnull($str)
 	 * @param  integer $int Byte number
 	 * @return string
 	 */
-public static byte($int)
+public static function byte($int)
 </md:method>
 
 <md:method>
@@ -64,7 +64,7 @@ public static byte($int)
 	 * @param  integer $int Integer
 	 * @return string
 	 */
-public static word($int)
+public static function word($int)
 </md:method>
 
 <md:method>
@@ -73,7 +73,7 @@ public static word($int)
 	 * @param  integer $int Integer
 	 * @return string
 	 */
-public static wordl($int)
+public static function wordl($int)
 </md:method>
 
 <md:method>
@@ -82,7 +82,7 @@ public static wordl($int)
 	 * @param  integer $int Integer
 	 * @return string
 	 */
-public static dword($int)
+public static function dword($int)
 </md:method>
 
 <md:method>
@@ -91,7 +91,7 @@ public static dword($int)
 	 * @param  integer $int Integer
 	 * @return string
 	 */
-public static dwordl($int)
+public static function dwordl($int)
 </md:method>
 
 <md:method>
@@ -100,7 +100,7 @@ public static dwordl($int)
 	 * @param  integer $int Integer
 	 * @return string
 	 */
-public static qword($int)
+public static function qword($int)
 </md:method>
 
 <md:method>
@@ -109,7 +109,7 @@ public static qword($int)
 	 * @param  integer $int Integer
 	 * @return string
 	 */
-public static qwordl($int)
+public static function qwordl($int)
 </md:method>
 
 <md:method>
@@ -118,7 +118,7 @@ public static qwordl($int)
 	 * @param  string &$p Data
 	 * @return integer
 	 */
-public static getByte(&$p)
+public static function getByte(&$p)
 </md:method>
 
 <md:method>
@@ -127,7 +127,7 @@ public static getByte(&$p)
 	 * @param  string &$p Data
 	 * @return string
 	 */
-public static getChar(&$p)
+public static function getChar(&$p)
 </md:method>
 
 <md:method>
@@ -137,7 +137,7 @@ public static getChar(&$p)
 	 * @param  boolean $l  Little endian?
 	 * @return integer
 	 */
-public static getWord(&$p, $l = false)
+public static function getWord(&$p, $l = false)
 </md:method>
 
 <md:method>
@@ -147,7 +147,7 @@ public static getWord(&$p, $l = false)
 	 * @param  boolean $l  Little endian?
 	 * @return string
 	 */
-public static getStrWord(&$p, $l = false)
+public static function getStrWord(&$p, $l = false)
 </md:method>
 
 <md:method>
@@ -157,7 +157,7 @@ public static getStrWord(&$p, $l = false)
 	 * @param  boolean $l  Little endian?
 	 * @return integer
 	 */
-public static getDWord(&$p, $l = false)
+public static function getDWord(&$p, $l = false)
 </md:method>
 
 <md:method>
@@ -167,7 +167,7 @@ public static getDWord(&$p, $l = false)
 	 * @param  boolean $l  Little endian?
 	 * @return integer
 	 */
-public static getQword(&$p, $l = false)
+public static function getQword(&$p, $l = false)
 </md:method>
 
 <md:method>
@@ -177,7 +177,7 @@ public static getQword(&$p, $l = false)
 	 * @param  boolean $l  Little endian?
 	 * @return string
 	 */
-public static getStrQWord(&$p, $l = false)
+public static function getStrQWord(&$p, $l = false)
 </md:method>
 
 <md:method>
@@ -186,7 +186,7 @@ public static getStrQWord(&$p, $l = false)
 	 * @param  string &$str Data
 	 * @return string
 	 */
-public static getString(&$str)
+public static function getString(&$str)
 </md:method>
 
 <md:method>
@@ -198,7 +198,7 @@ public static getString(&$str)
 	 * @param  boolean $lrev Length is little endian?
 	 * @return string
 	 */
-public static getLV(&$p, $l = 1, $nul = false, $lrev = false)
+public static function getLV(&$p, $l = 1, $nul = false, $lrev = false)
 </md:method>
 
 <md:method>
@@ -209,7 +209,7 @@ public static getLV(&$p, $l = 1, $nul = false, $lrev = false)
 	 * @param  boolean $l   Optional. Little endian. Default value - false
 	 * @return string       Resulting binary string
 	 */
-public static int2bytes($len, $int = 0, $l = false)
+public static function int2bytes($len, $int = 0, $l = false)
 </md:method>
 
 <md:method>
@@ -219,7 +219,7 @@ public static int2bytes($len, $int = 0, $l = false)
 	 * @param  integer $len   Length. Default is 4
 	 * @return string
 	 */
-public static flags2bitarray($flags, $len = 4)
+public static function flags2bitarray($flags, $len = 4)
 </md:method>
 
 <md:method>
@@ -231,7 +231,7 @@ public static flags2bitarray($flags, $len = 4)
 	 * @param  boolean $l   Optional. Little endian. Default value - false
 	 * @return string       Resulting binary string
 	 */
-public static i2b($len, $int = 0, $l = false)
+public static function i2b($len, $int = 0, $l = false)
 </md:method>
 
 <md:method>
@@ -241,7 +241,7 @@ public static i2b($len, $int = 0, $l = false)
 	 * @param  boolean $l   Little endian? Default is false
 	 * @return integer
 	 */
-public static bytes2int($str, $l = false)
+public static function bytes2int($str, $l = false)
 </md:method>
 
 <md:method>
@@ -252,7 +252,7 @@ public static bytes2int($str, $l = false)
 	 * @param  boolean $l   Little endian? Default is false
 	 * @return integer
 	 */
-public static b2i($str = 0, $l = false)
+public static function b2i($str = 0, $l = false)
 </md:method>
 
 <md:method>
@@ -262,7 +262,7 @@ public static b2i($str = 0, $l = false)
 	 * @param  integer $check_len Check length?
 	 * @return string|false
 	 */
-public static bitmap2bytes($bitmap, $check_len = 0)
+public static function bitmap2bytes($bitmap, $check_len = 0)
 </md:method>
 
 <md:method>
@@ -271,7 +271,7 @@ public static bitmap2bytes($bitmap, $check_len = 0)
 	 * @param  integer $byte Byte
 	 * @return string
 	 */
-public static getbitmap($byte)
+public static function getbitmap($byte)
 </md:method>
 
 

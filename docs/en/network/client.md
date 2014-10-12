@@ -68,7 +68,7 @@ public $appInstance;
 	 * @param  integer $weight Weight
 	 * @return void
 	 */
-public addServer($url, $weight = NULL)
+public function addServer($url, $weight = NULL)
 </md:method>
 
 <md:method>
@@ -81,7 +81,7 @@ public addServer($url, $weight = NULL)
 	 * @call   boolean public getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )
 	 * @return boolean       Success|Connection
 	 */
-public getConnection($url = null, $cb = null, $pri = 0)
+public function getConnection($url = null, $cb = null, $pri = 0)
 </md:method>
 
 <md:method>
@@ -90,7 +90,7 @@ public getConnection($url = null, $cb = null, $pri = 0)
 	 * @param  object $conn Connection
 	 * @return void
 	 */
-public detach($conn)
+public function detach($conn)
 </md:method>
 
 <md:method>
@@ -100,7 +100,7 @@ public detach($conn)
 	 * @param  string           $url  URL
 	 * @return void
 	 */
-public markConnFree(ClientConnection $conn, $url)
+public function markConnFree(ClientConnection $conn, $url)
 </md:method>
 
 <md:method>
@@ -110,7 +110,7 @@ public markConnFree(ClientConnection $conn, $url)
 	 * @param  string           $url  URL
 	 * @return void
 	 */
-public markConnBusy(ClientConnection $conn, $url)
+public function markConnBusy(ClientConnection $conn, $url)
 </md:method>
 
 <md:method>
@@ -120,7 +120,7 @@ public markConnBusy(ClientConnection $conn, $url)
 	 * @param  string           $url  URL
 	 * @return void
 	 */
-public detachConnFromUrl(ClientConnection $conn, $url)
+public function detachConnFromUrl(ClientConnection $conn, $url)
 </md:method>
 
 <md:method>
@@ -129,7 +129,7 @@ public detachConnFromUrl(ClientConnection $conn, $url)
 	 * @param  string $url URL
 	 * @return void
 	 */
-public touchPending($url)
+public function touchPending($url)
 </md:method>
 
 <md:method>
@@ -139,7 +139,7 @@ public touchPending($url)
 	 * @param  callable $cb  Callback
 	 * @return boolean       Success
 	 */
-public getConnectionByKey($key, $cb = null)
+public function getConnectionByKey($key, $cb = null)
 </md:method>
 
 <md:method>
@@ -148,7 +148,7 @@ public getConnectionByKey($key, $cb = null)
 	 * @param  callable $cb Callback
 	 * @return boolean      Success
 	 */
-public getConnectionRR($cb = null)
+public function getConnectionRR($cb = null)
 </md:method>
 
 <md:method>
@@ -159,7 +159,7 @@ public getConnectionRR($cb = null)
 	 * @param  callable $onResponse Called when the request complete
 	 * @return boolean              Success
 	 */
-public requestByServer($server, $data, $onResponse = null)
+public function requestByServer($server, $data, $onResponse = null)
 </md:method>
 
 <md:method>
@@ -170,7 +170,7 @@ public requestByServer($server, $data, $onResponse = null)
 	 * @param  callable $onResponse Callback called when the request complete
 	 * @return boolean              Success
 	 */
-public requestByKey($key, $data, $onResponse = null)
+public function requestByKey($key, $data, $onResponse = null)
 </md:method>
 
 <md:method>
@@ -179,7 +179,7 @@ public requestByKey($key, $data, $onResponse = null)
 	 * @param  boolean $graceful Graceful?
 	 * @return boolean           Ready to shutdown?
 	 */
-public onShutdown($graceful = false)
+public function onShutdown($graceful = false)
 </md:method>
 
 

@@ -37,7 +37,7 @@ public $pool;
 	 * @param resource $fd   File descriptor. Optional
 	 * @param object   $pool Pool. Optional
 	 */
-public __construct($fd = null, $pool = null)
+public function __construct($fd = null, $pool = null)
 </md:method>
 
 <md:method>
@@ -46,7 +46,7 @@ public __construct($fd = null, $pool = null)
 	 * @param  string $name Name
 	 * @return mixed
 	 */
-public __get($name)
+public function __get($name)
 </md:method>
 
 <md:method>
@@ -54,7 +54,7 @@ public __get($name)
 	 * Freed?
 	 * @return boolean
 	 */
-public isFreed()
+public function isFreed()
 </md:method>
 
 <md:method>
@@ -62,7 +62,7 @@ public isFreed()
 	 * Finished?
 	 * @return boolean
 	 */
-public isFinished()
+public function isFinished()
 </md:method>
 
 <md:method>
@@ -70,7 +70,7 @@ public isFinished()
 	 * Get EventBufferEvent
 	 * @return EventBufferEvent
 	 */
-public getBev()
+public function getBev()
 </md:method>
 
 <md:method>
@@ -78,7 +78,7 @@ public getBev()
 	 * Get file descriptor
 	 * @return resource File descriptor
 	 */
-public getFd()
+public function getFd()
 </md:method>
 
 <md:method>
@@ -88,7 +88,7 @@ public getFd()
 	 * @param  integer $mode Mode
 	 * @return void
 	 */
-public setContext($ctx, $mode)
+public function setContext($ctx, $mode)
 </md:method>
 
 <md:method>
@@ -98,7 +98,7 @@ public setContext($ctx, $mode)
 	 * @param  object   $bev EventBufferEvent
 	 * @return void
 	 */
-public setFd($fd, $bev = null)
+public function setFd($fd, $bev = null)
 </md:method>
 
 <md:method>
@@ -107,7 +107,7 @@ public setFd($fd, $bev = null)
 	 * @param  integer $rw Timeout
 	 * @return void
 	 */
-public setTimeout($rw)
+public function setTimeout($rw)
 </md:method>
 
 <md:method>
@@ -117,7 +117,7 @@ public setTimeout($rw)
 	 * @param  integer $write Write timeout in seconds
 	 * @return void
 	 */
-public setTimeouts($read, $write)
+public function setTimeouts($read, $write)
 </md:method>
 
 <md:method>
@@ -126,7 +126,7 @@ public setTimeouts($read, $write)
 	 * @param  integer $p Priority
 	 * @return void
 	 */
-public setPriority($p)
+public function setPriority($p)
 </md:method>
 
 <md:method>
@@ -136,7 +136,7 @@ public setPriority($p)
 	 * @param  integer|null $high High
 	 * @return void
 	 */
-public setWatermark($low = null, $high = null)
+public function setWatermark($low = null, $high = null)
 </md:method>
 
 <md:method>
@@ -145,7 +145,7 @@ public setWatermark($low = null, $high = null)
 	 * @param  integer     $eol EOLS_*
 	 * @return string|null
 	 */
-public readLine($eol = null)
+public function readLine($eol = null)
 </md:method>
 
 <md:method>
@@ -154,7 +154,7 @@ public readLine($eol = null)
 	 * @param  integer $n Numbers of bytes to drain
 	 * @return boolean    Success
 	 */
-public drain($n)
+public function drain($n)
 </md:method>
 
 <md:method>
@@ -163,7 +163,7 @@ public drain($n)
 	 * @param  string       $str Data
 	 * @return boolean|null      Success
 	 */
-public drainIfMatch($str)
+public function drainIfMatch($str)
 </md:method>
 
 <md:method>
@@ -173,7 +173,7 @@ public drainIfMatch($str)
 	 * @param  integer $o Offset
 	 * @return string|false
 	 */
-public lookExact($n, $o = 0)
+public function lookExact($n, $o = 0)
 </md:method>
 
 <md:method>
@@ -182,7 +182,7 @@ public lookExact($n, $o = 0)
 	 * @param  string  $str Data
 	 * @return boolean      Success
 	 */
-public prependInput($str)
+public function prependInput($str)
 </md:method>
 
 <md:method>
@@ -191,7 +191,7 @@ public prependInput($str)
 	 * @param  string  $str Data
 	 * @return boolean      Success
 	 */
-public prependOutput($str)
+public function prependOutput($str)
 </md:method>
 
 <md:method>
@@ -201,7 +201,7 @@ public prependOutput($str)
 	 * @param integer $o Offset
 	 * @return string|false
 	 */
-public look($n, $o = 0)
+public function look($n, $o = 0)
 </md:method>
 
 <md:method>
@@ -211,7 +211,7 @@ public look($n, $o = 0)
 	 * @param  integer $n Number of bytes to read
 	 * @return string|false
 	 */
-public substr($o, $n = -1)
+public function substr($o, $n = -1)
 </md:method>
 
 <md:method>
@@ -222,7 +222,7 @@ public substr($o, $n = -1)
 	 * @param  integer $end   Offset end
 	 * @return integer        Position
 	 */
-public search($what, $start = 0, $end = -1)
+public function search($what, $start = 0, $end = -1)
 </md:method>
 
 <md:method>
@@ -231,7 +231,7 @@ public search($what, $start = 0, $end = -1)
 	 * @param  integer      $n Number of bytes to read
 	 * @return string|false
 	 */
-public readExact($n)
+public function readExact($n)
 </md:method>
 
 <md:method>
@@ -239,7 +239,7 @@ public readExact($n)
 	 * Returns length of input buffer
 	 * @return integer
 	 */
-public getInputLength()
+public function getInputLength()
 </md:method>
 
 <md:method>
@@ -247,7 +247,7 @@ public getInputLength()
 	 * Called when the worker is going to shutdown
 	 * @return boolean Ready to shutdown?
 	 */
-public gracefulShutdown()
+public function gracefulShutdown()
 </md:method>
 
 <md:method>
@@ -256,7 +256,7 @@ public gracefulShutdown()
 	 * @param  boolean $at_front At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen
 	 * @return boolean           Success
 	 */
-public freezeInput($at_front = false)
+public function freezeInput($at_front = false)
 </md:method>
 
 <md:method>
@@ -265,7 +265,7 @@ public freezeInput($at_front = false)
 	 * @param  boolean $at_front At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen
 	 * @return boolean           Success
 	 */
-public unfreezeInput($at_front = false)
+public function unfreezeInput($at_front = false)
 </md:method>
 
 <md:method>
@@ -274,7 +274,7 @@ public unfreezeInput($at_front = false)
 	 * @param  boolean $at_front At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen
 	 * @return boolean           Success
 	 */
-public freezeOutput($at_front = true)
+public function freezeOutput($at_front = true)
 </md:method>
 
 <md:method>
@@ -283,7 +283,7 @@ public freezeOutput($at_front = true)
 	 * @param  boolean $at_front At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen
 	 * @return boolean           Success
 	 */
-public unfreezeOutput($at_front = true)
+public function unfreezeOutput($at_front = true)
 </md:method>
 
 <md:method>
@@ -291,7 +291,7 @@ public unfreezeOutput($at_front = true)
 	 * Called when the connection is ready to accept new data
 	 * @return void
 	 */
-public onWrite()
+public function onWrite()
 </md:method>
 
 <md:method>
@@ -300,7 +300,7 @@ public onWrite()
 	 * @param  string  $data Data to send
 	 * @return boolean       Success
 	 */
-public write($data)
+public function write($data)
 </md:method>
 
 <md:method>
@@ -309,7 +309,7 @@ public write($data)
 	 * @param  string  $data Data to send
 	 * @return boolean       Success
 	 */
-public writeln($data)
+public function writeln($data)
 </md:method>
 
 <md:method>
@@ -317,7 +317,7 @@ public writeln($data)
 	 * Finish the session. You should not worry about buffers, they are going to be flushed properly
 	 * @return void
 	 */
-public finish()
+public function finish()
 </md:method>
 
 <md:method>
@@ -325,7 +325,7 @@ public finish()
 	 * Close the connection
 	 * @return void
 	 */
-public close()
+public function close()
 </md:method>
 
 <md:method>
@@ -333,7 +333,7 @@ public close()
 	 * Unsets pointers of associated EventBufferEvent and File descriptr
 	 * @return void
 	 */
-public unsetFd()
+public function unsetFd()
 </md:method>
 
 <md:method>
@@ -342,7 +342,7 @@ public unsetFd()
 	 * @param  object $bev EventBufferEvent
 	 * @return void
 	 */
-public onReadEv($bev)
+public function onReadEv($bev)
 </md:method>
 
 <md:method>
@@ -351,7 +351,7 @@ public onReadEv($bev)
 	 * @param  callable $cb Callback
 	 * @return void
 	 */
-public onWriteOnce($cb)
+public function onWriteOnce($cb)
 </md:method>
 
 <md:method>
@@ -360,7 +360,7 @@ public onWriteOnce($cb)
 	 * @param  object $bev EventBufferEvent
 	 * @return void
 	 */
-public onWriteEv($bev)
+public function onWriteEv($bev)
 </md:method>
 
 <md:method>
@@ -370,7 +370,7 @@ public onWriteEv($bev)
 	 * @param  integer $events Events
 	 * @return void
 	 */
-public onStateEv($bev, $events)
+public function onStateEv($bev, $events)
 </md:method>
 
 <md:method>
@@ -380,7 +380,7 @@ public onStateEv($bev, $events)
 	 * @param  integer      $n    Max. number of bytes to move
 	 * @return integer|false
 	 */
-public moveToBuffer(\EventBuffer $dest, $n)
+public function moveToBuffer(\EventBuffer $dest, $n)
 </md:method>
 
 <md:method>
@@ -390,7 +390,7 @@ public moveToBuffer(\EventBuffer $dest, $n)
 	 * @param  integer      $n   Max. number of bytes to move
 	 * @return integer|false
 	 */
-public writeFromBuffer(\EventBuffer $src, $n)
+public function writeFromBuffer(\EventBuffer $src, $n)
 </md:method>
 
 <md:method>
@@ -399,7 +399,7 @@ public writeFromBuffer(\EventBuffer $src, $n)
 	 * @param  integer      $n Max. number of bytes to read
 	 * @return string|false    Readed data
 	 */
-public read($n)
+public function read($n)
 </md:method>
 
 <md:method>
@@ -407,7 +407,7 @@ public read($n)
 	 * Reads all data from the connection's buffer
 	 * @return string Readed data
 	 */
-public readUnlimited()
+public function readUnlimited()
 </md:method>
 
 

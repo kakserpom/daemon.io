@@ -31,7 +31,7 @@ public static $codesFlip;
 	 * @param  integer $code Code
 	 * @return string
 	 */
-public static getCommandByCode($code)
+public static function getCommandByCode($code)
 </md:method>
 
 <md:method>
@@ -39,7 +39,7 @@ public static getCommandByCode($code)
 	 * @param  string  $cmd Command
 	 * @return integer
 	 */
-public static getCodeByCommand($cmd)
+public static function getCodeByCommand($cmd)
 </md:method>
 
 <md:method>
@@ -47,7 +47,7 @@ public static getCodeByCommand($cmd)
 	 * @param  string $mask
 	 * @return array
 	 */
-public static parseUsermask($mask)
+public static function parseUsermask($mask)
 </md:method>
 
 

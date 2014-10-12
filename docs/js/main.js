@@ -311,47 +311,74 @@ $(function(){
 
 	// подсветка синтаксиса
 	(function(){
+		var phpTypes = {
+			'boolean': 1,
+			'integer': 1,
+			'float': 1,
+			'string': 1,
+			'array': 1,
+			'object': 1,
+			'resource': 1,
+			'null': 1,
+			'callable': 1,
+			'mixed': 'http://php.net/manual/'+ global_lang +'/language.pseudo-types.php#language.types.mixed',
+			'number': 'http://php.net/manual/'+ global_lang +'/language.pseudo-types.php#language.types.number',
+			'callback': 'http://php.net/manual/'+ global_lang +'/language.pseudo-types.php#language.types.callback',
+			'void': 'http://php.net/manual/'+ global_lang +'/language.pseudo-types.php#language.types.void'
+		};
+
+		var phpTypesKeys = [];
+		for(var k in phpTypes) phpTypesKeys.push(k);
+		var reg = new RegExp('\\b('+phpTypesKeys.join('|')+')\\b', 'g');
+
+		// типы переменных делаем ссылками
+		$('.method code').each(function(){
+			var that = $(this),
+				source = that.html();
+
+			// @todo псевдотипы
+			source = source.replace(reg, function(str, p1) {
+				if(phpTypes[p1] === 1) {
+					return '<a href="http://php.net/manual/'+ global_lang +'/language.types.'+ p1 +'.php" target="_blank">'+ p1 + '</a>';
+				}
+
+				if (phpTypes[p1]) {
+					return '<a href="'+ phpTypes[p1] +'" target="_blank">'+ p1 + '</a>';
+				}
+
+				return p1;
+			});
+
+			that.html(source);
+		});
+
 		$('pre code, .code_highlight').each(function(i, block) {
 			hljs.highlightBlock(block);
 		});
 
-		var phpTypes = {
-			'void': 1,
-			'array': 1,
-			'boolean': 1,
-			'object': 1,
-			'string': 1,
-			'integer': 1,
-			'float': 1,
-			'callable': 1,
-			'resource': 1,
-			'mixed': '<a href="http://php.net/manual/ru/language.pseudo-types.php" target="_blank" />'
-		};
+		// $('.code_highlight, pre.inline code').each(function(){
+		// 	$('.hljs-keyword', this).each(function(){
+		// 		var obj = $(this);
+		// 			text = obj.text();
 
-		// типы переменных делаем ссылками
-		$('.code_highlight, pre.inline code').each(function(){
-			$('.hljs-keyword', this).each(function(){
-				var obj = $(this);
-					text = obj.text();
+		// 		if(phpTypes[text] === 1) {
+		// 			obj.wrap('<a href="http://php.net/manual/'+ global_lang +'/language.types.'+ text +'.php" target="_blank" />');
+		// 		}
+		// 		else
+		// 		if (phpTypes[text]) {
+		// 			obj.wrap( phpTypes[text] );
+		// 		}
+		// 	});
 
-				if(phpTypes[text] === 1) {
-					obj.wrap('<a href="http://php.net/manual/'+ global_lang +'/language.types.'+ text +'.php" target="_blank" />');
-				}
-				else
-				if (phpTypes[text]) {
-					obj.wrap( phpTypes[text] );
-				}
-			});
+		// 	var that = $(this),
+		// 		html = that.html();
 
-			var that = $(this),
-				html = that.html();
-
-			// псевдотипы: url
-			if(html.toLowerCase().indexOf('$') !== -1) {
-				html = html.replace(/(\(|,)\s(url)\s/g, "$1 <a href=\"#development/pseudotypes/$2\"><span class=\"hljs-keyword\">$2</span></a> ");
-				that.html(html);
-			}
-		});
+		// 	// псевдотипы: url
+		// 	if(html.toLowerCase().indexOf('$') !== -1) {
+		// 		html = html.replace(/(\(|,)\s(url)\s/g, "$1 <a href=\"#development/pseudotypes/$2\"><span class=\"hljs-keyword\">$2</span></a> ");
+		// 		that.html(html);
+		// 	}
+		// });
 
 		$('.hljs-class .hljs-title a').addClass('hljs-title');
 	})();

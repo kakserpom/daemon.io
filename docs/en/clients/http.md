@@ -159,7 +159,7 @@ public $pool;
 	 * @param string $url
 	 * @param array $params
 	 */
-public get($url, $params = null)
+public function get($url, $params = null)
 </md:method>
 
 <md:method>
@@ -169,22 +169,22 @@ public get($url, $params = null)
 	 * @param array $data
 	 * @param array $params
 	 */
-public post($url, $data = [], $params = null)
+public function post($url, $data = [], $params = null)
 </md:method>
 
 <md:method>
 
-public getBody()
+public function getBody()
 </md:method>
 
 <md:method>
 
-public getHeaders()
+public function getHeaders()
 </md:method>
 
 <md:method>
 
-public getHeader($name)
+public function getHeader($name)
 </md:method>
 
 <md:method>
@@ -193,7 +193,7 @@ public getHeader($name)
 	 * @param string New data
 	 * @return void
 	 */
-public onRead()
+public function onRead()
 </md:method>
 
 <md:method>
@@ -201,7 +201,7 @@ public onRead()
 	 * Called when connection finishes
 	 * @return void
 	 */
-public onFinish()
+public function onFinish()
 </md:method>
 
 #### pool # Class Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
@@ -273,7 +273,7 @@ public $appInstance;
 	 * @call  void public get ( url $url, callable $resultcb )
 	 * @callback ( Connection $conn, boolean $success )
 	 */
-public get($url, $params)
+public function get($url, $params)
 </md:method>
 
 <md:method>
@@ -286,7 +286,7 @@ public get($url, $params)
 	 * @call  void public post ( url $url, array $data, callable $resultcb )
 	 * @callback ( Connection $conn, boolean $success )
 	 */
-public post($url, $data = [], $params)
+public function post($url, $data = [], $params)
 </md:method>
 
 <md:method>
@@ -297,7 +297,7 @@ public post($url, $data = [], $params)
 	 * @call  string public static buildUrl ( array $mixed )
 	 * @return string|false
 	 */
-public static buildUrl($mixed)
+public static function buildUrl($mixed)
 </md:method>
 
 <md:method>
@@ -308,7 +308,7 @@ public static buildUrl($mixed)
 	 * @call  string public static parseUrl ( array $mixed )
 	 * @return array|bool
 	 */
-public static parseUrl($mixed)
+public static function parseUrl($mixed)
 </md:method>
 
 #### simple # Class Simple {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php}
@@ -374,7 +374,7 @@ public $requestClass;
 	 * Constructor.
 	 * @return void
 	 */
-public init()
+public function init()
 </md:method>
 
 <md:method>
@@ -382,7 +382,7 @@ public init()
 	 * Called when the worker is ready to go.
 	 * @return void
 	 */
-public onReady()
+public function onReady()
 </md:method>
 
 <md:method>
@@ -390,7 +390,7 @@ public onReady()
 	 * Called when application instance is going to shutdown.
 	 * @return boolean Ready to shutdown?
 	 */
-public onShutdown($graceful = false)
+public function onShutdown($graceful = false)
 </md:method>
 
 <md:method>
@@ -400,7 +400,7 @@ public onShutdown($graceful = false)
 	 * @param object Upstream application instance.
 	 * @return SimpleRequest Request.
 	 */
-public beginRequest($req, $upstream)
+public function beginRequest($req, $upstream)
 </md:method>
 
 #### simple-request # Class SimpleRequest {tpl-git PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php}
@@ -470,7 +470,7 @@ public $attrs;
 	 * Constructor.
 	 * @return void
 	 */
-public init()
+public function init()
 </md:method>
 
 <md:method>
@@ -478,7 +478,7 @@ public init()
 	 * Called when request iterated.
 	 * @return integer Status.
 	 */
-public run()
+public function run()
 </md:method>
 
 

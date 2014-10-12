@@ -87,7 +87,7 @@ public $pool;
 	 * Get command string
 	 * @return string
 	 */
-public getCmd()
+public function getCmd()
 </md:method>
 
 <md:method>
@@ -95,7 +95,7 @@ public getCmd()
 	 * Set group
 	 * @return this
 	 */
-public setGroup($val)
+public function setGroup($val)
 </md:method>
 
 <md:method>
@@ -104,7 +104,7 @@ public setGroup($val)
 	 * @param  string $dir
 	 * @return this
 	 */
-public setCwd($dir)
+public function setCwd($dir)
 </md:method>
 
 <md:method>
@@ -113,7 +113,7 @@ public setCwd($dir)
 	 * @param  string $val
 	 * @return this
 	 */
-public setUser($val)
+public function setUser($val)
 </md:method>
 
 <md:method>
@@ -122,7 +122,7 @@ public setUser($val)
 	 * @param  string $dir
 	 * @return this
 	 */
-public setChroot($dir)
+public function setChroot($dir)
 </md:method>
 
 <md:method>
@@ -133,7 +133,7 @@ public setChroot($dir)
 	 * @param  array    $args    Optional. Arguments
 	 * @param  array    $env     Optional. Hash of environment's variables
 	 */
-public static exec($binPath = null, $cb = null, $args = null, $env = null)
+public static function exec($binPath = null, $cb = null, $args = null, $env = null)
 </md:method>
 
 <md:method>
@@ -143,7 +143,7 @@ public static exec($binPath = null, $cb = null, $args = null, $env = null)
 	 * @param  \EventBufferEvent $bev
 	 * @return void
 	 */
-public setFd($fd, $bev = null)
+public function setFd($fd, $bev = null)
 </md:method>
 
 <md:method>
@@ -152,7 +152,7 @@ public setFd($fd, $bev = null)
 	 * @param  array Arguments
 	 * @return this
 	 */
-public setArgs($args = NULL)
+public function setArgs($args = NULL)
 </md:method>
 
 <md:method>
@@ -161,7 +161,7 @@ public setArgs($args = NULL)
 	 * @param  array Hash of environment's variables
 	 * @return this
 	 */
-public setEnv($env = NULL)
+public function setEnv($env = NULL)
 </md:method>
 
 <md:method>
@@ -169,7 +169,7 @@ public setEnv($env = NULL)
 	 * Called when got EOF
 	 * @return void
 	 */
-public onEofEvent()
+public function onEofEvent()
 </md:method>
 
 <md:method>
@@ -178,7 +178,7 @@ public onEofEvent()
 	 * @param  integer $nice Priority
 	 * @return this
 	 */
-public nice($nice = NULL)
+public function nice($nice = NULL)
 </md:method>
 
 <md:method>
@@ -187,7 +187,7 @@ public nice($nice = NULL)
 	 * @param  array $args
 	 * @return string
 	 */
-public static buildArgs($args)
+public static function buildArgs($args)
 </md:method>
 
 <md:method>
@@ -198,7 +198,7 @@ public static buildArgs($args)
 	 * @param  array  $env     Optional. Hash of environment's variables
 	 * @return this
 	 */
-public execute($binPath = NULL, $args = NULL, $env = NULL)
+public function execute($binPath = NULL, $args = NULL, $env = NULL)
 </md:method>
 
 <md:method>
@@ -206,7 +206,7 @@ public execute($binPath = NULL, $args = NULL, $env = NULL)
 	 * Finish write stream
 	 * @return boolean
 	 */
-public finishWrite()
+public function finishWrite()
 </md:method>
 
 <md:method>
@@ -214,14 +214,14 @@ public finishWrite()
 	 * Close the process
 	 * @return void
 	 */
-public close()
+public function close()
 </md:method>
 
 <md:method>
 /**
 	 * Called when stream is finished
 	 */
-public onFinish()
+public function onFinish()
 </md:method>
 
 <md:method>
@@ -229,7 +229,7 @@ public onFinish()
 	 * Close write stream
 	 * @return this
 	 */
-public closeWrite()
+public function closeWrite()
 </md:method>
 
 <md:method>
@@ -237,7 +237,7 @@ public closeWrite()
 	 * Got EOF?
 	 * @return boolean
 	 */
-public eof()
+public function eof()
 </md:method>
 
 <md:method>
@@ -246,7 +246,7 @@ public eof()
 	 * @param  string $data Data to send
 	 * @return boolean Success
 	 */
-public write($data)
+public function write($data)
 </md:method>
 
 <md:method>
@@ -255,7 +255,7 @@ public write($data)
 	 * @param  string Data to send
 	 * @return boolean Success
 	 */
-public writeln($data)
+public function writeln($data)
 </md:method>
 
 <md:method>
@@ -264,7 +264,7 @@ public writeln($data)
 	 * @param  callable $cb
 	 * @return this
 	 */
-public onEOF($cb = NULL)
+public function onEOF($cb = NULL)
 </md:method>
 
 

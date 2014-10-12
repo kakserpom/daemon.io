@@ -39,7 +39,7 @@ public $pool;
 	 * @param resource $fd   File descriptor
 	 * @param mixed    $pool ConnectionPool
 	 */
-public __construct($fd, $pool = null)
+public function __construct($fd, $pool = null)
 </md:method>
 
 <md:method>
@@ -47,7 +47,7 @@ public __construct($fd, $pool = null)
 	 * Busy?
 	 * @return boolean
 	 */
-public isBusy()
+public function isBusy()
 </md:method>
 
 <md:method>
@@ -56,7 +56,7 @@ public isBusy()
 	 * @param  callable $cb Callback
 	 * @return void
 	 */
-public onResponse($cb)
+public function onResponse($cb)
 </md:method>
 
 <md:method>
@@ -64,7 +64,7 @@ public onResponse($cb)
 	 * Called when the connection is handshaked (at low-level), and peer is ready to recv. data
 	 * @return void
 	 */
-public onReady()
+public function onReady()
 </md:method>
 
 <md:method>
@@ -73,7 +73,7 @@ public onReady()
 	 * @param  boolean $free Free?
 	 * @return void
 	 */
-public setFree($free = true)
+public function setFree($free = true)
 </md:method>
 
 <md:method>
@@ -81,7 +81,7 @@ public setFree($free = true)
 	 * Set connection free
 	 * @return void
 	 */
-public release()
+public function release()
 </md:method>
 
 <md:method>
@@ -89,7 +89,7 @@ public release()
 	 * Set connection free/busy according to onResponse emptiness and ->finished
 	 * @return void
 	 */
-public checkFree()
+public function checkFree()
 </md:method>
 
 <md:method>
@@ -97,7 +97,7 @@ public checkFree()
 	 * getQueueLength
 	 * @return integer
 	 */
-public getQueueLength()
+public function getQueueLength()
 </md:method>
 
 <md:method>
@@ -105,7 +105,7 @@ public getQueueLength()
 	 * isQueueEmpty
 	 * @return boolean
 	 */
-public isQueueEmpty()
+public function isQueueEmpty()
 </md:method>
 
 <md:method>
@@ -113,7 +113,7 @@ public isQueueEmpty()
 	 * Called when connection finishes
 	 * @return void
 	 */
-public onFinish()
+public function onFinish()
 </md:method>
 
 

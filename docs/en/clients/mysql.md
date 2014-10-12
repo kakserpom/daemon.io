@@ -284,10 +284,11 @@ public $pool;
 <md:method>
 /**
 	 * Executes the given callback when/if the connection is handshaked
+	 * @param  callable $cb Callback
 	 * @callback ( Connection $conn, boolean $success )
 	 * @return void
 	 */
-public onConnected($cb)
+public function onConnected($cb)
 </md:method>
 
 <md:method>
@@ -295,27 +296,25 @@ public onConnected($cb)
 	 * Called when the connection is handshaked (at low-level), and peer is ready to recv. data
 	 * @return void
 	 */
-public onReady()
+public function onReady()
 </md:method>
 
 <md:method>
 /**
 	 * Sends a packet
-	 * @param string Data
-	 * @param string $packet
+	 * @param  string $packet Data
 	 * @return boolean Success
 	 */
-public sendPacket($packet)
+public function sendPacket($packet)
 </md:method>
 
 <md:method>
 /**
 	 * Builds length-encoded binary string
-	 * @param string String
-	 * @param string $s
+	 * @param  string $s String
 	 * @return string Resulting binary string
 	 */
-public buildLenEncodedBinary($s)
+public function buildLenEncodedBinary($s)
 </md:method>
 
 <md:method>
@@ -323,7 +322,7 @@ public buildLenEncodedBinary($s)
 	 * Parses length-encoded binary integer
 	 * @return integer Result
 	 */
-public parseEncodedBinary()
+public function parseEncodedBinary()
 </md:method>
 
 <md:method>
@@ -331,17 +330,17 @@ public parseEncodedBinary()
 	 * Parse length-encoded string
 	 * @return integer Result
 	 */
-public parseEncodedString()
+public function parseEncodedString()
 </md:method>
 
 <md:method>
 /**
 	 * Generates auth. token
-	 * @param string $scramble Scramble string
-	 * @param string $password Password
+	 * @param  string $scramble Scramble string
+	 * @param  string $password Password
 	 * @return string Result
 	 */
-public getAuthToken($scramble, $password)
+public function getAuthToken($scramble, $password)
 </md:method>
 
 <md:method>
@@ -349,51 +348,50 @@ public getAuthToken($scramble, $password)
 	 * Sends auth. packet
 	 * @return string Result
 	 */
-public auth()
+public function auth()
 </md:method>
 
 <md:method>
 /**
 	 * Sends SQL-query
-	 * @param string   Query
-	 * @param callback Optional. Callback called when response received
-	 * @param string $q
+	 * @param  string   $q        Query
+	 * @param  callable $callback Optional. Callback called when response received
 	 * @callback ( Connection $conn, boolean $success )
 	 * @return boolean Success
 	 */
-public query($q, $callback = NULL)
+public function query($q, $callback = NULL)
 </md:method>
 
 <md:method>
 /**
 	 * Sends echo-request
-	 * @param callback Optional. Callback called when response received
+	 * @param  callable $callback Optional. Callback called when response received
 	 * @callback ( Connection $conn, boolean $success )
 	 * @return boolean Success
 	 */
-public ping($callback = NULL)
+public function ping($callback = NULL)
 </md:method>
 
 <md:method>
 /**
 	 * Sends arbitrary command
-	 * @param $cmd
-	 * @param string $q Data
-	 * @param null|Optional $callback
+	 * @param  string   $cmd      Command
+	 * @param  string   $q        Data
+	 * @param  callable $callback Optional
 	 * @throws ConnectionFinished
 	 * @callback ( Connection $conn, boolean $success )
 	 * @return boolean Success
 	 */
-public command($cmd, $q = '', $callback = NULL)
+public function command($cmd, $q = '', $callback = NULL)
 </md:method>
 
 <md:method>
 /**
 	 * Sets default database name
-	 * @param string Database name
+	 * @param  string  $name   Database name
 	 * @return boolean Success
 	 */
-public selectDB($name)
+public function selectDB($name)
 </md:method>
 
 <md:method>
@@ -401,7 +399,7 @@ public selectDB($name)
 	 * Called when new data received
 	 * @return void
 	 */
-public onRead()
+public function onRead()
 </md:method>
 
 <md:method>
@@ -409,7 +407,7 @@ public onRead()
 	 * Called when the whole result received
 	 * @return void
 	 */
-public onResultDone()
+public function onResultDone()
 </md:method>
 
 <md:method>
@@ -417,7 +415,7 @@ public onResultDone()
 	 * Called when error occured
 	 * @return void
 	 */
-public onError()
+public function onError()
 </md:method>
 
 #### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/MySQL/ConnectionFinished.php}
@@ -925,7 +923,7 @@ public $appInstance;
 	 * @param string $string
 	 * @return string
 	 */
-public static escape($string)
+public static function escape($string)
 </md:method>
 
 <md:method>
@@ -934,12 +932,12 @@ public static escape($string)
 	 * @param $string
 	 * @return string
 	 */
-public static value($mixed)
+public static function value($mixed)
 </md:method>
 
 <md:method>
 
-public static values($arr)
+public static function values($arr)
 </md:method>
 
 <md:method>
@@ -948,7 +946,7 @@ public static values($arr)
 	 * @param $string
 	 * @return string
 	 */
-public static likeEscape($string)
+public static function likeEscape($string)
 </md:method>
 
 

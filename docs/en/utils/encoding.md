@@ -52,47 +52,47 @@ protected static $utf8ToWin1252;
 	 * @return string  The same string, UTF8 encoded
 	 *
 	 */
-static toUTF8($text)
+static function toUTF8($text)
 </md:method>
 
 <md:method>
 
-static toWin1252($text)
+static function toWin1252($text)
 </md:method>
 
 <md:method>
 
-static toISO8859($text)
+static function toISO8859($text)
 </md:method>
 
 <md:method>
 
-static toLatin1($text)
+static function toLatin1($text)
 </md:method>
 
 <md:method>
 
-static fixUTF8($text)
+static function fixUTF8($text)
 </md:method>
 
 <md:method>
 
-static UTF8FixWin1252Chars($text)
+static function UTF8FixWin1252Chars($text)
 </md:method>
 
 <md:method>
 
-static removeBOM($str="")
+static function removeBOM($str="")
 </md:method>
 
 <md:method>
 
-public static normalizeEncoding($encodingLabel)
+public static function normalizeEncoding($encodingLabel)
 </md:method>
 
 <md:method>
 
-public static encode($encodingLabel, $text)
+public static function encode($encodingLabel, $text)
 </md:method>
 
 

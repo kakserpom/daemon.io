@@ -18,7 +18,7 @@ class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.ph
 	 * @param  callable $cb Callback
 	 * @return void
 	 */
-public push($cb)
+public function push($cb)
 </md:method>
 
 <md:method>
@@ -27,7 +27,7 @@ public push($cb)
 	 * @param  callable $cb Callback
 	 * @return void
 	 */
-public unshift($cb)
+public function unshift($cb)
 </md:method>
 
 <md:method>
@@ -36,7 +36,7 @@ public unshift($cb)
 	 * @param  mixed   ...$args Arguments
 	 * @return boolean
 	 */
-public executeOne()
+public function executeOne()
 </md:method>
 
 <md:method>
@@ -45,7 +45,7 @@ public executeOne()
 	 * @param  mixed   ...$args Arguments
 	 * @return boolean
 	 */
-public executeAndKeepOne()
+public function executeAndKeepOne()
 </md:method>
 
 <md:method>
@@ -54,7 +54,7 @@ public executeAndKeepOne()
 	 * @param  mixed   ...$args Arguments
 	 * @return integer
 	 */
-public executeAll()
+public function executeAll()
 </md:method>
 
 <md:method>
@@ -62,7 +62,7 @@ public executeAll()
 	 * Return array
 	 * @return array
 	 */
-public toArray()
+public function toArray()
 </md:method>
 
 <md:method>
@@ -70,7 +70,7 @@ public toArray()
 	 * Shifts all callbacks sequentially
 	 * @return void
 	 */
-public reset()
+public function reset()
 </md:method>
 
 

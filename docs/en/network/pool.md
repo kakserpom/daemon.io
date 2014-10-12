@@ -110,7 +110,7 @@ public $appInstance;
 	 * @param array   $config Config variables
 	 * @param boolean $init
 	 */
-public __construct($config = [], $init = true)
+public function __construct($config = [], $init = true)
 </md:method>
 
 <md:method>
@@ -118,7 +118,7 @@ public __construct($config = [], $init = true)
 	 * Called when the worker is ready to go
 	 * @return void
 	 */
-public onReady()
+public function onReady()
 </md:method>
 
 <md:method>
@@ -126,7 +126,7 @@ public onReady()
 	 * Called when worker is going to update configuration
 	 * @return void
 	 */
-public onConfigUpdated()
+public function onConfigUpdated()
 </md:method>
 
 <md:method>
@@ -136,7 +136,7 @@ public onConfigUpdated()
 	 * @param  boolean $spawn Spawn? Default is true
 	 * @return this
 	 */
-public static getInstance($arg = '', $spawn = true)
+public static function getInstance($arg = '', $spawn = true)
 </md:method>
 
 <md:method>
@@ -145,7 +145,7 @@ public static getInstance($arg = '', $spawn = true)
 	 * @param  string $class Connection class name
 	 * @return void
 	 */
-public setConnectionClass($class)
+public function setConnectionClass($class)
 </md:method>
 
 <md:method>
@@ -153,7 +153,7 @@ public setConnectionClass($class)
 	 * Enable socket events
 	 * @return void
 	 */
-public enable()
+public function enable()
 </md:method>
 
 <md:method>
@@ -161,7 +161,7 @@ public enable()
 	 * Disable all events of sockets
 	 * @return void
 	 */
-public disable()
+public function disable()
 </md:method>
 
 <md:method>
@@ -170,7 +170,7 @@ public disable()
 	 * @param  boolean $graceful
 	 * @return boolean Ready to shutdown?
 	 */
-public onShutdown($graceful = false)
+public function onShutdown($graceful = false)
 </md:method>
 
 <md:method>
@@ -178,7 +178,7 @@ public onShutdown($graceful = false)
 	 * Finishes ConnectionPool
 	 * @return boolean Success
 	 */
-public finish($graceful = false)
+public function finish($graceful = false)
 </md:method>
 
 <md:method>
@@ -188,7 +188,7 @@ public finish($graceful = false)
 	 * @param  mixed  $inf  Info
 	 * @return void
 	 */
-public attach($conn, $inf = null)
+public function attach($conn, $inf = null)
 </md:method>
 
 <md:method>
@@ -197,7 +197,7 @@ public attach($conn, $inf = null)
 	 * @param  object $conn Connection
 	 * @return void
 	 */
-public detach($conn)
+public function detach($conn)
 </md:method>
 
 <md:method>
@@ -208,7 +208,7 @@ public detach($conn)
 	 * @param  string   $class Optional. Connection class name
 	 * @return integer         Connection's ID. Boolean false when failed
 	 */
-public connect($url, $cb, $class = null)
+public function connect($url, $cb, $class = null)
 </md:method>
 
 

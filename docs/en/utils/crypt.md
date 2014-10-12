@@ -18,7 +18,7 @@ class Crypt;
 	 * @param  boolean $plain Is plain text?
 	 * @return string
 	 */
-public static hash($str, $salt = '', $plain = false)
+public static function hash($str, $salt = '', $plain = false)
 </md:method>
 
 <md:method>
@@ -31,7 +31,7 @@ public static hash($str, $salt = '', $plain = false)
 	 * @param  boolean  $hang  If true, we shall use /dev/random instead of /dev/urandom and it may cause delay
 	 * @return string
 	 */
-public static randomString($len = null, $chars = null, $cb = null, $pri = 0, $hang = false)
+public static function randomString($len = null, $chars = null, $cb = null, $pri = 0, $hang = false)
 </md:method>
 
 <md:method>
@@ -41,7 +41,7 @@ public static randomString($len = null, $chars = null, $cb = null, $pri = 0, $ha
 	 * @param  integer $idx Index
 	 * @return string
 	 */
-public static stringIdx($str, $idx)
+public static function stringIdx($str, $idx)
 </md:method>
 
 <md:method>
@@ -53,7 +53,7 @@ public static stringIdx($str, $idx)
 	 * @param  boolean  $hang If true, we shall use /dev/random instead of /dev/urandom and it may cause delay
 	 * @return integer
 	 */
-public static randomBytes($len, $cb, $pri = 0, $hang = false)
+public static function randomBytes($len, $cb, $pri = 0, $hang = false)
 </md:method>
 
 <md:method>
@@ -65,7 +65,7 @@ public static randomBytes($len, $cb, $pri = 0, $hang = false)
 	 * @param  boolean  $hang    If true, we shall use /dev/random instead of /dev/urandom and it may cause delay
 	 * @return integer
 	 */
-public static randomInts($numInts, $cb, $pri = 0, $hang = false)
+public static function randomInts($numInts, $cb, $pri = 0, $hang = false)
 </md:method>
 
 <md:method>
@@ -77,7 +77,7 @@ public static randomInts($numInts, $cb, $pri = 0, $hang = false)
 	 * @param  boolean  $hang    If true, we shall use /dev/random instead of /dev/urandom and it may cause delay
 	 * @return integer
 	 */
-public static randomInts32($numInts, $cb, $pri = 0, $hang = false)
+public static function randomInts32($numInts, $cb, $pri = 0, $hang = false)
 </md:method>
 
 <md:method>
@@ -86,7 +86,7 @@ public static randomInts32($numInts, $cb, $pri = 0, $hang = false)
 	 * @param  integer $toRepresent must be an integer greater than or equal to 1
 	 * @return integer
 	 */
-protected static getMinimalBitMask($toRepresent)
+protected static function getMinimalBitMask($toRepresent)
 </md:method>
 
 <md:method>
@@ -96,7 +96,7 @@ protected static getMinimalBitMask($toRepresent)
 	 * @param  string  $b String 2
 	 * @return boolean    Equal?
 	 */
-public static compareStrings($a, $b)
+public static function compareStrings($a, $b)
 </md:method>
 
 

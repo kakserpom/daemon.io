@@ -20,7 +20,7 @@ class PubSub;
 	 * @param  string  $id Event ID
 	 * @return boolean
 	 */
-public eventExists($id)
+public function eventExists($id)
 </md:method>
 
 <md:method>
@@ -31,7 +31,7 @@ public eventExists($id)
 	 * @param  callable $cb  Callback
 	 * @return boolean       Success
 	 */
-public sub($id, $obj, $cb)
+public function sub($id, $obj, $cb)
 </md:method>
 
 <md:method>
@@ -41,7 +41,7 @@ public sub($id, $obj, $cb)
 	 * @param  PubSubEvent $obj
 	 * @return void
 	 */
-public addEvent($id, PubSubEvent $obj)
+public function addEvent($id, PubSubEvent $obj)
 </md:method>
 
 <md:method>
@@ -50,7 +50,7 @@ public addEvent($id, PubSubEvent $obj)
 	 * @param  string $id Event ID
 	 * @return void
 	 */
-public removeEvent($id)
+public function removeEvent($id)
 </md:method>
 
 <md:method>
@@ -60,7 +60,7 @@ public removeEvent($id)
 	 * @param  object  $obj Subscriber
 	 * @return boolean      Success
 	 */
-public unsub($id, $obj)
+public function unsub($id, $obj)
 </md:method>
 
 <md:method>
@@ -70,7 +70,7 @@ public unsub($id, $obj)
 	 * @param  mixed   $data Data
 	 * @return boolean       Success
 	 */
-public pub($id, $data)
+public function pub($id, $data)
 </md:method>
 
 <md:method>
@@ -79,7 +79,7 @@ public pub($id, $data)
 	 * @param  object  $obj Subscriber
 	 * @return boolean      Success
 	 */
-public unsubFromAll($obj)
+public function unsubFromAll($obj)
 </md:method>
 
 #### pub-sub-event # Class PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
@@ -118,7 +118,7 @@ public $deactCb;
 /**
 	 * Constructor
 	 */
-public __construct($act = null, $deact = null)
+public function __construct($act = null, $deact = null)
 </md:method>
 
 <md:method>
@@ -127,7 +127,7 @@ public __construct($act = null, $deact = null)
 	 * @param  callable $cb Callback
 	 * @return this
 	 */
-public onActivation($cb)
+public function onActivation($cb)
 </md:method>
 
 <md:method>
@@ -136,7 +136,7 @@ public onActivation($cb)
 	 * @param callable $cb Callback
 	 * @return this
 	 */
-public onDeactivation($cb)
+public function onDeactivation($cb)
 </md:method>
 
 <md:method>
@@ -144,7 +144,7 @@ public onDeactivation($cb)
 	 * Init
 	 * @return object
 	 */
-public static init()
+public static function init()
 </md:method>
 
 <md:method>
@@ -154,7 +154,7 @@ public static init()
 	 * @param  callable $cb  Callback
 	 * @return this
 	 */
-public sub($obj, $cb)
+public function sub($obj, $cb)
 </md:method>
 
 <md:method>
@@ -163,7 +163,7 @@ public sub($obj, $cb)
 	 * @param  object $obj Subscriber object
 	 * @return this
 	 */
-public unsub($obj)
+public function unsub($obj)
 </md:method>
 
 <md:method>
@@ -172,7 +172,7 @@ public unsub($obj)
 	 * @param  mixed $data Data
 	 * @return this
 	 */
-public pub($data)
+public function pub($data)
 </md:method>
 
 

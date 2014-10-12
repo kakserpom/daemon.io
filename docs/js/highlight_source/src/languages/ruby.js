@@ -2,6 +2,7 @@
 Language: Ruby
 Author: Anton Kovalyov <anton@kovalyov.net>
 Contributors: Peter Leonov <gojpeg@yandex.ru>, Vasily Polovnyov <vast@whiteants.net>, Loren Segal <lsegal@soen.ca>, Pascal Hurni <phi@ruby-reactive.org>
+Category: common
 */
 
 function(hljs) {
@@ -46,14 +47,15 @@ function(hljs) {
     variants: [
       {begin: /'/, end: /'/},
       {begin: /"/, end: /"/},
-      {begin: '%[qw]?\\(', end: '\\)'},
-      {begin: '%[qw]?\\[', end: '\\]'},
-      {begin: '%[qw]?{', end: '}'},
-      {begin: '%[qw]?<', end: '>'},
-      {begin: '%[qw]?/', end: '/'},
-      {begin: '%[qw]?%', end: '%'},
-      {begin: '%[qw]?-', end: '-'},
-      {begin: '%[qw]?\\|', end: '\\|'},
+      {begin: /`/, end: /`/},
+      {begin: '%[qQwWx]?\\(', end: '\\)'},
+      {begin: '%[qQwWx]?\\[', end: '\\]'},
+      {begin: '%[qQwWx]?{', end: '}'},
+      {begin: '%[qQwWx]?<', end: '>'},
+      {begin: '%[qQwWx]?/', end: '/'},
+      {begin: '%[qQwWx]?%', end: '%'},
+      {begin: '%[qQwWx]?-', end: '-'},
+      {begin: '%[qQwWx]?\\|', end: '\\|'},
       {
         // \B in the beginning suppresses recognition of ?-sequences where ?
         // is the last character of a preceding identifier, as in: `func?4`
@@ -105,13 +107,13 @@ function(hljs) {
     },
     {
       className: 'symbol',
-      begin: ':',
-      contains: [STRING, {begin: RUBY_METHOD_RE}],
+      begin: hljs.UNDERSCORE_IDENT_RE + '(\\!|\\?)?:',
       relevance: 0
     },
     {
       className: 'symbol',
-      begin: hljs.UNDERSCORE_IDENT_RE + '(\\!|\\?)?:',
+      begin: ':',
+      contains: [STRING, {begin: RUBY_METHOD_RE}],
       relevance: 0
     },
     {
@@ -146,45 +148,27 @@ function(hljs) {
   ];
   SUBST.contains = RUBY_DEFAULT_CONTAINS;
   PARAMS.contains = RUBY_DEFAULT_CONTAINS;
-  
+
   var IRB_DEFAULT = [
     {
-      relevance: 1,
-      className: 'output',
-      begin: '^\\s*=> ', end: "$",
-      returnBegin: true,
-      contains: [
-        {
-          className: 'status',
-          begin: '^\\s*=>'
-        },
-        {
-          begin: ' ', end: '$',
-          contains: RUBY_DEFAULT_CONTAINS
-        }
-      ]
+      begin: /^\s*=>/,
+      className: 'status',
+      starts: {
+        end: '$', contains: RUBY_DEFAULT_CONTAINS
+      }
     },
     {
-      relevance: 1,
-      className: 'input',
-      begin: '^[^ ][^=>]*>+ ', end: "$",
-      returnBegin: true,
-      contains: [
-        {
-          className: 'prompt',
-          begin: '^[^ ][^=>]*>+'
-        },
-        {
-          begin: ' ', end: '$',
-          contains: RUBY_DEFAULT_CONTAINS
-        }
-      ]
+      className: 'prompt',
+      begin: /^\S[^=>\n]*>+/,
+      starts: {
+        end: '$', contains: RUBY_DEFAULT_CONTAINS
+      }
     }
   ];
 
   return {
     aliases: ['rb', 'gemspec', 'podspec', 'thor', 'irb'],
     keywords: RUBY_KEYWORDS,
-    contains: IRB_DEFAULT.concat(RUBY_DEFAULT_CONTAINS)
+    contains: [COMMENT].concat(IRB_DEFAULT).concat(RUBY_DEFAULT_CONTAINS)
   };
 }

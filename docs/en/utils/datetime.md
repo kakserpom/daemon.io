@@ -17,7 +17,7 @@ class DateTime extends \[DateTime](http://php.net/manual/class.datetime.php);
 	 * @param DateTimeZone $timezone
 	 * @link http://php.net/manual/en/datetime.construct.php
 	 */
-public __construct($time = 'now', DateTimeZone $timezone = null)
+public function __construct($time = 'now', DateTimeZone $timezone = null)
 </md:method>
 
 <md:method>
@@ -29,7 +29,7 @@ public __construct($time = 'now', DateTimeZone $timezone = null)
 	 * @param  boolean $absolute
 	 * @return string Something like this: 1 year. 2 mon. 6 day. 4 hours. 21 min. 10 sec.
 	 */
-public static diffAsText($datetime1, $datetime2, $absolute = false)
+public static function diffAsText($datetime1, $datetime2, $absolute = false)
 </md:method>
 
 

@@ -20,7 +20,7 @@ class ShmEntity;
 	 * @param string  $name    Name
 	 * @param boolean $create  Create
 	 */
-public __construct($path, $segsize, $name, $create = false)
+public function __construct($path, $segsize, $name, $create = false)
 </md:method>
 
 <md:method>
@@ -30,7 +30,7 @@ public __construct($path, $segsize, $name, $create = false)
 	 * @param  boolean $create Create
 	 * @return integer         Segment number
 	 */
-public open($segno = 0, $create = false)
+public function open($segno = 0, $create = false)
 </md:method>
 
 <md:method>
@@ -38,7 +38,7 @@ public open($segno = 0, $create = false)
 	 * Get open segments
 	 * @return array
 	 */
-public getSegments()
+public function getSegments()
 </md:method>
 
 <md:method>
@@ -46,7 +46,7 @@ public getSegments()
 	 * Open all segments
 	 * @return void
 	 */
-public openall()
+public function openall()
 </md:method>
 
 <md:method>
@@ -56,7 +56,7 @@ public openall()
 	 * @param  integer $offset Offset
 	 * @return boolean         Success
 	 */
-public write($data, $offset)
+public function write($data, $offset)
 </md:method>
 
 <md:method>
@@ -66,7 +66,7 @@ public write($data, $offset)
 	 * @param  integer $length Length
 	 * @return string          Data
 	 */
-public read($offset, $length = 1)
+public function read($offset, $length = 1)
 </md:method>
 
 <md:method>
@@ -74,7 +74,7 @@ public read($offset, $length = 1)
 	 * Deletes all segments
 	 * @return void
 	 */
-public delete()
+public function delete()
 </md:method>
 
 

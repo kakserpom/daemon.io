@@ -393,7 +393,7 @@ public $pool;
 	 * @param Callback
 	 * @return void
 	 */
-public onConnected($cb)
+public function onConnected($cb)
 </md:method>
 
 <md:method>
@@ -401,7 +401,7 @@ public onConnected($cb)
 	 * Called when the connection is handshaked (at low-level), and peer is ready to recv. data
 	 * @return void
 	 */
-public onReady()
+public function onReady()
 </md:method>
 
 <md:method>
@@ -409,7 +409,7 @@ public onReady()
 	 * Called when the worker is going to shutdown
 	 * @return boolean Ready to shutdown?
 	 */
-public gracefulShutdown()
+public function gracefulShutdown()
 </md:method>
 
 <md:method>
@@ -417,7 +417,7 @@ public gracefulShutdown()
 	 * Called when session finishes
 	 * @return void
 	 */
-public onFinish()
+public function onFinish()
 </md:method>
 
 <md:method>
@@ -425,7 +425,7 @@ public onFinish()
 	 * Called when new data received.
 	 * @return void
 	 */
-public onRead()
+public function onRead()
 </md:method>
 
 <md:method>
@@ -443,7 +443,7 @@ public onRead()
 	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
-public getSipPeers($cb)
+public function getSipPeers($cb)
 </md:method>
 
 <md:method>
@@ -456,7 +456,7 @@ public getSipPeers($cb)
 	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
-public getIaxPeers($cb)
+public function getIaxPeers($cb)
 </md:method>
 
 <md:method>
@@ -475,7 +475,7 @@ public getIaxPeers($cb)
 	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
-public getConfig($filename, $cb)
+public function getConfig($filename, $cb)
 </md:method>
 
 <md:method>
@@ -494,7 +494,7 @@ public getConfig($filename, $cb)
 	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
-public getConfigJSON($filename, $cb)
+public function getConfigJSON($filename, $cb)
 </md:method>
 
 <md:method>
@@ -508,7 +508,7 @@ public getConfigJSON($filename, $cb)
 	 *  *Variable: Variable name
 	 *  *Value: Value
 	 */
-public setVar($channel, $variable, $value, $cb)
+public function setVar($channel, $variable, $value, $cb)
 </md:method>
 
 <md:method>
@@ -521,7 +521,7 @@ public setVar($channel, $variable, $value, $cb)
 	 * Variables:
 	 *        ActionID: Optional Action id for message matching.
 	 */
-public coreShowChannels($cb)
+public function coreShowChannels($cb)
 </md:method>
 
 <md:method>
@@ -537,7 +537,7 @@ public coreShowChannels($cb)
 	 * Will return the status information of each channel along with the
 	 * value for the specified channel variables.
 	 */
-public status($cb, $channel = null)
+public function status($cb, $channel = null)
 </md:method>
 
 <md:method>
@@ -559,7 +559,7 @@ public status($cb, $channel = null)
 	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
-public redirect(array $params, $cb)
+public function redirect(array $params, $cb)
 </md:method>
 
 <md:method>
@@ -587,7 +587,7 @@ public redirect(array $params, $cb)
 	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
-public originate(array $params, $cb)
+public function originate(array $params, $cb)
 </md:method>
 
 <md:method>
@@ -605,7 +605,7 @@ public originate(array $params, $cb)
 	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
-public extensionState(array $params, $cb)
+public function extensionState(array $params, $cb)
 </md:method>
 
 <md:method>
@@ -619,7 +619,7 @@ public extensionState(array $params, $cb)
 	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
-public ping($cb)
+public function ping($cb)
 </md:method>
 
 <md:method>
@@ -634,7 +634,7 @@ public ping($cb)
 	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
-public action($action, $cb, array $params = null, array $assertion = null)
+public function action($action, $cb, array $params = null, array $assertion = null)
 </md:method>
 
 <md:method>
@@ -649,7 +649,7 @@ public action($action, $cb, array $params = null, array $assertion = null)
 	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
-public logoff($cb = null)
+public function logoff($cb = null)
 </md:method>
 
 <md:method>
@@ -659,7 +659,7 @@ public logoff($cb = null)
 	 * @deprecated Replaced with ->bind('event', ...)
 	 * @return void
 	 */
-public onEvent($cb)
+public function onEvent($cb)
 </md:method>
 
 #### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
@@ -743,7 +743,7 @@ public $appInstance;
 	 * @param string $ver  Version
 	 * @return void
 	 */
-public setAmiVersion($addr, $ver)
+public function setAmiVersion($addr, $ver)
 </md:method>
 
 <md:method>
@@ -751,7 +751,7 @@ public setAmiVersion($addr, $ver)
 	 * @param string $data Address
 	 * @return array
 	 */
-public static prepareEnv($data)
+public static function prepareEnv($data)
 </md:method>
 
 <md:method>
@@ -760,7 +760,7 @@ public static prepareEnv($data)
 	 * @param string $line
 	 * @return array
 	 */
-public static extract($line)
+public static function extract($line)
 </md:method>
 
 

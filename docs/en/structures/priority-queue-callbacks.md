@@ -17,7 +17,7 @@ class PriorityQueueCallbacks extends \[SplPriorityQueue](http://php.net/manual/c
 	 * @param  integer  $pri Priority
 	 * @return void
 	 */
-public insert($cb, $pri = 0)
+public function insert($cb, $pri = 0)
 </md:method>
 
 <md:method>
@@ -27,7 +27,7 @@ public insert($cb, $pri = 0)
 	 * @param  integer  $pri Priority
 	 * @return void
 	 */
-public enqueue($cb, $pri = 0)
+public function enqueue($cb, $pri = 0)
 </md:method>
 
 <md:method>
@@ -35,7 +35,7 @@ public enqueue($cb, $pri = 0)
 	 * Dequeue
 	 * @return callable
 	 */
-public dequeue()
+public function dequeue()
 </md:method>
 
 <md:method>
@@ -45,7 +45,7 @@ public dequeue()
 	 * @param  integer $pri2
 	 * @return integer
 	 */
-public compare($pri1, $pri2)
+public function compare($pri1, $pri2)
 </md:method>
 
 <md:method>
@@ -53,7 +53,7 @@ public compare($pri1, $pri2)
 	 * Executes one callback from the top of queue with arbitrary arguments
 	 * @return boolean
 	 */
-public executeOne()
+public function executeOne()
 </md:method>
 
 <md:method>
@@ -61,7 +61,7 @@ public executeOne()
 	 * Executes all callbacks from the top of queue to bottom with arbitrary arguments
 	 * @return integer
 	 */
-public executeAll()
+public function executeAll()
 </md:method>
 
 

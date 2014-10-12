@@ -2,11 +2,12 @@
 Language: PHP
 Author: Victor Karamzin <Victor.Karamzin@enterra-inc.com>
 Contributors: Evgeny Stepanischev <imbolk@gmail.com>, Ivan Sagalaev <maniac@softwaremaniacs.org>
+Category: common
 */
 
 function(hljs) {
   var VARIABLE = {
-    className: 'variable', begin: '(\\$|->)+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*'
+    className: 'variable', begin: '\\$+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*'
   };
   var PREPROCESSOR = {
     className: 'preprocessor', begin: /<\?(php)?|\?>/
@@ -37,7 +38,7 @@ function(hljs) {
       'catch __METHOD__ case exception default die require __FUNCTION__ ' +
       'enddeclare final try switch continue endfor endif declare unset true false ' +
       'trait goto instanceof insteadof __DIR__ __NAMESPACE__ ' +
-      'yield finally boolean object string integer float callable mixed',
+      'yield finally',
     contains: [
       hljs.C_LINE_COMMENT_MODE,
       hljs.HASH_COMMENT_MODE,
@@ -65,10 +66,16 @@ function(hljs) {
       PREPROCESSOR,
       VARIABLE,
       {
+        // swallow class members to avoid parsing them as keywords
+        begin: /->+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/
+      },
+      {
         className: 'function',
         illegal: '\\$|\\[|%',
         variants: [
           {beginKeywords: 'function', end: /[;{]/, excludeEnd: true},
+          // {begin: /((public|protected|private)([ \t]+static)?[ \t]+(?!function|\$)|function)/, end: /[;{\n]/, excludeBegin: true, excludeEnd: true},
+          // {begin: /(public|protected|private)(?:(?=[^\$]+\())/, end: /[;{\n]/, excludeEnd: true},
           {begin: '::', end: '\\(?', excludeBegin: true, excludeEnd: true}
         ],
         contains: [
@@ -115,6 +122,7 @@ function(hljs) {
         contains: [hljs.UNDERSCORE_TITLE_MODE]
       },
       {
+        className: 'class',
         beginKeywords: 'trait', end: ';',
         contains: [hljs.UNDERSCORE_TITLE_MODE]
       },

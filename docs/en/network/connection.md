@@ -38,7 +38,7 @@ public $pool;
 	 * Connected?
 	 * @return boolean
 	 */
-public isConnected()
+public function isConnected()
 </md:method>
 
 <md:method>
@@ -47,7 +47,7 @@ public isConnected()
 	 * @param  boolean $bool DGRAM Mode
 	 * @return void
 	 */
-public setDgram($bool)
+public function setDgram($bool)
 </md:method>
 
 <md:method>
@@ -57,7 +57,7 @@ public setDgram($bool)
 	 * @param  integer $port Port
 	 * @return void
 	 */
-public setPeername($host, $port)
+public function setPeername($host, $port)
 </md:method>
 
 <md:method>
@@ -66,7 +66,7 @@ public setPeername($host, $port)
 	 * @param  string $name Name
 	 * @return mixed
 	 */
-public __get($name)
+public function __get($name)
 </md:method>
 
 <md:method>
@@ -76,7 +76,7 @@ public __get($name)
 	 * @param  srting &$port Port
 	 * @return void
 	 */
-public getSocketName(&$addr, &$port)
+public function getSocketName(&$addr, &$port)
 </md:method>
 
 <md:method>
@@ -85,7 +85,7 @@ public getSocketName(&$addr, &$port)
 	 * @param \PHPDaemon\BoundSocket\Generic $sock
 	 * @return void
 	 */
-public setParentSocket(Generic $sock)
+public function setParentSocket(Generic $sock)
 </md:method>
 
 <md:method>
@@ -94,7 +94,7 @@ public setParentSocket(Generic $sock)
 	 * @param  object $pct Packet
 	 * @return void
 	 */
-public onUdpPacket($pct)
+public function onUdpPacket($pct)
 </md:method>
 
 <md:method>
@@ -102,7 +102,7 @@ public onUdpPacket($pct)
 	 * Called when the connection is handshaked (at low-level), and peer is ready to recv. data
 	 * @return void
 	 */
-public onReady()
+public function onReady()
 </md:method>
 
 <md:method>
@@ -111,7 +111,7 @@ public onReady()
 	 * @param  Request $req Parent Request
 	 * @return void
 	 */
-public onInheritanceFromRequest($req)
+public function onInheritanceFromRequest($req)
 </md:method>
 
 <md:method>
@@ -119,7 +119,7 @@ public onInheritanceFromRequest($req)
 	 * Called when the connection failed to be established
 	 * @return void
 	 */
-public onFailure()
+public function onFailure()
 </md:method>
 
 <md:method>
@@ -128,7 +128,7 @@ public onFailure()
 	 * @param  EventBufferEvent $bev
 	 * @return void
 	 */
-public onFailureEv($bev = null)
+public function onFailureEv($bev = null)
 </md:method>
 
 <md:method>
@@ -136,7 +136,7 @@ public onFailureEv($bev = null)
 	 * Destructor
 	 * @return void
 	 */
-public __destruct()
+public function __destruct()
 </md:method>
 
 <md:method>
@@ -145,7 +145,7 @@ public __destruct()
 	 * @param  string  $data Data to send
 	 * @return boolean       Success
 	 */
-public write($data)
+public function write($data)
 </md:method>
 
 <md:method>
@@ -154,7 +154,7 @@ public write($data)
 	 * @param  callable $cb Callback
 	 * @return void
 	 */
-public onConnected($cb)
+public function onConnected($cb)
 </md:method>
 
 <md:method>
@@ -162,7 +162,7 @@ public onConnected($cb)
 	 * Get URL
 	 * @return string
 	 */
-public getUrl()
+public function getUrl()
 </md:method>
 
 <md:method>
@@ -170,7 +170,7 @@ public getUrl()
 	 * Get host
 	 * @return string
 	 */
-public getHost()
+public function getHost()
 </md:method>
 
 <md:method>
@@ -178,7 +178,7 @@ public getHost()
 	 * Get port
 	 * @return integer
 	 */
-public getPort()
+public function getPort()
 </md:method>
 
 <md:method>
@@ -188,7 +188,7 @@ public getPort()
 	 * @param  callable $cb  Callback
 	 * @return boolean       Success
 	 */
-public connect($url, $cb = null)
+public function connect($url, $cb = null)
 </md:method>
 
 <md:method>
@@ -197,7 +197,7 @@ public connect($url, $cb = null)
 	 * @param  string  $path Path
 	 * @return boolean       Success
 	 */
-public connectUnix($path)
+public function connectUnix($path)
 </md:method>
 
 <md:method>
@@ -206,7 +206,7 @@ public connectUnix($path)
 	 * @param  string  $host Hostname
 	 * @return boolean       Success
 	 */
-public connectRaw($host)
+public function connectRaw($host)
 </md:method>
 
 <md:method>
@@ -216,7 +216,7 @@ public connectRaw($host)
 	 * @param  integer $port Port
 	 * @return boolean       Success
 	 */
-public connectUdp($host, $port)
+public function connectUdp($host, $port)
 </md:method>
 
 <md:method>
@@ -226,7 +226,7 @@ public connectUdp($host, $port)
 	 * @param  integer $port Port
 	 * @return boolean       Success
 	 */
-public connectTcp($host, $port)
+public function connectTcp($host, $port)
 </md:method>
 
 <md:method>
@@ -235,7 +235,7 @@ public connectTcp($host, $port)
 	 * @param  boolean $bool
 	 * @return void
 	 */
-public setKeepalive($bool)
+public function setKeepalive($bool)
 </md:method>
 
 <md:method>
@@ -243,7 +243,7 @@ public setKeepalive($bool)
 	 * Close the connection
 	 * @return void
 	 */
-public close()
+public function close()
 </md:method>
 
 <md:method>
@@ -253,7 +253,7 @@ public close()
 	 * @param  integer $write Write timeout in seconds
 	 * @return void
 	 */
-public setTimeouts($read, $write)
+public function setTimeouts($read, $write)
 </md:method>
 
 <md:method>
@@ -264,7 +264,7 @@ public setTimeouts($read, $write)
 	 * @param  mixed   $val     Value
 	 * @return void
 	 */
-public setOption($level, $optname, $val)
+public function setOption($level, $optname, $val)
 </md:method>
 
 <md:method>
@@ -272,7 +272,7 @@ public setOption($level, $optname, $val)
 	 * Called when connection finishes
 	 * @return void
 	 */
-public onFinish()
+public function onFinish()
 </md:method>
 
 

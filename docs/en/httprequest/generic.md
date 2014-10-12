@@ -68,7 +68,7 @@ public $attrs;
 	 * Called when first deferred event used
 	 * @return void
 	 */
-public firstDeferredEventUsed ()
+public function firstDeferredEventUsed ()
 </md:method>
 
 <md:method>
@@ -79,7 +79,7 @@ public firstDeferredEventUsed ()
 	 * @param  integer  $pri  Priority
 	 * @return boolean        Success
 	 */
-public sendfile($path, $cb, $pri = EIO_PRI_DEFAULT)
+public function sendfile($path, $cb, $pri = EIO_PRI_DEFAULT)
 </md:method>
 
 <md:method>
@@ -87,7 +87,7 @@ public sendfile($path, $cb, $pri = EIO_PRI_DEFAULT)
 	 * Called to check if Request is ready
 	 * @return boolean Ready?
 	 */
-public checkIfReady()
+public function checkIfReady()
 </md:method>
 
 <md:method>
@@ -95,7 +95,7 @@ public checkIfReady()
 	 * Upload maximum file size
 	 * @return integer
 	 */
-public getUploadMaxSize()
+public function getUploadMaxSize()
 </md:method>
 
 <md:method>
@@ -103,7 +103,7 @@ public getUploadMaxSize()
 	 * Prepares the request body
 	 * @return void
 	 */
-public postPrepare()
+public function postPrepare()
 </md:method>
 
 <md:method>
@@ -111,7 +111,7 @@ public postPrepare()
 	 * Ensure that headers are sent
 	 * @return boolean Were already sent?
 	 */
-public ensureSentHeaders()
+public function ensureSentHeaders()
 </md:method>
 
 <md:method>
@@ -121,7 +121,7 @@ public ensureSentHeaders()
 	 * @param  boolean $flush ob_flush?
 	 * @return boolean        Success
 	 */
-public out($s, $flush = true)
+public function out($s, $flush = true)
 </md:method>
 
 <md:method>
@@ -129,7 +129,7 @@ public out($s, $flush = true)
 	 * Called when request's headers parsed
 	 * @return void
 	 */
-public onParsedParams()
+public function onParsedParams()
 </md:method>
 
 <md:method>
@@ -138,7 +138,7 @@ public onParsedParams()
 	 * @param  string  $s Data
 	 * @return boolean    Success
 	 */
-public combinedOut($s)
+public function combinedOut($s)
 </md:method>
 
 <md:method>
@@ -146,7 +146,7 @@ public combinedOut($s)
 	 * Use chunked encoding
 	 * @return void
 	 */
-public chunked()
+public function chunked()
 </md:method>
 
 <md:method>
@@ -154,7 +154,7 @@ public chunked()
 	 * Called when the request wakes up
 	 * @return void
 	 */
-public onWakeup()
+public function onWakeup()
 </md:method>
 
 <md:method>
@@ -162,7 +162,7 @@ public onWakeup()
 	 * Called when the request starts sleep
 	 * @return void
 	 */
-public onSleep()
+public function onSleep()
 </md:method>
 
 <md:method>
@@ -172,7 +172,7 @@ public onSleep()
 	 * @throws RequestHeadersAlreadySent
 	 * @return boolean Success
 	 */
-public status($code = 200)
+public function status($code = 200)
 </md:method>
 
 <md:method>
@@ -182,7 +182,7 @@ public status($code = 200)
 	 * @param  integer &$line Line in file
 	 * @return boolean        Success
 	 */
-public headers_sent(&$file, &$line)
+public function headers_sent(&$file, &$line)
 </md:method>
 
 <md:method>
@@ -190,7 +190,7 @@ public headers_sent(&$file, &$line)
 	 * Return current list of headers
 	 * @return array Headers
 	 */
-public headers_list()
+public function headers_list()
 </md:method>
 
 <md:method>
@@ -205,7 +205,7 @@ public headers_list()
 	 * @param boolean $HTTPOnly Optional. HTTPOnly. Default is false
 	 * @return void
 	 */
-public setcookie($name, $value = '', $maxage = 0, $path = '', $domain = '', $secure = false, $HTTPOnly = false)
+public function setcookie($name, $value = '', $maxage = 0, $path = '', $domain = '', $secure = false, $HTTPOnly = false)
 </md:method>
 
 <md:method>
@@ -217,7 +217,7 @@ public setcookie($name, $value = '', $maxage = 0, $path = '', $domain = '', $sec
 	 * @throws \PHPDaemon\Request\RequestHeadersAlreadySent
 	 * @return boolean Success
 	 */
-public header($s, $replace = true, $code = false)
+public function header($s, $replace = true, $code = false)
 </md:method>
 
 <md:method>
@@ -226,7 +226,7 @@ public header($s, $replace = true, $code = false)
 	 * @param  string $s Header name. Example: 'Location'
 	 * @return void
 	 */
-public removeHeader($s)
+public function removeHeader($s)
 </md:method>
 
 <md:method>
@@ -235,7 +235,7 @@ public removeHeader($s)
 	 * @param  string $value String of size
 	 * @return integer
 	 */
-public static parseSize($value)
+public static function parseSize($value)
 </md:method>
 
 <md:method>
@@ -244,7 +244,7 @@ public static parseSize($value)
 	 * @param  Input $in Input buffer
 	 * @return void
 	 */
-public onUploadFileStart($in)
+public function onUploadFileStart($in)
 </md:method>
 
 <md:method>
@@ -254,7 +254,7 @@ public onUploadFileStart($in)
 	 * @param  boolean $last Last?
 	 * @return void
 	 */
-public onUploadFileChunk($in, $last = false)
+public function onUploadFileChunk($in, $last = false)
 </md:method>
 
 <md:method>
@@ -262,7 +262,7 @@ public onUploadFileChunk($in, $last = false)
 	 * Returns path to directory of temporary upload files
 	 * @return string
 	 */
-public getUploadTempDir()
+public function getUploadTempDir()
 </md:method>
 
 <md:method>
@@ -271,7 +271,7 @@ public getUploadTempDir()
 	 * @param  string  $path The filename being checked
 	 * @return boolean       Whether if this is uploaded file
 	 */
-public isUploadedFile($path)
+public function isUploadedFile($path)
 </md:method>
 
 <md:method>
@@ -281,7 +281,7 @@ public isUploadedFile($path)
 	 * @param  string  $dest     The destination of the moved file
 	 * @return boolean           Success
 	 */
-public moveUploadedFile($filename, $dest)
+public function moveUploadedFile($filename, $dest)
 </md:method>
 
 <md:method>
@@ -289,7 +289,7 @@ public moveUploadedFile($filename, $dest)
 	 * Read request body from the file given in REQUEST_BODY_FILE parameter
 	 * @return boolean Success
 	 */
-public readBodyFile()
+public function readBodyFile()
 </md:method>
 
 <md:method>
@@ -300,7 +300,7 @@ public readBodyFile()
 	 * @param  boolean $header Header-style string
 	 * @return void
 	 */
-public static parse_str($s, &$var, $header = false)
+public static function parse_str($s, &$var, $header = false)
 </md:method>
 
 
