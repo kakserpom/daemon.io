@@ -6,7 +6,7 @@ namespace PHPDaemon\Cache;
 
 Механизм локального LRU-кеша ключ-значение.
 
-> Используется для кеширования замыканий созданных через create_function. Также используется в {tpl-inlink #clients/dns Clients\DNS}
+> Используется для кеширования замыканий созданных через create_function. Также используется в [Clients\DNS](#clients/dns)
 
 <!-- include-namespace path="\PHPDaemon\Cache" commit="" level="" access="" -->
 #### capped-storage # Class CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}

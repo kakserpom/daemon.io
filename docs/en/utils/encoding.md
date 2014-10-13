@@ -8,23 +8,6 @@ class Encoding;
 Сторонняя библиотека — [forceutf8](https://github.com/neitanod/forceutf8)
 
 <!-- include-namespace path="\PHPDaemon\Utils\Encoding" commit="" level="" access="" -->
-#### properties # Properties
-
-<md:prop>
-
-protected static $win1252ToUtf8;
-</md:prop>
-
-<md:prop>
-
-protected static $brokenUtf8ToUtf8;
-</md:prop>
-
-<md:prop>
-
-protected static $utf8ToWin1252;
-</md:prop>
-
 #### methods # Methods
 
 <md:method>

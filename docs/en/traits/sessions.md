@@ -17,7 +17,7 @@ trait Sessions;
 Текущая реализация поддерживает хранение сессий в файлах, `session.serialize_handler = php|php_binary`, lock `r+!` файлов - аналогичный нативному - для предотвращения race condition.
 
 Вы можете безопасно использовать PhpDaemon c существующими сессиями, сериализация совместима с нативной
-(См. {tpl-outlink http://php.net//manual/ru/function.session-encode.php session_encode}, {tpl-outlink http://php.net//manual/ru/function.session-decode.php session_decode}).
+(См. [session_encode](http://php.net//manual/ru/function.session-encode.php), [session_decode](http://php.net//manual/ru/function.session-decode.php)).
 
 Пример использования:
 
@@ -30,4 +30,4 @@ $this->onSessionStart(function ($event) {
 });
 ```
 
-> Данная примесь используется в {tpl-inlink HTTPRequest HTTPRequest} и {tpl-inlink servers/websocket/route Servers\WebSocket\Route}
+> Данная примесь используется в [HTTPRequest](#HTTPRequest) и [Servers\WebSocket\Route](#servers/websocket/route)

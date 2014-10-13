@@ -80,23 +80,9 @@ public $cb;
 
 <md:prop>
 /**
-	 * @var Timer[] List of timers
-	 */
-protected static $list;
-</md:prop>
-
-<md:prop>
-/**
 	 * @var integer Priority
 	 */
 public $priority;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Counter
-	 */
-protected static $counter;
 </md:prop>
 
 #### methods # Methods

@@ -33,13 +33,6 @@ public $config;
 
 <md:prop>
 /**
-	 * @var ConnectionPool[] Instances storage
-	 */
-protected static $instances;
-</md:prop>
-
-<md:prop>
-/**
 	 * @var integer Max concurrency
 	 */
 public $maxConcurrency;

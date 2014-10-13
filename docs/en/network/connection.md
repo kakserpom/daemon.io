@@ -12,20 +12,6 @@ abstract class Connection extends [IOStream](#../iostream);
 
 <md:prop>
 /**
-	 * @var CappedStorage Context cache
-	 */
-protected static $contextCache;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var number Context cache size
-	 */
-protected static $contextCacheSize;
-</md:prop>
-
-<md:prop>
-/**
 	 * @var object Associated pool
 	 */
 public $pool;

@@ -82,15 +82,6 @@ public static function randomInts32($numInts, $cb, $pri = 0, $hang = false)
 
 <md:method>
 /**
-	 * Returns the smallest bit mask of all 1s such that ($toRepresent & mask) = $toRepresent
-	 * @param  integer $toRepresent must be an integer greater than or equal to 1
-	 * @return integer
-	 */
-protected static function getMinimalBitMask($toRepresent)
-</md:method>
-
-<md:method>
-/**
 	 * Compare strings
 	 * @param  string  $a String 1
 	 * @param  string  $b String 2

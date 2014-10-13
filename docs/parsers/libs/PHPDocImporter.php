@@ -389,7 +389,7 @@ TPL;
 		$level = $params['level'] ? $params['level'] + 2 : 4;
 		$level = str_repeat('#', $level);
 		$result = '';
-		$properties = $ReflectionClass->getProperties(ReflectionProperty::IS_STATIC | $access);
+		$properties = $ReflectionClass->getProperties($access);
 
 		foreach ($properties as $ReflectionProperty) {
 			$name = $ReflectionProperty->getName();
@@ -428,7 +428,7 @@ TPL;
 		$level = $params['level'] ? $params['level'] + 2 : 4;
 		$level = str_repeat('#', $level);
 		$result = '';
-		$methods = $ReflectionClass->getMethods(ReflectionMethod::IS_STATIC | ReflectionMethod::IS_FINAL | $access);
+		$methods = $ReflectionClass->getMethods($access);
 
 		foreach ($methods as $ReflectionMethod) {
 			$name = $ReflectionMethod->getName();

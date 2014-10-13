@@ -12,13 +12,6 @@ abstract class Generic extends \PHPDaemon\Request\Generic;
 
 <md:prop>
 /**
-	 * @var array Status codes
-	 */
-protected static $codes;
-</md:prop>
-
-<md:prop>
-/**
 	 * @var boolean Keepalive?
 	 */
 public $keepalive;

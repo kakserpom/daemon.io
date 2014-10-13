@@ -6,15 +6,6 @@ class MIME;
 ```
 
 <!-- include-namespace path="\PHPDaemon\Utils\MIME" commit="" level="" access="" -->
-#### properties # Properties
-
-<md:prop>
-/**
-	 * @var array MIME types
-	 */
-protected static $fileTypes;
-</md:prop>
-
 #### methods # Methods
 
 <md:method>

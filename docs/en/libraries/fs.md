@@ -660,17 +660,6 @@ public static function genRndTempnamPrefix($dir, $prefix)
 
 <md:method>
 /**
-	 * Generates closure tempnam handler
-	 * @param  $dir
-	 * @param  $prefix
-	 * @param  $cb
-	 * @param  $tries
-	 */
-protected static function tempnamHandler($dir, $prefix, $cb, &$tries)
-</md:method>
-
-<md:method>
-/**
 	 * Obtain exclusive temporary file
 	 * @param  string   $dir    Directory
 	 * @param  string   $prefix Prefix

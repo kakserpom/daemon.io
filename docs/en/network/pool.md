@@ -7,7 +7,7 @@ abstract class Pool extends [ObjectStorage](#structures/object-storage);
 
 @TODO translate to english
 
-Хранит в себе активные объекты {tpl-inlink network/connection Соединение} и {tpl-inlink network/boundsocket ОткрытыйСокет}.
+Хранит в себе активные объекты [Соединение](#network/connection) и [ОткрытыйСокет](#network/boundsocket).
 
 Пул (клиент или сервер) можно инстанцировать из пользовательского приложении, например:
 
@@ -72,13 +72,6 @@ public $name;
 	 * @var \PHPDaemon\Config\Section Configuration
 	 */
 public $config;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var ConnectionPool[] Instances storage
-	 */
-protected static $instances;
 </md:prop>
 
 <md:prop>

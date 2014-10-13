@@ -260,20 +260,6 @@ public $errmsg;
 
 <md:prop>
 /**
-	 * @var CappedStorage Context cache
-	 */
-protected static $contextCache;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var number Context cache size
-	 */
-protected static $contextCacheSize;
-</md:prop>
-
-<md:prop>
-/**
 	 * @var object Associated pool
 	 */
 public $pool;
@@ -885,13 +871,6 @@ public $name;
 	 * @var \PHPDaemon\Config\Section Configuration
 	 */
 public $config;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var ConnectionPool[] Instances storage
-	 */
-protected static $instances;
 </md:prop>
 
 <md:prop>
