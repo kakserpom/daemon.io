@@ -18,4 +18,5 @@ Thumbs.db
 #Project folders and files
 docs/*/index.html
 docs/js/highlight_source/build/docs
+docs/js/highlight_source/node_modules
 docs/import_phpdoc.conf
