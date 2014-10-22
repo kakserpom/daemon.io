@@ -235,8 +235,6 @@ class PHPDocImporter {
 	 * @return boolean             [description]
 	 */
 	protected function isCommitActual($sourcepath, $commit, &$result) {
-		return false;
-		
 		$filepath = trim(str_replace('\\', '/', $sourcepath), '/');
 		$cmd = "cd $this->sourcePath;git log --pretty=format:\"%H\" -1 $this->sourcePath/$filepath";
 		$result = exec($cmd);

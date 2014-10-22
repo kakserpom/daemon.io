@@ -329,7 +329,7 @@ $(function(){
 
 		var phpTypesKeys = [];
 		for(var k in phpTypes) phpTypesKeys.push(k);
-		var reg = new RegExp('\\b('+phpTypesKeys.join('|')+')\\b', 'g');
+		var reg = new RegExp('(^|[^\\w\\-\\/])('+phpTypesKeys.join('|')+')([^\\w\\-\\/])', 'g');
 
 		// типы переменных делаем ссылками
 		$('.method code').each(function(){
@@ -337,16 +337,16 @@ $(function(){
 				source = that.html();
 
 			// @todo псевдотипы
-			source = source.replace(reg, function(str, p1) {
-				if(phpTypes[p1] === 1) {
-					return '<a href="http://php.net/manual/'+ global_lang +'/language.types.'+ p1 +'.php" target="_blank">'+ p1 + '</a>';
+			source = source.replace(reg, function(str, p1, p2, p3) {
+				if(phpTypes[p2] === 1) {
+					return p1 + '<a href="http://php.net/manual/'+ global_lang +'/language.types.'+ p2 +'.php" target="_blank">'+ p2 + '</a>' + p3;
 				}
 
-				if (phpTypes[p1]) {
-					return '<a href="'+ phpTypes[p1] +'" target="_blank">'+ p1 + '</a>';
+				if (phpTypes[p2]) {
+					return p1 + '<a href="'+ phpTypes[p2] +'" target="_blank">'+ p2 + '</a>' + p3;
 				}
 
-				return p1;
+				return p1 + p2 + p3;
 			});
 
 			that.html(source);

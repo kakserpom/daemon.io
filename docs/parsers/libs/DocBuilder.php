@@ -135,7 +135,7 @@ class DocBuilder {
 	 * @return string
 	 */
 	protected function parseTpls($source) {
-		return preg_replace_callback('/(\{([\w-]+)(?:\s([^}]+))?\})/', function($matches) {
+		return preg_replace_callback('/(\{([\w-]+)(?:[ \t]([^}]+))?\})/', function($matches) {
 			$key = $matches[2];
 
 			if(!isset($this->consts[$key])) {
@@ -215,7 +215,7 @@ class DocBuilder {
 
 		$PHPDoc = new DocBlock($comment);
 
-		$desc_text_arr = preg_split('/\s*\n\s*/', trim($PHPDoc->getShortDescription() ."\n". $PHPDoc->getLongDescription()), -1, PREG_SPLIT_NO_EMPTY);
+		$desc_text_arr = preg_split('/[ \t]*\n[ \t]*/', trim($PHPDoc->getShortDescription() ."\n". $PHPDoc->getLongDescription()), -1, PREG_SPLIT_NO_EMPTY);
 		$desc_text = implode("  \n", $desc_text_arr);
 
 		return $code ."\n". $desc_text;
@@ -377,8 +377,9 @@ class DocBuilder {
 
 		$result = '';
 		
-		$desc_text_arr = preg_split('/\s*\n\s*/', trim($PHPDoc->getShortDescription() ."\n". $PHPDoc->getLongDescription()), -1, PREG_SPLIT_NO_EMPTY);
-		$desc_text = implode("  \n", $desc_text_arr);
+		// $desc_text_arr = preg_split('/[ \t]*\n[ \t]*/', trim($PHPDoc->getShortDescription() ."\n". $PHPDoc->getLongDescription()), -1, PREG_SPLIT_NO_EMPTY);
+		// $desc_text = '   ' . implode("  \n   ", $desc_text_arr);
+		$desc_text = $this->convertTextToHTML(trim($PHPDoc->getShortDescription() . "\n\n" . $PHPDoc->getLongDescription()));
 
 		$doc_methods = $PHPDoc->getTagsByName('call');
 
@@ -386,7 +387,7 @@ class DocBuilder {
 			$result .= $this->showReturnType($code_return_type) .' '. $code_out_params .' ( '. implode(', ', $code_params) ." )\n\n";
 		} else {
 			foreach ($doc_methods as $tag) {
-				$result .= $tag->getDescription() . "\n";
+				$result .= $tag->getDescription() . "<span style='display:none'>;</span>\n";
 			}
 			$result .= "\n";
 		}
@@ -395,6 +396,15 @@ class DocBuilder {
 		$result .= implode("\n\n", $desc_params);
 
 		return $result;
+	}
+
+	protected function convertTextToHTML($text) {
+		// $res = preg_replace('/([^\n])\n([^\n])/', "$1  \n$2", $text);
+		// $res = ' ' . preg_replace('/\n/', '<br />', $text);
+		$res = preg_replace('/\n{2,}/', "\n", $text);
+		$res = str_replace("\n", "  \n", $res);
+		$res = preg_replace('/(^|\n)[ \t]+/', '$1', $res);
+		return $res;
 	}
 
 	protected function showReturnType($type) {
@@ -408,7 +418,7 @@ class DocBuilder {
 	 */
 	protected function parseMdMethodDef($text) {
 		$result = '';
-		$lines = $this->getTextLines($text, '/\n[\s]*\n/');
+		$lines = $this->getTextLines($text, '/\n[ \t]*\n/');
 
 		if(count($lines) === 0 or (count($lines) === 1 and $lines[0] === '')) {
 			return ' -.method.fake &nbsp;';
@@ -420,7 +430,7 @@ class DocBuilder {
 		if($code) {
 			$code = str_replace("\n", "\n ", $code);
 			$matches2 = [];
-			$code = preg_replace_callback('/(?:^|\s)([^\s]+)\s\(/', function($matches) use (&$matches2) {
+			$code = preg_replace_callback('/(?:^|[ \t])(\S+)[ \t]*\(/', function($matches) use (&$matches2) {
 				$matches2 = $matches;
 				return " [!:$matches[1]](#./$matches[1]) (";
 			}, $code);

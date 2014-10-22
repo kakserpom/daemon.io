@@ -448,6 +448,7 @@ header {
     margin-left: -15px;
     margin-bottom: 20px;
     list-style: none;
+    clear: left;
 }
 .main_container li.method.fake {
     margin-top: -20px;

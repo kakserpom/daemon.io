@@ -248,8 +248,8 @@ public $appInstance;
 	 * Performs GET-request
 	 * @param string $url
 	 * @param array $params
-	 * @call  void public get ( url $url, array $params )
-	 * @call  void public get ( url $url, callable $resultcb )
+	 * @call  void public function get ( url $url, array $params )
+	 * @call  void public function get ( url $url, callable $resultcb )
 	 * @callback ( Connection $conn, boolean $success )
 	 */
 public function get($url, $params)
@@ -261,8 +261,8 @@ public function get($url, $params)
 	 * @param string $url
 	 * @param array $data
 	 * @param array $params
-	 * @call  void public post ( url $url, array $data, array $params )
-	 * @call  void public post ( url $url, array $data, callable $resultcb )
+	 * @call  void public function post ( url $url, array $data, array $params )
+	 * @call  void public function post ( url $url, array $data, callable $resultcb )
 	 * @callback ( Connection $conn, boolean $success )
 	 */
 public function post($url, $data = [], $params)
@@ -272,8 +272,8 @@ public function post($url, $data = [], $params)
 /**
 	 * Builds URL from array
 	 * @param string $mixed
-	 * @call  string public static buildUrl ( string $str )
-	 * @call  string public static buildUrl ( array $mixed )
+	 * @call  string public static function buildUrl ( string $str )
+	 * @call  string public static function buildUrl ( array $mixed )
 	 * @return string|false
 	 */
 public static function buildUrl($mixed)
@@ -283,8 +283,8 @@ public static function buildUrl($mixed)
 /**
 	 * Parse URL
 	 * @param string $mixed Look Pool::buildUrl()
-	 * @call  string public static parseUrl ( string $str )
-	 * @call  string public static parseUrl ( array $mixed )
+	 * @call  string public static function parseUrl ( string $str )
+	 * @call  string public static function parseUrl ( array $mixed )
 	 * @return array|bool
 	 */
 public static function parseUrl($mixed)
