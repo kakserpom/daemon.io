@@ -7,7 +7,7 @@ class Binary;
 
 Данный класс предоставляет набор статических методов для работы с бинарными данными.
 
-<!-- include-namespace path="\PHPDaemon\Utils\Binary" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Utils\Binary" commit="6d3f6f0c8a9c52da598fa96cfd16592eb09c0ef9" level="" access="" -->
 #### methods # Methods
 
 <md:method>

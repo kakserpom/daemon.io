@@ -7,7 +7,7 @@ abstract class Connection extends [IOStream](#../iostream);
 
 @TODO
 
-<!-- include-namespace path="\PHPDaemon\Network\Connection" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Network\Connection" commit="8b80f6d1d2fb3f9534b708f86100d2629ac4204b" level="" access="" -->
 #### properties # Properties
 
 <md:prop>

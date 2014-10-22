@@ -7,7 +7,7 @@ abstract class Generic extends \PHPDaemon\Request\Generic;
 
 @TODO
 
-<!-- include-namespace path="\PHPDaemon\HTTPRequest\Generic" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\HTTPRequest\Generic" commit="29a0b915ceb95d4cd72a62ed3a2b8d5da485eece" level="" access="" -->
 #### properties # Properties
 
 <md:prop>

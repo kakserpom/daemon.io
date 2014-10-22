@@ -9,7 +9,7 @@ class ShmEntity;
 
 > Используется для хранения массива состояний рабочих процессов
 
-<!-- include-namespace path="\PHPDaemon\Utils\ShmEntity" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Utils\ShmEntity" commit="6d3f6f0c8a9c52da598fa96cfd16592eb09c0ef9" level="" access="" -->
 #### methods # Methods
 
 <md:method>

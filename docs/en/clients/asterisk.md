@@ -214,7 +214,7 @@ class PbxReconnector extends Request {
 }
 ```
 
-<!-- include-namespace path="\PHPDaemon\Clients\Asterisk" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Clients\Asterisk" commit="c48c00a08b4b4792a01cbb409ea6ec14ed0e7398" level="" access="" -->
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
 
 ```php

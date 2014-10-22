@@ -7,7 +7,7 @@ abstract class IOStream;
 
 @TODO
 
-<!-- include-namespace path="\PHPDaemon\Network\IOStream" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Network\IOStream" commit="2787f4c32d31f6555bbf8be44f08914ccf062e05" level="" access="" -->
 #### consts # Constants
 
 <md:const>

@@ -8,7 +8,7 @@ class Terminal;
 {tpl-catimg contribute/code}<br />Данный класс нуждается в доработке: не хватает полноценной поддержки ncurses.
 Если хотите помочь, нажмите на кота!<br />
 
-<!-- include-namespace path="\PHPDaemon\Utils\Terminal" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Utils\Terminal" commit="2787f4c32d31f6555bbf8be44f08914ccf062e05" level="" access="" -->
 #### methods # Methods
 
 <md:method>

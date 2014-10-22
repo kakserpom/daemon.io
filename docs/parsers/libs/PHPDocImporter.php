@@ -60,7 +60,7 @@ class PHPDocImporter {
 	public function parse($params) {
 		$doc_path = $params[0];
 		$this->sourcePath = $params[1];
-		$this->ignoreNamespaces = explode(':', $params[2]);
+		$this->ignoreNamespaces = isset($params[2]) ? explode(':', $params[2]) : [];
 		$this->autoloadRegister();
 
 		// @todo test => prod

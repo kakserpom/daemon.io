@@ -7,7 +7,7 @@ class Crypt;
 
 Данный класс содержит методы, относящиеся к криптографии.
 
-<!-- include-namespace path="\PHPDaemon\Utils\Crypt" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Utils\Crypt" commit="6d3f6f0c8a9c52da598fa96cfd16592eb09c0ef9" level="" access="" -->
 #### methods # Methods
 
 <md:method>

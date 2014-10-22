@@ -24,7 +24,7 @@ $httpclient->get('http://www.google.com/robots.txt',
 
 Рабочий пример клиента представлен в {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php Clients/HTTP/Examples/Simple.php}
 
-<!-- include-namespace path="\PHPDaemon\Clients\HTTP" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Clients\HTTP" commit="a9e55d20f4cdb9cb078135ac5b438b888ba7c423" level="" access="" -->
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
 
 ```php

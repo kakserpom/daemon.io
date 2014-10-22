@@ -8,7 +8,7 @@ namespace PHPDaemon\Cache;
 
 > Используется для кеширования замыканий созданных через create_function. Также используется в [Clients\DNS](#clients/dns)
 
-<!-- include-namespace path="\PHPDaemon\Cache" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Cache" commit="e767fc705a6a69b4d31e543954ab8f66ee3697fa" level="" access="" -->
 #### capped-storage # Class CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
 
 ```php

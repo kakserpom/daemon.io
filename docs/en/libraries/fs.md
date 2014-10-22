@@ -4,7 +4,7 @@
 namespace PHPDaemon\FS;
 ```
 
-<!-- include-namespace path="\PHPDaemon\FS" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\FS" commit="5934e2a7e4843f5d70cd51a4a5aa70149e575265" level="" access="" -->
 #### file # Class File {tpl-git PHPDaemon/FS/File.php}
 
 ```php

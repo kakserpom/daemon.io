@@ -51,7 +51,7 @@ $sql->query('SHOW VARIABLES',
 
 Когда callback-функция вызвана, $sql->context содержит ваш объект, который вы туда положили перед этим. $sql->resultRows хранит результат в виде массива ассоциативных массивов. $sql->resultFields содержит поля ответа в виде массива ассоциативных массивов.
 
-<!-- include-namespace path="\PHPDaemon\Clients\MySQL" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Clients\MySQL" commit="48bf0ac1a287568045136e87d28a6e65bf2f9756" level="" access="" -->
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}
 
 ```php

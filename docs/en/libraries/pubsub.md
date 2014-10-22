@@ -4,7 +4,7 @@
 namespace PHPDaemon\PubSub;
 ```
 
-<!-- include-namespace path="\PHPDaemon\PubSub" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\PubSub" commit="8b80f6d1d2fb3f9534b708f86100d2629ac4204b" level="" access="" -->
 #### pub-sub # Class PubSub {tpl-git PHPDaemon/PubSub/PubSub.php}
 
 ```php

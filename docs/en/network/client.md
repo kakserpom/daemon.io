@@ -7,7 +7,7 @@ abstract class Client extends [Pool](#../pool);
 
 @TODO
 
-<!-- include-namespace path="\PHPDaemon\Network\Client" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Network\Client" commit="a9e55d20f4cdb9cb078135ac5b438b888ba7c423" level="" access="" -->
 #### properties # Properties
 
 <md:prop>
