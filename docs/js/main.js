@@ -352,8 +352,9 @@ $(function(){
 			that.html(source);
 		});
 
-		$('pre code, .code_highlight').each(function(i, block) {
+		$("pre code, .code_highlight").each(function(i, block) {
 			hljs.highlightBlock(block);
+			$(block).find(".hljs-function .hljs-keyword:contains('function')").parent().remove();
 		});
 
 		// $('.code_highlight, pre.inline code').each(function(){
