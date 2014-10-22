@@ -9,14 +9,14 @@ class ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splo
 
 > Можно создавать классы-наследники
 
-<!-- include-namespace path="\PHPDaemon\Structures\ObjectStorage" commit="bf8d120e0240dd117b67aa0351152ed9b60d052d" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Structures\ObjectStorage" commit="2787f4c32d31f6555bbf8be44f08914ccf062e05" level="" access="" -->
 #### methods # Methods
 
 <md:method>
 /**
 	 * Call given method of all objects in storage
-	 * @param string $Method
-	 * @param ... arguments ...
+	 * @param  string $method  Method name
+	 * @param  mixed  ...$args Arguments
 	 * @return integer Number of called objects
 	 */
 public function each()
@@ -25,7 +25,7 @@ public function each()
 <md:method>
 /**
 	 * Remove all objects from this storage, which contained in another storage
-	 * @param \SplObjectStorage
+	 * @param  \SplObjectStorage $obj
 	 * @return void
 	 */
 public function removeAll($obj = null)

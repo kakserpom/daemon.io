@@ -7,35 +7,34 @@ class Input extends \EventBuffer;
 
 @TODO
 
-<!-- include-namespace path="\PHPDaemon\HTTPRequest\Input" commit="1f011b00197e90a08a9503ae7707deaf0d05ff03" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\HTTPRequest\Input" commit="3877d439bad023595ed76194d4a9aa54ee2d9e39" level="" access="" -->
 #### consts # Constants
 
 <md:const>
 const STATE_SEEKBOUNDARY = 0;
-State: seek nearest boundary @var integer
+State: seek nearest boundary
 </md:const>
 
 <md:const>
 const STATE_HEADERS = 1;
-State: headers @var integer
+State: headers
 </md:const>
 
 <md:const>
 const STATE_BODY = 2;
-State: body @var integer
+State: body
 </md:const>
 
 <md:const>
 const STATE_UPLOAD = 3;
-State: upload @var integer
+State: upload
 </md:const>
 
 #### properties # Properties
 
 <md:prop>
 /**
-	 * Current Part
-	 * @var array
+	 * @var array Current Part
 	 */
 public $curPart;
 </md:prop>
@@ -55,7 +54,7 @@ public $contiguous_space;
 <md:method>
 /**
 	 * Set boundary
-	 * @param string
+	 * @param  string $boundary Boundary
 	 * @return void
 	 */
 public function setBoundary($boundary)
@@ -64,7 +63,7 @@ public function setBoundary($boundary)
 <md:method>
 /**
 	 * Freeze input
-	 * @param boolean At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen.
+	 * @param  boolean $at_front At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen
 	 * @return void
 	 */
 public function freeze($at_front = false)
@@ -73,7 +72,7 @@ public function freeze($at_front = false)
 <md:method>
 /**
 	 * Unfreeze input
-	 * @param boolean At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen.
+	 * @param  boolean $at_front At front. Default is true. If the front of a buffer is frozen, operations that drain data from the front of the buffer, or that prepend data to the buffer, will fail until it is unfrozen. If the back a buffer is frozen, operations that append data from the buffer will fail until it is unfrozen
 	 * @return void
 	 */
 public function unfreeze($at_front = false)
@@ -98,7 +97,7 @@ public function isEof()
 <md:method>
 /**
 	 * Set request
-	 * @param Request
+	 * @param  Generic $req Request
 	 * @return void
 	 */
 public function setRequest(Generic $req)
@@ -115,7 +114,7 @@ public function sendEOF()
 <md:method>
 /**
 	 * Moves $n bytes from input buffer to arbitrary buffer
-	 * @param EventBuffer Source nuffer
+	 * @param  \EventBuffer $buf Source nuffer
 	 * @return integer
 	 */
 public function readFromBuffer(\EventBuffer $buf)
@@ -124,8 +123,8 @@ public function readFromBuffer(\EventBuffer $buf)
 <md:method>
 /**
 	 * Append string to input buffer
-	 * @param string Piece of request input
-	 * @param [boolean true Final call is THIS SEQUENCE of calls (not mandatory final in request)?
+	 * @param  string  $chunk Piece of request input
+	 * @param  boolean $final Final call is THIS SEQUENCE of calls (not mandatory final in request)?
 	 * @return void
 	 */
 public function readFromString($chunk, $final = true)
@@ -134,9 +133,9 @@ public function readFromString($chunk, $final = true)
 <md:method>
 /**
 	 * Read from buffer without draining
-	 * @param integer Number of bytes to read
-	 * @param integer [Offset
-	 * @return string|false
+	 * @param  integer $n Number of bytes to read
+	 * @param  integer $o Offset
+	 * @return string
 	 */
 public function look($n, $o = 0)
 </md:method>
@@ -160,9 +159,10 @@ public function getChunkString()
 <md:method>
 /**
 	 * Write current upload chunk to file descriptor
-	 * @param mixed    File destriptor
-	 * @param callable $cb Callback
-	 * @return boolean Success
+	 * @todo   It is not supported yet (callback missing in EventBuffer->write())
+	 * @param  mixed    $fd File destriptor
+	 * @param  callable $cb Callback
+	 * @return boolean      Success
 	 */
 public function writeChunkToFd($fd, $cb = null)
 </md:method>
@@ -170,7 +170,7 @@ public function writeChunkToFd($fd, $cb = null)
 <md:method>
 /**
 	 * Log
-	 * @param string Message
+	 * @param  string $msg Message
 	 * @return void
 	 */
 public function log($msg)

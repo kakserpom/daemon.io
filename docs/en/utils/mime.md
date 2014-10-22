@@ -5,15 +5,14 @@ namespace PHPDaemon\Utils;
 class MIME;
 ```
 
-<!-- include-namespace path="\PHPDaemon\Utils\MIME" commit="bf8d120e0240dd117b67aa0351152ed9b60d052d" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Utils\MIME" commit="2787f4c32d31f6555bbf8be44f08914ccf062e05" level="" access="" -->
 #### methods # Methods
 
 <md:method>
 /**
-	 * Returns MIME type of the given file.
-	 * @static
-	 * @param string $path Path
-	 * @return string MIME type.
+	 * Returns MIME type of the given file
+	 * @param  string $path Path
+	 * @return string       MIME type
 	 */
 public static function get($path)
 </md:method>

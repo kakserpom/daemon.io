@@ -47,49 +47,42 @@ $priority
 <md:method>
 </md:method>
 
-<!-- include-namespace path="\PHPDaemon\Core\Timer" commit="6f80045feaa2890961bd7c0507c5cd64c6fefc06" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Core\Timer" commit="2787f4c32d31f6555bbf8be44f08914ccf062e05" level="" access="" -->
 #### properties # Properties
 
 <md:prop>
 /**
-	 * @var int|null
+	 * @var integer|null Timer id
 	 */
 public $id;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var
+	 * @var integer Current timeout holder
 	 */
 public $lastTimeout;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var bool
+	 * @var boolean Is the timer finished?
 	 */
 public $finished;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var callable
+	 * @var callable Callback
 	 */
 public $cb;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var int
+	 * @var integer Priority
 	 */
 public $priority;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var int
-	 */
-public static $counter;
 </md:prop>
 
 #### methods # Methods
@@ -97,11 +90,10 @@ public static $counter;
 <md:method>
 /**
 	 * Constructor
-	 * @param callable $cb
-	 * @param int $timeout
-	 * @param int|string $id
-	 * @param int $priority
-	 * @return \PHPDaemon\Core\Timer
+	 * @param  callable       $cb       Callback
+	 * @param  integer        $timeout  Timeout
+	 * @param  integer|string $id       Timer ID
+	 * @param  integer        $priority Priority
 	 */
 public function __construct($cb, $timeout = null, $id = null, $priority = null)
 </md:method>
@@ -109,7 +101,6 @@ public function __construct($cb, $timeout = null, $id = null, $priority = null)
 <md:method>
 /**
 	 * Called when timer is triggered
-	 * @param mixed $arg
 	 * @return void
 	 */
 public function eventCall()
@@ -118,7 +109,7 @@ public function eventCall()
 <md:method>
 /**
 	 * Set prioriry
-	 * @param $priority
+	 * @param  integer $priority Priority
 	 * @return void
 	 */
 public function setPriority($priority)
@@ -127,11 +118,11 @@ public function setPriority($priority)
 <md:method>
 /**
 	 * Adds timer
-	 * @param callable $cb
-	 * @param int $timeout
-	 * @param int|string $id
-	 * @param int $priority
-	 * @return int|null
+	 * @param  callable       $cb       Callback
+	 * @param  integer        $timeout  Timeout
+	 * @param  integer|string $id       Timer ID
+	 * @param  integer        $priority Priority
+	 * @return integer|string           Timer ID
 	 */
 public static function add($cb, $timeout = null, $id = null, $priority = null)
 </md:method>
@@ -139,9 +130,9 @@ public static function add($cb, $timeout = null, $id = null, $priority = null)
 <md:method>
 /**
 	 * Sets timeout
-	 * @param int|string $id
-	 * @param int $timeout
-	 * @return bool
+	 * @param  integer|string $id       Timer ID
+	 * @param  integer        $timeout  Timeout
+	 * @return boolean
 	 */
 public static function setTimeout($id, $timeout = NULL)
 </md:method>
@@ -149,7 +140,7 @@ public static function setTimeout($id, $timeout = NULL)
 <md:method>
 /**
 	 * Removes timer by ID
-	 * @param $id
+	 * @param  integer|string $id Timer ID
 	 * @return void
 	 */
 public static function remove($id)
@@ -158,7 +149,7 @@ public static function remove($id)
 <md:method>
 /**
 	 * Cancels timer by ID
-	 * @param $id
+	 * @param  integer|string $id Timer ID
 	 * @return void
 	 */
 public static function cancelTimeout($id)
@@ -167,7 +158,7 @@ public static function cancelTimeout($id)
 <md:method>
 /**
 	 * Sets timeout
-	 * @param int $timeout
+	 * @param  integer $timeout Timeout
 	 * @return void
 	 */
 public function timeout($timeout = null)
@@ -200,6 +191,7 @@ public function __destruct()
 <md:method>
 /**
 	 * Frees the timer
+	 * @return void
 	 */
 public function free()
 </md:method>

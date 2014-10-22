@@ -30,6 +30,6 @@ protected function dummyMethod($foo, $bar, $callback) {
 
 > Как вы могли заметить, пример `dummyMethod` использует вызов `:h`static::ensureCallback($callback)`. Всегда нужно проверять переданный аргумент с помощью [ensureCallback](#traits/dnode/methods/ensureCallback) перед его исполнением. В противном случае, это обернётся серьёзной брешью безопасности.
 
-<!-- include-namespace path="\PHPDaemon\WebSocket\Traits\DNode" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\WebSocket\Traits\DNode" commit="6c09764a2823afba4585bc1e234aaeb38c9a93b9" level="" access="" -->
 
 <!--/ include-namespace -->

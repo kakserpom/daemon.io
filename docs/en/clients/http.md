@@ -24,7 +24,7 @@ $httpclient->get('http://www.google.com/robots.txt',
 
 Рабочий пример клиента представлен в {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php Clients/HTTP/Examples/Simple.php}
 
-<!-- include-namespace path="\PHPDaemon\Clients\HTTP" commit="c5399ca37f61fd5686758d095d7b5322e4becdd7" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Clients\HTTP" commit="a9e55d20f4cdb9cb078135ac5b438b888ba7c423" level="" access="" -->
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
 
 ```php
@@ -132,8 +132,7 @@ public $eofTerminated;
 
 <md:prop>
 /**
-	 * Associated pool
-	 * @var object ConnectionPool
+	 * @var object Associated pool
 	 */
 public $pool;
 </md:prop>
@@ -202,48 +201,42 @@ class Pool extends \PHPDaemon\Network\Client;
 
 <md:prop>
 /**
-	 * Default connection class
-	 * @var string
+	 * @var string Default connection class
 	 */
 public $connectionClass;
 </md:prop>
 
 <md:prop>
 /**
-	 * Name
-	 * @var string
+	 * @var string Name
 	 */
 public $name;
 </md:prop>
 
 <md:prop>
 /**
-	 * Configuration
-	 * @var \PHPDaemon\Config\Section
+	 * @var \PHPDaemon\Config\Section Configuration
 	 */
 public $config;
 </md:prop>
 
 <md:prop>
 /**
-	 * Max concurrency
-	 * @var integer
+	 * @var integer Max concurrency
 	 */
 public $maxConcurrency;
 </md:prop>
 
 <md:prop>
 /**
-	 * Max allowed packet
-	 * @var integer
+	 * @var integer Max allowed packet
 	 */
 public $maxAllowedPacket;
 </md:prop>
 
 <md:prop>
 /**
-	 * Application instance object
-	 * @var object|null
+	 * @var object|null Application instance object
 	 */
 public $appInstance;
 </md:prop>
@@ -255,6 +248,9 @@ public $appInstance;
 	 * Performs GET-request
 	 * @param string $url
 	 * @param array $params
+	 * @call  void public function get ( url $url, array $params )
+	 * @call  void public function get ( url $url, callable $resultcb )
+	 * @callback ( Connection $conn, boolean $success )
 	 */
 public function get($url, $params)
 </md:method>
@@ -265,6 +261,9 @@ public function get($url, $params)
 	 * @param string $url
 	 * @param array $data
 	 * @param array $params
+	 * @call  void public function post ( url $url, array $data, array $params )
+	 * @call  void public function post ( url $url, array $data, callable $resultcb )
+	 * @callback ( Connection $conn, boolean $success )
 	 */
 public function post($url, $data = [], $params)
 </md:method>
@@ -272,8 +271,10 @@ public function post($url, $data = [], $params)
 <md:method>
 /**
 	 * Builds URL from array
-	 * @param $mixed
-	 * @return bool|string
+	 * @param string $mixed
+	 * @call  string public static function buildUrl ( string $str )
+	 * @call  string public static function buildUrl ( array $mixed )
+	 * @return string|false
 	 */
 public static function buildUrl($mixed)
 </md:method>
@@ -281,7 +282,9 @@ public static function buildUrl($mixed)
 <md:method>
 /**
 	 * Parse URL
-	 * @param $mixed Look Pool::buildUrl()
+	 * @param string $mixed Look Pool::buildUrl()
+	 * @call  string public static function parseUrl ( string $str )
+	 * @call  string public static function parseUrl ( array $mixed )
 	 * @return array|bool
 	 */
 public static function parseUrl($mixed)
@@ -298,24 +301,28 @@ class SimpleRequest extends \PHPDaemon\HTTPRequest\Generic;
 
 <md:prop>
 /**
-	 * Current response length
-	 * @var integer
+	 * @var boolean Keepalive?
+	 */
+public $keepalive;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Current response length
 	 */
 public $responseLength;
 </md:prop>
 
 <md:prop>
 /**
-	 * Replacement pairs for processing some header values in parse_str()
-	 * @var array hash
+	 * @var array Replacement pairs for processing some header values in parse_str()
 	 */
 public static $hvaltr;
 </md:prop>
 
 <md:prop>
 /**
-	 * State
-	 * @var array
+	 * @var array State
 	 */
 public static $htr;
 </md:prop>
@@ -370,47 +377,44 @@ public $httpclient;
 
 <md:prop>
 /**
-	 * @var bool
+	 * @var boolean If true, it's allowed to be run without defined config section'
 	 */
 public static $runOnDemand;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var string
+	 * @var string Optional passphrase
 	 */
 public $passphrase;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var bool
+	 * @var boolean Ready to run?
 	 */
 public $ready;
 </md:prop>
 
 <md:prop>
-/** @var Config\Section */
+/**
+	 * @var object Related config section
+	 */
 public $config;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var bool
+	 * @var boolean Is RPC enabled?
 	 */
 public $enableRPC;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var null|string
+	 * @var null|string Default class of incoming requests
 	 */
 public $requestClass;
-</md:prop>
-
-<md:prop>
-/** @var array */
-public $indexFiles;
 </md:prop>
 
 ##### methods # Methods
@@ -444,7 +448,7 @@ public function onShutdown($graceful = false)
 	 * Creates Request.
 	 * @param object Request.
 	 * @param object Upstream application instance.
-	 * @return object Request.
+	 * @return SimpleRequest Request.
 	 */
 public function beginRequest($req, $upstream)
 </md:method>

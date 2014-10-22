@@ -7,58 +7,54 @@ abstract class Server extends [Pool](#../pool);
 
 @TODO
 
-<!-- include-namespace path="\PHPDaemon\Network\Server" commit="c3eabafdec2045261861630de601aebeeb29bea9" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Network\Server" commit="8b80f6d1d2fb3f9534b708f86100d2629ac4204b" level="" access="" -->
 #### properties # Properties
 
 <md:prop>
 /**
-	 * Allowed clients
-	 * @var array|null
+	 * @var array|null Allowed clients
 	 */
 public $allowedClients;
 </md:prop>
 
 <md:prop>
-
-public $maxAllowedPacket;
-</md:prop>
-
-<md:prop>
 /**
-	 * Default connection class
-	 * @var string
+	 * @var string Default connection class
 	 */
 public $connectionClass;
 </md:prop>
 
 <md:prop>
 /**
-	 * Name
-	 * @var string
+	 * @var string Name
 	 */
 public $name;
 </md:prop>
 
 <md:prop>
 /**
-	 * Configuration
-	 * @var \PHPDaemon\Config\Section
+	 * @var \PHPDaemon\Config\Section Configuration
 	 */
 public $config;
 </md:prop>
 
 <md:prop>
 /**
-	 * Max concurrency
-	 * @var integer
+	 * @var integer Max concurrency
 	 */
 public $maxConcurrency;
 </md:prop>
 
 <md:prop>
 /**
-	 * Application instance object
-	 * @var object|null
+	 * @var integer Max allowed packet
+	 */
+public $maxAllowedPacket;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var object|null Application instance object
 	 */
 public $appInstance;
 </md:prop>
@@ -68,8 +64,8 @@ public $appInstance;
 <md:method>
 /**
 	 * Constructor
-	 * @param array Config variables
-	 * @return object
+	 * @param array   $config Config variables
+	 * @param boolean $init
 	 */
 public function __construct($config = [], $init = true)
 </md:method>
@@ -85,8 +81,9 @@ public function finish($graceful = false)
 <md:method>
 /**
 	 * Bind given sockets
-	 * @param mixed Addresses to bind
-	 * @return integer Number of bound.
+	 * @param  mixed   $addrs Addresses to bind
+	 * @param  integer $max   Maximum
+	 * @return integer        Number of bound
 	 */
 public function bindSockets($addrs = [], $max = 0)
 </md:method>
@@ -94,8 +91,8 @@ public function bindSockets($addrs = [], $max = 0)
 <md:method>
 /**
 	 * Bind given socket
-	 * @param string Address to bind
-	 * @return boolean Success
+	 * @param  string  $uri Address to bind
+	 * @return boolean      Success
 	 */
 public function bindSocket($uri)
 </md:method>
@@ -103,8 +100,8 @@ public function bindSocket($uri)
 <md:method>
 /**
 	 * Attach Generic
-	 * @param \PHPDaemon\BoundSocket\Generic $bound Generic
-	 * @param mixed $inf Info
+	 * @param  \PHPDaemon\BoundSocket\Generic $bound Generic
+	 * @param  mixed $inf Info
 	 * @return void
 	 */
 public function attachBound(\PHPDaemon\BoundSocket\Generic $bound, $inf = null)
@@ -113,7 +110,7 @@ public function attachBound(\PHPDaemon\BoundSocket\Generic $bound, $inf = null)
 <md:method>
 /**
 	 * Detach Generic
-	 * @param \PHPDaemon\BoundSocket\Generic $bound Generic
+	 * @param  \PHPDaemon\BoundSocket\Generic $bound Generic
 	 * @return void
 	 */
 public function detachBound(\PHPDaemon\BoundSocket\Generic $bound)
@@ -121,7 +118,7 @@ public function detachBound(\PHPDaemon\BoundSocket\Generic $bound)
 
 <md:method>
 /**
-	 * Close each of binded sockets.
+	 * Close each of binded sockets
 	 * @return void
 	 */
 public function closeBound()
@@ -129,9 +126,9 @@ public function closeBound()
 
 <md:method>
 /**
-	 * Called when a request to HTTP-server looks like another connection.
-	 * @param $req
-	 * @param $oldConn
+	 * Called when a request to HTTP-server looks like another connection
+	 * @param  object  $req     Request
+	 * @param  object  $oldConn Connection
 	 * @return boolean Success
 	 */
 public function inheritFromRequest($req, $oldConn)

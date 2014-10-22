@@ -51,7 +51,7 @@ $sql->query('SHOW VARIABLES',
 
 Когда callback-функция вызвана, $sql->context содержит ваш объект, который вы туда положили перед этим. $sql->resultRows хранит результат в виде массива ассоциативных массивов. $sql->resultFields содержит поля ответа в виде массива ассоциативных массивов.
 
-<!-- include-namespace path="\PHPDaemon\Clients\MySQL" commit="8372b6260e518f5b4e37867b453e795debec329d" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Clients\MySQL" commit="48bf0ac1a287568045136e87d28a6e65bf2f9756" level="" access="" -->
 #### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/MySQL/ConnectionFinished.php}
 
 ```php
@@ -267,8 +267,7 @@ public $errmsg;
 
 <md:prop>
 /**
-	 * Associated pool
-	 * @var object ConnectionPool
+	 * @var object Associated pool
 	 */
 public $pool;
 </md:prop>
@@ -278,7 +277,8 @@ public $pool;
 <md:method>
 /**
 	 * Executes the given callback when/if the connection is handshaked
-	 * Callback
+	 * @param  callable $cb Callback
+	 * @callback ( Connection $conn, boolean $success )
 	 * @return void
 	 */
 public function onConnected($cb)
@@ -295,7 +295,7 @@ public function onReady()
 <md:method>
 /**
 	 * Sends a packet
-	 * @param string Data
+	 * @param  string $packet Data
 	 * @return boolean Success
 	 */
 public function sendPacket($packet)
@@ -304,7 +304,7 @@ public function sendPacket($packet)
 <md:method>
 /**
 	 * Builds length-encoded binary string
-	 * @param string String
+	 * @param  string $s String
 	 * @return string Resulting binary string
 	 */
 public function buildLenEncodedBinary($s)
@@ -329,8 +329,8 @@ public function parseEncodedString()
 <md:method>
 /**
 	 * Generates auth. token
-	 * @param string $scramble Scramble string
-	 * @param string $password Password
+	 * @param  string $scramble Scramble string
+	 * @param  string $password Password
 	 * @return string Result
 	 */
 public function getAuthToken($scramble, $password)
@@ -347,8 +347,9 @@ public function auth()
 <md:method>
 /**
 	 * Sends SQL-query
-	 * @param string   Query
-	 * @param callback Optional. Callback called when response received.
+	 * @param  string   $q        Query
+	 * @param  callable $callback Optional. Callback called when response received
+	 * @callback ( Connection $conn, boolean $success )
 	 * @return boolean Success
 	 */
 public function query($q, $callback = NULL)
@@ -357,7 +358,8 @@ public function query($q, $callback = NULL)
 <md:method>
 /**
 	 * Sends echo-request
-	 * @param callback Optional. Callback called when response received.
+	 * @param  callable $callback Optional. Callback called when response received
+	 * @callback ( Connection $conn, boolean $success )
 	 * @return boolean Success
 	 */
 public function ping($callback = NULL)
@@ -366,10 +368,11 @@ public function ping($callback = NULL)
 <md:method>
 /**
 	 * Sends arbitrary command
-	 * @param $cmd
-	 * @param string $q Data
-	 * @param null|Optional $callback
+	 * @param  string   $cmd      Command
+	 * @param  string   $q        Data
+	 * @param  callable $callback Optional
 	 * @throws ConnectionFinished
+	 * @callback ( Connection $conn, boolean $success )
 	 * @return boolean Success
 	 */
 public function command($cmd, $q = '', $callback = NULL)
@@ -378,7 +381,7 @@ public function command($cmd, $q = '', $callback = NULL)
 <md:method>
 /**
 	 * Sets default database name
-	 * @param string Database name
+	 * @param  string  $name   Database name
 	 * @return boolean Success
 	 */
 public function selectDB($name)
@@ -851,48 +854,42 @@ const SET_FLAG = 0x800;
 
 <md:prop>
 /**
-	 * Default connection class
-	 * @var string
+	 * @var string Default connection class
 	 */
 public $connectionClass;
 </md:prop>
 
 <md:prop>
 /**
-	 * Name
-	 * @var string
+	 * @var string Name
 	 */
 public $name;
 </md:prop>
 
 <md:prop>
 /**
-	 * Configuration
-	 * @var \PHPDaemon\Config\Section
+	 * @var \PHPDaemon\Config\Section Configuration
 	 */
 public $config;
 </md:prop>
 
 <md:prop>
 /**
-	 * Max concurrency
-	 * @var integer
+	 * @var integer Max concurrency
 	 */
 public $maxConcurrency;
 </md:prop>
 
 <md:prop>
 /**
-	 * Max allowed packet
-	 * @var integer
+	 * @var integer Max allowed packet
 	 */
 public $maxAllowedPacket;
 </md:prop>
 
 <md:prop>
 /**
-	 * Application instance object
-	 * @var object|null
+	 * @var object|null Application instance object
 	 */
 public $appInstance;
 </md:prop>
@@ -902,7 +899,7 @@ public $appInstance;
 <md:method>
 /**
 	 * Escapes the special symbols with trailing backslash
-	 * @param $string
+	 * @param string $string
 	 * @return string
 	 */
 public static function escape($string)

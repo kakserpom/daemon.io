@@ -4,7 +4,7 @@
 namespace PHPDaemon\PubSub;
 ```
 
-<!-- include-namespace path="\PHPDaemon\PubSub" commit="63917dfafd0f183721f0b8edfcbc1f8c9c53b8d0" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\PubSub" commit="8b80f6d1d2fb3f9534b708f86100d2629ac4204b" level="" access="" -->
 #### pub-sub-event # Class PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
 
 ```php
@@ -16,24 +16,21 @@ class PubSubEvent extends \SplObjectStorage;
 
 <md:prop>
 /**
-	 * Subscriptions
-	 * @var array
+	 * @var array Subscriptions
 	 */
 public $sub;
 </md:prop>
 
 <md:prop>
 /**
-	 * Activation callback
-	 * @var callable
+	 * @var callable Activation callback
 	 */
 public $actCb;
 </md:prop>
 
 <md:prop>
 /**
-	 * Deactivation callback
-	 * @var callable
+	 * @var callable Deactivation callback
 	 */
 public $deactCb;
 </md:prop>
@@ -49,26 +46,26 @@ public function __construct($act = null, $deact = null)
 
 <md:method>
 /**
-	 * Sets onActivation callback.
-	 * @param callable $cb Callback
-	 * @return \PHPDaemon\PubSub\PubSubEvent
+	 * Sets onActivation callback
+	 * @param  callable $cb Callback
+	 * @return this
 	 */
 public function onActivation($cb)
 </md:method>
 
 <md:method>
 /**
-	 * Sets onDeactivation callback.
+	 * Sets onDeactivation callback
 	 * @param callable $cb Callback
-	 * @return \PHPDaemon\PubSub\PubSubEvent
+	 * @return this
 	 */
 public function onDeactivation($cb)
 </md:method>
 
 <md:method>
 /**
-	 * Constructor
-	 * @return \PHPDaemon\PubSub\PubSubEvent
+	 * Init
+	 * @return object
 	 */
 public static function init()
 </md:method>
@@ -76,9 +73,9 @@ public static function init()
 <md:method>
 /**
 	 * Subscribe
-	 * @param object $obj  Subcriber object
-	 * @param callable $cb Callback
-	 * @return \PHPDaemon\PubSub\PubSubEvent
+	 * @param  object   $obj Subcriber object
+	 * @param  callable $cb  Callback
+	 * @return this
 	 */
 public function sub($obj, $cb)
 </md:method>
@@ -86,8 +83,8 @@ public function sub($obj, $cb)
 <md:method>
 /**
 	 * Unsubscripe
-	 * @param object $obj Subscriber object
-	 * @return \PHPDaemon\PubSub\PubSubEvent
+	 * @param  object $obj Subscriber object
+	 * @return this
 	 */
 public function unsub($obj)
 </md:method>
@@ -95,8 +92,8 @@ public function unsub($obj)
 <md:method>
 /**
 	 * Publish
-	 * @param mixed $data Data
-	 * @return \PHPDaemon\PubSub\PubSubEvent
+	 * @param  mixed $data Data
+	 * @return this
 	 */
 public function pub($data)
 </md:method>
@@ -111,17 +108,21 @@ class PubSub;
 ##### methods # Methods
 
 <md:method>
-
+/**
+	 * Is event exists?
+	 * @param  string  $id Event ID
+	 * @return boolean
+	 */
 public function eventExists($id)
 </md:method>
 
 <md:method>
 /**
 	 * Subcribe to event
-	 * @param string $id   Event ID
-	 * @param object $obj  Subscriber
-	 * @param callable $cb Callback
-	 * @return boolean Success
+	 * @param  string   $id  Event ID
+	 * @param  object   $obj Subscriber
+	 * @param  callable $cb  Callback
+	 * @return boolean       Success
 	 */
 public function sub($id, $obj, $cb)
 </md:method>
@@ -129,8 +130,8 @@ public function sub($id, $obj, $cb)
 <md:method>
 /**
 	 * Adds event
-	 * @param string $id Event ID
-	 * @param PubSubEvent
+	 * @param  string      $id  Event ID
+	 * @param  PubSubEvent $obj
 	 * @return void
 	 */
 public function addEvent($id, PubSubEvent $obj)
@@ -139,7 +140,7 @@ public function addEvent($id, PubSubEvent $obj)
 <md:method>
 /**
 	 * Removes event
-	 * @param string $id Event ID
+	 * @param  string $id Event ID
 	 * @return void
 	 */
 public function removeEvent($id)
@@ -148,9 +149,9 @@ public function removeEvent($id)
 <md:method>
 /**
 	 * Unsubscribe object from event
-	 * @param string $id Event ID
-	 * @param object
-	 * @return boolean Success
+	 * @param  string  $id  Event ID
+	 * @param  object  $obj Subscriber
+	 * @return boolean      Success
 	 */
 public function unsub($id, $obj)
 </md:method>
@@ -158,9 +159,9 @@ public function unsub($id, $obj)
 <md:method>
 /**
 	 * Publish
-	 * @param string $id  Event ID
-	 * @param mixed $data Data
-	 * @return boolean Success
+	 * @param  string  $id   Event ID
+	 * @param  mixed   $data Data
+	 * @return boolean       Success
 	 */
 public function pub($id, $data)
 </md:method>
@@ -168,8 +169,8 @@ public function pub($id, $data)
 <md:method>
 /**
 	 * Unsubscribe object from all events
-	 * @param object
-	 * @return boolean Success
+	 * @param  object  $obj Subscriber
+	 * @return boolean      Success
 	 */
 public function unsubFromAll($obj)
 </md:method>

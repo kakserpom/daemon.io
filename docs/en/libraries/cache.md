@@ -8,7 +8,7 @@ namespace PHPDaemon\Cache;
 
 > Используется для кеширования замыканий созданных через create_function. Также используется в [Clients\DNS](#clients/dns)
 
-<!-- include-namespace path="\PHPDaemon\Cache" commit="254e4366d6c961d8db8ef438d2499e394fdd77c3" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Cache" commit="e767fc705a6a69b4d31e543954ab8f66ee3697fa" level="" access="" -->
 #### capped-storage-hits # Class CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
 
 ```php
@@ -20,32 +20,28 @@ class CappedStorageHits extends \PHPDaemon\Cache\CappedStorage;
 
 <md:prop>
 /**
-	 * Sorter function
-	 * @var callable
+	 * @var callable Sorter function
 	 */
 public $sorter;
 </md:prop>
 
 <md:prop>
 /**
-	 * Maximum number of cached elements
-	 * @var integer
+	 * @var integer Maximum number of cached elements
 	 */
 public $maxCacheSize;
 </md:prop>
 
 <md:prop>
 /**
-	 * Additional window to decrease number of sorter calls.
-	 * @var integer
+	 * @var integer Additional window to decrease number of sorter calls
 	 */
 public $capWindow;
 </md:prop>
 
 <md:prop>
 /**
-	 * Storage of cached items
-	 * @var array
+	 * @var array Storage of cached items
 	 */
 public $cache;
 </md:prop>
@@ -55,8 +51,7 @@ public $cache;
 <md:method>
 /**
 	 * Constructor
-	 * @param [integer Maximum number of cached elements]
-	 * @return object
+	 * @param  integer $max Maximum number of cached elements
 	 */
 public function __construct($max = null)
 </md:method>
@@ -71,15 +66,15 @@ class Item;
 ##### properties # Properties
 
 <md:prop>
-/** Hits counter
-	 * @var integer
+/**
+	 * @var integer Hits counter
 	 */
 public $hits;
 </md:prop>
 
 <md:prop>
-/** Expire time
-	 * @var integer
+/**
+	 * @var integer Expire time
 	 */
 public $expire;
 </md:prop>
@@ -87,8 +82,8 @@ public $expire;
 ##### methods # Methods
 
 <md:method>
-/** Establish TCP connection
-	 * @return boolean Success
+/**
+	 * Constructor
 	 */
 public function __construct($value)
 </md:method>
@@ -96,7 +91,7 @@ public function __construct($value)
 <md:method>
 /**
 	 * Get hits number
-	 * @return int
+	 * @return integer
 	 */
 public function getHits()
 </md:method>
@@ -120,7 +115,7 @@ public function addListener($cb)
 <md:method>
 /**
 	 * Sets the value
-	 * @param $value
+	 * @param mixed $value
 	 */
 public function setValue($value)
 </md:method>
@@ -136,32 +131,28 @@ class CappedStorage;
 
 <md:prop>
 /**
-	 * Sorter function
-	 * @var callable
+	 * @var callable Sorter function
 	 */
 public $sorter;
 </md:prop>
 
 <md:prop>
 /**
-	 * Maximum number of cached elements
-	 * @var integer
+	 * @var integer Maximum number of cached elements
 	 */
 public $maxCacheSize;
 </md:prop>
 
 <md:prop>
 /**
-	 * Additional window to decrease number of sorter calls.
-	 * @var integer
+	 * @var integer Additional window to decrease number of sorter calls
 	 */
 public $capWindow;
 </md:prop>
 
 <md:prop>
 /**
-	 * Storage of cached items
-	 * @var array
+	 * @var array Storage of cached items
 	 */
 public $cache;
 </md:prop>
@@ -171,7 +162,7 @@ public $cache;
 <md:method>
 /**
 	 * Sets cache size
-	 * @param integer Maximum number of elements.
+	 * @param  integer $size Maximum number of elements
 	 * @return void
 	 */
 public function setMaxCacheSize($size)
@@ -180,7 +171,7 @@ public function setMaxCacheSize($size)
 <md:method>
 /**
 	 * Sets cap window
-	 * @param integer
+	 * @param  integer $w Additional window to decrease number of sorter calls
 	 * @return void
 	 */
 public function setCapWindow($w)
@@ -189,8 +180,8 @@ public function setCapWindow($w)
 <md:method>
 /**
 	 * Hash function
-	 * @param string Key
-	 * @return mixed
+	 * @param  string $key Key
+	 * @return integer
 	 */
 public function hash($key)
 </md:method>
@@ -198,9 +189,9 @@ public function hash($key)
 <md:method>
 /**
 	 * Puts element in cache
-	 * @param string Key
-	 * @param mixed  Value
-	 * @param [integer Time-to-Life]
+	 * @param  string  $key   Key
+	 * @param  mixed   $value Value
+	 * @param  integer $ttl   Time to live
 	 * @return mixed
 	 */
 public function put($key, $value, $ttl = null)
@@ -209,7 +200,7 @@ public function put($key, $value, $ttl = null)
 <md:method>
 /**
 	 * Invalidates cache element
-	 * @param string Key
+	 * @param  string $key Key
 	 * @return void
 	 */
 public function invalidate($key)
@@ -218,7 +209,7 @@ public function invalidate($key)
 <md:method>
 /**
 	 * Gets element by key
-	 * @param string Key
+	 * @param  string $key Key
 	 * @return object Item
 	 */
 public function get($key)
@@ -227,7 +218,7 @@ public function get($key)
 <md:method>
 /**
 	 * Gets value of element by key
-	 * @param string Key
+	 * @param  string $key Key
 	 * @return mixed
 	 */
 public function getValue($key)

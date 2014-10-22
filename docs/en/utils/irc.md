@@ -7,33 +7,46 @@ class IRC;
 
 Класс используемый в IRC-клиенте и IRC-баунсере
 
-<!-- include-namespace path="\PHPDaemon\Utils\IRC" commit="bf8d120e0240dd117b67aa0351152ed9b60d052d" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Utils\IRC" commit="6d3f6f0c8a9c52da598fa96cfd16592eb09c0ef9" level="" access="" -->
 #### properties # Properties
 
 <md:prop>
-
+/**
+	 * @var array IRC codes
+	 */
 public static $codes;
 </md:prop>
 
 <md:prop>
-
+/**
+	 * @var array Flipped IRC codes
+	 */
 public static $codesFlip;
 </md:prop>
 
 #### methods # Methods
 
 <md:method>
-
+/**
+	 * @param  integer $code Code
+	 * @return string
+	 */
 public static function getCommandByCode($code)
 </md:method>
 
 <md:method>
-
+/**
+	 * @param  string  $cmd Command
+	 * @return integer
+	 */
 public static function getCodeByCommand($cmd)
 </md:method>
 
 <md:method>
-
+/**
+	 * @param  string $mask
+	 * @return array
+	 */
 public static function parseUsermask($mask)
 </md:method>
 

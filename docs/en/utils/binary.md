@@ -7,14 +7,14 @@ class Binary;
 
 Данный класс предоставляет набор статических методов для работы с бинарными данными.
 
-<!-- include-namespace path="\PHPDaemon\Utils\Binary" commit="254e4366d6c961d8db8ef438d2499e394fdd77c3" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Utils\Binary" commit="6d3f6f0c8a9c52da598fa96cfd16592eb09c0ef9" level="" access="" -->
 #### methods # Methods
 
 <md:method>
 /**
 	 * Build structure of labels
-	 * @param string Dot-separated labels list
-	 * @return \PHPDaemon\Utils\binary
+	 * @param  string $q Dot-separated labels list
+	 * @return string
 	 */
 public static function labels($q)
 </md:method>
@@ -22,9 +22,9 @@ public static function labels($q)
 <md:method>
 /**
 	 * Parse structure of labels
-	 * @param string Binary data
-	 * @param string Original packet
-	 * @return string Dot-separated labels list
+	 * @param  string &$data Binary data
+	 * @param  string $orig  Original packet
+	 * @return string        Dot-separated labels list
 	 */
 public static function parseLabels(&$data, $orig = null)
 </md:method>
@@ -32,9 +32,10 @@ public static function parseLabels(&$data, $orig = null)
 <md:method>
 /**
 	 * Build length-value binary snippet
-	 * @param string Data
-	 * @param [string Number of bytes to encode length. Default is 1
-	 * @return \PHPDaemon\Utils\binary
+	 * @param string  $str  Data
+	 * @param integer $len  Number of bytes to encode length. Default is 1
+	 * @param boolean $lrev Reverse?
+	 * @return string
 	 */
 public static function LV($str, $len = 1, $lrev = FALSE)
 </md:method>
@@ -42,8 +43,8 @@ public static function LV($str, $len = 1, $lrev = FALSE)
 <md:method>
 /**
 	 * Build nul-terminated string, with 2-byte of length
-	 * @param string Data
-	 * @return \PHPDaemon\Utils\binary
+	 * @param string $str Data
+	 * @return string
 	 */
 public static function LVnull($str)
 </md:method>
@@ -51,8 +52,8 @@ public static function LVnull($str)
 <md:method>
 /**
 	 * Build byte
-	 * @param integer Byte number
-	 * @return \PHPDaemon\Utils\binary
+	 * @param  integer $int Byte number
+	 * @return string
 	 */
 public static function byte($int)
 </md:method>
@@ -60,8 +61,8 @@ public static function byte($int)
 <md:method>
 /**
 	 * Build word (2 bytes) big-endian
-	 * @param integer Integer
-	 * @return \PHPDaemon\Utils\binary
+	 * @param  integer $int Integer
+	 * @return string
 	 */
 public static function word($int)
 </md:method>
@@ -69,8 +70,8 @@ public static function word($int)
 <md:method>
 /**
 	 * Build word (2 bytes) little-endian
-	 * @param integer Integer
-	 * @return \PHPDaemon\Utils\binary
+	 * @param  integer $int Integer
+	 * @return string
 	 */
 public static function wordl($int)
 </md:method>
@@ -78,8 +79,8 @@ public static function wordl($int)
 <md:method>
 /**
 	 * Build double word (4 bytes) big-endian
-	 * @param integer Integer
-	 * @return \PHPDaemon\Utils\binary
+	 * @param  integer $int Integer
+	 * @return string
 	 */
 public static function dword($int)
 </md:method>
@@ -87,8 +88,8 @@ public static function dword($int)
 <md:method>
 /**
 	 * Build double word (4 bytes) little endian
-	 * @param integer Integer
-	 * @return \PHPDaemon\Utils\binary
+	 * @param  integer $int Integer
+	 * @return string
 	 */
 public static function dwordl($int)
 </md:method>
@@ -96,8 +97,8 @@ public static function dwordl($int)
 <md:method>
 /**
 	 * Build quadro word (8 bytes) big endian
-	 * @param integer Integer
-	 * @return \PHPDaemon\Utils\binary
+	 * @param  integer $int Integer
+	 * @return string
 	 */
 public static function qword($int)
 </md:method>
@@ -105,8 +106,8 @@ public static function qword($int)
 <md:method>
 /**
 	 * Build quadro word (8 bytes) little endian
-	 * @param integer Integer
-	 * @return \PHPDaemon\Utils\binary
+	 * @param  integer $int Integer
+	 * @return string
 	 */
 public static function qwordl($int)
 </md:method>
@@ -114,7 +115,7 @@ public static function qwordl($int)
 <md:method>
 /**
 	 * Parse byte, and remove it
-	 * @param &string Data
+	 * @param  string &$p Data
 	 * @return integer
 	 */
 public static function getByte(&$p)
@@ -123,7 +124,7 @@ public static function getByte(&$p)
 <md:method>
 /**
 	 * Get single-byte character
-	 * @param &string Data
+	 * @param  string &$p Data
 	 * @return string
 	 */
 public static function getChar(&$p)
@@ -132,8 +133,8 @@ public static function getChar(&$p)
 <md:method>
 /**
 	 * Parse word (2 bytes)
-	 * @param &string Data
-	 * @param boolean Little endian?
+	 * @param  string  &$p Data
+	 * @param  boolean $l  Little endian?
 	 * @return integer
 	 */
 public static function getWord(&$p, $l = false)
@@ -142,9 +143,9 @@ public static function getWord(&$p, $l = false)
 <md:method>
 /**
 	 * Get word (2 bytes)
-	 * @param &string Data
-	 * @param boolean Little endian?
-	 * @return \PHPDaemon\Utils\binary
+	 * @param  string  &$p Data
+	 * @param  boolean $l  Little endian?
+	 * @return string
 	 */
 public static function getStrWord(&$p, $l = false)
 </md:method>
@@ -152,8 +153,8 @@ public static function getStrWord(&$p, $l = false)
 <md:method>
 /**
 	 * Get double word (4 bytes)
-	 * @param &string Data
-	 * @param boolean Little endian?
+	 * @param  string  &$p Data
+	 * @param  boolean $l  Little endian?
 	 * @return integer
 	 */
 public static function getDWord(&$p, $l = false)
@@ -162,8 +163,8 @@ public static function getDWord(&$p, $l = false)
 <md:method>
 /**
 	 * Parse quadro word (8 bytes)
-	 * @param &string Data
-	 * @param boolean Little endian?
+	 * @param  string  &$p Data
+	 * @param  boolean $l  Little endian?
 	 * @return integer
 	 */
 public static function getQword(&$p, $l = false)
@@ -172,9 +173,9 @@ public static function getQword(&$p, $l = false)
 <md:method>
 /**
 	 * Get quadro word (8 bytes)
-	 * @param &string Data
-	 * @param boolean Little endian?
-	 * @return \PHPDaemon\Utils\binary
+	 * @param  string  &$p Data
+	 * @param  boolean $l  Little endian?
+	 * @return string
 	 */
 public static function getStrQWord(&$p, $l = false)
 </md:method>
@@ -182,8 +183,8 @@ public static function getStrQWord(&$p, $l = false)
 <md:method>
 /**
 	 * Parse nul-terminated string
-	 * @param &string Data
-	 * @return \PHPDaemon\Utils\binary
+	 * @param  string &$str Data
+	 * @return string
 	 */
 public static function getString(&$str)
 </md:method>
@@ -191,10 +192,10 @@ public static function getString(&$str)
 <md:method>
 /**
 	 * Parse length-value structure
-	 * @param &string Data
-	 * @param number  Number of length bytes
-	 * @param boolean Nul-terminated? Default is false
-	 * @param boolean Length is little endian?
+	 * @param  string  &$p   Data
+	 * @param  integer $l    Number of length bytes
+	 * @param  boolean $nul  Nul-terminated? Default is false
+	 * @param  boolean $lrev Length is little endian?
 	 * @return string
 	 */
 public static function getLV(&$p, $l = 1, $nul = false, $lrev = false)
@@ -203,10 +204,10 @@ public static function getLV(&$p, $l = 1, $nul = false, $lrev = false)
 <md:method>
 /**
 	 * Converts integer to binary string
-	 * @param integer Length
-	 * @param integer Integer
-	 * @param boolean Optional. Little endian. Default value - false.
-	 * @return string Resulting binary string
+	 * @param  integer $len Length
+	 * @param  integer $int Integer
+	 * @param  boolean $l   Optional. Little endian. Default value - false
+	 * @return string       Resulting binary string
 	 */
 public static function int2bytes($len, $int = 0, $l = false)
 </md:method>
@@ -214,8 +215,8 @@ public static function int2bytes($len, $int = 0, $l = false)
 <md:method>
 /**
 	 * Convert array of flags into bit array
-	 * @param array   Flags
-	 * @param integer Length. Default is 4
+	 * @param  array   $flags Flags
+	 * @param  integer $len   Length. Default is 4
 	 * @return string
 	 */
 public static function flags2bitarray($flags, $len = 4)
@@ -223,7 +224,12 @@ public static function flags2bitarray($flags, $len = 4)
 
 <md:method>
 /**
-	 * @alias int2bytes
+	 * Converts integer to binary string
+	 * @alias Binary::int2bytes
+	 * @param  integer $len Length
+	 * @param  integer $int Integer
+	 * @param  boolean $l   Optional. Little endian. Default value - false
+	 * @return string       Resulting binary string
 	 */
 public static function i2b($len, $int = 0, $l = false)
 </md:method>
@@ -231,8 +237,8 @@ public static function i2b($len, $int = 0, $l = false)
 <md:method>
 /**
 	 * Convert bytes into integer
-	 * @param string  Bytes
-	 * @param boolean Little endian? Default is false
+	 * @param  string  $str Bytes
+	 * @param  boolean $l   Little endian? Default is false
 	 * @return integer
 	 */
 public static function bytes2int($str, $l = false)
@@ -240,7 +246,11 @@ public static function bytes2int($str, $l = false)
 
 <md:method>
 /**
-	 * @alias bytes2int
+	 * Convert bytes into integer
+	 * @alias Binary::bytes2int
+	 * @param  string  $str Bytes
+	 * @param  boolean $l   Little endian? Default is false
+	 * @return integer
 	 */
 public static function b2i($str = 0, $l = false)
 </md:method>
@@ -248,9 +258,9 @@ public static function b2i($str = 0, $l = false)
 <md:method>
 /**
 	 * Convert bitmap into bytes
-	 * @param string  Bitmap
-	 * @param boolean Check length?
-	 * @return \PHPDaemon\Utils\binary
+	 * @param  string  $bitmap    Bitmap
+	 * @param  integer $check_len Check length?
+	 * @return string|false
 	 */
 public static function bitmap2bytes($bitmap, $check_len = 0)
 </md:method>
@@ -258,7 +268,7 @@ public static function bitmap2bytes($bitmap, $check_len = 0)
 <md:method>
 /**
 	 * Get bitmap
-	 * @param byte
+	 * @param  integer $byte Byte
 	 * @return string
 	 */
 public static function getbitmap($byte)

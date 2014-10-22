@@ -7,13 +7,12 @@ abstract class Connection extends [IOStream](#../iostream);
 
 @TODO
 
-<!-- include-namespace path="\PHPDaemon\Network\Connection" commit="c3eabafdec2045261861630de601aebeeb29bea9" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Network\Connection" commit="8b80f6d1d2fb3f9534b708f86100d2629ac4204b" level="" access="" -->
 #### properties # Properties
 
 <md:prop>
 /**
-	 * Associated pool
-	 * @var object ConnectionPool
+	 * @var object Associated pool
 	 */
 public $pool;
 </md:prop>
@@ -31,7 +30,7 @@ public function isConnected()
 <md:method>
 /**
 	 * Sets DGRAM mode
-	 * @param boolean
+	 * @param  boolean $bool DGRAM Mode
 	 * @return void
 	 */
 public function setDgram($bool)
@@ -39,9 +38,9 @@ public function setDgram($bool)
 
 <md:method>
 /**
-	 * Sets peer name.
-	 * @param string  Hostname
-	 * @param integer Port
+	 * Sets peer name
+	 * @param  string  $host Hostname
+	 * @param  integer $port Port
 	 * @return void
 	 */
 public function setPeername($host, $port)
@@ -50,7 +49,7 @@ public function setPeername($host, $port)
 <md:method>
 /**
 	 * Getter
-	 * @param string $name Name
+	 * @param  string $name Name
 	 * @return mixed
 	 */
 public function __get($name)
@@ -59,8 +58,8 @@ public function __get($name)
 <md:method>
 /**
 	 * Get socket name
-	 * @param &string Addr
-	 * @param &srting Port
+	 * @param  string &$addr Addr
+	 * @param  srting &$port Port
 	 * @return void
 	 */
 public function getSocketName(&$addr, &$port)
@@ -70,6 +69,7 @@ public function getSocketName(&$addr, &$port)
 /**
 	 * Sets parent socket
 	 * @param \PHPDaemon\BoundSocket\Generic $sock
+	 * @return void
 	 */
 public function setParentSocket(Generic $sock)
 </md:method>
@@ -77,7 +77,7 @@ public function setParentSocket(Generic $sock)
 <md:method>
 /**
 	 * Called when new UDP packet received
-	 * @param $pct
+	 * @param  object $pct Packet
 	 * @return void
 	 */
 public function onUdpPacket($pct)
@@ -94,7 +94,7 @@ public function onReady()
 <md:method>
 /**
 	 * Called if we inherit connection from request
-	 * @param Request Parent Request.
+	 * @param  Request $req Parent Request
 	 * @return void
 	 */
 public function onInheritanceFromRequest($req)
@@ -102,7 +102,7 @@ public function onInheritanceFromRequest($req)
 
 <md:method>
 /**
-	 * Called when the connection failed to be established.
+	 * Called when the connection failed to be established
 	 * @return void
 	 */
 public function onFailure()
@@ -111,8 +111,7 @@ public function onFailure()
 <md:method>
 /**
 	 * Called when the connection failed
-	 * @param resource Descriptor
-	 * @param mixed    Attached variable
+	 * @param  EventBufferEvent $bev
 	 * @return void
 	 */
 public function onFailureEv($bev = null)
@@ -129,8 +128,8 @@ public function __destruct()
 <md:method>
 /**
 	 * Send data to the connection. Note that it just writes to buffer that flushes at every baseloop
-	 * @param string Data to send.
-	 * @return boolean Success.
+	 * @param  string  $data Data to send
+	 * @return boolean       Success
 	 */
 public function write($data)
 </md:method>
@@ -138,7 +137,7 @@ public function write($data)
 <md:method>
 /**
 	 * Executes the given callback when/if the connection is handshaked
-	 * Callback
+	 * @param  callable $cb Callback
 	 * @return void
 	 */
 public function onConnected($cb)
@@ -163,7 +162,7 @@ public function getHost()
 <md:method>
 /**
 	 * Get port
-	 * @return string
+	 * @return integer
 	 */
 public function getPort()
 </md:method>
@@ -171,25 +170,27 @@ public function getPort()
 <md:method>
 /**
 	 * Connects to URL
-	 * @param string   URL
-	 * @param callable $cb Callback
-	 * @return boolean Success
+	 * @param  string   $url URL
+	 * @param  callable $cb  Callback
+	 * @return boolean       Success
 	 */
 public function connect($url, $cb = null)
 </md:method>
 
 <md:method>
-/** Establish UNIX socket connection
-	 * @param string Path
-	 * @return boolean Success
+/**
+	 * Establish UNIX socket connection
+	 * @param  string  $path Path
+	 * @return boolean       Success
 	 */
 public function connectUnix($path)
 </md:method>
 
 <md:method>
 /**
-	 * @param $host
-	 * @return bool
+	 * Establish raw socket connection
+	 * @param  string  $host Hostname
+	 * @return boolean       Success
 	 */
 public function connectRaw($host)
 </md:method>
@@ -197,18 +198,19 @@ public function connectRaw($host)
 <md:method>
 /**
 	 * Establish UDP connection
-	 * @param string $host  Hostname
-	 * @param integer $port Port
-	 * @return string Success
+	 * @param  string  $host Hostname
+	 * @param  integer $port Port
+	 * @return boolean       Success
 	 */
 public function connectUdp($host, $port)
 </md:method>
 
 <md:method>
-/** Establish TCP connection
-	 * @param string $host  Hostname
-	 * @param integer $port Port
-	 * @return boolean Success
+/**
+	 * Establish TCP connection
+	 * @param  string  $host Hostname
+	 * @param  integer $port Port
+	 * @return boolean       Success
 	 */
 public function connectTcp($host, $port)
 </md:method>
@@ -216,7 +218,7 @@ public function connectTcp($host, $port)
 <md:method>
 /**
 	 * Set keepalive
-	 * @param $bool
+	 * @param  boolean $bool
 	 * @return void
 	 */
 public function setKeepalive($bool)
@@ -233,8 +235,8 @@ public function close()
 <md:method>
 /**
 	 * Set timeouts
-	 * @param integer Read timeout in seconds
-	 * @param integer Write timeout in seconds
+	 * @param  integer $read  Read timeout in seconds
+	 * @param  integer $write Write timeout in seconds
 	 * @return void
 	 */
 public function setTimeouts($read, $write)
@@ -243,9 +245,9 @@ public function setTimeouts($read, $write)
 <md:method>
 /**
 	 * Set socket option
-	 * @param integer Level
-	 * @param integer Option
-	 * @param mixed   Value
+	 * @param  integer $level   Level
+	 * @param  integer $optname Option
+	 * @param  mixed   $val     Value
 	 * @return void
 	 */
 public function setOption($level, $optname, $val)

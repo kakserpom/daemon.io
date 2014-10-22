@@ -214,7 +214,7 @@ class PbxReconnector extends Request {
 }
 ```
 
-<!-- include-namespace path="\PHPDaemon\Clients\Asterisk" commit="bdb7b502568a245704a5ab6df9ba1d47f5a189fa" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Clients\Asterisk" commit="c48c00a08b4b4792a01cbb409ea6ec14ed0e7398" level="" access="" -->
 #### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
 
 ```php
@@ -373,8 +373,7 @@ public $onChallenge;
 
 <md:prop>
 /**
-	 * Associated pool
-	 * @var object ConnectionPool
+	 * @var object Associated pool
 	 */
 public $pool;
 </md:prop>
@@ -434,6 +433,7 @@ public function onRead()
 	 * ActionID: <id>    Action ID for this transaction. Will be returned.
 	 *
 	 * @param callable $cb Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function getSipPeers($cb)
@@ -446,6 +446,7 @@ public function getSipPeers($cb)
 	 * Privilege: system,reporting,all
 	 *
 	 * @param callable $cb Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function getIaxPeers($cb)
@@ -462,7 +463,9 @@ public function getIaxPeers($cb)
 	 *   *Filename: Configuration filename (e.g. foo.conf)
 	 *   Category: Category in configuration file
 	 *
-	 * @param callable $cb Callback called when response received.
+	 * @param  string   $filename Filename
+	 * @param  callable $cb       Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function getConfig($filename, $cb)
@@ -479,7 +482,9 @@ public function getConfig($filename, $cb)
 	 * Variables:
 	 *    Filename: Configuration filename (e.g. foo.conf)
 	 *
+	 * @param  string   $filename Filename
 	 * @param callable $cb Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function getConfigJSON($filename, $cb)
@@ -544,6 +549,7 @@ public function status($cb, $channel = null)
 	 *
 	 * @param array $params
 	 * @param callable $cb Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function redirect(array $params, $cb)
@@ -571,6 +577,7 @@ public function redirect(array $params, $cb)
 	 *
 	 * @param array $params
 	 * @param callable $cb Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function originate(array $params, $cb)
@@ -588,6 +595,7 @@ public function originate(array $params, $cb)
 	 *
 	 * @param array $params
 	 * @param callable $cb Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function extensionState(array $params, $cb)
@@ -601,6 +609,7 @@ public function extensionState(array $params, $cb)
 	 * Variables: NONE
 	 *
 	 * @param calalble Callback called when response received.
+	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function ping($cb)
@@ -615,6 +624,7 @@ public function ping($cb)
 	 * @param callable              Callback called when response received.
 	 * @param array|null $params
 	 * @param array|null $assertion If more events may follow as response this is a main part or full an action complete event indicating that all data has been sent.
+	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function action($action, $cb, array $params = null, array $assertion = null)
@@ -629,6 +639,7 @@ public function action($action, $cb, array $params = null, array $assertion = nu
 	 * Variables: NONE
 	 *
 	 * @param callable $cb Optional callback called when response received
+	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function logoff($cb = null)
@@ -663,48 +674,42 @@ public static $safeCaseValues;
 
 <md:prop>
 /**
-	 * Default connection class
-	 * @var string
+	 * @var string Default connection class
 	 */
 public $connectionClass;
 </md:prop>
 
 <md:prop>
 /**
-	 * Name
-	 * @var string
+	 * @var string Name
 	 */
 public $name;
 </md:prop>
 
 <md:prop>
 /**
-	 * Configuration
-	 * @var \PHPDaemon\Config\Section
+	 * @var \PHPDaemon\Config\Section Configuration
 	 */
 public $config;
 </md:prop>
 
 <md:prop>
 /**
-	 * Max concurrency
-	 * @var integer
+	 * @var integer Max concurrency
 	 */
 public $maxConcurrency;
 </md:prop>
 
 <md:prop>
 /**
-	 * Max allowed packet
-	 * @var integer
+	 * @var integer Max allowed packet
 	 */
 public $maxAllowedPacket;
 </md:prop>
 
 <md:prop>
 /**
-	 * Application instance object
-	 * @var object|null
+	 * @var object|null Application instance object
 	 */
 public $appInstance;
 </md:prop>
