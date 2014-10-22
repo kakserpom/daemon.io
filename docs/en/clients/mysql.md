@@ -51,7 +51,14 @@ $sql->query('SHOW VARIABLES',
 
 Когда callback-функция вызвана, $sql->context содержит ваш объект, который вы туда положили перед этим. $sql->resultRows хранит результат в виде массива ассоциативных массивов. $sql->resultFields содержит поля ответа в виде массива ассоциативных массивов.
 
-<!-- include-namespace path="\PHPDaemon\Clients\MySQL" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Clients\MySQL" commit="8372b6260e518f5b4e37867b453e795debec329d" level="" access="" -->
+#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/MySQL/ConnectionFinished.php}
+
+```php
+namespace PHPDaemon\Clients\MySQL;
+class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
+```
+
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}
 
 ```php
@@ -260,7 +267,8 @@ public $errmsg;
 
 <md:prop>
 /**
-	 * @var object Associated pool
+	 * Associated pool
+	 * @var object ConnectionPool
 	 */
 public $pool;
 </md:prop>
@@ -270,8 +278,7 @@ public $pool;
 <md:method>
 /**
 	 * Executes the given callback when/if the connection is handshaked
-	 * @param  callable $cb Callback
-	 * @callback ( Connection $conn, boolean $success )
+	 * Callback
 	 * @return void
 	 */
 public function onConnected($cb)
@@ -288,7 +295,7 @@ public function onReady()
 <md:method>
 /**
 	 * Sends a packet
-	 * @param  string $packet Data
+	 * @param string Data
 	 * @return boolean Success
 	 */
 public function sendPacket($packet)
@@ -297,7 +304,7 @@ public function sendPacket($packet)
 <md:method>
 /**
 	 * Builds length-encoded binary string
-	 * @param  string $s String
+	 * @param string String
 	 * @return string Resulting binary string
 	 */
 public function buildLenEncodedBinary($s)
@@ -322,8 +329,8 @@ public function parseEncodedString()
 <md:method>
 /**
 	 * Generates auth. token
-	 * @param  string $scramble Scramble string
-	 * @param  string $password Password
+	 * @param string $scramble Scramble string
+	 * @param string $password Password
 	 * @return string Result
 	 */
 public function getAuthToken($scramble, $password)
@@ -340,9 +347,8 @@ public function auth()
 <md:method>
 /**
 	 * Sends SQL-query
-	 * @param  string   $q        Query
-	 * @param  callable $callback Optional. Callback called when response received
-	 * @callback ( Connection $conn, boolean $success )
+	 * @param string   Query
+	 * @param callback Optional. Callback called when response received.
 	 * @return boolean Success
 	 */
 public function query($q, $callback = NULL)
@@ -351,8 +357,7 @@ public function query($q, $callback = NULL)
 <md:method>
 /**
 	 * Sends echo-request
-	 * @param  callable $callback Optional. Callback called when response received
-	 * @callback ( Connection $conn, boolean $success )
+	 * @param callback Optional. Callback called when response received.
 	 * @return boolean Success
 	 */
 public function ping($callback = NULL)
@@ -361,11 +366,10 @@ public function ping($callback = NULL)
 <md:method>
 /**
 	 * Sends arbitrary command
-	 * @param  string   $cmd      Command
-	 * @param  string   $q        Data
-	 * @param  callable $callback Optional
+	 * @param $cmd
+	 * @param string $q Data
+	 * @param null|Optional $callback
 	 * @throws ConnectionFinished
-	 * @callback ( Connection $conn, boolean $success )
 	 * @return boolean Success
 	 */
 public function command($cmd, $q = '', $callback = NULL)
@@ -374,7 +378,7 @@ public function command($cmd, $q = '', $callback = NULL)
 <md:method>
 /**
 	 * Sets default database name
-	 * @param  string  $name   Database name
+	 * @param string Database name
 	 * @return boolean Success
 	 */
 public function selectDB($name)
@@ -403,13 +407,6 @@ public function onResultDone()
 	 */
 public function onError()
 </md:method>
-
-#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/MySQL/ConnectionFinished.php}
-
-```php
-namespace PHPDaemon\Clients\MySQL;
-class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
-```
 
 #### pool # Class Pool {tpl-git PHPDaemon/Clients/MySQL/Pool.php}
 
@@ -854,42 +851,48 @@ const SET_FLAG = 0x800;
 
 <md:prop>
 /**
-	 * @var string Default connection class
+	 * Default connection class
+	 * @var string
 	 */
 public $connectionClass;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var string Name
+	 * Name
+	 * @var string
 	 */
 public $name;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var \PHPDaemon\Config\Section Configuration
+	 * Configuration
+	 * @var \PHPDaemon\Config\Section
 	 */
 public $config;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Max concurrency
+	 * Max concurrency
+	 * @var integer
 	 */
 public $maxConcurrency;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Max allowed packet
+	 * Max allowed packet
+	 * @var integer
 	 */
 public $maxAllowedPacket;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var object|null Application instance object
+	 * Application instance object
+	 * @var object|null
 	 */
 public $appInstance;
 </md:prop>
@@ -899,7 +902,7 @@ public $appInstance;
 <md:method>
 /**
 	 * Escapes the special symbols with trailing backslash
-	 * @param string $string
+	 * @param $string
 	 * @return string
 	 */
 public static function escape($string)

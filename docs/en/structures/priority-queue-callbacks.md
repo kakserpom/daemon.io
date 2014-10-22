@@ -7,14 +7,14 @@ class PriorityQueueCallbacks extends \[SplPriorityQueue](http://php.net/manual/c
 
 > Используется в [Network/Client](#network/client) для хранения вызовов, пока все доступные соединения заняты
 
-<!-- include-namespace path="\PHPDaemon\Structures\PriorityQueueCallbacks" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Structures\PriorityQueueCallbacks" commit="d7fbbeafa230215aaf095babb2061c9f6a4c4265" level="" access="" -->
 #### methods # Methods
 
 <md:method>
 /**
 	 * Insert callback
-	 * @param  callable $cb  Callback
-	 * @param  integer  $pri Priority
+	 * @param callable $cb Callback
+	 * @param integer $pri Priority
 	 * @return void
 	 */
 public function insert($cb, $pri = 0)
@@ -23,8 +23,8 @@ public function insert($cb, $pri = 0)
 <md:method>
 /**
 	 * Enqueue callback
-	 * @param  callable $cb  Callback
-	 * @param  integer  $pri Priority
+	 * @param callable $cb Callback
+	 * @param int $pri priority
 	 * @return void
 	 */
 public function enqueue($cb, $pri = 0)
@@ -33,7 +33,7 @@ public function enqueue($cb, $pri = 0)
 <md:method>
 /**
 	 * Dequeue
-	 * @return callable
+	 * @return callback
 	 */
 public function dequeue()
 </md:method>
@@ -41,8 +41,8 @@ public function dequeue()
 <md:method>
 /**
 	 * Compare two priorities
-	 * @param  integer $pri1
-	 * @param  integer $pri2
+	 * @param int $pri1
+	 * @param int $pri2
 	 * @return integer
 	 */
 public function compare($pri1, $pri2)
@@ -51,7 +51,7 @@ public function compare($pri1, $pri2)
 <md:method>
 /**
 	 * Executes one callback from the top of queue with arbitrary arguments
-	 * @return boolean
+	 * @return integer
 	 */
 public function executeOne()
 </md:method>

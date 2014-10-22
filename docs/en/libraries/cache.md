@@ -8,111 +8,7 @@ namespace PHPDaemon\Cache;
 
 > Используется для кеширования замыканий созданных через create_function. Также используется в [Clients\DNS](#clients/dns)
 
-<!-- include-namespace path="\PHPDaemon\Cache" commit="" level="" access="" -->
-#### capped-storage # Class CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
-
-```php
-namespace PHPDaemon\Cache;
-class CappedStorage;
-```
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var callable Sorter function
-	 */
-public $sorter;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Maximum number of cached elements
-	 */
-public $maxCacheSize;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Additional window to decrease number of sorter calls
-	 */
-public $capWindow;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array Storage of cached items
-	 */
-public $cache;
-</md:prop>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Sets cache size
-	 * @param  integer $size Maximum number of elements
-	 * @return void
-	 */
-public function setMaxCacheSize($size)
-</md:method>
-
-<md:method>
-/**
-	 * Sets cap window
-	 * @param  integer $w Additional window to decrease number of sorter calls
-	 * @return void
-	 */
-public function setCapWindow($w)
-</md:method>
-
-<md:method>
-/**
-	 * Hash function
-	 * @param  string $key Key
-	 * @return integer
-	 */
-public function hash($key)
-</md:method>
-
-<md:method>
-/**
-	 * Puts element in cache
-	 * @param  string  $key   Key
-	 * @param  mixed   $value Value
-	 * @param  integer $ttl   Time to live
-	 * @return mixed
-	 */
-public function put($key, $value, $ttl = null)
-</md:method>
-
-<md:method>
-/**
-	 * Invalidates cache element
-	 * @param  string $key Key
-	 * @return void
-	 */
-public function invalidate($key)
-</md:method>
-
-<md:method>
-/**
-	 * Gets element by key
-	 * @param  string $key Key
-	 * @return object Item
-	 */
-public function get($key)
-</md:method>
-
-<md:method>
-/**
-	 * Gets value of element by key
-	 * @param  string $key Key
-	 * @return mixed
-	 */
-public function getValue($key)
-</md:method>
-
+<!-- include-namespace path="\PHPDaemon\Cache" commit="254e4366d6c961d8db8ef438d2499e394fdd77c3" level="" access="" -->
 #### capped-storage-hits # Class CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
 
 ```php
@@ -124,28 +20,32 @@ class CappedStorageHits extends \PHPDaemon\Cache\CappedStorage;
 
 <md:prop>
 /**
-	 * @var callable Sorter function
+	 * Sorter function
+	 * @var callable
 	 */
 public $sorter;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Maximum number of cached elements
+	 * Maximum number of cached elements
+	 * @var integer
 	 */
 public $maxCacheSize;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Additional window to decrease number of sorter calls
+	 * Additional window to decrease number of sorter calls.
+	 * @var integer
 	 */
 public $capWindow;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var array Storage of cached items
+	 * Storage of cached items
+	 * @var array
 	 */
 public $cache;
 </md:prop>
@@ -155,7 +55,8 @@ public $cache;
 <md:method>
 /**
 	 * Constructor
-	 * @param  integer $max Maximum number of cached elements
+	 * @param [integer Maximum number of cached elements]
+	 * @return object
 	 */
 public function __construct($max = null)
 </md:method>
@@ -170,15 +71,15 @@ class Item;
 ##### properties # Properties
 
 <md:prop>
-/**
-	 * @var integer Hits counter
+/** Hits counter
+	 * @var integer
 	 */
 public $hits;
 </md:prop>
 
 <md:prop>
-/**
-	 * @var integer Expire time
+/** Expire time
+	 * @var integer
 	 */
 public $expire;
 </md:prop>
@@ -186,8 +87,8 @@ public $expire;
 ##### methods # Methods
 
 <md:method>
-/**
-	 * Constructor
+/** Establish TCP connection
+	 * @return boolean Success
 	 */
 public function __construct($value)
 </md:method>
@@ -195,7 +96,7 @@ public function __construct($value)
 <md:method>
 /**
 	 * Get hits number
-	 * @return integer
+	 * @return int
 	 */
 public function getHits()
 </md:method>
@@ -219,9 +120,117 @@ public function addListener($cb)
 <md:method>
 /**
 	 * Sets the value
-	 * @param mixed $value
+	 * @param $value
 	 */
 public function setValue($value)
+</md:method>
+
+#### capped-storage # Class CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
+
+```php
+namespace PHPDaemon\Cache;
+class CappedStorage;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * Sorter function
+	 * @var callable
+	 */
+public $sorter;
+</md:prop>
+
+<md:prop>
+/**
+	 * Maximum number of cached elements
+	 * @var integer
+	 */
+public $maxCacheSize;
+</md:prop>
+
+<md:prop>
+/**
+	 * Additional window to decrease number of sorter calls.
+	 * @var integer
+	 */
+public $capWindow;
+</md:prop>
+
+<md:prop>
+/**
+	 * Storage of cached items
+	 * @var array
+	 */
+public $cache;
+</md:prop>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Sets cache size
+	 * @param integer Maximum number of elements.
+	 * @return void
+	 */
+public function setMaxCacheSize($size)
+</md:method>
+
+<md:method>
+/**
+	 * Sets cap window
+	 * @param integer
+	 * @return void
+	 */
+public function setCapWindow($w)
+</md:method>
+
+<md:method>
+/**
+	 * Hash function
+	 * @param string Key
+	 * @return mixed
+	 */
+public function hash($key)
+</md:method>
+
+<md:method>
+/**
+	 * Puts element in cache
+	 * @param string Key
+	 * @param mixed  Value
+	 * @param [integer Time-to-Life]
+	 * @return mixed
+	 */
+public function put($key, $value, $ttl = null)
+</md:method>
+
+<md:method>
+/**
+	 * Invalidates cache element
+	 * @param string Key
+	 * @return void
+	 */
+public function invalidate($key)
+</md:method>
+
+<md:method>
+/**
+	 * Gets element by key
+	 * @param string Key
+	 * @return object Item
+	 */
+public function get($key)
+</md:method>
+
+<md:method>
+/**
+	 * Gets value of element by key
+	 * @param string Key
+	 * @return mixed
+	 */
+public function getValue($key)
 </md:method>
 
 

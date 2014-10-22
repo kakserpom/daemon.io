@@ -24,7 +24,7 @@ $httpclient->get('http://www.google.com/robots.txt',
 
 Рабочий пример клиента представлен в {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php Clients/HTTP/Examples/Simple.php}
 
-<!-- include-namespace path="\PHPDaemon\Clients\HTTP" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Clients\HTTP" commit="c5399ca37f61fd5686758d095d7b5322e4becdd7" level="" access="" -->
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
 
 ```php
@@ -132,7 +132,8 @@ public $eofTerminated;
 
 <md:prop>
 /**
-	 * @var object Associated pool
+	 * Associated pool
+	 * @var object ConnectionPool
 	 */
 public $pool;
 </md:prop>
@@ -201,42 +202,48 @@ class Pool extends \PHPDaemon\Network\Client;
 
 <md:prop>
 /**
-	 * @var string Default connection class
+	 * Default connection class
+	 * @var string
 	 */
 public $connectionClass;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var string Name
+	 * Name
+	 * @var string
 	 */
 public $name;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var \PHPDaemon\Config\Section Configuration
+	 * Configuration
+	 * @var \PHPDaemon\Config\Section
 	 */
 public $config;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Max concurrency
+	 * Max concurrency
+	 * @var integer
 	 */
 public $maxConcurrency;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Max allowed packet
+	 * Max allowed packet
+	 * @var integer
 	 */
 public $maxAllowedPacket;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var object|null Application instance object
+	 * Application instance object
+	 * @var object|null
 	 */
 public $appInstance;
 </md:prop>
@@ -248,9 +255,6 @@ public $appInstance;
 	 * Performs GET-request
 	 * @param string $url
 	 * @param array $params
-	 * @call  void public function get ( url $url, array $params )
-	 * @call  void public function get ( url $url, callable $resultcb )
-	 * @callback ( Connection $conn, boolean $success )
 	 */
 public function get($url, $params)
 </md:method>
@@ -261,9 +265,6 @@ public function get($url, $params)
 	 * @param string $url
 	 * @param array $data
 	 * @param array $params
-	 * @call  void public function post ( url $url, array $data, array $params )
-	 * @call  void public function post ( url $url, array $data, callable $resultcb )
-	 * @callback ( Connection $conn, boolean $success )
 	 */
 public function post($url, $data = [], $params)
 </md:method>
@@ -271,10 +272,8 @@ public function post($url, $data = [], $params)
 <md:method>
 /**
 	 * Builds URL from array
-	 * @param string $mixed
-	 * @call  string public static function buildUrl ( string $str )
-	 * @call  string public static function buildUrl ( array $mixed )
-	 * @return string|false
+	 * @param $mixed
+	 * @return bool|string
 	 */
 public static function buildUrl($mixed)
 </md:method>
@@ -282,104 +281,10 @@ public static function buildUrl($mixed)
 <md:method>
 /**
 	 * Parse URL
-	 * @param string $mixed Look Pool::buildUrl()
-	 * @call  string public static function parseUrl ( string $str )
-	 * @call  string public static function parseUrl ( array $mixed )
+	 * @param $mixed Look Pool::buildUrl()
 	 * @return array|bool
 	 */
 public static function parseUrl($mixed)
-</md:method>
-
-#### simple # Class Simple {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php}
-
-```php
-namespace PHPDaemon\Clients\HTTP\Examples;
-class Simple extends \PHPDaemon\Core\AppInstance;
-```
-
-##### properties # Properties
-
-<md:prop>
-
-public $httpclient;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean If true, it's allowed to be run without defined config section'
-	 */
-public static $runOnDemand;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string Optional passphrase
-	 */
-public $passphrase;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean Ready to run?
-	 */
-public $ready;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var object Related config section
-	 */
-public $config;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean Is RPC enabled?
-	 */
-public $enableRPC;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var null|string Default class of incoming requests
-	 */
-public $requestClass;
-</md:prop>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Constructor.
-	 * @return void
-	 */
-public function init()
-</md:method>
-
-<md:method>
-/**
-	 * Called when the worker is ready to go.
-	 * @return void
-	 */
-public function onReady()
-</md:method>
-
-<md:method>
-/**
-	 * Called when application instance is going to shutdown.
-	 * @return boolean Ready to shutdown?
-	 */
-public function onShutdown($graceful = false)
-</md:method>
-
-<md:method>
-/**
-	 * Creates Request.
-	 * @param object Request.
-	 * @param object Upstream application instance.
-	 * @return SimpleRequest Request.
-	 */
-public function beginRequest($req, $upstream)
 </md:method>
 
 #### simple-request # Class SimpleRequest {tpl-git PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php}
@@ -393,28 +298,24 @@ class SimpleRequest extends \PHPDaemon\HTTPRequest\Generic;
 
 <md:prop>
 /**
-	 * @var boolean Keepalive?
-	 */
-public $keepalive;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Current response length
+	 * Current response length
+	 * @var integer
 	 */
 public $responseLength;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var array Replacement pairs for processing some header values in parse_str()
+	 * Replacement pairs for processing some header values in parse_str()
+	 * @var array hash
 	 */
 public static $hvaltr;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var array State
+	 * State
+	 * @var array
 	 */
 public static $htr;
 </md:prop>
@@ -451,6 +352,101 @@ public function init()
 	 * @return integer Status.
 	 */
 public function run()
+</md:method>
+
+#### simple # Class Simple {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php}
+
+```php
+namespace PHPDaemon\Clients\HTTP\Examples;
+class Simple extends \PHPDaemon\Core\AppInstance;
+```
+
+##### properties # Properties
+
+<md:prop>
+
+public $httpclient;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var bool
+	 */
+public static $runOnDemand;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string
+	 */
+public $passphrase;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var bool
+	 */
+public $ready;
+</md:prop>
+
+<md:prop>
+/** @var Config\Section */
+public $config;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var bool
+	 */
+public $enableRPC;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var null|string
+	 */
+public $requestClass;
+</md:prop>
+
+<md:prop>
+/** @var array */
+public $indexFiles;
+</md:prop>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Constructor.
+	 * @return void
+	 */
+public function init()
+</md:method>
+
+<md:method>
+/**
+	 * Called when the worker is ready to go.
+	 * @return void
+	 */
+public function onReady()
+</md:method>
+
+<md:method>
+/**
+	 * Called when application instance is going to shutdown.
+	 * @return boolean Ready to shutdown?
+	 */
+public function onShutdown($graceful = false)
+</md:method>
+
+<md:method>
+/**
+	 * Creates Request.
+	 * @param object Request.
+	 * @param object Upstream application instance.
+	 * @return object Request.
+	 */
+public function beginRequest($req, $upstream)
 </md:method>
 
 

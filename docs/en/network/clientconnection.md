@@ -7,12 +7,13 @@ class ClientConnection extends [Connection](#../connection);
 
 @TODO
 
-<!-- include-namespace path="\PHPDaemon\Network\ClientConnection" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Network\ClientConnection" commit="54dfa1ea8d46f47d880c365c09c64d7eeea32adb" level="" access="" -->
 #### properties # Properties
 
 <md:prop>
 /**
-	 * @var object Associated pool
+	 * Associated pool
+	 * @var object ConnectionPool
 	 */
 public $pool;
 </md:prop>
@@ -22,8 +23,8 @@ public $pool;
 <md:method>
 /**
 	 * Constructor
-	 * @param resource $fd   File descriptor
-	 * @param mixed    $pool ConnectionPool
+	 * @param mixed $fd   File descriptor
+	 * @param mixed $pool ConnectionPool
 	 */
 public function __construct($fd, $pool = null)
 </md:method>
@@ -39,7 +40,6 @@ public function isBusy()
 <md:method>
 /**
 	 * Push callback to onReponse stack
-	 * @param  callable $cb Callback
 	 * @return void
 	 */
 public function onResponse($cb)
@@ -56,7 +56,7 @@ public function onReady()
 <md:method>
 /**
 	 * Set connection free/busy
-	 * @param  boolean $free Free?
+	 * @param boolean Free?
 	 * @return void
 	 */
 public function setFree($free = true)
@@ -79,18 +79,12 @@ public function checkFree()
 </md:method>
 
 <md:method>
-/**
-	 * getQueueLength
-	 * @return integer
-	 */
+
 public function getQueueLength()
 </md:method>
 
 <md:method>
-/**
-	 * isQueueEmpty
-	 * @return boolean
-	 */
+
 public function isQueueEmpty()
 </md:method>
 

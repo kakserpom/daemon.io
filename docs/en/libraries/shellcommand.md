@@ -35,47 +35,53 @@ ShellCommand::exec($command, $cb, $arguments, $env);
 
 @TODO
 
-<!-- include-namespace path="\PHPDaemon\Core\ShellCommand" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Core\ShellCommand" commit="5af07ac182a1104fd4bc61da87154dd6f55e5155" level="" access="" -->
 #### properties # Properties
 
 <md:prop>
 /**
-	 * @var string Executable path
+	 * Executable path
+	 * @var string
 	 */
 public $binPath;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var string SUID
+	 * SUID
+	 * @var string
 	 */
 public $setUser;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var string SGID
+	 * SGID
+	 * @var string
 	 */
 public $setGroup;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var string Chroot
+	 * Chroot
+	 * @var string
 	 */
 public $chroot;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var string Chdir
+	 * Chdir
+	 * @var string
 	 */
 public $cwd;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var object Associated pool
+	 * Associated pool
+	 * @var object ConnectionPool
 	 */
 public $pool;
 </md:prop>
@@ -93,7 +99,8 @@ public function getCmd()
 <md:method>
 /**
 	 * Set group
-	 * @return this
+	 * @param string $group
+	 * @return object $this
 	 */
 public function setGroup($val)
 </md:method>
@@ -101,8 +108,8 @@ public function setGroup($val)
 <md:method>
 /**
 	 * Set cwd
-	 * @param  string $dir
-	 * @return this
+	 * @param string $dir
+	 * @return object $this
 	 */
 public function setCwd($dir)
 </md:method>
@@ -110,8 +117,8 @@ public function setCwd($dir)
 <md:method>
 /**
 	 * Set group
-	 * @param  string $val
-	 * @return this
+	 * @param string $user
+	 * @return object $this
 	 */
 public function setUser($val)
 </md:method>
@@ -119,8 +126,8 @@ public function setUser($val)
 <md:method>
 /**
 	 * Set chroot
-	 * @param  string $dir
-	 * @return this
+	 * @param string $dir
+	 * @return object $this
 	 */
 public function setChroot($dir)
 </md:method>
@@ -128,10 +135,11 @@ public function setChroot($dir)
 <md:method>
 /**
 	 * Execute
-	 * @param  string   $binPath Binpath
-	 * @param  callable $cb 	 Callback
-	 * @param  array    $args    Optional. Arguments
-	 * @param  array    $env     Optional. Hash of environment's variables
+	 * @param string $binPath Optional. Binpath.
+	 * @param callable $cb 	  Callback
+	 * @param array $args     Optional. Arguments.
+	 * @param array $env      Optional. Hash of environment's variables.
+	 * @return object ShellCommand
 	 */
 public static function exec($binPath = null, $cb = null, $args = null, $env = null)
 </md:method>
@@ -139,8 +147,8 @@ public static function exec($binPath = null, $cb = null, $args = null, $env = nu
 <md:method>
 /**
 	 * Sets fd
-	 * @param  resource          $fd File descriptor
-	 * @param  \EventBufferEvent $bev
+	 * @param mixed File descriptor
+	 * @param [object EventBufferEvent]
 	 * @return void
 	 */
 public function setFd($fd, $bev = null)
@@ -149,8 +157,8 @@ public function setFd($fd, $bev = null)
 <md:method>
 /**
 	 * Sets an array of arguments
-	 * @param  array Arguments
-	 * @return this
+	 * @param array Arguments
+	 * @return object ShellCommand
 	 */
 public function setArgs($args = NULL)
 </md:method>
@@ -158,8 +166,8 @@ public function setArgs($args = NULL)
 <md:method>
 /**
 	 * Set a hash of environment's variables
-	 * @param  array Hash of environment's variables
-	 * @return this
+	 * @param array Hash of environment's variables
+	 * @return object ShellCommand
 	 */
 public function setEnv($env = NULL)
 </md:method>
@@ -174,9 +182,9 @@ public function onEofEvent()
 
 <md:method>
 /**
-	 * Set priority
-	 * @param  integer $nice Priority
-	 * @return this
+	 * Set priority.
+	 * @param integer $nice Priority
+	 * @return object ShellCommand
 	 */
 public function nice($nice = NULL)
 </md:method>
@@ -184,7 +192,7 @@ public function nice($nice = NULL)
 <md:method>
 /**
 	 * Build arguments string from associative/enumerated array (may be mixed)
-	 * @param  array $args
+	 * @param array $args
 	 * @return string
 	 */
 public static function buildArgs($args)
@@ -193,10 +201,10 @@ public static function buildArgs($args)
 <md:method>
 /**
 	 * Execute
-	 * @param  string $binPath Optional. Binpath
-	 * @param  array  $args    Optional. Arguments
-	 * @param  array  $env     Optional. Hash of environment's variables
-	 * @return this
+	 * @param string $binPath Optional. Binpath.
+	 * @param array $args     Optional. Arguments.
+	 * @param array $env      Optional. Hash of environment's variables.
+	 * @return object ShellCommand
 	 */
 public function execute($binPath = NULL, $args = NULL, $env = NULL)
 </md:method>
@@ -204,7 +212,7 @@ public function execute($binPath = NULL, $args = NULL, $env = NULL)
 <md:method>
 /**
 	 * Finish write stream
-	 * @return boolean
+	 * @return bool
 	 */
 public function finishWrite()
 </md:method>
@@ -227,7 +235,7 @@ public function onFinish()
 <md:method>
 /**
 	 * Close write stream
-	 * @return this
+	 * @return $this
 	 */
 public function closeWrite()
 </md:method>
@@ -235,7 +243,7 @@ public function closeWrite()
 <md:method>
 /**
 	 * Got EOF?
-	 * @return boolean
+	 * @return bool
 	 */
 public function eof()
 </md:method>
@@ -243,8 +251,8 @@ public function eof()
 <md:method>
 /**
 	 * Send data to the connection. Note that it just writes to buffer that flushes at every baseloop
-	 * @param  string $data Data to send
-	 * @return boolean Success
+	 * @param string Data to send.
+	 * @return boolean Success.
 	 */
 public function write($data)
 </md:method>
@@ -252,17 +260,17 @@ public function write($data)
 <md:method>
 /**
 	 * Send data and appending \n to connection. Note that it just writes to buffer flushed at every baseloop
-	 * @param  string Data to send
-	 * @return boolean Success
+	 * @param string Data to send.
+	 * @return boolean Success.
 	 */
 public function writeln($data)
 </md:method>
 
 <md:method>
 /**
-	 * Sets callback which will be called once when got EOF
-	 * @param  callable $cb
-	 * @return this
+	 * Sets callback which will be called once when got EOF 
+	 * @param callable $cb
+	 * @return $this
 	 */
 public function onEOF($cb = NULL)
 </md:method>

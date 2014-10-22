@@ -36,64 +36,70 @@ $j('bar', function($name, $j) {
 $j(); // Запускаем
 ```
 
-<!-- include-namespace path="\PHPDaemon\Core\ComplexJob" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Core\ComplexJob" commit="5af07ac182a1104fd4bc61da87154dd6f55e5155" level="" access="" -->
 #### consts # Constants
 
 <md:const>
 const STATE_WAITING = 1;
-State: waiting
+State: waiting @var integer
 </md:const>
 
 <md:const>
 const STATE_RUNNING = 2;
-State: running
+State: running @var integer
 </md:const>
 
 <md:const>
 const STATE_DONE = 3;
-State: done
+State: done @var integer
 </md:const>
 
 #### properties # Properties
 
 <md:prop>
 /**
-	 * @var array Listeners [callable, ...]
+	 * Listeners
+	 * @var array [callable, ...]
 	 */
 public $listeners;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var array Hash of results [jobname -> result, ...]
+	 * Hash of results
+	 * @var array [jobname -> result, ...]
 	 */
 public $results;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Current state
+	 * Current state
+	 * @var enum
 	 */
 public $state;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var array Hash of jobs [jobname -> callback, ...]
+	 * Hash of jobs
+	 * @var array [jobname -> callback, ...]
 	 */
 public $jobs;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Number of results
+	 * Number of results
+	 * @var integer
 	 */
 public $resultsNum;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Number of jobs
+	 * Number of jobs
+	 * @var integer
 	 */
 public $jobsNum;
 </md:prop>
@@ -104,59 +110,40 @@ public $jobsNum;
 /**
 	 * Constructor
 	 * @param callable $cb Listener
+	 * @return \PHPDaemon\Core\ComplexJob
 	 */
 public function __construct($cb = null)
 </md:method>
 
 <md:method>
-/**
-	 * Handler of isset($job[$name])
-	 * @param  string $j Job name
-	 * @return boolean
-	 */
+
 public function offsetExists($j)
 </md:method>
 
 <md:method>
-/**
-	 * Handler of $job[$name]
-	 * @param  string $j Job name
-	 * @return mixed
-	 */
+
 public function offsetGet($j)
 </md:method>
 
 <md:method>
-/**
-	 * Handler of $job[$name] = $value
-	 * @param  string $j Job name
-	 * @param  mixed  $v Job result
-	 * @return void
-	 */
+
 public function offsetSet($j, $v)
 </md:method>
 
 <md:method>
-/**
-	 * Handler of unset($job[$name])
-	 * @param  string $j Job name
-	 * @return void
-	 */
+
 public function offsetUnset($j)
 </md:method>
 
 <md:method>
-/**
-	 * Returns associative array of results
-	 * @return array
-	 */
+
 public function getResults()
 </md:method>
 
 <md:method>
 /**
 	 * Keep
-	 * @param  boolean $keep Keep?
+	 * @param boolean Keep?
 	 * @return void
 	 */
 public function keep($keep = true)
@@ -171,19 +158,15 @@ public function hasCompleted()
 </md:method>
 
 <md:method>
-/**
-	 * Sets a limit of simultaneously executing tasks
-	 * @param  integer $n Natural number or -1 (no limit)
-	 * @return this
-	 */
+
 public function maxConcurrency($n = -1)
 </md:method>
 
 <md:method>
 /**
 	 * Set result
-	 * @param  string $jobname Job name
-	 * @param  mixed  $result  Result
+	 * @param string Job name
+	 * @param mixed  Result
 	 * @return boolean
 	 */
 public function setResult($jobname, $result = null)
@@ -192,42 +175,32 @@ public function setResult($jobname, $result = null)
 <md:method>
 /**
 	 * Get result
-	 * @param  string $jobname Job name
+	 * @param string Job name
 	 * @return mixed Result or null
 	 */
 public function getResult($jobname)
 </md:method>
 
 <md:method>
-/**
-	 * Called automatically. Checks whether if the queue is full. If not, tries to pull more jobs from backlog and 'more'
-	 * @return void
-	 */
+
 public function checkQueue()
 </md:method>
 
 <md:method>
-/**
-	 * Sets a callback which is going to be fired always when we have a room for more jobs
-	 * @param  callable $cb Callback
-	 * @return this
-	 */
+
 public function more($cb = null)
 </md:method>
 
 <md:method>
-/**
-	 * Returns whether or not the queue is full (maxConcurrency option exceed)
-	 * @return boolean
-	 */
+
 public function isQueueFull()
 </md:method>
 
 <md:method>
 /**
 	 * Adds job
-	 * @param  string   $name Job name
-	 * @param  callable $cb   Callback
+	 * @param string   Job name
+	 * @param callable $cb Callback
 	 * @return boolean Success
 	 */
 public function addJob($name, $cb)
@@ -244,7 +217,7 @@ public function cleanup()
 <md:method>
 /**
 	 * Adds listener
-	 * @param  callable $cb Callback
+	 * @param callable $cb Callback
 	 * @return void
 	 */
 public function addListener($cb)
@@ -261,8 +234,8 @@ public function execute()
 <md:method>
 /**
 	 * Adds new job or calls execute() method
-	 * @param  mixed    $name
-	 * @param  callable $cb
+	 * @param mixed $name
+	 * @param callable $cb
 	 * @return void
 	 */
 public function __invoke($name = null, $cb = null)

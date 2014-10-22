@@ -214,7 +214,14 @@ class PbxReconnector extends Request {
 }
 ```
 
-<!-- include-namespace path="\PHPDaemon\Clients\Asterisk" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Clients\Asterisk" commit="bdb7b502568a245704a5ab6df9ba1d47f5a189fa" level="" access="" -->
+#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
+
+```php
+namespace PHPDaemon\Clients\Asterisk;
+class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
+```
+
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
 
 ```php
@@ -366,7 +373,8 @@ public $onChallenge;
 
 <md:prop>
 /**
-	 * @var object Associated pool
+	 * Associated pool
+	 * @var object ConnectionPool
 	 */
 public $pool;
 </md:prop>
@@ -426,7 +434,6 @@ public function onRead()
 	 * ActionID: <id>    Action ID for this transaction. Will be returned.
 	 *
 	 * @param callable $cb Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function getSipPeers($cb)
@@ -439,7 +446,6 @@ public function getSipPeers($cb)
 	 * Privilege: system,reporting,all
 	 *
 	 * @param callable $cb Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function getIaxPeers($cb)
@@ -456,9 +462,7 @@ public function getIaxPeers($cb)
 	 *   *Filename: Configuration filename (e.g. foo.conf)
 	 *   Category: Category in configuration file
 	 *
-	 * @param  string   $filename Filename
-	 * @param  callable $cb       Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
+	 * @param callable $cb Callback called when response received.
 	 * @return void
 	 */
 public function getConfig($filename, $cb)
@@ -475,9 +479,7 @@ public function getConfig($filename, $cb)
 	 * Variables:
 	 *    Filename: Configuration filename (e.g. foo.conf)
 	 *
-	 * @param  string   $filename Filename
 	 * @param callable $cb Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function getConfigJSON($filename, $cb)
@@ -542,7 +544,6 @@ public function status($cb, $channel = null)
 	 *
 	 * @param array $params
 	 * @param callable $cb Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function redirect(array $params, $cb)
@@ -570,7 +571,6 @@ public function redirect(array $params, $cb)
 	 *
 	 * @param array $params
 	 * @param callable $cb Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function originate(array $params, $cb)
@@ -588,7 +588,6 @@ public function originate(array $params, $cb)
 	 *
 	 * @param array $params
 	 * @param callable $cb Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function extensionState(array $params, $cb)
@@ -602,7 +601,6 @@ public function extensionState(array $params, $cb)
 	 * Variables: NONE
 	 *
 	 * @param calalble Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function ping($cb)
@@ -617,7 +615,6 @@ public function ping($cb)
 	 * @param callable              Callback called when response received.
 	 * @param array|null $params
 	 * @param array|null $assertion If more events may follow as response this is a main part or full an action complete event indicating that all data has been sent.
-	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function action($action, $cb, array $params = null, array $assertion = null)
@@ -632,7 +629,6 @@ public function action($action, $cb, array $params = null, array $assertion = nu
 	 * Variables: NONE
 	 *
 	 * @param callable $cb Optional callback called when response received
-	 * @callback ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function logoff($cb = null)
@@ -647,13 +643,6 @@ public function logoff($cb = null)
 	 */
 public function onEvent($cb)
 </md:method>
-
-#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
-
-```php
-namespace PHPDaemon\Clients\Asterisk;
-class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
-```
 
 #### pool # Class Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
 
@@ -674,42 +663,48 @@ public static $safeCaseValues;
 
 <md:prop>
 /**
-	 * @var string Default connection class
+	 * Default connection class
+	 * @var string
 	 */
 public $connectionClass;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var string Name
+	 * Name
+	 * @var string
 	 */
 public $name;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var \PHPDaemon\Config\Section Configuration
+	 * Configuration
+	 * @var \PHPDaemon\Config\Section
 	 */
 public $config;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Max concurrency
+	 * Max concurrency
+	 * @var integer
 	 */
 public $maxConcurrency;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Max allowed packet
+	 * Max allowed packet
+	 * @var integer
 	 */
 public $maxAllowedPacket;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var object|null Application instance object
+	 * Application instance object
+	 * @var object|null
 	 */
 public $appInstance;
 </md:prop>

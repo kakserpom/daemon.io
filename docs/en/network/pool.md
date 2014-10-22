@@ -50,47 +50,53 @@ Pool:HTTPServer {
 }
 ```
 
-<!-- include-namespace path="\PHPDaemon\Network\Pool" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Network\Pool" commit="c3eabafdec2045261861630de601aebeeb29bea9" level="" access="" -->
 #### properties # Properties
 
 <md:prop>
 /**
-	 * @var string Default connection class
+	 * Default connection class
+	 * @var string
 	 */
 public $connectionClass;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var string Name
+	 * Name
+	 * @var string
 	 */
 public $name;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var \PHPDaemon\Config\Section Configuration
+	 * Configuration
+	 * @var \PHPDaemon\Config\Section
 	 */
 public $config;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Max concurrency
+	 * Max concurrency
+	 * @var integer
 	 */
 public $maxConcurrency;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Max allowed packet
+	 * Max allowed packet
+	 * @var integer
 	 */
 public $maxAllowedPacket;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var object|null Application instance object
+	 * Application instance object
+	 * @var object|null
 	 */
 public $appInstance;
 </md:prop>
@@ -100,15 +106,15 @@ public $appInstance;
 <md:method>
 /**
 	 * Constructor
-	 * @param array   $config Config variables
-	 * @param boolean $init
+	 * @param array $config Config variables
+	 * @param bool $init
 	 */
 public function __construct($config = [], $init = true)
 </md:method>
 
 <md:method>
 /**
-	 * Called when the worker is ready to go
+	 * Called when the worker is ready to go.
 	 * @return void
 	 */
 public function onReady()
@@ -116,7 +122,7 @@ public function onReady()
 
 <md:method>
 /**
-	 * Called when worker is going to update configuration
+	 * Called when worker is going to update configuration.
 	 * @return void
 	 */
 public function onConfigUpdated()
@@ -125,9 +131,9 @@ public function onConfigUpdated()
 <md:method>
 /**
 	 * Returns instance object
-	 * @param  string  $arg   name / array config / ConfigSection
-	 * @param  boolean $spawn Spawn? Default is true
-	 * @return this
+	 * @param string $arg name / array config / ConfigSection
+	 * @param boolean $spawn Spawn? Default is true
+	 * @return Pool
 	 */
 public static function getInstance($arg = '', $spawn = true)
 </md:method>
@@ -135,7 +141,7 @@ public static function getInstance($arg = '', $spawn = true)
 <md:method>
 /**
 	 * Sets default connection class
-	 * @param  string $class Connection class name
+	 * @param string String name
 	 * @return void
 	 */
 public function setConnectionClass($class)
@@ -160,7 +166,7 @@ public function disable()
 <md:method>
 /**
 	 * Called when application instance is going to shutdown
-	 * @param  boolean $graceful
+	 * @param bool $graceful
 	 * @return boolean Ready to shutdown?
 	 */
 public function onShutdown($graceful = false)
@@ -177,8 +183,8 @@ public function finish($graceful = false)
 <md:method>
 /**
 	 * Attach Connection
-	 * @param  object $conn Connection
-	 * @param  mixed  $inf  Info
+	 * @param $conn Connection
+	 * @param mixed $inf Info
 	 * @return void
 	 */
 public function attach($conn, $inf = null)
@@ -187,7 +193,7 @@ public function attach($conn, $inf = null)
 <md:method>
 /**
 	 * Detach Connection
-	 * @param  object $conn Connection
+	 * @param $conn Connection
 	 * @return void
 	 */
 public function detach($conn)
@@ -196,10 +202,10 @@ public function detach($conn)
 <md:method>
 /**
 	 * Establish a connection with remote peer
-	 * @param  string   $url   URL
-	 * @param  callback $cb    Callback
-	 * @param  string   $class Optional. Connection class name
-	 * @return integer         Connection's ID. Boolean false when failed
+	 * @param string   URL
+	 * @param callback Optional. Callback.
+	 * @param string   Optional. Connection class name.
+	 * @return integer Connection's ID. Boolean false when failed.
 	 */
 public function connect($url, $cb, $class = null)
 </md:method>

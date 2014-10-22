@@ -7,47 +7,53 @@ abstract class Client extends [Pool](#../pool);
 
 @TODO
 
-<!-- include-namespace path="\PHPDaemon\Network\Client" commit="" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Network\Client" commit="4cacb482e20eda30e7674b2611d8aceeb9471af4" level="" access="" -->
 #### properties # Properties
 
 <md:prop>
 /**
-	 * @var string Default connection class
+	 * Default connection class
+	 * @var string
 	 */
 public $connectionClass;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var string Name
+	 * Name
+	 * @var string
 	 */
 public $name;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var \PHPDaemon\Config\Section Configuration
+	 * Configuration
+	 * @var \PHPDaemon\Config\Section
 	 */
 public $config;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Max concurrency
+	 * Max concurrency
+	 * @var integer
 	 */
 public $maxConcurrency;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var integer Max allowed packet
+	 * Max allowed packet
+	 * @var integer
 	 */
 public $maxAllowedPacket;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var object|null Application instance object
+	 * Application instance object
+	 * @var object|null
 	 */
 public $appInstance;
 </md:prop>
@@ -57,8 +63,8 @@ public $appInstance;
 <md:method>
 /**
 	 * Adds server
-	 * @param  string  $url    Server URL
-	 * @param  integer $weight Weight
+	 * @param string  Server URL
+	 * @param integer Weight
 	 * @return void
 	 */
 public function addServer($url, $weight = NULL)
@@ -67,12 +73,10 @@ public function addServer($url, $weight = NULL)
 <md:method>
 /**
 	 * Returns available connection from the pool
-	 * @param  string   $url Address
-	 * @param  callback $cb  onConnected
-	 * @param  integer  $pri Optional. Priority
-	 * @call   boolean public function getConnection ( callable $cb )
-	 * @call   boolean public function getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )
-	 * @return boolean       Success|Connection
+	 * @param string   Address
+	 * @param callback onConnected
+	 * @param integer  Optional. Priority.
+	 * @return mixed Success|Connection.
 	 */
 public function getConnection($url = null, $cb = null, $pri = 0)
 </md:method>
@@ -80,7 +84,7 @@ public function getConnection($url = null, $cb = null, $pri = 0)
 <md:method>
 /**
 	 * Detach Connection
-	 * @param  object $conn Connection
+	 * @param $conn Connection
 	 * @return void
 	 */
 public function detach($conn)
@@ -89,8 +93,8 @@ public function detach($conn)
 <md:method>
 /**
 	 * Mark connection as free
-	 * @param  ClientConnection $conn Connection
-	 * @param  string           $url  URL
+	 * @param ClientConnection $conn Connection
+	 * @param string $url            URL
 	 * @return void
 	 */
 public function markConnFree(ClientConnection $conn, $url)
@@ -99,8 +103,8 @@ public function markConnFree(ClientConnection $conn, $url)
 <md:method>
 /**
 	 * Mark connection as busy
-	 * @param  ClientConnection $conn Connection
-	 * @param  string           $url  URL
+	 * @param ClientConnection $conn Connection
+	 * @param string $url            URL
 	 * @return void
 	 */
 public function markConnBusy(ClientConnection $conn, $url)
@@ -109,8 +113,8 @@ public function markConnBusy(ClientConnection $conn, $url)
 <md:method>
 /**
 	 * Detaches connection from URL
-	 * @param  ClientConnection $conn Connection
-	 * @param  string           $url  URL
+	 * @param ClientConnection $conn Connection
+	 * @param string $url URL
 	 * @return void
 	 */
 public function detachConnFromUrl(ClientConnection $conn, $url)
@@ -119,7 +123,7 @@ public function detachConnFromUrl(ClientConnection $conn, $url)
 <md:method>
 /**
 	 * Touch pending "requests for connection"
-	 * @param  string $url URL
+	 * @param string $url URL
 	 * @return void
 	 */
 public function touchPending($url)
@@ -128,9 +132,9 @@ public function touchPending($url)
 <md:method>
 /**
 	 * Returns available connection from the pool by key
-	 * @param  string   $key Key
-	 * @param  callable $cb  Callback
-	 * @return boolean       Success
+	 * @param string $key Key
+	 * @param callable $cb
+	 * @return boolean Success.
 	 */
 public function getConnectionByKey($key, $cb = null)
 </md:method>
@@ -138,8 +142,8 @@ public function getConnectionByKey($key, $cb = null)
 <md:method>
 /**
 	 * Returns available connection from the pool
-	 * @param  callable $cb Callback
-	 * @return boolean      Success
+	 * @param callable $cb Callback
+	 * @return boolean Success
 	 */
 public function getConnectionRR($cb = null)
 </md:method>
@@ -147,10 +151,10 @@ public function getConnectionRR($cb = null)
 <md:method>
 /**
 	 * Sends a request to arbitrary server
-	 * @param  string   $server     Server
-	 * @param  string   $data       Data
-	 * @param  callable $onResponse Called when the request complete
-	 * @return boolean              Success
+	 * @param string Server
+	 * @param string Request
+	 * @param mixed  Callback called when the request complete
+	 * @return boolean Success.
 	 */
 public function requestByServer($server, $data, $onResponse = null)
 </md:method>
@@ -158,10 +162,10 @@ public function requestByServer($server, $data, $onResponse = null)
 <md:method>
 /**
 	 * Sends a request to server according to the key
-	 * @param  string   $key        Key
-	 * @param  string   $data       Data
-	 * @param  callable $onResponse Callback called when the request complete
-	 * @return boolean              Success
+	 * @param string Key
+	 * @param string Request
+	 * @param mixed  Callback called when the request complete
+	 * @return boolean Success
 	 */
 public function requestByKey($key, $data, $onResponse = null)
 </md:method>
@@ -169,8 +173,8 @@ public function requestByKey($key, $data, $onResponse = null)
 <md:method>
 /**
 	 * Called when application instance is going to shutdown
-	 * @param  boolean $graceful Graceful?
-	 * @return boolean           Ready to shutdown?
+	 * @param bool $graceful
+	 * @return boolean Ready to shutdown?
 	 */
 public function onShutdown($graceful = false)
 </md:method>
