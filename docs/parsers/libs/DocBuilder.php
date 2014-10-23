@@ -320,25 +320,24 @@ class DocBuilder {
 		}
 
 		if(strpos($lines[0], ' = [') !== false || strpos($lines[0], ' = array (') !== false) {
-			$phpdoc = [];
+			$codes = [];
 			while (true) {
-				$line = array_pop($lines);
+				$line = array_shift($lines);
 				if(is_null($line)) {
 					break;
 				}
 
+				$codes[] = $line;
+
 				if(strpos($line, ']') !== false || strpos($line, ')') !== false) {
-					array_push($lines, $line);
 					break;
 				}
-
-				if($line !== '') {
-					array_unshift($phpdoc, $line);
-				}
 			}
-			$text = implode("\n", $phpdoc);
 
-			$code = implode("\n  \t", $lines);
+			$text = implode("\n", $lines);
+			$text = preg_replace('/\n+/', "\n", $text);
+
+			$code = implode("\n  \t", $codes);
 			$code = preg_replace('/\n[ \t]+\]/', "\n]", $code);
 
 			$result .= " -.method ```php:p.inline\n $code\n ```\n";
