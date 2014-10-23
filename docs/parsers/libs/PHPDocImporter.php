@@ -68,6 +68,7 @@ class PHPDocImporter {
 		$this->doc_path = $params[0];
 		$this->sourcePath = $params[1];
 		$this->ignoreNamespaces = isset($params[2]) ? explode(':', $params[2]) : [];
+		$this->ignoreCommitsCache = isset($params[3]) && $params[3];
 		$this->autoloadRegister();
 		$this->loadCommitsCache();
 
@@ -267,6 +268,11 @@ class PHPDocImporter {
 
 	protected function loadCommitsCache() {
 		if($this->commitsCache === null) {
+			if($this->ignoreCommitsCache) {
+				$this->commitsCache = [];
+				return;
+			}
+
 			$data = file_exists('commits.data') ? file_get_contents('commits.data') : '';
 			$this->commitsCache = unserialize($data ? $data : '');
 			if(!is_array($this->commitsCache)) {
@@ -276,6 +282,10 @@ class PHPDocImporter {
 	}
 
 	protected function saveCommitsCache() {
+		if($this->ignoreCommitsCache) {
+			return 0;
+		}
+
 		return file_put_contents('commits.data', serialize($this->commitsCache));
 	}
 

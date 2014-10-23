@@ -35,7 +35,13 @@ if(isset($config['ignore_namespace'])) {
 	$ignores = implode(':', $config['ignore_namespace']);
 }
 
+$ignore_commits_cache = 0;
+if(isset($config['ignore_commits_cache'])) {
+	$ignore_commits_cache = 1;
+}
+
 passthru('php '.CURRENT_WORKING_DIR.'/parsers/import_phpdoc.php'
 	.' '. CURRENT_WORKING_DIR.'/en'
 	.' '. $phpdpath
-	.($ignores !== '' ? ' "'.$ignores.'"' : ''));
+	.($ignores !== '' ? ' "'.$ignores.'"' : '')
+	.' '. $ignore_commits_cache);

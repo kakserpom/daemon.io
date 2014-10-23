@@ -354,9 +354,15 @@ class DocBuilder {
 		$doc_result = $PHPDoc->getTagsByName('return');
 		$code_return_type = empty($doc_result) ? 'void' : $this->getDocDefaultType($doc_result[0]->getType());
 
-		$cbi = 0;
 		$doc_params    = $PHPDoc->getTagsByName('param');
 		$doc_callbacks = $PHPDoc->getTagsByName('callback');
+
+		$callbacks = [];
+		foreach ($doc_callbacks as $cb) {
+			list($cb_name, $cb_code) = explode(' ', $cb->getDescription(), 2);
+			$callbacks[$cb_name] = $cb_code;
+		}
+
 		foreach ($doc_params as $tag) {
 			$name = $tag->getVariableName();
 			$type = $tag->getType();
@@ -366,13 +372,11 @@ class DocBuilder {
 
 			$extra = '';
 			if($deftype === 'callable') {
-				if(isset($doc_callbacks[$cbi])) {
-					$extra = "callback {$doc_callbacks[$cbi]->getDescription()}\n";
+				if(isset($callbacks[$name])) {
+					$extra = "callback {$callbacks[$name]}\n";
 				}
-				
-				$cbi++;
 			}
-			$desc_params[] = $tag->getVariableName() ."\n". $extra. $tag->getDescription();
+			$desc_params[] = $name ."\n". $extra. $tag->getDescription();
 		}
 
 		$result = '';
@@ -461,7 +465,7 @@ class DocBuilder {
 			}
 
 			if(count($cells) === 2) {
-				$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — {$cells[1]}\n";
+				$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — " . (strpos($cells[1], 'callback ') === 0 ? ('`:phc`'.$cells[1].'`') : $cells[1]) . "\n";
 			} else
 			if(count($cells) === 3) {
 				$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — `:phc`{$cells[1]}` — {$cells[2]}\n";
