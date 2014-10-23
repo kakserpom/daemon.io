@@ -16,7 +16,7 @@ Thumbs.db
 .DS_Store
 
 #Project folders and files
-docs/import_phpdoc.conf
 docs/*/index.html
 docs/js/highlight_source/build/docs
 docs/js/highlight_source/node_modules
+docs/import_phpdoc.conf
