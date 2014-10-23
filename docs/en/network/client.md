@@ -35,14 +35,14 @@ public $config;
 /**
 	 * @var integer Max concurrency
 	 */
-public $maxConcurrency;
+public $maxConcurrency = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Max allowed packet
 	 */
-public $maxAllowedPacket;
+public $maxAllowedPacket = 0;
 </md:prop>
 
 <md:prop>

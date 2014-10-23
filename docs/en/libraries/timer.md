@@ -68,7 +68,7 @@ public $lastTimeout;
 /**
 	 * @var boolean Is the timer finished?
 	 */
-public $finished;
+public $finished = false;
 </md:prop>
 
 <md:prop>

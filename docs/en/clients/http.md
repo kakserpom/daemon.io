@@ -50,35 +50,35 @@ State: body
 /**
 	 * @var array Associative array of headers
 	 */
-public $headers;
+public $headers = [ ];
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Content length
 	 */
-public $contentLength;
+public $contentLength = -1;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Contains response body
 	 */
-public $body;
+public $body = '';
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Associative array of Cookies
 	 */
-public $cookie;
+public $cookie = [ ];
 </md:prop>
 
 <md:prop>
 /**
 	 * @var boolean
 	 */
-public $chunked;
+public $chunked = false;
 </md:prop>
 
 <md:prop>
@@ -92,7 +92,7 @@ public $protocolError;
 /**
 	 * @var integer
 	 */
-public $responseCode;
+public $responseCode = 0;
 </md:prop>
 
 <md:prop>
@@ -121,7 +121,7 @@ public $charset;
 
 <md:prop>
 
-public $eofTerminated;
+public $eofTerminated = false;
 </md:prop>
 
 <md:prop>
@@ -225,14 +225,14 @@ public $config;
 /**
 	 * @var integer Max concurrency
 	 */
-public $maxConcurrency;
+public $maxConcurrency = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Max allowed packet
 	 */
-public $maxAllowedPacket;
+public $maxAllowedPacket = 0;
 </md:prop>
 
 <md:prop>
@@ -311,7 +311,7 @@ public $httpclient;
 /**
 	 * @var boolean If true, it's allowed to be run without defined config section'
 	 */
-public static $runOnDemand;
+public static $runOnDemand = true;
 </md:prop>
 
 <md:prop>
@@ -325,7 +325,7 @@ public $passphrase;
 /**
 	 * @var boolean Ready to run?
 	 */
-public $ready;
+public $ready = false;
 </md:prop>
 
 <md:prop>
@@ -339,7 +339,7 @@ public $config;
 /**
 	 * @var boolean Is RPC enabled?
 	 */
-public $enableRPC;
+public $enableRPC = false;
 </md:prop>
 
 <md:prop>
@@ -398,28 +398,34 @@ class SimpleRequest extends \PHPDaemon\HTTPRequest\Generic;
 /**
 	 * @var boolean Keepalive?
 	 */
-public $keepalive;
+public $keepalive = false;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Current response length
 	 */
-public $responseLength;
+public $responseLength = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Replacement pairs for processing some header values in parse_str()
 	 */
-public static $hvaltr;
+public static $hvaltr = [
+  '; ' => '&',
+  ';' => '&',
+  ' ' => '%20',
+];
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array State
 	 */
-public static $htr;
+public static $htr = [
+  '-' => '_',
+];
 </md:prop>
 
 <md:prop>

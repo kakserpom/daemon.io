@@ -267,17 +267,30 @@ class DocBuilder {
 	 * @return string
 	 */
 	protected function parseMdPropertieFromPHPDoc($text) {
-		$lines = $this->getTextLines($text);
+		$lines = $this->getTextLines($text, '/\n/', false);
+		$phpdoc = [];
 
-		$code = trim(array_pop($lines));
-		$comment = implode("\n", $lines);
+		while(true) {
+			$line = array_shift($lines);
+			if(is_null($line)) {
+				break;
+			}
+
+			$phpdoc[] = $line;
+			if(preg_match('/^[ \t]*\*\//', $line)) {
+				break;
+			}
+		}
+
+		$code = implode("\n", $lines);
+		$comment = implode("\n", $phpdoc);
 
 		$PHPDoc = new DocBlock($comment);
 
 		$doc_var = $PHPDoc->getTagsByName('var');
 
 		if(empty($doc_var)) {
-			return $code;
+			return $code ."\n". $PHPDoc->getText();
 		}
 
 		$tag = $doc_var[0];
@@ -285,6 +298,10 @@ class DocBuilder {
 		$type = $tag->getType();
 		$deftype = $this->getDocDefaultType($type);
 		$desc = $tag->getDescription();
+
+		if(!$desc) {
+			$desc = $PHPDoc->getText();
+		}
 
 		return $deftype .' '. $code ."\n". $desc;
 	}
@@ -296,20 +313,45 @@ class DocBuilder {
 	 */
 	protected function parseMdPropertieDef($text) {
 		$result = '';
-		$lines = $this->getTextLines($text);
+		$lines = $this->getTextLines($text, '/\n/', false);
 
 		if(count($lines) === 0 or (count($lines) === 1 and $lines[0] === '')) {
 			return ' -.method.fake &nbsp;';
 		}
 
-		if(count($lines)) {
+		if(strpos($lines[0], ' = [') !== false || strpos($lines[0], ' = array (') !== false) {
+			$phpdoc = [];
+			while (true) {
+				$line = array_pop($lines);
+				if(is_null($line)) {
+					break;
+				}
+
+				if(strpos($line, ']') !== false || strpos($line, ')') !== false) {
+					array_push($lines, $line);
+					break;
+				}
+
+				if($line !== '') {
+					array_unshift($phpdoc, $line);
+				}
+			}
+			$text = implode("\n", $phpdoc);
+
+			$code = implode("\n  \t", $lines);
+			$code = preg_replace('/\n[ \t]+\]/', "\n]", $code);
+
+			$result .= " -.method ```php:p.inline\n $code\n ```\n";
+			$result .= $text ? ' <ul><li class="n">' . $text . "</li></ul>\n" : '';
+		}
+		else {
 			$part = array_shift($lines);
 			$result .= " -.method ```php:p.inline\n $part\n ```\n";
-		}
 
-		if(count($lines)) {
-			$part = array_shift($lines);
-			$result .= ' <ul><li class="n">' . $part . "</li></ul>\n";
+			if(count($lines)) {
+				$part = array_shift($lines);
+				$result .= ' <ul><li class="n">' . $part . "</li></ul>\n";
+			}
 		}
 
 		return $result;
@@ -496,13 +538,18 @@ class DocBuilder {
 	 * @param  string $sep  Regex
 	 * @return array
 	 */
-	protected function getTextLines($text, $sep = '/\n/') {
+	protected function getTextLines($text, $sep = '/\n/', $trim = true) {
 		$text = trim($text);
 		$text = str_replace("\r\n", "\n", $text);
 		$text = str_replace("\r", "\n", $text);
 
 		$lines = preg_split($sep, $text);
 		$result = [];
+
+		if(!$trim) {
+			return $lines;
+		}
+
 		foreach ($lines as $line) {
 			$result[] = trim($line);
 		}

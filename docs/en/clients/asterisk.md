@@ -285,7 +285,7 @@ const INPUT_STATE_PROCESSING = 2;
 /**
 	 * @var string EOL
 	 */
-public $EOL;
+public $EOL = '\r\n';
 </md:prop>
 
 <md:prop>
@@ -306,35 +306,35 @@ public $secret;
 /**
 	 * @var float Connection's state
 	 */
-public $state;
+public $state = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Input state
 	 */
-public $instate;
+public $instate = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Received packets
 	 */
-public $packets;
+public $packets = [ ];
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer For composite response on action
 	 */
-public $cnt;
+public $cnt = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Stack of callbacks called when response received
 	 */
-public $callbacks;
+public $callbacks = [ ];
 </md:prop>
 
 <md:prop>
@@ -344,7 +344,7 @@ public $callbacks;
 	 * an action complete event indicating that all data has been sent
 	 * @var array
 	 */
-public $assertions;
+public $assertions = [ ];
 </md:prop>
 
 <md:prop>
@@ -685,7 +685,11 @@ class Pool extends \PHPDaemon\Network\Client;
 /**
 	 * @var array Beginning of the string in the header or value that indicates whether the save value case
 	 */
-public static $safeCaseValues;
+public static $safeCaseValues = [
+  0 => 'dialstring',
+  1 => 'callerid',
+  2 => 'connectedline',
+];
 </md:prop>
 
 <md:prop>
@@ -713,14 +717,14 @@ public $config;
 /**
 	 * @var integer Max concurrency
 	 */
-public $maxConcurrency;
+public $maxConcurrency = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Max allowed packet
 	 */
-public $maxAllowedPacket;
+public $maxAllowedPacket = 0;
 </md:prop>
 
 <md:prop>

@@ -431,15 +431,48 @@ TPL;
 		$level = str_repeat('#', $level);
 		$result = '';
 		$properties = $ReflectionEntity->getProperties($access);
+		$values = $ReflectionEntity->getDefaultProperties();
 
 		foreach ($properties as $ReflectionProperty) {
 			$name = $ReflectionProperty->getName();
 			$comment = $ReflectionProperty->getDocComment();
 			$code = $this->getPropertyCode((string) $ReflectionProperty);
+			$value = '';
+
+			if(isset($values[$name])) {
+				$value = var_export($values[$name], true);
+
+				if(strpos($value, 'array (') === 0) {
+					$value = '['. substr($value, 7, -1) .']';
+					$value = preg_replace('/\[[\s]+\]/', '[ ]', $value);
+				}
+
+				if(is_string($values[$name])) {
+					$value = str_replace(
+						[
+							"\n",
+							"\r",
+							"\0"
+						],
+						[
+							'\n',
+							'\r',
+							'\0'
+						],
+						$value
+					);
+				}
+				// else {
+				// 	$value = preg_replace('/^\s+/', '', $value);
+				// 	$value = preg_replace('/\s+$/', '', $value);
+				// }
+
+				$code .= ' = ' . $value;
+			}
 			
 			$result .= "<md:prop>\n";
 			$result .= $comment."\n";
-			$result .= $code."\n";
+			$result .= $code.";\n";
 			$result .= "</md:prop>\n\n";
 		}
 
@@ -452,7 +485,7 @@ TPL;
 
 	protected function getPropertyCode($str) {
 		preg_match('/\[ (.+?) \]/', $str, $matches);
-		return trim(str_replace('<default>', '', $matches[1])) . ';';
+		return trim(str_replace('<default>', '', $matches[1]));
 	}
 
 	protected function getClassMethods($ReflectionEntity, $params, $class_path, $class_name) {

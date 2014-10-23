@@ -63,7 +63,7 @@ public $setGroup;
 /**
 	 * @var string Chroot
 	 */
-public $chroot;
+public $chroot = '/';
 </md:prop>
 
 <md:prop>

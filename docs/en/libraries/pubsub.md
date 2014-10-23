@@ -95,7 +95,7 @@ class PubSubEvent extends \SplObjectStorage;
 /**
 	 * @var array Subscriptions
 	 */
-public $sub;
+public $sub = [ ];
 </md:prop>
 
 <md:prop>

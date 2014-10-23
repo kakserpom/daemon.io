@@ -18,21 +18,21 @@ class File;
 /**
 	 * @var integer Priority
 	 */
-public $priority;
+public $priority = 10;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Chunk size
 	 */
-public $chunkSize;
+public $chunkSize = 4096;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Current offset
 	 */
-public $offset;
+public $offset = 0;
 </md:prop>
 
 <md:prop>
@@ -60,14 +60,14 @@ public $path;
 /**
 	 * @var boolean Writing?
 	 */
-public $writing;
+public $writing = false;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var boolean Closed?
 	 */
-public $closed;
+public $closed = false;
 </md:prop>
 
 ##### methods # Methods
@@ -348,14 +348,22 @@ public static $fd;
 /**
 	 * @var array Mode types
 	 */
-public static $modeTypes;
+public static $modeTypes = [
+  49152 => 's',
+  40960 => 'l',
+  32768 => 'f',
+  24576 => 'b',
+  16384 => 'd',
+  8192 => 'c',
+  4096 => 'p',
+];
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer TTL for bad descriptors in seconds
 	 */
-public static $badFDttl;
+public static $badFDttl = 5;
 </md:prop>
 
 <md:prop>
@@ -369,14 +377,14 @@ public static $fdCache;
 /**
 	 * @var integer Maximum number of open files in cache
 	 */
-public static $fdCacheSize;
+public static $fdCacheSize = 128;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Required EIO version
 	 */
-public static $eioVer;
+public static $eioVer = '1.2.1';
 </md:prop>
 
 ##### methods # Methods
@@ -695,7 +703,7 @@ class FileWatcher;
 /**
 	 * @var array Associative array of the files being observed
 	 */
-public $files;
+public $files = [ ];
 </md:prop>
 
 <md:prop>
@@ -709,7 +717,7 @@ public $inotify;
 /**
 	 * @var Array of inotify descriptors
 	 */
-public $descriptors;
+public $descriptors = [ ];
 </md:prop>
 
 ##### methods # Methods

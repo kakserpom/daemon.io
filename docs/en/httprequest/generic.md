@@ -14,28 +14,34 @@ abstract class Generic extends \PHPDaemon\Request\Generic;
 /**
 	 * @var boolean Keepalive?
 	 */
-public $keepalive;
+public $keepalive = false;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Current response length
 	 */
-public $responseLength;
+public $responseLength = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Replacement pairs for processing some header values in parse_str()
 	 */
-public static $hvaltr;
+public static $hvaltr = [
+  '; ' => '&',
+  ';' => '&',
+  ' ' => '%20',
+];
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array State
 	 */
-public static $htr;
+public static $htr = [
+  '-' => '_',
+];
 </md:prop>
 
 <md:prop>

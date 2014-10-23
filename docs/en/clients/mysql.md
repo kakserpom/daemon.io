@@ -112,14 +112,14 @@ const RS_STATE_ROW = 2;
 /**
 	 * @var integer Sequence. Pointer of packet sequence
 	 */
-public $seq;
+public $seq = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Client flags
 	 */
-public $clientFlags;
+public $clientFlags = 239237;
 </md:prop>
 
 <md:prop>
@@ -182,28 +182,28 @@ public $message;
 /**
 	 * @var integer Charset number (see MySQL charset list)
 	 */
-public $charsetNumber;
+public $charsetNumber = 33;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Database name
 	 */
-public $dbname;
+public $dbname = '';
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Result rows
 	 */
-public $resultRows;
+public $resultRows = [ ];
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Result fields
 	 */
-public $resultFields;
+public $resultFields = [ ];
 </md:prop>
 
 <md:prop>
@@ -231,28 +231,28 @@ public $affectedRows;
 /**
 	 * @var integer Protocol version
 	 */
-public $protover;
+public $protover = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Timeout
 	 */
-public $timeout;
+public $timeout = 120;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Error number
 	 */
-public $errno;
+public $errno = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Error message
 	 */
-public $errmsg;
+public $errmsg = '';
 </md:prop>
 
 <md:prop>
@@ -874,14 +874,14 @@ public $config;
 /**
 	 * @var integer Max concurrency
 	 */
-public $maxConcurrency;
+public $maxConcurrency = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Max allowed packet
 	 */
-public $maxAllowedPacket;
+public $maxAllowedPacket = 0;
 </md:prop>
 
 <md:prop>

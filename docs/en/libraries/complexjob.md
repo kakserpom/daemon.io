@@ -60,14 +60,14 @@ State: done
 /**
 	 * @var array Listeners [callable, ...]
 	 */
-public $listeners;
+public $listeners = [ ];
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Hash of results [jobname -> result, ...]
 	 */
-public $results;
+public $results = [ ];
 </md:prop>
 
 <md:prop>
@@ -81,21 +81,21 @@ public $state;
 /**
 	 * @var array Hash of jobs [jobname -> callback, ...]
 	 */
-public $jobs;
+public $jobs = [ ];
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Number of results
 	 */
-public $resultsNum;
+public $resultsNum = 0;
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Number of jobs
 	 */
-public $jobsNum;
+public $jobsNum = 0;
 </md:prop>
 
 #### methods # Methods
