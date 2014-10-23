@@ -1,4 +1,4 @@
-## control # Управление
+## control # Control
 
 <table class="invis">
   <tr>

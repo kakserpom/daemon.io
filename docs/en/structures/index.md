@@ -1,4 +1,4 @@
-## structures # Структуры
+## structures # Structures
 
 <!-- import object-storage.md -->
 

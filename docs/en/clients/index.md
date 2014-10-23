@@ -1,10 +1,10 @@
-## clients # Клиенты
+## clients # Clients
 
 В основе всех клиентов лежит пространство имен [Network](#network), изучение которого даст большее представление о возможностях клиентов и сетевой работы демона в целом.
 
-### basics # Основы
+### basics # Basics
 
-#### options # Опции клиентов
+#### options # Clients options
 
  - `server (string)`
  Адрес сервера. Записывается специальным форматом, описанном в разделе [Опция server](#clients/basics/option-server)

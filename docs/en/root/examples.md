@@ -1,3 +1,3 @@
-## examples # Примеры
+## examples # Examples
 
 Примеры

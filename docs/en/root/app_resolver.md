@@ -1,4 +1,4 @@
-## app_resolver # Маршрутизация
+## app_resolver # App resolver
 
 Получая запросы демон первым делом должен определить какому приложению он&#160;должен передать обработку.
 Для этого служит метод `getRequestRoute` в&#160;классе [AppResolver](https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/AppResolver.php#L159).

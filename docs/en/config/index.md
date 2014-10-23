@@ -1,4 +1,4 @@
-## config # Конфигурация
+## config # Configuration
 
 <!-- import types.md -->
 

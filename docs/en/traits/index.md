@@ -1,4 +1,4 @@
-## traits # Примеси
+## traits # Traits
 
 [Примеси](http://php.net/traits) (англ. traits).
 

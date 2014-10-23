@@ -1,4 +1,4 @@
-## apps # Приложения
+## apps # Applications
 
 <!-- import mongonode.md -->
 
