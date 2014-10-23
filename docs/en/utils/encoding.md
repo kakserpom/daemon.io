@@ -7,7 +7,7 @@ class Encoding;
 
 Сторонняя библиотека — [forceutf8](https://github.com/neitanod/forceutf8)
 
-<!-- include-namespace path="\PHPDaemon\Utils\Encoding" commit="2fd92c7f2bfbcaa92756459c8000e906d57306e1" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Utils\Encoding" level="" access="" -->
 #### methods # Methods
 
 <md:method>

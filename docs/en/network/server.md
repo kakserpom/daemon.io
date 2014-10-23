@@ -7,7 +7,7 @@ abstract class Server extends [Pool](#../pool);
 
 @TODO
 
-<!-- include-namespace path="\PHPDaemon\Network\Server" commit="8b80f6d1d2fb3f9534b708f86100d2629ac4204b" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Network\Server" level="" access="" -->
 #### properties # Properties
 
 <md:prop>

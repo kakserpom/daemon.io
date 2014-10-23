@@ -9,7 +9,7 @@ class ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splo
 
 > Можно создавать классы-наследники
 
-<!-- include-namespace path="\PHPDaemon\Structures\ObjectStorage" commit="2787f4c32d31f6555bbf8be44f08914ccf062e05" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Structures\ObjectStorage" level="" access="" -->
 #### methods # Methods
 
 <md:method>

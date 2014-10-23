@@ -7,7 +7,7 @@ class PriorityQueueCallbacks extends \[SplPriorityQueue](http://php.net/manual/c
 
 > Используется в [Network/Client](#network/client) для хранения вызовов, пока все доступные соединения заняты
 
-<!-- include-namespace path="\PHPDaemon\Structures\PriorityQueueCallbacks" commit="2787f4c32d31f6555bbf8be44f08914ccf062e05" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Structures\PriorityQueueCallbacks" level="" access="" -->
 #### methods # Methods
 
 <md:method>

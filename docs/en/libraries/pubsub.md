@@ -4,7 +4,84 @@
 namespace PHPDaemon\PubSub;
 ```
 
-<!-- include-namespace path="\PHPDaemon\PubSub" commit="8b80f6d1d2fb3f9534b708f86100d2629ac4204b" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\PubSub" level="" access="" -->
+#### pub-sub # Class PubSub {tpl-git PHPDaemon/PubSub/PubSub.php}
+
+```php
+namespace PHPDaemon\PubSub;
+class PubSub;
+```
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Is event exists?
+	 * @param  string  $id Event ID
+	 * @return boolean
+	 */
+public function eventExists($id)
+</md:method>
+
+<md:method>
+/**
+	 * Subcribe to event
+	 * @param  string   $id  Event ID
+	 * @param  object   $obj Subscriber
+	 * @param  callable $cb  Callback
+	 * @return boolean       Success
+	 */
+public function sub($id, $obj, $cb)
+</md:method>
+
+<md:method>
+/**
+	 * Adds event
+	 * @param  string      $id  Event ID
+	 * @param  PubSubEvent $obj
+	 * @return void
+	 */
+public function addEvent($id, PubSubEvent $obj)
+</md:method>
+
+<md:method>
+/**
+	 * Removes event
+	 * @param  string $id Event ID
+	 * @return void
+	 */
+public function removeEvent($id)
+</md:method>
+
+<md:method>
+/**
+	 * Unsubscribe object from event
+	 * @param  string  $id  Event ID
+	 * @param  object  $obj Subscriber
+	 * @return boolean      Success
+	 */
+public function unsub($id, $obj)
+</md:method>
+
+<md:method>
+/**
+	 * Publish
+	 * @param  string  $id   Event ID
+	 * @param  mixed   $data Data
+	 * @return boolean       Success
+	 */
+public function pub($id, $data)
+</md:method>
+
+<md:method>
+/**
+	 * Unsubscribe object from all events
+	 * @param  object  $obj Subscriber
+	 * @return boolean      Success
+	 */
+public function unsubFromAll($obj)
+</md:method>
+
 #### pub-sub-event # Class PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
 
 ```php
@@ -96,83 +173,6 @@ public function unsub($obj)
 	 * @return this
 	 */
 public function pub($data)
-</md:method>
-
-#### pub-sub # Class PubSub {tpl-git PHPDaemon/PubSub/PubSub.php}
-
-```php
-namespace PHPDaemon\PubSub;
-class PubSub;
-```
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Is event exists?
-	 * @param  string  $id Event ID
-	 * @return boolean
-	 */
-public function eventExists($id)
-</md:method>
-
-<md:method>
-/**
-	 * Subcribe to event
-	 * @param  string   $id  Event ID
-	 * @param  object   $obj Subscriber
-	 * @param  callable $cb  Callback
-	 * @return boolean       Success
-	 */
-public function sub($id, $obj, $cb)
-</md:method>
-
-<md:method>
-/**
-	 * Adds event
-	 * @param  string      $id  Event ID
-	 * @param  PubSubEvent $obj
-	 * @return void
-	 */
-public function addEvent($id, PubSubEvent $obj)
-</md:method>
-
-<md:method>
-/**
-	 * Removes event
-	 * @param  string $id Event ID
-	 * @return void
-	 */
-public function removeEvent($id)
-</md:method>
-
-<md:method>
-/**
-	 * Unsubscribe object from event
-	 * @param  string  $id  Event ID
-	 * @param  object  $obj Subscriber
-	 * @return boolean      Success
-	 */
-public function unsub($id, $obj)
-</md:method>
-
-<md:method>
-/**
-	 * Publish
-	 * @param  string  $id   Event ID
-	 * @param  mixed   $data Data
-	 * @return boolean       Success
-	 */
-public function pub($id, $data)
-</md:method>
-
-<md:method>
-/**
-	 * Unsubscribe object from all events
-	 * @param  object  $obj Subscriber
-	 * @return boolean      Success
-	 */
-public function unsubFromAll($obj)
 </md:method>
 
 

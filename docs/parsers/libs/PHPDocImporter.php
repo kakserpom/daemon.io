@@ -30,6 +30,8 @@ if(!function_exists('glob_recursive')) {
 }
 
 class PHPDocImporter {
+	protected $doc_path;
+
 	protected $sourcePath;
 
 	protected $flagFileChanged = false;
@@ -52,8 +54,10 @@ class PHPDocImporter {
 				$this->tagsRegex[$tagKey][$tagTypeKey] = preg_quote($tagTypeVal, '/');
 			}
 		}
+	}
 
-		$this->loadCommitsCache();
+	public function __destruct() {
+		$this->saveCommitsCache();
 	}
 
 	/**
@@ -65,6 +69,7 @@ class PHPDocImporter {
 		$this->sourcePath = $params[1];
 		$this->ignoreNamespaces = isset($params[2]) ? explode(':', $params[2]) : [];
 		$this->autoloadRegister();
+		$this->loadCommitsCache();
 
 		// @todo test => prod
 		$mdfiles = glob_recursive($this->doc_path . '/*.md', GLOB_NOSORT);
@@ -135,7 +140,7 @@ class PHPDocImporter {
 			$content = 'ERROR! Source root path not found';
 		}
 		else {
-			$isActual = $this->isCommitActual($rootpath, $params['commit'], $commit);
+			$isActual = $this->isCommitActual($rootpath, $commit);
 			
 			// commit прежний
 			if($isActual) {
@@ -160,13 +165,7 @@ class PHPDocImporter {
 					continue;
 				}
 
-				// try {
-					$ReflectionClass = new ReflectionClass($class_name);
-				// } catch (LogicException $Exception) {
-				// 	die('Not gonna make it in here...');
-				// } catch (ReflectionException $Exception) {
-				// 	die('Your class does not exist!');
-				// }
+				$ReflectionClass = new ReflectionClass($class_name);
 
 				if($is_header) {
 					$content .= $this->getClassHeader($ReflectionClass, $params, $class_path, $class_name);
@@ -177,7 +176,7 @@ class PHPDocImporter {
 				$content .= $this->getClassMethods($ReflectionClass, $params, $class_path, $class_name);
 			}
 
-			$params['commit'] = $commit;
+			$this->setCommitCache($rootpath, $commit);
 		}
 
 		return $matches['start']
@@ -219,7 +218,6 @@ class PHPDocImporter {
 	protected function parseTagParams($str) {
 		$params = [
 			'path'   => false,
-			'commit' => false,
 			'level'  => 0,
 			'access' => false
 		];
@@ -237,8 +235,9 @@ class PHPDocImporter {
 	 * @param  [type]  $commit     [description]
 	 * @return boolean             [description]
 	 */
-	protected function isCommitActual($sourcepath, $commit, &$result) {
-		$filepath = trim(str_replace('\\', '/', $sourcepath), '/');
+	protected function isCommitActual($filepath, &$result) {
+		$commit = $this->getCommitCache($filepath);
+
 		$cmd = "cd $this->sourcePath;git log --pretty=format:\"%H\" -1 $this->sourcePath/$filepath";
 		$result = exec($cmd);
 
@@ -263,9 +262,8 @@ class PHPDocImporter {
 
 	protected function loadCommitsCache() {
 		if($this->commitsCache === null) {
-var_dump($this->doc_path . "/commits.data");
-die();
-			$this->commitsCache = unserialize(file_get_contents($this->doc_path . "/commits.data"));
+			$data = file_exists('commits.data') ? file_get_contents('commits.data') : '';
+			$this->commitsCache = unserialize($data ? $data : '');
 			if(!is_array($this->commitsCache)) {
 				$this->commitsCache = [];
 			}
@@ -273,7 +271,7 @@ die();
 	}
 
 	protected function saveCommitsCache() {
-
+		return file_put_contents('commits.data', serialize($this->commitsCache));
 	}
 
 	/**

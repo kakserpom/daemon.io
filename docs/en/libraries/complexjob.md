@@ -36,7 +36,7 @@ $j('bar', function($name, $j) {
 $j(); // Запускаем
 ```
 
-<!-- include-namespace path="\PHPDaemon\Core\ComplexJob" commit="9e41c8d6137cb90945cdfcf71719ab085ed28239" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Core\ComplexJob" level="" access="" -->
 #### consts # Constants
 
 <md:const>

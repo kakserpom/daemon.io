@@ -9,7 +9,7 @@ class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.ph
 
 > Используется в [Network/Client](#network/client) для хранения стека функций обратного вызова запросов
 
-<!-- include-namespace path="\PHPDaemon\Structures\StackCallbacks" commit="2787f4c32d31f6555bbf8be44f08914ccf062e05" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Structures\StackCallbacks" level="" access="" -->
 #### methods # Methods
 
 <md:method>

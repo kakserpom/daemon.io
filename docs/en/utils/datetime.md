@@ -7,7 +7,7 @@ class DateTime extends \[DateTime](http://php.net/manual/class.datetime.php);
 
 В конструтор можно передавать метку времени Unix.
 
-<!-- include-namespace path="\PHPDaemon\Utils\DateTime" commit="2fd92c7f2bfbcaa92756459c8000e906d57306e1" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Utils\DateTime" level="" access="" -->
 #### methods # Methods
 
 <md:method>

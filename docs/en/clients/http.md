@@ -24,7 +24,7 @@ $httpclient->get('http://www.google.com/robots.txt',
 
 Рабочий пример клиента представлен в {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php Clients/HTTP/Examples/Simple.php}
 
-<!-- include-namespace path="\PHPDaemon\Clients\HTTP" commit="a9e55d20f4cdb9cb078135ac5b438b888ba7c423" level="" access="" -->
+<!-- include-namespace path="\PHPDaemon\Clients\HTTP" level="" access="" -->
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
 
 ```php
@@ -36,81 +36,75 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 
 <md:const>
 const STATE_HEADERS = 1;
-State: headers @var integer
+State: headers
 </md:const>
 
 <md:const>
 const STATE_BODY = 2;
-State: body @var integer
+State: body
 </md:const>
 
 ##### properties # Properties
 
 <md:prop>
 /**
-	 * Associative array of headers
-	 * @var array
+	 * @var array Associative array of headers
 	 */
 public $headers;
 </md:prop>
 
 <md:prop>
 /**
-	 * Content length
-	 * @var int
+	 * @var integer Content length
 	 */
 public $contentLength;
 </md:prop>
 
 <md:prop>
 /**
-	 * Contains response body
-	 * @var string
+	 * @var string Contains response body
 	 */
 public $body;
 </md:prop>
 
 <md:prop>
 /**
-	 * Associative array of Cookies
-	 * @var array
+	 * @var array Associative array of Cookies
 	 */
 public $cookie;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var bool
+	 * @var boolean
 	 */
 public $chunked;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var
+	 * @var integer
 	 */
 public $protocolError;
 </md:prop>
 
 <md:prop>
 /**
-	 * @var int
+	 * @var integer
 	 */
 public $responseCode;
 </md:prop>
 
 <md:prop>
 /**
-	 * Last requested URL
-	 * @var string
+	 * @var string Last requested URL
 	 */
 public $lastURL;
 </md:prop>
 
 <md:prop>
 /**
-	 * Raw headers array
-	 * @var array
+	 * @var array Raw headers array
 	 */
 public $rawHeaders;
 </md:prop>
@@ -143,7 +137,7 @@ public $pool;
 /**
 	 * Performs GET-request
 	 * @param string $url
-	 * @param array $params
+	 * @param array  $params
 	 */
 public function get($url, $params = null)
 </md:method>
@@ -152,32 +146,40 @@ public function get($url, $params = null)
 /** 
 	 * Performs POST-request
 	 * @param string $url
-	 * @param array $data
-	 * @param array $params
+	 * @param array  $data
+	 * @param array  $params
 	 */
 public function post($url, $data = [], $params = null)
 </md:method>
 
 <md:method>
-
+/**
+	 * Get body
+	 * @return string
+	 */
 public function getBody()
 </md:method>
 
 <md:method>
-
+/**
+	 * Get headers
+	 * @return array
+	 */
 public function getHeaders()
 </md:method>
 
 <md:method>
-
+/**
+	 * Get header
+	 * @param  string $name Header name
+	 * @return string
+	 */
 public function getHeader($name)
 </md:method>
 
 <md:method>
 /**
 	 * Called when new data received
-	 * @param string New data
-	 * @return void
 	 */
 public function onRead()
 </md:method>
@@ -185,7 +187,6 @@ public function onRead()
 <md:method>
 /**
 	 * Called when connection finishes
-	 * @return void
 	 */
 public function onFinish()
 </md:method>
@@ -250,7 +251,7 @@ public $appInstance;
 	 * @param array $params
 	 * @call  void public function get ( url $url, array $params )
 	 * @call  void public function get ( url $url, callable $resultcb )
-	 * @callback ( Connection $conn, boolean $success )
+	 * @callback $resultcb ( Connection $conn, boolean $success )
 	 */
 public function get($url, $params)
 </md:method>
@@ -263,7 +264,7 @@ public function get($url, $params)
 	 * @param array $params
 	 * @call  void public function post ( url $url, array $data, array $params )
 	 * @call  void public function post ( url $url, array $data, callable $resultcb )
-	 * @callback ( Connection $conn, boolean $success )
+	 * @callback $resultcb ( Connection $conn, boolean $success )
 	 */
 public function post($url, $data = [], $params)
 </md:method>
@@ -288,77 +289,6 @@ public static function buildUrl($mixed)
 	 * @return array|bool
 	 */
 public static function parseUrl($mixed)
-</md:method>
-
-#### simple-request # Class SimpleRequest {tpl-git PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php}
-
-```php
-namespace PHPDaemon\Clients\HTTP\Examples;
-class SimpleRequest extends \PHPDaemon\HTTPRequest\Generic;
-```
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var boolean Keepalive?
-	 */
-public $keepalive;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Current response length
-	 */
-public $responseLength;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array Replacement pairs for processing some header values in parse_str()
-	 */
-public static $hvaltr;
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array State
-	 */
-public static $htr;
-</md:prop>
-
-<md:prop>
-/**
-	 * Related Application instance
-	 * @var \PHPDaemon\Core\AppInstance
-	 */
-public $appInstance;
-</md:prop>
-
-<md:prop>
-/**
-	 * Attributes
-	 * @var \StdCLass
-	 */
-public $attrs;
-</md:prop>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Constructor.
-	 * @return void
-	 */
-public function init()
-</md:method>
-
-<md:method>
-/**
-	 * Called when request iterated.
-	 * @return integer Status.
-	 */
-public function run()
 </md:method>
 
 #### simple # Class Simple {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php}
@@ -451,6 +381,77 @@ public function onShutdown($graceful = false)
 	 * @return SimpleRequest Request.
 	 */
 public function beginRequest($req, $upstream)
+</md:method>
+
+#### simple-request # Class SimpleRequest {tpl-git PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php}
+
+```php
+namespace PHPDaemon\Clients\HTTP\Examples;
+class SimpleRequest extends \PHPDaemon\HTTPRequest\Generic;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var boolean Keepalive?
+	 */
+public $keepalive;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Current response length
+	 */
+public $responseLength;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array Replacement pairs for processing some header values in parse_str()
+	 */
+public static $hvaltr;
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array State
+	 */
+public static $htr;
+</md:prop>
+
+<md:prop>
+/**
+	 * Related Application instance
+	 * @var \PHPDaemon\Core\AppInstance
+	 */
+public $appInstance;
+</md:prop>
+
+<md:prop>
+/**
+	 * Attributes
+	 * @var \StdCLass
+	 */
+public $attrs;
+</md:prop>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Constructor.
+	 * @return void
+	 */
+public function init()
+</md:method>
+
+<md:method>
+/**
+	 * Called when request iterated.
+	 * @return integer Status.
+	 */
+public function run()
 </md:method>
 
 

@@ -214,14 +214,7 @@ class PbxReconnector extends Request {
 }
 ```
 
-<!-- include-namespace path="\PHPDaemon\Clients\Asterisk" commit="c48c00a08b4b4792a01cbb409ea6ec14ed0e7398" level="" access="" -->
-#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
-
-```php
-namespace PHPDaemon\Clients\Asterisk;
-class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
-```
-
+<!-- include-namespace path="\PHPDaemon\Clients\Asterisk" level="" access="" -->
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
 
 ```php
@@ -290,64 +283,56 @@ const INPUT_STATE_PROCESSING = 2;
 
 <md:prop>
 /**
-	 * @TODO DESCR
-	 * @var string
+	 * @var string EOL
 	 */
 public $EOL;
 </md:prop>
 
 <md:prop>
 /**
-	 * The username to access the interface.
-	 * @var string
+	 * @var string The username to access the interface
 	 */
 public $username;
 </md:prop>
 
 <md:prop>
 /**
-	 * The password defined in manager interface of server.
-	 * @var string
+	 * @var string The password defined in manager interface of server
 	 */
 public $secret;
 </md:prop>
 
 <md:prop>
 /**
-	 * Connection's state.
-	 * @var float
+	 * @var float Connection's state
 	 */
 public $state;
 </md:prop>
 
 <md:prop>
 /**
-	 * Input state.
-	 * @var integer
+	 * @var integer Input state
 	 */
 public $instate;
 </md:prop>
 
 <md:prop>
 /**
-	 * Received packets.
-	 * @var array
+	 * @var array Received packets
 	 */
 public $packets;
 </md:prop>
 
 <md:prop>
 /**
-	 * For composite response on action.
-	 * @var integer
+	 * @var integer For composite response on action
 	 */
 public $cnt;
 </md:prop>
 
 <md:prop>
 /**
-	 * Stack of callbacks called when response received.
-	 * @var array
+	 * @var array Stack of callbacks called when response received
 	 */
 public $callbacks;
 </md:prop>
@@ -356,8 +341,7 @@ public $callbacks;
 /**
 	 * Assertions for callbacks.
 	 * Assertion: if more events may follow as response this is a main part or full
-	 * an action complete event indicating that all data has been sent.
-	 *
+	 * an action complete event indicating that all data has been sent
 	 * @var array
 	 */
 public $assertions;
@@ -365,8 +349,7 @@ public $assertions;
 
 <md:prop>
 /**
-	 * Callback. Called when received response on challenge action.
-	 * @var callback
+	 * @var callable Callback. Called when received response on challenge action
 	 */
 public $onChallenge;
 </md:prop>
@@ -382,8 +365,8 @@ public $pool;
 
 <md:method>
 /**
-	 * Execute the given callback when/if the connection is handshaked.
-	 * @param Callback
+	 * Execute the given callback when/if the connection is handshaked
+	 * @param  callable Callback
 	 * @return void
 	 */
 public function onConnected($cb)
@@ -415,7 +398,7 @@ public function onFinish()
 
 <md:method>
 /**
-	 * Called when new data received.
+	 * Called when new data received
 	 * @return void
 	 */
 public function onRead()
@@ -432,8 +415,8 @@ public function onRead()
 	 * Variables:
 	 * ActionID: <id>    Action ID for this transaction. Will be returned.
 	 *
-	 * @param callable $cb Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
+	 * @param callable $cb Callback called when response received
+	 * @callback $cb ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function getSipPeers($cb)
@@ -445,8 +428,8 @@ public function getSipPeers($cb)
 	 * Synopsis: List IAX Peers
 	 * Privilege: system,reporting,all
 	 *
-	 * @param callable $cb Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
+	 * @param callable $cb Callback called when response received
+	 * @callback $cb ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function getIaxPeers($cb)
@@ -464,8 +447,8 @@ public function getIaxPeers($cb)
 	 *   Category: Category in configuration file
 	 *
 	 * @param  string   $filename Filename
-	 * @param  callable $cb       Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
+	 * @param  callable $cb       Callback called when response received
+	 * @callback $cb ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function getConfig($filename, $cb)
@@ -483,8 +466,8 @@ public function getConfig($filename, $cb)
 	 *    Filename: Configuration filename (e.g. foo.conf)
 	 *
 	 * @param  string   $filename Filename
-	 * @param callable $cb Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
+	 * @param callable $cb Callback called when response received
+	 * @callback $cb ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function getConfigJSON($filename, $cb)
@@ -500,6 +483,13 @@ public function getConfigJSON($filename, $cb)
 	 * Channel: Channel to set variable for
 	 *  *Variable: Variable name
 	 *  *Value: Value
+	 * 
+	 * @param string   $channel
+	 * @param string   $variable
+	 * @param string   $value
+	 * @param callable $cb
+	 * @callback $cb ( Connection $conn, array $packet )
+	 * @return void
 	 */
 public function setVar($channel, $variable, $value, $cb)
 </md:method>
@@ -513,6 +503,10 @@ public function setVar($channel, $variable, $value, $cb)
 	 *        about them.
 	 * Variables:
 	 *        ActionID: Optional Action id for message matching.
+	 *
+	 * @param callable $cb
+	 * @callback $cb ( Connection $conn, array $packet )
+	 * @return void
 	 */
 public function coreShowChannels($cb)
 </md:method>
@@ -529,6 +523,11 @@ public function coreShowChannels($cb)
 	 * ActionID: Optional ID for this transaction
 	 * Will return the status information of each channel along with the
 	 * value for the specified channel variables.
+	 *
+	 * @param  callable $cb
+	 * @param  string   $channel
+	 * @callback $cb ( Connection $conn, array $packet )
+	 * @return void
 	 */
 public function status($cb, $channel = null)
 </md:method>
@@ -547,9 +546,9 @@ public function status($cb, $channel = null)
 	 * *Priority: Priority to transfer to
 	 * ActionID: Optional Action id for message matching.
 	 *
-	 * @param array $params
-	 * @param callable $cb Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
+	 * @param array    $params
+	 * @param callable $cb     Callback called when response received
+	 * @callback $cb ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function redirect(array $params, $cb)
@@ -575,9 +574,9 @@ public function redirect(array $params, $cb)
 	 * Data : Data if Application parameter is used
 	 * ActionID: Optional Action id for message matching.
 	 *
-	 * @param array $params
-	 * @param callable $cb Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
+	 * @param array    $params
+	 * @param callable $cb     Callback called when response received
+	 * @callback $cb ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function originate(array $params, $cb)
@@ -593,9 +592,9 @@ public function originate(array $params, $cb)
 	 * Context: Context for exten
 	 * ActionID: Optional Action id for message matching.
 	 *
-	 * @param array $params
-	 * @param callable $cb Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
+	 * @param array    $params
+	 * @param callable $cb     Callback called when response received
+	 * @callback $cb ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function extensionState(array $params, $cb)
@@ -608,8 +607,8 @@ public function extensionState(array $params, $cb)
 	 *   manager connection open.
 	 * Variables: NONE
 	 *
-	 * @param calalble Callback called when response received.
-	 * @callback ( Connection $conn, array $packet )
+	 * @param callable $cb Callback called when response received
+	 * @callback $cb ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function ping($cb)
@@ -620,11 +619,11 @@ public function ping($cb)
 	 * For almost any actions in Action: ListCommands
 	 * Privilege: depends on $action
 	 *
-	 * @param string $action
-	 * @param callable              Callback called when response received.
-	 * @param array|null $params
-	 * @param array|null $assertion If more events may follow as response this is a main part or full an action complete event indicating that all data has been sent.
-	 * @callback ( Connection $conn, array $packet )
+	 * @param string   $action    Action
+	 * @param callable $cb        Callback called when response received
+	 * @param array    $params    Parameters
+	 * @param array    $assertion If more events may follow as response this is a main part or full an action complete event indicating that all data has been sent
+	 * @callback $cb ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function action($action, $cb, array $params = null, array $assertion = null)
@@ -639,7 +638,7 @@ public function action($action, $cb, array $params = null, array $assertion = nu
 	 * Variables: NONE
 	 *
 	 * @param callable $cb Optional callback called when response received
-	 * @callback ( Connection $conn, array $packet )
+	 * @callback $cb ( Connection $conn, array $packet )
 	 * @return void
 	 */
 public function logoff($cb = null)
@@ -647,13 +646,31 @@ public function logoff($cb = null)
 
 <md:method>
 /**
-	 * Called when event occured.
-	 * @param callable $cb Callback
+	 * Called when event occured
 	 * @deprecated Replaced with ->bind('event', ...)
+	 * @param callable $cb Callback
 	 * @return void
 	 */
 public function onEvent($cb)
 </md:method>
+
+<md:method>
+/**
+	 * Bind event or events
+	 * @alias EventHandlers::bind
+	 * @param string|array $event Event name
+	 * @param callable     $cb    Callback
+	 * @return this
+	 */
+public function onConnected($cb)
+</md:method>
+
+#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
+
+```php
+namespace PHPDaemon\Clients\Asterisk;
+class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
+```
 
 #### pool # Class Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
 
@@ -666,8 +683,7 @@ class Pool extends \PHPDaemon\Network\Client;
 
 <md:prop>
 /**
-	 * Beginning of the string in the header or value that indicates whether the save value case.
-	 * @var array
+	 * @var array Beginning of the string in the header or value that indicates whether the save value case
 	 */
 public static $safeCaseValues;
 </md:prop>
@@ -717,17 +733,19 @@ public $appInstance;
 ##### methods # Methods
 
 <md:method>
-/** Sets AMI version
-	 * @param string $addr Address
-	 * @param string $ver  Version
+/**
+	 * Sets AMI version
+	 * @param  string $addr Address
+	 * @param  string $ver  Version
 	 * @return void
 	 */
 public function setAmiVersion($addr, $ver)
 </md:method>
 
 <md:method>
-/** Prepares environment scope
-	 * @param string $data Address
+/**
+	 * Prepares environment scope
+	 * @param  string $data Address
 	 * @return array
 	 */
 public static function prepareEnv($data)
@@ -736,7 +754,7 @@ public static function prepareEnv($data)
 <md:method>
 /**
 	 * Extract key and value pair from line.
-	 * @param string $line
+	 * @param  string $line
 	 * @return array
 	 */
 public static function extract($line)
