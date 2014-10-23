@@ -34,6 +34,8 @@ class PHPDocImporter {
 
 	protected $flagFileChanged = false;
 
+	protected $commitsCache = null;
+
 	protected $tags = [
 		'namespace' => [
 			'open'    => '<!-- include-namespace',
@@ -50,24 +52,25 @@ class PHPDocImporter {
 				$this->tagsRegex[$tagKey][$tagTypeKey] = preg_quote($tagTypeVal, '/');
 			}
 		}
+
+		$this->loadCommitsCache();
 	}
 
 	/**
 	 * Основной метод парсинга
-	 * @param  string $doc_path Путь до доки
-	 * @param  string $phd_path Путь до файлов проекта
+	 * @param  array $params Массив параметров
 	 */
 	public function parse($params) {
-		$doc_path = $params[0];
+		$this->doc_path = $params[0];
 		$this->sourcePath = $params[1];
 		$this->ignoreNamespaces = isset($params[2]) ? explode(':', $params[2]) : [];
 		$this->autoloadRegister();
 
 		// @todo test => prod
-		$mdfiles = glob_recursive($doc_path . '/*.md', GLOB_NOSORT);
-		// $mdfiles = glob_recursive($doc_path . '/structures/object-storage.md', GLOB_NOSORT);
-		// $mdfiles = glob_recursive($doc_path . '/libraries/fs.md', GLOB_NOSORT);
-		// $mdfiles = glob_recursive($doc_path . '/libraries/complexjob.md', GLOB_NOSORT);
+		$mdfiles = glob_recursive($this->doc_path . '/*.md', GLOB_NOSORT);
+		// $mdfiles = glob_recursive($this->doc_path . '/structures/object-storage.md', GLOB_NOSORT);
+		// $mdfiles = glob_recursive($this->doc_path . '/libraries/fs.md', GLOB_NOSORT);
+		// $mdfiles = glob_recursive($this->doc_path . '/libraries/complexjob.md', GLOB_NOSORT);
 
 		foreach ($mdfiles as $mdpath) {
 			$this->parseFile($mdpath);
@@ -244,6 +247,33 @@ class PHPDocImporter {
 		}
 
 		return false;
+	}
+
+	protected function getCommitCache($path) {
+		if(isset($this->commitsCache[$path]) && strlen($this->commitsCache[$path])) {
+			return $this->commitsCache[$path];
+		}
+
+		return false;
+	}
+
+	protected function setCommitCache($path, $commit) {
+		$this->commitsCache[$path] = $commit;
+	}
+
+	protected function loadCommitsCache() {
+		if($this->commitsCache === null) {
+var_dump($this->doc_path . "/commits.data");
+die();
+			$this->commitsCache = unserialize(file_get_contents($this->doc_path . "/commits.data"));
+			if(!is_array($this->commitsCache)) {
+				$this->commitsCache = [];
+			}
+		}
+	}
+
+	protected function saveCommitsCache() {
+
 	}
 
 	/**

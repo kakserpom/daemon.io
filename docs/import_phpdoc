@@ -3,6 +3,7 @@
 define("CURRENT_WORKING_DIR", str_replace("\\", "/", dirname(__FILE__)));
 
 $config = parse_ini_file("import_phpdoc.conf");
+if(!$config) $config = [];
 
 if(!isset($config['phpdaemon'])) {
 	die('path to phpdaemon?');
