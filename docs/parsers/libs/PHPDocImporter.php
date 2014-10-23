@@ -160,20 +160,25 @@ class PHPDocImporter {
 					continue;
 				}
 
-				if(!class_exists($class_name)) {
+				if(class_exists($class_name)) {
+					$ReflectionEntity = new ReflectionClass($class_name);
+				}
+				else
+				if(trait_exists($class_name)) {
+					$ReflectionEntity = new ReflectionClass($class_name);
+				}
+				else {
 					// @todo выбрасывать ошибку?
 					continue;
 				}
 
-				$ReflectionClass = new ReflectionClass($class_name);
-
 				if($is_header) {
-					$content .= $this->getClassHeader($ReflectionClass, $params, $class_path, $class_name);
+					$content .= $this->getClassHeader($ReflectionEntity, $params, $class_path, $class_name);
 				}
 
-				$content .= $this->getClassConstants($ReflectionClass, $params, $class_path, $class_name);
-				$content .= $this->getClassProperties($ReflectionClass, $params, $class_path, $class_name);
-				$content .= $this->getClassMethods($ReflectionClass, $params, $class_path, $class_name);
+				$content .= $this->getClassConstants($ReflectionEntity, $params, $class_path, $class_name);
+				$content .= $this->getClassProperties($ReflectionEntity, $params, $class_path, $class_name);
+				$content .= $this->getClassMethods($ReflectionEntity, $params, $class_path, $class_name);
 			}
 
 			$this->setCommitCache($rootpath, $commit);
@@ -319,15 +324,15 @@ class PHPDocImporter {
 	}
 
 
-	protected function getClassHeader($ReflectionClass, &$params, $class_path, $class_name) {
-		$ns = $ReflectionClass->getNamespaceName();
-		$name = $ReflectionClass->getName();
+	protected function getClassHeader($ReflectionEntity, &$params, $class_path, $class_name) {
+		$ns = $ReflectionEntity->getNamespaceName();
+		$name = $ReflectionEntity->getName();
 
 		if($ns) {
-			$name = substr($ReflectionClass->getName(), strlen($ns) + 1);
+			$name = substr($ReflectionEntity->getName(), strlen($ns) + 1);
 		}
 
-		$parent = $ReflectionClass->getParentClass();
+		$parent = $ReflectionEntity->getParentClass();
 		$extra_parent = '';
 		if($parent instanceof ReflectionClass) {
 			$parent_ns = $parent->getNamespaceName();
@@ -338,7 +343,7 @@ class PHPDocImporter {
 		$altname = strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $name));
 		$type = 'Class';
 
-		if($ReflectionClass->isTrait()) {
+		if($ReflectionEntity->isTrait()) {
 			$type = 'Trait';
 		}
 
@@ -363,7 +368,7 @@ TPL;
 		return $result;
 	}
 
-	protected function getClassConstants($ReflectionClass, $params, $class_path, $class_name) {
+	protected function getClassConstants($ReflectionEntity, $params, $class_path, $class_name) {
 		$level = $params['level'] ? $params['level'] + 2 : 4;
 		$level = str_repeat('#', $level);
 		$result = '';
@@ -401,7 +406,7 @@ TPL;
 		return false;
 	}
 
-	protected function getClassProperties($ReflectionClass, $params, $class_path, $class_name) {
+	protected function getClassProperties($ReflectionEntity, $params, $class_path, $class_name) {
 		$access = ReflectionProperty::IS_PUBLIC;
 
 		if($params['access'] == 1) {
@@ -415,7 +420,7 @@ TPL;
 		$level = $params['level'] ? $params['level'] + 2 : 4;
 		$level = str_repeat('#', $level);
 		$result = '';
-		$properties = $ReflectionClass->getProperties($access);
+		$properties = $ReflectionEntity->getProperties($access);
 
 		foreach ($properties as $ReflectionProperty) {
 			$name = $ReflectionProperty->getName();
@@ -440,7 +445,7 @@ TPL;
 		return trim(str_replace('<default>', '', $matches[1])) . ';';
 	}
 
-	protected function getClassMethods($ReflectionClass, $params, $class_path, $class_name) {
+	protected function getClassMethods($ReflectionEntity, $params, $class_path, $class_name) {
 		$access = ReflectionMethod::IS_PUBLIC;
 
 		if($params['access'] == 1) {
@@ -454,7 +459,7 @@ TPL;
 		$level = $params['level'] ? $params['level'] + 2 : 4;
 		$level = str_repeat('#', $level);
 		$result = '';
-		$methods = $ReflectionClass->getMethods($access);
+		$methods = $ReflectionEntity->getMethods($access);
 
 		foreach ($methods as $ReflectionMethod) {
 			$name = $ReflectionMethod->getName();
