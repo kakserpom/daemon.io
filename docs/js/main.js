@@ -324,7 +324,9 @@ $(function(){
 			'mixed': 'http://php.net/manual/'+ global_lang +'/language.pseudo-types.php#language.types.mixed',
 			'number': 'http://php.net/manual/'+ global_lang +'/language.pseudo-types.php#language.types.number',
 			'callback': 'http://php.net/manual/'+ global_lang +'/language.pseudo-types.php#language.types.callback',
-			'void': 'http://php.net/manual/'+ global_lang +'/language.pseudo-types.php#language.types.void'
+			'void': 'http://php.net/manual/'+ global_lang +'/language.pseudo-types.php#language.types.void',
+
+			'url': '#basics/pseudotypes/url'
 		};
 
 		var phpTypesKeys = [];
@@ -343,7 +345,8 @@ $(function(){
 				}
 
 				if (phpTypes[p2]) {
-					return p1 + '<a href="'+ phpTypes[p2] +'" target="_blank">'+ p2 + '</a>';
+					var target = phpTypes[p2].charAt(0) === '#' ? '' : ' target="_blank"';
+					return p1 + '<a href="'+ phpTypes[p2] +'"'+ target +'>'+ p2 + '</a>';
 				}
 
 				return p1 + p2;
