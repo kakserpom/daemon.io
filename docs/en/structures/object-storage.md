@@ -20,6 +20,7 @@ class ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splo
 	 * @return integer Number of called objects
 	 */
 public function each()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/ObjectStorage.php#L19
 </md:method>
 
 <md:method>
@@ -29,6 +30,7 @@ public function each()
 	 * @return void
 	 */
 public function removeAll($obj = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/ObjectStorage.php#L38
 </md:method>
 
 <md:method>
@@ -37,6 +39,7 @@ public function removeAll($obj = null)
 	 * @return object
 	 */
 public function detachFirst()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/ObjectStorage.php#L49
 </md:method>
 
 <md:method>
@@ -45,6 +48,7 @@ public function detachFirst()
 	 * @return object
 	 */
 public function getFirst()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/ObjectStorage.php#L63
 </md:method>
 
 

@@ -26,6 +26,7 @@ public $pool;
 	 * @param mixed    $pool ConnectionPool
 	 */
 public function __construct($fd, $pool = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/ClientConnection.php#L43
 </md:method>
 
 <md:method>
@@ -34,6 +35,7 @@ public function __construct($fd, $pool = null)
 	 * @return boolean
 	 */
 public function isBusy()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/ClientConnection.php#L52
 </md:method>
 
 <md:method>
@@ -43,6 +45,7 @@ public function isBusy()
 	 * @return void
 	 */
 public function onResponse($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/ClientConnection.php#L61
 </md:method>
 
 <md:method>
@@ -51,6 +54,7 @@ public function onResponse($cb)
 	 * @return void
 	 */
 public function onReady()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/ClientConnection.php#L73
 </md:method>
 
 <md:method>
@@ -60,6 +64,7 @@ public function onReady()
 	 * @return void
 	 */
 public function setFree($free = true)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/ClientConnection.php#L89
 </md:method>
 
 <md:method>
@@ -68,6 +73,7 @@ public function setFree($free = true)
 	 * @return void
 	 */
 public function release()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/ClientConnection.php#L116
 </md:method>
 
 <md:method>
@@ -76,6 +82,7 @@ public function release()
 	 * @return void
 	 */
 public function checkFree()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/ClientConnection.php#L124
 </md:method>
 
 <md:method>
@@ -84,6 +91,7 @@ public function checkFree()
 	 * @return integer
 	 */
 public function getQueueLength()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/ClientConnection.php#L132
 </md:method>
 
 <md:method>
@@ -92,6 +100,7 @@ public function getQueueLength()
 	 * @return boolean
 	 */
 public function isQueueEmpty()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/ClientConnection.php#L140
 </md:method>
 
 <md:method>
@@ -100,6 +109,7 @@ public function isQueueEmpty()
 	 * @return void
 	 */
 public function onFinish()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/ClientConnection.php#L148
 </md:method>
 
 

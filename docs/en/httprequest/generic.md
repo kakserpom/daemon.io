@@ -68,6 +68,7 @@ public $attrs;
 	 * @return void
 	 */
 public function firstDeferredEventUsed ()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L167
 </md:method>
 
 <md:method>
@@ -79,6 +80,7 @@ public function firstDeferredEventUsed ()
 	 * @return boolean        Success
 	 */
 public function sendfile($path, $cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L178
 </md:method>
 
 <md:method>
@@ -87,6 +89,7 @@ public function sendfile($path, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @return boolean Ready?
 	 */
 public function checkIfReady()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L248
 </md:method>
 
 <md:method>
@@ -95,6 +98,7 @@ public function checkIfReady()
 	 * @return integer
 	 */
 public function getUploadMaxSize()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L274
 </md:method>
 
 <md:method>
@@ -103,6 +107,7 @@ public function getUploadMaxSize()
 	 * @return void
 	 */
 public function postPrepare()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L356
 </md:method>
 
 <md:method>
@@ -111,6 +116,7 @@ public function postPrepare()
 	 * @return boolean Were already sent?
 	 */
 public function ensureSentHeaders()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L418
 </md:method>
 
 <md:method>
@@ -121,6 +127,7 @@ public function ensureSentHeaders()
 	 * @return boolean        Success
 	 */
 public function out($s, $flush = true)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L469
 </md:method>
 
 <md:method>
@@ -129,6 +136,7 @@ public function out($s, $flush = true)
 	 * @return void
 	 */
 public function onParsedParams()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L526
 </md:method>
 
 <md:method>
@@ -138,6 +146,7 @@ public function onParsedParams()
 	 * @return boolean    Success
 	 */
 public function combinedOut($s)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L534
 </md:method>
 
 <md:method>
@@ -146,6 +155,7 @@ public function combinedOut($s)
 	 * @return void
 	 */
 public function chunked()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L558
 </md:method>
 
 <md:method>
@@ -154,6 +164,7 @@ public function chunked()
 	 * @return void
 	 */
 public function onWakeup()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L567
 </md:method>
 
 <md:method>
@@ -162,6 +173,7 @@ public function onWakeup()
 	 * @return void
 	 */
 public function onSleep()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L585
 </md:method>
 
 <md:method>
@@ -172,6 +184,7 @@ public function onSleep()
 	 * @return boolean Success
 	 */
 public function status($code = 200)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L605
 </md:method>
 
 <md:method>
@@ -182,6 +195,7 @@ public function status($code = 200)
 	 * @return boolean        Success
 	 */
 public function headers_sent(&$file, &$line)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L619
 </md:method>
 
 <md:method>
@@ -190,6 +204,7 @@ public function headers_sent(&$file, &$line)
 	 * @return array Headers
 	 */
 public function headers_list()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L629
 </md:method>
 
 <md:method>
@@ -205,6 +220,7 @@ public function headers_list()
 	 * @return void
 	 */
 public function setcookie($name, $value = '', $maxage = 0, $path = '', $domain = '', $secure = false, $HTTPOnly = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L644
 </md:method>
 
 <md:method>
@@ -217,6 +233,7 @@ public function setcookie($name, $value = '', $maxage = 0, $path = '', $domain =
 	 * @return boolean Success
 	 */
 public function header($s, $replace = true, $code = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L662
 </md:method>
 
 <md:method>
@@ -226,6 +243,7 @@ public function header($s, $replace = true, $code = false)
 	 * @return void
 	 */
 public function removeHeader($s)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L726
 </md:method>
 
 <md:method>
@@ -235,6 +253,7 @@ public function removeHeader($s)
 	 * @return integer
 	 */
 public static function parseSize($value)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L735
 </md:method>
 
 <md:method>
@@ -244,6 +263,7 @@ public static function parseSize($value)
 	 * @return void
 	 */
 public function onUploadFileStart($in)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L774
 </md:method>
 
 <md:method>
@@ -254,6 +274,7 @@ public function onUploadFileStart($in)
 	 * @return void
 	 */
 public function onUploadFileChunk($in, $last = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L795
 </md:method>
 
 <md:method>
@@ -262,6 +283,7 @@ public function onUploadFileChunk($in, $last = false)
 	 * @return string
 	 */
 public function getUploadTempDir()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L843
 </md:method>
 
 <md:method>
@@ -271,6 +293,7 @@ public function getUploadTempDir()
 	 * @return boolean       Whether if this is uploaded file
 	 */
 public function isUploadedFile($path)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L855
 </md:method>
 
 <md:method>
@@ -281,6 +304,7 @@ public function isUploadedFile($path)
 	 * @return boolean           Success
 	 */
 public function moveUploadedFile($filename, $dest)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L876
 </md:method>
 
 <md:method>
@@ -289,6 +313,7 @@ public function moveUploadedFile($filename, $dest)
 	 * @return boolean Success
 	 */
 public function readBodyFile()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L887
 </md:method>
 
 <md:method>
@@ -300,6 +325,7 @@ public function readBodyFile()
 	 * @return void
 	 */
 public static function parse_str($s, &$var, $header = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L912
 </md:method>
 
 

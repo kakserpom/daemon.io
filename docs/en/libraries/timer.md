@@ -96,6 +96,7 @@ public $priority;
 	 * @param  integer        $priority Priority
 	 */
 public function __construct($cb, $timeout = null, $id = null, $priority = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L55
 </md:method>
 
 <md:method>
@@ -104,6 +105,7 @@ public function __construct($cb, $timeout = null, $id = null, $priority = null)
 	 * @return void
 	 */
 public function eventCall()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L78
 </md:method>
 
 <md:method>
@@ -113,6 +115,7 @@ public function eventCall()
 	 * @return void
 	 */
 public function setPriority($priority)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L92
 </md:method>
 
 <md:method>
@@ -125,6 +128,7 @@ public function setPriority($priority)
 	 * @return integer|string           Timer ID
 	 */
 public static function add($cb, $timeout = null, $id = null, $priority = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L105
 </md:method>
 
 <md:method>
@@ -135,6 +139,7 @@ public static function add($cb, $timeout = null, $id = null, $priority = null)
 	 * @return boolean
 	 */
 public static function setTimeout($id, $timeout = NULL)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L116
 </md:method>
 
 <md:method>
@@ -144,6 +149,7 @@ public static function setTimeout($id, $timeout = NULL)
 	 * @return void
 	 */
 public static function remove($id)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L129
 </md:method>
 
 <md:method>
@@ -153,6 +159,7 @@ public static function remove($id)
 	 * @return void
 	 */
 public static function cancelTimeout($id)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L140
 </md:method>
 
 <md:method>
@@ -162,6 +169,7 @@ public static function cancelTimeout($id)
 	 * @return void
 	 */
 public function timeout($timeout = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L151
 </md:method>
 
 <md:method>
@@ -170,6 +178,7 @@ public function timeout($timeout = null)
 	 * @return void
 	 */
 public function cancel()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L162
 </md:method>
 
 <md:method>
@@ -178,6 +187,7 @@ public function cancel()
 	 * @return void
 	 */
 public function finish()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L170
 </md:method>
 
 <md:method>
@@ -186,6 +196,7 @@ public function finish()
 	 * @return void
 	 */
 public function __destruct()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L178
 </md:method>
 
 <md:method>
@@ -194,6 +205,7 @@ public function __destruct()
 	 * @return void
 	 */
 public function free()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L186
 </md:method>
 
 

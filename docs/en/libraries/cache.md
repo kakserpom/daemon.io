@@ -55,6 +55,7 @@ public $cache = [ ];
 	 * @return void
 	 */
 public function setMaxCacheSize($size)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L38
 </md:method>
 
 <md:method>
@@ -64,6 +65,7 @@ public function setMaxCacheSize($size)
 	 * @return void
 	 */
 public function setCapWindow($w)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L47
 </md:method>
 
 <md:method>
@@ -73,6 +75,7 @@ public function setCapWindow($w)
 	 * @return integer
 	 */
 public function hash($key)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L56
 </md:method>
 
 <md:method>
@@ -84,6 +87,7 @@ public function hash($key)
 	 * @return mixed
 	 */
 public function put($key, $value, $ttl = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L67
 </md:method>
 
 <md:method>
@@ -93,6 +97,7 @@ public function put($key, $value, $ttl = null)
 	 * @return void
 	 */
 public function invalidate($key)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L97
 </md:method>
 
 <md:method>
@@ -102,6 +107,7 @@ public function invalidate($key)
 	 * @return object Item
 	 */
 public function get($key)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L107
 </md:method>
 
 <md:method>
@@ -111,6 +117,7 @@ public function get($key)
 	 * @return mixed
 	 */
 public function getValue($key)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L127
 </md:method>
 
 #### capped-storage-hits # Class CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
@@ -158,6 +165,7 @@ public $cache = [ ];
 	 * @param  integer $max Maximum number of cached elements
 	 */
 public function __construct($max = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorageHits.php#L15
 </md:method>
 
 #### item # Class Item {tpl-git PHPDaemon/Cache/Item.php}
@@ -190,6 +198,7 @@ public $expire;
 	 * Constructor
 	 */
 public function __construct($value)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L38
 </md:method>
 
 <md:method>
@@ -198,6 +207,7 @@ public function __construct($value)
 	 * @return integer
 	 */
 public function getHits()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L47
 </md:method>
 
 <md:method>
@@ -206,6 +216,7 @@ public function getHits()
 	 * @return mixed
 	 */
 public function getValue()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L55
 </md:method>
 
 <md:method>
@@ -214,6 +225,7 @@ public function getValue()
 	 * @param callable $cb
 	 */
 public function addListener($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L64
 </md:method>
 
 <md:method>
@@ -222,6 +234,7 @@ public function addListener($cb)
 	 * @param mixed $value
 	 */
 public function setValue($value)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L72
 </md:method>
 
 

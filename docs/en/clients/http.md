@@ -140,6 +140,7 @@ public $pool;
 	 * @param array  $params
 	 */
 public function get($url, $params = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L100
 </md:method>
 
 <md:method>
@@ -150,6 +151,7 @@ public function get($url, $params = null)
 	 * @param array  $params
 	 */
 public function post($url, $data = [], $params = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L167
 </md:method>
 
 <md:method>
@@ -158,6 +160,7 @@ public function post($url, $data = [], $params = null)
 	 * @return string
 	 */
 public function getBody()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L234
 </md:method>
 
 <md:method>
@@ -166,6 +169,7 @@ public function getBody()
 	 * @return array
 	 */
 public function getHeaders()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L242
 </md:method>
 
 <md:method>
@@ -175,6 +179,7 @@ public function getHeaders()
 	 * @return string
 	 */
 public function getHeader($name)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L251
 </md:method>
 
 <md:method>
@@ -182,6 +187,7 @@ public function getHeader($name)
 	 * Called when new data received
 	 */
 public function onRead()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L259
 </md:method>
 
 <md:method>
@@ -189,6 +195,7 @@ public function onRead()
 	 * Called when connection finishes
 	 */
 public function onFinish()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L390
 </md:method>
 
 #### pool # Class Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
@@ -255,6 +262,7 @@ public $appInstance;
 	 * @callback $resultcb ( Connection $conn, boolean $success )
 	 */
 public function get($url, $params)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L47
 </md:method>
 
 <md:method>
@@ -269,6 +277,7 @@ public function get($url, $params)
 	 * @callback $resultcb ( Connection $conn, boolean $success )
 	 */
 public function post($url, $data = [], $params)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L84
 </md:method>
 
 <md:method>
@@ -280,6 +289,7 @@ public function post($url, $data = [], $params)
 	 * @return string|false
 	 */
 public static function buildUrl($mixed)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L118
 </md:method>
 
 <md:method>
@@ -291,6 +301,7 @@ public static function buildUrl($mixed)
 	 * @return array|bool
 	 */
 public static function parseUrl($mixed)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L154
 </md:method>
 
 #### simple # Class Simple {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php}
@@ -357,6 +368,7 @@ public $requestClass;
 	 * @return void
 	 */
 public function init()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/Simple.php#L22
 </md:method>
 
 <md:method>
@@ -365,6 +377,7 @@ public function init()
 	 * @return void
 	 */
 public function onReady()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/Simple.php#L31
 </md:method>
 
 <md:method>
@@ -373,6 +386,7 @@ public function onReady()
 	 * @return boolean Ready to shutdown?
 	 */
 public function onShutdown($graceful = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/Simple.php#L39
 </md:method>
 
 <md:method>
@@ -383,6 +397,7 @@ public function onShutdown($graceful = false)
 	 * @return SimpleRequest Request.
 	 */
 public function beginRequest($req, $upstream)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/Simple.php#L50
 </md:method>
 
 #### simple-request # Class SimpleRequest {tpl-git PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php}
@@ -452,6 +467,7 @@ public $attrs;
 	 * @return void
 	 */
 public function init()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php#L14
 </md:method>
 
 <md:method>
@@ -460,6 +476,7 @@ public function init()
 	 * @return integer Status.
 	 */
 public function run()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php#L35
 </md:method>
 
 

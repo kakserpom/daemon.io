@@ -17,6 +17,7 @@ class Binary;
 	 * @return string
 	 */
 public static function labels($q)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L20
 </md:method>
 
 <md:method>
@@ -27,6 +28,7 @@ public static function labels($q)
 	 * @return string        Dot-separated labels list
 	 */
 public static function parseLabels(&$data, $orig = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L38
 </md:method>
 
 <md:method>
@@ -38,6 +40,7 @@ public static function parseLabels(&$data, $orig = null)
 	 * @return string
 	 */
 public static function LV($str, $len = 1, $lrev = FALSE)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L67
 </md:method>
 
 <md:method>
@@ -47,6 +50,7 @@ public static function LV($str, $len = 1, $lrev = FALSE)
 	 * @return string
 	 */
 public static function LVnull($str)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L80
 </md:method>
 
 <md:method>
@@ -56,6 +60,7 @@ public static function LVnull($str)
 	 * @return string
 	 */
 public static function byte($int)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L89
 </md:method>
 
 <md:method>
@@ -65,6 +70,7 @@ public static function byte($int)
 	 * @return string
 	 */
 public static function word($int)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L98
 </md:method>
 
 <md:method>
@@ -74,6 +80,7 @@ public static function word($int)
 	 * @return string
 	 */
 public static function wordl($int)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L107
 </md:method>
 
 <md:method>
@@ -83,6 +90,7 @@ public static function wordl($int)
 	 * @return string
 	 */
 public static function dword($int)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L116
 </md:method>
 
 <md:method>
@@ -92,6 +100,7 @@ public static function dword($int)
 	 * @return string
 	 */
 public static function dwordl($int)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L125
 </md:method>
 
 <md:method>
@@ -101,6 +110,7 @@ public static function dwordl($int)
 	 * @return string
 	 */
 public static function qword($int)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L134
 </md:method>
 
 <md:method>
@@ -110,6 +120,7 @@ public static function qword($int)
 	 * @return string
 	 */
 public static function qwordl($int)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L143
 </md:method>
 
 <md:method>
@@ -119,6 +130,7 @@ public static function qwordl($int)
 	 * @return integer
 	 */
 public static function getByte(&$p)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L152
 </md:method>
 
 <md:method>
@@ -128,6 +140,7 @@ public static function getByte(&$p)
 	 * @return string
 	 */
 public static function getChar(&$p)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L163
 </md:method>
 
 <md:method>
@@ -138,6 +151,7 @@ public static function getChar(&$p)
 	 * @return integer
 	 */
 public static function getWord(&$p, $l = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L175
 </md:method>
 
 <md:method>
@@ -148,6 +162,7 @@ public static function getWord(&$p, $l = false)
 	 * @return string
 	 */
 public static function getStrWord(&$p, $l = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L187
 </md:method>
 
 <md:method>
@@ -158,6 +173,7 @@ public static function getStrWord(&$p, $l = false)
 	 * @return integer
 	 */
 public static function getDWord(&$p, $l = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L202
 </md:method>
 
 <md:method>
@@ -168,6 +184,7 @@ public static function getDWord(&$p, $l = false)
 	 * @return integer
 	 */
 public static function getQword(&$p, $l = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L214
 </md:method>
 
 <md:method>
@@ -178,6 +195,7 @@ public static function getQword(&$p, $l = false)
 	 * @return string
 	 */
 public static function getStrQWord(&$p, $l = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L226
 </md:method>
 
 <md:method>
@@ -187,6 +205,7 @@ public static function getStrQWord(&$p, $l = false)
 	 * @return string
 	 */
 public static function getString(&$str)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L240
 </md:method>
 
 <md:method>
@@ -199,6 +218,7 @@ public static function getString(&$str)
 	 * @return string
 	 */
 public static function getLV(&$p, $l = 1, $nul = false, $lrev = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L258
 </md:method>
 
 <md:method>
@@ -210,6 +230,7 @@ public static function getLV(&$p, $l = 1, $nul = false, $lrev = false)
 	 * @return string       Resulting binary string
 	 */
 public static function int2bytes($len, $int = 0, $l = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L295
 </md:method>
 
 <md:method>
@@ -220,6 +241,7 @@ public static function int2bytes($len, $int = 0, $l = false)
 	 * @return string
 	 */
 public static function flags2bitarray($flags, $len = 4)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L323
 </md:method>
 
 <md:method>
@@ -232,6 +254,7 @@ public static function flags2bitarray($flags, $len = 4)
 	 * @return string       Resulting binary string
 	 */
 public static function i2b($len, $int = 0, $l = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L339
 </md:method>
 
 <md:method>
@@ -242,6 +265,7 @@ public static function i2b($len, $int = 0, $l = false)
 	 * @return integer
 	 */
 public static function bytes2int($str, $l = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L349
 </md:method>
 
 <md:method>
@@ -253,6 +277,7 @@ public static function bytes2int($str, $l = false)
 	 * @return integer
 	 */
 public static function b2i($str = 0, $l = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L368
 </md:method>
 
 <md:method>
@@ -263,6 +288,7 @@ public static function b2i($str = 0, $l = false)
 	 * @return string|false
 	 */
 public static function bitmap2bytes($bitmap, $check_len = 0)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L378
 </md:method>
 
 <md:method>
@@ -272,6 +298,7 @@ public static function bitmap2bytes($bitmap, $check_len = 0)
 	 * @return string
 	 */
 public static function getbitmap($byte)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L395
 </md:method>
 
 

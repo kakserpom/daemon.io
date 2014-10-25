@@ -68,6 +68,7 @@ public $appInstance;
 	 * @param boolean $init
 	 */
 public function __construct($config = [], $init = true)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Server.php#L29
 </md:method>
 
 <md:method>
@@ -76,6 +77,7 @@ public function __construct($config = [], $init = true)
 	 * @return boolean Success
 	 */
 public function finish($graceful = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Server.php#L44
 </md:method>
 
 <md:method>
@@ -86,6 +88,7 @@ public function finish($graceful = false)
 	 * @return integer        Number of bound
 	 */
 public function bindSockets($addrs = [], $max = 0)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Server.php#L55
 </md:method>
 
 <md:method>
@@ -95,6 +98,7 @@ public function bindSockets($addrs = [], $max = 0)
 	 * @return boolean      Success
 	 */
 public function bindSocket($uri)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Server.php#L76
 </md:method>
 
 <md:method>
@@ -105,6 +109,7 @@ public function bindSocket($uri)
 	 * @return void
 	 */
 public function attachBound(\PHPDaemon\BoundSocket\Generic $bound, $inf = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Server.php#L152
 </md:method>
 
 <md:method>
@@ -114,6 +119,7 @@ public function attachBound(\PHPDaemon\BoundSocket\Generic $bound, $inf = null)
 	 * @return void
 	 */
 public function detachBound(\PHPDaemon\BoundSocket\Generic $bound)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Server.php#L161
 </md:method>
 
 <md:method>
@@ -122,6 +128,7 @@ public function detachBound(\PHPDaemon\BoundSocket\Generic $bound)
 	 * @return void
 	 */
 public function closeBound()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Server.php#L169
 </md:method>
 
 <md:method>
@@ -132,6 +139,7 @@ public function closeBound()
 	 * @return boolean Success
 	 */
 public function inheritFromRequest($req, $oldConn)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Server.php#L179
 </md:method>
 
 

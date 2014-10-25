@@ -25,6 +25,7 @@ public $pool;
 	 * @return boolean
 	 */
 public function isConnected()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L160
 </md:method>
 
 <md:method>
@@ -34,6 +35,7 @@ public function isConnected()
 	 * @return void
 	 */
 public function setDgram($bool)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L169
 </md:method>
 
 <md:method>
@@ -44,6 +46,7 @@ public function setDgram($bool)
 	 * @return void
 	 */
 public function setPeername($host, $port)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L179
 </md:method>
 
 <md:method>
@@ -53,6 +56,7 @@ public function setPeername($host, $port)
 	 * @return mixed
 	 */
 public function __get($name)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L197
 </md:method>
 
 <md:method>
@@ -63,6 +67,7 @@ public function __get($name)
 	 * @return void
 	 */
 public function getSocketName(&$addr, &$port)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L213
 </md:method>
 
 <md:method>
@@ -72,6 +77,7 @@ public function getSocketName(&$addr, &$port)
 	 * @return void
 	 */
 public function setParentSocket(Generic $sock)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L226
 </md:method>
 
 <md:method>
@@ -81,6 +87,7 @@ public function setParentSocket(Generic $sock)
 	 * @return void
 	 */
 public function onUdpPacket($pct)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L235
 </md:method>
 
 <md:method>
@@ -89,6 +96,7 @@ public function onUdpPacket($pct)
 	 * @return void
 	 */
 public function onReady()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L242
 </md:method>
 
 <md:method>
@@ -98,6 +106,7 @@ public function onReady()
 	 * @return void
 	 */
 public function onInheritanceFromRequest($req)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L255
 </md:method>
 
 <md:method>
@@ -106,6 +115,7 @@ public function onInheritanceFromRequest($req)
 	 * @return void
 	 */
 public function onFailure()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L262
 </md:method>
 
 <md:method>
@@ -115,6 +125,7 @@ public function onFailure()
 	 * @return void
 	 */
 public function onFailureEv($bev = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L274
 </md:method>
 
 <md:method>
@@ -123,6 +134,7 @@ public function onFailureEv($bev = null)
 	 * @return void
 	 */
 public function __destruct()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L290
 </md:method>
 
 <md:method>
@@ -132,6 +144,7 @@ public function __destruct()
 	 * @return boolean       Success
 	 */
 public function write($data)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L301
 </md:method>
 
 <md:method>
@@ -141,6 +154,7 @@ public function write($data)
 	 * @return void
 	 */
 public function onConnected($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L313
 </md:method>
 
 <md:method>
@@ -149,6 +163,7 @@ public function onConnected($cb)
 	 * @return string
 	 */
 public function getUrl()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L398
 </md:method>
 
 <md:method>
@@ -157,6 +172,7 @@ public function getUrl()
 	 * @return string
 	 */
 public function getHost()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L406
 </md:method>
 
 <md:method>
@@ -165,6 +181,7 @@ public function getHost()
 	 * @return integer
 	 */
 public function getPort()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L414
 </md:method>
 
 <md:method>
@@ -175,6 +192,7 @@ public function getPort()
 	 * @return boolean       Success
 	 */
 public function connect($url, $cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L424
 </md:method>
 
 <md:method>
@@ -184,6 +202,7 @@ public function connect($url, $cb = null)
 	 * @return boolean       Success
 	 */
 public function connectUnix($path)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L489
 </md:method>
 
 <md:method>
@@ -193,6 +212,7 @@ public function connectUnix($path)
 	 * @return boolean       Success
 	 */
 public function connectRaw($host)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L513
 </md:method>
 
 <md:method>
@@ -203,6 +223,7 @@ public function connectRaw($host)
 	 * @return boolean       Success
 	 */
 public function connectUdp($host, $port)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L559
 </md:method>
 
 <md:method>
@@ -213,6 +234,7 @@ public function connectUdp($host, $port)
 	 * @return boolean       Success
 	 */
 public function connectTcp($host, $port)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L618
 </md:method>
 
 <md:method>
@@ -222,6 +244,7 @@ public function connectTcp($host, $port)
 	 * @return void
 	 */
 public function setKeepalive($bool)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L694
 </md:method>
 
 <md:method>
@@ -230,6 +253,7 @@ public function setKeepalive($bool)
 	 * @return void
 	 */
 public function close()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L703
 </md:method>
 
 <md:method>
@@ -240,6 +264,7 @@ public function close()
 	 * @return void
 	 */
 public function setTimeouts($read, $write)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L716
 </md:method>
 
 <md:method>
@@ -251,6 +276,7 @@ public function setTimeouts($read, $write)
 	 * @return void
 	 */
 public function setOption($level, $optname, $val)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L731
 </md:method>
 
 <md:method>
@@ -259,6 +285,7 @@ public function setOption($level, $optname, $val)
 	 * @return void
 	 */
 public function onFinish()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L744
 </md:method>
 
 

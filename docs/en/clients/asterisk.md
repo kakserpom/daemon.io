@@ -370,6 +370,7 @@ public $pool;
 	 * @return void
 	 */
 public function onConnected($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L130
 </md:method>
 
 <md:method>
@@ -378,6 +379,7 @@ public function onConnected($cb)
 	 * @return void
 	 */
 public function onReady()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L150
 </md:method>
 
 <md:method>
@@ -386,6 +388,7 @@ public function onReady()
 	 * @return boolean Ready to shutdown?
 	 */
 public function gracefulShutdown()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L169
 </md:method>
 
 <md:method>
@@ -394,6 +397,7 @@ public function gracefulShutdown()
 	 * @return void
 	 */
 public function onFinish()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L185
 </md:method>
 
 <md:method>
@@ -402,6 +406,7 @@ public function onFinish()
 	 * @return void
 	 */
 public function onRead()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L197
 </md:method>
 
 <md:method>
@@ -420,6 +425,7 @@ public function onRead()
 	 * @return void
 	 */
 public function getSipPeers($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L377
 </md:method>
 
 <md:method>
@@ -433,6 +439,7 @@ public function getSipPeers($cb)
 	 * @return void
 	 */
 public function getIaxPeers($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L390
 </md:method>
 
 <md:method>
@@ -452,6 +459,7 @@ public function getIaxPeers($cb)
 	 * @return void
 	 */
 public function getConfig($filename, $cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L409
 </md:method>
 
 <md:method>
@@ -471,6 +479,7 @@ public function getConfig($filename, $cb)
 	 * @return void
 	 */
 public function getConfigJSON($filename, $cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L428
 </md:method>
 
 <md:method>
@@ -492,6 +501,7 @@ public function getConfigJSON($filename, $cb)
 	 * @return void
 	 */
 public function setVar($channel, $variable, $value, $cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L449
 </md:method>
 
 <md:method>
@@ -509,6 +519,7 @@ public function setVar($channel, $variable, $value, $cb)
 	 * @return void
 	 */
 public function coreShowChannels($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L477
 </md:method>
 
 <md:method>
@@ -530,6 +541,7 @@ public function coreShowChannels($cb)
 	 * @return void
 	 */
 public function status($cb, $channel = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L500
 </md:method>
 
 <md:method>
@@ -552,6 +564,7 @@ public function status($cb, $channel = null)
 	 * @return void
 	 */
 public function redirect(array $params, $cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L528
 </md:method>
 
 <md:method>
@@ -580,6 +593,7 @@ public function redirect(array $params, $cb)
 	 * @return void
 	 */
 public function originate(array $params, $cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L556
 </md:method>
 
 <md:method>
@@ -598,6 +612,7 @@ public function originate(array $params, $cb)
 	 * @return void
 	 */
 public function extensionState(array $params, $cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L576
 </md:method>
 
 <md:method>
@@ -612,6 +627,7 @@ public function extensionState(array $params, $cb)
 	 * @return void
 	 */
 public function ping($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L590
 </md:method>
 
 <md:method>
@@ -627,6 +643,7 @@ public function ping($cb)
 	 * @return void
 	 */
 public function action($action, $cb, array $params = null, array $assertion = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L605
 </md:method>
 
 <md:method>
@@ -642,6 +659,7 @@ public function action($action, $cb, array $params = null, array $assertion = nu
 	 * @return void
 	 */
 public function logoff($cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L622
 </md:method>
 
 <md:method>
@@ -652,6 +670,7 @@ public function logoff($cb = null)
 	 * @return void
 	 */
 public function onEvent($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L632
 </md:method>
 
 <md:method>
@@ -663,6 +682,7 @@ public function onEvent($cb)
 	 * @return this
 	 */
 public function onConnected($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L130
 </md:method>
 
 #### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
@@ -744,6 +764,7 @@ public $appInstance;
 	 * @return void
 	 */
 public function setAmiVersion($addr, $ver)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Pool.php#L40
 </md:method>
 
 <md:method>
@@ -753,6 +774,7 @@ public function setAmiVersion($addr, $ver)
 	 * @return array
 	 */
 public static function prepareEnv($data)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Pool.php#L49
 </md:method>
 
 <md:method>
@@ -762,6 +784,7 @@ public static function prepareEnv($data)
 	 * @return array
 	 */
 public static function extract($line)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Pool.php#L64
 </md:method>
 
 

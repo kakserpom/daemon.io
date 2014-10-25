@@ -38,6 +38,7 @@ public $pool;
 	 * @param object   $pool Pool. Optional
 	 */
 public function __construct($fd = null, $pool = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L164
 </md:method>
 
 <md:method>
@@ -47,6 +48,7 @@ public function __construct($fd = null, $pool = null)
 	 * @return mixed
 	 */
 public function __get($name)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L201
 </md:method>
 
 <md:method>
@@ -55,6 +57,7 @@ public function __get($name)
 	 * @return boolean
 	 */
 public function isFreed()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L217
 </md:method>
 
 <md:method>
@@ -63,6 +66,7 @@ public function isFreed()
 	 * @return boolean
 	 */
 public function isFinished()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L225
 </md:method>
 
 <md:method>
@@ -71,6 +75,7 @@ public function isFinished()
 	 * @return EventBufferEvent
 	 */
 public function getBev()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L233
 </md:method>
 
 <md:method>
@@ -79,6 +84,7 @@ public function getBev()
 	 * @return resource File descriptor
 	 */
 public function getFd()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L241
 </md:method>
 
 <md:method>
@@ -89,6 +95,7 @@ public function getFd()
 	 * @return void
 	 */
 public function setContext($ctx, $mode)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L252
 </md:method>
 
 <md:method>
@@ -99,6 +106,7 @@ public function setContext($ctx, $mode)
 	 * @return void
 	 */
 public function setFd($fd, $bev = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L263
 </md:method>
 
 <md:method>
@@ -108,6 +116,7 @@ public function setFd($fd, $bev = null)
 	 * @return void
 	 */
 public function setTimeout($rw)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L334
 </md:method>
 
 <md:method>
@@ -118,6 +127,7 @@ public function setTimeout($rw)
 	 * @return void
 	 */
 public function setTimeouts($read, $write)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L344
 </md:method>
 
 <md:method>
@@ -127,6 +137,7 @@ public function setTimeouts($read, $write)
 	 * @return void
 	 */
 public function setPriority($p)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L357
 </md:method>
 
 <md:method>
@@ -137,6 +148,7 @@ public function setPriority($p)
 	 * @return void
 	 */
 public function setWatermark($low = null, $high = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L368
 </md:method>
 
 <md:method>
@@ -146,6 +158,7 @@ public function setWatermark($low = null, $high = null)
 	 * @return string|null
 	 */
 public function readLine($eol = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L390
 </md:method>
 
 <md:method>
@@ -155,6 +168,7 @@ public function readLine($eol = null)
 	 * @return boolean    Success
 	 */
 public function drain($n)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L402
 </md:method>
 
 <md:method>
@@ -164,6 +178,7 @@ public function drain($n)
 	 * @return boolean|null      Success
 	 */
 public function drainIfMatch($str)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L411
 </md:method>
 
 <md:method>
@@ -174,6 +189,7 @@ public function drainIfMatch($str)
 	 * @return string|false
 	 */
 public function lookExact($n, $o = 0)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L443
 </md:method>
 
 <md:method>
@@ -183,6 +199,7 @@ public function lookExact($n, $o = 0)
 	 * @return boolean      Success
 	 */
 public function prependInput($str)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L458
 </md:method>
 
 <md:method>
@@ -192,6 +209,7 @@ public function prependInput($str)
 	 * @return boolean      Success
 	 */
 public function prependOutput($str)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L470
 </md:method>
 
 <md:method>
@@ -202,6 +220,7 @@ public function prependOutput($str)
 	 * @return string|false
 	 */
 public function look($n, $o = 0)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L483
 </md:method>
 
 <md:method>
@@ -212,6 +231,7 @@ public function look($n, $o = 0)
 	 * @return string|false
 	 */
 public function substr($o, $n = -1)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L499
 </md:method>
 
 <md:method>
@@ -223,6 +243,7 @@ public function substr($o, $n = -1)
 	 * @return integer        Position
 	 */
 public function search($what, $start = 0, $end = -1)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L513
 </md:method>
 
 <md:method>
@@ -232,6 +253,7 @@ public function search($what, $start = 0, $end = -1)
 	 * @return string|false
 	 */
 public function readExact($n)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L522
 </md:method>
 
 <md:method>
@@ -240,6 +262,7 @@ public function readExact($n)
 	 * @return integer
 	 */
 public function getInputLength()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L536
 </md:method>
 
 <md:method>
@@ -248,6 +271,7 @@ public function getInputLength()
 	 * @return boolean Ready to shutdown?
 	 */
 public function gracefulShutdown()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L544
 </md:method>
 
 <md:method>
@@ -257,6 +281,7 @@ public function gracefulShutdown()
 	 * @return boolean           Success
 	 */
 public function freezeInput($at_front = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L554
 </md:method>
 
 <md:method>
@@ -266,6 +291,7 @@ public function freezeInput($at_front = false)
 	 * @return boolean           Success
 	 */
 public function unfreezeInput($at_front = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L566
 </md:method>
 
 <md:method>
@@ -275,6 +301,7 @@ public function unfreezeInput($at_front = false)
 	 * @return boolean           Success
 	 */
 public function freezeOutput($at_front = true)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L578
 </md:method>
 
 <md:method>
@@ -284,6 +311,7 @@ public function freezeOutput($at_front = true)
 	 * @return boolean           Success
 	 */
 public function unfreezeOutput($at_front = true)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L590
 </md:method>
 
 <md:method>
@@ -292,6 +320,7 @@ public function unfreezeOutput($at_front = true)
 	 * @return void
 	 */
 public function onWrite()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L601
 </md:method>
 
 <md:method>
@@ -301,6 +330,7 @@ public function onWrite()
 	 * @return boolean       Success
 	 */
 public function write($data)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L609
 </md:method>
 
 <md:method>
@@ -310,6 +340,7 @@ public function write($data)
 	 * @return boolean       Success
 	 */
 public function writeln($data)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L634
 </md:method>
 
 <md:method>
@@ -318,6 +349,7 @@ public function writeln($data)
 	 * @return void
 	 */
 public function finish()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L655
 </md:method>
 
 <md:method>
@@ -326,6 +358,7 @@ public function finish()
 	 * @return void
 	 */
 public function close()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L678
 </md:method>
 
 <md:method>
@@ -334,6 +367,7 @@ public function close()
 	 * @return void
 	 */
 public function unsetFd()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L696
 </md:method>
 
 <md:method>
@@ -343,6 +377,7 @@ public function unsetFd()
 	 * @return void
 	 */
 public function onReadEv($bev)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L715
 </md:method>
 
 <md:method>
@@ -352,6 +387,7 @@ public function onReadEv($bev)
 	 * @return void
 	 */
 public function onWriteOnce($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L752
 </md:method>
 
 <md:method>
@@ -361,6 +397,7 @@ public function onWriteOnce($cb)
 	 * @return void
 	 */
 public function onWriteEv($bev)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L765
 </md:method>
 
 <md:method>
@@ -371,6 +408,7 @@ public function onWriteEv($bev)
 	 * @return void
 	 */
 public function onStateEv($bev, $events)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L813
 </md:method>
 
 <md:method>
@@ -381,6 +419,7 @@ public function onStateEv($bev, $events)
 	 * @return integer|false
 	 */
 public function moveToBuffer(\EventBuffer $dest, $n)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L848
 </md:method>
 
 <md:method>
@@ -391,6 +430,7 @@ public function moveToBuffer(\EventBuffer $dest, $n)
 	 * @return integer|false
 	 */
 public function writeFromBuffer(\EventBuffer $src, $n)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L861
 </md:method>
 
 <md:method>
@@ -400,6 +440,7 @@ public function writeFromBuffer(\EventBuffer $src, $n)
 	 * @return string|false    Readed data
 	 */
 public function read($n)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L873
 </md:method>
 
 <md:method>
@@ -408,6 +449,7 @@ public function read($n)
 	 * @return string Readed data
 	 */
 public function readUnlimited()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L891
 </md:method>
 
 

@@ -106,6 +106,7 @@ public $jobsNum = 0;
 	 * @param callable $cb Listener
 	 */
 public function __construct($cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L72
 </md:method>
 
 <md:method>
@@ -115,6 +116,7 @@ public function __construct($cb = null)
 	 * @return boolean
 	 */
 public function offsetExists($j)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L84
 </md:method>
 
 <md:method>
@@ -124,6 +126,7 @@ public function offsetExists($j)
 	 * @return mixed
 	 */
 public function offsetGet($j)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L93
 </md:method>
 
 <md:method>
@@ -134,6 +137,7 @@ public function offsetGet($j)
 	 * @return void
 	 */
 public function offsetSet($j, $v)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L103
 </md:method>
 
 <md:method>
@@ -143,6 +147,7 @@ public function offsetSet($j, $v)
 	 * @return void
 	 */
 public function offsetUnset($j)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L112
 </md:method>
 
 <md:method>
@@ -151,6 +156,7 @@ public function offsetUnset($j)
 	 * @return array
 	 */
 public function getResults()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L120
 </md:method>
 
 <md:method>
@@ -160,6 +166,7 @@ public function getResults()
 	 * @return void
 	 */
 public function keep($keep = true)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L128
 </md:method>
 
 <md:method>
@@ -168,6 +175,7 @@ public function keep($keep = true)
 	 * @return boolean
 	 */
 public function hasCompleted()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L136
 </md:method>
 
 <md:method>
@@ -177,6 +185,7 @@ public function hasCompleted()
 	 * @return this
 	 */
 public function maxConcurrency($n = -1)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L145
 </md:method>
 
 <md:method>
@@ -187,6 +196,7 @@ public function maxConcurrency($n = -1)
 	 * @return boolean
 	 */
 public function setResult($jobname, $result = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L156
 </md:method>
 
 <md:method>
@@ -196,6 +206,7 @@ public function setResult($jobname, $result = null)
 	 * @return mixed Result or null
 	 */
 public function getResult($jobname)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L171
 </md:method>
 
 <md:method>
@@ -204,6 +215,7 @@ public function getResult($jobname)
 	 * @return void
 	 */
 public function checkQueue()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L197
 </md:method>
 
 <md:method>
@@ -213,6 +225,7 @@ public function checkQueue()
 	 * @return this
 	 */
 public function more($cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L217
 </md:method>
 
 <md:method>
@@ -221,6 +234,7 @@ public function more($cb = null)
 	 * @return boolean
 	 */
 public function isQueueFull()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L244
 </md:method>
 
 <md:method>
@@ -231,6 +245,7 @@ public function isQueueFull()
 	 * @return boolean Success
 	 */
 public function addJob($name, $cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L254
 </md:method>
 
 <md:method>
@@ -239,6 +254,7 @@ public function addJob($name, $cb)
 	 * @return void
 	 */
 public function cleanup()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L279
 </md:method>
 
 <md:method>
@@ -248,6 +264,7 @@ public function cleanup()
 	 * @return void
 	 */
 public function addListener($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L291
 </md:method>
 
 <md:method>
@@ -256,6 +273,7 @@ public function addListener($cb)
 	 * @return void
 	 */
 public function execute()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L303
 </md:method>
 
 <md:method>
@@ -266,6 +284,7 @@ public function execute()
 	 * @return void
 	 */
 public function __invoke($name = null, $cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L320
 </md:method>
 
 

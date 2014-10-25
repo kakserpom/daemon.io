@@ -15,6 +15,7 @@ class MIME;
 	 * @return string       MIME type
 	 */
 public static function get($path)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/MIME.php#L76
 </md:method>
 
 

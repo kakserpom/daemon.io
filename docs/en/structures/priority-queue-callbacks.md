@@ -18,6 +18,7 @@ class PriorityQueueCallbacks extends \[SplPriorityQueue](http://php.net/manual/c
 	 * @return void
 	 */
 public function insert($cb, $pri = 0)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L21
 </md:method>
 
 <md:method>
@@ -28,6 +29,7 @@ public function insert($cb, $pri = 0)
 	 * @return void
 	 */
 public function enqueue($cb, $pri = 0)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L31
 </md:method>
 
 <md:method>
@@ -36,6 +38,7 @@ public function enqueue($cb, $pri = 0)
 	 * @return callable
 	 */
 public function dequeue()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L39
 </md:method>
 
 <md:method>
@@ -46,6 +49,7 @@ public function dequeue()
 	 * @return integer
 	 */
 public function compare($pri1, $pri2)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L49
 </md:method>
 
 <md:method>
@@ -54,6 +58,7 @@ public function compare($pri1, $pri2)
 	 * @return boolean
 	 */
 public function executeOne()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L60
 </md:method>
 
 <md:method>
@@ -62,6 +67,7 @@ public function executeOne()
 	 * @return integer
 	 */
 public function executeAll()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L75
 </md:method>
 
 

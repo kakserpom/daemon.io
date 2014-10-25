@@ -62,6 +62,7 @@ public $appInstance;
 	 * @return void
 	 */
 public function addServer($url, $weight = NULL)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L118
 </md:method>
 
 <md:method>
@@ -75,6 +76,7 @@ public function addServer($url, $weight = NULL)
 	 * @return boolean       Success|Connection
 	 */
 public function getConnection($url = null, $cb = null, $pri = 0)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L131
 </md:method>
 
 <md:method>
@@ -84,6 +86,7 @@ public function getConnection($url = null, $cb = null, $pri = 0)
 	 * @return void
 	 */
 public function detach($conn)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L198
 </md:method>
 
 <md:method>
@@ -94,6 +97,7 @@ public function detach($conn)
 	 * @return void
 	 */
 public function markConnFree(ClientConnection $conn, $url)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L209
 </md:method>
 
 <md:method>
@@ -104,6 +108,7 @@ public function markConnFree(ClientConnection $conn, $url)
 	 * @return void
 	 */
 public function markConnBusy(ClientConnection $conn, $url)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L222
 </md:method>
 
 <md:method>
@@ -114,6 +119,7 @@ public function markConnBusy(ClientConnection $conn, $url)
 	 * @return void
 	 */
 public function detachConnFromUrl(ClientConnection $conn, $url)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L235
 </md:method>
 
 <md:method>
@@ -123,6 +129,7 @@ public function detachConnFromUrl(ClientConnection $conn, $url)
 	 * @return void
 	 */
 public function touchPending($url)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L249
 </md:method>
 
 <md:method>
@@ -133,6 +140,7 @@ public function touchPending($url)
 	 * @return boolean       Success
 	 */
 public function getConnectionByKey($key, $cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L263
 </md:method>
 
 <md:method>
@@ -142,6 +150,7 @@ public function getConnectionByKey($key, $cb = null)
 	 * @return boolean      Success
 	 */
 public function getConnectionRR($cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L287
 </md:method>
 
 <md:method>
@@ -153,6 +162,7 @@ public function getConnectionRR($cb = null)
 	 * @return boolean              Success
 	 */
 public function requestByServer($server, $data, $onResponse = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L298
 </md:method>
 
 <md:method>
@@ -164,6 +174,7 @@ public function requestByServer($server, $data, $onResponse = null)
 	 * @return boolean              Success
 	 */
 public function requestByKey($key, $data, $onResponse = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L316
 </md:method>
 
 <md:method>
@@ -173,6 +184,7 @@ public function requestByKey($key, $data, $onResponse = null)
 	 * @return boolean           Ready to shutdown?
 	 */
 public function onShutdown($graceful = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L332
 </md:method>
 
 

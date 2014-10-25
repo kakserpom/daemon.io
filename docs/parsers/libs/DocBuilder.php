@@ -378,7 +378,14 @@ class DocBuilder {
 	protected function parseMdMethodFromPHPDoc($text) {
 		$lines = $this->getTextLines($text);
 
+		$link = '';
 		$code = trim(array_pop($lines));
+
+		if(strpos($code, 'link:') === 0) {
+			$link = substr($code, 5);
+			$code = trim(array_pop($lines));
+		}
+
 		$code_out_params = trim(substr($code, 0, strpos($code, '(')));
 		$comment = implode("\n", $lines);
 
@@ -421,6 +428,10 @@ class DocBuilder {
 		}
 
 		$result = '';
+
+		if($link) {
+			$result .= 'link:'. $link ."\n";
+		}
 		
 		// $desc_text_arr = preg_split('/[ \t]*\n[ \t]*/', trim($PHPDoc->getShortDescription() ."\n". $PHPDoc->getLongDescription()), -1, PREG_SPLIT_NO_EMPTY);
 		// $desc_text = '   ' . implode("  \n   ", $desc_text_arr);
@@ -470,7 +481,13 @@ class DocBuilder {
 		}
 
 		// 1. php код
+		$link = '';
 		$code = array_shift($lines);
+
+		if($code && strpos($code, 'link:') === 0) {
+			list($link, $code) = explode("\n", $code);
+			$link = substr($link, 5);
+		}
 
 		if($code) {
 			$code = str_replace("\n", "\n ", $code);
@@ -484,7 +501,12 @@ class DocBuilder {
 				$matches2[1] = '';
 			}
 
-			$result .= " -#{$matches2[1]}.method ```php:p.inline\n {$code}\n ```\n";
+			$attrs = '';
+			if($link) {
+				$attrs .= '[data-link='. $link .']';
+			}
+
+			$result .= " -#{$matches2[1]}.method ```php:p.inline". $attrs ."\n {$code}\n ```\n";
 		}
 
 		# 2. Описание

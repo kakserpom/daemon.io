@@ -36,46 +36,55 @@ class Encoding;
 	 *
 	 */
 static function toUTF8($text)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L175
 </md:method>
 
 <md:method>
 
 static function toWin1252($text)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L248
 </md:method>
 
 <md:method>
 
 static function toISO8859($text)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L261
 </md:method>
 
 <md:method>
 
 static function toLatin1($text)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L265
 </md:method>
 
 <md:method>
 
 static function fixUTF8($text)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L269
 </md:method>
 
 <md:method>
 
 static function UTF8FixWin1252Chars($text)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L286
 </md:method>
 
 <md:method>
 
 static function removeBOM($str="")
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L294
 </md:method>
 
 <md:method>
 
 public static function normalizeEncoding($encodingLabel)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L301
 </md:method>
 
 <md:method>
 
 public static function encode($encodingLabel, $text)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L323
 </md:method>
 
 

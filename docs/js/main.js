@@ -350,6 +350,14 @@ $(function(){
 			});
 
 			that.html(source);
+
+			// ссылка на githab
+			var pre = that.parent(),
+				link = pre.data('link');
+
+			if(link) {
+				pre.prepend('<a target="_blank" class="method-link tpl-git" href="'+ link +'"><i class="fa fa-github"></i></a>');
+			}
 		});
 
 		$("pre code, .code_highlight").each(function(i, block) {

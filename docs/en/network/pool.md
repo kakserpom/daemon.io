@@ -104,6 +104,7 @@ public $appInstance;
 	 * @param boolean $init
 	 */
 public function __construct($config = [], $init = true)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L73
 </md:method>
 
 <md:method>
@@ -112,6 +113,7 @@ public function __construct($config = [], $init = true)
 	 * @return void
 	 */
 public function onReady()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L97
 </md:method>
 
 <md:method>
@@ -120,6 +122,7 @@ public function onReady()
 	 * @return void
 	 */
 public function onConfigUpdated()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L105
 </md:method>
 
 <md:method>
@@ -130,6 +133,7 @@ public function onConfigUpdated()
 	 * @return this
 	 */
 public static function getInstance($arg = '', $spawn = true)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L159
 </md:method>
 
 <md:method>
@@ -139,6 +143,7 @@ public static function getInstance($arg = '', $spawn = true)
 	 * @return void
 	 */
 public function setConnectionClass($class)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L192
 </md:method>
 
 <md:method>
@@ -147,6 +152,7 @@ public function setConnectionClass($class)
 	 * @return void
 	 */
 public function enable()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L200
 </md:method>
 
 <md:method>
@@ -155,6 +161,7 @@ public function enable()
 	 * @return void
 	 */
 public function disable()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L212
 </md:method>
 
 <md:method>
@@ -164,6 +171,7 @@ public function disable()
 	 * @return boolean Ready to shutdown?
 	 */
 public function onShutdown($graceful = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L239
 </md:method>
 
 <md:method>
@@ -172,6 +180,7 @@ public function onShutdown($graceful = false)
 	 * @return boolean Success
 	 */
 public function finish($graceful = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L254
 </md:method>
 
 <md:method>
@@ -182,6 +191,7 @@ public function finish($graceful = false)
 	 * @return void
 	 */
 public function attach($conn, $inf = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L283
 </md:method>
 
 <md:method>
@@ -191,6 +201,7 @@ public function attach($conn, $inf = null)
 	 * @return void
 	 */
 public function detach($conn)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L299
 </md:method>
 
 <md:method>
@@ -202,6 +213,7 @@ public function detach($conn)
 	 * @return integer         Connection's ID. Boolean false when failed
 	 */
 public function connect($url, $cb, $class = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L316
 </md:method>
 
 

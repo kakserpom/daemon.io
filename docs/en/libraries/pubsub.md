@@ -21,6 +21,7 @@ class PubSub;
 	 * @return boolean
 	 */
 public function eventExists($id)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L25
 </md:method>
 
 <md:method>
@@ -32,6 +33,7 @@ public function eventExists($id)
 	 * @return boolean       Success
 	 */
 public function sub($id, $obj, $cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L36
 </md:method>
 
 <md:method>
@@ -42,6 +44,7 @@ public function sub($id, $obj, $cb)
 	 * @return void
 	 */
 public function addEvent($id, PubSubEvent $obj)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L49
 </md:method>
 
 <md:method>
@@ -51,6 +54,7 @@ public function addEvent($id, PubSubEvent $obj)
 	 * @return void
 	 */
 public function removeEvent($id)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L58
 </md:method>
 
 <md:method>
@@ -61,6 +65,7 @@ public function removeEvent($id)
 	 * @return boolean      Success
 	 */
 public function unsub($id, $obj)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L68
 </md:method>
 
 <md:method>
@@ -71,6 +76,7 @@ public function unsub($id, $obj)
 	 * @return boolean       Success
 	 */
 public function pub($id, $data)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L81
 </md:method>
 
 <md:method>
@@ -80,6 +86,7 @@ public function pub($id, $data)
 	 * @return boolean      Success
 	 */
 public function unsubFromAll($obj)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L93
 </md:method>
 
 #### pub-sub-event # Class PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
@@ -119,6 +126,7 @@ public $deactCb;
 	 * Constructor
 	 */
 public function __construct($act = null, $deact = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L33
 </md:method>
 
 <md:method>
@@ -128,6 +136,7 @@ public function __construct($act = null, $deact = null)
 	 * @return this
 	 */
 public function onActivation($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L48
 </md:method>
 
 <md:method>
@@ -137,6 +146,7 @@ public function onActivation($cb)
 	 * @return this
 	 */
 public function onDeactivation($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L58
 </md:method>
 
 <md:method>
@@ -145,6 +155,7 @@ public function onDeactivation($cb)
 	 * @return object
 	 */
 public static function init()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L67
 </md:method>
 
 <md:method>
@@ -155,6 +166,7 @@ public static function init()
 	 * @return this
 	 */
 public function sub($obj, $cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L77
 </md:method>
 
 <md:method>
@@ -164,6 +176,7 @@ public function sub($obj, $cb)
 	 * @return this
 	 */
 public function unsub($obj)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L93
 </md:method>
 
 <md:method>
@@ -173,6 +186,7 @@ public function unsub($obj)
 	 * @return this
 	 */
 public function pub($data)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L108
 </md:method>
 
 

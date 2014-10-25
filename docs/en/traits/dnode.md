@@ -39,6 +39,7 @@ protected function dummyMethod($foo, $bar, $callback) {
 	 * @return void
 	 */
 public function onHandshake()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L53
 </md:method>
 
 <md:method>
@@ -49,6 +50,7 @@ public function onHandshake()
 	 * @return this
 	 */
 public function callLocal()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L86
 </md:method>
 
 <md:method>
@@ -59,6 +61,7 @@ public function callLocal()
 	 * @return this
 	 */
 public function callRemote()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L171
 </md:method>
 
 <md:method>
@@ -69,6 +72,7 @@ public function callRemote()
 	 * @return this
 	 */
 public function callRemoteArray($method, $args)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L187
 </md:method>
 
 <md:method>
@@ -78,6 +82,7 @@ public function callRemoteArray($method, $args)
 	 * @return this
 	 */
 public static function toJson($m)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L222
 </md:method>
 
 <md:method>
@@ -87,6 +92,7 @@ public static function toJson($m)
 	 * @return void
 	 */
 public static function toJsonDebugResursive(&$m)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L231
 </md:method>
 
 <md:method>
@@ -96,6 +102,7 @@ public static function toJsonDebugResursive(&$m)
 	 * @return void
 	 */
 public static function toJsonDebug($m)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L257
 </md:method>
 
 <md:method>
@@ -104,6 +111,7 @@ public static function toJsonDebug($m)
 	 * @return void
 	 */
 public function onFinish()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L281
 </md:method>
 
 <md:method>
@@ -112,6 +120,7 @@ public function onFinish()
 	 * @return void
 	 */
 public function cleanup()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L290
 </md:method>
 
 <md:method>
@@ -123,6 +132,7 @@ public function cleanup()
 	 * @return mixed
 	 */
 public function __call($method, $args)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L333
 </md:method>
 
 <md:method>
@@ -132,6 +142,7 @@ public function __call($method, $args)
 	 * @return void
 	 */
 public function onPacket($pct)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L346
 </md:method>
 
 <md:method>
@@ -142,6 +153,7 @@ public function onPacket($pct)
 	 * @return void
 	 */
 public function onFrame($data, $type)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L397
 </md:method>
 
 

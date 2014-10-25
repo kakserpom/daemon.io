@@ -176,6 +176,7 @@ public static $codesFlip;
 	 * @return string
 	 */
 public static function getCommandByCode($code)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/IRC.php#L100
 </md:method>
 
 <md:method>
@@ -184,6 +185,7 @@ public static function getCommandByCode($code)
 	 * @return integer
 	 */
 public static function getCodeByCommand($cmd)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/IRC.php#L111
 </md:method>
 
 <md:method>
@@ -192,6 +194,7 @@ public static function getCodeByCommand($cmd)
 	 * @return array
 	 */
 public static function parseUsermask($mask)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/IRC.php#L125
 </md:method>
 
 

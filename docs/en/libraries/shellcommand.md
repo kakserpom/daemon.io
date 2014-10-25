@@ -88,6 +88,7 @@ public $pool;
 	 * @return string
 	 */
 public function getCmd()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L107
 </md:method>
 
 <md:method>
@@ -96,6 +97,7 @@ public function getCmd()
 	 * @return this
 	 */
 public function setGroup($val)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L115
 </md:method>
 
 <md:method>
@@ -105,6 +107,7 @@ public function setGroup($val)
 	 * @return this
 	 */
 public function setCwd($dir)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L125
 </md:method>
 
 <md:method>
@@ -114,6 +117,7 @@ public function setCwd($dir)
 	 * @return this
 	 */
 public function setUser($val)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L135
 </md:method>
 
 <md:method>
@@ -123,6 +127,7 @@ public function setUser($val)
 	 * @return this
 	 */
 public function setChroot($dir)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L145
 </md:method>
 
 <md:method>
@@ -134,6 +139,7 @@ public function setChroot($dir)
 	 * @param  array    $env     Optional. Hash of environment's variables
 	 */
 public static function exec($binPath = null, $cb = null, $args = null, $env = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L157
 </md:method>
 
 <md:method>
@@ -144,6 +150,7 @@ public static function exec($binPath = null, $cb = null, $args = null, $env = nu
 	 * @return void
 	 */
 public function setFd($fd, $bev = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L177
 </md:method>
 
 <md:method>
@@ -153,6 +160,7 @@ public function setFd($fd, $bev = null)
 	 * @return this
 	 */
 public function setArgs($args = NULL)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L220
 </md:method>
 
 <md:method>
@@ -162,6 +170,7 @@ public function setArgs($args = NULL)
 	 * @return this
 	 */
 public function setEnv($env = NULL)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L231
 </md:method>
 
 <md:method>
@@ -170,6 +179,7 @@ public function setEnv($env = NULL)
 	 * @return void
 	 */
 public function onEofEvent()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L241
 </md:method>
 
 <md:method>
@@ -179,6 +189,7 @@ public function onEofEvent()
 	 * @return this
 	 */
 public function nice($nice = NULL)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L255
 </md:method>
 
 <md:method>
@@ -188,6 +199,7 @@ public function nice($nice = NULL)
 	 * @return string
 	 */
 public static function buildArgs($args)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L278
 </md:method>
 
 <md:method>
@@ -199,6 +211,7 @@ public static function buildArgs($args)
 	 * @return this
 	 */
 public function execute($binPath = NULL, $args = NULL, $env = NULL)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L307
 </md:method>
 
 <md:method>
@@ -207,6 +220,7 @@ public function execute($binPath = NULL, $args = NULL, $env = NULL)
 	 * @return boolean
 	 */
 public function finishWrite()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L369
 </md:method>
 
 <md:method>
@@ -215,6 +229,7 @@ public function finishWrite()
 	 * @return void
 	 */
 public function close()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L383
 </md:method>
 
 <md:method>
@@ -222,6 +237,7 @@ public function close()
 	 * Called when stream is finished
 	 */
 public function onFinish()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L394
 </md:method>
 
 <md:method>
@@ -230,6 +246,7 @@ public function onFinish()
 	 * @return this
 	 */
 public function closeWrite()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L402
 </md:method>
 
 <md:method>
@@ -238,6 +255,7 @@ public function closeWrite()
 	 * @return boolean
 	 */
 public function eof()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L422
 </md:method>
 
 <md:method>
@@ -247,6 +265,7 @@ public function eof()
 	 * @return boolean Success
 	 */
 public function write($data)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L432
 </md:method>
 
 <md:method>
@@ -256,6 +275,7 @@ public function write($data)
 	 * @return boolean Success
 	 */
 public function writeln($data)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L457
 </md:method>
 
 <md:method>
@@ -265,6 +285,7 @@ public function writeln($data)
 	 * @return this
 	 */
 public function onEOF($cb = NULL)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L479
 </md:method>
 
 

@@ -19,6 +19,7 @@ class Crypt;
 	 * @return string
 	 */
 public static function hash($str, $salt = '', $plain = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.php#L21
 </md:method>
 
 <md:method>
@@ -32,6 +33,7 @@ public static function hash($str, $salt = '', $plain = false)
 	 * @return string
 	 */
 public static function randomString($len = null, $chars = null, $cb = null, $pri = 0, $hang = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.php#L59
 </md:method>
 
 <md:method>
@@ -42,6 +44,7 @@ public static function randomString($len = null, $chars = null, $cb = null, $pri
 	 * @return string
 	 */
 public static function stringIdx($str, $idx)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.php#L115
 </md:method>
 
 <md:method>
@@ -54,6 +57,7 @@ public static function stringIdx($str, $idx)
 	 * @return integer
 	 */
 public static function randomBytes($len, $cb, $pri = 0, $hang = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.php#L139
 </md:method>
 
 <md:method>
@@ -66,6 +70,7 @@ public static function randomBytes($len, $cb, $pri = 0, $hang = false)
 	 * @return integer
 	 */
 public static function randomInts($numInts, $cb, $pri = 0, $hang = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.php#L158
 </md:method>
 
 <md:method>
@@ -78,6 +83,7 @@ public static function randomInts($numInts, $cb, $pri = 0, $hang = false)
 	 * @return integer
 	 */
 public static function randomInts32($numInts, $cb, $pri = 0, $hang = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.php#L186
 </md:method>
 
 <md:method>
@@ -88,6 +94,7 @@ public static function randomInts32($numInts, $cb, $pri = 0, $hang = false)
 	 * @return boolean    Equal?
 	 */
 public static function compareStrings($a, $b)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.php#L227
 </md:method>
 
 

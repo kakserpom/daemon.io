@@ -318,7 +318,7 @@ class ParsedownCustom extends ParsedownExtra
 	{
 		list($name, $pattern) = $Line['text'][0] <= '-' ? array('ul', '[*+-]') : array('ol', '[0-9]+[.]');
 
-		if (preg_match('/^('.$pattern.')(\#[a-zA-Z0-9_\/-]+)?((?:\.[_a-zA-Z0-9-]+)*)[\s]+(.*)/', $Line['text'], $matches))
+		if (preg_match('/^('.$pattern.')(\#[a-zA-Z0-9_\/-]+)?((?:\.[\w-]+)*)[\s]+(.*)/', $Line['text'], $matches))
 		{
 			$classes = $this->parseClasses($matches[3]);
 
@@ -360,7 +360,7 @@ class ParsedownCustom extends ParsedownExtra
 
 	protected function addToList($Line, array $Block)
 	{
-		if ($Block['indent'] === $Line['indent'] and preg_match('/^('.$Block['pattern'].')(\#[a-zA-Z0-9_\/-]+)?((?:\.[_a-zA-Z0-9-]+)*)[\s]+(.*)/', $Line['text'], $matches))
+		if ($Block['indent'] === $Line['indent'] and preg_match('/^('.$Block['pattern'].')(\#[a-zA-Z0-9_\/-]+)?((?:\.[\w-]+)*)[\s]+(.*)/', $Line['text'], $matches))
 		{
 			if (isset($Block['interrupted']))
 			{
@@ -431,7 +431,7 @@ class ParsedownCustom extends ParsedownExtra
 	{
 		$marker = $Excerpt['text'][0];
 
-		if (preg_match('/^('.$marker.'+)(?:(:[a-z]+)?((?:\.[_a-zA-Z0-9-]+)*)`)?(.+?)(?<!'.$marker.')\1(?!'.$marker.')/', $Excerpt['text'], $matches))
+		if (preg_match('/^('.$marker.'+)(?:(:[a-z]+)?((?:\.[\w-]+)*)`)?(.+?)(?<!'.$marker.')\1(?!'.$marker.')/', $Excerpt['text'], $matches))
 		{
 			$text = $matches[4];
 
@@ -484,7 +484,7 @@ class ParsedownCustom extends ParsedownExtra
 	protected function identifyFencedCode($Line)
 	{
 		// if (preg_match('/^(['.$Line['text'][0].']{3,})[ ]*([\w-]+)?[ ]*$/', $Line['text'], $matches))
-		if(preg_match('/^(['.$Line['text'][0].']{3,})([\w+-]+)?(:[a-z]+)?((?:\.[_a-zA-Z0-9-]+)*)[\s]*$/', $Line['text'], $matches))
+		if(preg_match("/^([{$Line['text'][0]}]{3,})([\w+-]+)?(:[a-z]+)?((?:\.[\w-]+)*)((?:\[[^\\]]+\])*)[\s]*$/", $Line['text'], $matches))
 		{
 			$Element = array(
 				'name' => 'code',
@@ -519,6 +519,15 @@ class ParsedownCustom extends ParsedownExtra
 				$Block['element']['attributes'] = [
 					'class' => $this->parseClasses($matches[4])
 				];
+			}
+
+			if(isset($matches[5]) && $matches[5]) {
+				preg_match_all('/\[([^\]]+)\]/', $matches[5], $mats);
+
+				foreach ($mats[1] as $str) {
+					list($key, $val) = explode('=', $str, 2);
+					$Block['element']['attributes'][$key] = $val;
+				}
 			}
 
 			return $Block;

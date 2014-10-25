@@ -79,6 +79,7 @@ public $closed = false;
 	 * @param string   $path Path
 	 */
 public function __construct($fd, $path)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L82
 </md:method>
 
 <md:method>
@@ -87,6 +88,7 @@ public function __construct($fd, $path)
 	 * @return resource File descriptor
 	 */
 public function getFd()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L92
 </md:method>
 
 <md:method>
@@ -97,6 +99,7 @@ public function getFd()
 	 * @return mixed
 	 */
 public static function convertFlags($mode, $text = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L102
 </md:method>
 
 <md:method>
@@ -108,6 +111,7 @@ public static function convertFlags($mode, $text = false)
 	 * @return resource|boolean
 	 */
 public function truncate($offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L130
 </md:method>
 
 <md:method>
@@ -118,6 +122,7 @@ public function truncate($offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|boolean
 	 */
 public function stat($cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L155
 </md:method>
 
 <md:method>
@@ -128,6 +133,7 @@ public function stat($cb, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|boolean
 	 */
 public function statRefresh($cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L184
 </md:method>
 
 <md:method>
@@ -138,6 +144,7 @@ public function statRefresh($cb, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|boolean
 	 */
 public function statvfs($cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L209
 </md:method>
 
 <md:method>
@@ -148,6 +155,7 @@ public function statvfs($cb, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|false
 	 */
 public function sync($cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L239
 </md:method>
 
 <md:method>
@@ -158,6 +166,7 @@ public function sync($cb, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|false
 	 */
 public function datasync($cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L260
 </md:method>
 
 <md:method>
@@ -170,6 +179,7 @@ public function datasync($cb, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|false
 	 */
 public function write($data, $cb = null, $offset = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L283
 </md:method>
 
 <md:method>
@@ -182,6 +192,7 @@ public function write($data, $cb = null, $offset = null, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|false
 	 */
 public function chown($uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L331
 </md:method>
 
 <md:method>
@@ -194,6 +205,7 @@ public function chown($uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|false
 	 */
 public function touch($mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L360
 </md:method>
 
 <md:method>
@@ -202,6 +214,7 @@ public function touch($mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @return void
 	 */
 public function clearStatCache()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L382
 </md:method>
 
 <md:method>
@@ -214,6 +227,7 @@ public function clearStatCache()
 	 * @return boolean
 	 */
 public function read($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L395
 </md:method>
 
 <md:method>
@@ -228,6 +242,7 @@ public function read($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT
 	 * @return boolean           Success
 	 */
 public function sendfile($outfd, $cb, $startCb = null, $offset = 0, $length = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L431
 </md:method>
 
 <md:method>
@@ -240,6 +255,7 @@ public function sendfile($outfd, $cb, $startCb = null, $offset = 0, $length = nu
 	 * @return resource|false
 	 */
 public function readahead($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L511
 </md:method>
 
 <md:method>
@@ -250,6 +266,7 @@ public function readahead($length, $offset = null, $cb = null, $pri = EIO_PRI_DE
 	 * @return boolean       Success
 	 */
 public function readAll($cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L566
 </md:method>
 
 <md:method>
@@ -261,6 +278,7 @@ public function readAll($cb, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|false
 	 */
 public function readAllChunked($cb = null, $chunkcb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L618
 </md:method>
 
 <md:method>
@@ -269,6 +287,7 @@ public function readAllChunked($cb = null, $chunkcb = null, $pri = EIO_PRI_DEFAU
 	 * @return string
 	 */
 public function __toString()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L641
 </md:method>
 
 <md:method>
@@ -278,6 +297,7 @@ public function __toString()
 	 * @return void
 	 */
 public function setChunkSize($n)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L650
 </md:method>
 
 <md:method>
@@ -289,6 +309,7 @@ public function setChunkSize($n)
 	 * @return resource|false
 	 */
 public function seek($offset, $cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L661
 </md:method>
 
 <md:method>
@@ -297,6 +318,7 @@ public function seek($offset, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @return integer
 	 */
 public function tell()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L674
 </md:method>
 
 <md:method>
@@ -305,6 +327,7 @@ public function tell()
 	 * @return resource|false
 	 */
 public function close()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L685
 </md:method>
 
 <md:method>
@@ -312,6 +335,7 @@ public function close()
 	 * Destructor
 	 */
 public function __destruct()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L709
 </md:method>
 
 #### file-system # Class FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
@@ -395,6 +419,7 @@ public static $eioVer = '1.2.1';
 	 * @return void
 	 */
 public static function init()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L70
 </md:method>
 
 <md:method>
@@ -403,6 +428,7 @@ public static function init()
 	 * @return void
 	 */
 public static function initEvent()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L87
 </md:method>
 
 <md:method>
@@ -412,6 +438,7 @@ public static function initEvent()
 	 * @return boolean      Exists and readable?
 	 */
 public static function checkFileReadable($path)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L106
 </md:method>
 
 <md:method>
@@ -420,6 +447,7 @@ public static function checkFileReadable($path)
 	 * @return void
 	 */
 public static function waitAllEvents()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L115
 </md:method>
 
 <md:method>
@@ -428,6 +456,7 @@ public static function waitAllEvents()
 	 * @return void
 	 */
 public static function updateConfig()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L128
 </md:method>
 
 <md:method>
@@ -437,6 +466,7 @@ public static function updateConfig()
 	 * @return string       Sanitized path
 	 */
 public static function sanitizePath($path)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L151
 </md:method>
 
 <md:method>
@@ -446,6 +476,7 @@ public static function sanitizePath($path)
 	 * @return array hash
 	 */
 public static function statPrepare($stat)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L162
 </md:method>
 
 <md:method>
@@ -457,6 +488,7 @@ public static function statPrepare($stat)
 	 * @return resource|true
 	 */
 public static function stat($path, $cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L177
 </md:method>
 
 <md:method>
@@ -468,6 +500,7 @@ public static function stat($path, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|boolean
 	 */
 public static function unlink($path, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L195
 </md:method>
 
 <md:method>
@@ -480,6 +513,7 @@ public static function unlink($path, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|boolean
 	 */
 public static function rename($path, $newpath, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L215
 </md:method>
 
 <md:method>
@@ -491,6 +525,7 @@ public static function rename($path, $newpath, $cb = null, $pri = EIO_PRI_DEFAUL
 	 * @return resource|false
 	 */
 public static function statvfs($path, $cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L234
 </md:method>
 
 <md:method>
@@ -502,6 +537,7 @@ public static function statvfs($path, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|true
 	 */
 public static function lstat($path, $cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L250
 </md:method>
 
 <md:method>
@@ -513,6 +549,7 @@ public static function lstat($path, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|true
 	 */
 public static function realpath($path, $cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L268
 </md:method>
 
 <md:method>
@@ -523,6 +560,7 @@ public static function realpath($path, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|false
 	 */
 public static function sync($cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L283
 </md:method>
 
 <md:method>
@@ -533,6 +571,7 @@ public static function sync($cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|false
 	 */
 public static function syncfs($cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L300
 </md:method>
 
 <md:method>
@@ -546,6 +585,7 @@ public static function syncfs($cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|boolean
 	 */
 public static function touch($path, $mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L320
 </md:method>
 
 <md:method>
@@ -557,6 +597,7 @@ public static function touch($path, $mtime, $atime = null, $cb = null, $pri = EI
 	 * @return resource|boolean
 	 */
 public static function rmdir($path, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L339
 </md:method>
 
 <md:method>
@@ -569,6 +610,7 @@ public static function rmdir($path, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|boolean
 	 */
 public static function mkdir($path, $mode, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L359
 </md:method>
 
 <md:method>
@@ -581,6 +623,7 @@ public static function mkdir($path, $mode, $cb = null, $pri = EIO_PRI_DEFAULT)
 	 * @return resource|true
 	 */
 public static function readdir($path, $cb = null, $flags, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L379
 </md:method>
 
 <md:method>
@@ -593,6 +636,7 @@ public static function readdir($path, $cb = null, $flags, $pri = EIO_PRI_DEFAULT
 	 * @return resource|boolean
 	 */
 public static function truncate($path, $offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L399
 </md:method>
 
 <md:method>
@@ -608,6 +652,7 @@ public static function truncate($path, $offset = 0, $cb = null, $pri = EIO_PRI_D
 	 * @return true              Success
 	 */
 public static function sendfile($outfd, $path, $cb, $startCb = null, $offset = 0, $length = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L423
 </md:method>
 
 <md:method>
@@ -621,6 +666,7 @@ public static function sendfile($outfd, $path, $cb, $startCb = null, $offset = 0
 	 * @return resource|boolean
 	 */
 public static function chown($path, $uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L455
 </md:method>
 
 <md:method>
@@ -632,6 +678,7 @@ public static function chown($path, $uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT
 	 * @return resource|true
 	 */
 public static function readfile($path, $cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L475
 </md:method>
 
 <md:method>
@@ -644,6 +691,7 @@ public static function readfile($path, $cb, $pri = EIO_PRI_DEFAULT)
 	 * @return resource
 	 */
 public static function readfileChunked($path, $cb, $chunkcb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L498
 </md:method>
 
 <md:method>
@@ -654,6 +702,7 @@ public static function readfileChunked($path, $cb, $chunkcb, $pri = EIO_PRI_DEFA
 	 * @return string         Path
 	 */
 public static function genRndTempnam($dir = null, $prefix = 'php')
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L520
 </md:method>
 
 <md:method>
@@ -664,6 +713,7 @@ public static function genRndTempnam($dir = null, $prefix = 'php')
 	 * @return string         Path
 	 */
 public static function genRndTempnamPrefix($dir, $prefix)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L538
 </md:method>
 
 <md:method>
@@ -675,6 +725,7 @@ public static function genRndTempnamPrefix($dir, $prefix)
 	 * @return resource
 	 */
 public static function tempnam($dir, $prefix, $cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L575
 </md:method>
 
 <md:method>
@@ -688,6 +739,7 @@ public static function tempnam($dir, $prefix, $cb)
 	 * @return resource
 	 */
 public static function open($path, $flags, $cb, $mode = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L593
 </md:method>
 
 #### file-watcher # Class FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
@@ -727,6 +779,7 @@ public $descriptors = [ ];
 	 * Constructor
 	 */
 public function __construct()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L34
 </md:method>
 
 <md:method>
@@ -738,6 +791,7 @@ public function __construct()
 	 * @return true
 	 */
 public function addWatch($path, $cb, $flags = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L58
 </md:method>
 
 <md:method>
@@ -748,6 +802,7 @@ public function addWatch($path, $cb, $flags = null)
 	 * @return boolean
 	 */
 public function rmWatch($path, $cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L77
 </md:method>
 
 <md:method>
@@ -757,6 +812,7 @@ public function rmWatch($path, $cb)
 	 * @return void
 	 */
 public function onFileChanged($path)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L103
 </md:method>
 
 <md:method>
@@ -765,6 +821,7 @@ public function onFileChanged($path)
 	 * @return void
 	 */
 public function watch()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L122
 </md:method>
 
 

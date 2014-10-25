@@ -16,6 +16,7 @@ class Terminal;
 	 * Constructor
 	 */
 public function __construct()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Terminal.php#L26
 </md:method>
 
 <md:method>
@@ -24,6 +25,7 @@ public function __construct()
 	 * @return string Line
 	 */
 public function readln()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Terminal.php#L34
 </md:method>
 
 <md:method>
@@ -33,6 +35,7 @@ public function readln()
 	 * @return void
 	 */
 public function enableColor($bool = true)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Terminal.php#L43
 </md:method>
 
 <md:method>
@@ -41,6 +44,7 @@ public function enableColor($bool = true)
 	 * @return void
 	 */
 public function clearScreen()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Terminal.php#L51
 </md:method>
 
 <md:method>
@@ -50,6 +54,7 @@ public function clearScreen()
 	 * @return void
 	 */
 public function setStyle($c)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Terminal.php#L60
 </md:method>
 
 <md:method>
@@ -58,6 +63,7 @@ public function setStyle($c)
 	 * @return void
 	 */
 public function resetStyle()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Terminal.php#L70
 </md:method>
 
 <md:method>
@@ -69,6 +75,7 @@ public function resetStyle()
 	 * @return void
 	 */
 public function drawParam($name, $description, $values = '')
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Terminal.php#L98
 </md:method>
 
 <md:method>
@@ -78,6 +85,7 @@ public function drawParam($name, $description, $values = '')
 	 * @return void
 	 */
 public function drawTable($rows)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Terminal.php#L179
 </md:method>
 
 

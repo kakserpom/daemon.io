@@ -272,6 +272,7 @@ public $pool;
 	 * @return void
 	 */
 public function onConnected($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L199
 </md:method>
 
 <md:method>
@@ -280,6 +281,7 @@ public function onConnected($cb)
 	 * @return void
 	 */
 public function onReady()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L219
 </md:method>
 
 <md:method>
@@ -289,6 +291,7 @@ public function onReady()
 	 * @return boolean         Success
 	 */
 public function sendPacket($packet)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L230
 </md:method>
 
 <md:method>
@@ -298,6 +301,7 @@ public function sendPacket($packet)
 	 * @return string    Resulting binary string
 	 */
 public function buildLenEncodedBinary($s)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L240
 </md:method>
 
 <md:method>
@@ -306,6 +310,7 @@ public function buildLenEncodedBinary($s)
 	 * @return integer Result
 	 */
 public function parseEncodedBinary()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L266
 </md:method>
 
 <md:method>
@@ -314,6 +319,7 @@ public function parseEncodedBinary()
 	 * @return integer Result
 	 */
 public function parseEncodedString()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L290
 </md:method>
 
 <md:method>
@@ -324,6 +330,7 @@ public function parseEncodedString()
 	 * @return string           Result
 	 */
 public function getAuthToken($scramble, $password)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L304
 </md:method>
 
 <md:method>
@@ -332,6 +339,7 @@ public function getAuthToken($scramble, $password)
 	 * @return string Result
 	 */
 public function auth()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L312
 </md:method>
 
 <md:method>
@@ -343,6 +351,7 @@ public function auth()
 	 * @return boolean            Success
 	 */
 public function query($q, $callback = NULL)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L353
 </md:method>
 
 <md:method>
@@ -353,6 +362,7 @@ public function query($q, $callback = NULL)
 	 * @return boolean            Success
 	 */
 public function ping($callback = NULL)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L363
 </md:method>
 
 <md:method>
@@ -366,6 +376,7 @@ public function ping($callback = NULL)
 	 * @return boolean            Success
 	 */
 public function command($cmd, $q = '', $callback = NULL)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L376
 </md:method>
 
 <md:method>
@@ -375,6 +386,7 @@ public function command($cmd, $q = '', $callback = NULL)
 	 * @return boolean Success
 	 */
 public function selectDB($name)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L397
 </md:method>
 
 <md:method>
@@ -383,6 +395,7 @@ public function selectDB($name)
 	 * @return void
 	 */
 public function onRead()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L411
 </md:method>
 
 <md:method>
@@ -391,6 +404,7 @@ public function onRead()
 	 * @return void
 	 */
 public function onResultDone()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L567
 </md:method>
 
 <md:method>
@@ -399,6 +413,7 @@ public function onResultDone()
 	 * @return void
 	 */
 public function onError()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L579
 </md:method>
 
 #### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/MySQL/ConnectionFinished.php}
@@ -900,6 +915,7 @@ public $appInstance;
 	 * @return string
 	 */
 public static function escape($string)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L263
 </md:method>
 
 <md:method>
@@ -909,11 +925,13 @@ public static function escape($string)
 	 * @return string
 	 */
 public static function value($mixed)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L280
 </md:method>
 
 <md:method>
 
 public static function values($arr)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L291
 </md:method>
 
 <md:method>
@@ -923,6 +941,7 @@ public static function values($arr)
 	 * @return string
 	 */
 public static function likeEscape($string)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L307
 </md:method>
 
 

@@ -21,6 +21,7 @@ class ShmEntity;
 	 * @param boolean $create  Create
 	 */
 public function __construct($path, $segsize, $name, $create = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/ShmEntity.php#L47
 </md:method>
 
 <md:method>
@@ -31,6 +32,7 @@ public function __construct($path, $segsize, $name, $create = false)
 	 * @return integer         Segment number
 	 */
 public function open($segno = 0, $create = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/ShmEntity.php#L72
 </md:method>
 
 <md:method>
@@ -39,6 +41,7 @@ public function open($segno = 0, $create = false)
 	 * @return array
 	 */
 public function getSegments()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/ShmEntity.php#L101
 </md:method>
 
 <md:method>
@@ -47,6 +50,7 @@ public function getSegments()
 	 * @return void
 	 */
 public function openall()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/ShmEntity.php#L109
 </md:method>
 
 <md:method>
@@ -57,6 +61,7 @@ public function openall()
 	 * @return boolean         Success
 	 */
 public function write($data, $offset)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/ShmEntity.php#L121
 </md:method>
 
 <md:method>
@@ -67,6 +72,7 @@ public function write($data, $offset)
 	 * @return string          Data
 	 */
 public function read($offset, $length = 1)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/ShmEntity.php#L145
 </md:method>
 
 <md:method>
@@ -75,6 +81,7 @@ public function read($offset, $length = 1)
 	 * @return void
 	 */
 public function delete()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/ShmEntity.php#L174
 </md:method>
 
 

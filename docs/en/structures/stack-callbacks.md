@@ -19,6 +19,7 @@ class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.ph
 	 * @return void
 	 */
 public function push($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/StackCallbacks.php#L20
 </md:method>
 
 <md:method>
@@ -28,6 +29,7 @@ public function push($cb)
 	 * @return void
 	 */
 public function unshift($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/StackCallbacks.php#L29
 </md:method>
 
 <md:method>
@@ -37,6 +39,7 @@ public function unshift($cb)
 	 * @return boolean
 	 */
 public function executeOne()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/StackCallbacks.php#L38
 </md:method>
 
 <md:method>
@@ -46,6 +49,7 @@ public function executeOne()
 	 * @return boolean
 	 */
 public function executeAndKeepOne()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/StackCallbacks.php#L57
 </md:method>
 
 <md:method>
@@ -55,6 +59,7 @@ public function executeAndKeepOne()
 	 * @return integer
 	 */
 public function executeAll()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/StackCallbacks.php#L74
 </md:method>
 
 <md:method>
@@ -63,6 +68,7 @@ public function executeAll()
 	 * @return array
 	 */
 public function toArray()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/StackCallbacks.php#L97
 </md:method>
 
 <md:method>
@@ -71,6 +77,7 @@ public function toArray()
 	 * @return void
 	 */
 public function reset()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/StackCallbacks.php#L109
 </md:method>
 
 

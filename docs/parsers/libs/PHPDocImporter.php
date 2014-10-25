@@ -504,6 +504,9 @@ TPL;
 		$result = '';
 		$methods = $ReflectionEntity->getMethods($access);
 
+		// @todo
+		$link_prefix = 'https://github.com/kakserpom/phpdaemon/blob/master/';
+
 		foreach ($methods as $ReflectionMethod) {
 			$name = $ReflectionMethod->getName();
 			$comment = $ReflectionMethod->getDocComment();
@@ -520,6 +523,7 @@ TPL;
 			$result .= "<md:method>\n";
 			$result .= $comment."\n";
 			$result .= $code."\n";
+			$result .= 'link:'. $link_prefix . $class_path . '#L' . $ReflectionMethod->getStartLine() ."\n";
 			$result .= "</md:method>\n\n";
 		}
 
