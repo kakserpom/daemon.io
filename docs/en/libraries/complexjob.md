@@ -40,17 +40,17 @@ $j(); // Запускаем
 #### consts # Constants
 
 <md:const>
-const STATE_WAITING = 1;
+const STATE_WAITING = 1
 State: waiting
 </md:const>
 
 <md:const>
-const STATE_RUNNING = 2;
+const STATE_RUNNING = 2
 State: running
 </md:const>
 
 <md:const>
-const STATE_DONE = 3;
+const STATE_DONE = 3
 State: done
 </md:const>
 
@@ -60,42 +60,42 @@ State: done
 /**
 	 * @var array Listeners [callable, ...]
 	 */
-public $listeners = [ ];
+public $listeners = [ ]
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Hash of results [jobname -> result, ...]
 	 */
-public $results = [ ];
+public $results = [ ]
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Current state
 	 */
-public $state;
+public $state
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Hash of jobs [jobname -> callback, ...]
 	 */
-public $jobs = [ ];
+public $jobs = [ ]
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Number of results
 	 */
-public $resultsNum = 0;
+public $resultsNum = 0
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Number of jobs
 	 */
-public $jobsNum = 0;
+public $jobsNum = 0
 </md:prop>
 
 #### methods # Methods

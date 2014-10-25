@@ -54,35 +54,35 @@ $priority
 /**
 	 * @var integer|null Timer id
 	 */
-public $id;
+public $id
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Current timeout holder
 	 */
-public $lastTimeout;
+public $lastTimeout
 </md:prop>
 
 <md:prop>
 /**
 	 * @var boolean Is the timer finished?
 	 */
-public $finished = false;
+public $finished = false
 </md:prop>
 
 <md:prop>
 /**
 	 * @var callable Callback
 	 */
-public $cb;
+public $cb
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Priority
 	 */
-public $priority;
+public $priority
 </md:prop>
 
 #### methods # Methods

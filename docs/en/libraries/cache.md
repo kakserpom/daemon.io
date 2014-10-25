@@ -22,28 +22,28 @@ class CappedStorage;
 /**
 	 * @var callable Sorter function
 	 */
-public $sorter;
+public $sorter
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Maximum number of cached elements
 	 */
-public $maxCacheSize = 64;
+public $maxCacheSize = 64
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Additional window to decrease number of sorter calls
 	 */
-public $capWindow = 16;
+public $capWindow = 16
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Storage of cached items
 	 */
-public $cache = [ ];
+public $cache = [ ]
 </md:prop>
 
 ##### methods # Methods
@@ -133,28 +133,28 @@ class CappedStorageHits extends \PHPDaemon\Cache\CappedStorage;
 /**
 	 * @var callable Sorter function
 	 */
-public $sorter;
+public $sorter
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Maximum number of cached elements
 	 */
-public $maxCacheSize = 64;
+public $maxCacheSize = 64
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Additional window to decrease number of sorter calls
 	 */
-public $capWindow = 16;
+public $capWindow = 16
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Storage of cached items
 	 */
-public $cache = [ ];
+public $cache = [ ]
 </md:prop>
 
 ##### methods # Methods
@@ -181,14 +181,14 @@ class Item;
 /**
 	 * @var integer Hits counter
 	 */
-public $hits = 1;
+public $hits = 1
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Expire time
 	 */
-public $expire;
+public $expire
 </md:prop>
 
 ##### methods # Methods

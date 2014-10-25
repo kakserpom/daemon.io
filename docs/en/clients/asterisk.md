@@ -225,57 +225,57 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 ##### consts # Constants
 
 <md:const>
-const CONN_STATE_START = 0;
+const CONN_STATE_START = 0
 @TODO DESCR
 </md:const>
 
 <md:const>
-const CONN_STATE_GOT_INITIAL_PACKET = 0.1;
+const CONN_STATE_GOT_INITIAL_PACKET = 0.1
 @TODO DESCR
 </md:const>
 
 <md:const>
-const CONN_STATE_AUTH = 1;
+const CONN_STATE_AUTH = 1
 @TODO DESCR
 </md:const>
 
 <md:const>
-const CONN_STATE_LOGIN_PACKET_SENT = 1.1;
+const CONN_STATE_LOGIN_PACKET_SENT = 1.1
 @TODO DESCR
 </md:const>
 
 <md:const>
-const CONN_STATE_CHALLENGE_PACKET_SENT = 1.2;
+const CONN_STATE_CHALLENGE_PACKET_SENT = 1.2
 @TODO DESCR
 </md:const>
 
 <md:const>
-const CONN_STATE_LOGIN_PACKET_SENT_AFTER_CHALLENGE = 1.3;
+const CONN_STATE_LOGIN_PACKET_SENT_AFTER_CHALLENGE = 1.3
 @TODO DESCR
 </md:const>
 
 <md:const>
-const CONN_STATE_HANDSHAKED_OK = 2.1;
+const CONN_STATE_HANDSHAKED_OK = 2.1
 @TODO DESCR
 </md:const>
 
 <md:const>
-const CONN_STATE_HANDSHAKED_ERROR = 2.2;
+const CONN_STATE_HANDSHAKED_ERROR = 2.2
 @TODO DESCR
 </md:const>
 
 <md:const>
-const INPUT_STATE_START = 0;
+const INPUT_STATE_START = 0
 @TODO DESCR
 </md:const>
 
 <md:const>
-const INPUT_STATE_END_OF_PACKET = 1;
+const INPUT_STATE_END_OF_PACKET = 1
 @TODO DESCR
 </md:const>
 
 <md:const>
-const INPUT_STATE_PROCESSING = 2;
+const INPUT_STATE_PROCESSING = 2
 @TODO DESCR
 </md:const>
 
@@ -285,56 +285,56 @@ const INPUT_STATE_PROCESSING = 2;
 /**
 	 * @var string EOL
 	 */
-public $EOL = '\r\n';
+public $EOL = '\r\n'
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string The username to access the interface
 	 */
-public $username;
+public $username
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string The password defined in manager interface of server
 	 */
-public $secret;
+public $secret
 </md:prop>
 
 <md:prop>
 /**
 	 * @var float Connection's state
 	 */
-public $state = 0;
+public $state = 0
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Input state
 	 */
-public $instate = 0;
+public $instate = 0
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Received packets
 	 */
-public $packets = [ ];
+public $packets = [ ]
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer For composite response on action
 	 */
-public $cnt = 0;
+public $cnt = 0
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Stack of callbacks called when response received
 	 */
-public $callbacks = [ ];
+public $callbacks = [ ]
 </md:prop>
 
 <md:prop>
@@ -344,21 +344,21 @@ public $callbacks = [ ];
 	 * an action complete event indicating that all data has been sent
 	 * @var array
 	 */
-public $assertions = [ ];
+public $assertions = [ ]
 </md:prop>
 
 <md:prop>
 /**
 	 * @var callable Callback. Called when received response on challenge action
 	 */
-public $onChallenge;
+public $onChallenge
 </md:prop>
 
 <md:prop>
 /**
 	 * @var object Associated pool
 	 */
-public $pool;
+public $pool
 </md:prop>
 
 ##### methods # Methods
@@ -701,7 +701,7 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### options # Options
 
- - `authtype ('md5')`  
+ - `authtype (string = 'md5')`  
  Auth hash type
 
  - `port (integer = 5280)`  
@@ -717,49 +717,49 @@ public static $safeCaseValues = [
   0 => 'dialstring',
   1 => 'callerid',
   2 => 'connectedline',
-];
+]
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Default connection class
 	 */
-public $connectionClass;
+public $connectionClass
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Name
 	 */
-public $name;
+public $name
 </md:prop>
 
 <md:prop>
 /**
 	 * @var \PHPDaemon\Config\Section Configuration
 	 */
-public $config;
+public $config
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Max concurrency
 	 */
-public $maxConcurrency = 0;
+public $maxConcurrency = 0
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Max allowed packet
 	 */
-public $maxAllowedPacket = 0;
+public $maxAllowedPacket = 0
 </md:prop>
 
 <md:prop>
 /**
 	 * @var object|null Application instance object
 	 */
-public $appInstance;
+public $appInstance
 </md:prop>
 
 ##### methods # Methods

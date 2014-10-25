@@ -14,14 +14,14 @@ abstract class Generic extends \PHPDaemon\Request\Generic;
 /**
 	 * @var boolean Keepalive?
 	 */
-public $keepalive = false;
+public $keepalive = false
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Current response length
 	 */
-public $responseLength = 0;
+public $responseLength = 0
 </md:prop>
 
 <md:prop>
@@ -32,7 +32,7 @@ public static $hvaltr = [
   '; ' => '&',
   ';' => '&',
   ' ' => '%20',
-];
+]
 </md:prop>
 
 <md:prop>
@@ -41,7 +41,7 @@ public static $hvaltr = [
 	 */
 public static $htr = [
   '-' => '_',
-];
+]
 </md:prop>
 
 <md:prop>
@@ -49,7 +49,7 @@ public static $htr = [
 	 * Related Application instance
 	 * @var \PHPDaemon\Core\AppInstance
 	 */
-public $appInstance;
+public $appInstance
 </md:prop>
 
 <md:prop>
@@ -57,7 +57,7 @@ public $appInstance;
 	 * Attributes
 	 * @var \StdCLass
 	 */
-public $attrs;
+public $attrs
 </md:prop>
 
 #### methods # Methods

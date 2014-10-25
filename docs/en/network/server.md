@@ -14,49 +14,49 @@ abstract class Server extends [Pool](#../pool);
 /**
 	 * @var array|null Allowed clients
 	 */
-public $allowedClients;
+public $allowedClients
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Default connection class
 	 */
-public $connectionClass;
+public $connectionClass
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Name
 	 */
-public $name;
+public $name
 </md:prop>
 
 <md:prop>
 /**
 	 * @var \PHPDaemon\Config\Section Configuration
 	 */
-public $config;
+public $config
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Max concurrency
 	 */
-public $maxConcurrency = 0;
+public $maxConcurrency = 0
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Max allowed packet
 	 */
-public $maxAllowedPacket = 0;
+public $maxAllowedPacket = 0
 </md:prop>
 
 <md:prop>
 /**
 	 * @var object|null Application instance object
 	 */
-public $appInstance;
+public $appInstance
 </md:prop>
 
 #### methods # Methods

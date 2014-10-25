@@ -18,56 +18,56 @@ class File;
 /**
 	 * @var integer Priority
 	 */
-public $priority = 10;
+public $priority = 10
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Chunk size
 	 */
-public $chunkSize = 4096;
+public $chunkSize = 4096
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Current offset
 	 */
-public $offset = 0;
+public $offset = 0
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Cache key
 	 */
-public $fdCacheKey;
+public $fdCacheKey
 </md:prop>
 
 <md:prop>
 /**
 	 * @var boolean Append?
 	 */
-public $append;
+public $append
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Path
 	 */
-public $path;
+public $path
 </md:prop>
 
 <md:prop>
 /**
 	 * @var boolean Writing?
 	 */
-public $writing = false;
+public $writing = false
 </md:prop>
 
 <md:prop>
 /**
 	 * @var boolean Closed?
 	 */
-public $closed = false;
+public $closed = false
 </md:prop>
 
 ##### methods # Methods
@@ -351,21 +351,21 @@ class FileSystem;
 /**
 	 * @var boolean Is EIO supported?
 	 */
-public static $supported;
+public static $supported
 </md:prop>
 
 <md:prop>
 /**
 	 * @var Event Main FS event
 	 */
-public static $ev;
+public static $ev
 </md:prop>
 
 <md:prop>
 /**
 	 * @var resource EIO file descriptor
 	 */
-public static $fd;
+public static $fd
 </md:prop>
 
 <md:prop>
@@ -380,35 +380,35 @@ public static $modeTypes = [
   16384 => 'd',
   8192 => 'c',
   4096 => 'p',
-];
+]
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer TTL for bad descriptors in seconds
 	 */
-public static $badFDttl = 5;
+public static $badFDttl = 5
 </md:prop>
 
 <md:prop>
 /**
 	 * @var PHPDaemon\Cache\CappedStorage File descriptor cache
 	 */
-public static $fdCache;
+public static $fdCache
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Maximum number of open files in cache
 	 */
-public static $fdCacheSize = 128;
+public static $fdCacheSize = 128
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Required EIO version
 	 */
-public static $eioVer = '1.2.1';
+public static $eioVer = '1.2.1'
 </md:prop>
 
 ##### methods # Methods
@@ -755,21 +755,21 @@ class FileWatcher;
 /**
 	 * @var array Associative array of the files being observed
 	 */
-public $files = [ ];
+public $files = [ ]
 </md:prop>
 
 <md:prop>
 /**
 	 * @var resource Resource returned by inotify_init()
 	 */
-public $inotify;
+public $inotify
 </md:prop>
 
 <md:prop>
 /**
 	 * @var Array of inotify descriptors
 	 */
-public $descriptors = [ ];
+public $descriptors = [ ]
 </md:prop>
 
 ##### methods # Methods

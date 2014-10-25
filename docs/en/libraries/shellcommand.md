@@ -42,42 +42,42 @@ ShellCommand::exec($command, $cb, $arguments, $env);
 /**
 	 * @var string Executable path
 	 */
-public $binPath;
+public $binPath
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string SUID
 	 */
-public $setUser;
+public $setUser
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string SGID
 	 */
-public $setGroup;
+public $setGroup
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Chroot
 	 */
-public $chroot = '/';
+public $chroot = '/'
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Chdir
 	 */
-public $cwd;
+public $cwd
 </md:prop>
 
 <md:prop>
 /**
 	 * @var object Associated pool
 	 */
-public $pool;
+public $pool
 </md:prop>
 
 #### methods # Methods

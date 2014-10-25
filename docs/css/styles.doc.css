@@ -26,6 +26,10 @@ h5 {
 	font-size: 18px;
 }
 
+.dn {
+	display: none;
+}
+
 header, menu, nav, article, footer, section, aside {
 	display: block;
 	margin: 0;
@@ -510,6 +514,9 @@ pre.inline code {
 	background: #f8f8f8 !important;
 	white-space: pre-wrap;
 }
+pre.wico code {
+	margin-left: 13px;
+}
 
 pre a,
 code a {
@@ -558,7 +565,16 @@ code.clear {
 	line-height: normal;
 }
 
+.method pre code .hljs-function .hljs-keyword {
+	display: inline-block;
+	overflow: hidden;
+	margin-left: -7px;
+	width: 0;
+	height: 0;
+}
+
 .method-link {
+	position: absolute;
 	float: left;
 	line-height: 28px;
 	font-size: 18px;

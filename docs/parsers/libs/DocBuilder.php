@@ -414,17 +414,21 @@ class DocBuilder {
 		foreach ($doc_params as $tag) {
 			$name = $tag->getVariableName();
 			$type = $tag->getType();
+			$desc = $tag->getDescription();
 			$deftype = $this->getDocDefaultType($type);
 
-			$code_params[] = $deftype .' '. $name . (isset($args[$name]) ? ' = '.$args[$name] : '');
+			if($name === '' && $desc[0] === '&' && $desc[1] === '$') {
+				list($name, $desc) = explode(' ', $desc, 2);
+			}
 
+			$code_params[] = $deftype .' '. $name . (isset($args[$name]) ? ' = '.$args[$name] : '');
 			$extra = '';
 			if($deftype === 'callable') {
 				if(isset($callbacks[$name])) {
 					$extra = "callback {$callbacks[$name]}\n";
 				}
 			}
-			$desc_params[] = $name ."\n". $extra. $tag->getDescription();
+			$desc_params[] = $name ."\n". $extra . $desc;
 		}
 
 		$result = '';
@@ -443,7 +447,7 @@ class DocBuilder {
 			$result .= $this->showReturnType($code_return_type) .' '. $code_out_params .' ( '. implode(', ', $code_params) ." )\n\n";
 		} else {
 			foreach ($doc_methods as $tag) {
-				$result .= $tag->getDescription() . "<span style='display:none'>;</span>\n";
+				$result .= $tag->getDescription() . "<i class='dn'>;</i>\n";
 			}
 			$result .= "\n";
 		}
@@ -485,7 +489,7 @@ class DocBuilder {
 		$code = array_shift($lines);
 
 		if($code && strpos($code, 'link:') === 0) {
-			list($link, $code) = explode("\n", $code);
+			list($link, $code) = explode("\n", $code, 2);
 			$link = substr($link, 5);
 		}
 
@@ -506,7 +510,7 @@ class DocBuilder {
 				$attrs .= '[data-link='. $link .']';
 			}
 
-			$result .= " -#{$matches2[1]}.method ```php:p.inline". $attrs ."\n {$code}\n ```\n";
+			$result .= " -#{$matches2[1]}.method ```php:p.inline.wico". $attrs ."\n {$code}\n ```\n";
 		}
 
 		# 2. Описание

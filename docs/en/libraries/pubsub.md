@@ -102,21 +102,21 @@ class PubSubEvent extends \SplObjectStorage;
 /**
 	 * @var array Subscriptions
 	 */
-public $sub = [ ];
+public $sub = [ ]
 </md:prop>
 
 <md:prop>
 /**
 	 * @var callable Activation callback
 	 */
-public $actCb;
+public $actCb
 </md:prop>
 
 <md:prop>
 /**
 	 * @var callable Deactivation callback
 	 */
-public $deactCb;
+public $deactCb
 </md:prop>
 
 ##### methods # Methods

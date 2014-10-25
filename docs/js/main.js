@@ -331,7 +331,8 @@ $(function(){
 
 		var phpTypesKeys = [];
 		for(var k in phpTypes) phpTypesKeys.push(k);
-		var reg = new RegExp('(^|[^\\w\\-\\/])('+phpTypesKeys.join('|')+')(?=[^\\w\\-\\/])', 'g');
+		// var reg = new RegExp('(^|[^\\w\\-\\/])('+phpTypesKeys.join('|')+')(?=[^\\w\\-\\/])', 'g');
+		var reg = new RegExp('(^|\\(|\\( |\\,|\\, )('+phpTypesKeys.join('|')+')(?=( \\$| public| protected| private))', 'gm');
 
 		// типы переменных делаем ссылками
 		$('.method code').each(function(){
@@ -365,7 +366,10 @@ $(function(){
 
 		$("pre code, .code_highlight").each(function(i, block) {
 			hljs.highlightBlock(block);
-			$(block).find(".hljs-function .hljs-keyword:contains('function')").parent().remove();
+
+			// if($(block).parent().parent().is('li.method')) {
+			// 	$(block).find(".hljs-function .hljs-keyword:contains('function')").parent().remove();
+			// }
 		});
 
 		// $('.code_highlight, pre.inline code').each(function(){

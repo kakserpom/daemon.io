@@ -11,12 +11,12 @@ abstract class IOStream;
 #### consts # Constants
 
 <md:const>
-const STATE_ROOT = 0;
+const STATE_ROOT = 0
 Alias of STATE_STANDBY
 </md:const>
 
 <md:const>
-const STATE_STANDBY = 0;
+const STATE_STANDBY = 0
 Standby state (default state)
 </md:const>
 
@@ -26,7 +26,7 @@ Standby state (default state)
 /**
 	 * @var object Associated pool
 	 */
-public $pool;
+public $pool
 </md:prop>
 
 #### methods # Methods

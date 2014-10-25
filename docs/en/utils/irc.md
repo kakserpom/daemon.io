@@ -158,14 +158,14 @@ public static $codes = [
   491 => 'ERR_NOOPERHOST',
   501 => 'ERR_UMODEUNKNOWNFLAG',
   502 => 'ERR_USERSDONTMATCH',
-];
+]
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Flipped IRC codes
 	 */
-public static $codesFlip;
+public static $codesFlip
 </md:prop>
 
 #### methods # Methods

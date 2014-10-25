@@ -14,7 +14,7 @@ class ClientConnection extends [Connection](#../connection);
 /**
 	 * @var object Associated pool
 	 */
-public $pool;
+public $pool
 </md:prop>
 
 #### methods # Methods

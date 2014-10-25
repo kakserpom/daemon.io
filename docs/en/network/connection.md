@@ -14,7 +14,7 @@ abstract class Connection extends [IOStream](#../iostream);
 /**
 	 * @var object Associated pool
 	 */
-public $pool;
+public $pool
 </md:prop>
 
 #### methods # Methods

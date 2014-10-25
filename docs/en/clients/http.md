@@ -35,12 +35,12 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 ##### consts # Constants
 
 <md:const>
-const STATE_HEADERS = 1;
+const STATE_HEADERS = 1
 State: headers
 </md:const>
 
 <md:const>
-const STATE_BODY = 2;
+const STATE_BODY = 2
 State: body
 </md:const>
 
@@ -50,85 +50,85 @@ State: body
 /**
 	 * @var array Associative array of headers
 	 */
-public $headers = [ ];
+public $headers = [ ]
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Content length
 	 */
-public $contentLength = -1;
+public $contentLength = -1
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Contains response body
 	 */
-public $body = '';
+public $body = ''
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Associative array of Cookies
 	 */
-public $cookie = [ ];
+public $cookie = [ ]
 </md:prop>
 
 <md:prop>
 /**
 	 * @var boolean
 	 */
-public $chunked = false;
+public $chunked = false
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer
 	 */
-public $protocolError;
+public $protocolError
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer
 	 */
-public $responseCode = 0;
+public $responseCode = 0
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Last requested URL
 	 */
-public $lastURL;
+public $lastURL
 </md:prop>
 
 <md:prop>
 /**
 	 * @var array Raw headers array
 	 */
-public $rawHeaders;
+public $rawHeaders
 </md:prop>
 
 <md:prop>
 
-public $contentType;
+public $contentType
 </md:prop>
 
 <md:prop>
 
-public $charset;
+public $charset
 </md:prop>
 
 <md:prop>
 
-public $eofTerminated = false;
+public $eofTerminated = false
 </md:prop>
 
 <md:prop>
 /**
 	 * @var object Associated pool
 	 */
-public $pool;
+public $pool
 </md:prop>
 
 ##### methods # Methods
@@ -222,42 +222,42 @@ class Pool extends \PHPDaemon\Network\Client;
 /**
 	 * @var string Default connection class
 	 */
-public $connectionClass;
+public $connectionClass
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Name
 	 */
-public $name;
+public $name
 </md:prop>
 
 <md:prop>
 /**
 	 * @var \PHPDaemon\Config\Section Configuration
 	 */
-public $config;
+public $config
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Max concurrency
 	 */
-public $maxConcurrency = 0;
+public $maxConcurrency = 0
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Max allowed packet
 	 */
-public $maxAllowedPacket = 0;
+public $maxAllowedPacket = 0
 </md:prop>
 
 <md:prop>
 /**
 	 * @var object|null Application instance object
 	 */
-public $appInstance;
+public $appInstance
 </md:prop>
 
 ##### methods # Methods
@@ -326,49 +326,49 @@ class Simple extends \PHPDaemon\Core\AppInstance;
 
 <md:prop>
 
-public $httpclient;
+public $httpclient
 </md:prop>
 
 <md:prop>
 /**
 	 * @var boolean If true, it's allowed to be run without defined config section'
 	 */
-public static $runOnDemand = true;
+public static $runOnDemand = true
 </md:prop>
 
 <md:prop>
 /**
 	 * @var string Optional passphrase
 	 */
-public $passphrase;
+public $passphrase
 </md:prop>
 
 <md:prop>
 /**
 	 * @var boolean Ready to run?
 	 */
-public $ready = false;
+public $ready = false
 </md:prop>
 
 <md:prop>
 /**
 	 * @var object Related config section
 	 */
-public $config;
+public $config
 </md:prop>
 
 <md:prop>
 /**
 	 * @var boolean Is RPC enabled?
 	 */
-public $enableRPC = false;
+public $enableRPC = false
 </md:prop>
 
 <md:prop>
 /**
 	 * @var null|string Default class of incoming requests
 	 */
-public $requestClass;
+public $requestClass
 </md:prop>
 
 ##### methods # Methods
@@ -424,14 +424,14 @@ class SimpleRequest extends \PHPDaemon\HTTPRequest\Generic;
 /**
 	 * @var boolean Keepalive?
 	 */
-public $keepalive = false;
+public $keepalive = false
 </md:prop>
 
 <md:prop>
 /**
 	 * @var integer Current response length
 	 */
-public $responseLength = 0;
+public $responseLength = 0
 </md:prop>
 
 <md:prop>
@@ -442,7 +442,7 @@ public static $hvaltr = [
   '; ' => '&',
   ';' => '&',
   ' ' => '%20',
-];
+]
 </md:prop>
 
 <md:prop>
@@ -451,7 +451,7 @@ public static $hvaltr = [
 	 */
 public static $htr = [
   '-' => '_',
-];
+]
 </md:prop>
 
 <md:prop>
@@ -459,7 +459,7 @@ public static $htr = [
 	 * Related Application instance
 	 * @var \PHPDaemon\Core\AppInstance
 	 */
-public $appInstance;
+public $appInstance
 </md:prop>
 
 <md:prop>
@@ -467,7 +467,7 @@ public $appInstance;
 	 * Attributes
 	 * @var \StdCLass
 	 */
-public $attrs;
+public $attrs
 </md:prop>
 
 ##### methods # Methods

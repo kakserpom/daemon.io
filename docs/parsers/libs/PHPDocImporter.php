@@ -462,7 +462,7 @@ TPL;
 		}
 
 		if(preg_match("/^\s*(const[ \t]*{$constant}[ \t]*\=[ \t]*(.+?)\;)/im", $cache[$path], $matches)) {
-			return "const $constant = {$matches[2]};";
+			return "const $constant = {$matches[2]}";
 		}
 
 		return false;
@@ -524,7 +524,7 @@ TPL;
 			
 			$result .= "<md:prop>\n";
 			$result .= $comment."\n";
-			$result .= $code.";\n";
+			$result .= $code."\n";
 			$result .= "</md:prop>\n\n";
 		}
 
