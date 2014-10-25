@@ -205,6 +205,17 @@ namespace PHPDaemon\Clients\HTTP;
 class Pool extends \PHPDaemon\Network\Client;
 ```
 
+##### options # Options
+
+ - `port (80)`  
+ 
+
+ - `sslport (443)`  
+ 
+
+ - `expose (1)`  
+ 
+
 ##### properties # Properties
 
 <md:prop>

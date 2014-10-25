@@ -430,6 +430,17 @@ namespace PHPDaemon\Clients\MySQL;
 class Pool extends \PHPDaemon\Network\Client;
 ```
 
+##### options # Options
+
+ - `server ('tcp://root@127.0.0.1/')`  
+ @todo add description strings
+
+ - `port (3306)`  
+ 
+
+ - `maxconnperserv (32)`  
+ 
+
 ##### consts # Constants
 
 <md:const>

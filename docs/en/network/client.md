@@ -8,6 +8,20 @@ abstract class Client extends [Pool](#../pool);
 @TODO
 
 <!-- include-namespace path="\PHPDaemon\Network\Client" level="" access="" -->
+#### options # Options
+
+ - `expose (1)`  
+ 
+
+ - `servers ('127.0.0.1')`  
+ 
+
+ - `server ('127.0.0.1')`  
+ 
+
+ - `maxconnperserv (32)`  
+ 
+
 #### properties # Properties
 
 <md:prop>

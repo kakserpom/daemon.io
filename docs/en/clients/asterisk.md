@@ -699,6 +699,14 @@ namespace PHPDaemon\Clients\Asterisk;
 class Pool extends \PHPDaemon\Network\Client;
 ```
 
+##### options # Options
+
+ - `authtype ('md5')`  
+ Auth hash type
+
+ - `port (integer = 5280)`  
+ Port
+
 ##### properties # Properties
 
 <md:prop>
@@ -764,7 +772,7 @@ public $appInstance;
 	 * @return void
 	 */
 public function setAmiVersion($addr, $ver)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Pool.php#L40
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Pool.php#L42
 </md:method>
 
 <md:method>
@@ -774,7 +782,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asteri
 	 * @return array
 	 */
 public static function prepareEnv($data)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Pool.php#L49
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Pool.php#L51
 </md:method>
 
 <md:method>
@@ -784,7 +792,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asteri
 	 * @return array
 	 */
 public static function extract($line)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Pool.php#L64
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Pool.php#L66
 </md:method>
 
 

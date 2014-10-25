@@ -177,6 +177,7 @@ class PHPDocImporter {
 					$content .= $this->getClassHeader($ReflectionEntity, $params, $class_path, $class_name);
 				}
 
+				$content .= $this->getClassOptions($ReflectionEntity, $params, $class_path, $class_name);
 				$content .= $this->getClassConstants($ReflectionEntity, $params, $class_path, $class_name);
 				$content .= $this->getClassProperties($ReflectionEntity, $params, $class_path, $class_name);
 				$content .= $this->getClassMethods($ReflectionEntity, $params, $class_path, $class_name);
@@ -378,6 +379,57 @@ TPL;
 		return $result;
 	}
 
+	protected function getClassOptions($ReflectionEntity, &$params, $class_path, $class_name) {
+		if( !$ReflectionEntity->hasMethod('getConfigDefaults') ) {
+			return;
+		}
+
+		$ReflectionMethod = $ReflectionEntity->getMethod('getConfigDefaults');
+
+		if(!$ReflectionMethod instanceof ReflectionMethod) {
+			return;
+		}
+
+		$name = $ReflectionMethod->getName();
+		$line_start = $ReflectionMethod->getStartLine();
+		$line_end   = $ReflectionMethod->getEndLine();
+		$lines = $this->getCodeLines($class_path, $line_start - 1, $line_end);
+
+		if(strpos(current($lines), "function $name") === false) {
+			return;
+		}
+
+		$level = $params['level'] ? $params['level'] + 2 : 4;
+		$level = str_repeat('#', $level);
+		$result = '';
+
+		$prevline = '';
+		foreach ($lines as $line) {
+			if(preg_match('/^([\'\"])(.+?)\1[ \t]*=>[ \t]*(.+?)[ \t]*,?$/', trim($line), $m1)) {
+				$key = $m1[2];
+				$val = $m1[3];
+				$type = '';
+				$desc = '';
+
+				if(preg_match('/^\/\/[ \t]*(?:\[([\w\|]+)\][ \t]*)?(.+?)$/', trim($prevline), $m2)) {
+					$type = $m2[1];
+					$desc = $m2[2];
+				}
+
+				$result .= " - `{$key} (". ($type ? "{$type} = " : '') ."{$val})`  \n";
+				$result .= " {$desc}\n\n";
+			}
+
+			$prevline = $line;
+		}
+
+		if(!$result) {
+			return '';
+		}
+
+		return "$level options # Options\n\n" . $result;
+	}
+
 	protected function getClassConstants($ReflectionEntity, $params, $class_path, $class_name) {
 		$level = $params['level'] ? $params['level'] + 2 : 4;
 		$level = str_repeat('#', $level);
@@ -509,16 +561,15 @@ TPL;
 
 		foreach ($methods as $ReflectionMethod) {
 			$name = $ReflectionMethod->getName();
-			$comment = $ReflectionMethod->getDocComment();
 			$code = $this->getCodeLine($class_path, $ReflectionMethod->getStartLine() - 1);
-			$code = trim(rtrim(rtrim($code), '{'));
 
 			if(strpos($code, "function $name") === false) {
 				continue;
 			}
 
-			// $code = str_replace(array("function $name", '(  )'), array("$name", '( )'), $code);
+			$code = trim(rtrim(rtrim($code), '{'));
 			$code = str_replace('(  )', '( )', $code);
+			$comment = $ReflectionMethod->getDocComment();
 
 			$result .= "<md:method>\n";
 			$result .= $comment."\n";
@@ -546,5 +597,23 @@ TPL;
 		}
 
 		return null;
+	}
+
+	protected function getCodeLines($path, $start, $end) {
+		static $cache = [];
+
+		if(!isset($cache[$path])) {
+			$cache[$path] = file($this->sourcePath . '/' . $path);
+		}
+
+		$result = [];
+
+		for($i = $start; $i < $end; ++$i) {
+			if(isset($cache[$path][$i])) {
+				$result[$i] = $cache[$path][$i];
+			}
+		}
+
+		return $result;
 	}
 }
