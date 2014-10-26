@@ -31,60 +31,94 @@ class Encoding;
 	 * 3) when any of these: ðñòó  are followed by THREE chars from group B.
 	 *
 	 * @name toUTF8
-	 * @param string $text  Any string.
-	 * @return string  The same string, UTF8 encoded
+	 * @param  string $text Any string
+	 * @return string       The same string, UTF8 encoded
 	 *
 	 */
-static function toUTF8($text)
+public static function toUTF8($text)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L175
 </md:method>
 
 <md:method>
-
-static function toWin1252($text)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L248
+/**
+	 * toWin1252
+	 * @param  string $text Any string
+	 * @return string       The same string, Win1252 encoded
+	 */
+public static function toWin1252($text)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L253
 </md:method>
 
 <md:method>
-
-static function toISO8859($text)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L261
+/**
+	 * toISO8859
+	 * @param  string $text Any string
+	 * @return string       The same string, Win1252 encoded
+	 */
+public static function toISO8859($text)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L271
 </md:method>
 
 <md:method>
-
-static function toLatin1($text)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L265
+/**
+	 * toLatin1
+	 * @param  string $text Any string
+	 * @return string       The same string, Win1252 encoded
+	 */
+public static function toLatin1($text)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L280
 </md:method>
 
 <md:method>
-
-static function fixUTF8($text)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L269
+/**
+	 * fixUTF8
+	 * @param  string $text Any string
+	 * @return string
+	 */
+public static function fixUTF8($text)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L289
 </md:method>
 
 <md:method>
-
-static function UTF8FixWin1252Chars($text)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L286
+/**
+	 * If you received an UTF-8 string that was converted from Windows-1252 as it was ISO8859-1 
+	 * (ignoring Windows-1252 chars from 80 to 9F) use this function to fix it.
+	 * See: http://en.wikipedia.org/wiki/Windows-1252
+	 * @param  string $text Any string
+	 * @return string
+	 */
+public static function UTF8FixWin1252Chars($text)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L313
 </md:method>
 
 <md:method>
-
-static function removeBOM($str="")
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L294
+/**
+	 * Remove BOM
+	 * @param  string $str Any string
+	 * @return string
+	 */
+public static function removeBOM($str="")
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L322
 </md:method>
 
 <md:method>
-
+/**
+	 * Normalize encoding name
+	 * @param  string $str Encoding name
+	 * @return string
+	 */
 public static function normalizeEncoding($encodingLabel)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L301
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L334
 </md:method>
 
 <md:method>
-
+/**
+	 * Encode
+	 * @param  string $str Any string
+	 * @return string
+	 */
 public static function encode($encodingLabel, $text)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L323
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L361
 </md:method>
 
 
