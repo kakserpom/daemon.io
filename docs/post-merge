@@ -1,3 +1,5 @@
 #!/bin/bash
 # хук для git
-./docs/build
+cd /home/web/domains/daemon.io/docs
+./import_phpdoc
+./build
