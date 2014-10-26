@@ -315,6 +315,85 @@ public static function parseUrl($mixed)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L154
 </md:method>
 
+#### simple-request # Class SimpleRequest {tpl-git PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php}
+
+```php
+namespace PHPDaemon\Clients\HTTP\Examples;
+class SimpleRequest extends \PHPDaemon\HTTPRequest\Generic;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var boolean Keepalive?
+	 */
+public $keepalive = false
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Current response length
+	 */
+public $responseLength = 0
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array Replacement pairs for processing some header values in parse_str()
+	 */
+public static $hvaltr = [
+  '; ' => '&',
+  ';' => '&',
+  ' ' => '%20',
+]
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array State
+	 */
+public static $htr = [
+  '-' => '_',
+]
+</md:prop>
+
+<md:prop>
+/**
+	 * Related Application instance
+	 * @var \PHPDaemon\Core\AppInstance
+	 */
+public $appInstance
+</md:prop>
+
+<md:prop>
+/**
+	 * Attributes
+	 * @var \StdCLass
+	 */
+public $attrs
+</md:prop>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Constructor.
+	 * @return void
+	 */
+public function init()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php#L14
+</md:method>
+
+<md:method>
+/**
+	 * Called when request iterated.
+	 * @return integer Status.
+	 */
+public function run()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php#L35
+</md:method>
+
 #### simple # Class Simple {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php}
 
 ```php
@@ -409,85 +488,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/E
 	 */
 public function beginRequest($req, $upstream)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/Simple.php#L50
-</md:method>
-
-#### simple-request # Class SimpleRequest {tpl-git PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php}
-
-```php
-namespace PHPDaemon\Clients\HTTP\Examples;
-class SimpleRequest extends \PHPDaemon\HTTPRequest\Generic;
-```
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var boolean Keepalive?
-	 */
-public $keepalive = false
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Current response length
-	 */
-public $responseLength = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array Replacement pairs for processing some header values in parse_str()
-	 */
-public static $hvaltr = [
-  '; ' => '&',
-  ';' => '&',
-  ' ' => '%20',
-]
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array State
-	 */
-public static $htr = [
-  '-' => '_',
-]
-</md:prop>
-
-<md:prop>
-/**
-	 * Related Application instance
-	 * @var \PHPDaemon\Core\AppInstance
-	 */
-public $appInstance
-</md:prop>
-
-<md:prop>
-/**
-	 * Attributes
-	 * @var \StdCLass
-	 */
-public $attrs
-</md:prop>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Constructor.
-	 * @return void
-	 */
-public function init()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php#L14
-</md:method>
-
-<md:method>
-/**
-	 * Called when request iterated.
-	 * @return integer Status.
-	 */
-public function run()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php#L35
 </md:method>
 
 

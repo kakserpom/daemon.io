@@ -215,6 +215,13 @@ class PbxReconnector extends Request {
 ```
 
 <!-- include-namespace path="\PHPDaemon\Clients\Asterisk" level="" access="" -->
+#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
+
+```php
+namespace PHPDaemon\Clients\Asterisk;
+class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
+```
+
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
 
 ```php
@@ -684,13 +691,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asteri
 public function onConnected($cb)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L130
 </md:method>
-
-#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
-
-```php
-namespace PHPDaemon\Clients\Asterisk;
-class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
-```
 
 #### pool # Class Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
 

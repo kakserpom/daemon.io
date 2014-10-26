@@ -9,117 +9,6 @@ namespace PHPDaemon\Cache;
 > Используется для кеширования замыканий созданных через create_function. Также используется в [Clients\DNS](#clients/dns)
 
 <!-- include-namespace path="\PHPDaemon\Cache" level="" access="" -->
-#### capped-storage # Class CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
-
-```php
-namespace PHPDaemon\Cache;
-class CappedStorage;
-```
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var callable Sorter function
-	 */
-public $sorter
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Maximum number of cached elements
-	 */
-public $maxCacheSize = 64
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Additional window to decrease number of sorter calls
-	 */
-public $capWindow = 16
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array Storage of cached items
-	 */
-public $cache = [ ]
-</md:prop>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Sets cache size
-	 * @param  integer $size Maximum number of elements
-	 * @return void
-	 */
-public function setMaxCacheSize($size)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L38
-</md:method>
-
-<md:method>
-/**
-	 * Sets cap window
-	 * @param  integer $w Additional window to decrease number of sorter calls
-	 * @return void
-	 */
-public function setCapWindow($w)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L47
-</md:method>
-
-<md:method>
-/**
-	 * Hash function
-	 * @param  string $key Key
-	 * @return integer
-	 */
-public function hash($key)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L56
-</md:method>
-
-<md:method>
-/**
-	 * Puts element in cache
-	 * @param  string  $key   Key
-	 * @param  mixed   $value Value
-	 * @param  integer $ttl   Time to live
-	 * @return mixed
-	 */
-public function put($key, $value, $ttl = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L67
-</md:method>
-
-<md:method>
-/**
-	 * Invalidates cache element
-	 * @param  string $key Key
-	 * @return void
-	 */
-public function invalidate($key)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L97
-</md:method>
-
-<md:method>
-/**
-	 * Gets element by key
-	 * @param  string $key Key
-	 * @return object Item
-	 */
-public function get($key)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L107
-</md:method>
-
-<md:method>
-/**
-	 * Gets value of element by key
-	 * @param  string $key Key
-	 * @return mixed
-	 */
-public function getValue($key)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L127
-</md:method>
-
 #### capped-storage-hits # Class CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
 
 ```php
@@ -235,6 +124,117 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php
 	 */
 public function setValue($value)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L72
+</md:method>
+
+#### capped-storage # Class CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
+
+```php
+namespace PHPDaemon\Cache;
+class CappedStorage;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var callable Sorter function
+	 */
+public $sorter
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Maximum number of cached elements
+	 */
+public $maxCacheSize = 64
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Additional window to decrease number of sorter calls
+	 */
+public $capWindow = 16
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array Storage of cached items
+	 */
+public $cache = [ ]
+</md:prop>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Sets cache size
+	 * @param  integer $size Maximum number of elements
+	 * @return void
+	 */
+public function setMaxCacheSize($size)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L38
+</md:method>
+
+<md:method>
+/**
+	 * Sets cap window
+	 * @param  integer $w Additional window to decrease number of sorter calls
+	 * @return void
+	 */
+public function setCapWindow($w)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L47
+</md:method>
+
+<md:method>
+/**
+	 * Hash function
+	 * @param  string $key Key
+	 * @return integer
+	 */
+public function hash($key)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L56
+</md:method>
+
+<md:method>
+/**
+	 * Puts element in cache
+	 * @param  string  $key   Key
+	 * @param  mixed   $value Value
+	 * @param  integer $ttl   Time to live
+	 * @return mixed
+	 */
+public function put($key, $value, $ttl = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L67
+</md:method>
+
+<md:method>
+/**
+	 * Invalidates cache element
+	 * @param  string $key Key
+	 * @return void
+	 */
+public function invalidate($key)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L97
+</md:method>
+
+<md:method>
+/**
+	 * Gets element by key
+	 * @param  string $key Key
+	 * @return object Item
+	 */
+public function get($key)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L107
+</md:method>
+
+<md:method>
+/**
+	 * Gets value of element by key
+	 * @param  string $key Key
+	 * @return mixed
+	 */
+public function getValue($key)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L127
 </md:method>
 
 

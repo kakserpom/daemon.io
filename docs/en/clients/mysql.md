@@ -52,6 +52,13 @@ $sql->query('SHOW VARIABLES',
 Когда callback-функция вызвана, $sql->context содержит ваш объект, который вы туда положили перед этим. $sql->resultRows хранит результат в виде массива ассоциативных массивов. $sql->resultFields содержит поля ответа в виде массива ассоциативных массивов.
 
 <!-- include-namespace path="\PHPDaemon\Clients\MySQL" level="" access="" -->
+#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/MySQL/ConnectionFinished.php}
+
+```php
+namespace PHPDaemon\Clients\MySQL;
+class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
+```
+
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}
 
 ```php
@@ -415,13 +422,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/
 public function onError()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L579
 </md:method>
-
-#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/MySQL/ConnectionFinished.php}
-
-```php
-namespace PHPDaemon\Clients\MySQL;
-class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
-```
 
 #### pool # Class Pool {tpl-git PHPDaemon/Clients/MySQL/Pool.php}
 
