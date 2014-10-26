@@ -370,7 +370,7 @@ class PHPDocImporter {
 		$level = str_repeat('#', $params['level'] + 1);
 
 		$result = <<<TPL
-$level $altname # $type $name {tpl-git $class_path}
+$level $altname # $name {tpl-git $class_path}
 
 ```php
 namespace $ns;
@@ -415,7 +415,7 @@ TPL;
 				$type = '';
 				$desc = '';
 
-				if(preg_match('/^\/\/[ \t]*(?:\[([\w\|]+)\][ \t]*)?(.+?)$/', trim($prevline), $m2)) {
+				if(preg_match('/^\/\*\*?[ \t]*(?:\[([\w\|]+)\][ \t]*)?(.+?)$/', trim($prevline), $m2)) {
 					$type = $m2[1];
 					$desc = $m2[2];
 				}

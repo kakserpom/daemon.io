@@ -5,7 +5,7 @@ namespace PHPDaemon\PubSub;
 ```
 
 <!-- include-namespace path="\PHPDaemon\PubSub" level="" access="" -->
-#### pub-sub # Class PubSub {tpl-git PHPDaemon/PubSub/PubSub.php}
+#### pub-sub # PubSub {tpl-git PHPDaemon/PubSub/PubSub.php}
 
 ```php
 namespace PHPDaemon\PubSub;
@@ -132,7 +132,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.
 
 <div class="clearboth"></div>
 
-#### pub-sub-event # Class PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
+#### pub-sub-event # PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
 
 ```php
 namespace PHPDaemon\PubSub;

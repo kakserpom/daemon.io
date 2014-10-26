@@ -25,7 +25,7 @@ $httpclient->get('http://www.google.com/robots.txt',
 Рабочий пример клиента представлен в {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php Clients/HTTP/Examples/Simple.php}
 
 <!-- include-namespace path="\PHPDaemon\Clients\HTTP" level="" access="" -->
-#### connection # Class Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
+#### connection # Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
 
 ```php
 namespace PHPDaemon\Clients\HTTP;
@@ -200,7 +200,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 
 <div class="clearboth"></div>
 
-#### pool # Class Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
+#### pool # Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
 
 ```php
 namespace PHPDaemon\Clients\HTTP;

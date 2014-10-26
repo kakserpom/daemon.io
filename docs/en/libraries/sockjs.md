@@ -5,7 +5,7 @@ namespace PHPDaemon\SockJS;
 ```
 
 <!-- include-namespace path="\PHPDaemon\SockJS" level="" access="" -->
-#### application # Class Application {tpl-git PHPDaemon/SockJS/Application.php}
+#### application # Application {tpl-git PHPDaemon/SockJS/Application.php}
 
 ```php
 namespace PHPDaemon\SockJS;
@@ -277,7 +277,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 
 <div class="clearboth"></div>
 
-#### session # Class Session {tpl-git PHPDaemon/SockJS/Session.php}
+#### session # Session {tpl-git PHPDaemon/SockJS/Session.php}
 
 ```php
 namespace PHPDaemon\SockJS;
@@ -546,7 +546,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session
 
 <div class="clearboth"></div>
 
-#### web-socket-connection-proxy # Class WebSocketConnectionProxy {tpl-git PHPDaemon/SockJS/WebSocketConnectionProxy.php}
+#### web-socket-connection-proxy # WebSocketConnectionProxy {tpl-git PHPDaemon/SockJS/WebSocketConnectionProxy.php}
 
 ```php
 namespace PHPDaemon\SockJS;
@@ -558,11 +558,16 @@ class WebSocketConnectionProxy;
 <md:method>
 /**
 	 * __construct
+	 * 
+	 * sdfsdf
+	 * sdfsd
+	 * sd
+	 * sdfdsfsd
 	 * @param Application $sockjs
 	 * @param object      $conn
 	 */
 public function __construct($sockjs, $conn)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L28
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L39
 </md:method>
 
 <md:method>
@@ -572,7 +577,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return mixed
 	 */
 public function __get($k)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L38
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L49
 </md:method>
 
 <md:method>
@@ -582,7 +587,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return boolean
 	 */
 public function __isset($k)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L47
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L58
 </md:method>
 
 <md:method>
@@ -593,7 +598,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return mixed
 	 */
 public function __call($method, $args)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L57
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L68
 </md:method>
 
 <md:method>
@@ -603,20 +608,20 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return string
 	 */
 public function toJson($p)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L66
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L77
 </md:method>
 
 <md:method>
 /**
 	 * Sends a frame.
-	 * @param string   Frame's data.
-	 * @param integer  Frame's type. See the constants.
-	 * @param callback Optional. Callback called when the frame is received by client.
+	 * @param string   $data Frame's data.
+	 * @param integer  $type Frame's type. See the constants.
+	 * @param callback $cb   Optional. Callback called when the frame is received by client.
 	 * @callback $cb ( )
 	 * @return boolean Success.
 	 */
 public function sendFrame($data, $type = null, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L78
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L89
 </md:method>
 
 <md:method>
@@ -629,7 +634,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return boolean Success.
 	 */
 public function sendFrameReal($data, $type = null, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L91
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L102
 </md:method>
 
 <md:method>
@@ -638,7 +643,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @param  mixed  $value
 	 * @return void
 	 */
-
+* @package    Libraries
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L18
 </md:method>
 
@@ -647,13 +652,13 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @param  string $prop
 	 * @return void
 	 */
-* @param object      $conn
+
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L26
 </md:method>
 
 <div class="clearboth"></div>
 
-#### web-socket-route-proxy # Class WebSocketRouteProxy {tpl-git PHPDaemon/SockJS/WebSocketRouteProxy.php}
+#### web-socket-route-proxy # WebSocketRouteProxy {tpl-git PHPDaemon/SockJS/WebSocketRouteProxy.php}
 
 ```php
 namespace PHPDaemon\SockJS;
@@ -763,7 +768,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 
 <div class="clearboth"></div>
 
-#### eventsource # Class Eventsource {tpl-git PHPDaemon/SockJS/Methods/Eventsource.php}
+#### eventsource # Eventsource {tpl-git PHPDaemon/SockJS/Methods/Eventsource.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
@@ -793,7 +798,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-#### generic # Class Generic {tpl-git PHPDaemon/SockJS/Methods/Generic.php}
+#### generic # Generic {tpl-git PHPDaemon/SockJS/Methods/Generic.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
@@ -908,7 +913,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-#### htmlfile # Class Htmlfile {tpl-git PHPDaemon/SockJS/Methods/Htmlfile.php}
+#### htmlfile # Htmlfile {tpl-git PHPDaemon/SockJS/Methods/Htmlfile.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
@@ -938,7 +943,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-#### iframe # Class IFrame {tpl-git PHPDaemon/SockJS/Methods/Iframe.php}
+#### iframe # IFrame {tpl-git PHPDaemon/SockJS/Methods/Iframe.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
@@ -967,7 +972,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-#### info # Class Info {tpl-git PHPDaemon/SockJS/Methods/Info.php}
+#### info # Info {tpl-git PHPDaemon/SockJS/Methods/Info.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
@@ -996,14 +1001,14 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-#### jsonp # Class Jsonp {tpl-git PHPDaemon/SockJS/Methods/Jsonp.php}
+#### jsonp # Jsonp {tpl-git PHPDaemon/SockJS/Methods/Jsonp.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
 class Jsonp extends \PHPDaemon\SockJS\Methods\Generic;
 ```
 
-#### jsonp-send # Class JsonpSend {tpl-git PHPDaemon/SockJS/Methods/JsonpSend.php}
+#### jsonp-send # JsonpSend {tpl-git PHPDaemon/SockJS/Methods/JsonpSend.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
@@ -1023,7 +1028,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-#### not-found # Class NotFound {tpl-git PHPDaemon/SockJS/Methods/NotFound.php}
+#### not-found # NotFound {tpl-git PHPDaemon/SockJS/Methods/NotFound.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
@@ -1052,7 +1057,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-#### welcome # Class Welcome {tpl-git PHPDaemon/SockJS/Methods/Welcome.php}
+#### welcome # Welcome {tpl-git PHPDaemon/SockJS/Methods/Welcome.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
@@ -1081,14 +1086,14 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-#### xhr # Class Xhr {tpl-git PHPDaemon/SockJS/Methods/Xhr.php}
+#### xhr # Xhr {tpl-git PHPDaemon/SockJS/Methods/Xhr.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
 class Xhr extends \PHPDaemon\SockJS\Methods\Generic;
 ```
 
-#### xhr-send # Class XhrSend {tpl-git PHPDaemon/SockJS/Methods/XhrSend.php}
+#### xhr-send # XhrSend {tpl-git PHPDaemon/SockJS/Methods/XhrSend.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
@@ -1108,7 +1113,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-#### xhr-streaming # Class XhrStreaming {tpl-git PHPDaemon/SockJS/Methods/XhrStreaming.php}
+#### xhr-streaming # XhrStreaming {tpl-git PHPDaemon/SockJS/Methods/XhrStreaming.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
@@ -1128,7 +1133,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-#### application # Class Application {tpl-git PHPDaemon/SockJS/TestRelay/Application.php}
+#### application # Application {tpl-git PHPDaemon/SockJS/TestRelay/Application.php}
 
 ```php
 namespace PHPDaemon\SockJS\TestRelay;
@@ -1153,7 +1158,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/TestRel
 
 <div class="clearboth"></div>
 
-#### close # Class Close {tpl-git PHPDaemon/SockJS/TestRelay/Close.php}
+#### close # Close {tpl-git PHPDaemon/SockJS/TestRelay/Close.php}
 
 ```php
 namespace PHPDaemon\SockJS\TestRelay;
@@ -1173,7 +1178,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/TestRel
 
 <div class="clearboth"></div>
 
-#### echo-feed # Class EchoFeed {tpl-git PHPDaemon/SockJS/TestRelay/EchoFeed.php}
+#### echo-feed # EchoFeed {tpl-git PHPDaemon/SockJS/TestRelay/EchoFeed.php}
 
 ```php
 namespace PHPDaemon\SockJS\TestRelay;

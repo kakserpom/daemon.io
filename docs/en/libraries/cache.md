@@ -9,7 +9,7 @@ namespace PHPDaemon\Cache;
 > Используется для кеширования замыканий созданных через create_function. Также используется в [Clients\DNS](#clients/dns)
 
 <!-- include-namespace path="\PHPDaemon\Cache" level="" access="" -->
-#### capped-storage # Class CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
+#### capped-storage # CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
 
 ```php
 namespace PHPDaemon\Cache;
@@ -165,7 +165,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedSt
 
 <div class="clearboth"></div>
 
-#### capped-storage-hits # Class CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
+#### capped-storage-hits # CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
 
 ```php
 namespace PHPDaemon\Cache;
@@ -185,7 +185,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedSt
 
 <div class="clearboth"></div>
 
-#### item # Class Item {tpl-git PHPDaemon/Cache/Item.php}
+#### item # Item {tpl-git PHPDaemon/Cache/Item.php}
 
 ```php
 namespace PHPDaemon\Cache;

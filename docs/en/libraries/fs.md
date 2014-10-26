@@ -5,7 +5,7 @@ namespace PHPDaemon\FS;
 ```
 
 <!-- include-namespace path="\PHPDaemon\FS" level="" access="" -->
-#### file # Class File {tpl-git PHPDaemon/FS/File.php}
+#### file # File {tpl-git PHPDaemon/FS/File.php}
 
 ```php
 namespace PHPDaemon\FS;
@@ -383,7 +383,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L2
 
 <div class="clearboth"></div>
 
-#### file-system # Class FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
+#### file-system # FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
 
 ```php
 namespace PHPDaemon\FS;
@@ -832,7 +832,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.
 
 <div class="clearboth"></div>
 
-#### file-watcher # Class FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
+#### file-watcher # FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
 
 ```php
 namespace PHPDaemon\FS;
