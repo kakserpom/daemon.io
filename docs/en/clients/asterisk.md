@@ -215,13 +215,6 @@ class PbxReconnector extends Request {
 ```
 
 <!-- include-namespace path="\PHPDaemon\Clients\Asterisk" level="" access="" -->
-#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
-
-```php
-namespace PHPDaemon\Clients\Asterisk;
-class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
-```
-
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
 
 ```php
@@ -232,59 +225,61 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 ##### consts # Constants
 
 <md:const>
+@TODO DESCR
 const CONN_STATE_START = 0
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const CONN_STATE_GOT_INITIAL_PACKET = 0.1
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const CONN_STATE_AUTH = 1
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const CONN_STATE_LOGIN_PACKET_SENT = 1.1
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const CONN_STATE_CHALLENGE_PACKET_SENT = 1.2
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const CONN_STATE_LOGIN_PACKET_SENT_AFTER_CHALLENGE = 1.3
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const CONN_STATE_HANDSHAKED_OK = 2.1
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const CONN_STATE_HANDSHAKED_ERROR = 2.2
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const INPUT_STATE_START = 0
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const INPUT_STATE_END_OF_PACKET = 1
-@TODO DESCR
 </md:const>
 
 <md:const>
-const INPUT_STATE_PROCESSING = 2
 @TODO DESCR
+const INPUT_STATE_PROCESSING = 2
 </md:const>
+
+<div class="clearboth"></div>
 
 ##### properties # Properties
 
@@ -361,12 +356,7 @@ public $assertions = [ ]
 public $onChallenge
 </md:prop>
 
-<md:prop>
-/**
-	 * @var object Associated pool
-	 */
-public $pool
-</md:prop>
+<div class="clearboth"></div>
 
 ##### methods # Methods
 
@@ -680,17 +670,14 @@ public function onEvent($cb)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L632
 </md:method>
 
-<md:method>
-/**
-	 * Bind event or events
-	 * @alias EventHandlers::bind
-	 * @param string|array $event Event name
-	 * @param callable     $cb    Callback
-	 * @return this
-	 */
-public function onConnected($cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L130
-</md:method>
+<div class="clearboth"></div>
+
+#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
+
+```php
+namespace PHPDaemon\Clients\Asterisk;
+class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
+```
 
 #### pool # Class Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
 
@@ -720,47 +707,7 @@ public static $safeCaseValues = [
 ]
 </md:prop>
 
-<md:prop>
-/**
-	 * @var string Default connection class
-	 */
-public $connectionClass
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string Name
-	 */
-public $name
-</md:prop>
-
-<md:prop>
-/**
-	 * @var \PHPDaemon\Config\Section Configuration
-	 */
-public $config
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Max concurrency
-	 */
-public $maxConcurrency = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Max allowed packet
-	 */
-public $maxAllowedPacket = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var object|null Application instance object
-	 */
-public $appInstance
-</md:prop>
+<div class="clearboth"></div>
 
 ##### methods # Methods
 
@@ -794,6 +741,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asteri
 public static function extract($line)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Pool.php#L66
 </md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

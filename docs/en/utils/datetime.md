@@ -34,5 +34,7 @@ public static function diffAsText($datetime1, $datetime2, $absolute = false)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/DateTime.php#L35
 </md:method>
 
+<div class="clearboth"></div>
+
 
 <!--/ include-namespace -->

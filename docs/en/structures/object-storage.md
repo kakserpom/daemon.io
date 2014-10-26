@@ -51,5 +51,48 @@ public function getFirst()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/ObjectStorage.php#L63
 </md:method>
 
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined method
+	 * @return mixed
+	 */
+if ($this->count() === 0)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/ObjectStorage.php#L20
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined static method
+	 * @return mixed
+	 */
+return $n;
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/ObjectStorage.php#L30
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @param  mixed  $value
+	 * @return void
+	 */
+*/
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/ObjectStorage.php#L18
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @return void
+	 */
+foreach ($this as $obj)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/ObjectStorage.php#L26
+</md:method>
+
+<div class="clearboth"></div>
+
 
 <!--/ include-namespace -->

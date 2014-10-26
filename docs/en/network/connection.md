@@ -8,15 +8,6 @@ abstract class Connection extends [IOStream](#../iostream);
 @TODO
 
 <!-- include-namespace path="\PHPDaemon\Network\Connection" level="" access="" -->
-#### properties # Properties
-
-<md:prop>
-/**
-	 * @var object Associated pool
-	 */
-public $pool
-</md:prop>
-
 #### methods # Methods
 
 <md:method>
@@ -287,6 +278,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connec
 public function onFinish()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Connection.php#L744
 </md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

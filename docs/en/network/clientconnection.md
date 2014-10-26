@@ -8,15 +8,6 @@ class ClientConnection extends [Connection](#../connection);
 @TODO
 
 <!-- include-namespace path="\PHPDaemon\Network\ClientConnection" level="" access="" -->
-#### properties # Properties
-
-<md:prop>
-/**
-	 * @var object Associated pool
-	 */
-public $pool
-</md:prop>
-
 #### methods # Methods
 
 <md:method>
@@ -111,6 +102,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client
 public function onFinish()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/ClientConnection.php#L148
 </md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

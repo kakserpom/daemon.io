@@ -17,47 +17,7 @@ abstract class Server extends [Pool](#../pool);
 public $allowedClients
 </md:prop>
 
-<md:prop>
-/**
-	 * @var string Default connection class
-	 */
-public $connectionClass
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string Name
-	 */
-public $name
-</md:prop>
-
-<md:prop>
-/**
-	 * @var \PHPDaemon\Config\Section Configuration
-	 */
-public $config
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Max concurrency
-	 */
-public $maxConcurrency = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Max allowed packet
-	 */
-public $maxAllowedPacket = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var object|null Application instance object
-	 */
-public $appInstance
-</md:prop>
+<div class="clearboth"></div>
 
 #### methods # Methods
 
@@ -141,6 +101,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Server
 public function inheritFromRequest($req, $oldConn)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Server.php#L179
 </md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

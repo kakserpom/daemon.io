@@ -97,5 +97,29 @@ public static function compareStrings($a, $b)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.php#L227
 </md:method>
 
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined method
+	 * @return mixed
+	 */
+*/
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.php#L20
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined static method
+	 * @return mixed
+	 */
+if (isset($ee[1]) && ctype_digit($e[1]))
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.php#L30
+</md:method>
+
+<div class="clearboth"></div>
+
 
 <!--/ include-namespace -->

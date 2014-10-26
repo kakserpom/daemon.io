@@ -325,6 +325,10 @@ class PHPDocImporter {
 			$preflen = strlen($this->sourcePath);
 			$files = glob_recursive($fullpath . '/*.php', GLOB_NOSORT);
 			foreach ($files as $filepath) {
+				if(strpos($filepath, '/Examples/')) {
+					continue;
+				}
+
 				$fp = substr($filepath, $preflen + 1);
 				$ns = '\\' . str_replace('/', '\\', substr($fp, 0, -4));
 				$result[$fp] = $ns;
@@ -438,12 +442,14 @@ TPL;
 		$ConstDoc = new ConstDoc($class_name);
 		$constants = $ConstDoc->getDocComments();
 
-		foreach ($constants as $constant => $value) {
+		// наследование констант не происходит
+
+		foreach ($constants as $constant => $comment) {
 			$code = $this->getConstantCode($class_path, $constant);
 
 			$result .= "<md:const>\n";
+			$result .= $comment."\n";
 			$result .= $code."\n";
-			$result .= $value."\n";
 			$result .= "</md:const>\n\n";
 		}
 
@@ -451,7 +457,9 @@ TPL;
 			return '';
 		}
 
-		return "$level consts # Constants\n\n" . $result;
+		return "$level consts # Constants\n\n"
+			. $result
+			. "<div class=\"clearboth\"></div>\n\n";
 	}
 
 	protected function getConstantCode($path, $constant) {
@@ -486,10 +494,18 @@ TPL;
 		$values = $ReflectionEntity->getDefaultProperties();
 
 		foreach ($properties as $ReflectionProperty) {
+			if($ReflectionProperty->getDeclaringClass()->getName() !== $ReflectionEntity->getName()) {
+				continue;
+			}
+
 			$name = $ReflectionProperty->getName();
 			$comment = $ReflectionProperty->getDocComment();
 			$code = $this->getPropertyCode((string) $ReflectionProperty);
 			$value = '';
+
+			if(!$comment) {
+				$comment = "/**\n */";
+			}
 
 			if(isset($values[$name])) {
 				$value = var_export($values[$name], true);
@@ -532,7 +548,9 @@ TPL;
 			return '';
 		}
 
-		return "$level properties # Properties\n\n" . $result;
+		return "$level properties # Properties\n\n"
+			. $result
+			. "<div class=\"clearboth\"></div>\n\n";
 	}
 
 	protected function getPropertyCode($str) {
@@ -560,16 +578,18 @@ TPL;
 		$link_prefix = 'https://github.com/kakserpom/phpdaemon/blob/master/';
 
 		foreach ($methods as $ReflectionMethod) {
-			$name = $ReflectionMethod->getName();
-			$code = $this->getCodeLine($class_path, $ReflectionMethod->getStartLine() - 1);
-
-			if(strpos($code, "function $name") === false) {
+			if($ReflectionMethod->getDeclaringClass()->getName() !== $ReflectionEntity->getName()) {
 				continue;
 			}
 
+			$code = $this->getCodeLine($class_path, $ReflectionMethod->getStartLine() - 1);
 			$code = trim(rtrim(rtrim($code), '{'));
 			$code = str_replace('(  )', '( )', $code);
 			$comment = $ReflectionMethod->getDocComment();
+
+			if(!$comment) {
+				$comment = "/**\n */";
+			}
 
 			$result .= "<md:method>\n";
 			$result .= $comment."\n";
@@ -582,7 +602,9 @@ TPL;
 			return '';
 		}
 
-		return "$level methods # Methods\n\n" . $result;
+		return "$level methods # Methods\n\n"
+			. $result
+			. "<div class=\"clearboth\"></div>\n\n";
 	}
 
 	protected function getCodeLine($path, $line) {

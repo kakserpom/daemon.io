@@ -70,5 +70,48 @@ public function executeAll()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L75
 </md:method>
 
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined method
+	 * @return mixed
+	 */
+*/
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L20
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined static method
+	 * @return mixed
+	 */
+*/
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L30
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @param  mixed  $value
+	 * @return void
+	 */
+* @param  integer  $pri Priority
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L18
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @return void
+	 */
+* Enqueue callback
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L26
+</md:method>
+
+<div class="clearboth"></div>
+
 
 <!--/ include-namespace -->

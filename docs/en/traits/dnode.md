@@ -156,5 +156,7 @@ public function onFrame($data, $type)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/WebSocket/Traits/DNode.php#L397
 </md:method>
 
+<div class="clearboth"></div>
+
 
 <!--/ include-namespace -->

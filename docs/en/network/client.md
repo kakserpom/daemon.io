@@ -22,50 +22,6 @@ abstract class Client extends [Pool](#../pool);
  - `maxconnperserv (32)`  
  
 
-#### properties # Properties
-
-<md:prop>
-/**
-	 * @var string Default connection class
-	 */
-public $connectionClass
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string Name
-	 */
-public $name
-</md:prop>
-
-<md:prop>
-/**
-	 * @var \PHPDaemon\Config\Section Configuration
-	 */
-public $config
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Max concurrency
-	 */
-public $maxConcurrency = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Max allowed packet
-	 */
-public $maxAllowedPacket = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var object|null Application instance object
-	 */
-public $appInstance
-</md:prop>
-
 #### methods # Methods
 
 <md:method>
@@ -200,6 +156,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client
 public function onShutdown($graceful = false)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L332
 </md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->
