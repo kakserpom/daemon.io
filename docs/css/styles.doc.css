@@ -197,7 +197,7 @@ header {
 .lang-chooser {
 	position: fixed;
 	z-index: 500;
-	top: -35px;
+	top: -50px;
 	left: 50%;
 	width: 960px;
 	margin: 0 0 0 -481px;
@@ -517,6 +517,8 @@ pre.inline code {
 pre.wico code {
 	margin-left: 13px;
 }
+pre.spoiler {
+}
 
 pre a,
 code a {
@@ -573,12 +575,23 @@ code.clear {
 	height: 0;
 }
 
+.type-link,
+.type-link .hljs-keyword {
+	font-weight: normal;
+}
 .method-link {
 	position: absolute;
 	float: left;
 	line-height: 28px;
 	font-size: 18px;
 	margin: 0 5px 0 -10px;
+}
+
+.hljs {
+	overflow-x: visible !important;
+}
+.hljs-keyword {
+	/*text-transform: lowercase;*/
 }
 
 em {
@@ -644,6 +657,10 @@ a .fa {
 		top: 0;
 	}
 
+	.main_wrap {
+		margin-left: 0px;
+	}
+
 	.sidebar {
 		display: none;
 	}
@@ -685,12 +702,12 @@ a .fa {
 	}
 
 	pre {
-		font-size: 12px;
+		/*font-size: 12px;
 		border: 1px solid #bbb;
 		border-left: 0;
 		border-right: 0;
 		padding: 9px;
-		background: #FFF;
+		background: #FFF;*/
 	}
 
 	code {

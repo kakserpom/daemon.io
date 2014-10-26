@@ -340,12 +340,12 @@ class DocBuilder {
 			$code = implode("\n  \t", $codes);
 			$code = preg_replace('/\n[ \t]+\]/', "\n]", $code);
 
-			$result .= " -.method ```php:p.inline\n $code\n ```\n";
+			$result .= " -.method ```php:p.inline.spoiler\n $code\n ```\n";
 			$result .= $text ? ' <ul><li class="n">' . $text . "</li></ul>\n" : '';
 		}
 		else {
 			$part = array_shift($lines);
-			$result .= " -.method ```php:p.inline\n $part\n ```\n";
+			$result .= " -.method ```php:p.inline.spoiler\n $part\n ```\n";
 
 			if(count($lines)) {
 				$part = array_shift($lines);
@@ -554,7 +554,7 @@ class DocBuilder {
 		if(substr($type, $len - 2, 2) === '[]') {
 			return 'array';
 		}
-		return $type;
+		return strtolower($type);
 	}
 
 	/**

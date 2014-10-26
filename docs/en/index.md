@@ -81,9 +81,9 @@ As you may see, whole documentation is placed on one page, so feel free to use s
 
 ### writing # Writing
 
- -.n <a target="_blank" href="https://github.com/EzheG"><i class="fa fa-github"></i></a> Dmitry Efimenko <[ezheg89@gmail.com](mailto:ezheg89@gmail.com)>
- -.n <a target="_blank" href="https://github.com/kakserpom"><i class="fa fa-github"></i></a> Vasily Zorin <[maintainer@daemon.io](mailto:maintainer@daemon.io)>
- -.n <a target="_blank" href="https://github.com/nizsheanez"><i class="fa fa-github"></i></a> Alexey Sharov <[www.pismeco@gmail.com](mailto:www.pismeco@gmail.com)>
+ -.n <a target="_blank" href="https://github.com/EzheG"><i class="fa fa-github"></i></a> Dmitry Efimenko &lt;<ezheg89@gmail.com>&gt;
+ -.n <a target="_blank" href="https://github.com/kakserpom"><i class="fa fa-github"></i></a> Vasily Zorin &lt;<maintainer@daemon.io>&gt;
+ -.n <a target="_blank" href="https://github.com/nizsheanez"><i class="fa fa-github"></i></a> Alexey Sharov &lt;<www.pismeco@gmail.com>&gt;
 
 ### proofreading # English proofreading
 
@@ -91,4 +91,4 @@ As you may see, whole documentation is placed on one page, so feel free to use s
 
 ### scripting # Scripting
 
- -.n <a target="_blank" href="https://github.com/EzheG"><i class="fa fa-github"></i></a> Dmitry Efimenko <[ezheg89@gmail.com](mailto:ezheg89@gmail.com)>
+ -.n <a target="_blank" href="https://github.com/EzheG"><i class="fa fa-github"></i></a> Dmitry Efimenko &lt;<ezheg89@gmail.com>&gt;

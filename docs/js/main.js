@@ -297,7 +297,7 @@ $ && $(function(){
 			event.preventDefault();
 
 			bar.stop().animate({
-				top: bar.css('top') != '-35px' ? -35 : 35
+				top: bar.css('top') != '-50px' ? -50 : 35
 			}, 300);
 		});
 
@@ -332,13 +332,16 @@ $ && $(function(){
 			'callback': 'http://php.net/manual/'+ global_lang +'/language.pseudo-types.php#language.types.callback',
 			'void': 'http://php.net/manual/'+ global_lang +'/language.pseudo-types.php#language.types.void',
 
+			'true': 'http://php.net/manual/'+ global_lang +'/language.types.boolean.php',
+			'false': 'http://php.net/manual/'+ global_lang +'/language.types.boolean.php',
+
 			'url': '#basics/pseudotypes/url'
 		};
 
 		var phpTypesKeys = [];
 		for(var k in phpTypes) phpTypesKeys.push(k);
 		// var reg = new RegExp('(^|[^\\w\\-\\/])('+phpTypesKeys.join('|')+')(?=[^\\w\\-\\/])', 'g');
-		var reg = new RegExp('(^|\\(|\\( |\\,|\\, |\||\| )('+phpTypesKeys.join('|')+')(?=( \\$| public| protected| private|\||\| ))', 'gm');
+		var reg = new RegExp('(^|\\(|\\( |\\,|\\, |\\||\\| )('+phpTypesKeys.join('|')+')(?=( \\$| public| protected| private|\\||\\| ))', 'gm');
 
 		// типы переменных делаем ссылками
 		$('.method code').each(function(){
@@ -348,12 +351,12 @@ $ && $(function(){
 			// @todo псевдотипы
 			source = source.replace(reg, function(str, p1, p2) {
 				if(phpTypes[p2] === 1) {
-					return p1 + '<a href="http://php.net/manual/'+ global_lang +'/language.types.'+ p2 +'.php" target="_blank">'+ p2 + '</a>';
+					return p1 + '<a class="type-link" href="http://php.net/manual/'+ global_lang +'/language.types.'+ p2 +'.php" target="_blank">'+ p2 + '</a>';
 				}
 
 				if (phpTypes[p2]) {
 					var target = phpTypes[p2].charAt(0) === '#' ? '' : ' target="_blank"';
-					return p1 + '<a href="'+ phpTypes[p2] +'"'+ target +'>'+ p2 + '</a>';
+					return p1 + '<a class="type-link" href="'+ phpTypes[p2] +'"'+ target +'>'+ p2 + '</a>';
 				}
 
 				return p1 + p2;
@@ -361,7 +364,7 @@ $ && $(function(){
 
 			that.html(source);
 
-			// ссылка на githab
+			// ссылка на githab у методов
 			var pre = that.parent(),
 				link = pre.data('link');
 
@@ -376,6 +379,14 @@ $ && $(function(){
 			// if($(block).parent().parent().is('li.method')) {
 			// 	$(block).find(".hljs-function .hljs-keyword:contains('function')").parent().remove();
 			// }
+		});
+
+		$("pre.spoiler code").each(function() {
+			if(this.offsetHeight > 300) {
+				var that = $(this);
+				that.height(250);
+				that.width( that.width() + 30 );
+			}
 		});
 
 		// $('.code_highlight, pre.inline code').each(function(){
