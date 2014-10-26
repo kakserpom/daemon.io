@@ -130,7 +130,7 @@ function setCookie(name, value, options) {
 }
 
 
-$(function(){
+$ && $(function(){
 	var $win = $(window),
 		$doc = $(document),
 		$body = $('body'),
@@ -304,8 +304,14 @@ $(function(){
 		$('.lang-chooser a').on('click', function(event) {
 			event.preventDefault();
 
-			window.location.href = $(this).attr('href') + window.location.hash;
-			btn.trigger('click');
+			var href = $(this).attr('href'),
+				langs = href.split('/');
+
+			langs.pop();
+			setCookie('lang', langs.pop(), {expires: 315360000, path: '/docs/'});
+
+			window.location.href = href + window.location.hash;
+			// btn.trigger('click');
 		});
 	})();
 
@@ -332,7 +338,7 @@ $(function(){
 		var phpTypesKeys = [];
 		for(var k in phpTypes) phpTypesKeys.push(k);
 		// var reg = new RegExp('(^|[^\\w\\-\\/])('+phpTypesKeys.join('|')+')(?=[^\\w\\-\\/])', 'g');
-		var reg = new RegExp('(^|\\(|\\( |\\,|\\, )('+phpTypesKeys.join('|')+')(?=( \\$| public| protected| private))', 'gm');
+		var reg = new RegExp('(^|\\(|\\( |\\,|\\, |\||\| )('+phpTypesKeys.join('|')+')(?=( \\$| public| protected| private|\||\| ))', 'gm');
 
 		// типы переменных делаем ссылками
 		$('.method code').each(function(){
