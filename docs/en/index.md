@@ -13,8 +13,7 @@
 
 ## intro # Introduction
 
-<p class="doc-notice"><strong>Achtung!</strong><br />Only Russian version is available at the moment, but we are about to publish the English one and a variety of other translations. Currently you may consider reading old Wiki or auto-translating this page.<br />We are terribly sorry for the inconviniece.</p>
-<p class="doc-notice">Documentation is under active construction!</p>
+<p class="doc-notice">Achtung! Documentation is under active construction! Consider making a <a href="#contribute">contribution</a>.</p>
 
 PHPDaemon — asynchronous framework
 You can built very fast applications, web-services and more on top of it.

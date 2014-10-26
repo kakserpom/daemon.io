@@ -1,10 +1,10 @@
-### sources # Исходный код
+### sources # Source code
 
-Вы можете клонировать PHPDaemon репозиторий  
+You may clone the repository
 $&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git`
 
-Или скачать текущую версию в виде архива  
+Or download current version as an archive
 $&nbsp;`wget https://github.com/kakserpom/phpdaemon/archive/master.zip`
 
-Установите необходимые модули  
+Then install mandatory PHP modules
 $&nbsp;`pecl install event eio proctitle inotify`

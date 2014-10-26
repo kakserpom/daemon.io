@@ -1,6 +1,6 @@
 ### ubuntu # Ubuntu
 
-Для начала необходимо установить все сопутстсующие утилиты.  
+Для начала необходимо установить все сопутствующие утилиты.  
 $&nbsp;`sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git libevent`
 
 Устанавливаем PHP 5.5.  
@@ -39,7 +39,7 @@ $&nbsp;`alias sudo='sudo '`
 Пробуем запустить демон.  
 $&nbsp;`sudo phpd start --verbose-tty=1`
 
-Опция `--verbose-tty=1` указывет демону выводить журнал в терминал.
+Опция `--verbose-tty=1` указывает демону выводить журнал в терминал.
 
 Если вы видите что-то похожее на это:
 

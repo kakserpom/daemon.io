@@ -1,6 +1,6 @@
 ### redhat # CentOS/RedHat
 
-Для начала необходимо установить все сопутстсующие утилиты.  
+Для начала необходимо установить все сопуствующие утилиты.  
 $&nbsp;`sudo yum install -y git gcc openssl-devel libevent`
 
 Чтобы установить PHP 5.5 необходимо добавить Remi и Epel репозитории, потому что стандартный содержит старую версию.
@@ -20,16 +20,14 @@ $&nbsp;`sudo yum --enablerepo=remi,remi-test install -y php-cli php-devel php-pe
 $&nbsp;`sudo -i`  
 $&nbsp;`pecl install event eio`
 
-В PHP отсутсвует контроль подгрузки модулей. Для корректной работы модуля event и eio необходим модуль sockets.
-В системах RedHat/CentOS модули подгружаются в порядке названия, поэтому назовем конфиги этих модулей как z-event.ini и z-eio.ini соответсвенно.  
+Для корректной работы модуля event и eio необходим модуль sockets.
+В системах RedHat/CentOS файлы конфигурации подгружаются в алфавитном порядке, поэтому назовем их z-event.ini и z-eio.ini соответственно.  
 $&nbsp;`echo "extension=event.so" > /etc/php.d/z-event.ini`
 $&nbsp;`echo "extension=eio.so" > /etc/php.d/z-eio.ini`
 
 `Ctrl + D` - выходим из sudo
 
-Установите `date.timezone` в /etc/php.ini в соответствие с временной зоной сервера.
-Раскомментируйте и отредактируйте строку `;date.timezone = ` (например, `date.timezone = Europe/Moscow`)  
-$&nbsp;`sudo vi /etc/php.ini`
+Установите `date.timezone` в /etc/php.ini.
 
 Подготовим директорию для установки PHPDaemon.  
 $&nbsp;`sudo mkdir /opt/phpdaemon`  
@@ -40,13 +38,13 @@ $&nbsp;`cd /opt/phpdaemon`
 $&nbsp;`cd /opt/phpdaemon`  
 $&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git ./`
 
-Создаем конфигурационный файл из примера.  
+Копируем конфигурационный файл из примера.  
 $&nbsp;`cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf`
 
-Сделаем ссылку на phpd для удобного управления демоном  
+Сделаем ссылку на phpd
 $&nbsp;`ln -s /opt/phpdaemon/bin/phpd /usr/bin/phpd`
 
-Пробуем запустить демон.  
+Запускаем PHPDaemon
 $&nbsp;`sudo phpd start --verbose-tty=1`
 
 Опция `--verbose-tty=1` указывет демону выводить журнал в терминал.

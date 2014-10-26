@@ -13,8 +13,7 @@
 
 ## intro # Введение
 
-<p class="doc-notice"><strong>Achtung!</strong><br />Only Russian version is available at the moment, but we are about to publish the English one and a variety of other translations. Currently you may consider reading old Wiki or auto-translating this page.<br />We are terribly sorry for the inconviniece.</p>
-<p class="doc-notice">Документация активно дорабатывается!</p>
+<p class="doc-notice">Документация активно дорабатывается! Подумайте о том, чтобы <a href="#contribute">внести свой вклад</a>.</p>
 
 PHPDaemon — это асинхронный демонизируемый фреймворк.
 С&#160;его помощью легко писать очень быстрые сетевые приложения, веб-сервисы и многое другое.

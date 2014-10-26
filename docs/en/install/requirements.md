@@ -1,12 +1,12 @@
-### requirements # Требования
+### requirements # Requirements
 
- - `PHP` версии не ниже 5.4;
- - Модули `posix`, `pcntl`, `socket`, `shmop`;
+ - `PHP` version not under 5.4;
+ - Modules `posix`, `pcntl`, `socket`, `shmop`;
  - `libevent 2`;
- - `pecl-event` версии не ниже 1.6.1;
+ - `pecl-event` not under 1.6.1;
 
-Рекомендуется также установить:
+It's recommended to install these non-mandatory modules:
 
- - `pecl-eio` для увеличения проиводительности файловой системы;
- - `pecl-proctitle` для именования процессов в&#160;понятные названия: &#171;phpd: worker process&#187; (для PHP версии ниже 5.5);
- - `pecl-inotify` для мониторинга файловой системы.
+ - `pecl-eio` for non-blocking filesystem I/O;
+ - `pecl-proctitle` for human-readable process titles: &#171;phpd: worker process&#187; (for PHP version under 5.5);
+ - `pecl-inotify` for monitoring of changes in filesystem.
