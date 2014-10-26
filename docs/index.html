@@ -6,8 +6,8 @@
     <title>Documentation &laquo; phpDaemon</title>
     <script src="js/main.js"></script>
     <script>
-    	var lang = getCookie('lang');
-    	alert(lang);
+    	var lang = getCookie('lang') || 'en';
+    	window.location.href = '/docs/'+ lang +'/';
     </script>
 </head>
 <body></body>
