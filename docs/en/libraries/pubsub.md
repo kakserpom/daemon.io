@@ -5,106 +5,6 @@ namespace PHPDaemon\PubSub;
 ```
 
 <!-- include-namespace path="\PHPDaemon\PubSub" level="" access="" -->
-#### pub-sub-event # Class PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
-
-```php
-namespace PHPDaemon\PubSub;
-class PubSubEvent extends \SplObjectStorage;
-```
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var array Subscriptions
-	 */
-public $sub = [ ]
-</md:prop>
-
-<md:prop>
-/**
-	 * @var callable Activation callback
-	 */
-public $actCb
-</md:prop>
-
-<md:prop>
-/**
-	 * @var callable Deactivation callback
-	 */
-public $deactCb
-</md:prop>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Constructor
-	 */
-public function __construct($act = null, $deact = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L33
-</md:method>
-
-<md:method>
-/**
-	 * Sets onActivation callback
-	 * @param  callable $cb Callback
-	 * @return this
-	 */
-public function onActivation($cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L48
-</md:method>
-
-<md:method>
-/**
-	 * Sets onDeactivation callback
-	 * @param callable $cb Callback
-	 * @return this
-	 */
-public function onDeactivation($cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L58
-</md:method>
-
-<md:method>
-/**
-	 * Init
-	 * @return object
-	 */
-public static function init()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L67
-</md:method>
-
-<md:method>
-/**
-	 * Subscribe
-	 * @param  object   $obj Subcriber object
-	 * @param  callable $cb  Callback
-	 * @return this
-	 */
-public function sub($obj, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L77
-</md:method>
-
-<md:method>
-/**
-	 * Unsubscripe
-	 * @param  object $obj Subscriber object
-	 * @return this
-	 */
-public function unsub($obj)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L93
-</md:method>
-
-<md:method>
-/**
-	 * Publish
-	 * @param  mixed $data Data
-	 * @return this
-	 */
-public function pub($data)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L108
-</md:method>
-
 #### pub-sub # Class PubSub {tpl-git PHPDaemon/PubSub/PubSub.php}
 
 ```php
@@ -188,6 +88,194 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.
 public function unsubFromAll($obj)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L93
 </md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined method
+	 * @return mixed
+	 */
+/**
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L20
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined static method
+	 * @return mixed
+	 */
+* Subcribe to event
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L30
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @param  mixed  $value
+	 * @return void
+	 */
+protected $events = [];
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L18
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @return void
+	 */
+return isset($this->events[$id]);
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L26
+</md:method>
+
+<div class="clearboth"></div>
+
+#### pub-sub-event # Class PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
+
+```php
+namespace PHPDaemon\PubSub;
+class PubSubEvent extends \SplObjectStorage;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var array Subscriptions
+	 */
+public $sub = [ ]
+</md:prop>
+
+<md:prop>
+/**
+	 * @var callable Activation callback
+	 */
+public $actCb
+</md:prop>
+
+<md:prop>
+/**
+	 * @var callable Deactivation callback
+	 */
+public $deactCb
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Constructor
+	 */
+public function __construct($act = null, $deact = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L33
+</md:method>
+
+<md:method>
+/**
+	 * Sets onActivation callback
+	 * @param  callable $cb Callback
+	 * @return this
+	 */
+public function onActivation($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L48
+</md:method>
+
+<md:method>
+/**
+	 * Sets onDeactivation callback
+	 * @param callable $cb Callback
+	 * @return this
+	 */
+public function onDeactivation($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L58
+</md:method>
+
+<md:method>
+/**
+	 * Init
+	 * @return object
+	 */
+public static function init()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L67
+</md:method>
+
+<md:method>
+/**
+	 * Subscribe
+	 * @param  object   $obj Subcriber object
+	 * @param  callable $cb  Callback
+	 * @return this
+	 */
+public function sub($obj, $cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L77
+</md:method>
+
+<md:method>
+/**
+	 * Unsubscripe
+	 * @param  object $obj Subscriber object
+	 * @return this
+	 */
+public function unsub($obj)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L93
+</md:method>
+
+<md:method>
+/**
+	 * Publish
+	 * @param  mixed $data Data
+	 * @return this
+	 */
+public function pub($data)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L108
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined method
+	 * @return mixed
+	 */
+*/
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L20
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined static method
+	 * @return mixed
+	 */
+/**
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L30
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @param  mixed  $value
+	 * @return void
+	 */
+/**
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L18
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @return void
+	 */
+public $deactCb;
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L26
+</md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

@@ -128,10 +128,10 @@
 
 > &#96;&#96;&#96;ruby  
 > Pool:HTTPServer {  
->     listen "tcp://0.0.0.0:80", "tcp://0.0.0.0:443##myContext";  
->     port 80;  
->     privileged;  
->     maxconcurrency 1;  
+> &nbsp;&nbsp;&nbsp;&nbsp;listen "tcp://0.0.0.0:80", "tcp://0.0.0.0:443##myContext";  
+> &nbsp;&nbsp;&nbsp;&nbsp;port 80;  
+> &nbsp;&nbsp;&nbsp;&nbsp;privileged;  
+> &nbsp;&nbsp;&nbsp;&nbsp;maxconcurrency 1;  
 > }  
 > &#96;&#96;&#96;
 

@@ -168,6 +168,8 @@ public static $codes = [
 public static $codesFlip
 </md:prop>
 
+<div class="clearboth"></div>
+
 #### methods # Methods
 
 <md:method>
@@ -196,6 +198,49 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/IRC.php#
 public static function parseUsermask($mask)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/IRC.php#L125
 </md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined method
+	 * @return mixed
+	 */
+201 => 'RPL_TRACECONNECTING', 202 => 'RPL_TRACEHANDSHAKE',
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/IRC.php#L20
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined static method
+	 * @return mixed
+	 */
+251 => 'RPL_LUSERCLIENT', 252 => 'RPL_LUSEROP',
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/IRC.php#L30
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @param  mixed  $value
+	 * @return void
+	 */
+3   => 'RPL_CREATED', 4 => 'RPL_MYINFO',
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/IRC.php#L18
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @return void
+	 */
+219 => 'RPL_ENDOFSTATS', 221 => 'RPL_UMODEIS',
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/IRC.php#L26
+</md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

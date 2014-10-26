@@ -145,126 +145,6 @@ $ && $(function(){
 		$body.removeClass('force_show_sidebar');
 	});
 
-	// @deprecated
-	// ./
-	// function parseLinkCurr(event) {
-	// 	var that = $(this),
-	// 		href = that.attr('href'),
-	// 		postfix = href.slice(3),
-	// 		parent = that.parentsUntil('.main_container').last();
-
-	// 	if(!parent.length) {
-	// 		return false;
-	// 	}
-
-	// 	if( parent.is(':header') ) {
-	// 		header = parent;
-	// 	}
-	// 	else {
-	// 		curr = parent;
-
-	// 		while(true) {
-	// 			header = curr.prev();
-
-	// 			if(!header.length) {
-	// 				return false;
-	// 			}
-
-	// 			if(header.is(':header')) {
-	// 				break;
-	// 			}
-
-	// 			curr = header;
-	// 		}
-	// 	}
-
-	// 	if(header.length) {
-	// 		return '#' + header.attr('id') + (postfix ? '/'+postfix : '');
-	// 	}
-	// }
-
-	// @deprecated
-	// ../
-	// function parseLinkPrev(event) {
-	// 	var that = $(this),
-	// 		href = that.attr('href'),
-	// 		parent = null;
-
-	// 	var matches = href.match(/^\#(\.\.\/)+/g),
-	// 		count = (matches[0].length - 1) / 3 + 1,
-	// 		postfix = href.slice(matches[0].length);
-
-	// 	var curr = that,
-	// 		header = null,
-	// 		level = 0;
-
-	// 	loop:
-	// 	while(true) {
-	// 		if(level) {
-	// 			while(true) {
-	// 				header = curr.prev();
-
-	// 				if(!header.length) {
-	// 					break loop;
-	// 				}
-
-	// 				if(header.is('h'+ level +'[id]')) {
-	// 					break;
-	// 				}
-
-	// 				curr = header;
-	// 			}
-	// 		} else {
-	// 			parent = curr.parentsUntil('.main_container').last();
-
-	// 			if(!parent.length) {
-	// 				break;
-	// 			}
-
-	// 			if( parent.is(':header') ) {
-	// 				header = parent;
-	// 			}
-	// 			else {
-	// 				curr = parent;
-
-	// 				while(true) {
-	// 					header = curr.prev();
-
-	// 					if(!header.length) {
-	// 						break loop;
-	// 					}
-
-	// 					if(header.is(':header')) {
-	// 						break;
-	// 					}
-
-	// 					curr = header;
-	// 				}
-	// 			}
-
-	// 			level = +header[0].tagName.slice(1);
-
-	// 			if(level - count < 1) {
-	// 				return false;
-	// 			}
-	// 		}
-
-	// 		if(--count < 1 || !header.length) {
-	// 			break;
-	// 		}
-			
-	// 		if(--level < 1) {
-	// 			break;
-	// 		}
-
-	// 		curr = header;
-	// 	}
-
-	// 	if(header.length) {
-	// 		return '#' + header.attr('id') + (postfix ? '/'+postfix : '');
-	// 	}
-	// }
-
 	$doc
 		.on('click', '.method code a', function(event) {
 			event.stopPropagation();
@@ -272,21 +152,6 @@ $ && $(function(){
 		.on('click', ':header[id] .anchor', function() {
 			window.location = '#' + $(this).parent().attr('id');
 		});
-
-		// @deprecated
-		// обработка сцец ссылок ./
-		// .on('click', 'a[href^="#./"]', function(event) {
-		// 	event.preventDefault();
-		// 	var res = parseLinkCurr.apply(this, [event]);
-		// 	if(res) window.location = res;
-		// })
-		// @deprecated
-		// обработка сцец ссылок ../
-		// .on('click', 'a[href^="#../"]', function(event) {
-		// 	event.preventDefault();
-		// 	var res = parseLinkPrev.apply(this, [event]);
-		// 	if(res) window.location = res;
-		// })
 
 	//выбор языка
 	(function(){
@@ -341,14 +206,13 @@ $ && $(function(){
 		var phpTypesKeys = [];
 		for(var k in phpTypes) phpTypesKeys.push(k);
 		// var reg = new RegExp('(^|[^\\w\\-\\/])('+phpTypesKeys.join('|')+')(?=[^\\w\\-\\/])', 'g');
-		var reg = new RegExp('(^|\\(|\\( |\\,|\\, |\\||\\| )('+phpTypesKeys.join('|')+')(?=( \\$| public| protected| private|\\||\\| ))', 'gm');
+		var reg = new RegExp('(^|\\(|\\( |\\,|\\, |\\||\\| )('+phpTypesKeys.join('|')+')(?=( \\$| \\&\\$| public| protected| private|\\||\\| ))', 'gm');
 
 		// типы переменных делаем ссылками
 		$('.method code').each(function(){
 			var that = $(this),
 				source = that.html();
 
-			// @todo псевдотипы
 			source = source.replace(reg, function(str, p1, p2) {
 				if(phpTypes[p2] === 1) {
 					return p1 + '<a class="type-link" href="http://php.net/manual/'+ global_lang +'/language.types.'+ p2 +'.php" target="_blank">'+ p2 + '</a>';
@@ -375,10 +239,6 @@ $ && $(function(){
 
 		$("pre code, .code_highlight").each(function(i, block) {
 			hljs.highlightBlock(block);
-
-			// if($(block).parent().parent().is('li.method')) {
-			// 	$(block).find(".hljs-function .hljs-keyword:contains('function')").parent().remove();
-			// }
 		});
 
 		$("pre.spoiler code").each(function() {
@@ -388,30 +248,6 @@ $ && $(function(){
 				that.width( that.width() + 30 );
 			}
 		});
-
-		// $('.code_highlight, pre.inline code').each(function(){
-		// 	$('.hljs-keyword', this).each(function(){
-		// 		var obj = $(this);
-		// 			text = obj.text();
-
-		// 		if(phpTypes[text] === 1) {
-		// 			obj.wrap('<a href="http://php.net/manual/'+ global_lang +'/language.types.'+ text +'.php" target="_blank" />');
-		// 		}
-		// 		else
-		// 		if (phpTypes[text]) {
-		// 			obj.wrap( phpTypes[text] );
-		// 		}
-		// 	});
-
-		// 	var that = $(this),
-		// 		html = that.html();
-
-		// 	// псевдотипы: url
-		// 	if(html.toLowerCase().indexOf('$') !== -1) {
-		// 		html = html.replace(/(\(|,)\s(url)\s/g, "$1 <a href=\"#development/pseudotypes/$2\"><span class=\"hljs-keyword\">$2</span></a> ");
-		// 		that.html(html);
-		// 	}
-		// });
 
 		$('.hljs-class .hljs-title a').addClass('hljs-title');
 	})();

@@ -35,14 +35,16 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 ##### consts # Constants
 
 <md:const>
-const STATE_HEADERS = 1
 State: headers
+const STATE_HEADERS = 1
 </md:const>
 
 <md:const>
-const STATE_BODY = 2
 State: body
+const STATE_BODY = 2
 </md:const>
+
+<div class="clearboth"></div>
 
 ##### properties # Properties
 
@@ -110,26 +112,24 @@ public $rawHeaders
 </md:prop>
 
 <md:prop>
-
+/**
+ */
 public $contentType
 </md:prop>
 
 <md:prop>
-
+/**
+ */
 public $charset
 </md:prop>
 
 <md:prop>
-
+/**
+ */
 public $eofTerminated = false
 </md:prop>
 
-<md:prop>
-/**
-	 * @var object Associated pool
-	 */
-public $pool
-</md:prop>
+<div class="clearboth"></div>
 
 ##### methods # Methods
 
@@ -198,6 +198,8 @@ public function onFinish()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L390
 </md:method>
 
+<div class="clearboth"></div>
+
 #### pool # Class Pool {tpl-git PHPDaemon/Clients/HTTP/Pool.php}
 
 ```php
@@ -215,50 +217,6 @@ class Pool extends \PHPDaemon\Network\Client;
 
  - `expose (1)`  
  
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var string Default connection class
-	 */
-public $connectionClass
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string Name
-	 */
-public $name
-</md:prop>
-
-<md:prop>
-/**
-	 * @var \PHPDaemon\Config\Section Configuration
-	 */
-public $config
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Max concurrency
-	 */
-public $maxConcurrency = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Max allowed packet
-	 */
-public $maxAllowedPacket = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var object|null Application instance object
-	 */
-public $appInstance
-</md:prop>
 
 ##### methods # Methods
 
@@ -315,180 +273,7 @@ public static function parseUrl($mixed)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L154
 </md:method>
 
-#### simple-request # Class SimpleRequest {tpl-git PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php}
-
-```php
-namespace PHPDaemon\Clients\HTTP\Examples;
-class SimpleRequest extends \PHPDaemon\HTTPRequest\Generic;
-```
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var boolean Keepalive?
-	 */
-public $keepalive = false
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Current response length
-	 */
-public $responseLength = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array Replacement pairs for processing some header values in parse_str()
-	 */
-public static $hvaltr = [
-  '; ' => '&',
-  ';' => '&',
-  ' ' => '%20',
-]
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array State
-	 */
-public static $htr = [
-  '-' => '_',
-]
-</md:prop>
-
-<md:prop>
-/**
-	 * Related Application instance
-	 * @var \PHPDaemon\Core\AppInstance
-	 */
-public $appInstance
-</md:prop>
-
-<md:prop>
-/**
-	 * Attributes
-	 * @var \StdCLass
-	 */
-public $attrs
-</md:prop>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Constructor.
-	 * @return void
-	 */
-public function init()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php#L14
-</md:method>
-
-<md:method>
-/**
-	 * Called when request iterated.
-	 * @return integer Status.
-	 */
-public function run()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/SimpleRequest.php#L35
-</md:method>
-
-#### simple # Class Simple {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php}
-
-```php
-namespace PHPDaemon\Clients\HTTP\Examples;
-class Simple extends \PHPDaemon\Core\AppInstance;
-```
-
-##### properties # Properties
-
-<md:prop>
-
-public $httpclient
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean If true, it's allowed to be run without defined config section'
-	 */
-public static $runOnDemand = true
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string Optional passphrase
-	 */
-public $passphrase
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean Ready to run?
-	 */
-public $ready = false
-</md:prop>
-
-<md:prop>
-/**
-	 * @var object Related config section
-	 */
-public $config
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean Is RPC enabled?
-	 */
-public $enableRPC = false
-</md:prop>
-
-<md:prop>
-/**
-	 * @var null|string Default class of incoming requests
-	 */
-public $requestClass
-</md:prop>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Constructor.
-	 * @return void
-	 */
-public function init()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/Simple.php#L22
-</md:method>
-
-<md:method>
-/**
-	 * Called when the worker is ready to go.
-	 * @return void
-	 */
-public function onReady()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/Simple.php#L31
-</md:method>
-
-<md:method>
-/**
-	 * Called when application instance is going to shutdown.
-	 * @return boolean Ready to shutdown?
-	 */
-public function onShutdown($graceful = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/Simple.php#L39
-</md:method>
-
-<md:method>
-/**
-	 * Creates Request.
-	 * @param object Request.
-	 * @param object Upstream application instance.
-	 * @return SimpleRequest Request.
-	 */
-public function beginRequest($req, $upstream)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Examples/Simple.php#L50
-</md:method>
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

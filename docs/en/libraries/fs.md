@@ -5,6 +5,384 @@ namespace PHPDaemon\FS;
 ```
 
 <!-- include-namespace path="\PHPDaemon\FS" level="" access="" -->
+#### file # Class File {tpl-git PHPDaemon/FS/File.php}
+
+```php
+namespace PHPDaemon\FS;
+class File;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var integer Priority
+	 */
+public $priority = 10
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Chunk size
+	 */
+public $chunkSize = 4096
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer Current offset
+	 */
+public $offset = 0
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string Cache key
+	 */
+public $fdCacheKey
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean Append?
+	 */
+public $append
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string Path
+	 */
+public $path
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean Writing?
+	 */
+public $writing = false
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean Closed?
+	 */
+public $closed = false
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * File constructor
+	 * @param resource $fd   Descriptor
+	 * @param string   $path Path
+	 */
+public function __construct($fd, $path)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L82
+</md:method>
+
+<md:method>
+/**
+	 * Get file descriptor
+	 * @return resource File descriptor
+	 */
+public function getFd()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L92
+</md:method>
+
+<md:method>
+/**
+	 * Converts string of flags to integer or standard text representation
+	 * @param  string  $mode Mode
+	 * @param  boolean $text Text?
+	 * @return mixed
+	 */
+public static function convertFlags($mode, $text = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L102
+</md:method>
+
+<md:method>
+/**
+	 * Truncates this file
+	 * @param  integer  $offset Offset. Default is 0
+	 * @param  callable $cb     Callback
+	 * @param  integer  $pri    Priority
+	 * @return resource|boolean
+	 */
+public function truncate($offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L130
+</md:method>
+
+<md:method>
+/**
+	 * Stat()
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|boolean
+	 */
+public function stat($cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L155
+</md:method>
+
+<md:method>
+/**
+	 * Stat() non-cached
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|boolean
+	 */
+public function statRefresh($cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L184
+</md:method>
+
+<md:method>
+/**
+	 * Statvfs()
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|boolean
+	 */
+public function statvfs($cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L209
+</md:method>
+
+<md:method>
+/**
+	 * Sync()
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|false
+	 */
+public function sync($cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L239
+</md:method>
+
+<md:method>
+/**
+	 * Datasync()
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|false
+	 */
+public function datasync($cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L260
+</md:method>
+
+<md:method>
+/**
+	 * Writes data to file
+	 * @param  string   $data   Data
+	 * @param  callable $cb     Callback
+	 * @param  integer  $offset Offset
+	 * @param  integer  $pri    Priority
+	 * @return resource|false
+	 */
+public function write($data, $cb = null, $offset = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L283
+</md:method>
+
+<md:method>
+/**
+	 * Changes ownership of this file
+	 * @param  integer  $uid User ID
+	 * @param  integer  $gid Group ID
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return resource|false
+	 */
+public function chown($uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L331
+</md:method>
+
+<md:method>
+/**
+	 * touch()
+	 * @param  integer  $mtime Last modification time
+	 * @param  integer  $atime Last access time
+	 * @param  callable $cb    Callback
+	 * @param  integer  $pri   Priority
+	 * @return resource|false
+	 */
+public function touch($mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L360
+</md:method>
+
+<md:method>
+/**
+	 * Clears cache of stat() and statvfs()
+	 * @return void
+	 */
+public function clearStatCache()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L382
+</md:method>
+
+<md:method>
+/**
+	 * Reads data from file
+	 * @param  integer  $length Length
+	 * @param  integer  $offset Offset
+	 * @param  callable $cb     Callback
+	 * @param  integer  $pri    Priority
+	 * @return boolean
+	 */
+public function read($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L395
+</md:method>
+
+<md:method>
+/**
+	 * sendfile()
+	 * @param  mixed    $outfd   File descriptor
+	 * @param  callable $cb      Callback
+	 * @param  callable $startCb Start callback
+	 * @param  integer  $offset  Offset
+	 * @param  integer  $length  Length
+	 * @param  integer  $pri     Priority
+	 * @return boolean           Success
+	 */
+public function sendfile($outfd, $cb, $startCb = null, $offset = 0, $length = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L431
+</md:method>
+
+<md:method>
+/**
+	 * readahead()
+	 * @param  integer  $length Length
+	 * @param  integer  $offset Offset
+	 * @param  callable $cb     Callback
+	 * @param  integer  $pri    Priority
+	 * @return resource|false
+	 */
+public function readahead($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L511
+</md:method>
+
+<md:method>
+/**
+	 * Reads whole file
+	 * @param  callable $cb  Callback
+	 * @param  integer  $pri Priority
+	 * @return boolean       Success
+	 */
+public function readAll($cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L566
+</md:method>
+
+<md:method>
+/**
+	 * Reads file chunk-by-chunk
+	 * @param  callable $cb      Callback
+	 * @param  callable $chunkcb Callback of chunk
+	 * @param  integer  $pri     Priority
+	 * @return resource|false
+	 */
+public function readAllChunked($cb = null, $chunkcb = null, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L618
+</md:method>
+
+<md:method>
+/**
+	 * toString handler
+	 * @return string
+	 */
+public function __toString()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L641
+</md:method>
+
+<md:method>
+/**
+	 * Set chunk size
+	 * @param  integer $n Chunk size
+	 * @return void
+	 */
+public function setChunkSize($n)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L650
+</md:method>
+
+<md:method>
+/**
+	 * Move pointer to arbitrary position
+	 * @param  integer  $offset Offset
+	 * @param  callable $cb     Callback
+	 * @param  integer  $pri    Priority
+	 * @return resource|false
+	 */
+public function seek($offset, $cb, $pri = EIO_PRI_DEFAULT)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L661
+</md:method>
+
+<md:method>
+/**
+	 * Get current pointer position
+	 * @return integer
+	 */
+public function tell()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L674
+</md:method>
+
+<md:method>
+/**
+	 * Close the file
+	 * @return resource|false
+	 */
+public function close()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L685
+</md:method>
+
+<md:method>
+/**
+	 * Destructor
+	 */
+public function __destruct()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L709
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined method
+	 * @return mixed
+	 */
+public $priority = 10;
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L20
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined static method
+	 * @return mixed
+	 */
+protected $stat;
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L30
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @param  mixed  $value
+	 * @return void
+	 */
+* @var integer Priority
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L18
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @return void
+	 */
+
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L26
+</md:method>
+
+<div class="clearboth"></div>
+
 #### file-system # Class FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
 
 ```php
@@ -77,6 +455,8 @@ public static $fdCacheSize = 128
 	 */
 public static $eioVer = '1.2.1'
 </md:prop>
+
+<div class="clearboth"></div>
 
 ##### methods # Methods
 
@@ -409,338 +789,48 @@ public static function open($path, $flags, $cb, $mode = null, $pri = EIO_PRI_DEF
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L593
 </md:method>
 
-#### file # Class File {tpl-git PHPDaemon/FS/File.php}
-
-```php
-namespace PHPDaemon\FS;
-class File;
-```
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var integer Priority
-	 */
-public $priority = 10
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Chunk size
-	 */
-public $chunkSize = 4096
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Current offset
-	 */
-public $offset = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string Cache key
-	 */
-public $fdCacheKey
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean Append?
-	 */
-public $append
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string Path
-	 */
-public $path
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean Writing?
-	 */
-public $writing = false
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean Closed?
-	 */
-public $closed = false
-</md:prop>
-
-##### methods # Methods
-
 <md:method>
 /**
-	 * File constructor
-	 * @param resource $fd   Descriptor
-	 * @param string   $path Path
-	 */
-public function __construct($fd, $path)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L82
-</md:method>
-
-<md:method>
-/**
-	 * Get file descriptor
-	 * @return resource File descriptor
-	 */
-public function getFd()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L92
-</md:method>
-
-<md:method>
-/**
-	 * Converts string of flags to integer or standard text representation
-	 * @param  string  $mode Mode
-	 * @param  boolean $text Text?
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined method
 	 * @return mixed
 	 */
-public static function convertFlags($mode, $text = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L102
+*/
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L20
 </md:method>
 
 <md:method>
 /**
-	 * Truncates this file
-	 * @param  integer  $offset Offset. Default is 0
-	 * @param  callable $cb     Callback
-	 * @param  integer  $pri    Priority
-	 * @return resource|boolean
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined static method
+	 * @return mixed
 	 */
-public function truncate($offset = 0, $cb = null, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L130
+*/
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L30
 </md:method>
 
 <md:method>
 /**
-	 * Stat()
-	 * @param  callable $cb  Callback
-	 * @param  integer  $pri Priority
-	 * @return resource|boolean
-	 */
-public function stat($cb, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L155
-</md:method>
-
-<md:method>
-/**
-	 * Stat() non-cached
-	 * @param  callable $cb  Callback
-	 * @param  integer  $pri Priority
-	 * @return resource|boolean
-	 */
-public function statRefresh($cb, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L184
-</md:method>
-
-<md:method>
-/**
-	 * Statvfs()
-	 * @param  callable $cb  Callback
-	 * @param  integer  $pri Priority
-	 * @return resource|boolean
-	 */
-public function statvfs($cb, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L209
-</md:method>
-
-<md:method>
-/**
-	 * Sync()
-	 * @param  callable $cb  Callback
-	 * @param  integer  $pri Priority
-	 * @return resource|false
-	 */
-public function sync($cb, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L239
-</md:method>
-
-<md:method>
-/**
-	 * Datasync()
-	 * @param  callable $cb  Callback
-	 * @param  integer  $pri Priority
-	 * @return resource|false
-	 */
-public function datasync($cb, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L260
-</md:method>
-
-<md:method>
-/**
-	 * Writes data to file
-	 * @param  string   $data   Data
-	 * @param  callable $cb     Callback
-	 * @param  integer  $offset Offset
-	 * @param  integer  $pri    Priority
-	 * @return resource|false
-	 */
-public function write($data, $cb = null, $offset = null, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L283
-</md:method>
-
-<md:method>
-/**
-	 * Changes ownership of this file
-	 * @param  integer  $uid User ID
-	 * @param  integer  $gid Group ID
-	 * @param  callable $cb  Callback
-	 * @param  integer  $pri Priority
-	 * @return resource|false
-	 */
-public function chown($uid, $gid = -1, $cb, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L331
-</md:method>
-
-<md:method>
-/**
-	 * touch()
-	 * @param  integer  $mtime Last modification time
-	 * @param  integer  $atime Last access time
-	 * @param  callable $cb    Callback
-	 * @param  integer  $pri   Priority
-	 * @return resource|false
-	 */
-public function touch($mtime, $atime = null, $cb = null, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L360
-</md:method>
-
-<md:method>
-/**
-	 * Clears cache of stat() and statvfs()
+	 * @param  string $prop
+	 * @param  mixed  $value
 	 * @return void
 	 */
-public function clearStatCache()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L382
+/**
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L18
 </md:method>
 
 <md:method>
 /**
-	 * Reads data from file
-	 * @param  integer  $length Length
-	 * @param  integer  $offset Offset
-	 * @param  callable $cb     Callback
-	 * @param  integer  $pri    Priority
-	 * @return boolean
-	 */
-public function read($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L395
-</md:method>
-
-<md:method>
-/**
-	 * sendfile()
-	 * @param  mixed    $outfd   File descriptor
-	 * @param  callable $cb      Callback
-	 * @param  callable $startCb Start callback
-	 * @param  integer  $offset  Offset
-	 * @param  integer  $length  Length
-	 * @param  integer  $pri     Priority
-	 * @return boolean           Success
-	 */
-public function sendfile($outfd, $cb, $startCb = null, $offset = 0, $length = null, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L431
-</md:method>
-
-<md:method>
-/**
-	 * readahead()
-	 * @param  integer  $length Length
-	 * @param  integer  $offset Offset
-	 * @param  callable $cb     Callback
-	 * @param  integer  $pri    Priority
-	 * @return resource|false
-	 */
-public function readahead($length, $offset = null, $cb = null, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L511
-</md:method>
-
-<md:method>
-/**
-	 * Reads whole file
-	 * @param  callable $cb  Callback
-	 * @param  integer  $pri Priority
-	 * @return boolean       Success
-	 */
-public function readAll($cb, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L566
-</md:method>
-
-<md:method>
-/**
-	 * Reads file chunk-by-chunk
-	 * @param  callable $cb      Callback
-	 * @param  callable $chunkcb Callback of chunk
-	 * @param  integer  $pri     Priority
-	 * @return resource|false
-	 */
-public function readAllChunked($cb = null, $chunkcb = null, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L618
-</md:method>
-
-<md:method>
-/**
-	 * toString handler
-	 * @return string
-	 */
-public function __toString()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L641
-</md:method>
-
-<md:method>
-/**
-	 * Set chunk size
-	 * @param  integer $n Chunk size
+	 * @param  string $prop
 	 * @return void
 	 */
-public function setChunkSize($n)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L650
+public static $ev;
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L26
 </md:method>
 
-<md:method>
-/**
-	 * Move pointer to arbitrary position
-	 * @param  integer  $offset Offset
-	 * @param  callable $cb     Callback
-	 * @param  integer  $pri    Priority
-	 * @return resource|false
-	 */
-public function seek($offset, $cb, $pri = EIO_PRI_DEFAULT)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L661
-</md:method>
-
-<md:method>
-/**
-	 * Get current pointer position
-	 * @return integer
-	 */
-public function tell()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L674
-</md:method>
-
-<md:method>
-/**
-	 * Close the file
-	 * @return resource|false
-	 */
-public function close()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L685
-</md:method>
-
-<md:method>
-/**
-	 * Destructor
-	 */
-public function __destruct()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L709
-</md:method>
+<div class="clearboth"></div>
 
 #### file-watcher # Class FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
 
@@ -771,6 +861,8 @@ public $inotify
 	 */
 public $descriptors = [ ]
 </md:prop>
+
+<div class="clearboth"></div>
 
 ##### methods # Methods
 
@@ -823,6 +915,49 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher
 public function watch()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L122
 </md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined method
+	 * @return mixed
+	 */
+
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L20
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined static method
+	 * @return mixed
+	 */
+
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L30
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @param  mixed  $value
+	 * @return void
+	 */
+*/
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L18
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @return void
+	 */
+/**
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L26
+</md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

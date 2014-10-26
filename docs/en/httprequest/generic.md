@@ -44,21 +44,7 @@ public static $htr = [
 ]
 </md:prop>
 
-<md:prop>
-/**
-	 * Related Application instance
-	 * @var \PHPDaemon\Core\AppInstance
-	 */
-public $appInstance
-</md:prop>
-
-<md:prop>
-/**
-	 * Attributes
-	 * @var \StdCLass
-	 */
-public $attrs
-</md:prop>
+<div class="clearboth"></div>
 
 #### methods # Methods
 
@@ -327,6 +313,97 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Ge
 public static function parse_str($s, &$var, $header = false)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L912
 </md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled
+	 * @return mixed
+	 */
+501 => 'Not Implemented',
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L66
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $event
+	 * @throws UndefinedEventCalledException
+	 * @return mixed
+	 */
+
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L23
+</md:method>
+
+<md:method>
+/**
+	 * Cleans up events
+	 * @return void
+	 */
+406 => 'Not Acceptable',
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L51
+</md:method>
+
+<md:method>
+/**
+	 * Is session started?
+	 * @return boolean
+	 */
+404 => 'Not Found',
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L49
+</md:method>
+
+<md:method>
+/**
+	 * Deferred event 'onSessionStart'
+	 * @return callable
+	 */
+412 => 'Precondition Failed',
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L57
+</md:method>
+
+<md:method>
+/**
+	 * Deferred event 'onSessionRead'
+	 * @return callable
+	 */
+* @var integer Content length from header() method
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L84
+</md:method>
+
+<md:method>
+/**
+	 * Reads session data
+	 * @param  string   $sid Session ID
+	 * @param  callable $cb  Callback
+	 * @return void
+	 */
+*/
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L110
+</md:method>
+
+<md:method>
+/**
+	 * Commmit session data
+	 * @param  callable $cb Callback
+	 * @return void
+	 */
+/**
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L128
+</md:method>
+
+<md:method>
+/**
+     * session_encode() - clone, which not require session_start()
+     * @see    http://www.php.net/manual/en/function.session-encode.php
+     * @param  array  $array
+     * @return string
+     */
+* @return mixed
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/HTTPRequest/Generic.php#L238
+</md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

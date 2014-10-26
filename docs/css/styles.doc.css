@@ -29,6 +29,15 @@ h5 {
 .dn {
 	display: none;
 }
+.clearleft {
+	clear: left;
+}
+.clearright {
+	clear: right;
+}
+.clearboth {
+	clear: both;
+}
 
 header, menu, nav, article, footer, section, aside {
 	display: block;

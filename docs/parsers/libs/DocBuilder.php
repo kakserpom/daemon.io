@@ -193,32 +193,8 @@ class DocBuilder {
 	 */
 	protected function parseMdConstants($source) {
 		return preg_replace_callback('/^<md:const>(.+?)<\/md:const>/ims', function($matches) {
-			$text = $matches[1];
-			if(substr(ltrim($text),0,3) === '/**') {
-				$text = $this->parseMdConstantsFromPHPDoc($text);
-			}
-
-			return $this->parseMdConstantsDef($text);
+			return $this->parseMdConstantsDef($matches[1]);
 		}, $source);
-	}
-
-	/**
-	 * Парсит описание константы из phpdoc в стандартизованный вид для дальнейшей обработки
-	 * @param  string $text
-	 * @return string
-	 */
-	protected function parseMdConstantsFromPHPDoc($text) {
-		$lines = $this->getTextLines($text);
-
-		$code = trim(array_pop($lines));
-		$comment = implode("\n", $lines);
-
-		$PHPDoc = new DocBlock($comment);
-
-		$desc_text_arr = preg_split('/[ \t]*\n[ \t]*/', trim($PHPDoc->getShortDescription() ."\n". $PHPDoc->getLongDescription()), -1, PREG_SPLIT_NO_EMPTY);
-		$desc_text = implode("  \n", $desc_text_arr);
-
-		return $code ."\n". $desc_text;
 	}
 
 	/**
@@ -235,12 +211,12 @@ class DocBuilder {
 		}
 
 		if(count($lines)) {
-			$part = array_shift($lines);
+			$part = array_pop($lines);
 			$result .= " -.method ```php:p.inline\n $part\n ```\n";
 		}
 
 		if(count($lines)) {
-			$part = array_shift($lines);
+			$part = implode('<br />', $lines);
 			$result .= ' <ul><li class="n">' . $part . "</li></ul>\n";
 		}
 
@@ -335,7 +311,7 @@ class DocBuilder {
 			}
 
 			$text = implode("\n", $lines);
-			$text = preg_replace('/\n+/', "\n", $text);
+			$text = preg_replace('/\n+/', '<br />', $text);
 
 			$code = implode("\n  \t", $codes);
 			$code = preg_replace('/\n[ \t]+\]/', "\n]", $code);

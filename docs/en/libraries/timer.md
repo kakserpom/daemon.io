@@ -85,6 +85,8 @@ public $cb
 public $priority
 </md:prop>
 
+<div class="clearboth"></div>
+
 #### methods # Methods
 
 <md:method>
@@ -207,6 +209,49 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php
 public function free()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L186
 </md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined method
+	 * @return mixed
+	 */
+* @var \EventBufferEvent Event resource
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L20
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined static method
+	 * @return mixed
+	 */
+public $finished = false;
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L30
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @param  mixed  $value
+	 * @return void
+	 */
+public $id;
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L18
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @return void
+	 */
+public $lastTimeout;
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/Timer.php#L26
+</md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

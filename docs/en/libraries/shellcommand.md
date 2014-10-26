@@ -73,12 +73,7 @@ public $chroot = '/'
 public $cwd
 </md:prop>
 
-<md:prop>
-/**
-	 * @var object Associated pool
-	 */
-public $pool
-</md:prop>
+<div class="clearboth"></div>
 
 #### methods # Methods
 
@@ -287,6 +282,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellComm
 public function onEOF($cb = NULL)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ShellCommand.php#L479
 </md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

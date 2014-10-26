@@ -52,13 +52,6 @@ $sql->query('SHOW VARIABLES',
 Когда callback-функция вызвана, $sql->context содержит ваш объект, который вы туда положили перед этим. $sql->resultRows хранит результат в виде массива ассоциативных массивов. $sql->resultFields содержит поля ответа в виде массива ассоциативных массивов.
 
 <!-- include-namespace path="\PHPDaemon\Clients\MySQL" level="" access="" -->
-#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/MySQL/ConnectionFinished.php}
-
-```php
-namespace PHPDaemon\Clients\MySQL;
-class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
-```
-
 #### connection # Class Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}
 
 ```php
@@ -69,49 +62,51 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 ##### consts # Constants
 
 <md:const>
+@TODO DESCR
 const STATE_STANDBY = 0
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const STATE_BODY = 1
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const PHASE_GOT_INIT = 1
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const PHASE_AUTH_SENT = 2
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const PHASE_AUTH_ERR = 3
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const PHASE_HANDSHAKED = 4
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const RS_STATE_HEADER = 0
-@TODO DESCR
 </md:const>
 
 <md:const>
+@TODO DESCR
 const RS_STATE_FIELD = 1
-@TODO DESCR
 </md:const>
 
 <md:const>
-const RS_STATE_ROW = 2
 @TODO DESCR
+const RS_STATE_ROW = 2
 </md:const>
+
+<div class="clearboth"></div>
 
 ##### properties # Properties
 
@@ -262,12 +257,7 @@ public $errno = 0
 public $errmsg = ''
 </md:prop>
 
-<md:prop>
-/**
-	 * @var object Associated pool
-	 */
-public $pool
-</md:prop>
+<div class="clearboth"></div>
 
 ##### methods # Methods
 
@@ -423,6 +413,15 @@ public function onError()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L579
 </md:method>
 
+<div class="clearboth"></div>
+
+#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/MySQL/ConnectionFinished.php}
+
+```php
+namespace PHPDaemon\Clients\MySQL;
+class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
+```
+
 #### pool # Class Pool {tpl-git PHPDaemon/Clients/MySQL/Pool.php}
 
 ```php
@@ -444,478 +443,436 @@ class Pool extends \PHPDaemon\Network\Client;
 ##### consts # Constants
 
 <md:const>
-const CLIENT_LONG_PASSWORD = 1
 new more secure passwords
+const CLIENT_LONG_PASSWORD = 1
 </md:const>
 
 <md:const>
-const CLIENT_FOUND_ROWS = 2
 Found instead of affected rows
+const CLIENT_FOUND_ROWS = 2
 </md:const>
 
 <md:const>
-const CLIENT_LONG_FLAG = 4
 Get all column flags
+const CLIENT_LONG_FLAG = 4
 </md:const>
 
 <md:const>
-const CLIENT_CONNECT_WITH_DB = 8
 One can specify db on connect
+const CLIENT_CONNECT_WITH_DB = 8
 </md:const>
 
 <md:const>
-const CLIENT_NO_SCHEMA = 16
 Don't allow database.table.column
+const CLIENT_NO_SCHEMA = 16
 </md:const>
 
 <md:const>
-const CLIENT_COMPRESS = 32
 Can use compression protocol
+const CLIENT_COMPRESS = 32
 </md:const>
 
 <md:const>
-const CLIENT_ODBC = 64
 Odbc client
+const CLIENT_ODBC = 64
 </md:const>
 
 <md:const>
-const CLIENT_LOCAL_FILES = 128
 Can use LOAD DATA LOCAL
+const CLIENT_LOCAL_FILES = 128
 </md:const>
 
 <md:const>
-const CLIENT_IGNORE_SPACE = 256
 Ignore spaces before '('
+const CLIENT_IGNORE_SPACE = 256
 </md:const>
 
 <md:const>
-const CLIENT_PROTOCOL_41 = 512
 New 4.1 protocol
+const CLIENT_PROTOCOL_41 = 512
 </md:const>
 
 <md:const>
-const CLIENT_INTERACTIVE = 1024
 This is an interactive client
+const CLIENT_INTERACTIVE = 1024
 </md:const>
 
 <md:const>
-const CLIENT_SSL = 2048
 Switch to SSL after handshake
+const CLIENT_SSL = 2048
 </md:const>
 
 <md:const>
-const CLIENT_IGNORE_SIGPIPE = 4096
 IGNORE sigpipes
+const CLIENT_IGNORE_SIGPIPE = 4096
 </md:const>
 
 <md:const>
-const CLIENT_TRANSACTIONS = 8192
 Client knows about transactions
+const CLIENT_TRANSACTIONS = 8192
 </md:const>
 
 <md:const>
-const CLIENT_RESERVED = 16384
 Old flag for 4.1 protocol
+const CLIENT_RESERVED = 16384
 </md:const>
 
 <md:const>
-const CLIENT_SECURE_CONNECTION = 32768
 New 4.1 authentication
+const CLIENT_SECURE_CONNECTION = 32768
 </md:const>
 
 <md:const>
-const CLIENT_MULTI_STATEMENTS = 65536
 Enable/disable multi-stmt support
+const CLIENT_MULTI_STATEMENTS = 65536
 </md:const>
 
 <md:const>
-const CLIENT_MULTI_RESULTS = 131072
 Enable/disable multi-results
+const CLIENT_MULTI_RESULTS = 131072
 </md:const>
 
 <md:const>
+(none, this is an internal thread state)
 const COM_SLEEP = 0x00
-(none, this is an internal thread state)
 </md:const>
 
 <md:const>
-const COM_QUIT = 0x01
 mysql_close
+const COM_QUIT = 0x01
 </md:const>
 
 <md:const>
-const COM_INIT_DB = 0x02
 mysql_select_db
+const COM_INIT_DB = 0x02
 </md:const>
 
 <md:const>
-const COM_QUERY = 0x03
 mysql_real_query
+const COM_QUERY = 0x03
 </md:const>
 
 <md:const>
-const COM_FIELD_LIST = 0x04
 mysql_list_fields
+const COM_FIELD_LIST = 0x04
 </md:const>
 
 <md:const>
-const COM_CREATE_DB = 0x05
 mysql_create_db (deprecated)
+const COM_CREATE_DB = 0x05
 </md:const>
 
 <md:const>
-const COM_DROP_DB = 0x06
 mysql_drop_db (deprecated)
+const COM_DROP_DB = 0x06
 </md:const>
 
 <md:const>
-const COM_REFRESH = 0x07
 mysql_refresh
+const COM_REFRESH = 0x07
 </md:const>
 
 <md:const>
-const COM_SHUTDOWN = 0x08
 mysql_shutdown
+const COM_SHUTDOWN = 0x08
 </md:const>
 
 <md:const>
-const COM_STATISTICS = 0x09
 mysql_stat
+const COM_STATISTICS = 0x09
 </md:const>
 
 <md:const>
-const COM_PROCESS_INFO = 0x0a
 mysql_list_processes
+const COM_PROCESS_INFO = 0x0a
 </md:const>
 
 <md:const>
+(none, this is an internal thread state)
 const COM_CONNECT = 0x0b
-(none, this is an internal thread state)
 </md:const>
 
 <md:const>
-const COM_PROCESS_KILL = 0x0c
 mysql_kill
+const COM_PROCESS_KILL = 0x0c
 </md:const>
 
 <md:const>
-const COM_DEBUG = 0x0d
 mysql_dump_debug_info
+const COM_DEBUG = 0x0d
 </md:const>
 
 <md:const>
-const COM_PING = 0x0e
 mysql_ping
+const COM_PING = 0x0e
 </md:const>
 
 <md:const>
+(none, this is an internal thread state)
 const COM_TIME = 0x0f
-(none, this is an internal thread state)
 </md:const>
 
 <md:const>
+(none, this is an internal thread state)
 const COM_DELAYED_INSERT = 0x10
-(none, this is an internal thread state)
 </md:const>
 
 <md:const>
-const COM_CHANGE_USER = 0x11
 mysql_change_user
+const COM_CHANGE_USER = 0x11
 </md:const>
 
 <md:const>
-const COM_BINLOG_DUMP = 0x12
 sent by the slave IO thread to request a binlog
+const COM_BINLOG_DUMP = 0x12
 </md:const>
 
 <md:const>
-const COM_TABLE_DUMP = 0x13
 LOAD TABLE ... FROM MASTER (deprecated)
+const COM_TABLE_DUMP = 0x13
 </md:const>
 
 <md:const>
-const COM_CONNECT_OUT = 0x14
 (none, this is an internal thread state)
+const COM_CONNECT_OUT = 0x14
 </md:const>
 
 <md:const>
-const COM_REGISTER_SLAVE = 0x15
 sent by the slave to register with the master (optional)
+const COM_REGISTER_SLAVE = 0x15
 </md:const>
 
 <md:const>
-const COM_STMT_PREPARE = 0x16
 mysql_stmt_prepare
+const COM_STMT_PREPARE = 0x16
 </md:const>
 
 <md:const>
-const COM_STMT_EXECUTE = 0x17
 mysql_stmt_execute
+const COM_STMT_EXECUTE = 0x17
 </md:const>
 
 <md:const>
-const COM_STMT_SEND_LONG_DATA = 0x18
 mysql_stmt_send_long_data
+const COM_STMT_SEND_LONG_DATA = 0x18
 </md:const>
 
 <md:const>
-const COM_STMT_CLOSE = 0x19
 mysql_stmt_close
+const COM_STMT_CLOSE = 0x19
 </md:const>
 
 <md:const>
-const COM_STMT_RESET = 0x1a
 mysql_stmt_reset
+const COM_STMT_RESET = 0x1a
 </md:const>
 
 <md:const>
-const COM_SET_OPTION = 0x1b
 mysql_set_server_option
+const COM_SET_OPTION = 0x1b
 </md:const>
 
 <md:const>
-const COM_STMT_FETCH = 0x1c
 mysql_stmt_fetch
+const COM_STMT_FETCH = 0x1c
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_DECIMAL = 0x00
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_TINY = 0x01
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_SHORT = 0x02
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_LONG = 0x03
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_FLOAT = 0x04
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_DOUBLE = 0x05
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_NULL = 0x06
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_TIMESTAMP = 0x07
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_LONGLONG = 0x08
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_INT24 = 0x09
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_DATE = 0x0a
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_TIME = 0x0b
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_DATETIME = 0x0c
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_YEAR = 0x0d
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_NEWDATE = 0x0e
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_VARCHAR = 0x0f
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_BIT = 0x10
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_NEWDECIMAL = 0xf6
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_ENUM = 0xf7
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_SET = 0xf8
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_TINY_BLOB = 0xf9
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_MEDIUM_BLOB = 0xfa
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_LONG_BLOB = 0xfb
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_BLOB = 0xfc
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_VAR_STRING = 0xfd
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_STRING = 0xfe
-
 </md:const>
 
 <md:const>
+
 const FIELD_TYPE_GEOMETRY = 0xff
-
 </md:const>
 
 <md:const>
+
 const NOT_NULL_FLAG = 0x1
-
 </md:const>
 
 <md:const>
+
 const PRI_KEY_FLAG = 0x2
-
 </md:const>
 
 <md:const>
+
 const UNIQUE_KEY_FLAG = 0x4
-
 </md:const>
 
 <md:const>
+
 const MULTIPLE_KEY_FLAG = 0x8
-
 </md:const>
 
 <md:const>
+
 const BLOB_FLAG = 0x10
-
 </md:const>
 
 <md:const>
+
 const UNSIGNED_FLAG = 0x20
-
 </md:const>
 
 <md:const>
+
 const ZEROFILL_FLAG = 0x40
-
 </md:const>
 
 <md:const>
+
 const BINARY_FLAG = 0x80
-
 </md:const>
 
 <md:const>
+
 const ENUM_FLAG = 0x100
-
 </md:const>
 
 <md:const>
+
 const AUTO_INCREMENT_FLAG = 0x200
-
 </md:const>
 
 <md:const>
+
 const TIMESTAMP_FLAG = 0x400
-
 </md:const>
 
 <md:const>
-const SET_FLAG = 0x800
 
+const SET_FLAG = 0x800
 </md:const>
 
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var string Default connection class
-	 */
-public $connectionClass
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string Name
-	 */
-public $name
-</md:prop>
-
-<md:prop>
-/**
-	 * @var \PHPDaemon\Config\Section Configuration
-	 */
-public $config
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Max concurrency
-	 */
-public $maxConcurrency = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer Max allowed packet
-	 */
-public $maxAllowedPacket = 0
-</md:prop>
-
-<md:prop>
-/**
-	 * @var object|null Application instance object
-	 */
-public $appInstance
-</md:prop>
+<div class="clearboth"></div>
 
 ##### methods # Methods
 
@@ -940,7 +897,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/
 </md:method>
 
 <md:method>
-
+/**
+ */
 public static function values($arr)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L291
 </md:method>
@@ -954,6 +912,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/
 public static function likeEscape($string)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L307
 </md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

@@ -121,5 +121,48 @@ public static function encode($encodingLabel, $text)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L361
 </md:method>
 
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined method
+	 * @return mixed
+	 */
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L20
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined static method
+	 * @return mixed
+	 */
+
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L30
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @param  mixed  $value
+	 * @return void
+	 */
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L18
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @return void
+	 */
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L26
+</md:method>
+
+<div class="clearboth"></div>
+
 
 <!--/ include-namespace -->

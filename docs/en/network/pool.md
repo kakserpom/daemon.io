@@ -95,6 +95,8 @@ public $maxAllowedPacket = 0
 public $appInstance
 </md:prop>
 
+<div class="clearboth"></div>
+
 #### methods # Methods
 
 <md:method>
@@ -215,6 +217,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.p
 public function connect($url, $cb, $class = null)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Pool.php#L316
 </md:method>
+
+<div class="clearboth"></div>
 
 
 <!--/ include-namespace -->

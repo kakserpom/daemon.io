@@ -301,5 +301,48 @@ public static function getbitmap($byte)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L395
 </md:method>
 
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined method
+	 * @return mixed
+	 */
+public static function labels($q)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L20
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $method Method name
+	 * @param  array  $args   Arguments
+	 * @throws UndefinedMethodCalled if call to undefined static method
+	 * @return mixed
+	 */
+}
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L30
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @param  mixed  $value
+	 * @return void
+	 */
+* @return string
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L18
+</md:method>
+
+<md:method>
+/**
+	 * @param  string $prop
+	 * @return void
+	 */
+if (binarySubstr($r, -1) !== "\x00")
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Binary.php#L26
+</md:method>
+
+<div class="clearboth"></div>
+
 
 <!--/ include-namespace -->
