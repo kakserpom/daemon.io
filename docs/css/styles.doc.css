@@ -590,6 +590,9 @@ code.clear {
 .hljs {
 	overflow-x: visible !important;
 }
+pre.spoiler .hljs {
+	overflow-x: auto !important;
+}
 .hljs-keyword {
 	/*text-transform: lowercase;*/
 }
