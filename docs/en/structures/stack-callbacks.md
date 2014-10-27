@@ -80,47 +80,6 @@ public function reset()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/StackCallbacks.php#L109
 </md:method>
 
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined method
-	 * @return mixed
-	 */
-public function push($cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/StackCallbacks.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined static method
-	 * @return mixed
-	 */
-parent::unshift(CallbackWrapper::wrap($cb));
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/StackCallbacks.php#L30
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-* @return void
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/StackCallbacks.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-* @param  callable $cb Callback
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/StackCallbacks.php#L26
-</md:method>
-
 <div class="clearboth"></div>
 
 

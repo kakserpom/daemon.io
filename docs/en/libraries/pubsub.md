@@ -91,47 +91,6 @@ public function unsubFromAll($obj)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L93
 </md:method>
 
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined method
-	 * @return mixed
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined static method
-	 * @return mixed
-	 */
-* Subcribe to event
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L30
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-protected $events = [];
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-return isset($this->events[$id]);
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.php#L26
-</md:method>
-
 <div class="clearboth"></div>
 
 #### pub-sub-event # PubSubEvent {tpl-git PHPDaemon/PubSub/PubSubEvent.php}
@@ -236,47 +195,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubE
 	 */
 public function pub($data)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L108
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined method
-	 * @return mixed
-	 */
-*/
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined static method
-	 * @return mixed
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L30
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-public $deactCb;
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSubEvent.php#L26
 </md:method>
 
 <div class="clearboth"></div>

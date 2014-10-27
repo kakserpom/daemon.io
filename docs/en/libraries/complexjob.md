@@ -291,47 +291,6 @@ public function __invoke($name = null, $cb = null)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L320
 </md:method>
 
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined method
-	 * @return mixed
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined static method
-	 * @return mixed
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L30
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-const STATE_WAITING = 1;
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-* State: done
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/ComplexJob.php#L26
-</md:method>
-
 <div class="clearboth"></div>
 
 

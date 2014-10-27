@@ -503,47 +503,6 @@ public function sendFrame($data, $type = 0x00, $cb = null)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L357
 </md:method>
 
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined method
-	 * @return mixed
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined static method
-	 * @return mixed
-	 */
-public $id;
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L30
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-use \PHPDaemon\Traits\StaticObjectWatchdog;
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-* @var \PHPDaemon\Structures\StackCallbacks
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L26
-</md:method>
-
 <div class="clearboth"></div>
 
 #### web-socket-connection-proxy # WebSocketConnectionProxy {tpl-git PHPDaemon/SockJS/WebSocketConnectionProxy.php}
@@ -630,25 +589,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 */
 public function sendFrameReal($data, $type = null, $cb = null)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L91
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-* @param object      $conn
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L26
 </md:method>
 
 <div class="clearboth"></div>
@@ -740,25 +680,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 */
 public function onFinish()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketRouteProxy.php#L115
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketRouteProxy.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-* __construct
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketRouteProxy.php#L26
 </md:method>
 
 <div class="clearboth"></div>

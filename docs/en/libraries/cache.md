@@ -124,47 +124,6 @@ public function getValue($key)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L127
 </md:method>
 
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined method
-	 * @return mixed
-	 */
-*/
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined static method
-	 * @return mixed
-	 */
-*/
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L30
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-public $capWindow = 16;
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L26
-</md:method>
-
 <div class="clearboth"></div>
 
 #### capped-storage-hits # CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
@@ -260,47 +219,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php
 	 */
 public function setValue($value)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L72
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined method
-	 * @return mixed
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined static method
-	 * @return mixed
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L30
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-protected $value;
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-* @var integer Hits counter
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L26
 </md:method>
 
 <div class="clearboth"></div>

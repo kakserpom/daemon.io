@@ -672,6 +672,18 @@ public function onEvent($cb)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L632
 </md:method>
 
+<md:method>
+/**
+	 * Bind event or events
+	 * @alias EventHandlers::bind
+	 * @param string|array $event Event name
+	 * @param callable     $cb    Callback
+	 * @return this
+	 */
+public function onConnected($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L130
+</md:method>
+
 <div class="clearboth"></div>
 
 #### connection-finished # ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
