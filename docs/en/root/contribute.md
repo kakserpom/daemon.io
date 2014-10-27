@@ -1,23 +1,21 @@
 ## contribute # Contribute
 
-Если хотите помочь, то даже если располагаете ограниченным временем, не стесняйтесь!
-Проекту пригодится любая помощь. 
+If you want to help the project, then do not hesitate to start even if you have only a bit of time for it.
+Any help is appreciated.
 
-### this-doc # Эта документация
+### this-doc # This documentation
 
-Мы очень хотим свести количество недокументированного кода к минимуму, но нам не хватает рук.
-Даже написав абзац текста, потратив десять минут, вы уже сделаете большое дело.
+We are struggling to minimize amount of undocumented parts, but we are running out of hands.
+Even a paragraph written in 10 minutes is a big deal.
 
 
-#### commiting # Внесение изменений
+#### making-changes # Making changes
 
-> Старайтесь вносить изменения в на том языке, которым владеете лучше всего.
-> Если набрались смелости добавить новый язык, возьмите за основу наиболее близкий из присутствующих.
+> Consider writing in the language you know best among all others.
+> If you are bold enough to add new language, base it upon the most similar one of existing languages.
 
-Чтобы внести изменения в эту документацию, необходимо:
-
- 1. Сделать Fork репозитория [kakserpom/daemon.io](https://github.com/kakserpom/daemon.io)
- 2. Внести изменения в Markdown (.md) файлыв папке `./docs/<язык>/`
+ 1. Fork a repository [kakserpom/daemon.io](https://github.com/kakserpom/daemon.io)
+ 2. Change Markdown (.md) файлыв папке `./docs/<язык>/`
  3. Скомпилировать index.html, выполнив команду `./docs/build`
  4. Посмотреть как выглядят внесенные изменения в браузере
  5. Послать Pull Request
