@@ -530,10 +530,6 @@ TPL;
 						$value
 					);
 				}
-				// else {
-				// 	$value = preg_replace('/^\s+/', '', $value);
-				// 	$value = preg_replace('/\s+$/', '', $value);
-				// }
 
 				$code .= ' = ' . $value;
 			}
