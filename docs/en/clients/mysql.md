@@ -431,13 +431,13 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### options # Options
 
- - `server ('tcp://root@127.0.0.1/')`  
+ - `:p`server ('tcp://root@127.0.0.1/')`  
  @todo add description strings
 
- - `port (3306)`  
+ - `:p`port (3306)`  
  
 
- - `maxconnperserv (32)`  
+ - `:p`maxconnperserv (32)`  
  
 
 ##### consts # Constants

@@ -29,6 +29,8 @@ if(!function_exists('glob_recursive')) {
 	}
 }
 
+use phpDocumentor\Reflection\DocBlock as DocBlock;
+
 class PHPDocImporter {
 	protected $doc_path;
 
@@ -347,6 +349,12 @@ class PHPDocImporter {
 			$name = substr($ReflectionEntity->getName(), strlen($ns) + 1);
 		}
 
+		$PHPDoc = new DocBlock($ReflectionEntity->getDocComment());
+		$desc = $PHPDoc->getText();
+		if($desc) {
+			$desc .= "\n\n";
+		}
+
 		$parent = $ReflectionEntity->getParentClass();
 		$extra_parent = '';
 		if($parent instanceof ReflectionClass) {
@@ -367,7 +375,8 @@ class PHPDocImporter {
 		if(!isset($params['level']) || !$params['level']) {
 			$params['level'] = 3;
 		}
-		$level = str_repeat('#', $params['level'] + 1);
+		// $level = str_repeat('#', $params['level'] + 1);
+		$level = $this->getHeaderLevel($params['level'], 1);
 
 		$result = <<<TPL
 $level $altname # $name {tpl-git $class_path}
@@ -377,7 +386,7 @@ namespace $ns;
 $typeLower {$name}{$extra_parent};
 ```
 
-
+$desc
 TPL;
 
 		return $result;
@@ -394,17 +403,18 @@ TPL;
 			return;
 		}
 
-		$name = $ReflectionMethod->getName();
+		if($ReflectionMethod->getDeclaringClass()->getName() !== $ReflectionEntity->getName()) {
+			return;
+		}
+
 		$line_start = $ReflectionMethod->getStartLine();
 		$line_end   = $ReflectionMethod->getEndLine();
 		$lines = $this->getCodeLines($class_path, $line_start - 1, $line_end);
 
-		if(strpos(current($lines), "function $name") === false) {
-			return;
-		}
+		// $level = $params['level'] ? $params['level'] + 2 : 4;
+		// $level = str_repeat('#', $level);
+		$level = $this->getHeaderLevel($params['level'], 2);
 
-		$level = $params['level'] ? $params['level'] + 2 : 4;
-		$level = str_repeat('#', $level);
 		$result = '';
 
 		$prevline = '';
@@ -415,12 +425,21 @@ TPL;
 				$type = '';
 				$desc = '';
 
-				if(preg_match('/^\/\*\*?[ \t]*(?:\[([\w\|]+)\][ \t]*)?(.+?)$/', trim($prevline), $m2)) {
+				if(preg_match('/^(?:\/\*\*?|\/\/)[ \t]*(?:\[([\w\|\\\\]+)\][ \t]*)?(.+?)(?:\*\/)?$/', trim($prevline), $m2)) {
 					$type = $m2[1];
-					$desc = $m2[2];
+					$desc = trim($m2[2]);
 				}
 
-				$result .= " - `{$key} (". ($type ? "{$type} = " : '') ."{$val})`  \n";
+				if(strpos($val, 'new ') === 0 && preg_match('/\((.+?)\)/', $val, $m3)) {
+					$val = $m3[1];
+				}
+
+				if(strpos($type, 'Config\\') === 0) {
+					$type = substr($type, 7);
+					$type = '['. ucfirst(strtolower($type)) .'](#config/types/'. strtolower($type) .')';
+				}
+
+				$result .= " - `:p`{$key} (". ($type ? "{$type} = " : '') ."{$val})`  \n";
 				$result .= " {$desc}\n\n";
 			}
 
@@ -435,8 +454,10 @@ TPL;
 	}
 
 	protected function getClassConstants($ReflectionEntity, $params, $class_path, $class_name) {
-		$level = $params['level'] ? $params['level'] + 2 : 4;
-		$level = str_repeat('#', $level);
+		// $level = $params['level'] ? $params['level'] + 2 : 4;
+		// $level = str_repeat('#', $level);
+		$level = $this->getHeaderLevel($params['level'], 2);
+
 		$result = '';
 
 		$ConstDoc = new ConstDoc($class_name);
@@ -487,8 +508,10 @@ TPL;
 			$access = $access | ReflectionProperty::IS_PROTECTED | ReflectionProperty::IS_PRIVATE;
 		}
 
-		$level = $params['level'] ? $params['level'] + 2 : 4;
-		$level = str_repeat('#', $level);
+		// $level = $params['level'] ? $params['level'] + 2 : 4;
+		// $level = str_repeat('#', $level);
+		$level = $this->getHeaderLevel($params['level'], 2);
+
 		$result = '';
 		$properties = $ReflectionEntity->getProperties($access);
 		$values = $ReflectionEntity->getDefaultProperties();
@@ -565,8 +588,10 @@ TPL;
 			$access = $access | ReflectionMethod::IS_PROTECTED | ReflectionMethod::IS_PRIVATE;
 		}
 
-		$level = $params['level'] ? $params['level'] + 2 : 4;
-		$level = str_repeat('#', $level);
+		// $level = $params['level'] ? $params['level'] + 2 : 4;
+		// $level = str_repeat('#', $level);
+		$level = $this->getHeaderLevel($params['level'], 2);
+
 		$result = '';
 		$methods = $ReflectionEntity->getMethods($access);
 
@@ -633,5 +658,10 @@ TPL;
 		}
 
 		return $result;
+	}
+
+	protected function getHeaderLevel($level, $extra = 0) {
+		$level = $level ? ($level + $extra) : ($extra + 2);
+		return str_repeat('#', $level);
 	}
 }

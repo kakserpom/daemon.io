@@ -16,6 +16,8 @@ namespace PHPDaemon\Cache;
 class CappedStorage;
 ```
 
+CappedStorage
+
 ##### properties # Properties
 
 <md:prop>
@@ -172,6 +174,8 @@ namespace PHPDaemon\Cache;
 class CappedStorageHits extends \PHPDaemon\Cache\CappedStorage;
 ```
 
+CappedStorageHits
+
 ##### methods # Methods
 
 <md:method>
@@ -191,6 +195,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedSt
 namespace PHPDaemon\Cache;
 class Item;
 ```
+
+Item
 
 ##### properties # Properties
 

@@ -12,6 +12,8 @@ namespace PHPDaemon\PubSub;
 class PubSub;
 ```
 
+PubSub
+
 ##### methods # Methods
 
 <md:method>
@@ -138,6 +140,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/PubSub/PubSub.
 namespace PHPDaemon\PubSub;
 class PubSubEvent extends \SplObjectStorage;
 ```
+
+PubSubEvent
 
 ##### properties # Properties
 

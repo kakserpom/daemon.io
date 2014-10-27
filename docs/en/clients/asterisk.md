@@ -222,6 +222,8 @@ namespace PHPDaemon\Clients\Asterisk;
 class Connection extends \PHPDaemon\Network\ClientConnection;
 ```
 
+Asterisk Call Manager Connection
+
 ##### consts # Constants
 
 <md:const>
@@ -679,6 +681,8 @@ namespace PHPDaemon\Clients\Asterisk;
 class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
 ```
 
+Driver for Asterisk Call Manager/1.1
+
 #### pool # Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
 
 ```php
@@ -686,12 +690,14 @@ namespace PHPDaemon\Clients\Asterisk;
 class Pool extends \PHPDaemon\Network\Client;
 ```
 
+Class Pool
+
 ##### options # Options
 
- - `authtype (string = 'md5')`  
+ - `:p`authtype (string = 'md5')`  
  Auth hash type
 
- - `port (integer = 5280)`  
+ - `:p`port (integer = 5280)`  
  Port
 
 ##### properties # Properties

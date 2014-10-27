@@ -12,6 +12,8 @@ namespace PHPDaemon\FS;
 class File;
 ```
 
+File
+
 ##### properties # Properties
 
 <md:prop>
@@ -389,6 +391,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L2
 namespace PHPDaemon\FS;
 class FileSystem;
 ```
+
+FileSystem
 
 ##### properties # Properties
 
@@ -838,6 +842,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.
 namespace PHPDaemon\FS;
 class FileWatcher;
 ```
+
+Implementation of the file watcher
 
 ##### properties # Properties
 

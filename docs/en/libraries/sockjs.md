@@ -14,32 +14,32 @@ class Application extends \PHPDaemon\Core\AppInstance;
 
 ##### options # Options
 
- - `redis-name (string = '')`  
+ - `:p`redis-name (string = '')`  
  @todo redis-name
 
- - `redis-prefix (string = 'sockjs:')`  
+ - `:p`redis-prefix (string = 'sockjs:')`  
  @todo redis-prefix
 
- - `wss-name (string = '')`  
+ - `:p`wss-name (string = '')`  
  @todo wss-name
 
- - `batch-delay (new \PHPDaemon\Config\Entry\Double('0.05'))`  
- [Config\Double] @todo batch-delay
+ - `:p`batch-delay ([Double](#config/types/double) = '0.05')`  
+ @todo batch-delay
 
- - `heartbeat-interval (new \PHPDaemon\Config\Entry\Double('25'))`  
- [Config\Double] @todo heartbeat-interval
+ - `:p`heartbeat-interval ([Double](#config/types/double) = '25')`  
+ @todo heartbeat-interval
 
- - `dead-session-timeout (new \PHPDaemon\Config\Entry\Time('1h'))`  
- [Config\Time] @todo dead-session-timeout
+ - `:p`dead-session-timeout ([Time](#config/types/time) = '1h')`  
+ @todo dead-session-timeout
 
- - `gc-max-response-size (new \PHPDaemon\Config\Entry\Size('128k'))`  
- [Config\Size] @todo gc-max-response-size
+ - `:p`gc-max-response-size ([Size](#config/types/size) = '128k')`  
+ @todo gc-max-response-size
 
- - `network-timeout-read (new \PHPDaemon\Config\Entry\Time('2h'))`  
- [Config\Time] @todo network-timeout-read
+ - `:p`network-timeout-read ([Time](#config/types/time) = '2h')`  
+ @todo network-timeout-read
 
- - `network-timeout-write (new \PHPDaemon\Config\Entry\Time('120s'))`  
- [Config\Time] @todo network-timeout-write
+ - `:p`network-timeout-write ([Time](#config/types/time) = '120s')`  
+ @todo network-timeout-write
 
 ##### properties # Properties
 
@@ -60,7 +60,7 @@ public $wss
 	 * @return integer
 	 */
 public function getLocalSubscribersCount($chan)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L52
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L53
 </md:method>
 
 <md:method>
@@ -74,7 +74,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return void
 	 */
 public function subscribe($chan, $cb, $opcb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L65
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L66
 </md:method>
 
 <md:method>
@@ -87,7 +87,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return void
 	 */
 public function setnx($key, $value, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L77
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L78
 </md:method>
 
 <md:method>
@@ -100,7 +100,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return void
 	 */
 public function setkey($key, $value, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L89
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L90
 </md:method>
 
 <md:method>
@@ -112,7 +112,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return void
 	 */
 public function getkey($key, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L100
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L101
 </md:method>
 
 <md:method>
@@ -125,7 +125,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return void
 	 */
 public function expire($key, $seconds, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L112
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L113
 </md:method>
 
 <md:method>
@@ -139,7 +139,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return void
 	 */
 public function unsubscribe($chan, $cb, $opcb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L125
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L126
 </md:method>
 
 <md:method>
@@ -151,7 +151,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return void
 	 */
 public function unsubscribeReal($chan, $opcb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L136
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L137
 </md:method>
 
 <md:method>
@@ -165,7 +165,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return void
 	 */
 public function publish($chan, $cb, $opcb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L149
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L150
 </md:method>
 
 <md:method>
@@ -174,7 +174,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return void
 	 */
 public function onReady()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L157
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L158
 </md:method>
 
 <md:method>
@@ -183,7 +183,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return void
 	 */
 public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L170
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L171
 </md:method>
 
 <md:method>
@@ -193,7 +193,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return boolean
 	 */
 public function attachWss($wss)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L182
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L183
 </md:method>
 
 <md:method>
@@ -207,7 +207,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return boolean
 	 */
 public function wsHandler($ws, $path, $client, $state)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L200
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L201
 </md:method>
 
 <md:method>
@@ -217,7 +217,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return boolean
 	 */
 public function detachWss($wss)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L230
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L231
 </md:method>
 
 <md:method>
@@ -229,7 +229,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return object
 	 */
 public function beginSession($path, $sessId, $server)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L246
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L247
 </md:method>
 
 <md:method>
@@ -239,7 +239,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return array
 	 */
 public function getRouteOptions($path)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L266
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L267
 </md:method>
 
 <md:method>
@@ -249,7 +249,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return void
 	 */
 public function endSession($session)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L288
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L289
 </md:method>
 
 <md:method>
@@ -260,7 +260,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return object           Request.
 	 */
 public function beginRequest($req, $upstream)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L298
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L299
 </md:method>
 
 <md:method>
@@ -272,7 +272,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 	 * @return object
 	 */
 public function callMethod($method, $req, $upstream)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L367
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Application.php#L368
 </md:method>
 
 <div class="clearboth"></div>
@@ -558,16 +558,11 @@ class WebSocketConnectionProxy;
 <md:method>
 /**
 	 * __construct
-	 * 
-	 * sdfsdf
-	 * sdfsd
-	 * sd
-	 * sdfdsfsd
 	 * @param Application $sockjs
 	 * @param object      $conn
 	 */
 public function __construct($sockjs, $conn)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L39
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L28
 </md:method>
 
 <md:method>
@@ -577,7 +572,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return mixed
 	 */
 public function __get($k)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L49
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L38
 </md:method>
 
 <md:method>
@@ -587,7 +582,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return boolean
 	 */
 public function __isset($k)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L58
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L47
 </md:method>
 
 <md:method>
@@ -598,7 +593,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return mixed
 	 */
 public function __call($method, $args)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L68
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L57
 </md:method>
 
 <md:method>
@@ -608,7 +603,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return string
 	 */
 public function toJson($p)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L77
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L66
 </md:method>
 
 <md:method>
@@ -621,7 +616,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return boolean Success.
 	 */
 public function sendFrame($data, $type = null, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L89
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L78
 </md:method>
 
 <md:method>
@@ -634,7 +629,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return boolean Success.
 	 */
 public function sendFrameReal($data, $type = null, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L102
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L91
 </md:method>
 
 <md:method>
@@ -643,7 +638,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @param  mixed  $value
 	 * @return void
 	 */
-* @package    Libraries
+
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L18
 </md:method>
 
@@ -652,7 +647,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @param  string $prop
 	 * @return void
 	 */
-
+* @param object      $conn
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L26
 </md:method>
 
@@ -804,6 +799,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 namespace PHPDaemon\SockJS\Methods;
 class Generic extends \PHPDaemon\HTTPRequest\Generic;
 ```
+
+Contains some base methods
 
 ##### methods # Methods
 
@@ -1142,7 +1139,7 @@ class Application extends \PHPDaemon\Core\AppInstance;
 
 ##### options # Options
 
- - `wss-name (string = '')`  
+ - `:p`wss-name (string = '')`  
  WSS name
 
 ##### methods # Methods

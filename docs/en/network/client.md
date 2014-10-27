@@ -10,16 +10,16 @@ abstract class Client extends [Pool](#../pool);
 <!-- include-namespace path="\PHPDaemon\Network\Client" level="" access="" -->
 #### options # Options
 
- - `expose (1)`  
+ - `:p`expose (1)`  
  
 
- - `servers ('127.0.0.1')`  
+ - `:p`servers ('127.0.0.1')`  
  
 
- - `server ('127.0.0.1')`  
+ - `:p`server ('127.0.0.1')`  
  
 
- - `maxconnperserv (32)`  
+ - `:p`maxconnperserv (32)`  
  
 
 #### methods # Methods
