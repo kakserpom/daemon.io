@@ -605,10 +605,12 @@ TPL;
 				$comment = "/**\n */";
 			}
 
+			$sourcelink = $link_prefix . $class_path . '#L' . $ReflectionMethod->getStartLine();
+
 			$result .= "<md:method>\n";
 			$result .= $comment."\n";
 			$result .= $code."\n";
-			$result .= 'link:'. $link_prefix . $class_path . '#L' . $ReflectionMethod->getStartLine() ."\n";
+			$result .= "link:{$sourcelink}\n";
 			$result .= "</md:method>\n\n";
 		}
 

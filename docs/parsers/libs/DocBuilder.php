@@ -414,7 +414,7 @@ class DocBuilder {
 			$desc = $tag->getDescription();
 			$deftype = $this->getDocDefaultType($type);
 
-			if($name === '' && $desc[0] === '&' && $desc[1] === '$') {
+			if($name === '' && $desc !== '' && $desc[0] === '&' && $desc[1] === '$') {
 				list($name, $desc) = explode(' ', $desc, 2);
 			}
 
