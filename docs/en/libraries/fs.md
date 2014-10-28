@@ -5,12 +5,14 @@ namespace PHPDaemon\FS;
 ```
 
 <!-- include-namespace path="\PHPDaemon\FS" level="" access="" -->
-#### file # Class File {tpl-git PHPDaemon/FS/File.php}
+#### file # File {tpl-git PHPDaemon/FS/File.php}
 
 ```php
 namespace PHPDaemon\FS;
 class File;
 ```
+
+File
 
 ##### properties # Properties
 
@@ -340,55 +342,16 @@ public function __destruct()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L709
 </md:method>
 
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined method
-	 * @return mixed
-	 */
-public $priority = 10;
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined static method
-	 * @return mixed
-	 */
-protected $stat;
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L30
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-* @var integer Priority
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/File.php#L26
-</md:method>
-
 <div class="clearboth"></div>
 
-#### file-system # Class FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
+#### file-system # FileSystem {tpl-git PHPDaemon/FS/FileSystem.php}
 
 ```php
 namespace PHPDaemon\FS;
 class FileSystem;
 ```
+
+FileSystem
 
 ##### properties # Properties
 
@@ -789,55 +752,16 @@ public static function open($path, $flags, $cb, $mode = null, $pri = EIO_PRI_DEF
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L593
 </md:method>
 
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined method
-	 * @return mixed
-	 */
-*/
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined static method
-	 * @return mixed
-	 */
-*/
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L30
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-public static $ev;
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileSystem.php#L26
-</md:method>
-
 <div class="clearboth"></div>
 
-#### file-watcher # Class FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
+#### file-watcher # FileWatcher {tpl-git PHPDaemon/FS/FileWatcher.php}
 
 ```php
 namespace PHPDaemon\FS;
 class FileWatcher;
 ```
+
+Implementation of the file watcher
 
 ##### properties # Properties
 
@@ -914,47 +838,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher
 	 */
 public function watch()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L122
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined method
-	 * @return mixed
-	 */
-
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined static method
-	 * @return mixed
-	 */
-
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L30
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-*/
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/FS/FileWatcher.php#L26
 </md:method>
 
 <div class="clearboth"></div>

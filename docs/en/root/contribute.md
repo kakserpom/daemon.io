@@ -16,81 +16,81 @@ Even a paragraph written in 10 minutes is a big deal.
 
  1. Fork a repository [kakserpom/daemon.io](https://github.com/kakserpom/daemon.io)
  2. Change Markdown (.md) файлыв папке `./docs/<язык>/`
- 3. Скомпилировать index.html, выполнив команду `./docs/build`
- 4. Посмотреть как выглядят внесенные изменения в браузере
- 5. Послать Pull Request
+ 3. Compile index.html by executing `./docs/build`
+ 4. Look how it looks in browser
+ 5. Send Pull Request
 
-> Хотите видеть изменения в браузере, не запуская каждый раз команду?
-> Запустите `watch -n1 ./docs/build` — она будет выполняться раз в секунду
+> Want to see changes in browser without running the command?
+> Run `watch -n1 ./docs/build` — it shall be rebuilt every second 
 
-#### markdown # Формат документации
-Мы используем [Markdown](http://ru.wikipedia.org/wiki/Markdown) ([о синтаксисе по-русски](http://rukeba.com/by-the-way/markdown-sintaksis-po-russki/)) с некоторыми дополнениями.
+#### markdown # Format of documentation
+We use the [Markdown](http://ru.wikipedia.org/wiki/Markdown) with some extensions.
 
-##### nesting # Вложенность
+##### nesting # Nesting
 
-Для удобства работы документация разбита на множество мелких файлов.
-Подключение файла осуществляется строкой иморта: `&lt;!-- import filepath.md --&gt;`.
-Путь к подключаемому файлу указывается относительно текущего.
+For your convenience, documentation is split between many small files.
+Including a file: `&lt;!-- import filepath.md --&gt;`.
+Path is relative.
 
-##### const # Константы
+##### const # Constants
 
-Константы используются для языковых настроек и короткой записи часто используемых шаблонов.
-Записываются в виде `&lt;!-- pvar **название** строка значения --&gt;`
+Constants are used for i18n and shortcuts for frequently used templates.
+They may be defined as simple as that: `&lt;!-- pvar Name Value --&gt;`
 
-Обязательные языковые константы `lang`, `title`, `menu-*` должны быть переведены для каждой языковой версии документации.
+Mandatory i18n contants `lang`, `title` and `menu-*` must be present in each translation of this documentation.
 
-Константы могут быть использованы как шаблоны. Применение шаблона: `{**название** переменная1 переменная2...}`. Переменные будут подставлены в шаблон вместо `%s`.
+Constants may be used as templates. Calling a template: `{Name Value1 Value1...}`. Values will be places in result instead of `%s`.
 
-Пример шаблона:  
+Example of a template:  
 `&lt;!-- pvar tpl-outlink &lt;a target="_blank" href="%s"&gt;%s&lt;i class="fa fa-external-link"&gt;&lt;/i&gt;&lt;/a&gt; --&gt;`
 
-Пример использования:
-`&#123;tpl-outlink http://ru.wikipedia.org/wiki/Markdown Markdown&#125;`
+Example of its usage:  
+`&#123;tpl-outlink http://en.wikipedia.org/wiki/Markdown Markdown&#125;`
 
-##### headers # Заголовки
-Заголовки могут быть описаны следующими способами:
+##### headings # Headings
+Headings may be defined like that:
 
- - `## якорь # Заголовок`
- - `## якорь # Заголовок #> Форматированный заголовок`
+ - `## anchor # Title`
+ - `## якорь # Title #> Formatted heaing`
 
-`якорь` - идентификатор заголовка для навигации. Разрешенные символы `[a-zA-Z0-9_-]`. Должен быть уникальным по отношению к идентификаторам заголовков текущего уровня в пределах родительского заголовка.
+`anchor` - an identifier for navigation which takes place in URL. Allowed symbols are `[a-zA-Z0-9_-]`. Must be unique among anchors of its level to avoid URL collisions.
 
-`Форматированный заголовок` используется в тех случаях, когда заголовок в контенте должен отличаться от заголовка в навигационной панели.
+`Formatted heading` is used in case if heading in the page body should differ from heading in the navigation bar.
 
-Примеры:
+Examples:
 
- - Заголовок первого уровня: `## contribute # Внести свою лепту`
- - Заголовок второго уровня: `### this-doc # Эта документация`
- - Заголовок третьего уровня: `#### markdown # Формат документации`
- - Заголовок четвертого уровня: `#### markdown # Заголовки`
- - Форматированный заголовок: `### mysql # MySQL #> Клиенты \ MySQL`
+ - Heading of first level `## contribute # Внести свою лепту`
+ - Second level of heading: `### this-doc # This documentation`
+ - Third level of heading: `#### markdown # Format of documentation`
+ - Fourth level of heading: `#### headings # Headings`
+ - Formatted heading: `### mysql # MySQL #> Clients \ MySQL`
 
-> При добавлении нового заголовка учтите, что якорь должен быть строго на английском языке и быть простым и информативным. При переводе якори не изменяются
+> If you are adding new heading, make sure that anchor is written in English (strictly) and is simple and informative. Anchors are not supposed to be translated
 
-##### lists # Списки
+##### lists # Lists
 
-Для списков добавлена возможность указать CSS-класс элемента:
+You can set CSS class of list element.
 
 ```
- -.n Элемент без символа списка
- -.n.ti Элемент без символа списка и с отступом от предыдущего
+ -.n Element without list mark
+ -.n.ti Element without list mark with indentation from the previous one
 ```
 
-На данный момент используются CSS-классы:
+The following classes are currently in use:
 
- - `.n` - без иконки элемента списка
- - `.ti` - отступ от предыдущего элемента
- - `.method` - специальный CSS-класс для записи методов библиотек
+ - `.n` - Элемент без символа списка
+ - `.ti` - Indentation from the previous one
+ - `.method` - special CSS-class for Methods
 
-##### italic_bold # Курсив и жирный
+##### italic-and-bold # Italic and bold
 
-Выделение курсивом и жирным работает только с помощью звездочки `*`, знак подчеркивания `_` отключен для совместимости с программным кодом.
+Italic and bold works with `*`, `_` is not available due to the compatibility reasons.
 
-##### simple_code # Однострочный код
+##### single-line-code # Single line code
 
-Простое выделение кода апострофами `&#96;...&#96;` дополнено возможностью применять модификаторы и CSS-классы.  
+Wrapping of a code with apostrophes `&#96;...&#96;` дополнено возможностью применять модификаторы и CSS-классы.  
 Модификаторы — это опции, включающие дополнительную обработку текста.
-
+w
 Модификаторы и классы пишутся после открывающего апострофа и должны быть закрыты дополнительным перед началом текста. Перед указанием модификаторов ставится символ `:` (двоеточие). Каждый модификатор указывается одним латинским символом. Классы указываются с помощью ведущей точки.
 
 > При указании одновременно и модификаторов, и классов, сначала должны быть записаны модификаторы.

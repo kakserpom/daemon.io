@@ -29,6 +29,8 @@ if(!function_exists('glob_recursive')) {
 	}
 }
 
+use phpDocumentor\Reflection\DocBlock as DocBlock;
+
 class PHPDocImporter {
 	protected $doc_path;
 
@@ -47,6 +49,8 @@ class PHPDocImporter {
 	];
 
 	protected $tagsRegex = [];
+
+	protected $sourceCodeCache = [];
 
 	public function __construct() {
 		foreach ($this->tags as $tagKey => $tagType) {
@@ -347,6 +351,12 @@ class PHPDocImporter {
 			$name = substr($ReflectionEntity->getName(), strlen($ns) + 1);
 		}
 
+		$PHPDoc = new DocBlock($ReflectionEntity->getDocComment());
+		$desc = $PHPDoc->getText();
+		if($desc) {
+			$desc .= "\n\n";
+		}
+
 		$parent = $ReflectionEntity->getParentClass();
 		$extra_parent = '';
 		if($parent instanceof ReflectionClass) {
@@ -367,17 +377,18 @@ class PHPDocImporter {
 		if(!isset($params['level']) || !$params['level']) {
 			$params['level'] = 3;
 		}
-		$level = str_repeat('#', $params['level'] + 1);
+
+		$level = $this->getHeaderLevel($params['level'], 1);
 
 		$result = <<<TPL
-$level $altname # $type $name {tpl-git $class_path}
+$level $altname # $name {tpl-git $class_path}
 
 ```php
 namespace $ns;
 $typeLower {$name}{$extra_parent};
 ```
 
-
+$desc
 TPL;
 
 		return $result;
@@ -394,18 +405,15 @@ TPL;
 			return;
 		}
 
-		$name = $ReflectionMethod->getName();
-		$line_start = $ReflectionMethod->getStartLine();
-		$line_end   = $ReflectionMethod->getEndLine();
-		$lines = $this->getCodeLines($class_path, $line_start - 1, $line_end);
-
-		if(strpos(current($lines), "function $name") === false) {
+		if($ReflectionMethod->getDeclaringClass()->getName() !== $ReflectionEntity->getName()) {
 			return;
 		}
 
-		$level = $params['level'] ? $params['level'] + 2 : 4;
-		$level = str_repeat('#', $level);
 		$result = '';
+		$line_start = $ReflectionMethod->getStartLine();
+		$line_end   = $ReflectionMethod->getEndLine();
+		$lines = $this->getCodeLines($class_path, $line_start - 1, $line_end);
+		$level = $this->getHeaderLevel($params['level'], 2);
 
 		$prevline = '';
 		foreach ($lines as $line) {
@@ -415,12 +423,21 @@ TPL;
 				$type = '';
 				$desc = '';
 
-				if(preg_match('/^\/\/[ \t]*(?:\[([\w\|]+)\][ \t]*)?(.+?)$/', trim($prevline), $m2)) {
+				if(preg_match('/^(?:\/\*\*?|\/\/)[ \t]*(?:\[([\w\|\\\\]+)\][ \t]*)?(.+?)(?:\*\/)?$/', trim($prevline), $m2)) {
 					$type = $m2[1];
-					$desc = $m2[2];
+					$desc = trim($m2[2]);
 				}
 
-				$result .= " - `{$key} (". ($type ? "{$type} = " : '') ."{$val})`  \n";
+				if(strpos($val, 'new ') === 0 && preg_match('/\((.+?)\)/', $val, $m3)) {
+					$val = $m3[1];
+				}
+
+				if(strpos($type, 'Config\\') === 0) {
+					$type = substr($type, 7);
+					$type = '['. ucfirst(strtolower($type)) .'](#config/types/'. strtolower($type) .')';
+				}
+
+				$result .= " - `:p`{$key} (". ($type ? "{$type} = " : '') ."{$val})`  \n";
 				$result .= " {$desc}\n\n";
 			}
 
@@ -435,9 +452,8 @@ TPL;
 	}
 
 	protected function getClassConstants($ReflectionEntity, $params, $class_path, $class_name) {
-		$level = $params['level'] ? $params['level'] + 2 : 4;
-		$level = str_repeat('#', $level);
 		$result = '';
+		$level = $this->getHeaderLevel($params['level'], 2);
 
 		$ConstDoc = new ConstDoc($class_name);
 		$constants = $ConstDoc->getDocComments();
@@ -487,18 +503,19 @@ TPL;
 			$access = $access | ReflectionProperty::IS_PROTECTED | ReflectionProperty::IS_PRIVATE;
 		}
 
-		$level = $params['level'] ? $params['level'] + 2 : 4;
-		$level = str_repeat('#', $level);
 		$result = '';
+		$level = $this->getHeaderLevel($params['level'], 2);
 		$properties = $ReflectionEntity->getProperties($access);
 		$values = $ReflectionEntity->getDefaultProperties();
 
 		foreach ($properties as $ReflectionProperty) {
-			if($ReflectionProperty->getDeclaringClass()->getName() !== $ReflectionEntity->getName()) {
+			$name = $ReflectionProperty->getName();
+			$check = $this->checkSourceCode($class_path, '/^[ \t]*(?:public|protected|private)[ \t]*(?:static[ \t]*)?\$'. preg_quote($name) .'(?:\;|[ \t]*\=)/m');
+
+			if(!$check) {
 				continue;
 			}
 
-			$name = $ReflectionProperty->getName();
 			$comment = $ReflectionProperty->getDocComment();
 			$code = $this->getPropertyCode((string) $ReflectionProperty);
 			$value = '';
@@ -530,10 +547,6 @@ TPL;
 						$value
 					);
 				}
-				// else {
-				// 	$value = preg_replace('/^\s+/', '', $value);
-				// 	$value = preg_replace('/\s+$/', '', $value);
-				// }
 
 				$code .= ' = ' . $value;
 			}
@@ -569,20 +582,21 @@ TPL;
 			$access = $access | ReflectionMethod::IS_PROTECTED | ReflectionMethod::IS_PRIVATE;
 		}
 
-		$level = $params['level'] ? $params['level'] + 2 : 4;
-		$level = str_repeat('#', $level);
 		$result = '';
+		$level = $this->getHeaderLevel($params['level'], 2);
 		$methods = $ReflectionEntity->getMethods($access);
 
 		// @todo
 		$link_prefix = 'https://github.com/kakserpom/phpdaemon/blob/master/';
 
 		foreach ($methods as $ReflectionMethod) {
-			if($ReflectionMethod->getDeclaringClass()->getName() !== $ReflectionEntity->getName()) {
+			$name = $ReflectionMethod->getName();
+			$code = $this->getCodeLine($class_path, $ReflectionMethod->getStartLine() - 1);
+
+			if(strpos($code, "function $name") === false) {
 				continue;
 			}
 
-			$code = $this->getCodeLine($class_path, $ReflectionMethod->getStartLine() - 1);
 			$code = trim(rtrim(rtrim($code), '{'));
 			$code = str_replace('(  )', '( )', $code);
 			$comment = $ReflectionMethod->getDocComment();
@@ -608,7 +622,7 @@ TPL;
 	}
 
 	protected function getCodeLine($path, $line) {
-		static $cache = [];
+		$cache =& $this->sourceCodeCache;
 
 		if(!isset($cache[$path])) {
 			$cache[$path] = file($this->sourcePath . '/' . $path);
@@ -622,7 +636,7 @@ TPL;
 	}
 
 	protected function getCodeLines($path, $start, $end) {
-		static $cache = [];
+		$cache =& $this->sourceCodeCache;
 
 		if(!isset($cache[$path])) {
 			$cache[$path] = file($this->sourcePath . '/' . $path);
@@ -637,5 +651,20 @@ TPL;
 		}
 
 		return $result;
+	}
+
+	protected function checkSourceCode($path, $regex, &$matches = null) {
+		$cache =& $this->sourceCodeCache;
+
+		if(!isset($cache[$path])) {
+			$cache[$path] = file($this->sourcePath . '/' . $path);
+		}
+
+		return preg_match($regex, implode("\n", $cache[$path]), $matches);
+	}
+
+	protected function getHeaderLevel($level, $extra = 0) {
+		$level = $level ? ($level + $extra) : ($extra + 2);
+		return str_repeat('#', $level);
 	}
 }

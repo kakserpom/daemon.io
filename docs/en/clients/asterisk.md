@@ -215,12 +215,14 @@ class PbxReconnector extends Request {
 ```
 
 <!-- include-namespace path="\PHPDaemon\Clients\Asterisk" level="" access="" -->
-#### connection # Class Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
+#### connection # Connection {tpl-git PHPDaemon/Clients/Asterisk/Connection.php}
 
 ```php
 namespace PHPDaemon\Clients\Asterisk;
 class Connection extends \PHPDaemon\Network\ClientConnection;
 ```
+
+Asterisk Call Manager Connection
 
 ##### consts # Constants
 
@@ -670,28 +672,44 @@ public function onEvent($cb)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L632
 </md:method>
 
+<md:method>
+/**
+	 * Bind event or events
+	 * @alias EventHandlers::bind
+	 * @param string|array $event Event name
+	 * @param callable     $cb    Callback
+	 * @return this
+	 */
+public function onConnected($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asterisk/Connection.php#L130
+</md:method>
+
 <div class="clearboth"></div>
 
-#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
+#### connection-finished # ConnectionFinished {tpl-git PHPDaemon/Clients/Asterisk/ConnectionFinished.php}
 
 ```php
 namespace PHPDaemon\Clients\Asterisk;
 class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
 ```
 
-#### pool # Class Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
+Driver for Asterisk Call Manager/1.1
+
+#### pool # Pool {tpl-git PHPDaemon/Clients/Asterisk/Pool.php}
 
 ```php
 namespace PHPDaemon\Clients\Asterisk;
 class Pool extends \PHPDaemon\Network\Client;
 ```
 
+Class Pool
+
 ##### options # Options
 
- - `authtype (string = 'md5')`  
+ - `:p`authtype (string = 'md5')`  
  Auth hash type
 
- - `port (integer = 5280)`  
+ - `:p`port (integer = 5280)`  
  Port
 
 ##### properties # Properties

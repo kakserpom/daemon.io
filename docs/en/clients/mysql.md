@@ -52,7 +52,7 @@ $sql->query('SHOW VARIABLES',
 Когда callback-функция вызвана, $sql->context содержит ваш объект, который вы туда положили перед этим. $sql->resultRows хранит результат в виде массива ассоциативных массивов. $sql->resultFields содержит поля ответа в виде массива ассоциативных массивов.
 
 <!-- include-namespace path="\PHPDaemon\Clients\MySQL" level="" access="" -->
-#### connection # Class Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}
+#### connection # Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}
 
 ```php
 namespace PHPDaemon\Clients\MySQL;
@@ -415,14 +415,14 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/
 
 <div class="clearboth"></div>
 
-#### connection-finished # Class ConnectionFinished {tpl-git PHPDaemon/Clients/MySQL/ConnectionFinished.php}
+#### connection-finished # ConnectionFinished {tpl-git PHPDaemon/Clients/MySQL/ConnectionFinished.php}
 
 ```php
 namespace PHPDaemon\Clients\MySQL;
 class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
 ```
 
-#### pool # Class Pool {tpl-git PHPDaemon/Clients/MySQL/Pool.php}
+#### pool # Pool {tpl-git PHPDaemon/Clients/MySQL/Pool.php}
 
 ```php
 namespace PHPDaemon\Clients\MySQL;
@@ -431,13 +431,13 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### options # Options
 
- - `server ('tcp://root@127.0.0.1/')`  
+ - `:p`server ('tcp://root@127.0.0.1/')`  
  @todo add description strings
 
- - `port (3306)`  
+ - `:p`port (3306)`  
  
 
- - `maxconnperserv (32)`  
+ - `:p`maxconnperserv (32)`  
  
 
 ##### consts # Constants

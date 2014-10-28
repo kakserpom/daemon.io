@@ -91,3 +91,20 @@ As you may see, whole documentation is placed on one page, so feel free to use s
 ### scripting # Scripting
 
  -.n <a target="_blank" href="https://github.com/EzheG"><i class="fa fa-github"></i></a> Dmitry Efimenko &lt;<ezheg89@gmail.com>&gt;
+
+## old-contributors # Old contributors
+
+ -.n Alexey Solomin  
+ WIKI contributions
+
+ -.n Dmitry "viplifes"  
+ Clientside connector "websocket" was done by Dmitry. He also reported several important bugs.
+
+ -.n Dmitry "earthperson" Ponomarev  
+ Asterisk driver
+
+ -.n Igor ".silent" Kalashnikov  
+ Code formatting, some bugfixes, WIKI contributions
+
+ -.n Sergey "sk" Kurtsev  
+ WIKI contributions

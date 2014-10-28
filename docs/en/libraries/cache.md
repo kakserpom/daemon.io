@@ -9,12 +9,14 @@ namespace PHPDaemon\Cache;
 > Используется для кеширования замыканий созданных через create_function. Также используется в [Clients\DNS](#clients/dns)
 
 <!-- include-namespace path="\PHPDaemon\Cache" level="" access="" -->
-#### capped-storage # Class CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
+#### capped-storage # CappedStorage {tpl-git PHPDaemon/Cache/CappedStorage.php}
 
 ```php
 namespace PHPDaemon\Cache;
 class CappedStorage;
 ```
+
+CappedStorage
 
 ##### properties # Properties
 
@@ -122,55 +124,16 @@ public function getValue($key)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L127
 </md:method>
 
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined method
-	 * @return mixed
-	 */
-*/
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined static method
-	 * @return mixed
-	 */
-*/
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L30
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-public $capWindow = 16;
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedStorage.php#L26
-</md:method>
-
 <div class="clearboth"></div>
 
-#### capped-storage-hits # Class CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
+#### capped-storage-hits # CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}
 
 ```php
 namespace PHPDaemon\Cache;
 class CappedStorageHits extends \PHPDaemon\Cache\CappedStorage;
 ```
+
+CappedStorageHits
 
 ##### methods # Methods
 
@@ -185,12 +148,14 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/CappedSt
 
 <div class="clearboth"></div>
 
-#### item # Class Item {tpl-git PHPDaemon/Cache/Item.php}
+#### item # Item {tpl-git PHPDaemon/Cache/Item.php}
 
 ```php
 namespace PHPDaemon\Cache;
 class Item;
 ```
+
+Item
 
 ##### properties # Properties
 
@@ -254,47 +219,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php
 	 */
 public function setValue($value)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L72
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined method
-	 * @return mixed
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $method Method name
-	 * @param  array  $args   Arguments
-	 * @throws UndefinedMethodCalled if call to undefined static method
-	 * @return mixed
-	 */
-/**
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L30
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @param  mixed  $value
-	 * @return void
-	 */
-protected $value;
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L18
-</md:method>
-
-<md:method>
-/**
-	 * @param  string $prop
-	 * @return void
-	 */
-* @var integer Hits counter
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Cache/Item.php#L26
 </md:method>
 
 <div class="clearboth"></div>

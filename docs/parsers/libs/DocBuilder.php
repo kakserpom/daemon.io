@@ -42,6 +42,24 @@ class DocBuilder {
 	 */
 	protected $consts;
 
+	protected $nativeTypes = [
+		'boolean',
+		'integer',
+		'float',
+		'string',
+		'array',
+		'object',
+		'resource',
+		'null',
+		'callable',
+		'mixed',
+		'number',
+		'callback',
+		'void',
+		'true',
+		'false'
+	];
+
 	/**
 	 * Сборка проекта
 	 * @param  string $source_path Путь до исходного файла
@@ -217,7 +235,8 @@ class DocBuilder {
 
 		if(count($lines)) {
 			$part = implode('<br />', $lines);
-			$result .= ' <ul><li class="n">' . $part . "</li></ul>\n";
+			$part = rtrim(rtrim($part), '.');
+			$result .= ' <ul><li class="n">' . trim($part) . "</li></ul>\n";
 		}
 
 		return $result;
@@ -312,12 +331,13 @@ class DocBuilder {
 
 			$text = implode("\n", $lines);
 			$text = preg_replace('/\n+/', '<br />', $text);
+			$text = rtrim(rtrim($text), '.');
 
 			$code = implode("\n  \t", $codes);
 			$code = preg_replace('/\n[ \t]+\]/', "\n]", $code);
 
 			$result .= " -.method ```php:p.inline.spoiler\n $code\n ```\n";
-			$result .= $text ? ' <ul><li class="n">' . $text . "</li></ul>\n" : '';
+			$result .= $text ? ' <ul><li class="n">' . trim($text) . "</li></ul>\n" : '';
 		}
 		else {
 			$part = array_shift($lines);
@@ -325,7 +345,8 @@ class DocBuilder {
 
 			if(count($lines)) {
 				$part = array_shift($lines);
-				$result .= ' <ul><li class="n">' . $part . "</li></ul>\n";
+				$part = rtrim(rtrim($part), '.');
+				$result .= ' <ul><li class="n">' . trim($part) . "</li></ul>\n";
 			}
 		}
 
@@ -493,6 +514,7 @@ class DocBuilder {
 		$desc = array_shift($lines);
 
 		if($desc) {
+			$desc = trim(rtrim(rtrim($desc), '.'));
 			$result .= "   -.n {$desc}\n";
 		}
 
@@ -508,10 +530,12 @@ class DocBuilder {
 			}
 
 			if(count($cells) === 2) {
-				$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — " . (strpos($cells[1], 'callback ') === 0 ? ('`:phc`'.$cells[1].'`') : $cells[1]) . "\n";
+				$text = trim(rtrim(rtrim($cells[1]), '.'));
+				$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — " . (strpos($text, 'callback ') === 0 ? ('`:phc`'.$text.'`') : $text) . "\n";
 			} else
 			if(count($cells) === 3) {
-				$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — `:phc`{$cells[1]}` — {$cells[2]}\n";
+				$text = trim(rtrim(rtrim($cells[2]), '.'));
+				$result .= "   -.n{$eclass} `:hc`{$cells[0]}` — `:phc`{$cells[1]}` — {$text}\n";
 			} else {
 				$result .= "   -.n{$eclass} `:hc`{$cells[0]}`\n";
 			}
@@ -530,7 +554,12 @@ class DocBuilder {
 		if(substr($type, $len - 2, 2) === '[]') {
 			return 'array';
 		}
-		return strtolower($type);
+
+		if(in_array(strtolower($type), $this->nativeTypes)) {
+			return strtolower($type);
+		}
+
+		return $type;
 	}
 
 	/**
