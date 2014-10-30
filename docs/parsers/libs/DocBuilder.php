@@ -555,7 +555,17 @@ class DocBuilder {
 			return 'array';
 		}
 
-		if(in_array(strtolower($type), $this->nativeTypes)) {
+		$type_lower = strtolower($type);
+
+		if($type_lower === 'bool') {
+			return 'boolean';
+		}
+
+		if($type_lower === 'int') {
+			return 'integer';
+		}
+
+		if(in_array($type_lower, $this->nativeTypes)) {
 			return strtolower($type);
 		}
 

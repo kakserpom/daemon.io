@@ -19,7 +19,7 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 <md:method>
 /**
 	 * Called when new data received
-	 * @param string New data
+	 * @param  string $buf New data
 	 * @return void
 	 */
 public function stdin($buf)
@@ -37,64 +37,67 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### options # Options
 
- - `:p`servers ('127.0.0.1')`  
+ - `:p`servers (string = '127.0.0.1')`  
  default server
 
- - `:p`port (833)`  
+ - `:p`port (string = 833)`  
  default port
 
- - `:p`prefix ('')`  
- @todo add description
+ - `:p`prefix (string = '')`  
+ prefix
 
- - `:p`protologging (0)`  
- 
+ - `:p`protologging (integer = 0)`  
+ protologging
 
 ##### methods # Methods
 
 <md:method>
 /**
 	 * Runs a job
-	 * @param string   Name of job
-	 * @param bool     wait. If true - will wait in queue for lock.
-	 * @param callback onRun. Job's runtime.
-	 * @param callback onSuccess. Called when job successfully done.
-	 * @param callback onFailure. Called when job failed.
+	 * @param  string   $name      Name of job
+	 * @param  boolean  $wait      Wait. If true - will wait in queue for lock.
+	 * @param  callable $onRun     Job's runtime
+	 * @param  callable $onSuccess Called when job successfully done
+	 * @param  callable $onFailure Called when job failed
+	 * @callback $onRun ( )
+	 * @callback $onSuccess ( )
+	 * @callback $onFailure ( )
 	 * @return void
 	 */
 public function job($name, $wait, $onRun, $onSuccess = NULL, $onFailure = NULL)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Lock/Pool.php#L37
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Lock/Pool.php#L40
 </md:method>
 
 <md:method>
 /**
 	 * Sends done-event
-	 * @param string Name of job
+	 * @param string $name Name of job
 	 * @return void
 	 */
 public function done($name)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Lock/Pool.php#L53
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Lock/Pool.php#L56
 </md:method>
 
 <md:method>
 /**
 	 * Sends failed-event
-	 * @param string Name of job
+	 * @param string $name Name of job
 	 * @return void
 	 */
 public function failed($name)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Lock/Pool.php#L67
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Lock/Pool.php#L70
 </md:method>
 
 <md:method>
 /**
 	 * Returns available connection from the pool by name
-	 * @param string   Key
-	 * @param callback Callback
-	 * @param \Closure $cb
-	 * @return boolean Success.
+	 * @param  string   $name Key
+	 * @param  callable $cb   Callback
+	 * @callback $cb ( )
+	 * @return boolean
 	 */
 public function getConnectionByName($name, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Lock/Pool.php#L83
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Lock/Pool.php#L86
 </md:method>
 
 <div class="clearboth"></div>
