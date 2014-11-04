@@ -213,13 +213,11 @@ class Pool extends \PHPDaemon\Network\Client;
 	 * $gibson->set(3600, 'key', 'value');
 	 * $gibson->get('key', function ($conn) {...});
 	 * @param  string $name    Command name
-	 * @param  array  ...$args Arguments
-	 * @usage $ .. Command-dependent set of arguments ..
-	 * @usage $ [callback Callback. Optional.
+	 * @param  array  $args Arguments
 	 * @return void
 	 */
 public function __call($name, $args)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Gibson/Pool.php#L62
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Gibson/Pool.php#L60
 </md:method>
 
 <md:method>
@@ -229,7 +227,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Gibson
 	 * @return boolean
 	 */
 public function isCommand($name)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Gibson/Pool.php#L80
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Gibson/Pool.php#L78
 </md:method>
 
 <div class="clearboth"></div>

@@ -36,12 +36,16 @@ const STATE_DATA = 2
 ##### properties # Properties
 
 <md:prop>
-/** @var array */
+/**
+	 * @var array
+	 */
 public $headers = [ ]
 </md:prop>
 
 <md:prop>
-/** @var string */
+/**
+	 * @var string
+	 */
 public $type
 </md:prop>
 
@@ -55,7 +59,7 @@ public $type
 	 * @return void
 	 */
 public function onReady()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L57
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L73
 </md:method>
 
 <md:method>
@@ -64,98 +68,27 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSoc
 	 * @return void
 	 */
 public function onRead()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L67
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L83
 </md:method>
 
 <md:method>
 /**
 	 * Send frame to WebSocket server
-	 *
-	 * @param $payload
-	 * @param string $type
-	 * @param bool $isMasked
+	 * @param string  $payload
+	 * @param string  $type
+	 * @param boolean $isMasked
 	 */
 public function sendFrame($payload, $type = Pool::TYPE_TEXT, $isMasked = true)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L172
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L187
 </md:method>
 
 <md:method>
 /**
- */
+	 * @TODO
+	 * @return void
+	 */
 public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L229
-</md:method>
-
-<div class="clearboth"></div>
-
-#### example # Example {tpl-git PHPDaemon/Clients/WebSocket/Example.php}
-
-```php
-namespace PHPDaemon\Clients\WebSocket;
-class Example extends \PHPDaemon\Core\AppInstance;
-```
-
-##### options # Options
-
- - `:p`url ('tcp://echo.websocket.org:80/')`  
- 
-
- - `:p`reconnect (1)`  
- 
-
- - `:p`wsclient-name ('')`  
- 
-
-##### properties # Properties
-
-<md:prop>
-/**
- */
-public $wsclient
-</md:prop>
-
-<md:prop>
-/**
- */
-public $wsconn
-</md:prop>
-
-<div class="clearboth"></div>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Constructor.
-	 * @return void
-	 */
-public function init()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Example.php#L34
-</md:method>
-
-<md:method>
-/**
-	 * Called when the worker is ready to go.
-	 * @return void
-	 */
-public function onReady()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Example.php#L44
-</md:method>
-
-<md:method>
-/**
- */
-public function connect()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Example.php#L51
-</md:method>
-
-<md:method>
-/**
-	 * Called when application instance is going to shutdown.
-	 * @return boolean Ready to shutdown?
-	 */
-public function onShutdown($graceful = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Example.php#L73
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L248
 </md:method>
 
 <div class="clearboth"></div>
@@ -167,12 +100,10 @@ namespace PHPDaemon\Clients\WebSocket;
 class Pool extends \PHPDaemon\Network\Client;
 ```
 
-Class Connection
-
 ##### options # Options
 
- - `:p`max-allowed-packet ('1M')`  
- 
+ - `:p`max-allowed-packet (integer = '1M')`  
+ Maximum allowed size of packet
 
 ##### consts # Constants
 

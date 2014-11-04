@@ -15,37 +15,51 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 ##### properties # Properties
 
 <md:prop>
-/** @var bool */
+/**
+	 * @var boolean
+	 */
 public $use_encryption = false
 </md:prop>
 
 <md:prop>
-/** @var */
+/**
+	 * @var boolean
+	 */
 public $authorized
 </md:prop>
 
 <md:prop>
-/** @var int */
+/**
+	 * @var integer
+	 */
 public $lastId = 0
 </md:prop>
 
 <md:prop>
-/** @var */
+/**
+	 * @var XMPPRoster
+	 */
 public $roster
 </md:prop>
 
 <md:prop>
-/** @var XMLStream */
+/**
+	 * @var XMLStream
+	 */
 public $xml
 </md:prop>
 
 <md:prop>
-/** @var */
+/**
+	 * @var string
+	 */
 public $fulljid
 </md:prop>
 
 <md:prop>
-/** @var */
+/**
+	 * @var integer|string Timer ID
+	 */
 public $keepaliveTimer
 </md:prop>
 
@@ -56,11 +70,10 @@ public $keepaliveTimer
 <md:method>
 /**
 	 * Get next ID
-	 *
 	 * @return string
 	 */
 public function getId()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L39
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L57
 </md:method>
 
 <md:method>
@@ -69,7 +82,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/C
 	 * @return void
 	 */
 public function onReady()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L48
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L66
 </md:method>
 
 <md:method>
@@ -78,7 +91,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/C
 	 * @return void
 	 */
 public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L60
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L78
 </md:method>
 
 <md:method>
@@ -87,7 +100,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/C
 	 * @param string $s
 	 */
 public function sendXML($s)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L76
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L94
 </md:method>
 
 <md:method>
@@ -95,100 +108,108 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/C
 	 * @TODO DESCR
 	 */
 public function startXMLStream()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L84
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L102
 </md:method>
 
 <md:method>
 /**
 	 * @TODO DESCR
-	 * @param string $xml
-	 * @param callable $cb
-	 * @return bool
+	 * @param  string   $xml
+	 * @param  callable $cb
+	 * @callback $cb ( )
+	 * @return boolean
 	 */
 public function iqSet($xml, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L96
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L115
 </md:method>
 
 <md:method>
 /**
 	 * @TODO DESCR
-	 * @param $to
-	 * @param string $xml
-	 * @param callable $cb
-	 * @return bool
+	 * @param  string   $to
+	 * @param  string   $xml
+	 * @param  callable $cb
+	 * @callback $cb ( )
+	 * @return boolean
 	 */
 public function iqSetTo($to, $xml, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L113
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L133
 </md:method>
 
 <md:method>
 /**
 	 * @TODO DESCR
-	 * @param string $xml
-	 * @param callable $cb
-	 * @return bool
+	 * @param  string   $xml
+	 * @param  callable $cb
+	 * @callback $cb ( )
+	 * @return boolean
 	 */
 public function iqGet($xml, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L130
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L151
 </md:method>
 
 <md:method>
 /**
 	 * @TODO DESCR
-	 * @param $to
-	 * @param string $xml
-	 * @param callable $cb
-	 * @return bool
+	 * @param  string   $to
+	 * @param  string   $xml
+	 * @param  callable $cb
+	 * @callback $cb ( )
+	 * @return boolean
 	 */
 public function iqGetTo($to, $xml, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L147
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L169
 </md:method>
 
 <md:method>
 /**
 	 * @TODO DESCR
-	 * @param mixed $to
-	 * @param mixed $cb
-	 * @return bool
+	 * @param  string   $to
+	 * @param  callable $cb
+	 * @callback $cb ( )
+	 * @return boolean
 	 */
 public function ping($to = null, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L164
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L187
 </md:method>
 
 <md:method>
 /**
 	 * @TODO DESCR
-	 * @param string $ns
-	 * @param callable $cb
-	 * @return bool
+	 * @param  string   $ns
+	 * @param  callable $cb
+	 * @callback $cb ( )
+	 * @return boolean
 	 */
 public function queryGet($ns, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L181
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L205
 </md:method>
 
 <md:method>
 /**
 	 * @TODO DESCR
-	 * @param $ns
-	 * @param $xml
-	 * @param callable $cb
-	 * @return bool
+	 * @param  string   $ns
+	 * @param  string   $xml
+	 * @param  callable $cb
+	 * @callback $cb ( )
+	 * @return boolean
 	 */
 public function querySet($ns, $xml, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L192
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L217
 </md:method>
 
 <md:method>
 /**
 	 * @TODO DESCR
-	 * @param $to
-	 * @param string $ns
-	 * @param string $xml
-	 * @param callable $cb
-	 * @return bool
+	 * @param  string   $to
+	 * @param  string   $ns
+	 * @param  string   $xml
+	 * @param  callable $cb
+	 * @callback $cb ( )
+	 * @return boolean
 	 */
 public function querySetTo($to, $ns, $xml, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L204
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L230
 </md:method>
 
 <md:method>
@@ -196,52 +217,53 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/C
 	 * @TODO DESCR
 	 */
 public function createXMLStream()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L211
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L237
 </md:method>
 
 <md:method>
 /**
 	 * Send XMPP Message
-	 *
 	 * @param string $to
 	 * @param string $body
 	 * @param string $type
 	 * @param string $subject
 	 */
 public function message($to, $body, $type = 'chat', $subject = null, $payload = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L288
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L313
 </md:method>
 
 <md:method>
 /**
 	 * Set Presence
-	 *
-	 * @param string $status
-	 * @param string $show
-	 * @param string $to
+	 * @param string  $status
+	 * @param string  $show
+	 * @param string  $to
+	 * @param string  $type
+	 * @param integer $priority
 	 */
 public function presence($status = null, $show = 'available', $to = null, $type = 'available', $priority = 0)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L317
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L343
 </md:method>
 
 <md:method>
 /**
 	 * @TODO DESCR
-	 * @param mixed $jid
+	 * @param string   $jid
 	 * @param callable $cb
+	 * @callback $cb ( )
 	 */
 public function getVCard($jid = null, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L363
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L390
 </md:method>
 
 <md:method>
 /**
 	 * Called when new data received
-	 * @param string New data
+	 * @param  string $buf New data
 	 * @return void
 	 */
 public function stdin($buf)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L397
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L424
 </md:method>
 
 <div class="clearboth"></div>
@@ -255,8 +277,8 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### options # Options
 
- - `:p`port (5222)`  
- 
+ - `:p`port (integer = 5222)`  
+ Default port
 
 #### xmpproster # XMPPRoster {tpl-git PHPDaemon/Clients/XMPP/XMPPRoster.php}
 
@@ -269,7 +291,7 @@ class XMPPRoster;
 
 <md:prop>
 /**
-	 * @var
+	 * @var Connection
 	 */
 public $xmpp
 </md:prop>
@@ -283,14 +305,14 @@ public $roster_array = [ ]
 
 <md:prop>
 /**
-	 * @var bool
+	 * @var boolean
 	 */
 public $track_presence = true
 </md:prop>
 
 <md:prop>
 /**
-	 * @var bool
+	 * @var boolean
 	 */
 public $auto_subscribe = true
 </md:prop>
@@ -308,98 +330,98 @@ public $ns = 'jabber:iq:roster'
 
 <md:method>
 /**
+	 * Constructor
 	 * @param Connection $xmpp
 	 */
 public function __construct($xmpp)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L35
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L40
 </md:method>
 
 <md:method>
 /**
-	 * @param string $xml
-	 * @param callable $cb
+	 * @TODO
+	 * @param  string   $xml
+	 * @param  callable $cb
+	 * @callback $cb ( )
 	 */
 public function rosterSet($xml, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L75
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L82
 </md:method>
 
 <md:method>
 /**
-	 * @param $jid
-	 * @param $type
-	 * @param callable $cb
+	 * @TODO
+	 * @param  string   $jid
+	 * @param  string   $type
+	 * @param  callable $cb
+	 * @callback $cb ( )
 	 */
 public function setSubscription($jid, $type, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L84
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L93
 </md:method>
 
 <md:method>
 /**
-	 * @param callable $cb
+	 * @TODO
+	 * @param  callable $cb
+	 * @callback $cb ( )
 	 */
 public function fetch($cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L91
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L102
 </md:method>
 
 <md:method>
 /**
-	 *
 	 * Add given contact to roster
-	 *
 	 * @param string $jid
 	 * @param string $subscription
 	 * @param string $name
-	 * @param array $groups
+	 * @param array  $groups
 	 */
 public function _addContact($jid, $subscription, $name = '', $groups = [])
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L136
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L145
 </md:method>
 
 <md:method>
 /**
-	 *
 	 * Retrieve contact via jid
-	 *
-	 * @param string $jid
+	 * @param  string  $jid
+	 * @return array|null
 	 */
 public function getContact($jid)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L152
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L160
 </md:method>
 
 <md:method>
 /**
-	 *
 	 * Discover if a contact exists in the roster via jid
-	 *
-	 * @param string $jid
+	 * @param  string  $jid
+	 * @return boolean
 	 */
 public function isContact($jid)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L165
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L172
 </md:method>
 
 <md:method>
 /**
-	 *
 	 * Set presence
-	 *
-	 * @param string $presence
+	 * @param string  $presence
 	 * @param integer $priority
-	 * @param string $show
-	 * @param string $status
+	 * @param string  $show
+	 * @param string  $status
 	 */
 public function setPresence($presence, $priority, $show, $status)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L178
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L183
 </md:method>
 
 <md:method>
 /**
 	 * Return best presence for jid
-	 *
-	 * @param string $jid
-	 * @param array|bool
+	 * @param  string $jid
+	 * @return array|false
 	 */
 public function getPresence($jid)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L197
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/XMPPRoster.php#L201
 </md:method>
 
 <div class="clearboth"></div>

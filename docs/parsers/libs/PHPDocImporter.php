@@ -329,7 +329,7 @@ class PHPDocImporter {
 			$preflen = strlen($this->sourcePath);
 			$files = glob_recursive($fullpath . '/*.php', GLOB_NOSORT);
 			foreach ($files as $filepath) {
-				if(strpos($filepath, '/Examples/')) {
+				if(strpos($filepath, 'Example') !== false) {
 					continue;
 				}
 
@@ -432,9 +432,11 @@ TPL;
 					$val = $m3[1];
 				}
 
-				if(strpos($type, 'Config\\') === 0) {
-					$type = substr($type, 7);
-					$type = '['. ucfirst(strtolower($type)) .'](#config/types/'. strtolower($type) .')';
+				// if(strpos($type, 'Config\\') === 0) {
+					// $type = substr($type, 7);
+				if(in_array($type, ['Time','Size','Number','Double','ExtFunc','ArraySet'])) {
+					// $type = '['. ucfirst(strtolower($type)) .'](#config/types/'. strtolower($type) .')';
+					$type = '['. $type .'](#config/types/'. strtolower($type) .')';
 				}
 
 				$result .= " - `:p`{$key} (". ($type ? "{$type} = " : '') ."{$val})`  \n";
