@@ -182,6 +182,7 @@ $ && $(function(){
 
 	// подсветка синтаксиса
 	(function(){
+		return;
 		var phpTypes = {
 			'boolean': 1,
 			'integer': 1,
