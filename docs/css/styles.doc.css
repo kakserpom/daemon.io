@@ -1,12 +1,12 @@
 body{background:#f9f9f9;font-size:14px;line-height:22px;font-family:Helvetica Neue,Helvetica,Arial}
 a{color:#000;text-decoration:underline}
 li ul,li ol{margin:0}
-h1{margin-top:-20px;padding-top:60px}
-h2{margin-top:-18px;padding-top:58px}
-h3{margin-top:-16px;padding-top:56px}
-h4{margin-top:-14px;padding-top:54px}
-h5{margin-top:-12px;padding-top:52px}
-h6{margin-top:-10px;padding-top:50px}
+h1{margin-top:-30px;padding-top:60px}
+h2{margin-top:-31px;padding-top:58px}
+h3{margin-top:-32px;padding-top:56px}
+h4{margin-top:-33px;padding-top:54px}
+h5{margin-top:-34px;padding-top:52px}
+h6{margin-top:-35px;padding-top:50px}
 h4{font-size:21px}
 h5{font-size:18px}
 .dn{display:none}
