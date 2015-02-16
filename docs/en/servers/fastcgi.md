@@ -18,54 +18,272 @@ location /Example/ {
 }
 ```
 
-#### options # Опции
+<!-- include-namespace path="\PHPDaemon\Servers\FastCGI" level="" access="" -->
+#### connection # Connection {tpl-git PHPDaemon/Servers/FastCGI/Connection.php}
 
- - `listen (string = 'tcp://127.0.0.1,unix:///tmp/phpdaemon.fcgi.sock')`  
- Какие адреса слушать, через запятую
+```php
+namespace PHPDaemon\Servers\FastCGI;
+class Connection extends \PHPDaemon\Network\Connection;
+```
 
- - `port (integer = 80)`  
- Прослушиваемый порт
+##### consts # Constants
 
- - `auto-read-body-file (boolean = true)`  
- Автоматически реагирует на FastCGI параметр REQUEST_BODY_FILE и читает тело запроса из файла, созданного веб-сервером
+<md:const>
 
- - `allowed-clients (string = '127.0.0.1')`  
- IP адреса (через запятую) которым позволено делать запросы. CIDR-маски поддерживаются
+const FCGI_BEGIN_REQUEST = 1
+</md:const>
 
- - `send-file (boolean = false)`  
- Оптимизирует обработку запросов, предварительно записывая их в файл.
- Опция будет игнорироваться если передан параметр `server['DONT_USE_SENDFILE']`
+<md:const>
 
- - `send-file-dir (string = '/dev/shm')`  
- Директория для sendfile
+const FCGI_ABORT_REQUEST = 2
+</md:const>
 
- - `send-file-prefix (string = 'fcgi-')`  
- Префикс для sendfile файлов
+<md:const>
 
- - `send-file-onlybycommand (boolean = false)`  
- Включать sendfile если передан `server['USE_SENDFILE']`
+const FCGI_END_REQUEST = 3
+</md:const>
 
- - `expose (boolean = true)`  
- Включать версию PHPDaemon в заголовке `X-Powered-By`
+<md:const>
+
+const FCGI_PARAMS = 4
+</md:const>
+
+<md:const>
+
+const FCGI_STDIN = 5
+</md:const>
+
+<md:const>
+
+const FCGI_STDOUT = 6
+</md:const>
+
+<md:const>
+
+const FCGI_STDERR = 7
+</md:const>
+
+<md:const>
+
+const FCGI_DATA = 8
+</md:const>
+
+<md:const>
+
+const FCGI_GET_VALUES = 9
+</md:const>
+
+<md:const>
+
+const FCGI_GET_VALUES_RESULT = 10
+</md:const>
+
+<md:const>
+
+const FCGI_UNKNOWN_TYPE = 11
+</md:const>
+
+<md:const>
+
+const FCGI_RESPONDER = 1
+</md:const>
+
+<md:const>
+
+const FCGI_AUTHORIZER = 2
+</md:const>
+
+<md:const>
+
+const FCGI_FILTER = 3
+</md:const>
+
+<md:const>
+
+const STATE_CONTENT = 1
+</md:const>
+
+<md:const>
+
+const STATE_PADDING = 2
+</md:const>
+
+<div class="clearboth"></div>
+
+##### properties # Properties
+
+<md:prop>
+/**
+ */
+public $timeout = 180
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Is this upstream suitable for sendfile()?
+	 * @return bool
+	 */
+public function checkSendfileCap() { // @DISCUSS
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L75
+</md:method>
+
+<md:method>
+/**
+	 * Is this upstream suitable for chunked encoding?
+	 * @return bool
+	 */
+public function checkChunkedEncCap() { // @DISCUSS
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L83
+</md:method>
+
+<md:method>
+/**
+	 * @TODO
+	 * @return integer
+	 */
+public function getKeepaliveTimeout()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L91
+</md:method>
+
+<md:method>
+/**
+	 * Called when new data received
+	 * @return void
+	 */
+public function onRead()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L99
+</md:method>
+
+<md:method>
+/**
+	 * Handles the output from downstream requests
+	 * @param  object  $req Request
+	 * @param  string  $out The output
+	 * @return boolean      Success
+	 */
+public function requestOut($req, $out)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L294
+</md:method>
+
+<md:method>
+/**
+	 * Sends a chunk
+	 * @param  object  $req   Request
+	 * @param  string  $chunk Data
+	 * @return bool
+	 */
+public function sendChunk($req, $chunk)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L319
+</md:method>
+
+<md:method>
+/**
+	 * Frees request
+	 * @param  object $req
+	 */
+public function freeRequest($req)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L333
+</md:method>
+
+<md:method>
+/**
+	 * Handles the output from downstream requests
+	 * @param  object $req
+	 * @param  string $appStatus
+	 * @param  string $protoStatus
+	 * @return void
+	 */
+public function endRequest($req, $appStatus, $protoStatus)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L344
+</md:method>
+
+<md:method>
+/**
+	 * Send Bad request
+	 * @param  object $req
+	 * @return void
+	 */
+public function badRequest($req)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L370
+</md:method>
+
+<div class="clearboth"></div>
+
+#### pool # Pool {tpl-git PHPDaemon/Servers/FastCGI/Pool.php}
+
+```php
+namespace PHPDaemon\Servers\FastCGI;
+class Pool extends \PHPDaemon\Network\Server;
+```
+
+##### options # Options
+
+ - `:p`listen (string|array = 'tcp://127.0.0.1,unix:///tmp/phpdaemon.fcgi.sock')`  
+ Listen addresses
+
+ - `:p`port (integer = 9000)`  
+ Listen port
+
+ - `:p`auto-read-body-file (boolean = 1)`  
+ Read request body from the file given in REQUEST_BODY_FILE parameter
+
+ - `:p`allowed-clients (string = '127.0.0.1')`  
+ Allowed clients ip list
+
+ - `:p`send-file (boolean = 0)`  
+ Enable X-Sendfile?
+
+ - `:p`send-file-dir (string = '/dev/shm')`  
+ Directory for X-Sendfile
+
+ - `:p`send-file-prefix (string = 'fcgi-')`  
+ Prefix for files used for X-Sendfile
+
+ - `:p`send-file-onlybycommand (boolean = 0)`  
+ Use X-Sendfile only if server['USE_SENDFILE'] provided.
+
+ - `:p`expose (boolean = 1)`  
+ Expose PHPDaemon version by X-Powered-By Header
 
  - `:p`keepalive ([Time](#config/types/time) = '0s')`  
- Таймаут бездействия перед закрытием keep-alive соединения
- > Если вы используете значение отличное от 0, учтите что nginx и некоторые другие веб-сервера НЕ ПОДДЕРЖИВАЮТ keep-alive соединения с FastCGI-бекэндами.
+ Keepalive time
 
  - `:p`chunksize ([Size](#config/types/size) = '8k')`  
- Размер куска
+ Chunk size
 
- - `defaultcharset (string = 'utf-8')`  
- Кодировка по-умолчанию
-
- - `wss-name (string = '')`  
- Имя пула WebSocket-сервера, куда направлять WebSocket-соединения
-
- - `fps-name (string = '')`  
- Имя пула FlashPolicy-сервера, куда адресовать FlashPolicy-соединения
+ - `:p`defaultcharset (string = 'utf-8')`  
+ Default charset
 
  - `:p`upload-max-size ([Size](#config/types/size) = ini_get('upload_max_filesize'))`  
- Максимальный размер загружаемого файла
+ Maximum uploading file size.
 
- - `responder (string = null)`  
- Имя приложения по-умолчанию для обработки запросов с данного сервера
+##### properties # Properties
+
+<md:prop>
+/** 
+	 * @var string "GPC" Variables order
+	 */
+public $variablesOrder
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Called when worker is going to update configuration
+	 * @return void
+	 */
+public function onConfigUpdated()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Pool.php#L71
+</md:method>
+
+<div class="clearboth"></div>
+
+
+<!--/ include-namespace -->

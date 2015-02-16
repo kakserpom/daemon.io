@@ -68,7 +68,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSoc
 	 * @return void
 	 */
 public function onRead()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L83
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L85
 </md:method>
 
 <md:method>
@@ -79,7 +79,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSoc
 	 * @param boolean $isMasked
 	 */
 public function sendFrame($payload, $type = Pool::TYPE_TEXT, $isMasked = true)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L187
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L189
 </md:method>
 
 <md:method>
@@ -88,7 +88,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSoc
 	 * @return void
 	 */
 public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L248
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L250
 </md:method>
 
 <div class="clearboth"></div>
@@ -102,7 +102,7 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### options # Options
 
- - `:p`max-allowed-packet (integer = '1M')`  
+ - `:p`max-allowed-packet ([Size](#config/types/size) = '1M')`  
  Maximum allowed size of packet
 
 ##### consts # Constants
