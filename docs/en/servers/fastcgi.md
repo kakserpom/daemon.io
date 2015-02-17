@@ -198,7 +198,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCG
 	 * @return void
 	 */
 public function endRequest($req, $appStatus, $protoStatus)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L344
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L345
 </md:method>
 
 <md:method>
@@ -208,7 +208,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCG
 	 * @return void
 	 */
 public function badRequest($req)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L370
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/FastCGI/Connection.php#L371
 </md:method>
 
 <div class="clearboth"></div>

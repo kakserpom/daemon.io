@@ -61,7 +61,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean
 	 */
 public function isFreed()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L217
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L216
 </md:method>
 
 <md:method>
@@ -70,7 +70,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean
 	 */
 public function isFinished()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L225
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L224
 </md:method>
 
 <md:method>
@@ -79,7 +79,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return EventBufferEvent
 	 */
 public function getBev()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L233
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L232
 </md:method>
 
 <md:method>
@@ -88,7 +88,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return resource File descriptor
 	 */
 public function getFd()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L241
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L240
 </md:method>
 
 <md:method>
@@ -99,7 +99,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function setContext($ctx, $mode)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L252
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L251
 </md:method>
 
 <md:method>
@@ -110,7 +110,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function setFd($fd, $bev = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L263
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L262
 </md:method>
 
 <md:method>
@@ -120,7 +120,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function setTimeout($rw)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L334
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L333
 </md:method>
 
 <md:method>
@@ -131,7 +131,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function setTimeouts($read, $write)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L344
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L343
 </md:method>
 
 <md:method>
@@ -141,7 +141,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function setPriority($p)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L357
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L356
 </md:method>
 
 <md:method>
@@ -152,7 +152,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function setWatermark($low = null, $high = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L368
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L367
 </md:method>
 
 <md:method>
@@ -162,7 +162,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return string|null
 	 */
 public function readLine($eol = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L390
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L389
 </md:method>
 
 <md:method>
@@ -172,7 +172,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean    Success
 	 */
 public function drain($n)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L402
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L401
 </md:method>
 
 <md:method>
@@ -182,7 +182,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean|null      Success
 	 */
 public function drainIfMatch($str)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L411
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L410
 </md:method>
 
 <md:method>
@@ -193,7 +193,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return string|false
 	 */
 public function lookExact($n, $o = 0)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L443
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L442
 </md:method>
 
 <md:method>
@@ -203,7 +203,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean      Success
 	 */
 public function prependInput($str)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L458
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L457
 </md:method>
 
 <md:method>
@@ -213,7 +213,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean      Success
 	 */
 public function prependOutput($str)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L470
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L469
 </md:method>
 
 <md:method>
@@ -224,7 +224,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return string|false
 	 */
 public function look($n, $o = 0)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L483
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L482
 </md:method>
 
 <md:method>
@@ -235,7 +235,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return string|false
 	 */
 public function substr($o, $n = -1)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L499
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L498
 </md:method>
 
 <md:method>
@@ -247,7 +247,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return integer        Position
 	 */
 public function search($what, $start = 0, $end = -1)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L513
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L512
 </md:method>
 
 <md:method>
@@ -257,7 +257,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return string|false
 	 */
 public function readExact($n)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L522
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L521
 </md:method>
 
 <md:method>
@@ -266,7 +266,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return integer
 	 */
 public function getInputLength()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L536
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L535
 </md:method>
 
 <md:method>
@@ -275,7 +275,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean Ready to shutdown?
 	 */
 public function gracefulShutdown()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L544
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L543
 </md:method>
 
 <md:method>
@@ -285,7 +285,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean           Success
 	 */
 public function freezeInput($at_front = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L554
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L553
 </md:method>
 
 <md:method>
@@ -295,7 +295,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean           Success
 	 */
 public function unfreezeInput($at_front = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L566
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L565
 </md:method>
 
 <md:method>
@@ -305,7 +305,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean           Success
 	 */
 public function freezeOutput($at_front = true)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L578
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L577
 </md:method>
 
 <md:method>
@@ -315,7 +315,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean           Success
 	 */
 public function unfreezeOutput($at_front = true)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L590
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L589
 </md:method>
 
 <md:method>
@@ -324,7 +324,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function onWrite()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L601
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L600
 </md:method>
 
 <md:method>
@@ -334,7 +334,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean       Success
 	 */
 public function write($data)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L609
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L608
 </md:method>
 
 <md:method>
@@ -344,7 +344,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return boolean       Success
 	 */
 public function writeln($data)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L634
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L633
 </md:method>
 
 <md:method>
@@ -353,7 +353,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function finish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L655
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L654
 </md:method>
 
 <md:method>
@@ -362,7 +362,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function close()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L678
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L677
 </md:method>
 
 <md:method>
@@ -371,7 +371,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function unsetFd()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L696
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L695
 </md:method>
 
 <md:method>
@@ -381,7 +381,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function onReadEv($bev)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L715
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L714
 </md:method>
 
 <md:method>
@@ -391,7 +391,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function onWriteOnce($cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L752
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L751
 </md:method>
 
 <md:method>
@@ -401,7 +401,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function onWriteEv($bev)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L765
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L764
 </md:method>
 
 <md:method>
@@ -412,7 +412,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return void
 	 */
 public function onStateEv($bev, $events)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L813
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L812
 </md:method>
 
 <md:method>
@@ -423,7 +423,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return integer|false
 	 */
 public function moveToBuffer(\EventBuffer $dest, $n)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L848
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L847
 </md:method>
 
 <md:method>
@@ -434,7 +434,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return integer|false
 	 */
 public function writeFromBuffer(\EventBuffer $src, $n)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L861
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L860
 </md:method>
 
 <md:method>
@@ -444,7 +444,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return string|false    Readed data
 	 */
 public function read($n)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L873
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L872
 </md:method>
 
 <md:method>
@@ -453,7 +453,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStre
 	 * @return string Readed data
 	 */
 public function readUnlimited()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L891
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/IOStream.php#L890
 </md:method>
 
 <div class="clearboth"></div>

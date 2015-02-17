@@ -46,7 +46,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding
 	 * @return string       The same string, Win1252 encoded
 	 */
 public static function toWin1252($text)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L253
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L251
 </md:method>
 
 <md:method>
@@ -56,7 +56,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding
 	 * @return string       The same string, Win1252 encoded
 	 */
 public static function toISO8859($text)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L271
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L269
 </md:method>
 
 <md:method>
@@ -66,7 +66,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding
 	 * @return string       The same string, Win1252 encoded
 	 */
 public static function toLatin1($text)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L280
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L278
 </md:method>
 
 <md:method>
@@ -76,7 +76,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding
 	 * @return string
 	 */
 public static function fixUTF8($text)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L289
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L287
 </md:method>
 
 <md:method>
@@ -88,7 +88,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding
 	 * @return string
 	 */
 public static function UTF8FixWin1252Chars($text)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L313
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L311
 </md:method>
 
 <md:method>
@@ -97,8 +97,8 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding
 	 * @param  string $str Any string
 	 * @return string
 	 */
-public static function removeBOM($str="")
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L322
+public static function removeBOM($str = "")
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L320
 </md:method>
 
 <md:method>
@@ -108,7 +108,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding
 	 * @return string
 	 */
 public static function normalizeEncoding($encodingLabel)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L334
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L332
 </md:method>
 
 <md:method>
@@ -118,7 +118,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding
 	 * @return string
 	 */
 public static function encode($encodingLabel, $text)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L361
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Encoding.php#L359
 </md:method>
 
 <div class="clearboth"></div>

@@ -57,11 +57,32 @@ public $psubscribeCb = [ ]
 <md:method>
 /**
 	 * @TODO
+	 * @param  string  $key
+	 * @param  integer $timeout
+	 * @return Lock
+	 */
+public function lock($key, $timeout)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L87
+</md:method>
+
+<md:method>
+/**
+	 * Easy wrapper for queue of eval's
+	 * @param  callable  $cb
+	 * @return MultiEval
+	 */
+public function meval($cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L96
+</md:method>
+
+<md:method>
+/**
+	 * @TODO
 	 * @param  string $chan
 	 * @return integer
 	 */
 public function getLocalSubscribersCount($chan)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L78
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L105
 </md:method>
 
 <md:method>
@@ -70,7 +91,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 * @return void
 	 */
 public function onReady()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L89
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L116
 </md:method>
 
 <md:method>
@@ -79,7 +100,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 * @return void
 	 */
 public function subscribed()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L116
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L143
 </md:method>
 
 <md:method>
@@ -88,7 +109,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 * @return boolean
 	 */
 public function isSubscribed()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L130
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L157
 </md:method>
 
 <md:method>
@@ -101,7 +122,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 * @return void
 	 */
 public function __call($cmd, $args)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L142
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L169
 </md:method>
 
 <md:method>
@@ -114,7 +135,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 * @return void
 	 */
 public function command($name, $args, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L167
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L194
 </md:method>
 
 <md:method>
@@ -127,7 +148,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 * @return void
 	 */
 public function sendCommand($name, $args, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L344
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L371
 </md:method>
 
 <md:method>
@@ -136,7 +157,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 * @return void
 	 */
 public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L377
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L411
 </md:method>
 
 <md:method>
@@ -146,7 +167,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 * @return void
 	 */
 public function pushValue($val)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L424
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L458
 </md:method>
 
 <md:method>
@@ -155,7 +176,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 * @param integer $length
 	 */
 public function pushLevel($length)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L454
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L488
 </md:method>
 
 <md:method>
@@ -164,7 +185,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 * @return void
 	 */
 public function checkFree()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L537
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Connection.php#L571
 </md:method>
 
 <div class="clearboth"></div>
@@ -219,6 +240,94 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 */
 public function release($cb = null)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L67
+</md:method>
+
+<div class="clearboth"></div>
+
+#### multi-eval # MultiEval {tpl-git PHPDaemon/Clients/Redis/MultiEval.php}
+
+```php
+namespace PHPDaemon\Clients\Redis;
+class MultiEval;
+```
+
+Easy wrapper for queue of eval's
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var array Listeners
+	 */
+public $listeners = [ ]
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Constructor
+	 * @param callable $cb   Callback
+	 * @param Pool     $pool Redis pool
+	 */
+public function __construct($cb, $pool)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/MultiEval.php#L52
+</md:method>
+
+<md:method>
+/**
+	 * Adds listener
+	 * @param callable $cb
+	 */
+public function addListener($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/MultiEval.php#L63
+</md:method>
+
+<md:method>
+/**
+	 * Adds eval command in stack
+	 * @param string $cmd  Lua script
+	 * @param mixed  $keys Keys
+	 * @param mixed  $argv Arguments
+	 */
+public function add($cmd, $keys = null, $argv = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/MultiEval.php#L73
+</md:method>
+
+<md:method>
+/**
+	 * Clean up
+	 */
+public function cleanup()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/MultiEval.php#L98
+</md:method>
+
+<md:method>
+/**
+	 * Return params for eval command
+	 * @return array
+	 */
+public function getParams()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/MultiEval.php#L106
+</md:method>
+
+<md:method>
+/**
+	 * Runs the stack of commands
+	 */
+public function execute()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/MultiEval.php#L153
+</md:method>
+
+<md:method>
+/**
+	 * Adds eval command or calls execute() method
+	 * @return void
+	 */
+public function __invoke()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/MultiEval.php#L175
 </md:method>
 
 <div class="clearboth"></div>
@@ -278,13 +387,23 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 
 <md:method>
 /**
+	 * Easy wrapper for queue of eval's
+	 * @param  callable  $cb
+	 * @return MultiEval
+	 */
+public function meval($cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Pool.php#L33
+</md:method>
+
+<md:method>
+/**
 	 * Detaches connection from URL
 	 * @param  ClientConnection $conn Connection
 	 * @param  string           $url  URL
 	 * @return void
 	 */
 public function detachConnFromUrl(ClientConnection $conn, $url)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Pool.php#L34
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Pool.php#L43
 </md:method>
 
 <md:method>
@@ -294,7 +413,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 * @return integer
 	 */
 public function getLocalSubscribersCount($chan)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Pool.php#L76
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Pool.php#L85
 </md:method>
 
 <md:method>
@@ -307,7 +426,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 * @return void
 	 */
 public function __call($cmd, $args)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Pool.php#L91
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Pool.php#L100
 </md:method>
 
 <div class="clearboth"></div>

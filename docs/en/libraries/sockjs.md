@@ -526,16 +526,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 
 <md:method>
 /**
-	 * __get
-	 * @param  string $k
-	 * @return mixed
-	 */
-public function __get($k)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L38
-</md:method>
-
-<md:method>
-/**
 	 * __isset
 	 * @param  string  $k 
 	 * @return boolean
@@ -614,16 +604,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 
 <md:method>
 /**
-	 * __get
-	 * @param  string $k
-	 * @return mixed
-	 */
-public function __get($k)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketRouteProxy.php#L40
-</md:method>
-
-<md:method>
-/**
 	 * __call
 	 * @param  string $method
 	 * @param  array  $args
@@ -657,11 +637,21 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 
 <md:method>
 /**
+	 * realRoute onBeforeHandshake
+	 * @param  callable   $cb
+	 * @return void|false
+	 */
+public function onBeforeHandshake($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketRouteProxy.php#L91
+</md:method>
+
+<md:method>
+/**
 	 * @TODO DESCR
 	 * @return void
 	 */
 public function onHandshake()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketRouteProxy.php#L90
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketRouteProxy.php#L102
 </md:method>
 
 <md:method>
@@ -670,7 +660,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return void
 	 */
 public function onWrite()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketRouteProxy.php#L105
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketRouteProxy.php#L117
 </md:method>
 
 <md:method>
@@ -679,7 +669,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 	 * @return void
 	 */
 public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketRouteProxy.php#L115
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketRouteProxy.php#L127
 </md:method>
 
 <div class="clearboth"></div>

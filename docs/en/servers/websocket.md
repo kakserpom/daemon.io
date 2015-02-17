@@ -107,7 +107,7 @@ public static $hvaltr = [
 	 * @return void
 	 */
 public function onReady()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L115
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L116
 </md:method>
 
 <md:method>
@@ -116,7 +116,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return void
 	 */
 public function onWakeup()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L151
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L152
 </md:method>
 
 <md:method>
@@ -125,7 +125,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return void
 	 */
 public function onSleep()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L165
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L166
 </md:method>
 
 <md:method>
@@ -135,7 +135,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return void
 	 */
 public function onInheritanceFromRequest($req)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L177
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L178
 </md:method>
 
 <md:method>
@@ -148,7 +148,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return boolean         Success.
 	 */
 public function sendFrame($data, $type = null, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L194
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L195
 </md:method>
 
 <md:method>
@@ -157,7 +157,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return void
 	 */
 public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L219
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L220
 </md:method>
 
 <md:method>
@@ -167,7 +167,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return boolean      Handled?
 	 */
 public function handleException($e)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L235
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L236
 </md:method>
 
 <md:method>
@@ -178,7 +178,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return boolean      Success.
 	 */
 public function onFrame($data, $type)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L248
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L249
 </md:method>
 
 <md:method>
@@ -187,7 +187,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return boolean Ready to handshake ?
 	 */
 public function onHandshake()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L266
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L267
 </md:method>
 
 <md:method>
@@ -196,7 +196,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return boolean Ready to shutdown ?
 	 */
 public function gracefulShutdown()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L291
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L292
 </md:method>
 
 <md:method>
@@ -206,7 +206,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return boolean               Handshake status
 	 */
 public function handshake($extraHeaders = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L305
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L306
 </md:method>
 
 <md:method>
@@ -215,7 +215,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @param  string $s Data
 	 */
 public function write($s)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L364
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L367
 </md:method>
 
 <md:method>
@@ -224,7 +224,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return void
 	 */
 public function badRequest()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L372
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L375
 </md:method>
 
 <md:method>
@@ -240,7 +240,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return void
 	 */
 public function setcookie($name, $value = '', $maxage = 0, $path = '', $domain = '', $secure = false, $HTTPOnly = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L570
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L573
 </md:method>
 
 <md:method>
@@ -251,7 +251,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return boolean       Success
 	 */
 public function status($code = 200)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L587
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L590
 </md:method>
 
 <md:method>
@@ -264,7 +264,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSoc
 	 * @return boolean          Success
 	 */
 public function header($s, $replace = true, $code = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L599
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/WebSocket/Connection.php#L602
 </md:method>
 
 <div class="clearboth"></div>

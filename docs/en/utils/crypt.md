@@ -94,7 +94,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.ph
 	 * @return boolean    Equal?
 	 */
 public static function compareStrings($a, $b)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.php#L227
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Utils/Crypt.php#L228
 </md:method>
 
 <div class="clearboth"></div>

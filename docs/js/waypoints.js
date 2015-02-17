@@ -205,7 +205,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   Context.prototype.add = function(waypoint) {
     var axis = waypoint.options.horizontal ? 'horizontal' : 'vertical'
     this.waypoints[axis][waypoint.key] = waypoint
-    // this.refresh()
+    this.refresh()
   }
 
   /* Private */

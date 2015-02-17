@@ -259,11 +259,10 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/C
 <md:method>
 /**
 	 * Called when new data received
-	 * @param  string $buf New data
 	 * @return void
 	 */
-public function stdin($buf)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L424
+public function onRead()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/Connection.php#L423
 </md:method>
 
 <div class="clearboth"></div>
