@@ -10,17 +10,17 @@ abstract class Client extends [Pool](#../pool);
 <!-- include-namespace path="\PHPDaemon\Network\Client" level="" access="" -->
 #### options # Options
 
- - `:p`expose (1)`  
- 
+ - `:p`expose (boolean = 1)`  
+ Expose?
 
- - `:p`servers ('127.0.0.1')`  
- 
+ - `:p`servers (string|array = '127.0.0.1')`  
+ Default servers
 
- - `:p`server ('127.0.0.1')`  
- 
+ - `:p`server (string = '127.0.0.1')`  
+ Default server
 
- - `:p`maxconnperserv (32)`  
- 
+ - `:p`maxconnperserv (integer = 32)`  
+ Maximum connections per server
 
 #### methods # Methods
 
@@ -32,7 +32,7 @@ abstract class Client extends [Pool](#../pool);
 	 * @return void
 	 */
 public function addServer($url, $weight = NULL)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L118
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L106
 </md:method>
 
 <md:method>
@@ -41,12 +41,12 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client
 	 * @param  string   $url Address
 	 * @param  callback $cb  onConnected
 	 * @param  integer  $pri Optional. Priority
-	 * @call   boolean public function getConnection ( callable $cb )
-	 * @call   boolean public function getConnection ( string $url = null, callable $cb = null, integer $pri = 0 )
+	 * @call   ( callable $cb )
+	 * @call   ( string $url = null, callable $cb = null, integer $pri = 0 )
 	 * @return boolean       Success|Connection
 	 */
 public function getConnection($url = null, $cb = null, $pri = 0)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L131
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L119
 </md:method>
 
 <md:method>
@@ -56,7 +56,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client
 	 * @return void
 	 */
 public function detach($conn)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L198
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L186
 </md:method>
 
 <md:method>
@@ -67,7 +67,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client
 	 * @return void
 	 */
 public function markConnFree(ClientConnection $conn, $url)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L209
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L197
 </md:method>
 
 <md:method>
@@ -78,7 +78,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client
 	 * @return void
 	 */
 public function markConnBusy(ClientConnection $conn, $url)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L222
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L210
 </md:method>
 
 <md:method>
@@ -89,7 +89,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client
 	 * @return void
 	 */
 public function detachConnFromUrl(ClientConnection $conn, $url)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L235
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L223
 </md:method>
 
 <md:method>
@@ -99,7 +99,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client
 	 * @return void
 	 */
 public function touchPending($url)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L249
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L237
 </md:method>
 
 <md:method>
@@ -107,20 +107,22 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client
 	 * Returns available connection from the pool by key
 	 * @param  string   $key Key
 	 * @param  callable $cb  Callback
+	 * @callback $cb ( )
 	 * @return boolean       Success
 	 */
 public function getConnectionByKey($key, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L263
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L252
 </md:method>
 
 <md:method>
 /**
 	 * Returns available connection from the pool
 	 * @param  callable $cb Callback
+	 * @callback $cb ( )
 	 * @return boolean      Success
 	 */
 public function getConnectionRR($cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L287
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L277
 </md:method>
 
 <md:method>
@@ -129,10 +131,11 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client
 	 * @param  string   $server     Server
 	 * @param  string   $data       Data
 	 * @param  callable $onResponse Called when the request complete
+	 * @callback $onResponse ( )
 	 * @return boolean              Success
 	 */
 public function requestByServer($server, $data, $onResponse = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L298
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L289
 </md:method>
 
 <md:method>
@@ -141,10 +144,11 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client
 	 * @param  string   $key        Key
 	 * @param  string   $data       Data
 	 * @param  callable $onResponse Callback called when the request complete
+	 * @callback $onResponse ( )
 	 * @return boolean              Success
 	 */
 public function requestByKey($key, $data, $onResponse = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L316
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L308
 </md:method>
 
 <md:method>
@@ -154,7 +158,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client
 	 * @return boolean           Ready to shutdown?
 	 */
 public function onShutdown($graceful = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L332
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Network/Client.php#L324
 </md:method>
 
 <div class="clearboth"></div>

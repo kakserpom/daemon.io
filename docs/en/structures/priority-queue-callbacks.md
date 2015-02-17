@@ -55,19 +55,21 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/Pri
 <md:method>
 /**
 	 * Executes one callback from the top of queue with arbitrary arguments
+	 * @param  mixed   ...$args Arguments
 	 * @return boolean
 	 */
 public function executeOne()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L60
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L61
 </md:method>
 
 <md:method>
 /**
 	 * Executes all callbacks from the top of queue to bottom with arbitrary arguments
+	 * @param  mixed   ...$args Arguments
 	 * @return integer
 	 */
 public function executeAll()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L75
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Structures/PriorityQueueCallbacks.php#L77
 </md:method>
 
 <div class="clearboth"></div>

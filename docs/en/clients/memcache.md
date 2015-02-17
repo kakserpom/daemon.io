@@ -15,7 +15,7 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 ##### consts # Constants
 
 <md:const>
-@TODO DESCR
+DESCR
 const STATE_DATA = 1
 </md:const>
 
@@ -24,27 +24,37 @@ const STATE_DATA = 1
 ##### properties # Properties
 
 <md:prop>
-/** @var */
+/**
+	 * @var mixed current result
+	 */
 public $result
 </md:prop>
 
 <md:prop>
-/** @var */
+/**
+	 * @var string flags of incoming value
+	 */
 public $valueFlags
 </md:prop>
 
 <md:prop>
-/** @var */
+/**
+	 * @var integer length of incoming value
+	 */
 public $valueLength
 </md:prop>
 
 <md:prop>
-/** @var */
+/**
+	 * @var string error message
+	 */
 public $error
 </md:prop>
 
 <md:prop>
-/** @var */
+/**
+	 * @var string current incoming key
+	 */
 public $key
 </md:prop>
 
@@ -59,114 +69,121 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### options # Options
 
- - `:p`servers ('tcp://127.0.0.1')`  
- 
+ - `:p`servers (string|array = 'tcp://127.0.0.1')`  
+ Default servers
 
- - `:p`port (11211)`  
- 
+ - `:p`port (integer = 11211)`  
+ Default port
 
- - `:p`maxconnperserv (32)`  
- 
+ - `:p`maxconnperserv (integer = 32)`  
+ Maximum connections per server
 
 ##### methods # Methods
 
 <md:method>
 /**
 	 * Gets the key
-	 * @param string Key
-	 * @param mixed  Callback called when response received
+	 * @param  string   $key        Key
+	 * @param  callable $onResponse Callback called when response received
+	 * @callback $onResponse ( )
 	 * @return void
 	 */
 public function get($key, $onResponse)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L44
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L36
 </md:method>
 
 <md:method>
 /**
 	 * Sets the key
-	 * @param string  Key
-	 * @param string  Value
-	 * @param integer Lifetime in seconds (0 - immortal)
-	 * @param mixed   Callback called when the request complete
+	 * @param  string   $key        Key
+	 * @param  string   $value      Value
+	 * @param  integer  $exp        Lifetime in seconds (0 - immortal)
+	 * @param  callable $onResponse Callback called when the request complete
+	 * @callback $onResponse ( )
 	 * @return void
 	 */
 public function set($key, $value, $exp = 0, $onResponse = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L56
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L49
 </md:method>
 
 <md:method>
 /**
 	 * Adds the key
-	 * @param string  Key
-	 * @param string  Value
-	 * @param integer Lifetime in seconds (0 - immortal)
-	 * @param mixed   Callback called when the request complete
+	 * @param  string   $key        Key
+	 * @param  string   $value      Value
+	 * @param  integer  $exp        Lifetime in seconds (0 - immortal)
+	 * @param  callable $onResponse Callback called when the request complete
+	 * @callback $onResponse ( )
 	 * @return void
 	 */
 public function add($key, $value, $exp = 0, $onResponse = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L79
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L73
 </md:method>
 
 <md:method>
 /**
 	 * Deletes the key
-	 * @param string  Key
-	 * @param mixed   Callback called when the request complete
-	 * @param integer Time to block this key
+	 * @param  string   $key        Key
+	 * @param  callable $onResponse Callback called when the request complete
+	 * @param  integer  $time       Time to block this key
+	 * @callback $onResponse ( )
 	 * @return void
 	 */
 public function delete($key, $onResponse = null, $time = 0)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L100
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L95
 </md:method>
 
 <md:method>
 /**
 	 * Replaces the key
-	 * @param string  Key
-	 * @param string  Value
-	 * @param integer Lifetime in seconds (0 - immortal)
-	 * @param mixed   Callback called when the request complete
+	 * @param  string   $key        Key
+	 * @param  string   $value      Value
+	 * @param  integer  $exp        Lifetime in seconds (0 - immortal)
+	 * @param  callable $onResponse Callback called when the request complete
+	 * @callback $onResponse ( )
 	 * @return void
 	 */
 public function replace($key, $value, $exp = 0, $onResponse = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L121
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L117
 </md:method>
 
 <md:method>
 /**
 	 * Appends a string to the key's value
-	 * @param string  Key
-	 * @param string  Value to append
-	 * @param integer Lifetime in seconds (0 - immortal)
-	 * @param mixed   Callback called when the request complete
+	 * @param  string   $key        Key
+	 * @param  string   $value      Value
+	 * @param  integer  $exp        Lifetime in seconds (0 - immortal)
+	 * @param  callable $onResponse Callback called when the request complete
+	 * @callback $onResponse ( )
 	 * @return void
 	 */
 public function append($key, $value, $exp = 0, $onResponse = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L143
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L140
 </md:method>
 
 <md:method>
 /**
 	 * Prepends a string to the key's value
-	 * @param string  Key
-	 * @param string  Value to prepend
-	 * @param integer Lifetime in seconds (0 - immortal)
-	 * @param mixed   Callback called when the request complete
+	 * @param  string   $key        Key
+	 * @param  string   $value      Value
+	 * @param  integer  $exp        Lifetime in seconds (0 - immortal)
+	 * @param  callable $onResponse Callback called when the request complete
+	 * @callback $onResponse ( )
 	 * @return void
 	 */
 public function prepend($key, $value, $exp = 0, $onResponse = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L165
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L163
 </md:method>
 
 <md:method>
 /**
 	 * Gets a statistics
-	 * @param mixed  Callback called when the request complete
-	 * @param string Server
+	 * @param  callable $onResponse Callback called when the request complete
+	 * @param  string   $server     Server
 	 * @return void
 	 */
 public function stats($onResponse, $server = NULL)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L185
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Memcache/Pool.php#L183
 </md:method>
 
 <div class="clearboth"></div>

@@ -25,8 +25,7 @@ const STATE_PACKET = 1
 
 <md:prop>
 /**
-	 * Response
-	 * @var array
+	 * @var array Response
 	 */
 public $response = [ ]
 </md:prop>
@@ -38,11 +37,11 @@ public $response = [ ]
 <md:method>
 /**
 	 * Called when new UDP packet received.
-	 * @param string $pct
+	 * @param  string $pct
 	 * @return void
 	 */
 public function onUdpPacket($pct)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Connection.php#L64
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Connection.php#L57
 </md:method>
 
 <md:method>
@@ -51,18 +50,19 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Co
 	 * @return void
 	 */
 public function onRead()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Connection.php#L169
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Connection.php#L162
 </md:method>
 
 <md:method>
 /**
 	 * Gets the host information
-	 * @param string   Hostname
-	 * @param callable $cb Callback
+	 * @param  string   $hostname Hostname
+	 * @param  callable $cb       Callback
+	 * @callback $cb ( )
 	 * @return void
 	 */
 public function get($hostname, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Connection.php#L199
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Connection.php#L193
 </md:method>
 
 <md:method>
@@ -71,7 +71,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Co
 	 * @return void
 	 */
 public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Connection.php#L247
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Connection.php#L241
 </md:method>
 
 <div class="clearboth"></div>
@@ -85,30 +85,29 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### options # Options
 
- - `:p`port (53)`  
- @todo add description strings
+ - `:p`port (integer = 53)`  
+ port
 
- - `:p`resolvecachesize (128)`  
- 
+ - `:p`resolvecachesize (integer = 128)`  
+ resolvecachesize
 
- - `:p`servers ('')`  
- 
+ - `:p`servers (string = '')`  
+ Servers
 
- - `:p`hostsfile ('/etc/hosts')`  
- 
+ - `:p`hostsfile (string = '/etc/hosts')`  
+ hostsfile
 
- - `:p`resolvfile ('/etc/resolv.conf')`  
- 
+ - `:p`resolvfile (string = '/etc/resolv.conf')`  
+ resolvfile
 
- - `:p`expose (1)`  
- 
+ - `:p`expose (boolean = 1)`  
+ Expose?
 
 ##### properties # Properties
 
 <md:prop>
 /**
-	 * Record Types
-	 * @var array hash [code => "name", ...]
+	 * @var array Record Types [code => "name", ...]
 	 */
 public static $type = [
   1 => 'A',
@@ -182,32 +181,28 @@ public static $type = [
 
 <md:prop>
 /**
-	 * Hosts file parsed
-	 * @var array hash [hostname => [addr, ...], ...]
+	 * @var array Hosts file parsed [hostname => [addr, ...], ...]
 	 */
 public $hosts = [ ]
 </md:prop>
 
 <md:prop>
 /**
-	 * Preloading ComplexJob
-	 * @var \PHPDaemon\Core\ComplexJob
+	 * @var \PHPDaemon\Core\ComplexJob Preloading ComplexJob
 	 */
 public $preloading
 </md:prop>
 
 <md:prop>
 /**
-	 * Resolve cache
-	 * @var CappedStorageHits
+	 * @var CappedStorageHits Resolve cache
 	 */
 public $resolveCache
 </md:prop>
 
 <md:prop>
 /**
-	 * Classes
-	 * @var array [code => "class"]
+	 * @var array Classes [code => "class"]
 	 */
 public static $class = [
   1 => 'IN',
@@ -226,32 +221,33 @@ public static $class = [
 	 * @return void
 	 */
 public function applyConfig()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Pool.php#L90
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Pool.php#L100
 </md:method>
 
 <md:method>
 /**
 	 * Resolves the host
-	 * @param string   Hostname
-	 * @param callable $cb Callback
-	 * @param [boolean Noncache?]
+	 * @param  string   $hostname Hostname
+	 * @param  callable $cb       Callback
+	 * @param  boolean  $noncache Noncache?
+	 * @callback $cb ( array|string $addrs )
 	 * @return void
 	 */
 public function resolve($hostname, $cb, $noncache = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Pool.php#L136
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Pool.php#L147
 </md:method>
 
 <md:method>
 /**
 	 * Gets the host information
-	 * @param string   Hostname
-	 * @param callable $cb Callback
-	 * @param [boolean Noncache?]
-	 * @param string $hostname
+	 * @param  string   $hostname Hostname
+	 * @param  callable $cb       Callback
+	 * @param  boolean  $noncache Noncache?
+	 * @callback $cb ( )
 	 * @return void
 	 */
 public function get($hostname, $cb, $noncache = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Pool.php#L204
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/DNS/Pool.php#L215
 </md:method>
 
 <div class="clearboth"></div>

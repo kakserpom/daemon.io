@@ -248,7 +248,7 @@ class ParsedownCustom extends ParsedownExtra
 	 */
 	protected function identifyAtx($Line, $CurrentBlock)
 	{
-		preg_match('/^(\#{1,6})(\$)?\s+/', $Line['text'], $matches);
+		preg_match('/^(\#{1,})(\$)?\s+/', $Line['text'], $matches); // {1,6}
 
 		$n = strlen($matches[1]);
 		$isSimple = isset($matches[2]) && $matches[2] === '$';
@@ -299,7 +299,7 @@ class ParsedownCustom extends ParsedownExtra
 
 		return array(
 			'element' => array(
-				'name' => 'h' . min(6, $n),
+				'name' => 'h' . $n, //min(6, $n),
 				'handler' => 'line',
 				'text' => "<div class=\"in anchor\">$header_html</div>",
 				'attributes' => [

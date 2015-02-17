@@ -17,12 +17,13 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 <md:method>
 /**
 	 * Send echo-request
-	 * @param callable     Callback
-	 * @param string $data Data
+	 * @param callable $cb   Callback
+	 * @param string   $data Data
+	 * @callback $cb ( )
 	 * @return void
 	 */
 public function sendEcho($cb, $data = 'phpdaemon')
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/ICMP/Connection.php#L47
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/ICMP/Connection.php#L44
 </md:method>
 
 <md:method>
@@ -31,7 +32,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/ICMP/C
 	 * @return void
 	 */
 public function onRead()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/ICMP/Connection.php#L86
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/ICMP/Connection.php#L82
 </md:method>
 
 <div class="clearboth"></div>
@@ -48,12 +49,12 @@ class Pool extends \PHPDaemon\Network\Client;
 <md:method>
 /**
 	 * Establishes connection
-	 * @param string $host Address
-	 * @param callable $cb
-	 * @return integer Connection ID
+	 * @param  string   $host Address
+	 * @param  callable $cb   Callback
+	 * @callback $cb ( )
 	 */
 public function sendPing($host, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/ICMP/Pool.php#L14
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/ICMP/Pool.php#L19
 </md:method>
 
 <div class="clearboth"></div>

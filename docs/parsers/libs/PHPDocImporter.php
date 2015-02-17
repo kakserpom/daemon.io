@@ -155,10 +155,19 @@ class PHPDocImporter {
 			// ставим флаг что контент будет изменен
 			$this->flagFileChanged = true;
 
-			$classes = $this->getSourceClasses($params['path']);
+			$hlevel_base  = 3;
+			$hlevel_curr  = $hlevel_base;
+			$hlevel_extra = 0;
 
+			$plevel_base = substr_count('\\'. trim($params['path'], '\\') .'\\', '\\');
+			$plevel_curr = $plevel_base;
+
+			$classes = $this->getSourceClasses($params['path']);
+// if($params['path'] === 'PHPDaemon\SockJS') {
+	// var_dump($classes);
+// }
 			$content = '';
-			$is_header = count($classes) > 1;
+			$is_multi = count($classes) > 1;
 
 			foreach ($classes as $class_path => $class_name) {
 				if(in_array($class_name, $this->ignoreNamespaces)) {
@@ -177,8 +186,27 @@ class PHPDocImporter {
 					continue;
 				}
 
-				if($is_header) {
-					$content .= $this->getClassHeader($ReflectionEntity, $params, $class_path, $class_name);
+				if($is_multi) {
+					$plevel = substr_count($class_name, '\\');
+
+					if($plevel > $plevel_curr) {
+						$hlevel_curr += $plevel - $plevel_curr;
+						$pp = explode('\\', $class_name);
+						array_pop($pp);
+						$p_class_path = substr($class_path, 0, strrpos($class_path, '/'));
+						$name = array_pop($pp);
+						$level = $this->getHeaderLevel($hlevel_curr);
+						$content .= "$level $name # / $name {tpl-git $p_class_path}\n\n";
+					}
+					else
+					if($plevel < $plevel_curr) {
+						$hlevel_curr -= $plevel_curr - $plevel;
+					}
+
+					$plevel_curr = $plevel;
+					$hlevel_extra = $hlevel_curr - $hlevel_base;
+var_dump('1: '.$hlevel_extra);
+					$content .= $this->getClassHeader($ReflectionEntity, $params, $class_path, $class_name, $hlevel_extra);
 				}
 
 				$content .= $this->getClassOptions($ReflectionEntity, $params, $class_path, $class_name);
@@ -329,7 +357,7 @@ class PHPDocImporter {
 			$preflen = strlen($this->sourcePath);
 			$files = glob_recursive($fullpath . '/*.php', GLOB_NOSORT);
 			foreach ($files as $filepath) {
-				if(strpos($filepath, '/Examples/')) {
+				if(strpos($filepath, 'Example') !== false) {
 					continue;
 				}
 
@@ -343,7 +371,7 @@ class PHPDocImporter {
 	}
 
 
-	protected function getClassHeader($ReflectionEntity, &$params, $class_path, $class_name) {
+	protected function getClassHeader($ReflectionEntity, &$params, $class_path, $class_name, $hlevel_extra) {
 		$ns = $ReflectionEntity->getNamespaceName();
 		$name = $ReflectionEntity->getName();
 
@@ -373,10 +401,12 @@ class PHPDocImporter {
 		}
 
 		$typeLower = strtolower($type);
-
-		if(!isset($params['level']) || !$params['level']) {
+var_dump('level: '.$params['level']);
+		if(!$params['level']) {
+var_dump('2: '.$hlevel_extra);
 			$params['level'] = 3;
 		}
+		$params['level'] += $hlevel_extra;
 
 		$level = $this->getHeaderLevel($params['level'], 1);
 
@@ -428,13 +458,14 @@ TPL;
 					$desc = trim($m2[2]);
 				}
 
-				if(strpos($val, 'new ') === 0 && preg_match('/\((.+?)\)/', $val, $m3)) {
-					$val = $m3[1];
+				if(strpos($val, 'new ') === 0) {
+					$val_st = strpos($val, '(') + 1;
+					$val_en = strrpos($val, ')');
+					$val = substr($val, $val_st, $val_en - $val_st);
 				}
 
-				if(strpos($type, 'Config\\') === 0) {
-					$type = substr($type, 7);
-					$type = '['. ucfirst(strtolower($type)) .'](#config/types/'. strtolower($type) .')';
+				if(in_array($type, ['Time','Size','Number','Double','ExtFunc','ArraySet'])) {
+					$type = '['. $type .'](#config/types/'. strtolower($type) .')';
 				}
 
 				$result .= " - `:p`{$key} (". ($type ? "{$type} = " : '') ."{$val})`  \n";

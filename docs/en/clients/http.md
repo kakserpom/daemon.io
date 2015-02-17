@@ -140,7 +140,7 @@ public $eofTerminated = false
 	 * @param array  $params
 	 */
 public function get($url, $params = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L100
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L99
 </md:method>
 
 <md:method>
@@ -151,7 +151,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 	 * @param array  $params
 	 */
 public function post($url, $data = [], $params = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L167
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L166
 </md:method>
 
 <md:method>
@@ -160,7 +160,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 	 * @return string
 	 */
 public function getBody()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L234
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L233
 </md:method>
 
 <md:method>
@@ -169,7 +169,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 	 * @return array
 	 */
 public function getHeaders()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L242
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L241
 </md:method>
 
 <md:method>
@@ -179,7 +179,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 	 * @return string
 	 */
 public function getHeader($name)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L251
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L250
 </md:method>
 
 <md:method>
@@ -187,7 +187,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 	 * Called when new data received
 	 */
 public function onRead()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L259
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L258
 </md:method>
 
 <md:method>
@@ -195,7 +195,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 	 * Called when connection finishes
 	 */
 public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L390
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L389
 </md:method>
 
 <div class="clearboth"></div>
@@ -207,18 +207,16 @@ namespace PHPDaemon\Clients\HTTP;
 class Pool extends \PHPDaemon\Network\Client;
 ```
 
-Class Pool
-
 ##### options # Options
 
- - `:p`port (80)`  
- 
+ - `:p`port (integer = 80)`  
+ Default port
 
- - `:p`sslport (443)`  
- 
+ - `:p`sslport (integer = 443)`  
+ Default SSL port
 
- - `:p`expose (1)`  
- 
+ - `:p`expose (boolean = 1)`  
+ Send User-Agent header?
 
 ##### methods # Methods
 
@@ -228,12 +226,12 @@ Class Pool
 	 * @param string   $url
 	 * @param array    $params
 	 * @param callable $resultcb
-	 * @call  void public function get ( url $url, array $params )
-	 * @call  void public function get ( url $url, callable $resultcb )
+	 * @call  ( url $url, array $params )
+	 * @call  ( url $url, callable $resultcb )
 	 * @callback $resultcb ( Connection $conn, boolean $success )
 	 */
 public function get($url, $params)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L47
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L40
 </md:method>
 
 <md:method>
@@ -243,36 +241,36 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/P
 	 * @param array    $data
 	 * @param array    $params
 	 * @param callable $resultcb
-	 * @call  void public function post ( url $url, array $data, array $params )
-	 * @call  void public function post ( url $url, array $data, callable $resultcb )
+	 * @call  ( url $url, array $data, array $params )
+	 * @call  ( url $url, array $data, callable $resultcb )
 	 * @callback $resultcb ( Connection $conn, boolean $success )
 	 */
 public function post($url, $data = [], $params)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L84
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L77
 </md:method>
 
 <md:method>
 /**
 	 * Builds URL from array
 	 * @param string $mixed
-	 * @call  string public static function buildUrl ( string $str )
-	 * @call  string public static function buildUrl ( array $mixed )
+	 * @call  ( string $str )
+	 * @call  ( array $mixed )
 	 * @return string|false
 	 */
 public static function buildUrl($mixed)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L118
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L111
 </md:method>
 
 <md:method>
 /**
 	 * Parse URL
 	 * @param string $mixed Look Pool::buildUrl()
-	 * @call  string public static function parseUrl ( string $str )
-	 * @call  string public static function parseUrl ( array $mixed )
+	 * @call  ( string $str )
+	 * @call  ( array $mixed )
 	 * @return array|bool
 	 */
 public static function parseUrl($mixed)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L154
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Pool.php#L147
 </md:method>
 
 <div class="clearboth"></div>

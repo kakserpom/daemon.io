@@ -182,6 +182,7 @@ $ && $(function(){
 
 	// подсветка синтаксиса
 	(function(){
+		return;
 		var phpTypes = {
 			'boolean': 1,
 			'integer': 1,
@@ -273,9 +274,11 @@ $ && $(function(){
 		wrapMainheadDom = wrapMainhead.get(0),
 		wrapMainheadTop = parseInt(wrapMainhead.css('top'), 10);
 	
-	wrapMainhead.on('click', ':header', function() {
-		window.location = '#' + $(this).data('id');
-	});
+	wrapMainhead
+		.on('click', ':header', function() {
+			window.location = '#' + $(this).data('id');
+		})
+		.show();
 
 	(function(){
 		var scrollTo = 0;
@@ -388,8 +391,8 @@ $ && $(function(){
 			return obj;
 		}
 
-		function getClearedHeadClone(obj) {
-			return obj.clone().removeAttr('id').data('id', obj.attr('id'));
+		function getClearedHeadClone(elem) {
+			return $(elem).clone().removeAttr('id').data('id', elem.id)[0];
 
 			// @TODO херед методов
 			// if(!obj.is('.method')) {
@@ -417,9 +420,27 @@ $ && $(function(){
 			// return result;
 		}
 
+		var topFromLevel = [0,60,58,56,54,52,50];
+
 		function fixCurrHead(dir) {
+			// console.log('fixCurrHead', dir, this.element.id);
+
+			if (!this.element) {
+				return;
+			}
+
+			if (dir === 'down' || dir === 'fakedown') {
+				wrapMainhead
+					.css('top', topFromLevel[this.options.headerLevel])
+					.attr('class', 'mainhead m-float')
+					.html( getClearedHeadClone(this.element) );
+			} else {
+				fixPrevHead.apply(this, ['fakedown']);
+			}
+
+			/*
 			if(dir === 'down') {
-				var head = (this !== window) ? getClearedHeadClone($(this)) : '';
+				var head = (this.element !== window) ? getClearedHeadClone($(this.element)) : '';
 				wrapMainhead
 					.html(head)
 					.attr('class', head ? 'mainhead m-float' : 'mainhead m-hidden')
@@ -447,13 +468,31 @@ $ && $(function(){
 
 				wrapMainhead.html('');
 			}
+			*/
 		}
 
 		function fixPrevHead(dir) {
+			// console.log('fixPrevHead', dir, this.element.id);
+
+			var elem = this.previous();
+			if (!elem) {
+				return;
+			}
+
+			if (dir === 'down' || dir === 'fakedown') {
+				wrapMainhead
+					.css('top', this.triggerPoint + topFromLevel[this.options.headerLevel])
+					.attr('class', 'mainhead m-fixed')
+					.html( getClearedHeadClone(elem.element) );
+			} else {
+				fixCurrHead.apply(this.previous(), ['fakedown']);
+			}
+
+			/*
 			if(dir === 'down') {
 				wrapMainhead
 					.attr('class', 'mainhead m-fixed')
-					.css('top', getOffset(this).top);
+					.css('top', getOffset(this.element).top);
 			}
 			else {
 				if(currLink) {
@@ -474,6 +513,7 @@ $ && $(function(){
 
 				fixCurrHead.apply(null, ['down']);
 			}
+			*/
 		}
 
 		var callWaypointByHash = function() {
@@ -491,24 +531,12 @@ $ && $(function(){
 		};
 
 		var isCallbackNavWaypointsCalled = false;
-		var callbackNavWaypoints = function(dir, elem) {
+		var callbackNavWaypoints = function(dir) { // elem
 			isCallbackNavWaypointsCalled = true;
-
-			var that = this;
-
-			if(elem) {
-				that = elem;
-			}
 			
-			if(dir === 'up') {
-				var upheader = $(that).waypoint('prev').get(0);
-				if(upheader) that = upheader;
-			}
-
 			prevLink = currLink;
-			currLink = '#' + that.id;
-
-			setNavActive(that, dir);
+			currLink = '#' + this.element.id;
+			setNavActive(this.element, dir);
 			pushState();
 		};
 
@@ -516,7 +544,40 @@ $ && $(function(){
 			fixCurrHeadDebounce = $.debounce(50, false, fixCurrHead),
 			fixPrevHeadDebounce = $.debounce(50, false, fixPrevHead);
 
-		wrapNavWaypoints.waypoint(callbackNavWaypointsDebounce);
+		var fixCurrHeadCallback = function(dir) {
+			var point = this;
+
+			if(dir === 'up') {
+				point = this.previous() || this;
+			}
+
+			if (point.options.isHeader) {
+				callbackNavWaypointsDebounce.apply(point, [dir]);
+			}
+
+			fixCurrHead.apply(point, [dir]);
+		};
+
+		// wrapNavWaypoints.waypoint(callbackNavWaypointsDebounce);
+		wrapHeadvWaypoints.each(function(){
+			new Waypoint({
+				element: this,
+				isHeader: this.tagName.substr(0,1) === 'H',
+				headerLevel: this.tagName.substr(1,1),
+				handler: fixCurrHeadCallback
+			});
+		});
+
+		wrapHeadvWaypoints.each(function(){
+			new Waypoint({
+				element: this,
+				headerLevel: this.tagName.substr(1,1),
+				handler: fixPrevHead, //fixPrevHeadDebounce,
+				offset: 60 //wrapMainheadTop
+			});
+		});
+
+		Waypoint.refreshAll();
 
 		// wrapHeadvWaypoints.waypoint(fixCurrHeadDebounce);
 		// wrapHeadvWaypoints.waypoint(fixPrevHeadDebounce, {

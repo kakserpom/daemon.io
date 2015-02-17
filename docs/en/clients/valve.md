@@ -15,7 +15,9 @@ class Connection extends \PHPDaemon\Network\ClientConnection;
 ##### properties # Properties
 
 <md:prop>
-/** @var int */
+/**
+	 * @var integer Timeout
+	 */
 public $timeout = 1
 </md:prop>
 
@@ -26,55 +28,57 @@ public $timeout = 1
 <md:method>
 /**
 	 * Sends a request of type 'players'
-	 * @param callable $cb Callback
+	 * @param  callable $cb Callback
+	 * @callback $cb ( )
 	 * @return void
 	 */
 public function requestPlayers($cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Connection.php#L24
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Connection.php#L26
 </md:method>
 
 <md:method>
 /**
 	 * Sends a request of type 'info'
-	 * @param callable $cb Callback
+	 * @param  callable $cb Callback
+	 * @callback $cb ( )
 	 * @return void
 	 */
 public function requestInfo($cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Connection.php#L39
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Connection.php#L42
 </md:method>
 
 <md:method>
 /**
 	 * Sends a request
-	 * @param string   Type of request
-	 * @param string   Data
-	 * @param callable $cb Callback
-	 * @param string $type
+	 * @param  string   $type Type of request
+	 * @param  string   $data Data
+	 * @param  callable $cb   Callback
+	 * @callback $cb ( )
 	 * @return void
 	 */
 public function request($type, $data = null, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Connection.php#L51
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Connection.php#L54
 </md:method>
 
 <md:method>
 /**
 	 * Parses response to 'players' command into structure
-	 * @param &string Data
-	 * @return array Structure
+	 * @param  string &$st Data
+	 * @return array       Structure
 	 */
 public static function parsePlayers(&$st)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Connection.php#L122
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Connection.php#L125
 </md:method>
 
 <md:method>
 /**
 	 * Parses response to 'info' command into structure
-	 * @param &string Data
-	 * @param string $type
-	 * @return array Structure
+	 * @param  string &$st  Data
+	 * @param  string $type Type of request
+	 * @return array        Structure
 	 */
 public static function parseInfo(&$st, $type)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Connection.php#L155
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Connection.php#L158
 </md:method>
 
 <div class="clearboth"></div>
@@ -88,14 +92,14 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### options # Options
 
- - `:p`servers ('127.0.0.1')`  
- @todo add description strings
+ - `:p`servers (string|array = '127.0.0.1')`  
+ Default servers
 
- - `:p`port (27015)`  
- 
+ - `:p`port (integer = 27015)`  
+ Default port
 
- - `:p`maxconnperserv (32)`  
- 
+ - `:p`maxconnperserv (integer = 32)`  
+ Maximum connections per server
 
 ##### consts # Constants
 
@@ -151,48 +155,51 @@ const S2A_PONG = "\x6A"
 <md:method>
 /**
 	 * Sends a request
-	 * @param string   Address
-	 * @param string   Type of request
-	 * @param string   Data
-	 * @param callable $cb Callback
-	 * @param string $type
+	 * @param  string   $addr Address
+	 * @param  string   $type Type of request
+	 * @param  string   $data Data
+	 * @param  callable $cb Callback
+	 * @callback $cb ( )
 	 * @return void
 	 */
 public function request($addr, $type, $data, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Pool.php#L26
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Pool.php#L30
 </md:method>
 
 <md:method>
 /**
 	 * Sends echo-request
-	 * @param string   Address
-	 * @param callable $cb Callback
+	 * @param  string   $addr Address
+	 * @param  callable $cb   Callback
+	 * @callback $cb ( )
 	 * @return void
 	 */
 public function ping($addr, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Pool.php#L43
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Pool.php#L48
 </md:method>
 
 <md:method>
 /**
 	 * Sends a request of type 'info'
-	 * @param string   Address
-	 * @param callable $cb Callback
+	 * @param  string   $addr Address
+	 * @param  callable $cb   Callback
+	 * @callback $cb ( )
 	 * @return void
 	 */
 public function requestInfo($addr, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Pool.php#L63
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Pool.php#L69
 </md:method>
 
 <md:method>
 /**
 	 * Sends a request of type 'players'
-	 * @param string   Address
-	 * @param callable $cb Callback
+	 * @param  string   $addr Address
+	 * @param  callable $cb   Callback
+	 * @callback $cb ( )
 	 * @return void
 	 */
 public function requestPlayers($addr, $cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Pool.php#L73
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Valve/Pool.php#L80
 </md:method>
 
 <div class="clearboth"></div>

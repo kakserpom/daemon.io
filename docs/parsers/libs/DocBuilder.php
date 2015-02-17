@@ -415,7 +415,13 @@ class DocBuilder {
 			$deftype = $this->getDocDefaultType($type);
 
 			if($name === '' && $desc !== '' && $desc[0] === '&' && $desc[1] === '$') {
-				list($name, $desc) = explode(' ', $desc, 2);
+				if(strpos($desc, ' ') === false) {
+					$name = $desc;
+					$desc = '';
+				}
+				else {
+					list($name, $desc) = explode(' ', $desc, 2);
+				}
 			}
 
 			$code_params[] = $deftype .' '. $name . (isset($args[$name]) ? ' = '.$args[$name] : '');
@@ -555,7 +561,21 @@ class DocBuilder {
 			return 'array';
 		}
 
-		if(in_array(strtolower($type), $this->nativeTypes)) {
+		$type_lower = strtolower($type);
+
+		if($type_lower === 'bool') {
+			return 'boolean';
+		}
+
+		if($type_lower === 'int') {
+			return 'integer';
+		}
+
+		if($type_lower === 'double' || $type_lower === 'real') {
+			return 'float';
+		}
+
+		if(in_array($type_lower, $this->nativeTypes)) {
 			return strtolower($type);
 		}
 

@@ -252,7 +252,7 @@ public $errno = 0
 
 <md:prop>
 /**
-	 * @var integer Error message
+	 * @var string Error message
 	 */
 public $errmsg = ''
 </md:prop>
@@ -333,7 +333,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/
 <md:method>
 /**
 	 * Sends auth. packet
-	 * @return string Result
+	 * @return void
 	 */
 public function auth()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L312
@@ -380,7 +380,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/
 /**
 	 * Sets default database name
 	 * @param  string  $name   Database name
-	 * @return boolean Success
+	 * @return boolean         Success
 	 */
 public function selectDB($name)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Connection.php#L397
@@ -431,14 +431,14 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### options # Options
 
- - `:p`server ('tcp://root@127.0.0.1/')`  
- @todo add description strings
+ - `:p`server (array|string = 'tcp://root@127.0.0.1/')`  
+ @todo
 
- - `:p`port (3306)`  
- 
+ - `:p`port (integer = 3306)`  
+ @todo
 
- - `:p`maxconnperserv (32)`  
- 
+ - `:p`maxconnperserv (integer = 32)`  
+ @todo
 
 ##### consts # Constants
 
@@ -879,38 +879,41 @@ const SET_FLAG = 0x800
 <md:method>
 /**
 	 * Escapes the special symbols with trailing backslash
-	 * @param string $string
+	 * @param  string $string
 	 * @return string
 	 */
 public static function escape($string)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L263
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L313
 </md:method>
 
 <md:method>
 /**
-	 * 
-	 * @param $string
+	 * [value description]
+	 * @param  mixed  $mixed
 	 * @return string
 	 */
 public static function value($mixed)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L280
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L330
 </md:method>
 
 <md:method>
 /**
- */
+	 * [values description]
+	 * @param  array  $arr
+	 * @return string
+	 */
 public static function values($arr)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L291
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L346
 </md:method>
 
 <md:method>
 /**
 	 * Escapes the special symbols with a trailing backslash
-	 * @param $string
+	 * @param  string $string
 	 * @return string
 	 */
 public static function likeEscape($string)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L307
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/MySQL/Pool.php#L362
 </md:method>
 
 <div class="clearboth"></div>
