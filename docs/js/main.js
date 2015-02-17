@@ -492,23 +492,23 @@ $ && $(function(){
 		};
 
 		var isCallbackNavWaypointsCalled = false;
-		var callbackNavWaypoints = function(dir, elem) {
+		var callbackNavWaypoints = function(dir) { // elem
 			isCallbackNavWaypointsCalled = true;
 
 			var that = this;
 
-			if(elem) {
-				that = elem;
-			}
+			// if(elem) {
+			// 	that = elem;
+			// }
 			
 			if(dir === 'up') {
-				var upheader = $(that).waypoint('prev').get(0);
+				// var upheader = $(that).waypoint('prev').get(0);
+				var upheader = this.previous();
 				if(upheader) that = upheader;
 			}
 
 			prevLink = currLink;
-			currLink = '#' + that.id;
-
+			currLink = '#' + that.element.id;
 			setNavActive(that, dir);
 			pushState();
 		};
@@ -517,7 +517,13 @@ $ && $(function(){
 			fixCurrHeadDebounce = $.debounce(50, false, fixCurrHead),
 			fixPrevHeadDebounce = $.debounce(50, false, fixPrevHead);
 
-		wrapNavWaypoints.waypoint(callbackNavWaypointsDebounce);
+		// wrapNavWaypoints.waypoint(callbackNavWaypointsDebounce);
+		wrapNavWaypoints.each(function(){
+			new Waypoint({
+				element: this,
+				handler: callbackNavWaypointsDebounce
+			});
+		});
 
 		// wrapHeadvWaypoints.waypoint(fixCurrHeadDebounce);
 		// wrapHeadvWaypoints.waypoint(fixPrevHeadDebounce, {
