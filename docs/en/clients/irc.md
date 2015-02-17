@@ -5,6 +5,270 @@ namespace PHPDaemon\Clients\IRC;
 ```
 
 <!-- include-namespace path="\PHPDaemon\Clients\IRC" level="" access="" -->
+#### connection # Connection {tpl-git PHPDaemon/Clients/IRC/Connection.php}
+
+```php
+namespace PHPDaemon\Clients\IRC;
+class Connection extends \PHPDaemon\Network\ClientConnection;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var string
+	 */
+public $EOL = '\r\n'
+</md:prop>
+
+<md:prop>
+/**
+	 * @var
+	 */
+public $nick
+</md:prop>
+
+<md:prop>
+/**
+	 * @var
+	 */
+public $realname
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string
+	 */
+public $mode = ''
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array
+	 */
+public $buffers = [ ]
+</md:prop>
+
+<md:prop>
+/**
+	 * @var
+	 */
+public $servername
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array
+	 */
+public $channels = [ ]
+</md:prop>
+
+<md:prop>
+/**
+	 * @var
+	 */
+public $latency
+</md:prop>
+
+<md:prop>
+/**
+	 * @var
+	 */
+public $lastPingTS
+</md:prop>
+
+<md:prop>
+/**
+	 * @var int
+	 */
+public $timeout = 300
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Called when the connection is handshaked (at low-level), and peer is ready to recv. data
+	 * @return void
+	 */
+public function onReady()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L73
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param string $cmd
+	 */
+public function command($cmd)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L91
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param $cmd
+	 * @param array $args
+	 * @return bool
+	 */
+public function commandArr($cmd, $args = [])
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L118
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param $channels
+	 */
+public function join($channels)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L146
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param $channels
+	 * @param mixed $msg
+	 */
+public function part($channels, $msg = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L160
+</md:method>
+
+<md:method>
+/**
+	 * Called when connection finishes
+	 * @return void
+	 */
+public function onFinish()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L168
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 */
+public function ping()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L179
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param string $to
+	 * @param string $msg
+	 */
+public function message($to, $msg)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L189
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param $channel
+	 * @param $target
+	 * @param string $mode
+	 */
+public function addMode($channel, $target, $mode)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L199
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param $channel
+	 * @param $target
+	 * @param string $mode
+	 */
+public function removeMode($channel, $target, $mode)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L216
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param $from
+	 * @param $cmd
+	 * @param $args
+	 */
+public function onCommand($from, $cmd, $args)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L229
+</md:method>
+
+<md:method>
+/**
+	 * Called when new data received
+	 * @return void
+	 */
+public function onRead()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L400
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param $chan
+	 * @return Channel
+	 */
+public function channel($chan)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L445
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param $chan
+	 * @return bool
+	 */
+public function channelIfExists($chan)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L457
+</md:method>
+
+<div class="clearboth"></div>
+
+#### pool # Pool {tpl-git PHPDaemon/Clients/IRC/Pool.php}
+
+```php
+namespace PHPDaemon\Clients\IRC;
+class Pool extends \PHPDaemon\Network\Client;
+```
+
+##### options # Options
+
+ - `:p`port (6667)`  
+ 
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var
+	 */
+public $identd
+</md:prop>
+
+<md:prop>
+/**
+	 * @var bool
+	 */
+public $protologging = false
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 */
+public function onReady()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Pool.php#L34
+</md:method>
+
+<div class="clearboth"></div>
+
 #### channel # Channel {tpl-git PHPDaemon/Clients/IRC/Channel.php}
 
 ```php
@@ -353,270 +617,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Ch
 	 */
 public function chanMessage($msg)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L181
-</md:method>
-
-<div class="clearboth"></div>
-
-#### connection # Connection {tpl-git PHPDaemon/Clients/IRC/Connection.php}
-
-```php
-namespace PHPDaemon\Clients\IRC;
-class Connection extends \PHPDaemon\Network\ClientConnection;
-```
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var string
-	 */
-public $EOL = '\r\n'
-</md:prop>
-
-<md:prop>
-/**
-	 * @var
-	 */
-public $nick
-</md:prop>
-
-<md:prop>
-/**
-	 * @var
-	 */
-public $realname
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string
-	 */
-public $mode = ''
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array
-	 */
-public $buffers = [ ]
-</md:prop>
-
-<md:prop>
-/**
-	 * @var
-	 */
-public $servername
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array
-	 */
-public $channels = [ ]
-</md:prop>
-
-<md:prop>
-/**
-	 * @var
-	 */
-public $latency
-</md:prop>
-
-<md:prop>
-/**
-	 * @var
-	 */
-public $lastPingTS
-</md:prop>
-
-<md:prop>
-/**
-	 * @var int
-	 */
-public $timeout = 300
-</md:prop>
-
-<div class="clearboth"></div>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Called when the connection is handshaked (at low-level), and peer is ready to recv. data
-	 * @return void
-	 */
-public function onReady()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L73
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param string $cmd
-	 */
-public function command($cmd)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L91
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param $cmd
-	 * @param array $args
-	 * @return bool
-	 */
-public function commandArr($cmd, $args = [])
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L118
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param $channels
-	 */
-public function join($channels)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L146
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param $channels
-	 * @param mixed $msg
-	 */
-public function part($channels, $msg = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L160
-</md:method>
-
-<md:method>
-/**
-	 * Called when connection finishes
-	 * @return void
-	 */
-public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L168
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 */
-public function ping()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L179
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param string $to
-	 * @param string $msg
-	 */
-public function message($to, $msg)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L189
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param $channel
-	 * @param $target
-	 * @param string $mode
-	 */
-public function addMode($channel, $target, $mode)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L199
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param $channel
-	 * @param $target
-	 * @param string $mode
-	 */
-public function removeMode($channel, $target, $mode)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L216
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param $from
-	 * @param $cmd
-	 * @param $args
-	 */
-public function onCommand($from, $cmd, $args)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L229
-</md:method>
-
-<md:method>
-/**
-	 * Called when new data received
-	 * @return void
-	 */
-public function onRead()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L400
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param $chan
-	 * @return Channel
-	 */
-public function channel($chan)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L445
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param $chan
-	 * @return bool
-	 */
-public function channelIfExists($chan)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L457
-</md:method>
-
-<div class="clearboth"></div>
-
-#### pool # Pool {tpl-git PHPDaemon/Clients/IRC/Pool.php}
-
-```php
-namespace PHPDaemon\Clients\IRC;
-class Pool extends \PHPDaemon\Network\Client;
-```
-
-##### options # Options
-
- - `:p`port (6667)`  
- 
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var
-	 */
-public $identd
-</md:prop>
-
-<md:prop>
-/**
-	 * @var bool
-	 */
-public $protologging = false
-</md:prop>
-
-<div class="clearboth"></div>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 */
-public function onReady()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Pool.php#L34
 </md:method>
 
 <div class="clearboth"></div>

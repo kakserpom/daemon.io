@@ -5,6 +5,78 @@ namespace PHPDaemon\Clients\WebSocket;
 ```
 
 <!-- include-namespace path="\PHPDaemon\Clients\WebSocket" level="" access="" -->
+#### example # Example {tpl-git PHPDaemon/Clients/WebSocket/Example.php}
+
+```php
+namespace PHPDaemon\Clients\WebSocket;
+class Example extends \PHPDaemon\Core\AppInstance;
+```
+
+##### options # Options
+
+ - `:p`url ('tcp://echo.websocket.org:80/')`  
+ 
+
+ - `:p`reconnect (1)`  
+ 
+
+ - `:p`wsclient-name ('')`  
+ 
+
+##### properties # Properties
+
+<md:prop>
+/**
+ */
+public $wsclient
+</md:prop>
+
+<md:prop>
+/**
+ */
+public $wsconn
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Constructor.
+	 * @return void
+	 */
+public function init()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Example.php#L34
+</md:method>
+
+<md:method>
+/**
+	 * Called when the worker is ready to go.
+	 * @return void
+	 */
+public function onReady()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Example.php#L44
+</md:method>
+
+<md:method>
+/**
+ */
+public function connect()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Example.php#L51
+</md:method>
+
+<md:method>
+/**
+	 * Called when application instance is going to shutdown.
+	 * @return boolean Ready to shutdown?
+	 */
+public function onShutdown($graceful = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Example.php#L73
+</md:method>
+
+<div class="clearboth"></div>
+
 #### connection # Connection {tpl-git PHPDaemon/Clients/WebSocket/Connection.php}
 
 ```php
@@ -84,78 +156,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSoc
  */
 public function onFinish()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Connection.php#L229
-</md:method>
-
-<div class="clearboth"></div>
-
-#### example # Example {tpl-git PHPDaemon/Clients/WebSocket/Example.php}
-
-```php
-namespace PHPDaemon\Clients\WebSocket;
-class Example extends \PHPDaemon\Core\AppInstance;
-```
-
-##### options # Options
-
- - `:p`url ('tcp://echo.websocket.org:80/')`  
- 
-
- - `:p`reconnect (1)`  
- 
-
- - `:p`wsclient-name ('')`  
- 
-
-##### properties # Properties
-
-<md:prop>
-/**
- */
-public $wsclient
-</md:prop>
-
-<md:prop>
-/**
- */
-public $wsconn
-</md:prop>
-
-<div class="clearboth"></div>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Constructor.
-	 * @return void
-	 */
-public function init()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Example.php#L34
-</md:method>
-
-<md:method>
-/**
-	 * Called when the worker is ready to go.
-	 * @return void
-	 */
-public function onReady()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Example.php#L44
-</md:method>
-
-<md:method>
-/**
- */
-public function connect()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Example.php#L51
-</md:method>
-
-<md:method>
-/**
-	 * Called when application instance is going to shutdown.
-	 * @return boolean Ready to shutdown?
-	 */
-public function onShutdown($graceful = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/WebSocket/Example.php#L73
 </md:method>
 
 <div class="clearboth"></div>
