@@ -424,13 +424,13 @@ $ && $(function(){
 				return;
 			}
 
-			if (dir === 'down' || dir === 'fakedown') {
+			if (dir === 'down' || dir === 'fake') {
 				wrapMainhead.style.top = topFromLevel[this.options.headerLevel] + 'px';
 				wrapMainhead.className = 'mainhead m-this';
 				wrapMainhead.textContent = "";
 				wrapMainhead.appendChild(getClearedHeadClone(this.element));
 			} else {
-				fixPrevHead.apply(this, ['fakedown']);
+				fixPrevHead.apply(this, ['fake']);
 			}
 		}
 
@@ -439,18 +439,27 @@ $ && $(function(){
 				return;
 			}
 
-			var elem = this.previous();
-			if (!elem) {
-				return;
-			}
-
-			if (dir === 'down' || dir === 'fakedown') {
+			if (dir === 'down') {
+				var elem = this.previous();
+				if (!elem) {
+					return;
+				}
 				wrapMainhead.style.top = (this.triggerPoint + topFromLevel[this.options.headerLevel]) + 'px';
 				wrapMainhead.className = 'mainhead m-fixed';
 				wrapMainhead.textContent = "";
 				wrapMainhead.appendChild(getClearedHeadClone(elem.element));
+			} else
+			if (dir === 'fake') {
+				var elem = this.next();
+				if (!elem) {
+					return;
+				}
+				wrapMainhead.style.top = elem.triggerPoint + 'px';
+				wrapMainhead.className = 'mainhead m-fixed';
+				wrapMainhead.textContent = "";
+				wrapMainhead.appendChild(getClearedHeadClone(this.element));
 			} else {
-				fixCurrHead.apply(this.previous(), ['fakedown']);
+				fixCurrHead.apply(this.previous(), ['fake']);
 			}
 		}
 
@@ -470,9 +479,7 @@ $ && $(function(){
 
 		// var isCallbackNavWaypointsCalled = false;
 		var callbackNavWaypoints = function(dir) { // elem
-// console.log('callbackNavWaypoints');
 			// isCallbackNavWaypointsCalled = true;
-			
 			prevLink = currLink;
 			currLink = '#' + this.element.id;
 			setNavActive(this.element, dir);
@@ -482,16 +489,10 @@ $ && $(function(){
 		var callbackNavWaypointsDebounce = $.debounce(50, false, callbackNavWaypoints);
 
 		var fixCurrHeadCallback = function(dir) {
-// console.log('fixCurrHeadCallback');
-			var point = this;
-// console.log(point.element.id, point.previous());
-			if(dir === 'up') {
-				point = point.previous() || this;
-			}
+			var point = (dir === 'up') ? (this.previous() || this) : this;
 			if (point.options.isHeader) {
 				callbackNavWaypointsDebounce.apply(point, [dir]);
 			}
-
 			fixCurrHead.apply(point, [dir]);
 		};
 
@@ -500,7 +501,8 @@ $ && $(function(){
 				element: this,
 				isHeader: this.tagName.substr(0,1) === 'H',
 				headerLevel: this.tagName.substr(1,1),
-				handler: fixCurrHeadCallback
+				handler: fixCurrHeadCallback,
+				group: 'curr'
 			});
 		});
 		wrapHeadvWaypoints.each(function(){
@@ -509,7 +511,8 @@ $ && $(function(){
 				isHeader: this.tagName.substr(0,1) === 'H',
 				headerLevel: this.tagName.substr(1,1),
 				handler: fixPrevHead,
-				offset: 60
+				offset: 60,
+				group: 'prev'
 			});
 		});
 
