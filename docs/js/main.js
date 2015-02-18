@@ -270,15 +270,12 @@ $ && $(function(){
 		// @TODO херед методов
 		// wrapHeadvWaypoints = wrapNavWaypoints;
 
-	var wrapMainhead = $('.mainhead').eq(0),
-		wrapMainheadDom = wrapMainhead.get(0),
-		wrapMainheadTop = parseInt(wrapMainhead.css('top'), 10);
-	
-	wrapMainhead
-		.on('click', ':header', function() {
-			window.location = '#' + $(this).data('id');
-		})
-		.show();
+	var wrapMainhead = document.getElementById('mainhead');
+	wrapMainhead.style.display = 'block';
+
+	$(wrapMainhead).on('click', ':header', function() {
+		window.location = '#' + $(this).data('id');
+	});
 
 	(function(){
 		var scrollTo = 0;
@@ -423,56 +420,24 @@ $ && $(function(){
 		var topFromLevel = [0,60,58,56,54,52,50];
 
 		function fixCurrHead(dir) {
-			// console.log('fixCurrHead', dir, this.element.id);
-
 			if (!this.element) {
 				return;
 			}
 
 			if (dir === 'down' || dir === 'fakedown') {
-				wrapMainhead
-					.css('top', topFromLevel[this.options.headerLevel])
-					.attr('class', 'mainhead m-float')
-					.html( getClearedHeadClone(this.element) );
+				wrapMainhead.style.top = topFromLevel[this.options.headerLevel] + 'px';
+				wrapMainhead.className = 'mainhead m-this';
+				wrapMainhead.textContent = "";
+				wrapMainhead.appendChild(getClearedHeadClone(this.element));
 			} else {
 				fixPrevHead.apply(this, ['fakedown']);
 			}
-
-			/*
-			if(dir === 'down') {
-				var head = (this.element !== window) ? getClearedHeadClone($(this.element)) : '';
-				wrapMainhead
-					.html(head)
-					.attr('class', head ? 'mainhead m-float' : 'mainhead m-hidden')
-					.css('top', wrapMainheadTop);
-			}
-			else {
-				var currHead,
-					currItem = getNavElemPrev().children('a').eq(0);
-
-				if(currItem.length) {
-					currHead = getHeaderByHash(currItem.attr('href'));
-					if(currHead.length && currHead.is('.method')) {
-						currItem = getNavElemH('left', currItem.parent()).children('a').eq(0);
-						if(currItem.length) {
-							currHead = getHeaderByHash(currItem.attr('href'));
-						}
-					}
-
-					if(currHead.length) {
-						wrapMainhead.html( getClearedHeadClone(currHead) );
-						fixPrevHead.apply(this, ['down']);
-						return;
-					}
-				}
-
-				wrapMainhead.html('');
-			}
-			*/
 		}
 
 		function fixPrevHead(dir) {
-			// console.log('fixPrevHead', dir, this.element.id);
+			if (!this.element) {
+				return;
+			}
 
 			var elem = this.previous();
 			if (!elem) {
@@ -480,59 +445,33 @@ $ && $(function(){
 			}
 
 			if (dir === 'down' || dir === 'fakedown') {
-				wrapMainhead
-					.css('top', this.triggerPoint + topFromLevel[this.options.headerLevel])
-					.attr('class', 'mainhead m-fixed')
-					.html( getClearedHeadClone(elem.element) );
+				wrapMainhead.style.top = (this.triggerPoint + topFromLevel[this.options.headerLevel]) + 'px';
+				wrapMainhead.className = 'mainhead m-fixed';
+				wrapMainhead.textContent = "";
+				wrapMainhead.appendChild(getClearedHeadClone(elem.element));
 			} else {
 				fixCurrHead.apply(this.previous(), ['fakedown']);
 			}
-
-			/*
-			if(dir === 'down') {
-				wrapMainhead
-					.attr('class', 'mainhead m-fixed')
-					.css('top', getOffset(this.element).top);
-			}
-			else {
-				if(currLink) {
-					var currHead = getHeaderByHash(currLink);
-
-					if(currHead.length && currHead.is('.method')) {
-						var currItem = getNavElemH('left', currNavItem).children('a').eq(0);
-						if(currItem.length) {
-							currHead = getHeaderByHash(currItem.attr('href'));
-						}
-					}
-
-					if(currHead && getPageScroll().top >= firstHeaderOffset) {
-						fixCurrHead.apply(currHead, ['down']);
-						return;
-					}
-				}
-
-				fixCurrHead.apply(null, ['down']);
-			}
-			*/
 		}
 
-		var callWaypointByHash = function() {
-			var hashObj, hash = window.location.hash;
-			if(hash) {
-				hashObj = getHeaderByHash(hash);
-			}
+		// var callWaypointByHash = function() {
+		// 	var hashObj, hash = window.location.hash;
+		// 	if(hash) {
+		// 		hashObj = getHeaderByHash(hash);
+		// 	}
 
-			if(hashObj && hashObj.length) {
-				callbackNavWaypointsDebounce('down', hashObj.get(0));
-			}
-			else {
-				callbackNavWaypointsDebounce('down', wrapHeadvWaypoints.get(0));
-			}
-		};
+		// 	if(hashObj && hashObj.length) {
+		// 		callbackNavWaypointsDebounce('down', hashObj.get(0));
+		// 	}
+		// 	else {
+		// 		callbackNavWaypointsDebounce('down', wrapHeadvWaypoints.get(0));
+		// 	}
+		// };
 
-		var isCallbackNavWaypointsCalled = false;
+		// var isCallbackNavWaypointsCalled = false;
 		var callbackNavWaypoints = function(dir) { // elem
-			isCallbackNavWaypointsCalled = true;
+console.log('callbackNavWaypoints');
+			// isCallbackNavWaypointsCalled = true;
 			
 			prevLink = currLink;
 			currLink = '#' + this.element.id;
@@ -540,17 +479,15 @@ $ && $(function(){
 			pushState();
 		};
 
-		var callbackNavWaypointsDebounce = $.debounce(50, false, callbackNavWaypoints),
-			fixCurrHeadDebounce = $.debounce(50, false, fixCurrHead),
-			fixPrevHeadDebounce = $.debounce(50, false, fixPrevHead);
+		var callbackNavWaypointsDebounce = $.debounce(50, false, callbackNavWaypoints);
 
 		var fixCurrHeadCallback = function(dir) {
+console.log('fixCurrHeadCallback');
 			var point = this;
-
+console.log(point.element.id, point.previous());
 			if(dir === 'up') {
-				point = this.previous() || this;
+				point = point.previous() || this;
 			}
-
 			if (point.options.isHeader) {
 				callbackNavWaypointsDebounce.apply(point, [dir]);
 			}
@@ -558,7 +495,6 @@ $ && $(function(){
 			fixCurrHead.apply(point, [dir]);
 		};
 
-		// wrapNavWaypoints.waypoint(callbackNavWaypointsDebounce);
 		wrapHeadvWaypoints.each(function(){
 			new Waypoint({
 				element: this,
@@ -567,30 +503,25 @@ $ && $(function(){
 				handler: fixCurrHeadCallback
 			});
 		});
-
 		wrapHeadvWaypoints.each(function(){
 			new Waypoint({
 				element: this,
+				isHeader: this.tagName.substr(0,1) === 'H',
 				headerLevel: this.tagName.substr(1,1),
-				handler: fixPrevHead, //fixPrevHeadDebounce,
-				offset: 60 //wrapMainheadTop
+				handler: fixPrevHead,
+				offset: 60
 			});
 		});
 
 		Waypoint.refreshAll();
 
-		// wrapHeadvWaypoints.waypoint(fixCurrHeadDebounce);
-		// wrapHeadvWaypoints.waypoint(fixPrevHeadDebounce, {
-		// 	offset: wrapMainheadTop
+		// $win.on('load.waypoints.extra', function() {
+		// 	setTimeout(function(){
+		// 		if(!isCallbackNavWaypointsCalled) {
+		// 			callWaypointByHash();
+		// 		}
+		// 	}, 100);
 		// });
-
-		$win.on('load.waypoints.extra', function() {
-			setTimeout(function(){
-				if(!isCallbackNavWaypointsCalled) {
-					callWaypointByHash();
-				}
-			}, 100);
-		});
 
 
 		function getNavElemPrev(elem) {

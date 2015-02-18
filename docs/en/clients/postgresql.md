@@ -5,13 +5,6 @@ namespace PHPDaemon\Clients\PostgreSQL;
 ```
 
 <!-- include-namespace path="\PHPDaemon\Clients\PostgreSQL" level="" access="" -->
-#### connection-finished # ConnectionFinished {tpl-git PHPDaemon/Clients/PostgreSQL/ConnectionFinished.php}
-
-```php
-namespace PHPDaemon\Clients\PostgreSQL;
-class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
-```
-
 #### connection # Connection {tpl-git PHPDaemon/Clients/PostgreSQL/Connection.php}
 
 ```php
@@ -337,6 +330,13 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Postgr
 </md:method>
 
 <div class="clearboth"></div>
+
+#### connection-finished # ConnectionFinished {tpl-git PHPDaemon/Clients/PostgreSQL/ConnectionFinished.php}
+
+```php
+namespace PHPDaemon\Clients\PostgreSQL;
+class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
+```
 
 #### pool # Pool {tpl-git PHPDaemon/Clients/PostgreSQL/Pool.php}
 

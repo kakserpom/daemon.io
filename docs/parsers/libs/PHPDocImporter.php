@@ -205,7 +205,7 @@ class PHPDocImporter {
 
 					$plevel_curr = $plevel;
 					$hlevel_extra = $hlevel_curr - $hlevel_base;
-var_dump('1: '.$hlevel_extra);
+// var_dump('1: '.$hlevel_extra);
 					$content .= $this->getClassHeader($ReflectionEntity, $params, $class_path, $class_name, $hlevel_extra);
 				}
 
@@ -401,9 +401,9 @@ var_dump('1: '.$hlevel_extra);
 		}
 
 		$typeLower = strtolower($type);
-var_dump('level: '.$params['level']);
+// var_dump('level: '.$params['level']);
 		if(!$params['level']) {
-var_dump('2: '.$hlevel_extra);
+// var_dump('2: '.$hlevel_extra);
 			$params['level'] = 3;
 		}
 		$params['level'] += $hlevel_extra;

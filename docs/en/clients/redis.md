@@ -190,8 +190,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 
 <div class="clearboth"></div>
 
-<<<<<<< HEAD
-=======
 #### lock # Lock {tpl-git PHPDaemon/Clients/Redis/Lock.php}
 
 ```php
@@ -334,7 +332,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 
 <div class="clearboth"></div>
 
->>>>>>> 40d2ec1f91c257acbd06869cec284d6c2ef23c15
 #### pool # Pool {tpl-git PHPDaemon/Clients/Redis/Pool.php}
 
 ```php
@@ -430,45 +427,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 */
 public function __call($cmd, $args)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Pool.php#L100
-</md:method>
-
-<div class="clearboth"></div>
-
-#### lock # Lock {tpl-git PHPDaemon/Clients/Redis/Lock.php}
-
-```php
-namespace PHPDaemon\Clients\Redis;
-class Lock;
-```
-
-##### methods # Methods
-
-<md:method>
-/**
- */
-public function __construct($key, $timeout, $pool)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L24
-</md:method>
-
-<md:method>
-/**
- */
-public function timeout($timeout)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L30
-</md:method>
-
-<md:method>
-/**
- */
-public function acquire($cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L35
-</md:method>
-
-<md:method>
-/**
- */
-public function release($cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L45
 </md:method>
 
 <div class="clearboth"></div>
