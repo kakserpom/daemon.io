@@ -5,6 +5,358 @@ namespace PHPDaemon\Clients\IRC;
 ```
 
 <!-- include-namespace path="\PHPDaemon\Clients\IRC" level="" access="" -->
+#### channel # Channel {tpl-git PHPDaemon/Clients/IRC/Channel.php}
+
+```php
+namespace PHPDaemon\Clients\IRC;
+class Channel extends \PHPDaemon\Structures\ObjectStorage;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var Connection
+	 */
+public $irc
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string
+	 */
+public $name
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array
+	 */
+public $nicknames = [ ]
+</md:prop>
+
+<md:prop>
+/**
+	 * @var
+	 */
+public $self
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string
+	 */
+public $type
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string
+	 */
+public $topic
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * @param Connection $irc
+	 * @param string     $name
+	 */
+public function __construct($irc, $name)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L50
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 */
+public function who()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L58
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param array|string $mask
+	 * @param mixed        $msg
+	 */
+public function onPart($mask, $msg = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L67
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param string $type
+	 */
+public function setChanType($type)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L83
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @return array
+	 */
+public function exportNicksArray()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L91
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param string $msg
+	 */
+public function setTopic($msg)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L103
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param string $nick
+	 * @param string $mode
+	 */
+public function addMode($nick, $mode)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L112
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param string $target
+	 * @param string $mode
+	 */
+public function removeMode($target, $mode)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L128
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 */
+public function destroy()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L140
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 */
+public function join()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L147
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param mixed $msg
+	 */
+public function part($msg = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L155
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param  string $type
+	 * @return $this
+	 */
+public function setType($type)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L164
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param object $obj
+	 */
+public function detach($obj)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L173
+</md:method>
+
+<div class="clearboth"></div>
+
+#### channel-participant # ChannelParticipant {tpl-git PHPDaemon/Clients/IRC/ChannelParticipant.php}
+
+```php
+namespace PHPDaemon\Clients\IRC;
+class ChannelParticipant;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var string
+	 */
+public $channel
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string
+	 */
+public $nick
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string
+	 */
+public $user
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string
+	 */
+public $flag
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string
+	 */
+public $mode
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean
+	 */
+public $unverified
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string
+	 */
+public $host
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * @param  string $flag
+	 * @return $this
+	 */
+public function setFlag($flag)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L49
+</md:method>
+
+<md:method>
+/**
+	 * @param string $channel
+	 * @param string $nick
+	 */
+public function __construct($channel, $nick)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L68
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 */
+public function onModeUpdate()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L77
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param  string $user
+	 * @return $this
+	 */
+public function setUser($user)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L97
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @return string
+	 */
+public function getUsermask()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L106
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param  boolean $bool
+	 * @return $this
+	 */
+public function setUnverified($bool)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L115
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param  string $host
+	 * @return $this
+	 */
+public function setHost($host)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L125
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param  array|string $mask
+	 * @return $this
+	 */
+public function setUsermask($mask)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L135
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param  string $channel
+	 * @param  string $nick
+	 * @return static
+	 */
+public static function instance($channel, $nick)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L153
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param  string $nick
+	 * @return $this
+	 */
+public function setNick($nick)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L165
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 */
+public function destroy()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L179
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @param string $msg
+	 */
+public function chanMessage($msg)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L187
+</md:method>
+
+<div class="clearboth"></div>
+
 #### connection # Connection {tpl-git PHPDaemon/Clients/IRC/Connection.php}
 
 ```php
@@ -224,358 +576,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Co
 	 */
 public function channelIfExists($chan)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Connection.php#L469
-</md:method>
-
-<div class="clearboth"></div>
-
-#### channel-participant # ChannelParticipant {tpl-git PHPDaemon/Clients/IRC/ChannelParticipant.php}
-
-```php
-namespace PHPDaemon\Clients\IRC;
-class ChannelParticipant;
-```
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var string
-	 */
-public $channel
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string
-	 */
-public $nick
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string
-	 */
-public $user
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string
-	 */
-public $flag
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string
-	 */
-public $mode
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean
-	 */
-public $unverified
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string
-	 */
-public $host
-</md:prop>
-
-<div class="clearboth"></div>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * @param  string $flag
-	 * @return $this
-	 */
-public function setFlag($flag)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L49
-</md:method>
-
-<md:method>
-/**
-	 * @param string $channel
-	 * @param string $nick
-	 */
-public function __construct($channel, $nick)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L68
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 */
-public function onModeUpdate()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L77
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param  string $user
-	 * @return $this
-	 */
-public function setUser($user)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L97
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @return string
-	 */
-public function getUsermask()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L106
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param  boolean $bool
-	 * @return $this
-	 */
-public function setUnverified($bool)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L115
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param  string $host
-	 * @return $this
-	 */
-public function setHost($host)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L125
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param  array|string $mask
-	 * @return $this
-	 */
-public function setUsermask($mask)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L135
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param  string $channel
-	 * @param  string $nick
-	 * @return static
-	 */
-public static function instance($channel, $nick)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L153
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param  string $nick
-	 * @return $this
-	 */
-public function setNick($nick)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L165
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 */
-public function destroy()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L179
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param string $msg
-	 */
-public function chanMessage($msg)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/ChannelParticipant.php#L187
-</md:method>
-
-<div class="clearboth"></div>
-
-#### channel # Channel {tpl-git PHPDaemon/Clients/IRC/Channel.php}
-
-```php
-namespace PHPDaemon\Clients\IRC;
-class Channel extends \PHPDaemon\Structures\ObjectStorage;
-```
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var Connection
-	 */
-public $irc
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string
-	 */
-public $name
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array
-	 */
-public $nicknames = [ ]
-</md:prop>
-
-<md:prop>
-/**
-	 * @var
-	 */
-public $self
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string
-	 */
-public $type
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string
-	 */
-public $topic
-</md:prop>
-
-<div class="clearboth"></div>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * @param Connection $irc
-	 * @param string     $name
-	 */
-public function __construct($irc, $name)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L50
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 */
-public function who()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L58
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param array|string $mask
-	 * @param mixed        $msg
-	 */
-public function onPart($mask, $msg = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L67
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param string $type
-	 */
-public function setChanType($type)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L83
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @return array
-	 */
-public function exportNicksArray()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L91
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param string $msg
-	 */
-public function setTopic($msg)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L103
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param string $nick
-	 * @param string $mode
-	 */
-public function addMode($nick, $mode)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L112
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param string $target
-	 * @param string $mode
-	 */
-public function removeMode($target, $mode)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L128
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 */
-public function destroy()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L140
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 */
-public function join()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L147
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param mixed $msg
-	 */
-public function part($msg = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L155
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param  string $type
-	 * @return $this
-	 */
-public function setType($type)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L164
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @param object $obj
-	 */
-public function detach($obj)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/IRC/Channel.php#L173
 </md:method>
 
 <div class="clearboth"></div>

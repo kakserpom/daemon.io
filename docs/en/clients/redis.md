@@ -190,6 +190,60 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 
 <div class="clearboth"></div>
 
+#### lock # Lock {tpl-git PHPDaemon/Clients/Redis/Lock.php}
+
+```php
+namespace PHPDaemon\Clients\Redis;
+class Lock;
+```
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Constructor
+	 * @param string  $key
+	 * @param integer $timeout
+	 * @param Pool    $pool
+	 */
+public function __construct($key, $timeout, $pool)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L29
+</md:method>
+
+<md:method>
+/**
+	 * @TODO
+	 * @param  integer $timeout
+	 * @return this
+	 */
+public function timeout($timeout)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L40
+</md:method>
+
+<md:method>
+/**
+	 * @TODO
+	 * @param  callable $cb
+	 * @callback $cb ( )
+	 * @return this
+	 */
+public function acquire($cb)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L51
+</md:method>
+
+<md:method>
+/**
+	 * @TODO
+	 * @param  callable $cb
+	 * @callback $cb ( )
+	 * @return this
+	 */
+public function release($cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L67
+</md:method>
+
+<div class="clearboth"></div>
+
 #### multi-eval # MultiEval {tpl-git PHPDaemon/Clients/Redis/MultiEval.php}
 
 ```php
@@ -274,60 +328,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/
 	 */
 public function __invoke()
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/MultiEval.php#L175
-</md:method>
-
-<div class="clearboth"></div>
-
-#### lock # Lock {tpl-git PHPDaemon/Clients/Redis/Lock.php}
-
-```php
-namespace PHPDaemon\Clients\Redis;
-class Lock;
-```
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Constructor
-	 * @param string  $key
-	 * @param integer $timeout
-	 * @param Pool    $pool
-	 */
-public function __construct($key, $timeout, $pool)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L29
-</md:method>
-
-<md:method>
-/**
-	 * @TODO
-	 * @param  integer $timeout
-	 * @return this
-	 */
-public function timeout($timeout)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L40
-</md:method>
-
-<md:method>
-/**
-	 * @TODO
-	 * @param  callable $cb
-	 * @callback $cb ( )
-	 * @return this
-	 */
-public function acquire($cb)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L51
-</md:method>
-
-<md:method>
-/**
-	 * @TODO
-	 * @param  callable $cb
-	 * @callback $cb ( )
-	 * @return this
-	 */
-public function release($cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Redis/Lock.php#L67
 </md:method>
 
 <div class="clearboth"></div>

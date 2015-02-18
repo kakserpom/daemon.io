@@ -1,5 +1,7 @@
 ## development # Разработка
 
+<!-- import app_resolver.md -->
+
 <!-- import app_instance.md -->
 
 <!-- import request.md -->

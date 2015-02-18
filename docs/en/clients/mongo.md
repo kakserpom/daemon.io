@@ -5,415 +5,6 @@ namespace PHPDaemon\Clients\Mongo;
 ```
 
 <!-- include-namespace path="\PHPDaemon\Clients\Mongo" level="" access="" -->
-#### connection # Connection {tpl-git PHPDaemon/Clients/Mongo/Connection.php}
-
-```php
-namespace PHPDaemon\Clients\Mongo;
-class Connection extends \PHPDaemon\Network\ClientConnection;
-```
-
-##### consts # Constants
-
-<md:const>
-@TODO DESCR
-const STATE_PACKET = 1
-</md:const>
-
-<div class="clearboth"></div>
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var string Database name
-	 */
-public $dbname
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array Active cursors
-	 */
-public $cursors = [ ]
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array Pending requests
-	 */
-public $requests = [ ]
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer ID of the last request
-	 */
-public $lastReqId = 0
-</md:prop>
-
-<div class="clearboth"></div>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @return void
-	 */
-public function onReady()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Connection.php#L63
-</md:method>
-
-<md:method>
-/**
-	 * Called when new data received
-	 * @return void
-	 */
-public function onRead()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Connection.php#L101
-</md:method>
-
-<md:method>
-/**
-	 * onFinish
-	 * @return void
-	 */
-public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Connection.php#L209
-</md:method>
-
-<div class="clearboth"></div>
-
-#### mongo-id # MongoId {tpl-git PHPDaemon/Clients/Mongo/MongoId.php}
-
-```php
-namespace PHPDaemon\Clients\Mongo;
-class MongoId extends \MongoId;
-```
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Import
-	 * @param  mixed $id ID
-	 * @return mixed
-	 */
-public static function import($id)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/MongoId.php#L19
-</md:method>
-
-<md:method>
-/**
-	 * @param string $id
-	 */
-public function __construct($id = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/MongoId.php#L53
-</md:method>
-
-<md:method>
-/**
-	 * __toString
-	 * @return string
-	 */
-public function __toString()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/MongoId.php#L69
-</md:method>
-
-<md:method>
-/**
-	 * toHex
-	 * @return string
-	 */
-public function toHex()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/MongoId.php#L77
-</md:method>
-
-<md:method>
-/**
-	 * getPlainObject
-	 * @return \MongoId
-	 */
-public function getPlainObject()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/MongoId.php#L85
-</md:method>
-
-<div class="clearboth"></div>
-
-#### connection-finished # ConnectionFinished {tpl-git PHPDaemon/Clients/Mongo/ConnectionFinished.php}
-
-```php
-namespace PHPDaemon\Clients\Mongo;
-class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
-```
-
-#### cursor # Cursor {tpl-git PHPDaemon/Clients/Mongo/Cursor.php}
-
-```php
-namespace PHPDaemon\Clients\Mongo;
-class Cursor;
-```
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var mixed Cursor's ID
-	 */
-public $id
-</md:prop>
-
-<md:prop>
-/**
-	 * @var string Collection's name
-	 */
-public $col
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array Array of objects
-	 */
-public $items = [ ]
-</md:prop>
-
-<md:prop>
-/**
-	 * @var mixed Current object
-	 */
-public $item
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean Is this cursor finished?
-	 */
-public $finished = false
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean Is this query failured?
-	 */
-public $failure = false
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean awaitCapable?
-	 */
-public $await = false
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean Is this cursor destroyed?
-	 */
-public $destroyed = false
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean
-	 */
-public $parseOplog = false
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean
-	 */
-public $tailable
-</md:prop>
-
-<md:prop>
-/**
-	 * @var callable
-	 */
-public $callback
-</md:prop>
-
-<md:prop>
-/**
- */
-public $counter = 0
-</md:prop>
-
-<div class="clearboth"></div>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * Error
-	 * @return mixed
-	 */
-public function error()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L86
-</md:method>
-
-<md:method>
-/**
-	 * Keep
-	 * @param  boolean $bool
-	 * @return void
-	 */
-public function keep($bool = true)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L95
-</md:method>
-
-<md:method>
-/**
-	 * Rewind
-	 * @return void
-	 */
-public function rewind()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L103
-</md:method>
-
-<md:method>
-/**
-	 * Current
-	 * @return mixed
-	 */
-public function current()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L111
-</md:method>
-
-<md:method>
-/**
-	 * Key
-	 * @return string
-	 */
-public function key()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L119
-</md:method>
-
-<md:method>
-/**
-	 * Next
-	 * @return void
-	 */
-public function next()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L127
-</md:method>
-
-<md:method>
-/**
-	 * Grab
-	 * @return array
-	 */
-public function grab()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L139
-</md:method>
-
-<md:method>
-/**
-	 * To array
-	 * @return array
-	 */
-public function toArray()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L149
-</md:method>
-
-<md:method>
-/**
-	 * Valid
-	 * @return boolean
-	 */
-public function valid()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L159
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @return boolean
-	 */
-public function isBusyConn()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L168
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @return Connection
-	 */
-public function getConn()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L179
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @return boolean
-	 */
-public function isFinished()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L187
-</md:method>
-
-<md:method>
-/**
-	 * Constructor
-	 * @param  string     $id   Cursor's ID
-	 * @param  string     $col  Collection's name
-	 * @param  Connection $conn Network connection (MongoClientConnection)
-	 * @return void
-	 */
-public function __construct($id, $col, $conn)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L198
-</md:method>
-
-<md:method>
-/**
-	 * Asks for more objects
-	 * @param  integer $number Number of objects
-	 * @return void
-	 */
-public function getMore($number = 0)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L209
-</md:method>
-
-<md:method>
-/**
-	 * isDead
-	 * @return boolean
-	 */
-public function isDead()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L222
-</md:method>
-
-<md:method>
-/**
-	 * Destroys the cursors
-	 * @param  boolean $notify
-	 * @return boolean Success
-	 */
-public function destroy($notify = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L231
-</md:method>
-
-<md:method>
-/**
-	 * Destroys the cursors
-	 * @param  boolean $notify
-	 * @return boolean Success
-	 */
-public function free($notify = false)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L250
-</md:method>
-
-<md:method>
-/**
-	 * Cursor's destructor. Sends a signal to the server
-	 * @return void
-	 */
-public function __destruct()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L258
-</md:method>
-
-<div class="clearboth"></div>
-
 #### collection # Collection {tpl-git PHPDaemon/Clients/Mongo/Collection.php}
 
 ```php
@@ -709,6 +300,415 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/
 	 */
 public function findAndModify($p, $cb)
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Collection.php#L286
+</md:method>
+
+<div class="clearboth"></div>
+
+#### connection # Connection {tpl-git PHPDaemon/Clients/Mongo/Connection.php}
+
+```php
+namespace PHPDaemon\Clients\Mongo;
+class Connection extends \PHPDaemon\Network\ClientConnection;
+```
+
+##### consts # Constants
+
+<md:const>
+@TODO DESCR
+const STATE_PACKET = 1
+</md:const>
+
+<div class="clearboth"></div>
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var string Database name
+	 */
+public $dbname
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array Active cursors
+	 */
+public $cursors = [ ]
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array Pending requests
+	 */
+public $requests = [ ]
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer ID of the last request
+	 */
+public $lastReqId = 0
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @return void
+	 */
+public function onReady()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Connection.php#L63
+</md:method>
+
+<md:method>
+/**
+	 * Called when new data received
+	 * @return void
+	 */
+public function onRead()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Connection.php#L101
+</md:method>
+
+<md:method>
+/**
+	 * onFinish
+	 * @return void
+	 */
+public function onFinish()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Connection.php#L209
+</md:method>
+
+<div class="clearboth"></div>
+
+#### connection-finished # ConnectionFinished {tpl-git PHPDaemon/Clients/Mongo/ConnectionFinished.php}
+
+```php
+namespace PHPDaemon\Clients\Mongo;
+class ConnectionFinished extends \PHPDaemon\Exceptions\ConnectionFinished;
+```
+
+#### cursor # Cursor {tpl-git PHPDaemon/Clients/Mongo/Cursor.php}
+
+```php
+namespace PHPDaemon\Clients\Mongo;
+class Cursor;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var mixed Cursor's ID
+	 */
+public $id
+</md:prop>
+
+<md:prop>
+/**
+	 * @var string Collection's name
+	 */
+public $col
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array Array of objects
+	 */
+public $items = [ ]
+</md:prop>
+
+<md:prop>
+/**
+	 * @var mixed Current object
+	 */
+public $item
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean Is this cursor finished?
+	 */
+public $finished = false
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean Is this query failured?
+	 */
+public $failure = false
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean awaitCapable?
+	 */
+public $await = false
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean Is this cursor destroyed?
+	 */
+public $destroyed = false
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean
+	 */
+public $parseOplog = false
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean
+	 */
+public $tailable
+</md:prop>
+
+<md:prop>
+/**
+	 * @var callable
+	 */
+public $callback
+</md:prop>
+
+<md:prop>
+/**
+ */
+public $counter = 0
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Error
+	 * @return mixed
+	 */
+public function error()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L86
+</md:method>
+
+<md:method>
+/**
+	 * Keep
+	 * @param  boolean $bool
+	 * @return void
+	 */
+public function keep($bool = true)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L95
+</md:method>
+
+<md:method>
+/**
+	 * Rewind
+	 * @return void
+	 */
+public function rewind()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L103
+</md:method>
+
+<md:method>
+/**
+	 * Current
+	 * @return mixed
+	 */
+public function current()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L111
+</md:method>
+
+<md:method>
+/**
+	 * Key
+	 * @return string
+	 */
+public function key()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L119
+</md:method>
+
+<md:method>
+/**
+	 * Next
+	 * @return void
+	 */
+public function next()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L127
+</md:method>
+
+<md:method>
+/**
+	 * Grab
+	 * @return array
+	 */
+public function grab()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L139
+</md:method>
+
+<md:method>
+/**
+	 * To array
+	 * @return array
+	 */
+public function toArray()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L149
+</md:method>
+
+<md:method>
+/**
+	 * Valid
+	 * @return boolean
+	 */
+public function valid()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L159
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @return boolean
+	 */
+public function isBusyConn()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L168
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @return Connection
+	 */
+public function getConn()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L179
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @return boolean
+	 */
+public function isFinished()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L187
+</md:method>
+
+<md:method>
+/**
+	 * Constructor
+	 * @param  string     $id   Cursor's ID
+	 * @param  string     $col  Collection's name
+	 * @param  Connection $conn Network connection (MongoClientConnection)
+	 * @return void
+	 */
+public function __construct($id, $col, $conn)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L198
+</md:method>
+
+<md:method>
+/**
+	 * Asks for more objects
+	 * @param  integer $number Number of objects
+	 * @return void
+	 */
+public function getMore($number = 0)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L209
+</md:method>
+
+<md:method>
+/**
+	 * isDead
+	 * @return boolean
+	 */
+public function isDead()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L222
+</md:method>
+
+<md:method>
+/**
+	 * Destroys the cursors
+	 * @param  boolean $notify
+	 * @return boolean Success
+	 */
+public function destroy($notify = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L231
+</md:method>
+
+<md:method>
+/**
+	 * Destroys the cursors
+	 * @param  boolean $notify
+	 * @return boolean Success
+	 */
+public function free($notify = false)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L250
+</md:method>
+
+<md:method>
+/**
+	 * Cursor's destructor. Sends a signal to the server
+	 * @return void
+	 */
+public function __destruct()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/Cursor.php#L258
+</md:method>
+
+<div class="clearboth"></div>
+
+#### mongo-id # MongoId {tpl-git PHPDaemon/Clients/Mongo/MongoId.php}
+
+```php
+namespace PHPDaemon\Clients\Mongo;
+class MongoId extends \MongoId;
+```
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * Import
+	 * @param  mixed $id ID
+	 * @return mixed
+	 */
+public static function import($id)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/MongoId.php#L19
+</md:method>
+
+<md:method>
+/**
+	 * @param string $id
+	 */
+public function __construct($id = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/MongoId.php#L53
+</md:method>
+
+<md:method>
+/**
+	 * __toString
+	 * @return string
+	 */
+public function __toString()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/MongoId.php#L69
+</md:method>
+
+<md:method>
+/**
+	 * toHex
+	 * @return string
+	 */
+public function toHex()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/MongoId.php#L77
+</md:method>
+
+<md:method>
+/**
+	 * getPlainObject
+	 * @return \MongoId
+	 */
+public function getPlainObject()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Mongo/MongoId.php#L85
 </md:method>
 
 <div class="clearboth"></div>

@@ -33,12 +33,12 @@ h5 .header-path{top:-0.1em}
 #logo{float:left;padding:0 10px;margin:10px 10px 0 -10px;width:89px;height:18px;background:url(/img/logo.png) no-repeat 50% 50%;line-height:17px;text-indent:-30000px}
 #download{float:right;color:#fefefe;font-size:.93em;font-weight:600;text-decoration:none;text-shadow:0 1px 0 #000;letter-spacing:.08em}
 #langchoose{float:left;padding:0 10px;margin:8px 40px 0 0;height:18px;background:url(../imgs/globus.png) no-repeat 50% 50%;line-height:17px;text-indent:-30000px}
-.lang-chooser{position:fixed;z-index:500;top:-50px;left:50%;width:960px;margin:0 0 0 -481px;padding:10px 30px;background:#fff;border:1px solid #333;border-width:0 1px 1px}.lang-chooser ul{margin:0;padding:0}
+.lang-chooser{position:fixed;z-index:910;top:-50px;left:50%;width:960px;margin:0 0 0 -481px;padding:10px 30px;background:#fff;border:1px solid #333;border-width:0 1px 1px}.lang-chooser ul{margin:0;padding:0}
 .lang-chooser li{display:inline;margin-right:40px;list-style:none}
 .lang-chooser .active{font-weight:bold}
 .sidebar{background:#fff;position:fixed;z-index:10;top:35px;left:0;bottom:0;width:240px;overflow-y:auto;overflow-x:hidden;padding:15px 0 30px 25px;border-right:1px solid #bbb;font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important}.sidebar ul{display:none;margin:0;list-style:none;padding:0}.sidebar ul a:hover{text-decoration:underline;color:#333}
 .sidebar li{position:relative;white-space:nowrap}
-.sidebar a{text-decoration:none}
+.sidebar a{display:block;text-decoration:none}
 .sidebar .link{display:block;padding:0 4px}
 .sidebar span{display:block;overflow:hidden;text-overflow:ellipsis}
 .sidebar>ul>li{margin-top:15px}
@@ -54,10 +54,10 @@ h5 .header-path{top:-0.1em}
 .sidebar-downbtn{position:fixed;text-decoration:none;width:239px;height:16px;line-height:normal;padding:2px 0;bottom:-20px;left:0;z-index:10;color:#333;background:#fff;opacity:.8;text-align:center;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;transform:translate3d(.001px, 0, 0);-webkit-transition:all .2s linear;-moz-transition:all .2s linear;-o-transition:all .2s linear;transition:all .2s linear;cursor:pointer}.sidebar-downbtn .showbtn{bottom:0}
 .toggle_sidebar_button{display:none;position:fixed;z-index:11;top:0;width:44px;height:44px;background:#000;background:rgba(0,0,0,0.7);margin-left:230px}.toggle_sidebar_button:hover{background:#000;cursor:pointer}
 .toggle_sidebar_button .line{height:2px;width:21px;margin-left:11px;margin-top:5px;background:#fff}.toggle_sidebar_button .line:first-child{margin-top:15px}
-.mainhead{display:none;position:fixed;z-index:905;top:50px;left:240px;right:0;padding:0 0 5px;background:#f9f9f9}.mainhead.m-float{position:fixed}
-.mainhead.m-fixed{position:absolute}
-.mainhead h1,.mainhead h2,.mainhead h3,.mainhead h4,.mainhead h5,.mainhead h6{margin:-30px 0 0;padding:30px 20px 0;background:#f9f9f9}
-.mainhead .header-path{opacity:1}
+#mainhead{display:none;position:fixed;z-index:905;top:50px;left:240px;right:0;padding:0 0 5px;background:#f9f9f9}#mainhead.m-float{position:fixed}
+#mainhead.m-fixed{position:absolute}
+#mainhead h1,#mainhead h2,#mainhead h3,#mainhead h4,#mainhead h5,#mainhead h6{margin:-30px 0 0;padding:30px 20px 0;background:#f9f9f9}
+#mainhead .header-path{opacity:1}
 .tpl-outlink,.tpl-inlink,.tpl-git-text{color:#2a6496;text-decoration:none}
 .main_wrap{margin-left:260px;margin-top:30px}
 .main_container{width:840px;margin:30px;margin-left:0;padding-right:30px}.main_container p,.main_container ul,.main_container pre{width:100%}
