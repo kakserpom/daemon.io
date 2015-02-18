@@ -85,6 +85,13 @@ public $chunked = false
 
 <md:prop>
 /**
+	 * @var callback
+	 */
+public $chunkcb
+</md:prop>
+
+<md:prop>
+/**
 	 * @var integer
 	 */
 public $protocolError
@@ -140,7 +147,7 @@ public $eofTerminated = false
 	 * @param array  $params
 	 */
 public function get($url, $params = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L99
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L104
 </md:method>
 
 <md:method>
@@ -151,7 +158,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 	 * @param array  $params
 	 */
 public function post($url, $data = [], $params = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L166
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L174
 </md:method>
 
 <md:method>
@@ -160,7 +167,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 	 * @return string
 	 */
 public function getBody()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L233
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L241
 </md:method>
 
 <md:method>
@@ -169,7 +176,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 	 * @return array
 	 */
 public function getHeaders()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L241
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L249
 </md:method>
 
 <md:method>
@@ -179,7 +186,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 	 * @return string
 	 */
 public function getHeader($name)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L250
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L258
 </md:method>
 
 <md:method>
@@ -187,7 +194,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 	 * Called when new data received
 	 */
 public function onRead()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L258
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L266
 </md:method>
 
 <md:method>
@@ -195,7 +202,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 	 * Called when connection finishes
 	 */
 public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L389
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/Connection.php#L408
 </md:method>
 
 <div class="clearboth"></div>
