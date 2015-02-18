@@ -5,6 +5,234 @@ namespace PHPDaemon\SockJS;
 ```
 
 <!-- include-namespace path="PHPDaemon\SockJS" level="" access="" -->
+#### session # Session {tpl-git PHPDaemon/SockJS/Session.php}
+
+```php
+namespace PHPDaemon\SockJS;
+class Session;
+```
+
+##### properties # Properties
+
+<md:prop>
+/**
+	 * @var \PHPDaemon\Request\Generic
+	 */
+public $route
+</md:prop>
+
+<md:prop>
+/**
+	 * @var \PHPDaemon\Structures\StackCallbacks
+	 */
+public $onWrite
+</md:prop>
+
+<md:prop>
+/**
+ */
+public $id
+</md:prop>
+
+<md:prop>
+/**
+ */
+public $appInstance
+</md:prop>
+
+<md:prop>
+/**
+ */
+public $addr
+</md:prop>
+
+<md:prop>
+/**
+	 * @var array
+	 */
+public $buffer = [ ]
+</md:prop>
+
+<md:prop>
+/**
+ */
+public $framesBuffer = [ ]
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean
+	 */
+public $finished = false
+</md:prop>
+
+<md:prop>
+/**
+	 * @var boolean
+	 */
+public $flushing = false
+</md:prop>
+
+<md:prop>
+/**
+	 * @var integer
+	 */
+public $timeout = 60
+</md:prop>
+
+<md:prop>
+/**
+ */
+public $server
+</md:prop>
+
+<div class="clearboth"></div>
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * __construct
+	 * @param Application $appInstance [@todo description]
+	 * @param string      $id          [@todo description]
+	 * @param array       $server      [@todo description]
+	 * @return void
+	 */
+public function __construct($appInstance, $id, $server)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L84
+</md:method>
+
+<md:method>
+/**
+	 * Uncaught exception handler
+	 * @param  object $e
+	 * @return boolean|null Handled?
+	 */
+public function handleException($e)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L107
+</md:method>
+
+<md:method>
+/**
+	 * Called when the request wakes up
+	 * @return void
+	 */
+public function onWakeup()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L118
+</md:method>
+
+<md:method>
+/**
+	 * Called when the request starts sleep
+	 * @return void
+	 */
+public function onSleep()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L132
+</md:method>
+
+<md:method>
+/**
+	 * onHandshake
+	 * @return void
+	 */
+public function onHandshake()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L143
+</md:method>
+
+<md:method>
+/**
+	 * c2s
+	 * @param  object $redis
+	 * @return void
+	 */
+public function c2s($redis)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L161
+</md:method>
+
+<md:method>
+/**
+	 * onFrame
+	 * @param  string  $msg  [@todo description]
+	 * @param  integer $type [@todo description]
+	 * @return void
+	 */
+public function onFrame($msg, $type)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L181
+</md:method>
+
+<md:method>
+/**
+	 * poll
+	 * @param  object $redis
+	 * @return void
+	 */
+public function poll($redis)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L202
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @return void
+	 */
+public function onWrite()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L217
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @return void
+	 */
+public function finish()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L234
+</md:method>
+
+<md:method>
+/**
+	 * @TODO DESCR
+	 * @return void
+	 */
+public function onFinish()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L250
+</md:method>
+
+<md:method>
+/**
+	 * Flushes buffered packets
+	 * @return void
+	 */
+public function flush()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L270
+</md:method>
+
+<md:method>
+/**
+	 * sendPacket
+	 * @param  object   $pct [@todo description]
+	 * @param  callable $cb  [@todo description]
+	 * @callback $cb ( )
+	 * @return void
+	 */
+public function sendPacket($pct, $cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L337
+</md:method>
+
+<md:method>
+/**
+	 * Sends a frame.
+	 * @param  string   $data Frame's data.
+	 * @param  integer  $type Frame's type. See the constants.
+	 * @param  callback $cb   Optional. Callback called when the frame is received by client.
+	 * @callback $cb ( )
+	 * @return boolean Success.
+	 */
+public function sendFrame($data, $type = 0x00, $cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L357
+</md:method>
+
+<div class="clearboth"></div>
+
 #### application # Application {tpl-git PHPDaemon/SockJS/Application.php}
 
 ```php
@@ -277,312 +505,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Applica
 
 <div class="clearboth"></div>
 
-#### session # Session {tpl-git PHPDaemon/SockJS/Session.php}
-
-```php
-namespace PHPDaemon\SockJS;
-class Session;
-```
-
-##### properties # Properties
-
-<md:prop>
-/**
-	 * @var \PHPDaemon\Request\Generic
-	 */
-public $route
-</md:prop>
-
-<md:prop>
-/**
-	 * @var \PHPDaemon\Structures\StackCallbacks
-	 */
-public $onWrite
-</md:prop>
-
-<md:prop>
-/**
- */
-public $id
-</md:prop>
-
-<md:prop>
-/**
- */
-public $appInstance
-</md:prop>
-
-<md:prop>
-/**
- */
-public $addr
-</md:prop>
-
-<md:prop>
-/**
-	 * @var array
-	 */
-public $buffer = [ ]
-</md:prop>
-
-<md:prop>
-/**
- */
-public $framesBuffer = [ ]
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean
-	 */
-public $finished = false
-</md:prop>
-
-<md:prop>
-/**
-	 * @var boolean
-	 */
-public $flushing = false
-</md:prop>
-
-<md:prop>
-/**
-	 * @var integer
-	 */
-public $timeout = 60
-</md:prop>
-
-<md:prop>
-/**
- */
-public $server
-</md:prop>
-
-<div class="clearboth"></div>
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * __construct
-	 * @param Application $appInstance [@todo description]
-	 * @param string      $id          [@todo description]
-	 * @param array       $server      [@todo description]
-	 * @return void
-	 */
-public function __construct($appInstance, $id, $server)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L84
-</md:method>
-
-<md:method>
-/**
-	 * Uncaught exception handler
-	 * @param  object $e
-	 * @return boolean|null Handled?
-	 */
-public function handleException($e)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L107
-</md:method>
-
-<md:method>
-/**
-	 * Called when the request wakes up
-	 * @return void
-	 */
-public function onWakeup()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L118
-</md:method>
-
-<md:method>
-/**
-	 * Called when the request starts sleep
-	 * @return void
-	 */
-public function onSleep()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L132
-</md:method>
-
-<md:method>
-/**
-	 * onHandshake
-	 * @return void
-	 */
-public function onHandshake()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L143
-</md:method>
-
-<md:method>
-/**
-	 * c2s
-	 * @param  object $redis
-	 * @return void
-	 */
-public function c2s($redis)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L161
-</md:method>
-
-<md:method>
-/**
-	 * onFrame
-	 * @param  string  $msg  [@todo description]
-	 * @param  integer $type [@todo description]
-	 * @return void
-	 */
-public function onFrame($msg, $type)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L181
-</md:method>
-
-<md:method>
-/**
-	 * poll
-	 * @param  object $redis
-	 * @return void
-	 */
-public function poll($redis)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L202
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @return void
-	 */
-public function onWrite()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L217
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @return void
-	 */
-public function finish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L234
-</md:method>
-
-<md:method>
-/**
-	 * @TODO DESCR
-	 * @return void
-	 */
-public function onFinish()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L250
-</md:method>
-
-<md:method>
-/**
-	 * Flushes buffered packets
-	 * @return void
-	 */
-public function flush()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L270
-</md:method>
-
-<md:method>
-/**
-	 * sendPacket
-	 * @param  object   $pct [@todo description]
-	 * @param  callable $cb  [@todo description]
-	 * @callback $cb ( )
-	 * @return void
-	 */
-public function sendPacket($pct, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L337
-</md:method>
-
-<md:method>
-/**
-	 * Sends a frame.
-	 * @param  string   $data Frame's data.
-	 * @param  integer  $type Frame's type. See the constants.
-	 * @param  callback $cb   Optional. Callback called when the frame is received by client.
-	 * @callback $cb ( )
-	 * @return boolean Success.
-	 */
-public function sendFrame($data, $type = 0x00, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Session.php#L357
-</md:method>
-
-<div class="clearboth"></div>
-
-#### web-socket-connection-proxy # WebSocketConnectionProxy {tpl-git PHPDaemon/SockJS/WebSocketConnectionProxy.php}
-
-```php
-namespace PHPDaemon\SockJS;
-class WebSocketConnectionProxy;
-```
-
-##### methods # Methods
-
-<md:method>
-/**
-	 * __construct
-	 * @param Application $sockjs
-	 * @param object      $conn
-	 */
-public function __construct($sockjs, $conn)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L28
-</md:method>
-
-<md:method>
-/**
-	 * __isset
-	 * @param  string  $k 
-	 * @return boolean
-	 */
-public function __isset($k)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L47
-</md:method>
-
-<md:method>
-/**
-	 * __call
-	 * @param  string $method
-	 * @param  array  $args
-	 * @return mixed
-	 */
-public function __call($method, $args)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L57
-</md:method>
-
-<md:method>
-/**
-	 * toJson
-	 * @param  string $p
-	 * @return string
-	 */
-public function toJson($p)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L66
-</md:method>
-
-<md:method>
-/**
-	 * Sends a frame.
-	 * @param string   $data Frame's data.
-	 * @param integer  $type Frame's type. See the constants.
-	 * @param callback $cb   Optional. Callback called when the frame is received by client.
-	 * @callback $cb ( )
-	 * @return boolean Success.
-	 */
-public function sendFrame($data, $type = null, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L78
-</md:method>
-
-<md:method>
-/**
-	 * Sends a frame.
-	 * @param  string   $data Frame's data.
-	 * @param  integer  $type Frame's type. See the constants.
-	 * @param  callback $cb   Optional. Callback called when the frame is received by client.
-	 * @callback $cb ( )
-	 * @return boolean Success.
-	 */
-public function sendFrameReal($data, $type = null, $cb = null)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L91
-</md:method>
-
-<div class="clearboth"></div>
-
 #### web-socket-route-proxy # WebSocketRouteProxy {tpl-git PHPDaemon/SockJS/WebSocketRouteProxy.php}
 
 ```php
@@ -674,39 +596,181 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSock
 
 <div class="clearboth"></div>
 
-#### Methods # / Methods {tpl-git PHPDaemon/SockJS/Methods}
-
-##### eventsource # Eventsource {tpl-git PHPDaemon/SockJS/Methods/Eventsource.php}
+#### web-socket-connection-proxy # WebSocketConnectionProxy {tpl-git PHPDaemon/SockJS/WebSocketConnectionProxy.php}
 
 ```php
-namespace PHPDaemon\SockJS\Methods;
-class Eventsource extends \PHPDaemon\SockJS\Methods\Generic;
+namespace PHPDaemon\SockJS;
+class WebSocketConnectionProxy;
 ```
+
+##### methods # Methods
+
+<md:method>
+/**
+	 * __construct
+	 * @param Application $sockjs
+	 * @param object      $conn
+	 */
+public function __construct($sockjs, $conn)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L28
+</md:method>
+
+<md:method>
+/**
+	 * __isset
+	 * @param  string  $k 
+	 * @return boolean
+	 */
+public function __isset($k)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L47
+</md:method>
+
+<md:method>
+/**
+	 * __call
+	 * @param  string $method
+	 * @param  array  $args
+	 * @return mixed
+	 */
+public function __call($method, $args)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L57
+</md:method>
+
+<md:method>
+/**
+	 * toJson
+	 * @param  string $p
+	 * @return string
+	 */
+public function toJson($p)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L66
+</md:method>
+
+<md:method>
+/**
+	 * Sends a frame.
+	 * @param string   $data Frame's data.
+	 * @param integer  $type Frame's type. See the constants.
+	 * @param callback $cb   Optional. Callback called when the frame is received by client.
+	 * @callback $cb ( )
+	 * @return boolean Success.
+	 */
+public function sendFrame($data, $type = null, $cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L78
+</md:method>
+
+<md:method>
+/**
+	 * Sends a frame.
+	 * @param  string   $data Frame's data.
+	 * @param  integer  $type Frame's type. See the constants.
+	 * @param  callback $cb   Optional. Callback called when the frame is received by client.
+	 * @callback $cb ( )
+	 * @return boolean Success.
+	 */
+public function sendFrameReal($data, $type = null, $cb = null)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/WebSocketConnectionProxy.php#L91
+</md:method>
+
+<div class="clearboth"></div>
+
+#### TestRelay # / TestRelay {tpl-git PHPDaemon/SockJS/TestRelay}
+
+##### application # Application {tpl-git PHPDaemon/SockJS/TestRelay/Application.php}
+
+```php
+namespace PHPDaemon\SockJS\TestRelay;
+class Application extends \PHPDaemon\Core\AppInstance;
+```
+
+###### options # Options
+
+ - `:p`wss-name (string = '')`  
+ WSS name
 
 ###### methods # Methods
 
 <md:method>
 /**
-	 * Send frame
-	 * @param  string $frame
+	 * Called when the worker is ready to go.
 	 * @return void
 	 */
-public function sendFrame($frame)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Eventsource.php#L25
-</md:method>
-
-<md:method>
-/**
-	 * Constructor
-	 * @return void
-	 */
-public function init()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Eventsource.php#L34
+public function onReady()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/TestRelay/Application.php#L31
 </md:method>
 
 <div class="clearboth"></div>
 
-###### generic # Generic {tpl-git PHPDaemon/SockJS/Methods/Generic.php}
+###### close # Close {tpl-git PHPDaemon/SockJS/TestRelay/Close.php}
+
+```php
+namespace PHPDaemon\SockJS\TestRelay;
+class Close extends \PHPDaemon\WebSocket\Route;
+```
+
+####### methods # Methods
+
+<md:method>
+/**
+	 * Called when the connection is handshaked.
+	 * @return void
+	 */
+public function onHandshake()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/TestRelay/Close.php#L19
+</md:method>
+
+<div class="clearboth"></div>
+
+####### echo-feed # EchoFeed {tpl-git PHPDaemon/SockJS/TestRelay/EchoFeed.php}
+
+```php
+namespace PHPDaemon\SockJS\TestRelay;
+class EchoFeed extends \PHPDaemon\WebSocket\Route;
+```
+
+######## methods # Methods
+
+<md:method>
+/**
+	 * Called when new frame received
+	 * @param  string  $data Frame's contents
+	 * @param  integer $type Frame's type
+	 * @return void
+	 */
+public function onFrame($data, $type)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/TestRelay/EchoFeed.php#L21
+</md:method>
+
+<div class="clearboth"></div>
+
+######## jsonp-send # JsonpSend {tpl-git PHPDaemon/SockJS/Methods/JsonpSend.php}
+
+```php
+namespace PHPDaemon\SockJS\Methods;
+class JsonpSend extends \PHPDaemon\SockJS\Methods\Generic;
+```
+
+######### methods # Methods
+
+<md:method>
+/**
+	 * Called when request iterated
+	 * @return void
+	 */
+public function run()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/JsonpSend.php#L22
+</md:method>
+
+<div class="clearboth"></div>
+
+######### xhr # Xhr {tpl-git PHPDaemon/SockJS/Methods/Xhr.php}
+
+```php
+namespace PHPDaemon\SockJS\Methods;
+class Xhr extends \PHPDaemon\SockJS\Methods\Generic;
+```
+
+########## generic # Generic {tpl-git PHPDaemon/SockJS/Methods/Generic.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
@@ -715,7 +779,7 @@ class Generic extends \PHPDaemon\HTTPRequest\Generic;
 
 Contains some base methods
 
-####### methods # Methods
+########### methods # Methods
 
 <md:method>
 /**
@@ -823,106 +887,11 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-####### htmlfile # Htmlfile {tpl-git PHPDaemon/SockJS/Methods/Htmlfile.php}
+########### xhr-send # XhrSend {tpl-git PHPDaemon/SockJS/Methods/XhrSend.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
-class Htmlfile extends \PHPDaemon\SockJS\Methods\Generic;
-```
-
-######## methods # Methods
-
-<md:method>
-/**
-	 * Send frame
-	 * @param  string $frame
-	 * @return void
-	 */
-public function sendFrame($frame)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Htmlfile.php#L26
-</md:method>
-
-<md:method>
-/**
-	 * Constructor
-	 * @return void
-	 */
-public function init()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Htmlfile.php#L35
-</md:method>
-
-<div class="clearboth"></div>
-
-######## iframe # IFrame {tpl-git PHPDaemon/SockJS/Methods/Iframe.php}
-
-```php
-namespace PHPDaemon\SockJS\Methods;
-class IFrame extends \PHPDaemon\SockJS\Methods\Generic;
-```
-
-######### methods # Methods
-
-<md:method>
-/**
-	 * Constructor
-	 * @return void
-	 */
-public function init()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Iframe.php#L22
-</md:method>
-
-<md:method>
-/**
-	 * Called when request iterated
-	 * @return void
-	 */
-public function run() {}
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Iframe.php#L64
-</md:method>
-
-<div class="clearboth"></div>
-
-######### info # Info {tpl-git PHPDaemon/SockJS/Methods/Info.php}
-
-```php
-namespace PHPDaemon\SockJS\Methods;
-class Info extends \PHPDaemon\SockJS\Methods\Generic;
-```
-
-########## methods # Methods
-
-<md:method>
-/**
-	 * Constructor
-	 * @return void
-	 */
-public function init()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Info.php#L20
-</md:method>
-
-<md:method>
-/**
-	 * Called when request iterated
-	 * @return void
-	 */
-public function run()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Info.php#L34
-</md:method>
-
-<div class="clearboth"></div>
-
-########## jsonp # Jsonp {tpl-git PHPDaemon/SockJS/Methods/Jsonp.php}
-
-```php
-namespace PHPDaemon\SockJS\Methods;
-class Jsonp extends \PHPDaemon\SockJS\Methods\Generic;
-```
-
-########### jsonp-send # JsonpSend {tpl-git PHPDaemon/SockJS/Methods/JsonpSend.php}
-
-```php
-namespace PHPDaemon\SockJS\Methods;
-class JsonpSend extends \PHPDaemon\SockJS\Methods\Generic;
+class XhrSend extends \PHPDaemon\SockJS\Methods\Generic;
 ```
 
 ############ methods # Methods
@@ -933,7 +902,7 @@ class JsonpSend extends \PHPDaemon\SockJS\Methods\Generic;
 	 * @return void
 	 */
 public function run()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/JsonpSend.php#L22
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/XhrSend.php#L22
 </md:method>
 
 <div class="clearboth"></div>
@@ -967,14 +936,100 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-############# welcome # Welcome {tpl-git PHPDaemon/SockJS/Methods/Welcome.php}
+############# info # Info {tpl-git PHPDaemon/SockJS/Methods/Info.php}
+
+```php
+namespace PHPDaemon\SockJS\Methods;
+class Info extends \PHPDaemon\SockJS\Methods\Generic;
+```
+
+############## methods # Methods
+
+<md:method>
+/**
+	 * Constructor
+	 * @return void
+	 */
+public function init()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Info.php#L20
+</md:method>
+
+<md:method>
+/**
+	 * Called when request iterated
+	 * @return void
+	 */
+public function run()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Info.php#L34
+</md:method>
+
+<div class="clearboth"></div>
+
+############## xhr-streaming # XhrStreaming {tpl-git PHPDaemon/SockJS/Methods/XhrStreaming.php}
+
+```php
+namespace PHPDaemon\SockJS\Methods;
+class XhrStreaming extends \PHPDaemon\SockJS\Methods\Generic;
+```
+
+############### methods # Methods
+
+<md:method>
+/**
+	 * afterHeaders
+	 * @return void
+	 */
+public function afterHeaders()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/XhrStreaming.php#L26
+</md:method>
+
+<div class="clearboth"></div>
+
+############### eventsource # Eventsource {tpl-git PHPDaemon/SockJS/Methods/Eventsource.php}
+
+```php
+namespace PHPDaemon\SockJS\Methods;
+class Eventsource extends \PHPDaemon\SockJS\Methods\Generic;
+```
+
+################ methods # Methods
+
+<md:method>
+/**
+	 * Send frame
+	 * @param  string $frame
+	 * @return void
+	 */
+public function sendFrame($frame)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Eventsource.php#L25
+</md:method>
+
+<md:method>
+/**
+	 * Constructor
+	 * @return void
+	 */
+public function init()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Eventsource.php#L34
+</md:method>
+
+<div class="clearboth"></div>
+
+################ jsonp # Jsonp {tpl-git PHPDaemon/SockJS/Methods/Jsonp.php}
+
+```php
+namespace PHPDaemon\SockJS\Methods;
+class Jsonp extends \PHPDaemon\SockJS\Methods\Generic;
+```
+
+################# welcome # Welcome {tpl-git PHPDaemon/SockJS/Methods/Welcome.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
 class Welcome extends \PHPDaemon\SockJS\Methods\Generic;
 ```
 
-############## methods # Methods
+################## methods # Methods
 
 <md:method>
 /**
@@ -996,116 +1051,61 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods
 
 <div class="clearboth"></div>
 
-############## xhr # Xhr {tpl-git PHPDaemon/SockJS/Methods/Xhr.php}
+################## htmlfile # Htmlfile {tpl-git PHPDaemon/SockJS/Methods/Htmlfile.php}
 
 ```php
 namespace PHPDaemon\SockJS\Methods;
-class Xhr extends \PHPDaemon\SockJS\Methods\Generic;
-```
-
-############### xhr-send # XhrSend {tpl-git PHPDaemon/SockJS/Methods/XhrSend.php}
-
-```php
-namespace PHPDaemon\SockJS\Methods;
-class XhrSend extends \PHPDaemon\SockJS\Methods\Generic;
-```
-
-################ methods # Methods
-
-<md:method>
-/**
-	 * Called when request iterated
-	 * @return void
-	 */
-public function run()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/XhrSend.php#L22
-</md:method>
-
-<div class="clearboth"></div>
-
-################ xhr-streaming # XhrStreaming {tpl-git PHPDaemon/SockJS/Methods/XhrStreaming.php}
-
-```php
-namespace PHPDaemon\SockJS\Methods;
-class XhrStreaming extends \PHPDaemon\SockJS\Methods\Generic;
-```
-
-################# methods # Methods
-
-<md:method>
-/**
-	 * afterHeaders
-	 * @return void
-	 */
-public function afterHeaders()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/XhrStreaming.php#L26
-</md:method>
-
-<div class="clearboth"></div>
-
-################# application # Application {tpl-git PHPDaemon/SockJS/TestRelay/Application.php}
-
-```php
-namespace PHPDaemon\SockJS\TestRelay;
-class Application extends \PHPDaemon\Core\AppInstance;
-```
-
-################## options # Options
-
- - `:p`wss-name (string = '')`  
- WSS name
-
-################## methods # Methods
-
-<md:method>
-/**
-	 * Called when the worker is ready to go.
-	 * @return void
-	 */
-public function onReady()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/TestRelay/Application.php#L31
-</md:method>
-
-<div class="clearboth"></div>
-
-################## close # Close {tpl-git PHPDaemon/SockJS/TestRelay/Close.php}
-
-```php
-namespace PHPDaemon\SockJS\TestRelay;
-class Close extends \PHPDaemon\WebSocket\Route;
+class Htmlfile extends \PHPDaemon\SockJS\Methods\Generic;
 ```
 
 ################### methods # Methods
 
 <md:method>
 /**
-	 * Called when the connection is handshaked.
+	 * Send frame
+	 * @param  string $frame
 	 * @return void
 	 */
-public function onHandshake()
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/TestRelay/Close.php#L19
+public function sendFrame($frame)
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Htmlfile.php#L26
+</md:method>
+
+<md:method>
+/**
+	 * Constructor
+	 * @return void
+	 */
+public function init()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Htmlfile.php#L35
 </md:method>
 
 <div class="clearboth"></div>
 
-################### echo-feed # EchoFeed {tpl-git PHPDaemon/SockJS/TestRelay/EchoFeed.php}
+################### iframe # IFrame {tpl-git PHPDaemon/SockJS/Methods/Iframe.php}
 
 ```php
-namespace PHPDaemon\SockJS\TestRelay;
-class EchoFeed extends \PHPDaemon\WebSocket\Route;
+namespace PHPDaemon\SockJS\Methods;
+class IFrame extends \PHPDaemon\SockJS\Methods\Generic;
 ```
 
 #################### methods # Methods
 
 <md:method>
 /**
-	 * Called when new frame received
-	 * @param  string  $data Frame's contents
-	 * @param  integer $type Frame's type
+	 * Constructor
 	 * @return void
 	 */
-public function onFrame($data, $type)
-link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/TestRelay/EchoFeed.php#L21
+public function init()
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Iframe.php#L22
+</md:method>
+
+<md:method>
+/**
+	 * Called when request iterated
+	 * @return void
+	 */
+public function run() {}
+link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/SockJS/Methods/Iframe.php#L64
 </md:method>
 
 <div class="clearboth"></div>

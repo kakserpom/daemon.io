@@ -64,33 +64,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/Socks/
 
 <div class="clearboth"></div>
 
-#### pool # Pool {tpl-git PHPDaemon/Servers/Socks/Pool.php}
-
-```php
-namespace PHPDaemon\Servers\Socks;
-class Pool extends \PHPDaemon\Network\Server;
-```
-
-##### options # Options
-
- - `:p`listen (string|array = 'tcp://0.0.0.0')`  
- Listen addresses
-
- - `:p`port (integer = 1080)`  
- Listen port
-
- - `:p`auth (boolean = 0)`  
- Authentication required
-
- - `:p`username (string = 'User')`  
- User name
-
- - `:p`password (string = 'Password')`  
- Password
-
- - `:p`allowedclients (string = null)`  
- Allowed clients ip list
-
 #### slave-connection # SlaveConnection {tpl-git PHPDaemon/Servers/Socks/SlaveConnection.php}
 
 ```php
@@ -129,6 +102,33 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/Socks/
 </md:method>
 
 <div class="clearboth"></div>
+
+#### pool # Pool {tpl-git PHPDaemon/Servers/Socks/Pool.php}
+
+```php
+namespace PHPDaemon\Servers\Socks;
+class Pool extends \PHPDaemon\Network\Server;
+```
+
+##### options # Options
+
+ - `:p`listen (string|array = 'tcp://0.0.0.0')`  
+ Listen addresses
+
+ - `:p`port (integer = 1080)`  
+ Listen port
+
+ - `:p`auth (boolean = 0)`  
+ Authentication required
+
+ - `:p`username (string = 'User')`  
+ User name
+
+ - `:p`password (string = 'Password')`  
+ Password
+
+ - `:p`allowedclients (string = null)`  
+ Allowed clients ip list
 
 
 <!--/ include-namespace -->

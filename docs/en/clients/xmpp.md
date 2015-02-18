@@ -267,18 +267,6 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/C
 
 <div class="clearboth"></div>
 
-#### pool # Pool {tpl-git PHPDaemon/Clients/XMPP/Pool.php}
-
-```php
-namespace PHPDaemon\Clients\XMPP;
-class Pool extends \PHPDaemon\Network\Client;
-```
-
-##### options # Options
-
- - `:p`port (integer = 5222)`  
- Default port
-
 #### xmpproster # XMPPRoster {tpl-git PHPDaemon/Clients/XMPP/XMPPRoster.php}
 
 ```php
@@ -424,6 +412,18 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/XMPP/X
 </md:method>
 
 <div class="clearboth"></div>
+
+#### pool # Pool {tpl-git PHPDaemon/Clients/XMPP/Pool.php}
+
+```php
+namespace PHPDaemon\Clients\XMPP;
+class Pool extends \PHPDaemon\Network\Client;
+```
+
+##### options # Options
+
+ - `:p`port (integer = 5222)`  
+ Default port
 
 
 <!--/ include-namespace -->
