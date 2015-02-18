@@ -470,7 +470,7 @@ $ && $(function(){
 
 		// var isCallbackNavWaypointsCalled = false;
 		var callbackNavWaypoints = function(dir) { // elem
-console.log('callbackNavWaypoints');
+// console.log('callbackNavWaypoints');
 			// isCallbackNavWaypointsCalled = true;
 			
 			prevLink = currLink;
@@ -482,9 +482,9 @@ console.log('callbackNavWaypoints');
 		var callbackNavWaypointsDebounce = $.debounce(50, false, callbackNavWaypoints);
 
 		var fixCurrHeadCallback = function(dir) {
-console.log('fixCurrHeadCallback');
+// console.log('fixCurrHeadCallback');
 			var point = this;
-console.log(point.element.id, point.previous());
+// console.log(point.element.id, point.previous());
 			if(dir === 'up') {
 				point = point.previous() || this;
 			}
