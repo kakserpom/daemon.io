@@ -454,7 +454,7 @@ $ && $(function(){
 				if (!elem) {
 					return;
 				}
-				wrapMainhead.style.top = elem.triggerPoint + 'px';
+				wrapMainhead.style.top = (elem.triggerPoint - 40) + 'px';
 				wrapMainhead.className = 'mainhead m-fixed';
 				wrapMainhead.textContent = "";
 				wrapMainhead.appendChild(getClearedHeadClone(this.element));
@@ -511,7 +511,7 @@ $ && $(function(){
 				isHeader: this.tagName.substr(0,1) === 'H',
 				headerLevel: this.tagName.substr(1,1),
 				handler: fixPrevHead,
-				offset: 60,
+				offset: 100,
 				group: 'prev'
 			});
 		});
