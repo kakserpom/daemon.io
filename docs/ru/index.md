@@ -38,11 +38,9 @@ PHPDaemon — это асинхронный демонизируемый фре�
 
 <!-- import install/index.md -->
 
-<!-- import basics/index.md -->
+<!-- import quickstart/index.md -->
 
 <!-- import root/control.md -->
-
-<!-- import root/examples.md -->
 
 <!-- import config/index.md -->
 

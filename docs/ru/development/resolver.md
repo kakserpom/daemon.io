@@ -1,4 +1,4 @@
-### app_resolver # Маршрутизация
+### resolver # Маршрутизация
 
 Получая запросы демон первым делом должен определить какому приложению он&#160;должен передать обработку.
 Для этого служит обработчик запросов [AppResolver](https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/AppResolver.php).
