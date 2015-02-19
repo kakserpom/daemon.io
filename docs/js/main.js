@@ -417,31 +417,38 @@ $ && $(function(){
 			// return result;
 		}
 
+		var waypointOffset = 120;
 		var topFromLevel = [0,60,58,56,54,52,50];
 
 		function fixCurrHead(dir) {
+console.log(+new Date(), 'Curr', dir, '#'+this.element.id, this.options.fixed, this.triggerPoint);
 			if (!this.element) {
 				return;
 			}
 
 			if (dir === 'down' || dir === 'fake') {
-				wrapMainhead.style.top = topFromLevel[this.options.headerLevel] + 'px';
-				wrapMainhead.className = 'mainhead m-this';
-				wrapMainhead.textContent = "";
-				wrapMainhead.appendChild(getClearedHeadClone(this.element));
-			} else {
+				if (!this.options.fixed) {
+					wrapMainhead.style.top = topFromLevel[this.options.headerLevel] + 'px';
+					wrapMainhead.className = 'mainhead m-float';
+					wrapMainhead.textContent = "";
+					wrapMainhead.appendChild(getClearedHeadClone(this.element));
+				}
+			} else
+			if (this.triggerPoint > -2) {
+console.log(this);
 				fixPrevHead.apply(this, ['fake']);
 			}
 		}
 
 		function fixPrevHead(dir) {
+console.log(+new Date(), 'Prev', dir, '#'+this.element.id, this.options.fixed, this.triggerPoint);
 			if (!this.element) {
 				return;
 			}
 
 			if (dir === 'down') {
 				var elem = this.previous();
-				if (!elem) {
+				if (!elem || wrapMainhead.className === 'mainhead m-fixed') {
 					return;
 				}
 				wrapMainhead.style.top = (this.triggerPoint + topFromLevel[this.options.headerLevel]) + 'px';
@@ -454,11 +461,12 @@ $ && $(function(){
 				if (!elem) {
 					return;
 				}
-				wrapMainhead.style.top = (elem.triggerPoint - 40) + 'px';
+				wrapMainhead.style.top = (elem.triggerPoint - (waypointOffset - topFromLevel[elem.options.headerLevel])) + 'px';
 				wrapMainhead.className = 'mainhead m-fixed';
 				wrapMainhead.textContent = "";
 				wrapMainhead.appendChild(getClearedHeadClone(this.element));
-			} else {
+			} else
+			if (this.triggerPoint > 0) {
 				fixCurrHead.apply(this.previous(), ['fake']);
 			}
 		}
@@ -496,24 +504,37 @@ $ && $(function(){
 			fixCurrHead.apply(point, [dir]);
 		};
 
-		wrapHeadvWaypoints.each(function(){
-			new Waypoint({
+		wrapHeadvWaypoints.each(function(i){
+			var w = new Waypoint({
 				element: this,
 				isHeader: this.tagName.substr(0,1) === 'H',
 				headerLevel: this.tagName.substr(1,1),
 				handler: fixCurrHeadCallback,
-				group: 'curr'
+				group: 'curr',
+				fixed: 0
 			});
+			var p = w.previous();
+			if(p && w.triggerPoint - p.triggerPoint < waypointOffset * 1.2) {
+				p.options.fixed = 1;
+			}
 		});
-		wrapHeadvWaypoints.each(function(){
-			new Waypoint({
+		wrapHeadvWaypoints.each(function(i){
+			// if (i === 0) {
+			// 	return;
+			// }
+			var w = new Waypoint({
 				element: this,
 				isHeader: this.tagName.substr(0,1) === 'H',
 				headerLevel: this.tagName.substr(1,1),
 				handler: fixPrevHead,
-				offset: 100,
-				group: 'prev'
+				offset: waypointOffset,
+				group: 'prev',
+				fixed: 0
 			});
+			var p = w.previous();
+			if(p && w.triggerPoint - p.triggerPoint < waypointOffset * 1.2) {
+				p.options.fixed = 1;
+			}
 		});
 
 		Waypoint.refreshAll();
