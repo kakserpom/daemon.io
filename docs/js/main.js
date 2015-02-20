@@ -421,6 +421,7 @@ $ && $(function(){
 		var topFromLevel = [0,60,58,56,54,52,50];
 
 		function fixCurrHead(dir) {
+			// console.log(+new Date(), 'fixCurrHead', dir, this.options.fixed);
 			if (!this.element || getPageScroll().top < 0) {
 				return;
 			}
@@ -438,6 +439,7 @@ $ && $(function(){
 		}
 
 		function fixPrevHead(dir) {
+			// console.log(+new Date(), 'fixPrevHead', dir, this.options.fixed);
 			if (!this.element) {
 				return;
 			}
@@ -456,7 +458,9 @@ $ && $(function(){
 				if (!elem) {
 					return;
 				}
-				var top = elem.triggerPoint - (waypointOffset - topFromLevel[elem.options.headerLevel]);
+				var top = this.options.fixed
+					? this.triggerPoint
+					: elem.triggerPoint - (waypointOffset - topFromLevel[elem.options.headerLevel]);
 				wrapMainhead.style.top = top + 'px';
 				wrapMainhead.className = 'mainhead m-fixed';
 				wrapMainhead.textContent = "";
@@ -484,9 +488,10 @@ $ && $(function(){
 		// var isCallbackNavWaypointsCalled = false;
 		var callbackNavWaypoints = function(dir) { // elem
 			// isCallbackNavWaypointsCalled = true;
+			var point = (dir === 'up') ? (this.previous() || this) : this;
 			prevLink = currLink;
-			currLink = '#' + this.element.id;
-			setNavActive(this.element, dir);
+			currLink = '#' + point.element.id;
+			setNavActive(point.element, dir);
 			pushState();
 		};
 
@@ -494,46 +499,59 @@ $ && $(function(){
 
 		var fixCurrHeadCallback = function(dir) {
 			var point = (dir === 'up') ? (this.previous() || this) : this;
-			if (point.options.isHeader) {
-				callbackNavWaypointsDebounce.apply(point, [dir]);
-			}
 			fixCurrHead.apply(point, [dir]);
 		};
 
-		wrapHeadvWaypoints.each(function(i){
+		wrapNavWaypoints.each(function(i){
 			var w = new Waypoint({
 				element: this,
-				isHeader: this.tagName.substr(0,1) === 'H',
+				handler: callbackNavWaypointsDebounce,
+				group: 'nav'
+			});
+		});
+		wrapHeadvWaypoints.each(function(i){
+			new Waypoint({
+				element: this,
 				headerLevel: this.tagName.substr(1,1),
 				handler: fixCurrHeadCallback,
 				group: 'curr',
 				fixed: 0
 			});
-			var p = w.previous();
-			if(p && w.triggerPoint - p.triggerPoint < waypointOffset * 1.2) {
-				p.options.fixed = 1;
-			}
 		});
 		wrapHeadvWaypoints.each(function(i){
-			// if (i === 0) {
-			// 	return;
-			// }
-			var w = new Waypoint({
+			new Waypoint({
 				element: this,
-				isHeader: this.tagName.substr(0,1) === 'H',
 				headerLevel: this.tagName.substr(1,1),
 				handler: fixPrevHead,
 				offset: waypointOffset,
 				group: 'prev',
 				fixed: 0
 			});
+		});
+
+		Waypoint.refreshAll();
+
+		var group, waypoints;
+
+		group = Waypoint.Group.findOrCreate({name:'curr',axis:'vertical'});
+		waypoints = group.waypoints;
+		for (var i = 0, end = waypoints.length; i < end; i++) {
+			var w = waypoints[i];
 			var p = w.previous();
 			if(p && w.triggerPoint - p.triggerPoint < waypointOffset * 1.2) {
 				p.options.fixed = 1;
 			}
-		});
+		}
 
-		Waypoint.refreshAll();
+		group = Waypoint.Group.findOrCreate({name:'prev',axis:'vertical'});
+		waypoints = group.waypoints;
+		for (var i = 0, end = waypoints.length; i < end; i++) {
+			var w = waypoints[i];
+			var p = w.previous();
+			if(p && w.triggerPoint - p.triggerPoint < waypointOffset * 1.2) {
+				p.options.fixed = 1;
+			}
+		}
 
 		// $win.on('load.waypoints.extra', function() {
 		// 	setTimeout(function(){
