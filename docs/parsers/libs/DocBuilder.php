@@ -83,6 +83,7 @@ class DocBuilder {
 		$this->markdown = $this->parseVars($this->markdown);
 
 		// 3. Парсинг шаблонов
+		$this->template = str_replace('{v}', time(), $this->template);
 		$this->markdown = $this->parseTpls($this->markdown);
 		$this->template = $this->parseTpls($this->template);
 
