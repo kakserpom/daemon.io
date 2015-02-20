@@ -421,11 +421,9 @@ $ && $(function(){
 		var topFromLevel = [0,60,58,56,54,52,50];
 
 		function fixCurrHead(dir) {
-console.log(+new Date(), 'Curr', dir, '#'+this.element.id, this.options.fixed, this.triggerPoint);
-			if (!this.element) {
+			if (!this.element || getPageScroll().top < 0) {
 				return;
 			}
-
 			if (dir === 'down' || dir === 'fake') {
 				if (!this.options.fixed) {
 					wrapMainhead.style.top = topFromLevel[this.options.headerLevel] + 'px';
@@ -435,17 +433,14 @@ console.log(+new Date(), 'Curr', dir, '#'+this.element.id, this.options.fixed, t
 				}
 			} else
 			if (this.triggerPoint > -2) {
-console.log(this);
 				fixPrevHead.apply(this, ['fake']);
 			}
 		}
 
 		function fixPrevHead(dir) {
-console.log(+new Date(), 'Prev', dir, '#'+this.element.id, this.options.fixed, this.triggerPoint);
 			if (!this.element) {
 				return;
 			}
-
 			if (dir === 'down') {
 				var elem = this.previous();
 				if (!elem || wrapMainhead.className === 'mainhead m-fixed') {
@@ -461,7 +456,8 @@ console.log(+new Date(), 'Prev', dir, '#'+this.element.id, this.options.fixed, t
 				if (!elem) {
 					return;
 				}
-				wrapMainhead.style.top = (elem.triggerPoint - (waypointOffset - topFromLevel[elem.options.headerLevel])) + 'px';
+				var top = elem.triggerPoint - (waypointOffset - topFromLevel[elem.options.headerLevel]);
+				wrapMainhead.style.top = top + 'px';
 				wrapMainhead.className = 'mainhead m-fixed';
 				wrapMainhead.textContent = "";
 				wrapMainhead.appendChild(getClearedHeadClone(this.element));
