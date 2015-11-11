@@ -1,42 +1,41 @@
 ### ubuntu # Ubuntu
 
-First of all you should install related utilities.
-$&nbsp;`sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git libevent`
+```bash
+#First of all you should install related utilities.
+sudo -i  
+apt-get install gcc make libcurl4-openssl-dev libevent-dev git libevent
 
-Installing PHP 5.5.  
-$&nbsp;`sudo apt-get install php5-cli php5-dev php-pear`
+#Installing PHP 5.5.  
+apt-get install php5-cli php5-dev php-pear
 
-Then install PHP modules.
-$&nbsp;`sudo -i`  
-$&nbsp;`pecl install event eio`  
-$&nbsp;`echo "extension=event.so" > /etc/php5/mods-available/event.ini`  
-$&nbsp;`echo "extension=eio.so" > /etc/php5/mods-available/eio.ini`
+#Then install PHP modules.
+pecl install event eio  
+echo "extension=event.so" > /etc/php5/mods-available/event.ini  
+echo "extension=eio.so" > /etc/php5/mods-available/eio.ini
 
-Creating links
-$&nbsp;`ln -s /etc/php5/mods-available/event.ini /etc/php5/cli/conf.d/event.ini`  
-$&nbsp;`ln -s /etc/php5/mods-available/eio.ini /etc/php5/cli/conf.d/eio.ini`
+#Creating links
+ln -s /etc/php5/mods-available/event.ini /etc/php5/cli/conf.d/event.ini 
+ln -s /etc/php5/mods-available/eio.ini /etc/php5/cli/conf.d/eio.ini
 
-`Ctrl + D` - out of sudo
+#Prepare a folder for PHPDaemon.  
+mkdir /opt/phpdaemon
+chown [your user]:[your group] /opt/phpdaemon
+exit #exiting root user
 
-Prepare a folder for PHPDaemon.  
-$&nbsp;`sudo mkdir /opt/phpdaemon`
-$&nbsp;`sudo chown [your user]:[your group] /opt/phpdaemon`  
-$&nbsp;`cd /opt/phpdaemon`
+#Installing PHPDaemon.  
+cd /opt/phpdaemon
+git clone https://github.com/kakserpom/phpdaemon.git ./
 
-Installing PHPDaemon.  
-$&nbsp;`cd /opt/phpdaemon`  
-$&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git ./`
+#Creating configuration file from sample.
+cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf
 
-Creating configuration file from sample.
-$&nbsp;`cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf`
+#Let's create an alias of `phpd` for convenience.  
+alias phpd='/opt/phpdaemon/bin/phpd'
 
-Let's create an alias of `phpd` for convenience.
-$&nbsp;`alias phpd='/opt/phpdaemon/bin/phpd'`
-
-Local alias of sudo: 
-$&nbsp;`alias sudo='sudo '`
-
-Then run the thing:
+#Local alias of sudo:  
+alias sudo='sudo '
+```
+Then run the thing:  
 $&nbsp;`sudo phpd start --verbose-tty=1`
 
 Option `--verbose-tty=1` turns on logging into STDOUT
@@ -54,6 +53,8 @@ If you see something like this:
 
 Congratulatious! PHPDaemon is working!
 
-Let's make the aliases permanent:
-$&nbsp;`echo "alias phpd='/opt/phpdaemon/bin/phpd'" >> ~/.bashrc'`
-$&nbsp;`echo "alias sudo='sudo /opt/phpdaemon/bin/phpd'" >> ~/.bashrc'`
+Let's make the aliases permanent:  
+```bash
+echo "alias phpd='/opt/phpdaemon/bin/phpd'" >> ~/.bashrc
+echo "alias sudo='sudo /opt/phpdaemon/bin/phpd'" >> ~/.bashrc
+```

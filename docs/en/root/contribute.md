@@ -15,7 +15,7 @@ Even a paragraph written in 10 minutes is a big deal.
 > If you are bold enough to add new language, base it upon the most similar one of existing languages.
 
  1. Fork a repository [kakserpom/daemon.io](https://github.com/kakserpom/daemon.io)
- 2. Change Markdown (.md) файлыв папке `./docs/<язык>/`
+ 2. Change Markdown (.md) files in folder `./docs/&ltlanguage&gt/`
  3. Compile index.html by executing `./docs/build`
  4. Look how it looks in browser
  5. Send Pull Request
