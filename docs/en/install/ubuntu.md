@@ -1,5 +1,4 @@
 ### ubuntu # Ubuntu
-
 ```bash
 #First of all you should install related utilities.
 sudo -i  
