@@ -11,9 +11,11 @@ It should like that:
                 https://github.com/lexa-uw/layman-phpdaemon/blob/master/layman.xml
 
 Execute the following commands:  
-$&nbsp;`sudo layman -L`  
-$&nbsp;`sudo layman -a phpdaemon`  
-$&nbsp;`sudo emerge www-servers/phpdaemon`
+```bash
+sudo layman -L
+sudo layman -a phpdaemon
+sudo emerge www-servers/phpdaemon
+```
 
 For example, below command install phpdaemon by version 0.4.1, 1.0_beta2 and weekly release.
 

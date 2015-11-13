@@ -6,45 +6,53 @@ $&nbsp;`sudo yum install -y git gcc openssl-devel libevent`
 To install latest PHP. you should add the Remi and the Epel repositories, because standard package may contain outdated version.
 
 For RHEL/CentOS 6.4-6.0 32 Bit.  
-$&nbsp;`sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm`  
-$&nbsp;`sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm`
+```bash
+sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+```
 
 For RHEL/CentOS 6.4-6.0 64 Bit.  
-$&nbsp;`sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm`  
-$&nbsp;`sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm`
+```bash
+sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+```
 
-Installing PHP.
-$&nbsp;`sudo yum --enablerepo=remi,remi-test install -y php-cli php-devel php-pear php-process`
+```bash
+#Installing PHP.
+sudo yum --enablerepo=remi,remi-test install -y php-cli php-devel php-pear php-process
 
-Then installing PHP modules.
-$&nbsp;`sudo -i`  
-$&nbsp;`pecl install event eio`
+#Then installing PHP modules.
+sudo -i
+pecl install event eio
 
-Modules `event` and `eio` require module `sockets`.
-In RedHat/CentOS, configuration files load up in alphabetic order, so name them `z-event.ini` and `z-eio.ini` accordingly.  
-$&nbsp;`echo "extension=event.so" > /etc/php.d/z-event.ini`
-$&nbsp;`echo "extension=eio.so" > /etc/php.d/z-eio.ini`
+#Modules `event` and `eio` require module `sockets`.
+#In RedHat/CentOS, configuration files load up in alphabetic order, so name them `z-event.ini` and `z-eio.ini` accordingly.  
+echo "extension=event.so" > /etc/php.d/z-event.ini
+echo "extension=eio.so" > /etc/php.d/z-eio.ini
 
-`Ctrl + D` - out of sudo
+exit #out of sudo
+```
 
 Define `date.timezone` in /etc/php.ini.
 
-Prepare a folder for PHPDaemon.
-$&nbsp;`sudo mkdir /opt/phpdaemon`  
-$&nbsp;`sudo chown [your user]:[your group] /opt/phpdaemon`  
-$&nbsp;`cd /opt/phpdaemon`
+```bash
+#Prepare a folder for PHPDaemon.
+sudo mkdir /opt/phpdaemon
+sudo chown [your user]:[your group] /opt/phpdaemon
+cd /opt/phpdaemon
 
-Installing PHPDaemon.  
-$&nbsp;`cd /opt/phpdaemon`  
-$&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git ./`
+#Installing PHPDaemon.  
+cd /opt/phpdaemon
+git clone https://github.com/kakserpom/phpdaemon.git ./
 
-Copying configuration file from sample:
-$&nbsp;`cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf`
+#Copying configuration file from sample:
+cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf
 
-Creating a link for phpd
-$&nbsp;`ln -s /opt/phpdaemon/bin/phpd /usr/bin/phpd`
+#Creating a link for phpd
+ln -s /opt/phpdaemon/bin/phpd /usr/bin/phpd
+```
 
-Then run the thing:
+Then run the thing:  
 $&nbsp;`sudo phpd start --verbose-tty=1`
 
 Option `--verbose-tty=1` turns on logging into STDOUT

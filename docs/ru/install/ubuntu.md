@@ -55,5 +55,7 @@ $&nbsp;`sudo phpd start --verbose-tty=1`
 Поздравляем! PHPDaemon запущен!
 
 Добавим алиасы чтобы они были доступны после перезагрузки
-$&nbsp;`echo "alias phpd='/opt/phpdaemon/bin/phpd'" >> ~/.bashrc'`
-$&nbsp;`echo "alias sudo='sudo /opt/phpdaemon/bin/phpd'" >> ~/.bashrc'`
+```bash
+echo "alias phpd='/opt/phpdaemon/bin/phpd'" >> ~/.bashrc'
+echo "alias sudo='sudo /opt/phpdaemon/bin/phpd'" >> ~/.bashrc'
+```
