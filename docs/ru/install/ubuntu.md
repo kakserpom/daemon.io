@@ -1,40 +1,40 @@
-### ubuntu # Ubuntu
+### ubuntu # Ubuntu 
+```bash
+#Для начала необходимо установить все сопутствующие утилиты.  
+sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git libevent
 
-Для начала необходимо установить все сопутствующие утилиты.  
-$&nbsp;`sudo apt-get install gcc make libcurl4-openssl-dev libevent-dev git libevent`
+#Устанавливаем PHP 5.5.  
+sudo apt-get install php5-cli php5-dev php-pear
 
-Устанавливаем PHP 5.5.  
-$&nbsp;`sudo apt-get install php5-cli php5-dev php-pear`
+#Далее устанавливаем pecl модули.  
+sudo -i
+pecl install event eio
+echo "extension=event.so" > /etc/php5/mods-available/event.ini
+echo "extension=eio.so" > /etc/php5/mods-available/eio.ini
 
-Далее устанавливаем pecl модули.  
-$&nbsp;`sudo -i`  
-$&nbsp;`pecl install event eio`  
-$&nbsp;`echo "extension=event.so" > /etc/php5/mods-available/event.ini`  
-$&nbsp;`echo "extension=eio.so" > /etc/php5/mods-available/eio.ini`
+#Создаем ссылки
+ln -s /etc/php5/mods-available/event.ini /etc/php5/cli/conf.d/event.ini
+ln -s /etc/php5/mods-available/eio.ini /etc/php5/cli/conf.d/eio.ini
 
-Создаем ссылки
-$&nbsp;`ln -s /etc/php5/mods-available/event.ini /etc/php5/cli/conf.d/event.ini`  
-$&nbsp;`ln -s /etc/php5/mods-available/eio.ini /etc/php5/cli/conf.d/eio.ini`
+#Подготовим директорию для установки PHPDaemon.  
+mkdir /opt/phpdaemon
+chown [your user]:[your group] /opt/phpdaemon
 
-`Ctrl + D` - выходим из sudo
+exit #выходим из sudo
 
-Подготовим директорию для установки PHPDaemon.  
-$&nbsp;`sudo mkdir /opt/phpdaemon`
-$&nbsp;`sudo chown [your user]:[your group] /opt/phpdaemon`  
-$&nbsp;`cd /opt/phpdaemon`
+#Устанавливаем PHPDaemon.  
+cd /opt/phpdaemon
+git clone https://github.com/kakserpom/phpdaemon.git ./
 
-Устанавливаем PHPDaemon.  
-$&nbsp;`cd /opt/phpdaemon`  
-$&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git ./`
+#Создаем конфигурационный файл из примера.  
+cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf
 
-Создаем конфигурационный файл из примера.  
-$&nbsp;`cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf`
+#Сделаем ссылку на phpd для удобного управления демоном  
+alias phpd='/opt/phpdaemon/bin/phpd'
 
-Сделаем ссылку на phpd для удобного управления демоном  
-$&nbsp;`alias phpd='/opt/phpdaemon/bin/phpd'`
-
-Локальный алиас для sudo  
-$&nbsp;`alias sudo='sudo '`
+#Локальный алиас для sudo  
+alias sudo='sudo '
+```
 
 Пробуем запустить демон.  
 $&nbsp;`sudo phpd start --verbose-tty=1`
@@ -55,5 +55,7 @@ $&nbsp;`sudo phpd start --verbose-tty=1`
 Поздравляем! PHPDaemon запущен!
 
 Добавим алиасы чтобы они были доступны после перезагрузки
-$&nbsp;`echo "alias phpd='/opt/phpdaemon/bin/phpd'" >> ~/.bashrc'`
-$&nbsp;`echo "alias sudo='sudo /opt/phpdaemon/bin/phpd'" >> ~/.bashrc'`
+```bash
+echo "alias phpd='/opt/phpdaemon/bin/phpd'" >> ~/.bashrc'
+echo "alias sudo='sudo /opt/phpdaemon/bin/phpd'" >> ~/.bashrc'
+```

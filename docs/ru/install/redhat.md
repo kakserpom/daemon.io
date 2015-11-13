@@ -6,45 +6,53 @@ $&nbsp;`sudo yum install -y git gcc openssl-devel libevent`
 Чтобы установить PHP 5.5 необходимо добавить Remi и Epel репозитории, потому что стандартный содержит старую версию.
 
 Для RHEL/CentOS 6.4-6.0 32 Bit.  
-$&nbsp;`sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm`  
-$&nbsp;`sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm`
+```bash
+sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm 
+sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+```
 
 Для RHEL/CentOS 6.4-6.0 64 Bit.  
-$&nbsp;`sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm`  
-$&nbsp;`sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm`
+```bash
+sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+```
 
-Устанавливаем PHP.  
-$&nbsp;`sudo yum --enablerepo=remi,remi-test install -y php-cli php-devel php-pear php-process`
+```bash
+#Устанавливаем PHP.  
+sudo yum --enablerepo=remi,remi-test install -y php-cli php-devel php-pear php-process
 
-Далее устанавливаем pecl модули.  
-$&nbsp;`sudo -i`  
-$&nbsp;`pecl install event eio`
+#Далее устанавливаем pecl модули.  
+sudo -i
+pecl install event eio
 
-Для корректной работы модуля event и eio необходим модуль sockets.
-В системах RedHat/CentOS файлы конфигурации подгружаются в алфавитном порядке, поэтому назовем их z-event.ini и z-eio.ini соответственно.  
-$&nbsp;`echo "extension=event.so" > /etc/php.d/z-event.ini`
-$&nbsp;`echo "extension=eio.so" > /etc/php.d/z-eio.ini`
+#Для корректной работы модуля event и eio необходим модуль sockets.
+#В системах RedHat/CentOS файлы конфигурации подгружаются в алфавитном порядке, поэтому назовем их z-event.ini и z-eio.ini соответственно.  
+echo "extension=event.so" > /etc/php.d/z-event.ini
+echo "extension=eio.so" > /etc/php.d/z-eio.ini
 
-`Ctrl + D` - выходим из sudo
+exit #выходим из sudo
+```
 
 Установите `date.timezone` в /etc/php.ini.
 
-Подготовим директорию для установки PHPDaemon.  
-$&nbsp;`sudo mkdir /opt/phpdaemon`  
-$&nbsp;`sudo chown [your user]:[your group] /opt/phpdaemon`  
-$&nbsp;`cd /opt/phpdaemon`
+```bash
+#Подготовим директорию для установки PHPDaemon.  
+sudo mkdir /opt/phpdaemon
+sudo chown [your user]:[your group] /opt/phpdaemon
+cd /opt/phpdaemon
 
-Устанавливаем PHPDaemon.  
-$&nbsp;`cd /opt/phpdaemon`  
-$&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git ./`
+#Устанавливаем PHPDaemon.  
+cd /opt/phpdaemon
+git clone https://github.com/kakserpom/phpdaemon.git ./
 
-Копируем конфигурационный файл из примера.  
-$&nbsp;`cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf`
+#Копируем конфигурационный файл из примера.  
+cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf
 
-Сделаем ссылку на phpd
-$&nbsp;`ln -s /opt/phpdaemon/bin/phpd /usr/bin/phpd`
+#Сделаем ссылку на phpd
+ln -s /opt/phpdaemon/bin/phpd /usr/bin/phpd
+```
 
-Запускаем PHPDaemon
+Запускаем PHPDaemon  
 $&nbsp;`sudo phpd start --verbose-tty=1`
 
 Опция `--verbose-tty=1` указывет демону выводить журнал в терминал.

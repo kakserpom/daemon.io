@@ -11,9 +11,11 @@
                 https://github.com/lexa-uw/layman-phpdaemon/blob/master/layman.xml
 
 Выполняем команды  
-$&nbsp;`sudo layman -L`  
-$&nbsp;`sudo layman -a phpdaemon`  
-$&nbsp;`sudo emerge www-servers/phpdaemon`
+```bash
+sudo layman -L
+sudo layman -a phpdaemon
+sudo emerge www-servers/phpdaemon
+```
 
 К примеру, нижеследующие команды устанавливают phpdaemon версии 0.4.1, 1.0_beta2 и еженедельный релиз.
 
