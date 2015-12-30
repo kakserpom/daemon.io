@@ -59,6 +59,6 @@ $&nbsp;`sudo phpd start --verbose-tty=1`
 
 Добавим алиасы чтобы они были доступны после перезагрузки
 ```bash
-echo "alias phpd='/opt/phpdaemon/bin/phpd'" >> ~/.bashrc'
-echo "alias sudo='sudo '" >> ~/.bashrc'
+echo "alias phpd='/opt/phpdaemon/bin/phpd'" >> ~/.bashrc
+echo "alias sudo='sudo '" >> ~/.bashrc
 ```
