@@ -29,6 +29,9 @@ git clone https://github.com/kakserpom/phpdaemon.git ./
 #Создаем конфигурационный файл из примера.  
 cp /opt/phpdaemon/conf/phpd.conf.example /opt/phpdaemon/conf/phpd.conf
 
+#Добавляем права на исполнение
+chmod ug+x /opt/phpdaemon/bin/*
+
 #Сделаем ссылку на phpd для удобного управления демоном  
 alias phpd='/opt/phpdaemon/bin/phpd'
 
@@ -57,5 +60,5 @@ $&nbsp;`sudo phpd start --verbose-tty=1`
 Добавим алиасы чтобы они были доступны после перезагрузки
 ```bash
 echo "alias phpd='/opt/phpdaemon/bin/phpd'" >> ~/.bashrc'
-echo "alias sudo='sudo /opt/phpdaemon/bin/phpd'" >> ~/.bashrc'
+echo "alias sudo='sudo '" >> ~/.bashrc'
 ```
