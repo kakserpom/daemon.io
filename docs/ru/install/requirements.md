@@ -1,7 +1,7 @@
 ### requirements # Требования
 
  - `PHP` версии не ниже 5.4;
- - Модули `posix`, `pcntl`, `socket`, `shmop`;
+ - Модули `posix`, `pcntl`, `sockets`, `shmop`;
  - `libevent 2`;
  - `pecl-event` версии не ниже 1.6.1;
 
