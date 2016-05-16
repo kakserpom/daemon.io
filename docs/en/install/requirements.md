@@ -1,6 +1,6 @@
 ### requirements # Requirements
 
- - `PHP` version not under 5.4;
+ - `PHP` version not under 5.6;
  - Modules `posix`, `pcntl`, `socket`, `shmop`;
  - `libevent 2`;
  - `pecl-event` not under 1.6.1;
