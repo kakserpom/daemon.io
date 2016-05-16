@@ -7,4 +7,4 @@ $&nbsp;`git clone https://github.com/kakserpom/phpdaemon.git`
 $&nbsp;`wget https://github.com/kakserpom/phpdaemon/archive/master.zip`
 
 Установите необходимые модули  
-$&nbsp;`pecl install event eio proctitle inotify`
+$&nbsp;`pecl install event eio inotify`
