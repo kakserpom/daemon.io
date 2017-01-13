@@ -7,9 +7,10 @@ class ShellCommand extends \PHPDaemon\Network\IOStream;
 
 Class is the successor IOStream, so that there are available methods such as read[ln], write[ln], and so on.
 
-#### examples # Примеры
+#### examples # Examples
 
-#####$ simple # Простое выполнение, аналог функции shell_exec
+#### simple # Easily perform analogue functions  `shell_exec`
+
 
 ```php
 ShellCommand::exec('echo "foo"', function($commandInstance, $output) {
@@ -17,7 +18,7 @@ ShellCommand::exec('echo "foo"', function($commandInstance, $output) {
 });
 ```
 
-#####$ with_params # С дополнительными параметрами и переменными окружения
+##### with_params # With additional parameters and environment variables
 
 ```php
 $command = 'git log';
@@ -29,9 +30,9 @@ $env = [];
 ShellCommand::exec($command, $cb, $arguments, $env);
 ```
 
-> Аргументы будут экранированы с помощью `escapeshellarg`
+> Arguments will be screened using `escapeshellarg`
 
-#####$ packet-processing # Пакетная обработка вывода
+#####$ packet-processing # Batch Output
 
 @TODO
 
