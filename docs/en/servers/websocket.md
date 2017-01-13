@@ -1,10 +1,10 @@
 ### websocket # WebSocket #> WebSocket {tpl-git PHPDaemon/Servers/WebSocket}
 
-Сервер использует пространство имен [HTTPRequest](#httprequest).
+The server uses the namespace [HTTPRequest](#httprequest).
 
-Это транспортное приложение представляет WebSocket сервер для phpDaemon.
+This vehicle is an application WebSocket server phpDaemon.
 
-Ваше приложение должно получать ссылку на экземпляр WebSocketServer и вызывать addRoute() для добавления своих путей. Callback-функция пути должна возвращать новый экземпляр вашего класса, который наследуется от WebSocketRoute и определяет метод onFrame. Внутри метода onFrame мы можете обращаться к $this->client->sendFrame() для отправки пакетов клиенту.
+Your application must obtain a reference to an instance and call WebSocketServer addRoute() to add their own ways. Callback-way function must return a new instance of your class that inherits from WebSocketRoute determines onFrame method. Inside the method onFrame we can contact $this->client->sendFrame() to send packets to the client.
 
 <!-- include-namespace path="\PHPDaemon\Servers\WebSocket" level="" access="" -->
 #### connection # Connection {tpl-git PHPDaemon/Servers/WebSocket/Connection.php}
