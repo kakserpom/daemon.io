@@ -1,7 +1,5 @@
-### application # Приложения
+### application # Applications
 
- - `enable (boolean = true)`
- Разрешает демону инициализацию приложения. По-умочанию, описанное в конфигурационном файле приложение, всегда включено.
+ - `enable` (boolean = true) It allows the application to initialize the daemon. By DEFAULT DATA-described application, always included in the configuration file.
 
- - `limit-instances (integer = null)`
- Ограничивает кол-во инициализированных приложений во всех рабочих процессах. По-умолчанию ограничения нет.
+ - `limit-instances` (integer = null) It limits the number of initialized applications in all operating processes. The default is no limit.
