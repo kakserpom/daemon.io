@@ -1,6 +1,6 @@
 ### lock # Lock #> Lock {tpl-git PHPDaemon/Servers/Lock}
 
-> Требует рефакторинга
+> It requires refactoring
 
 <!-- include-namespace path="\PHPDaemon\Servers\Lock" level="" access="" -->
 #### connection # Connection {tpl-git PHPDaemon/Servers/Lock/Connection.php}
