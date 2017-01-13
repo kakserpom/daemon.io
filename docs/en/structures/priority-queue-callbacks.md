@@ -5,7 +5,7 @@ namespace PHPDaemon\Structures;
 class PriorityQueueCallbacks extends \[SplPriorityQueue](http://php.net/manual/class.splpriorityqueue.php);
 ```
 
-> Используется в [Network/Client](#network/client) для хранения вызовов, пока все доступные соединения заняты
+> Used in [Network/Client](#network/client) to store calls, until all available connections are busy
 
 <!-- include-namespace path="\PHPDaemon\Structures\PriorityQueueCallbacks" level="" access="" -->
 #### methods # Methods
