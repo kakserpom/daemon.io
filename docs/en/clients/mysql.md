@@ -6,7 +6,7 @@ namespace PHPDaemon\Clients\MySQL;
 
 Client for the DBMS [MySQL](http://mysql.com/)
 
-#### use # Yse
+#### use # Use
 
 @TODO
 
