@@ -5,7 +5,7 @@ namespace PHPDaemon\Core;
 class ShellCommand extends \PHPDaemon\Network\IOStream;
 ```
 
-Класс является наследником IOStream, так что в нём доступны такие методы как read[ln], write[ln], и так далее.
+Class is the successor IOStream, so that there are available methods such as read[ln], write[ln], and so on.
 
 #### examples # Примеры
 
