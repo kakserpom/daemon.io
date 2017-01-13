@@ -5,7 +5,7 @@ namespace PHPDaemon\Examples;
 class TelnetHoneypot;
 ```
 
-Это приложение предоставляет простой telnet сервер для phpDaemon.
+This application provides a simple telnet server for phpDaemon.
 
 #### use # Use
 
