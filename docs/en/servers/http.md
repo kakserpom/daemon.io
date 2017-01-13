@@ -1,10 +1,10 @@
 ### http # HTTP #> HTTP {tpl-git PHPDaemon/Servers/HTTP}
 
-Сервер использует пространство имен [HTTPRequest](#httprequest).
+The server uses the namespace [HTTPRequest](#httprequest).
 
-Это транспортное приложение предоставляет HTTP сервер для phpDaemon. Входящие Websocket соединения будут переданы приложению WebsocketServer.
+This vehicle application provides HTTP server for phpDaemon. Incoming connections will be transferred Websocket WebsocketServer application.
 
-HTTP пробует определить приложение через AppResolver, не забудьте сконфигурировать его.
+HTTP is trying to determine the application through AppResolver, be sure to configure it.
 
 <!-- include-namespace path="\PHPDaemon\Servers\HTTP" level="" access="" -->
 #### connection # Connection {tpl-git PHPDaemon/Servers/HTTP/Connection.php}
