@@ -4,7 +4,7 @@
 namespace PHPDaemon\Clients\Lock;
 ```
 
-> Требует рефакторинга
+> It requires refactoring
 
 <!-- include-namespace path="\PHPDaemon\Clients\Lock" level="" access="" -->
 #### connection # Connection {tpl-git PHPDaemon/Clients/Lock/Connection.php}
