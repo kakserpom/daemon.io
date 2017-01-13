@@ -5,18 +5,18 @@ namespace PHPDaemon\Examples;
 class MongoNode;
 ```
 
-Это приложение предоставляет узел репликации MongoDB. Это дает возможность устанавливать произвольные хуки на добавление/изменение/удаление объектов.
+This application provides MongoDB replication node. This makes it possible to install arbitrary hooks to add / edit / delete objects.
 
-#### requirements # Требования
+#### requirements # Requirements
 
-Требуется установленный модуль pecl/mongo и включенный phpdaemon/MongoCllient.
+Required module installed pecl / mongo and included phpdaemon / MongoCllient.
 
-#### use # Использование
+#### use # Use
 
-Когда MongoNode включено, оно незамедлительно получает новые изменения в базе.
+MongoNode When enabled, it immediately gets the new changes in the database.
 
-По-умолчанию:
+Default:
 
-Если объект обладает свойством “_key” сериализованное его значение отправляется в ключ Memcache под тем названием, которое задано в значении _key. Когда объект удаляется из MongoDB, он удаляется и из Memcache.
+If the object has the property "_key" serialized its value is sent to the Memcache key under that name, which is set within the meaning of _key. When an object is deleted from the MongoDB, it is removed from Memcache.
 
-Если объект имеет свойство “_ev”, его значение отправляется в RTEP-событие под тем названием, которое задано в значении _ev.
+If the object has the property "_ev", its value is sent to the RTEP-event under the name that is specified in the value _ev.
