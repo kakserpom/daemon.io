@@ -1,15 +1,13 @@
 ## basics # Basics
 
-PHPDaemon представляет из&#160;себя один мастер-процесс с&#160;несколькими рабочими процессами.
+PHPDaemon represents one master process with multiple workflows.
 
-Приложение, в&#160;зависимости от&#160;нагрузки, инициализируется в&#160;одном или нескольких рабочих процессах.
-Во&#160;втором случае запрос будет передан одному свободному рабочему процессу.
+Application, depending on the load, is initialized to one or more workflows. In the second case, the request will be given one free workflow.
 
-Механизма взаимодействия между ребочими процессами не&#160;предусмотрено, поэтому для синхронизации приложений в&#160;разных процессах вы&#160;можете использовать стороннее&#160;ПО, например Redis.
-Также есть возможность задать опцию приложения `limit-instances N;`, чтобы ограничить кол-во копий приложения во&#160;всех рабочих процессах.
+Mechanism of interaction between rebochimi processes is not provided, so for synchronization applications in different processes, you can use third-party software, such as Redis. It is also possible to specify the application option `limit-instances N;` to limit the number of copies of the application in all operating processes.
 
-Исполняющий файл находится в дирктории `./bin/phpd`.
-Вы можете создать свой исполняющий файл, как показано в примере `./bin/sampleapp`.
-Перед запуском демон проверяет переменную `$configFile`, используя её для загрузки конфигурации.
+The executable file is located in dirktor `./bin/phpd`.
+You can create your own executable file, as shown in the example  `./bin/sampleapp`.
+Before starting the daemon checks for a variable `$configFile`, using it to load the configuration.
 
 <!-- import pseudotypes.md -->
