@@ -5,9 +5,9 @@ namespace PHPDaemon\Structures;
 class ObjectStorage extends \[SplObjectStorage](http://php.net/manual/class.splobjectstorage.php);
 ```
 
-Данный класс предоставляет хранилище объектов с несколькими дополнительными методами
+This class provides an object store with a few additional methods
 
-> Можно создавать классы-наследники
+> You can subclass one
 
 <!-- include-namespace path="\PHPDaemon\Structures\ObjectStorage" level="" access="" -->
 #### methods # Methods
