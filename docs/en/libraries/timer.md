@@ -5,17 +5,17 @@ namespace PHPDaemon\Core;
 class Timer;
 ```
 
-С помощью этого класса можно создавать отложенные во времени события (таймеры)
+With this class can be created in the pending event (timers) time
 
-#### examples # Примеры
+#### examples # Examples
 
 ```php
 $i = 0;
 setTimeout(function($timer) use (&$i) {
- D("Пять секунд прошло!");
+ D("5 seconds passed!");
 
  if (++$i < 3) {
-    // запуск таймера ещё на 5 секунд
+    // start the timer for another 5 seconds
     $timer->timeout();
  } else {
     D('Конец');
@@ -24,24 +24,24 @@ setTimeout(function($timer) use (&$i) {
 }, 5e6);
 ```
 
-#### global-functions # Глобальные функции 
+#### global-functions # Global Functions
 
 <md:method>
 integer setTimeout ( callable $cb, integer $timeout = null, integer $id = null, integer $priority = null )
 
-Функция-псевдоним `Timer::add`
+Function alias `Timer::add`
 
-$cb
-функция обратного вызова
+$cb 
+Callback
 
 $timeout
-количество микросекунд через которое должна быть выполнена функция обратного вызова
+The timeout microseconds through which the callback function to be executed
 
 $id
-идентификатор таймера
+timer ID
 
 $priority
-приоритет события таймера
+event priority timer
 </md:method>
 
 <md:method>
