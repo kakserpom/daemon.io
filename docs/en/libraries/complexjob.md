@@ -5,7 +5,7 @@ namespace PHPDaemon\Core;
 class ComplexJob extends \[ArrayAccess](http://php.net/manual/class.arrayaccess.php);
 ```
 
-Объект класса ComplexJob позволяет повесить функцию обратного вызова на завершение всех объявленных в нем процедур. Это удобно, когда нужно выполнить ряд независимых цепочек действий.
+ComplexJob class object allows you to hang up the callback function for the completion of all announced it procedures. This is useful when you need to perform a number of independent chains of action.
 
 
 #### examples # Примеры
@@ -17,23 +17,23 @@ $j = new ComplexJob(function($j) { // Когда всё выполнилось
    D($j['bar']); // sparta
 });
 
-/* Добавляем задачу */
+/* Add a Task */
 $j('foo', function($name, $j) { 
-   $j[$name] = 'this'; // Вызываем setResult()
+   $j[$name] = 'this'; // Call setResult()
 
 
-   /* Еще задачу */
+   /* Another Problem */
    $j('foobar', function($name, $j) { 
       $j[$name] = 'is';
    });
 });
 
-/* И еще одну */
+/* And Another */
 $j('bar', function($name, $j) {
    $j[$name] = 'sparta';
 });
 
-$j(); // Запускаем
+$j(); // Run
 ```
 
 <!-- include-namespace path="\PHPDaemon\Core\ComplexJob" level="" access="" -->
