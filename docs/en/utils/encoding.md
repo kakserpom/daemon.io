@@ -5,7 +5,7 @@ namespace PHPDaemon\Utils;
 class Encoding;
 ```
 
-Сторонняя библиотека — [forceutf8](https://github.com/neitanod/forceutf8)
+Third-party libraries — [forceutf8](https://github.com/neitanod/forceutf8)
 
 <!-- include-namespace path="\PHPDaemon\Utils\Encoding" level="" access="" -->
 #### methods # Methods
