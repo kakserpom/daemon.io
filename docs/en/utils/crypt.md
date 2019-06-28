@@ -5,7 +5,7 @@ namespace PHPDaemon\Utils;
 class Crypt;
 ```
 
-Данный класс содержит методы, относящиеся к криптографии.
+This class contains methods related to cryptography.
 
 <!-- include-namespace path="\PHPDaemon\Utils\Crypt" level="" access="" -->
 #### methods # Methods

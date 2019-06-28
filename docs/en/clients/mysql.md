@@ -4,15 +4,15 @@
 namespace PHPDaemon\Clients\MySQL;
 ```
 
-Клиент для СУБД [MySQL](http://mysql.com/)
+Client for the DBMS [MySQL](http://mysql.com/)
 
-#### use # Использование
+#### use # Use
 
 @TODO
 
-В вашем приложении вам следует получать объект MySQLClient посредством `Daemon::$appResolver->getInstanceByAppName('MySQLClient')` и использовать как описано ниже.
+In your application, you should receive an object MySQLClient through `Daemon::$appResolver->getInstanceByAppName('MySQLClient')` and use as described below.
 
-##### prepare # Подготовка объекта соединения
+##### prepare # Preparing the connection object
 
 ```
 /*
@@ -23,9 +23,9 @@ namespace PHPDaemon\Clients\MySQL;
 */
 ```
 
-Вам следует получить объект MySQLClientSession посредством метода $MySQLClient->getConnection(), затем вы можете положить ваш текущий запрос/сессию/что-нибудь еще в текущий контекст соединения (в свойство context).
+You should get MySQLClientSession object by the method $MySQLClient->getConnection(), then you can put your current request / session / anything else in the current context of the connection (in the context property).
 
-Затем используйте:
+Then use:
 
 ```php
 $this->sql->onConnected(
@@ -38,7 +38,7 @@ $this->sql->onConnected(
 );
 ```
 
-#### examples # Примеры
+#### examples # Examples
 
 ```php
 $sql->query('SHOW VARIABLES', 
@@ -49,7 +49,7 @@ $sql->query('SHOW VARIABLES',
 );
 ```
 
-Когда callback-функция вызвана, $sql->context содержит ваш объект, который вы туда положили перед этим. $sql->resultRows хранит результат в виде массива ассоциативных массивов. $sql->resultFields содержит поля ответа в виде массива ассоциативных массивов.
+When the callback-function is called,  $sql->context contains your subject that you put there before. $sql->resultRows stores the result in an array of associative arrays. $sql->resultFields field contains the response as an array of associative arrays.
 
 <!-- include-namespace path="\PHPDaemon\Clients\MySQL" level="" access="" -->
 #### connection # Connection {tpl-git PHPDaemon/Clients/MySQL/Connection.php}

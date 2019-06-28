@@ -5,8 +5,7 @@ namespace PHPDaemon\Utils;
 class Terminal;
 ```
 
-{tpl-catimg contribute/code}<br />Данный класс нуждается в доработке: не хватает полноценной поддержки ncurses.
-Если хотите помочь, нажмите на кота!<br />
+{tpl-catimg contribute/code}<br />This class needs work: lacks full ncurses support. If you would like to help, click on the cat!<br />
 
 <!-- include-namespace path="\PHPDaemon\Utils\Terminal" level="" access="" -->
 #### methods # Methods

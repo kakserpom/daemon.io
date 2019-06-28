@@ -5,9 +5,9 @@ namespace PHPDaemon\Utils;
 class ShmEntity;
 ```
 
-Эластичное хранилище кучи в разделяемой памяти
+Elastic heap storage in the shared memory
 
-> Используется для хранения массива состояний рабочих процессов
+> It used to store an array of workflow status.
 
 <!-- include-namespace path="\PHPDaemon\Utils\ShmEntity" level="" access="" -->
 #### methods # Methods

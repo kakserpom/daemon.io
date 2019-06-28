@@ -1,18 +1,16 @@
 ## clients # Clients
 
-В основе всех клиентов лежит пространство имен [Network](#network), изучение которого даст большее представление о возможностях клиентов и сетевой работы демона в целом.
+At the heart of all customers is the namespace the [Network](#network), the study of which will give a greater understanding of customer opportunities and networking daemon as a whole.
 
 ### basics # Basics
 
 #### options # Clients options
 
  - `server (string)`  
- Адрес сервера. Записывается специальным форматом, описанном в разделе [Опция server](#clients/basics/option-server)
+ erver address. Records a special format described in the section [Option server](#clients/basics/option-server)
 
  - `servers (array)`  
- Адреса серверов, записанные в формате опции `server`, разделенные символом запятая `,`.
- При подключении клиента будет использоваться рандомно выбранный сервер.
- Учтите, данная опция будет игнорироваться если установлена опция `server`.
+Addresses of servers recorded in the option format server, separated by a comma ,. When a client connects to use randomly selected server. Note, this option will be ignored if the option is set server.
 
  - `maxconnperserv`
  - `protologging`

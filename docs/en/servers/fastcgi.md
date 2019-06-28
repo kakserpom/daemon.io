@@ -1,14 +1,14 @@
 ### fastcgi # FastCGI #> FastCGI {tpl-git PHPDaemon/Servers/FastCGI}
 
-Сервер использует пространство имен [HTTPRequest](#httprequest).
+The server uses the namespace [HTTPRequest](#httprequest).
 
-Это транспортное приложение представляет FastCGI сервер для phpDaemon.
+This vehicle is an application server for FastCGI phpDaemon.
 
-После конфигурирования phpDaemon вам также следует задействовать веб-сервер, который поддерживает FastCGI. Если вы еще не сделали выбор в пользу одного из них, мы советуем [NGINX](http://nginx.org).
+After configuring phpDaemon you should also use a Web server that supports FastCGI. If you have not made a choice in favor of one of them, we recommend to [NGINX](http://nginx.org).
 
-Веб-сервер может передавать FastCGI-серверу параметр APPNAME, который содержит название приложения которое должно обработать данный запрос. Если параметр не передан, FastCGI-сервер попробует определить это через AppResolver.
+The web server can transmit the FastCGI-server option APPNAME, which contains the name of the application that should handle the request. If not passed, FastCGI-server will try to determine this through AppResolver.
 
-Пример конфигурации NGINX:
+Configuration example NGINX:
 
 ```nginx
 location /Example/ {

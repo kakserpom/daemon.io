@@ -7,9 +7,9 @@ abstract class Pool extends [ObjectStorage](#structures/object-storage);
 
 @TODO translate to english
 
-Хранит в себе активные объекты [Соединение](#network/connection) и [ОткрытыйСокет](#network/boundsocket).
+Keeps objects in the currently active [compound](#network/connection) and [OtkrytyySoket](#network/boundsocket).
 
-Пул (клиент или сервер) можно инстанцировать из пользовательского приложении, например:
+Poole (client or server) can be instantiated from a user application, such as:
 
 ```php
 $this->httpclient = \PHPDaemon\Clients\HTTP\Pool::getInstance();

@@ -5,7 +5,7 @@ namespace PHPDaemon\Utils;
 class DateTime extends \[DateTime](http://php.net/manual/class.datetime.php);
 ```
 
-В конструтор можно передавать метку времени Unix.
+Can pass a Unix timestamp to the constructor.
 
 <!-- include-namespace path="\PHPDaemon\Utils\DateTime" level="" access="" -->
 #### methods # Methods

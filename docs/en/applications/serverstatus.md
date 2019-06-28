@@ -5,11 +5,11 @@ namespace PHPDaemon\Applications;
 class ServerStatus;
 ```
 
-Это приложение обеспечивает получение информации о состоянии phpDaemon по протоколу HTTP, аналогично консольной команде `phpd fullstatus`.
+This application provides information about the state of phpDaemon over HTTP, similar to the console command `phpd fullstatus`.
 
-#### use # Использование
+#### use # Use
 
-Необходимо добавить в `conf/phpd.conf`:
+It is necessary to add `conf/phpd.conf`:
 
 ```
 ServerStatus {
@@ -21,7 +21,7 @@ HTTP {
 }
 ```
 
-Также в `conf/AppResolver.php` в методе `getRequestRoute()` добавить условие для запуска метода `beginRequest()` в приложении ServerStatus. Например, чтобы получить информацию о phpDaemon по адресу http://<host>/ServerStatus/:
+Also `conf/AppResolver.php` in the method of `getRequestRoute()` adding a condition to start the method beginRequest() in ServerStatus application. For example, to get information about phpDaemon at http://<host>/ServerStatus/:
 
 ```php
 /**
@@ -37,7 +37,7 @@ public function getRequestRoute($req, $upstream) {
 }
 ```
 
-Пример ответа:
+Sample answer:
 
 ```
 Uptime: 1 day. 11 hour. 33 min. 51 sec.
@@ -51,9 +51,9 @@ State of workers:
         Init: 0
 ```
 
-#### note # Примечание
+#### note # Note
 
-Если вы используете опцию --logworkersetstatus, то соответствие такое:
+If you are using --logworkersetstatus option, the line is:
 
  - 1 - idle
  - 2 - busy

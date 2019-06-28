@@ -5,7 +5,7 @@ namespace PHPDaemon\Utils;
 class IRC;
 ```
 
-Класс используемый в IRC-клиенте и IRC-баунсере
+Class used in the IRC-client and IRC-bouncer
 
 <!-- include-namespace path="\PHPDaemon\Utils\IRC" level="" access="" -->
 #### properties # Properties

@@ -5,7 +5,7 @@ namespace PHPDaemon\Utils;
 class Binary;
 ```
 
-Данный класс предоставляет набор статических методов для работы с бинарными данными.
+This class provides a set of static methods for working with binary data.
 
 <!-- include-namespace path="\PHPDaemon\Utils\Binary" level="" access="" -->
 #### methods # Methods

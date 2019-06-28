@@ -1,6 +1,6 @@
 ### debugconsole # DebugConsole #> DebugConsole {tpl-git PHPDaemon/Servers/DebugConsole}
 
-Это транспортное приложение предоставляет интерактивную отладочную консоль для phpDaemon.
+This vehicle application provides interactive debugging console phpDaemon.
 
 ```
 # telnet 127.0.0.1 8818

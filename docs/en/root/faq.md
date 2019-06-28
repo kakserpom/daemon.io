@@ -1,5 +1,5 @@
 ## faq # FAQ
 
-<i class="fa fa-question-circle"></i> Как сделать событие, которое вызывается через заданный временной интервал?
+<i class="fa fa-question-circle"></i> How to make the event, which is called after a specified time interval?
 
-См. [Библиотеки/Timer](#lib/timer)
+See. [Library/Timer](#lib/timer)

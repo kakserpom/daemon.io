@@ -1,1 +1,1 @@
-### debugging # Отладка
+### debugging # Debug
