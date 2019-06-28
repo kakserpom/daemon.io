@@ -33,7 +33,7 @@ $this->pool->onReady();
 ```ruby
 # контекст для ssl соединения (опционально)
 TransportContext:myContext {
-    ssl;
+    tls;
     certFile "/path/to/cert.pem";
     pkFile "/path/to/privkey.pem";
     passphrase "";
