@@ -646,7 +646,7 @@ class ParsedownCustom extends ParsedownExtra
 					$markup .= call_user_func_array([$this, $Element['handler'][0]], $params);
 				}
 				else {
-					$markup .= $this->$Element['handler']($Element['text']);
+					$markup .= call_user_func([$this, $Element['handler']], $Element['text']);
 				}
 			}
 			else
