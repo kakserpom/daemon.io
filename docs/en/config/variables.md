@@ -1,37 +1,37 @@
-### variables # Глобальные опции
+### variables # Global Options
 
-Два способа установки опций:
+There are two ways to set options:
 
- 1. Конфигурационный файл `./conf/phpd.conf`;
- 2. Параметры командной строки, например `--max-workers=1`.
+ 1. Configuration file `./conf/phpd.conf`;
+ 2. Command line parameters, e.g. `--max-workers=1`.
 
-> Параметры командной строки имеют больший приоритет.
+> The command line parameters have higher priority.
 
-#### file # Конфигурационный файл
+#### file # Configuration file
 
-Формат записи опций следующий:  
-`название-опции;` или `название-опции значение;`
+Options are specified in the following format:
+`option-name;` or `option-name value;`
 
-`название-опции` не чувствительно к регистру и использованию знака дефиса&nbsp;`"-"`.
-Следующие варианты написания равнозначны:
+`option-name` is case insensitive, hyphens `"-"` are ignored.
+Thus, the following spellings are equivalent:
 
  - `add-include-path`;
  - `addincludepath`;
  - `addIncludePath`;
  - `ADDInclude-path`.
 
-Значение может отсутствовать, что приравнивется к `bool(true)`, либо может быть записано следующими способами:
+The value may not exist at all, which equals to `bool(true)`, or may be written in the following ways:
 
  - `null`;
- - булевым выражением `false` или `true`;
- - целым числом;
- - числом с плавающей точкой;
- - строкой; если в строке присутствует символ пробела&nbsp;`" "` или запятая&nbsp;`","`, то строку необходимо обернуть одинарными или двойными кавычками;
- - массивом.
+ - a boolean expression `false` or `true`;
+ - a whole number;
+ - a floating point number;
+ - a string; if the string contains a space character `" "` or a comma `","` then the string must be wrapped in single or double quotes.;
+ - an array.
 
-Для записи массива используется разделитель пробел&nbsp;`" "` или запятая&nbsp;`","`. В одном значении можно использовать оба разделителя одновременно.
+To write an array, the space `" "` or comma `","` separator is used. You can use both separators within the same value.
 
-| Пример опции | Вывод var_dump |
+| Example option | var_dump output |
 |--|--|
 | var-name; | bool(true) |
 | var-name null; | NULL |
@@ -41,152 +41,150 @@
 | var-name 1; | int(1) |
 | var-name 3.14; | float(3.14) |
 | var-name "3.14"; | string(4) "3.14" |
-| var-name "пример. длинной строки,второй пример"; | string(67) "пример. длинной строки,второй пример" |
-| var-name пример. длинной строки,второй пример; | array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(13) "пример."<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(14) "длинной"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "строки"<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "второй"<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(12) "пример"<br>} |
-| var-name 1, 'a' null 3.14 'пару слов'; | array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;int(1)<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(1) "a"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;NULL<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;float(3.14)<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(17) "пару слов"<br>} |
+| var-name "example. long line, second example"; | string(34) "example. long line, second example" |
+| var-name example. long line, second example; | array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(8) "example."<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(4) "long"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(4) "line"<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(6) "second"<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(7) "example"<br>} |
+| var-name 1, 'a' null 3.14 'a word or two'; | array(5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[0]=><br>&nbsp;&nbsp;&nbsp;&nbsp;int(1)<br>&nbsp;&nbsp;&nbsp;&nbsp;[1]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(1) "a"<br>&nbsp;&nbsp;&nbsp;&nbsp;[2]=><br>&nbsp;&nbsp;&nbsp;&nbsp;NULL<br>&nbsp;&nbsp;&nbsp;&nbsp;[3]=><br>&nbsp;&nbsp;&nbsp;&nbsp;float(3.14)<br>&nbsp;&nbsp;&nbsp;&nbsp;[4]=><br>&nbsp;&nbsp;&nbsp;&nbsp;string(13) "a word or two"<br>} |
 
-Ниже будут перечислены глобальные опции демона в формате:  
-`название-опции (тип-данных = значение-по-умолчанию);`
- 
-#### graceful_restart # Плавный перезапуск рабочих процессов
- 
- - `:p`max-requests ([Number](#config/types/number) = '10k')`  
- Максимальное количество запросов перед перезапуском рабочего процесса.
- `0` – неограничено.
- 
- - `:p`max-memory-usage ([Size](#config/types/size) = '0b')`  
- Максимальный допустимый порог потребления памяти рабочим процессом.
- `0` – неограничено.
- 
- - `:p`max-idle ([Time](#config/types/time) = '0s')`  
- Максимальное время простоя рабочего процесса перед перезапуском.
- `0` – неограничено.
+The available global options for the daemon are listed below in the following format:
+`option-name (data-type = default-value);`
 
- - `:p`auto-reload ([Time](#config/types/time) = '0s')`  
- Задает интервал проверки всех подключенных файлов. При изменении файлов плавно перезагружает рабочие процессы.
+#### graceful_restart # Graceful restart of worker processes
 
- - `auto-reimport (boolean = false)`  
- На лету импортирует методы и функции из измененных файлов с помощью runkit, без перезагрузки рабочего процесса.
- 
-#### pathes # Основные пути
+ - `:p`max-requests ([Number](#config/types/number) = '10k')`
+ Maximum number of requests before restarting the worker.
+ `0` – unlimited
 
- - `pid-file (string = '/var/run/phpd.pid')`  
- Путь к pid-файлу. Убедитесь что имеется доступ на запись.
+ - `:p`max-memory-usage ([Size](#config/types/size) = '0b')`
+ Maximum allowed memory consumption threshold for the worker.
+ `0` – unlimited
 
- - `config-file (string = '/etc/phpdaemon/phpd.conf;/etc/phpd/phpd.conf;./conf/phpd.conf')`  
- Путь к файлу конфигурации. Можно указать несколько через разделитель `";"`.  
- Будет загружен только первый найденный конфигурационный файл.
+ - `:p`max-idle ([Time](#config/types/time) = '0s')`
+ Maximum process time running in idle before restarting.
+ `0` – unlimited
 
- - `path (string = '/etc/phpdaemon/AppResolver.php;./conf/AppResolver.php')`  
- Путь к Application Resolver. Можно указать несколько через разделитель `";"`.  
- Будет загружен только первый найденный файл.
+ - `:p`auto-reload ([Time](#config/types/time) = '0s')`
+Sets the check interval for all loaded files. Gracefully reboots worker if any files are changed.
 
- - `add-include-path (string = null)`  
- Дополнительные пути для директивы [include_path](http://www.php.net/manual/ru/ini.core.php#ini.include-path).  
- Можно указать несколько через разделитель `":"`.
+ - `auto-reimport (boolean = false)`
+Imports methods and functions on-the-fly from modified files using runkit, without rebooting the worker.
 
-#### master # Связанные с мастер-процессом
+#### pathes # Main paths
 
- - `:p`mpm-delay ([Time](#config/types/time) = '0.1s')`  
- Интервал между срабатываниями Мульти-Процессного Менеджера.  
- МПМ отвечает за запуск/выключение рабочих процессов, согласно настройкам.
+ - `pid-file (string = '/var/run/phpd.pid')`
+ The path to the pid file. Make sure you have write access.
 
- - `:p`start-workers ([Number](#config/types/number) = 4)`  
- Кол-во рабочих процессов при запуске демона.
+ - `config-file (string = '/etc/phpdaemon/phpd.conf;/etc/phpd/phpd.conf;./conf/phpd.conf')`
+The path to the configuration file. You can specify several through the separator `"; `. Only the first found configuration file will be loaded.
 
- - `:p`min-workers ([Number](#config/types/number) = 4)`  
- Минимальное допустимое кол-во рабочих процессов.
+ - `path (string = '/etc/phpdaemon/AppResolver.php;./conf/AppResolver.php')`
+ Path to the Application Resolver. You can specify several via the separator `"; `. Only the first found file will be loaded.
 
- - `:p`max-workers ([Number](#config/types/number) = 8)`  
- Максимальное допустимое кол-во рабочих процессов.
+ - `add-include-path (string = null)`
+ Additional paths for the php.ini option [include_path](http://www.php.net/manual/ru/ini.core.php#ini.include-path).
+ You can specify multiple paths by using the colon `":"` separator.
 
- - `:p`min-spare-workers ([Number](#config/types/number) = 2)`  
- Минимальное количество простаивающих рабочих процессов: phpDaemon запустит дополнительный рабочие процессы когда нагрузка увеличится, чтобы простаивающих рабочих процессов было достаточно. Сверху ограничивается параметром max-workers.
+#### master # Related to the master process
 
- - `:p`max-spare-workers ([Number](#config/types/number) = 0)`  
- Максимальное кол-во простаивающих рабочих процессов. phpDaemon выключит дополнительные рабочие процессы когда нагрузка спадёт.
+ - `:p`mpm-delay ([Time](#config/types/time) = '0.1s')`
+ Multi-Process Manager interval.
+ The MPM is responsible for starting/shutting down worker processes according to the settings.
 
- - `:p`master-priorty ([Number](#config/types/number) = 100)`  
- Приоритет мастер-процесса. Чем меньше значение, тем выше приоритет.
+ - `:p`start-workers ([Number](#config/types/number) = 4)`
+ The number of initial workers when you start the daemon.
 
- - `:p`ipc-thread-priority ([Number](#config/types/number) = 100)`  
- Приоритет IPC процесса. Чем меньше значение, тем выше приоритет.
+ - `:p`min-workers ([Number](#config/types/number) = 4)`
+ Minimum number of worker processes allowed.
 
- - `:p`worker-priority ([Number](#config/types/number) = 4)`  
- Приоритет рабочего процесса. Чем меньше значение, тем выше приоритет.
+ - `:p`max-workers ([Number](#config/types/number) = 8)`
+ Maximum number of worker processes allowed.
 
- - `throw-exception-on-shutdown (boolean = false)`  
- Выбрасывать исключение `Exception('event shutdown')` по завершению процесса.
+ - `:p`min-spare-workers ([Number](#config/types/number) = 2)`
+ Minimum number of idle workers: phpDaemon will run additional workers when the load increases so that there are enough idle workers but no more in total than specified in the max-workers parameter.
 
-#### requests # Запросы
+ - `:p`max-spare-workers ([Number](#config/types/number) = 0)`
+ Maximum number of idle worker processes. phpDaemon will shut down additional worker processes when the load drops.
 
- - `locale (string = '')`  
- Устанавливает настройки локали. Можно указать несколько через разделитель `","`.
+ - `:p`master-priorty ([Number](#config/types/number) = 100)`
+ The priority of the master process. The lower the value, the higher the priority.
 
- - `ob-filter-auto (boolean = true)`  
- Включить стандартный `ob_` фильтр.
+ - `:p`ipc-thread-priority ([Number](#config/types/number) = 100)`
+ IPC process priority. The lower the value, the higher the priority.
 
-#### workers # Рабочие процессы
+ - `:p`worker-priority ([Number](#config/types/number) = 4)`
+ Worker priority. The lower the value, the higher the priority.
 
- - `chroot (string = '/')`  
- Смена системного корня для рабочих процессов.
+ - `throw-exception-on-shutdown (boolean = false)`
+ Throw exception `Exception('event shutdown')` after the process has finished.
 
- - `cwd (string = '.')`  
- Задание рабочей директории для рабочих процессов.
+#### requests # Requests
 
- - `user (string = null)`  
- Пользователь для рабочих процессов. Используйте безопасного пользователя, не используйте root, если не знаете что делаете.
+ - `locale (string = '')`
+ Sets the locale. You can specify several via a separator `","`.
 
- - `group (string = null)`  
- Группа для рабочих процессов. Используйте безопасную группу, не используйте root, если не знаете что делаете.
+ - `ob-filter-auto (boolean = true)`
+ Enable standard `ob_` filter.
 
- - `:p`auto-gc ([Number](#config/types/number) = '1k')`  
- Включает сборщик мусора вызываемый каждые n запросов. `0` – выключает совсем.
+#### workers # Worker processes
 
-#### logging # Журналирование и отладка
+ - `chroot (string = '/')`
+ Changing the system root for worker processes.
 
- - `logging (boolean = true)`  
- Включает журналирование.
+ - `cwd (string = '.')`
+ Setting up the current work directory for worker processes.
 
- - `log-storage (string = '/var/log/phpdaemon.log')`  
- Путь к файлу журнала.
+ - `user (string = null)`
+ The user for worker processes. Use a secure user, do not use root if you don't know what you're doing.
 
- - `log-errors (boolean = true)`  
- Включает журналирование локальных ошибок таких как Undefined route in WebSocketServer, и т.д.
+ - `group (string = null)`
+ A group for worker processes. Use a secure group, do not use root if you don't know what you're doing.
 
- - `log-worker-set-state (boolean = false)`  
- Включает журналирование смены состояния рабочего процесса.
+ - `:p`auto-gc ([Number](#config/types/number) = '1k')`
+ Enables a garbage collector called every n requests. `0` – turns off the garbage collector completely.
 
- - `log-events (boolean = false)`  
- Включает журналирование сетевых событий.
+#### logging # Logging and debugging
 
- - `log-signals (boolean = false)`  
- Включает журналирование системных сигналов.
+ - `logging (boolean = true)`
+ Enables logging.
 
- - `verbose-tty (boolean = false)`  
- Если параметр включен, журнал будет выводиться в терминал (STDOUT).
+ - `log-storage (string = '/var/log/phpdaemon.log')`
+ The path to the log file.
 
- > Учтите, что в обычном варианте запуска (не runworker) ввод из терминала игнорируется, хотя после запуска с этим параметром может показаться, что программа привязана к терминалу.
+ - `log-errors (boolean = true)`
+Enables logging of local errors such as Undefined route in WebSocketServer, etc.
 
- - `restrict-error-control (boolean = false)`  
- Выключает оператор управления ошибками `"@"`.
+ - `log-worker-set-state (boolean = false)`
+ Enables logging of worker status changes.
 
-#### eio # Подсистема ввода-вывода POSIX
+ - `log-events (boolean = false)`
+ Enables logging of events.
 
- - `eio-enabled (boolean = true)`  
- Включает поддержку EIO.
+ - `log-signals (boolean = false)`
+ Enables logging of system signals.
 
- - `:p`eio-set-max-idle ([Time](#config/types/time) = null)`  
- Устанавливает максимальное количество ожидающих потоков.
+ - `verbose-tty (boolean = false)`
+ If this parameter is enabled, the log is printed to the terminal (STDOUT).
 
- - `:p`eio-set-min-parallel ([Number](#config/types/number) = null)`  
- Устанавливает минимальное количество параллельных потоков.
+ > Please note that in the normal launch variant (not runworker) the input from the terminal is ignored, although after launch with this parameter it may seem that the program is bound to the terminal.
 
- - `:p`eio-set-max-parallel ([Number](#config/types/number) = null)`  
- Устанавливает максимальное количество параллельных потоков.
+ - `restrict-error-control (boolean = false)`
+ Switches off the error control operator "@".
 
- - `:p`eio-set-max-poll-reqs ([Number](#config/types/number) = null)`  
- Устанавливает максимальное количество обрабатываемых запросов.
+#### eio # POSIX I/O subsystem
 
- - `:p`eio-set-max-poll-time ([Time](#config/types/time) = null)`  
- Устанавливает максимальное время выполнения.
+ - `eio-enabled (boolean = true)`
+ Enables EIO support.
+
+ - `:p`eio-set-max-idle ([Time](#config/types/time) = null)`
+ Sets the maximum number of waiting threads.
+
+ - `:p`eio-set-min-parallel ([Number](#config/types/number) = null)`
+ Sets the minimum number of parallel threads.
+
+ - `:p`eio-set-max-parallel ([Number](#config/types/number) = null)`
+ Sets the maximum number of parallel threads.
+
+ - `:p`eio-set-max-poll-reqs ([Number](#config/types/number) = null)`
+ Sets the maximum number of requests processed.
+
+ - `:p`eio-set-max-poll-time ([Time](#config/types/time) = null)`
+ Sets the maximum run time.

@@ -1,51 +1,51 @@
-### options # Опции серверов
+### options # Server options
 
-В данном разделе перечислены опции, используемые всеми серверами.
+This section lists the options used by all servers.
 
- - `listen (string|array)`  
- Прослушиваемые сервером адреса. Можно указать несколько через разделитель&nbsp;`","`.
+ - `listen (string|array)`
+ The addresses that the server is listening to. You can specify several via a separator `","`.
 
- - `privileged`  
+ - `privileged`
  @TODO
 
- - `max-concurrency`  
- Максимальное количество открытых соединений.
+ - `max-concurrency`
+ Maximum number of open connections.
 
- - `max-allowed-packet`  
- Максимальный допустимый размер пакета.
+ - `max-allowed-packet`
+ Maximum allowed package size.
 
- - `connection-class`  
- Класс соединения по-умолчанию.
+ - `connection-class`
+ Default connection class.
 
- - `name`  
+ - `name`
  @TODO
 
- - `allowed-clients`  
- Разрешенные IP-адреса или маски через запятую.
+ - `allowed-clients`
+ Allowed IP addresses or comma-separated masks.
 
- - `ssl`  
- Включает ssl.
+ - `ssl`
+ Enables SSL.
 
- - `ssl-port`  
+ - `ssl-port`
  @TODO
 
- - `cert-file`  
+ - `cert-file`
  @TODO
 
- - `pk-file`  
+ - `pk-file`
  @TODO
 
- - `passphrase`  
+ - `passphrase`
  @TODO
 
- - `verify-peer`  
+ - `verify-peer`
  @TODO
 
- - `allow-self-signed`  
+ - `allow-self-signed`
  @TODO
 
- - `verify-depth`  
+ - `verify-depth`
  @TODO
 
- - `ca-file`  
+ - `ca-file`
  @TODO

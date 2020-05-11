@@ -1,13 +1,13 @@
-### types # Типы данных
+### types # Data types
 
-Большинство опций phpdaemon описывается своими типами данных, позволяющие указывать значения расширенным форматом.
+Most phpdaemon options are described by their data types, allowing you to specify values in an extended format.
 
 #### size # Size
-Предназначен для записи объема информации. Можно записать в виде целого числа или целого числа с постфиксом.
+This is used to specify an amount of data. It can be written either as a whole number or as a whole number with a suffix.
 
-Формат записи: `integer [bBkKmMgG]?`
+Format: `integer [bBkKmMgG]?`
 
-| Постфикс | Множитель | Пример | Значение |
+| Suffix | Factor | Example | Meaning |
 |--|--|--|--|
 | b, B | 1 | 1b | 1 |
 | k | 1000 | 1k | 1000 |
@@ -18,11 +18,11 @@
 | G | 1024 \* 1024 * 1024 | 1G | 1073741824 |
 
 #### time # Time
-Предназначен для записи количества секунд. Число может быть с плавающей точкой с использованием только символа `"."`.
+This is used to specify a number of seconds. The number can be floating point using the decimal separator `"."` only.
 
-Формат записи: `float [smhd]?` или `(float [smhd])+`
+Format: `float [smhd]?` or `(float [smhd])+`
 
-| Постфикс | Множитель | Пример | Значение |
+| Suffix | Factor | Example | Meaning |
 |--|--|--|--|
 | s | 1 | 1s | 1 |
 | m | 60 | 1m | 60 |
@@ -30,11 +30,11 @@
 | d | 60 \* 60 * 24 | 1d 15m 32s | 87332 |
 
 #### number # Number
-Предназначен для записи чисел.
+This is used to specify numbers.
 
-Формат записи: `integer [kKmMgG]?`
+Format: `integer [kKmMgG]?`
 
-| Постфикс | Множитель | Пример | Значение |
+| Suffix | Factor | Example | Meaning |
 |--|--|--|--|
 | k, K | 1000 | 1k | 1000 |
 | m, M | 1000 * 1000 | 1M | 1000000 |
