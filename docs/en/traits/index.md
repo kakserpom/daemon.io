@@ -1,8 +1,8 @@
 ## traits # Traits
 
-[Примеси](http://php.net/traits) (англ. traits).
+[Traits](http://php.net/traits)
 
-Данный раздел описывает доступные для разработчиков встроенные примеси.
+This section describes the included traits available to developers.
 
 <!-- import class-watchdog.md -->
 

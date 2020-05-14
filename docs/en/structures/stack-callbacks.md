@@ -5,9 +5,9 @@ namespace PHPDaemon\Structures;
 class StackCallbacks extends \[SplStack](http://php.net/manual/class.splstack.php);
 ```
 
-Данный класс предоставляет стек функций обратного вызова с несколькими дополнительными методами
+This class provides a stack of callback functions with several additional methods
 
-> Используется в [Network/Client](#network/client) для хранения стека функций обратного вызова запросов
+> Used in [Network/Client](#network/client) to store the callback stack
 
 <!-- include-namespace path="\PHPDaemon\Structures\StackCallbacks" level="" access="" -->
 #### methods # Methods

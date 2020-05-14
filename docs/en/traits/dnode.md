@@ -2,9 +2,9 @@
 
 `:hp`trait \PHPDaemon\WebSocket\Traits\DNode`
 
-Данная примесь применима в классах-наследниках [Servers\WebSocket\Route](#servers/websocket/route)
+This trait is applicable in classes inherited from [Servers\WebSocket\Route](#servers/websocket/route)
 
-Примесь реализует серверную часть протокола [DNode](https://github.com/substack/dnode), который служит для [Удалённого вызова процедур](http://ru.wikipedia.org/wiki/Удалённый_вызов_процедур) (RPC).
+The trait implements the server portion of the protocol [DNode](https://github.com/substack/dnode), which is used for [Remote procedure call](http://ru.wikipedia.org/wiki/Удалённый_вызов_процедур) (RPC).
 
 Для подключение примеси нужно внести `:hp`use \PHPDaemon\WebSocket\Traits\DNode` в определение своего класса-наследника [Servers\WebSocket\Route](#servers/websocket/route).
 

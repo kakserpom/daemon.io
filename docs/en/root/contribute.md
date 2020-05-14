@@ -51,7 +51,7 @@ Example of its usage:
 Headings may be defined like that:
 
  - `## anchor # Title`
- - `## якорь # Title #> Formatted heaing`
+ - `## anchor # Title #> Formatted heaing`
 
 `anchor` - an identifier for navigation which takes place in URL. Allowed symbols are `[a-zA-Z0-9_-]`. Must be unique among anchors of its level to avoid URL collisions.
 

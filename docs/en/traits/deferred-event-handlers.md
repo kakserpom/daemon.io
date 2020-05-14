@@ -5,7 +5,7 @@ namespace PHPDaemon\Traits;
 trait DeferredEventHandlers;
 ```
 
-Данная примесь реализует механизм отложенных событий в объекте.
+This trait implements a deferred events mechanism for an object.
 
 ```php
 class MyClass {

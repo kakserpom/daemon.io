@@ -5,7 +5,7 @@ namespace PHPDaemon\Traits;
 trait EventHandlers;
 ```
 
-Данная примесь реализует простой механизм PUB/SUB для объекта.
+This trait implements a simple PUB/SUB mechanism for an object.
 
 ```php
 class MyClass {
@@ -21,4 +21,4 @@ $o->trigger('smth', 'foo', 'barr');
 
 ```
 
-> Не забывайте о том, что при удалении такого объекта необходимо вызвать метод `cleanupEventHandlers()`, чтобы избежать утечек памяти.
+> Do not forget that when deleting such an object, you should call the `cleanupEventHandlers()`, to avoid memory leaks.

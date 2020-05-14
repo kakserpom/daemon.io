@@ -5,8 +5,6 @@ namespace PHPDaemon\Network;
 abstract class Pool extends [ObjectStorage](#structures/object-storage);
 ```
 
-@TODO translate to english
-
 Keeps objects in the currently active [compound](#network/connection) and [OtkrytyySoket](#network/boundsocket).
 
 Poole (client or server) can be instantiated from a user application, such as:
@@ -15,7 +13,7 @@ Poole (client or server) can be instantiated from a user application, such as:
 $this->httpclient = \PHPDaemon\Clients\HTTP\Pool::getInstance();
 ```
 
-или
+or
 
 ```php
 /* ... */
@@ -26,12 +24,12 @@ $this->pool->onReady();
 /* ... */
 ```
 
-Но не забывайте отправлять ему onReady(), onShutdown() и onConfigUpdated() события.
+But don't forget to send onReady(), onShutdown() and onConfigUpdated() events.
 
-В большинстве случаев сервер запускается одноименнным приложением Pool.
+In most cases, the server is run by the Pool application of the same name.
 
 ```ruby
-# контекст для ssl соединения (опционально)
+# context for ssl connection (optional)
 TransportContext:myContext {
     tls;
     certFile "/path/to/cert.pem";
@@ -41,7 +39,7 @@ TransportContext:myContext {
     allowSelfSigned true;
 }
 
-# слушаем 80 и 443 порт
+# listening to port 80 and 443
 Pool:HTTPServer {
     listen "tcp://0.0.0.0:80", "tcp://0.0.0.0:443##myContext";
     port 80;
