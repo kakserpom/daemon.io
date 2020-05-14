@@ -7,110 +7,110 @@ namespace PHPDaemon\Clients\Asterisk;
 {tpl-outdated}
 
 
-[Asterisk](http://www.asterisk.org) - это АТС с открытым исходным кодом.
-AMI - программный интерфейс (API) Asterisk для управления системой, который позволяет разработчикам отправлять команды на сервер, считывать результаты их выполнения, а так же получать уведомления о происходящих событиях в реальном времени.
-Клиент Asterisk обеспечивает высокоуровневый интерфейс к AMI, позволяющий разработчикам контролировать сервер Asterisk из приложений.
+[Asterisk](http://www.asterisk.org) - is an open-source PBX.
+AMI - Asterisk's software interface (API) for system management, which allows developers to send commands to the server, read the results of their execution, as well as receive notifications about events in real time.
+The Asterisk client provides a high-level interface to AMI, allowing developers to control the Asterisk server from applications.
 
-В основе документирования клиента лежит материал книги [Asterisk: будущее телефонии](http://asterisk.ru/store/files/Asterisk_RU_OReilly_DRAFT.pdf).
+The documentation of the client is based on the material in the book [Asterisk: будущее телефонии](http://asterisk.ru/store/files/Asterisk_RU_OReilly_DRAFT.pdf).
 
-#### use # Использование
+#### use # Usage
 
-@TODO это из вики, проверить
+@TODO it's from the wiki, check it out.
 
-Перед тем как посылать команды и получать события с сервера, нужно получить сессию(сессии) соединения(соединений) в вашем приложении. В вашем приложении вы получаете объект AsteriskDriver посредством:
+Before sending commands and receiving events from the server, you need to get the connection session(s) in your application. In your application you receive the AsteriskDriver object through:
 
 ```php
 $this->pbxDriver = Daemon::$appResolver->getInstanceByAppName('AsteriskDriver');
 ```
 
-##### connect # Соединение
+##### connect # Connection
 
-Далее получаете объект AsteriskDriverSession посредством:
+Next you get the AsteriskDriverSession object through:
 
 ```php
 $session = $this->pbxDriver->getConnection();
 // или
 foreach($this->pbxConnections as $addr => $conn) {
     $session = $this->pbxDriver->getConnection($addr);
-    // что-нибудь делаем...
+    // do something...
 }
 ```
 
-Добавляете (композиция) в него текущий контекст соединения посредством:
+Add (composition) to it the current connection context by means of:
 
 ```php
 $session->context = $this;
 ```
 
-При соединении:
+On connect:
 
 ```php
 $session->onConnected(function(SocketSession $session, $status) {
-    // ваш код, в зависимости от соединения
+    // your code, depending on the connection
 });
 ```
 
-При разрыве:
+On disconnect:
 
 ```php
 $session->onFinish(function(SocketSession $session) {
-    // возможно запустить интервал реконнекта...
+    // maybe run reconnect interval
 });
 ```
 
-Предположим у вас несколько серверов Asterisk с которых вы хотите получать события(events) и на которые вы хотите отправлять команды(actions). Так же вы хотите отслеживать падение соединения(connection failed), и осуществлять реконнект. Смотрите пример реконнекта ниже.
+Suppose that you have multiple Asterisk servers from which you want to receive events and to which you want to send action commands. You also want to track down connection failure and perform a reconnect. See below for an example on how to reconnect.
 
-##### io # Немного о формате ввода-вывода
+##### io # A little bit about the I/O format
 
-Хотя протокол AMI является строковым, драйвер при вводе-выводе работает с ассоциативными массивами. При получении ответа на действие или события все заголовки и их значения приводятся к нижнему регистру, если значение не содержит информацию, для которой важен регистр - например имя пира.
+Although AMI is a string-based protocol, the driver works with associative arrays during I/O. When an action or event is replied to, all headers and their values are case-sensitive if the value does not contain case-sensitive information, such as the name of the pirate.
 
-##### cmds # Отправка команд и получение ответа
+##### cmds # Sending commands and receiving a response
 
-Для отправки команды и получения ответа вы можете воспользоваться либо методом-помощником, который снабжен подробным комментарием из документации Asterisk, либо универсальным методом Connection::action.
+To send a command and receive a response, you can use either the helper method, which has a detailed explanation in the Asterisk documentation, or the universal Connection::action method.
 
-В любом случае для каждой команды вы определяете функцию обратного вызова, в которую будет передан объект сессии соединения и ассоциативный массив пар заголовок-значение ответа.
+In any case, for each command you define a callback function to which the connection session object and an associative header-value pair array will be passed.
 
-Клиент корректно обрабатывает, что порядок следования пакетов ответа не определен, корректно собирает составные пакеты ответа.
+The client correctly handles that the order of response packets is not defined and correctly assembles the response packets.
 
 ```php
 $session->getSipPeers(function(SocketSession $session, array $packet) {
-    // $session->addr содержит адрес соединения
-    // $session->context содержит контекст вызова (если был установлен)
-    // $packet - это массив пар заголовок-значение ответа
-    // что-нибудь делаем
+    // $session->addr contain the connection address
+    // $session->context contains the call context (if installed)
+    // $packet - is an array of response header-value pairs.
+    // do something
 })
-// или
+// or
 $session->getConfig('chan_dahdi.conf', array($this, 'doSomething'));
 public function doSomething(SocketSession $session, array $packet) {
 
 }
-// или
+// or
 $session->action('Ping', function(SocketSession $session, array $packet) {
     if($packet['response'] == 'success' && $packet['ping'] == 'pong') {
-        // успешно сыграли в пинг-понг
-    }    
+        // successfully played ping-pong
+    }
 });
-// или
-// $channel содержит канал из события
+// or
+// $channel contains the channel from the event
 $session->redirect(array(
     'Channel' => $channel,
     'Context' => 'internal',
     'Exten' => '116',
     'Priority' => 1
 ), function(SocketSession $session, array $packet) {
-  // узнаем успешно или нет из ответа сервера содержащегося в ассоциативном массиве $packet
+  // find out whether it was successful or not from the server response contained in the $packet associative array
 });
 ```
 
-##### events # Получение событий сервера
+##### events # Receiving server events
 
-Функция обратного вызова при наступлении события в данном соединении определяется один раз и передается методу onEvent().
+The callback function when an event occurs in this connection is defined once and passed to the onEvent() method.
 
 ```php
 $session->onEvent(array($this, 'onPbxEvent'));
 ```
 
-Когда запущено несколько воркеров, чтобы не получилось, что события канала(характеризуются наличием уникального идентификатора(uniqueid) канала) кратны количеству воркеров(workers) можно воспользоваться таблицей блокировки. Вот пример, когда в качестве таблицы блокировки используется MongoDB коллекция(collection), которая позволяет ставить уникальный индекс на документ:
+When several worker are launched, you can use the lock table to avoid that the channel events (which are characterized by a unique identifier (uniqueid) of the channel) are multiple of the number of workers. Here is an example, when MongoDB collection is used as a lock table, which allows to put a unique index on a document:
 
 ```php
 $session->onEvent(array($this, 'onPbxEvent'));
@@ -141,7 +141,7 @@ public function onPbxEvent(SocketSession $session, array $event) {
 }
 ```
 
-#### example # Пример реконнекта
+#### example # Example on how to reconnect
 
 ```php
 class Foo extends AppInstance {
@@ -491,7 +491,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/Asteri
 	 * Channel: Channel to set variable for
 	 *  *Variable: Variable name
 	 *  *Value: Value
-	 * 
+	 *
 	 * @param string   $channel
 	 * @param string   $variable
 	 * @param string   $value
@@ -706,10 +706,10 @@ Class Pool
 
 ##### options # Options
 
- - `:p`authtype (string = 'md5')`  
+ - `:p`authtype (string = 'md5')`
  Auth hash type
 
- - `:p`port (integer = 5280)`  
+ - `:p`port (integer = 5280)`
  Port
 
 ##### properties # Properties

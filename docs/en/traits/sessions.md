@@ -5,21 +5,20 @@ namespace PHPDaemon\Traits;
 trait Sessions;
 ```
 
-Эта примесь реализует механизм сессий, именно реализует, а не является оберткой над `session_*` функциями.
+This trait implements a session mechanism. The mechanism is implemented completely on its own and not as a mere wrapper around `session_*` functions.
 
-Почему мы не можем использовать нативный механизм сессий PHP?
+Why can't we just use the native PHP session mechanism?
 
- -.n **Проблема №1:** В долго живущих процессах(обслуживающих больше одного клиента) суперглобальный массив `$_SESSION` не будет создаваться заново.  
- -.n **Проблема №2:** Нативная реализация сессий является блокируюей, что расходится с идеологией PhpDaemon - обеспечить неблокирующий I/O.
+ -.n **Problem #1:** For long-lived processes (serving more than one client), the superglobal array `$_SESSION` will not be created anew.
+ -.n **Problem #2:** Native implementation of sessions is blocking, which contradicts the PhpDaemon ideology of providing non-blocking I/O.
 
-Как и нативная реализация, поведение сессий основывается на `php.ini`.
+As with the native implementation, the behaviour of sessions is based on `php.ini`.
 
-Текущая реализация поддерживает хранение сессий в файлах, `session.serialize_handler = php|php_binary`, lock `r+!` файлов - аналогичный нативному - для предотвращения race condition.
+The current implementation supports storing sessions in files,  `session.serialize_handler = php|php_binary`, lock `r+!` files - milar to the native one - to prevent race condition.
 
-Вы можете безопасно использовать PhpDaemon c существующими сессиями, сериализация совместима с нативной
-(См. [session_encode](http://php.net//manual/ru/function.session-encode.php), [session_decode](http://php.net//manual/ru/function.session-decode.php)).
+You can safely use PhpDaemon with existing sessions, the serialization is compatible with native ([session_encode](http://php.net//manual/ru/function.session-encode.php), [session_decode](http://php.net//manual/ru/function.session-decode.php)).
 
-Пример использования:
+Usage examples:
 
 ```php
 $this->onSessionStart(function ($event) {
@@ -30,4 +29,4 @@ $this->onSessionStart(function ($event) {
 });
 ```
 
-> Данная примесь используется в [HTTPRequest](#HTTPRequest) и [Servers\WebSocket\Route](#servers/websocket/route)
+> This trait is used in [HTTPRequest](#HTTPRequest) и [Servers\WebSocket\Route](#servers/websocket/route)

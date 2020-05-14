@@ -5,12 +5,12 @@ namespace PHPDaemon\Traits;
 trait ClassWatchdog;
 ```
 
-> Данная примесь уже использована во всех базовых классах и при наследовании от них не нужно использовать её повторно.
+> This trait is already used in all base classes and there is no need to reuse it when inheriting from them.
 
-Эта примесь нужна, чтобы предотвратить появление ошибки уровня E_ERROR (Fatal error) при обращении к несуществующему методу. E_ERROR же прерывает работу всего рабочего процесса, что недопустимо в реалиях phpDaemon. Настоятельно рекомендуется к использованию во всех используемых классах.
+This trait is needed to prevent an E_ERROR (Fatal error) level error from occurring when calling a non-existent method. E_ERROR, however, interrupts the entire workflow, which is unacceptable in the phpDaemon reality. It is strongly recommended for all classes to use.
 
 
-Определены следующие [магические методы](http://php.net/language.oop5.magic):
+This trait defines the following [magic methods](http://php.net/language.oop5.magic):
 
--.n.ti `__call` — бросает исключение UndefinedMethodCalled
--.n.ti `__callStatic` — бросает исключение UndefinedMethodCalled
+-.n.ti `__call` — throws the exception UndefinedMethodCalled
+-.n.ti `__callStatic` — throws the exception UndefinedMethodCalled.

@@ -5,9 +5,9 @@ namespace PHPDaemon\Traits;
 trait StrictStaticObjectWatchdog;
 ```
 
-Поведение аналогично [StaticObjectWatchdog](#../static-object-watchdog), но эта примесь бросает исключение, вместо записи в журнал.
+The behavior is similar to [StaticObjectWatchdog](#../static-object-watchdog), but this trait throws an exception instead of logging.
 
-Определяет следующие магические методы:
+Defines the following magic methods:
 
--.n.ti `__set` — бросает исключение UndefinedPropertySetting при попытке записать значение несуществующего или недоступного из этой области видимости свойства. 
--.n.ti `__unset` — бросает исключение UnsettingProperty при попытке удалить свойство.
+-.n.ti `__set` — throws a UndefinedPropertySetting exception when trying to write a value of a property that does not exist or is inaccessible from this scope.
+-.n.ti `__unset` — throws a UnsettingProperty exception when trying to remove a property.

@@ -5,13 +5,13 @@ namespace PHPDaemon\Traits;
 trait StaticObjectWatchdog;
 ```
 
-> Данная примесь уже использована во всех базовых классах и при наследовании от них не нужно использовать её повторно.
+> This trait is already used in all base classes and there is no need to reuse it when inheriting from them.
 
-PHP-машина умеет хранить набор свойств объекта двумя способами: в виде фиксированного массива и в виде ассоциативной таблицы (англ. hash table) с использованием [B-дерева](http://ru.wikipedia.org/wiki/B-дерево). Изначально, при создании любого объекта, свойства хранятся в виде массива с быстрым доступом. При первой попытке установить значение свойства не объявленного директивой `<i>visibility</i> $<i>name</i>`, набор свойств конвертируется в ассоциативную таблицу. То же самое происходит при удалении ([unset](http://php.net/unset)) любого свойства). Данная операция сама по себе не самая быстрая, особенно при большом количестве свойств), но и доступ к свойствам после неё замедляется. Разумеется, есть объекты с намеренно динамическим набором свойств, которые сродни ассоциативным массивам и с ними всё в порядке. Но часто бывает так, что программист забывает добавить объявление свойства или даже опечатывается в его названии. Порой это ведёт к сильному ухудшению производительности, которое трудно расследовать.
+A PHP machine can store a set of object properties in two ways: as a fixed array and as an associative hash table using the [B-tree] (http://ru.wikipedia.org/wiki/B-дерево). Initially, when creating any object, properties are stored in the form of an array with quick access. At the first attempt to set the value of a property not declared by the directive `<i>visibility</i> $<i>name</i>`, the set of properties is converted to an associative table. The same happens when you delete ([unset](http://php.net/unset)) any property). This operation in itself is not the fastest, especially with a large number of properties), but access to properties after it slows down. Of course, there are objects with intentionally dynamic set of properties, which are akin to associative arrays and they are all right. But it often happens that the programmer forgets to add a property declaration or even misprints its name. Sometimes it leads to severe performance degradation which is difficult to investigate.
 
-> Прежде чем говорить, что PHP медленный, неплохо бы научиться его готовить.
+> Before saying that PHP is slow, it's a good idea to learn how to cook it.
 
-Данная примесь определяет следующие магические методы:
+This trait defines the following magic methods:
 
--.n.ti `__set` — пишет в журнал с префиксом `[CODE WARN]` при попытке записать значение несуществующего или недоступного из этой области видимости свойства. 
--.n.ti `__unset` — пишет в журнал с префиксом `[CODE WARN]` при попытке удалить свойство.
+-.n.ti `__set` — writes to the journal with the `[CODE WARN]` prefix when trying to write the value of a property that does not exist or is inaccessible from this visibility area.
+-.n.ti `__unset` — writes to the journal with the `[CODE WARN]` prefix when trying to delete the property.

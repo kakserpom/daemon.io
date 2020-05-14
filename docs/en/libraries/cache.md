@@ -4,9 +4,9 @@
 namespace PHPDaemon\Cache;
 ```
 
-Механизм локального LRU-кеша ключ-значение.
+Local LRU key-value cache mechanism.
 
-> Используется для кеширования замыканий созданных через create_function. Также используется в [Clients\DNS](#clients/dns)
+> It is used to cache shortcuts created via create_function. Also used in [Clients\DNS](#clients/dns).
 
 <!-- include-namespace path="\PHPDaemon\Cache" level="" access="" -->
 #### capped-storage-hits # CappedStorageHits {tpl-git PHPDaemon/Cache/CappedStorageHits.php}

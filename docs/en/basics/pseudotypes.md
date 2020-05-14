@@ -2,4 +2,4 @@
 
 #### url # url
 
-Псевдотип url @TODO
+Pseudotype url @TODO

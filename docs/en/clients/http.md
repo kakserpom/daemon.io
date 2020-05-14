@@ -4,25 +4,25 @@
 namespace PHPDaemon\Clients\HTTP;
 ```
 
-Предназначен для выполнения GET и POST запросов на удаленные хосты.
+Designed to perform GET and POST requests to remote hosts.
 
-Клиент использует пространство имен [HTTPRequest](#httprequest).
+The client uses the namespace [HTTPRequest](#httprequest).
 
-#### examples # Примеры
+#### examples # Examples
 
-Получение файла [google.com/robots.txt](http://www.google.com/robots.txt) GET запросом:
+Receiving a file [google.com/robots.txt](http://www.google.com/robots.txt) GET by request:
 
 ```php
 $httpclient = \PHPDaemon\Clients\HTTP\Pool::getInstance();
 
 $httpclient->get('http://www.google.com/robots.txt',
 	function ($conn, $success) {
-		// обработка данных ответа
+		// response data processing
 	}
 );
 ```
 
-Рабочий пример клиента представлен в {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php Clients/HTTP/Examples/Simple.php}
+A working example of a client is presented in {tpl-git PHPDaemon/Clients/HTTP/Examples/Simple.php Clients/HTTP/Examples/Simple.php}
 
 <!-- include-namespace path="\PHPDaemon\Clients\HTTP" level="" access="" -->
 #### connection # Connection {tpl-git PHPDaemon/Clients/HTTP/Connection.php}
@@ -151,7 +151,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Clients/HTTP/C
 </md:method>
 
 <md:method>
-/** 
+/**
 	 * Performs POST-request
 	 * @param string $url
 	 * @param array  $data
@@ -216,13 +216,13 @@ class Pool extends \PHPDaemon\Network\Client;
 
 ##### options # Options
 
- - `:p`port (integer = 80)`  
+ - `:p`port (integer = 80)`
  Default port
 
- - `:p`sslport (integer = 443)`  
+ - `:p`sslport (integer = 443)`
  Default SSL port
 
- - `:p`expose (boolean = 1)`  
+ - `:p`expose (boolean = 1)`
  Send User-Agent header?
 
 ##### methods # Methods
