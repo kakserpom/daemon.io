@@ -43,7 +43,7 @@ const STATE_PROCESSING = 4
 <md:method>
 /**
 	 * Check if Sendfile is supported here.
-	 * @return boolean Succes
+	 * @return boolean Success
 	 */
 public function checkSendfileCap() { // @DISCUSS
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/HTTP/Connection.php#L60
@@ -52,7 +52,7 @@ link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/HTTP/C
 <md:method>
 /**
 	 * Check if Chunked encoding is supported here.
-	 * @return boolean Succes
+	 * @return boolean Success
 	 */
 public function checkChunkedEncCap() { // @DISCUSS
 link:https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Servers/HTTP/Connection.php#L68
@@ -125,46 +125,46 @@ class Pool extends \PHPDaemon\Network\Server;
 
 ##### options # Options
 
- - `:p`listen (string|array = 'tcp://0.0.0.0')`  
+ - `:p`listen (string|array = 'tcp://0.0.0.0')`
  Listen addresses
 
- - `:p`port (integer = 80)`  
+ - `:p`port (integer = 80)`
  Listen port
 
- - `:p`send-file (boolean = 0)`  
+ - `:p`send-file (boolean = 0)`
  Enable X-Sendfile?
 
- - `:p`send-file-dir (string = '/dev/shm')`  
+ - `:p`send-file-dir (string = '/dev/shm')`
  Directory for X-Sendfile
 
- - `:p`send-file-prefix (string = 'http-')`  
+ - `:p`send-file-prefix (string = 'http-')`
  Prefix for files used for X-Sendfile
 
- - `:p`send-file-onlybycommand (boolean = 0)`  
+ - `:p`send-file-onlybycommand (boolean = 0)`
  Use X-Sendfile only if server['USE_SENDFILE'] provided.
 
- - `:p`expose (boolean = 1)`  
+ - `:p`expose (boolean = 1)`
  Expose PHPDaemon version by X-Powered-By Header
 
- - `:p`keepalive ([Time](#config/types/time) = '0s')`  
+ - `:p`keepalive ([Time](#config/types/time) = '0s')`
  Keepalive time
 
- - `:p`chunksize ([Size](#config/types/size) = '8k')`  
+ - `:p`chunksize ([Size](#config/types/size) = '8k')`
  Chunk size
 
- - `:p`defaultcharset (string = 'utf-8')`  
+ - `:p`defaultcharset (string = 'utf-8')`
  Default charset
 
- - `:p`wss-name (string = '')`  
+ - `:p`wss-name (string = '')`
  Related WebSocketServer instance name
 
- - `:p`fps-name (string = '')`  
+ - `:p`fps-name (string = '')`
  Related FlashPolicyServer instance name
 
- - `:p`upload-max-size ([Size](#config/types/size) = ini_get('upload_max_filesize'))`  
+ - `:p`upload-max-size ([Size](#config/types/size) = ini_get('upload_max_filesize'))`
  Maximum uploading file size.
 
- - `:p`responder (string = null)`  
+ - `:p`responder (string = null)`
  Reponder application (if you do not want to use AppResolver)
 
 ##### properties # Properties

@@ -1,21 +1,21 @@
 ## app_resolver # App resolver
 
-Получая запросы демон первым делом должен определить какому приложению он&#160;должен передать обработку.
-Для этого служит метод `getRequestRoute` в&#160;классе [AppResolver](https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/AppResolver.php#L159).
+When receiving requests, the daemon must first determine which application it should pass processing to.
+This is done using the `getRequestRoute` method in the [AppResolver](https://github.com/kakserpom/phpdaemon/blob/master/PHPDaemon/Core/AppResolver.php#L159) class.
 
-Вы&#160;можете определить свой обработчик, пример которого лежит в `./conf/AppResolver.php` [https://github.com/kakserpom/phpdaemon/blob/master/conf/AppResolver.php].
+You can define your own handler - an example can be found in `./conf/AppResolver.php` [https://github.com/kakserpom/phpdaemon/blob/master/conf/AppResolver.php].
 
-Метод `getRequestRoute` принимает два параметра:
+The `getRequestRoute` method has two arguments:
 
- - `$req` &#8212; объект `stdClass`, с&#160;параметрами запроса;
- - `$upstream` &#8212; объект сервера, принимающий входящие запросы, например `PHPDaemon\Servers\HTTP\Connection`.
+ - `$req` &#8212; `stdClass` object, containing the query parameters;
+ - `$upstream` &#8212; a server object containing the incoming requests, for example `PHPDaemon\Servers\HTTP\Connection`.
 
-Результатом работы может быть:
+The return value of this method can be:
 
- - Имя приложения;
- - `null` для попытки передать запрос приложению по-умолчанию;
- - `false` для завершения обработки запроса.
+ - Name of the application;
+ - `null` to attempt to pass the request to the default application;
+ - `false` to finish processing the request.
 
-Не&#160;забудьте указать&#160;в [конфиге](#osnovnyie-puti) путь до&#160;вашего AppResolver, например `path './conf/AppResolver.php';`.
+Don't forget to specify in [config](#osnovnyie-puti) the path to your AppResolver, for example `path './conf/AppResolver.php';`.
 
-В&#160;настройках [сервера](#serveryi), принимающего запросы, с&#160;помощью опции `responder` можно указать имя приложения по-умолчанию, которому будет передан запрос, если `getRequestRoute` вернул `null`.
+In the settings of the [server](#serveryi) receiving the requests, you can use the `responder` option to specify the default name of the application to which the request will be passed if `getRequestRoute` returns `null`.

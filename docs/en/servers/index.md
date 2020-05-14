@@ -1,9 +1,9 @@
 ## servers # Servers
 
-Серверы предназначены для приема запросов и передачи их приложениям.
+Servers are responsible for receiving requests and passing them to applications.
 
-Каждый сервер представляет собой класс наследуемый от [Сеть\Сервер](#network/server), который в свой очередь наследуется от [Сеть\Пул](#network/pool). 
-Сервер можно инициировать прямо в пользовательском приложении,  например:
+Each server is a class inherited from [Network\Server](#network/server), which in turn is inherited from [Network\Pool](#network/pool).
+The server can be initiated directly in the user application, for example:
 
 ```php
 /* ... */
@@ -14,12 +14,12 @@ $this->pool->onReady();
 /* ... */
 ```
 
-Но не забывайте, что в таком случае следует отправлять ему onReady(), onShutdown() и onConfigUpdated() события.
+But do not forget that in this case you should send onReady(), onShutdown() and onConfigUpdated() events.
 
-В большинстве случаев сервер запускается одноименнным приложением Pool.
+In most cases, the server is run by the Pool application of the same name.
 
 ```ruby
-# контекст для ssl соединения (опционально)
+# context for ssl connection (optional)
 TransportContext:myContext {
     tls;
     certFile "/path/to/cert.pem";
@@ -29,7 +29,7 @@ TransportContext:myContext {
     allowSelfSigned true;
 }
 
-# слушаем 80 и 443 порт
+# listening to port 80 and 443
 Pool:HTTPServer {
     listen "tcp://0.0.0.0:80", "tcp://0.0.0.0:443##myContext";
     port 80;
