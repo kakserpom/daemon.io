@@ -1,6 +1,6 @@
 ## servers # Servers
 
-Servers are responsible for receiving requests and transmitting them to applications.
+Servers are responsible for receiving requests and passing them to applications.
 
 Each server is a class inherited from [Network\Server](#network/server), which in turn is inherited from [Network\Pool](#network/pool).
 The server can be initiated directly in the user application, for example:

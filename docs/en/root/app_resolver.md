@@ -5,7 +5,7 @@ This is done using the `getRequestRoute` method in the [AppResolver](https://git
 
 You can define your own handler - an example can be found in `./conf/AppResolver.php` [https://github.com/kakserpom/phpdaemon/blob/master/conf/AppResolver.php].
 
-The `getRequestRoute` method accepts two parameters:
+The `getRequestRoute` method has two arguments:
 
  - `$req` &#8212; `stdClass` object, containing the query parameters;
  - `$upstream` &#8212; a server object containing the incoming requests, for example `PHPDaemon\Servers\HTTP\Connection`.

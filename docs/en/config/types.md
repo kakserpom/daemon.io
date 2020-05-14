@@ -7,7 +7,7 @@ This is used to specify an amount of data. It can be written either as a whole n
 
 Format: `integer [bBkKmMgG]?`
 
-| Suffix | Factor | Example | Meaning |
+| Suffix | Factor | Example | Value |
 |--|--|--|--|
 | b, B | 1 | 1b | 1 |
 | k | 1000 | 1k | 1000 |
@@ -22,7 +22,7 @@ This is used to specify a number of seconds. The number can be floating point us
 
 Format: `float [smhd]?` or `(float [smhd])+`
 
-| Suffix | Factor | Example | Meaning |
+| Suffix | Factor | Example | Value |
 |--|--|--|--|
 | s | 1 | 1s | 1 |
 | m | 60 | 1m | 60 |
@@ -34,7 +34,7 @@ This is used to specify numbers.
 
 Format: `integer [kKmMgG]?`
 
-| Suffix | Factor | Example | Meaning |
+| Suffix | Factor | Example | Value |
 |--|--|--|--|
 | k, K | 1000 | 1k | 1000 |
 | m, M | 1000 * 1000 | 1M | 1000000 |
